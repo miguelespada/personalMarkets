@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
-
+gem "devise"
+gem "bson_ext"
+gem "mongoid", ">= 2.0.0.beta.19"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -42,9 +44,19 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem "capybara", group: [:development, :test]
-gem "cucumber-rails", group: [:development, :test]
-gem "devise"
-gem "bson_ext"
-gem "mongoid", ">= 2.0.0.beta.19"
-gem "rspec-rails", ">= 2.0.1", group: [:development, :test]
+group :test do
+  gem "database_cleaner"
+  gem "mongoid-rspec"
+  gem "cucumber-rails", require: false
+  gem "capybara"
+  gem 'capybara-webkit'
+end
+
+group :development, :test do
+  gem "rspec-rails", ">= 2.0.1"
+  gem "factory_girl_rails"
+  gem 'jasmine-rails'
+end
+
+
+
