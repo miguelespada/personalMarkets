@@ -9,6 +9,9 @@ gem "mongoid", ">= 2.0.0.beta.19"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
+# Use bootstrap with SASS for the layout
+gem 'bootstrap-sass'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
