@@ -61,6 +61,7 @@ group :development, :test do
   gem "rspec-rails", ">= 2.0.1"
   gem "factory_girl_rails"
   gem 'jasmine-rails'
+  gem 'pry'
 end
 
 
