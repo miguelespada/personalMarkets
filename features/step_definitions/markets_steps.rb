@@ -20,7 +20,7 @@ end
 
 
 Given(/^I am in Create New Market/) do
-	visit "/markets/create"
+	visit "/markets/new"
 end
 
 When(/^I fill out the form with the following attributes:$/) do |table|
@@ -34,7 +34,5 @@ When(/^I click the (.*?) button$/) do |button|
      click_button button
 end
 
-Then(/^I should see (.*?)$/) do |msg|
-	page.should have_content msg
-end
+
 
