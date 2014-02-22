@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: espadaysantacruz
+  api_key: '767115286582337'
+  api_secret: lXblXH0XKMDbAB7gqaCgDQtet8s
+  enhance_image_tag: true
+  static_image_support: false 
+production:
+  cloud_name: espadaysantacruz
+  api_key: '767115286582337'
+  api_secret: lXblXH0XKMDbAB7gqaCgDQtet8s
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: espadaysantacruz
+  api_key: '767115286582337'
+  api_secret: lXblXH0XKMDbAB7gqaCgDQtet8s
+  enhance_image_tag: true
+  static_image_support: false
