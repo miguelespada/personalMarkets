@@ -6,4 +6,4 @@ Feature: Cucumber Enabled
 Scenario: Title
   Given I am in the app
   When I read the title
-  Then I should see "Hola Mundo" within "h1"
+  Then I should see "Personal Markets" 
