@@ -11,5 +11,4 @@ When(/^I click on the save market button$/) do
 end
 
 Then(/^I should see my personal market page$/) do
-
 end

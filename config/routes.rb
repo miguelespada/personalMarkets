@@ -3,6 +3,13 @@ PopUpStores::Application.routes.draw do
   root "static_pages#home"
   devise_for :users
 
+<<<<<<< HEAD
+=======
+  get 'markets' => 'markets#index'
+  get 'markets/new' => 'markets#new'
+  post 'markets' => 'markets#create'
+  get 'markets/show' => 'markets#show'
+>>>>>>> 134224457af1a3fb3c82ef86f9fe6d124b171eea
    # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
