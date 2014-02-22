@@ -1,5 +1,5 @@
 Given(/^I am in the add market page$/) do
-  pending # express the regexp above with the code you wish you had
+  visit '/markets/new'
 end
 
 When(/^I fill in the name and description$/) do
