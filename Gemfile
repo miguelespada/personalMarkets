@@ -33,6 +33,9 @@ gem 'jbuilder', '~> 1.2'
 # Photo management
 gem 'cloudinary'
 
+# forms
+gem 'simple_form'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

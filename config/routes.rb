@@ -2,7 +2,10 @@ PopUpStores::Application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   root "static_pages#home"
   devise_for :users
-  # The priority is based upon order of creation: first created -> highest priority.
+
+  get 'markets' => 'markets#index'
+  get 'markets/edit' => 'markets#edit'
+   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
