@@ -4,6 +4,7 @@ PopUpStores::Application.routes.draw do
   devise_for :users
 
   get 'markets' => 'markets#index'
+  get 'markets/edit' => 'markets#edit'
    # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
