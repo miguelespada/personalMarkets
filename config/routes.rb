@@ -6,6 +6,7 @@ PopUpStores::Application.routes.draw do
   get 'markets' => 'markets#index'
   get 'markets/new' => 'markets#new'
   post 'markets' => 'markets#create'
+  get 'markets/show' => 'markets#show'
    # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

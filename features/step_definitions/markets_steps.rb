@@ -34,5 +34,8 @@ When(/^I click the (.*?) button$/) do |button|
      click_button button
 end
 
+Then(/^I should see the Market page$/) do
+	visit "/markets/show"
+end
 
 

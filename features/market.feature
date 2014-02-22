@@ -23,3 +23,4 @@
       | Description   | Rellenas de chocolate    |
       And I click the Create Market button
     Then I should see "Market was successfully created."
+    And I should see the Market page
