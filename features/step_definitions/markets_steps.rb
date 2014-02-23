@@ -8,7 +8,7 @@ When(/^I fill in the name and description$/) do
 end
 
 When(/^I click on the save market button$/) do
-  click_on "Añadir market"
+  click_on "Add market"
 end
 
 Then(/^I should see my personal market page$/) do
