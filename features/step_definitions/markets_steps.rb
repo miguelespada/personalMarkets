@@ -44,7 +44,7 @@ When(/^I click on update market$/) do
   click_on "Update Market"
 end
 
-
 Then(/^I should see the photo$/) do
+	
 	page.should have_selector "div.featured-photo"
 end
