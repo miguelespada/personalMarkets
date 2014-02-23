@@ -19,3 +19,16 @@ end
 Then(/^I should be notified that the market has been added$/) do
   expect(page).to have_content "Market was successfully created."
 end
+
+Given(/^I am in the home page$/) do
+	visit '/'
+end
+
+When(/^I click on the add market link$/) do
+  click_on "Add market"
+end
+
+Then(/^I should see the creation market page$/) do
+	expect(page).to have_content "Create new market"
+end
+
