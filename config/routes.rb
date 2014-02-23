@@ -1,5 +1,5 @@
 PopUpStores::Application.routes.draw do
-  get "markets/new"
+  resources :markets
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   root "static_pages#home"
   devise_for :users
