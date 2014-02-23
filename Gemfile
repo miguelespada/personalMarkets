@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 1.2'
 
 # Photo management
 gem 'cloudinary'
+gem 'attachinary', git: 'git://github.com/rochers/attachinary.git', branch: 'rails4'
 
 # forms
 gem 'simple_form'

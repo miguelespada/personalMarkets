@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/rochers/attachinary.git
+  revision: 48c0e8e0adeb5ed5afe8e41e6c0c395823ed15ce
+  branch: rails4
+  specs:
+    attachinary (2.0.0)
+      cloudinary (~> 1.0.66)
+      rails (~> 4.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -214,6 +223,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  attachinary!
   bootstrap-sass
   bson_ext
   capybara

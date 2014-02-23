@@ -3,6 +3,7 @@ PopUpStores::Application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   root "static_pages#home"
   devise_for :users
+  mount Attachinary::Engine => "/attachinary"
 
    # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
