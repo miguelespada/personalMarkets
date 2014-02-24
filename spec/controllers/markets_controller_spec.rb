@@ -3,6 +3,8 @@ require 'spec_helper'
 describe MarketsController do
 
   let(:valid_session) { {} }
+  let(:market) { FactoryGirl.create(:market) } 
+  let(:market_params) { FactoryGirl.attributes_for(:market) } 
 
   describe "Creating a new market" do
     it "assigns a new market" do
@@ -13,8 +15,7 @@ describe MarketsController do
       context "with valid params" do
         it "creates a new Market" do
           expect {
-            post :create, {:market => { name: "A name", description: "A description" }
-              }, valid_session
+            post :create, { :market => market_params }, valid_session
           }.to change(Market, :count).by(1)
         end
 

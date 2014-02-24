@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :market do
-    name "MyString"
-    description "MyString"
+    name "My personal market"
+    description "My market description"
   end
 end
