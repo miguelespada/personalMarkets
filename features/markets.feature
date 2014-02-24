@@ -11,7 +11,6 @@ Feature: Markets
 	  And I should be notified that the market has been added
 
 	# Scenario: Add featured photo
-	# 	Given I am editing a market
+	# 	Given I am in my personal market page
 	# 	When I upload a photo
-	# 	And I click on update market
-	# 	Then I should see the photo
+ #    Then I see the photo

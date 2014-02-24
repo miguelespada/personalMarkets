@@ -12,10 +12,21 @@ class MarketsController < ApplicationController
     respond_to do |format|
       if @market.save
         format.html { redirect_to market_path(@market), notice: 'Market was successfully created.' }
+
       else
         format.html { render action: 'new' }
       end
     end
+  end
+
+
+  def update
+    @market = Market.find(params[:id])
+    @market.featured = params[:featured]
+    puts @market.featured
+    @market.save!
+  rescue Exception => e
+    
   end
 
   private

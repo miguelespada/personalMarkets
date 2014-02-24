@@ -19,3 +19,18 @@ end
 Then(/^I should be notified that the market has been added$/) do
   expect(page).to have_content "Market was successfully created."
 end
+
+
+
+# Given(/^I am in my personal market page$/) do
+#   @market = FactoryGirl.create(:market)
+#   visit market_path(@market)
+# end
+
+# When(/^I upload a photo$/) do
+  
+# end
+
+# Then(/^I see the photo$/) do
+#   pending # express the regexp above with the code you wish you had
+# end

@@ -48,4 +48,22 @@ describe MarketsController do
         end
       end
     end
+
+
+    describe "Updating an existing market" do
+
+      xit "allows to add a featured photo" do
+
+        file = FactoryGirl.build(:file).to_json
+        Market.any_instance.should_receive(:update).with({ :featured => file })
+        
+        put :update, { 
+          id: market.to_param,
+          featured: file 
+        }, valid_session
+        
+        expect(market.featured).to_not be_nil
+
+      end
+  end
 end
