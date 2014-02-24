@@ -10,22 +10,24 @@ describe MarketsController do
       expect(assigns(:market)).to be_a_new(Market)
     end
 
-      describe "with valid params" do
+      context "with valid params" do
         it "creates a new Market" do
           expect {
-            post :create, {:market => { "name" => "invalid value" }
+            post :create, {:market => { name: "A name", description: "A description" }
               }, valid_session
           }.to change(Market, :count).by(1)
         end
 
         it "assigns a newly created market" do
-          post :create, {:market => { "name" => "invalid value" }}, valid_session
+          post :create, {:market => { name: "A name", description: "A description" } }, valid_session
           expect(assigns(:market)).to be_a(Market)
           expect(assigns(:market)).to be_persisted
         end
 
         it "redirects to the created market" do
-          post :create, {:market => { "name" => "invalid value" }}, valid_session
+          post :create, { :market => { 
+            name: "A name", 
+            description: "A description" } }, valid_session
           expect(response).to redirect_to(Market.last)
         end
       end
