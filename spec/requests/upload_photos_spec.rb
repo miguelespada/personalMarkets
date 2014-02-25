@@ -8,11 +8,13 @@ describe "Update market" do
 		click_on "Update Market"
 		page.should have_content("Featured photo successfully updated!")
     end
-    it "Update market without featued photo",  :js => true do
-    	@market = FactoryGirl.create(:market)
-    	Market.stub(:find).and_return(@market)
-  		visit market_path(@market)
-		click_on "Update Market"
-		page.should_not have_content("Featured photo successfully updated!")
+
+    it "Update market remove photo",  :js => true do
+      @market = FactoryGirl.create(:market_with_photo)
+      Market.stub(:find).and_return(@market)
+      @market.stub(:featured).and_return(nil)
+      visit market_path(@market)
+      click_on "Update Market"
+      page.should have_content("Featured photo was removed!")
     end
   end

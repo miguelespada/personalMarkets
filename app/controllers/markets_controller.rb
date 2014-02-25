@@ -26,6 +26,8 @@ class MarketsController < ApplicationController
 
     if market_params[:featured] != ""
       flash[:notice] = "Featured photo successfully updated!"
+    else
+        flash[:notice] = "Featured photo was removed!"
     end
     
   end
