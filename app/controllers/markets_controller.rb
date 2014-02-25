@@ -22,9 +22,10 @@ class MarketsController < ApplicationController
 
   def update
     @market = Market.find(params[:id])
-    if market_params[:featured]
+    if market_params[:featured] 
       @market.update_attribute(:featured, market_params[:featured])
     end
+
   end
 
   private

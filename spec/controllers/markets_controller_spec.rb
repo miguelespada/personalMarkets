@@ -71,7 +71,7 @@ describe MarketsController do
           expect(market.featured).not_to be_nil
         end
     
-        it "uploads an empty featured photo" do
+        it "update with no photo" do
           put :update, {id: market.to_param, market: market.attributes}, valid_session          
           expect(market.featured).to be_nil
         end
