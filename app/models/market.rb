@@ -7,6 +7,4 @@ class Market
 
   validates_presence_of :name, :description
 
-  attr_accessor :featured  
-
 end

@@ -50,20 +50,18 @@ describe MarketsController do
     end
 
 
-    describe "Updating an existing market" do
+      describe "updload foto" do
+        it "assigns a newly created market" do
+          market.stub(:featured).and_return('[{"public_id":"dummy","version":1,"signature":"dummy",
+            "width":75,"height":75,"format":"png","resource_type":"image","created_at":"dummy_data",
+            "tags":["attachinary_tmp","development_env"],"bytes":0,"type":"upload",
+            "etag":"dummy_etag",
+            "url":"dummy.png",
+            "secure_url":"dummy.png"}]')
 
-      xit "allows to add a featured photo" do
+          put :update, {id: market.to_param, market: market.attributes}, valid_session
+          expect(market.featured).not_to be_nil
+        end
+    end
 
-        file = FactoryGirl.build(:file).to_json
-        Market.any_instance.should_receive(:update).with({ :featured => file })
-        
-        put :update, { 
-          id: market.to_param,
-          featured: file 
-        }, valid_session
-        
-        expect(market.featured).to_not be_nil
-
-      end
-  end
 end

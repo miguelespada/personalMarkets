@@ -15,5 +15,4 @@ FactoryGirl.define do
     format 'jpg'
     resource_type 'image'
   end
-
 end

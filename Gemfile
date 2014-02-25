@@ -61,6 +61,7 @@ group :test do
   gem "cucumber-rails", require: false
   gem "capybara"
   gem 'capybara-webkit'
+  gem "launchy"
 end
 
 group :development, :test do

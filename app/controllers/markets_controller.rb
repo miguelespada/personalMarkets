@@ -22,18 +22,15 @@ class MarketsController < ApplicationController
 
   def update
     @market = Market.find(params[:id])
-    @market.featured = params[:featured]
-    puts @market.featured
-    @market.save!
-  rescue Exception => e
-    
+    @market.update_attribute(:featured, market_params[:featured])
   end
 
   private
     def market_params
       params.require(:market).permit(
         :name, 
-        :description
+        :description,
+        :featured
         )
     end
 end
