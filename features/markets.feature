@@ -13,5 +13,5 @@ Feature: Markets
 #	 Scenario: Add featured photo
 #	 	Given I am in my personal market page
 #	 	When I upload a photo
- #	    Then I should see the photo
- #	    And I should be notified that the featured photo has been added
+# 	    Then I should see the photo
+# 	    And I should be notified that the featured photo has been added

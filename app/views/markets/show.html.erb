@@ -1,9 +1,8 @@
 <%= @market.name %>
 <%= @market.description %>
 
-<p> Add featured photo </p>
 
 <%= simple_form_for @market do |f| %>
 <%= f.input :featured, as: :attachinary %>
-<%= f.button :submit %>
+<%= f.button :submit  %>
 <% end %>
