@@ -67,12 +67,12 @@ describe MarketsController do
             "url":"http://dummy.png",
             "secure_url":"http://dummy.png"}]')
 
-          put :update, {id: market.to_param, market: market.attributes}, valid_session
+          put :update, {id: market.to_param, market: market_params}, valid_session
           expect(market.featured).not_to be_nil
         end
     
         it "update with no photo" do
-          put :update, {id: market.to_param, market: market.attributes}, valid_session          
+          put :update, {id: market.to_param, market: market_params}, valid_session          
           expect(market.featured).to be_nil
         end
     end

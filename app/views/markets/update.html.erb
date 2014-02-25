@@ -1,5 +1,3 @@
-Update page
-
 <% if @market.featured? %>
 	<div class="featured-photo">
     	<%= cl_image_tag(@market.featured.path, { size: '50x50', crop: :fit}) %>
