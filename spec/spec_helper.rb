@@ -3,8 +3,6 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
-require 'capybara/rails'
-require 'capybara/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -12,7 +10,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
-ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
+# ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 Capybara.run_server = true
 Capybara.javascript_driver = :webkit
@@ -45,9 +43,8 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
   config.color_enabled = true
-  config.formatter = :documentation
+ # config.formatter = :documentation
   config.include Capybara::DSL, :type => :request
-  config.include Mongoid::Matchers
 
   # Clean up the database
   require 'database_cleaner'

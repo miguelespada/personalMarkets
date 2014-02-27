@@ -1,4 +1,8 @@
 class MarketsController < ApplicationController
+  def index
+    @markets = Market.all
+  end
+
   def new
     @market = Market.new
   end
@@ -37,7 +41,8 @@ class MarketsController < ApplicationController
       params.require(:market).permit(
         :name, 
         :description,
-        :featured
+        :featured,
+        :category_id
         )
     end
 end

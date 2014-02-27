@@ -1,10 +1,15 @@
 Given(/^I am in the add market page$/) do
+  @categories = FactoryGirl.create_list(:category, 5)
   visit '/markets/new'
 end
 
 When(/^I fill in the name and description$/) do
   fill_in "Name",  with: "Dummy Market"
   fill_in "Description",  with: "Dummy description"
+end
+
+When(/^I fill the category$/) do
+  select @categories.last.name
 end
 
 When(/^I click on the save market button$/) do
@@ -14,31 +19,24 @@ end
 Then(/^I should see my personal market page$/) do
   expect(page).to have_content "Dummy Market"
   expect(page).to have_content "Dummy description"
+  expect(page).to have_content  @categories.last.name
 end
 
 Then(/^I should be notified that the market has been added$/) do
   expect(page).to have_content "Market was successfully created."
-  
 end
 
-
-
-Given(/^I am in my personal market page$/) do
-  @market = FactoryGirl.create(:market)
-  
-  visit market_path(@market)
+Given(/^I go to the market manager page$/) do
+  @markets = FactoryGirl.create_list(:market, 5)
+  visit "/"
+  click_on "Manage markets"
 end
 
-When(/^I upload a photo$/) do
-	pending
-	#click_on "Save" 
-
+Given(/^There are some markets$/) do
 end
 
-Then(/^I should see the photo$/) do
- # pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I should be notified that the featured photo has been added$/) do
- pending # express the regexp above with the code you wish you had
+Then(/^I should see the lists of markets$/) do
+  @markets.each do |m|
+    expect(page).to have_content m.name
+  end
 end
