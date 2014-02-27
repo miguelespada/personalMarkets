@@ -12,11 +12,7 @@ describe MarketsController do
       expect(response).to render_template("index")
     end
   end
-<<<<<<< HEAD
   
-=======
-
->>>>>>> 8a1f3a86e0a2d3243f272df5379926dc6f130fb9
   describe "Creating a new market" do
     it "assigns a new market" do
       get :new, {}, valid_session

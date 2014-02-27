@@ -1,23 +1,15 @@
 <p> <%= @market.name %> </p>
 <p> <%= @market.description %> </p>
-<<<<<<< HEAD
 
 <% if @market.category %>
-<p> <%= @market.category.name %> </p> -->
+<p> <%= @market.category.name %> </p> 
 <% end %>
-=======
-<p> <%= @market.category.name %> </p>
->>>>>>> 8a1f3a86e0a2d3243f272df5379926dc6f130fb9
+
 
 
 <div class "attachinary-input">
 <%= simple_form_for @market do |f| %>
 <%= f.input :featured, as: :attachinary %>
-<<<<<<< HEAD
 <%= f.button :submit %>
 <% end %>
-=======
-<%= f.button :submit  %>
-<% end %>
 <div>
->>>>>>> 8a1f3a86e0a2d3243f272df5379926dc6f130fb9
