@@ -5,6 +5,8 @@ class Market
   field :description, type: String
   has_attachment  :featured, accept: [:jpg, :png, :gif]
 
+  belongs_to :category
+
   validates_presence_of :name, :description
 
 end

@@ -1,7 +1,11 @@
-<%= @market.name %>
-<%= @market.description %>
+<p> <%= @market.name %> </p>
+<p> <%= @market.description %> </p>
+<p> <%= @market.category.name %> </p>
 
+
+<div class "attachinary-input">
 <%= simple_form_for @market do |f| %>
 <%= f.input :featured, as: :attachinary %>
 <%= f.button :submit  %>
 <% end %>
+<div>

@@ -9,6 +9,7 @@ class MarketsController < ApplicationController
 
   def create
     @market = Market.new(market_params)
+
     respond_to do |format|
       if @market.save
         format.html { redirect_to market_path(@market), notice: 'Market was successfully created.' }
@@ -37,7 +38,8 @@ class MarketsController < ApplicationController
       params.require(:market).permit(
         :name, 
         :description,
-        :featured
+        :featured,
+        :category_id
         )
     end
 end
