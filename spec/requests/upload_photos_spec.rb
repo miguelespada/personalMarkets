@@ -17,8 +17,4 @@ describe "Update market" do
       click_on "Update Market"
       page.should have_content("Featured photo was removed!")
     end
-    it "dummy test" do
-      visit "/"
-      click_on "Mother fucker link"
-    end
   end
