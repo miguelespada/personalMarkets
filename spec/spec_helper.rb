@@ -9,7 +9,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
-ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
+
 
 Capybara.run_server = true
 Capybara.javascript_driver = :webkit
@@ -44,7 +44,6 @@ RSpec.configure do |config|
   config.color_enabled = true
   config.formatter = :documentation
   config.include Capybara::DSL, :type => :request
-  config.include Mongoid::Matchers
 
   # Clean up the database
   require 'database_cleaner'
@@ -55,6 +54,11 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.start
+  end
+
+  config.around(:each) do
+    DatabaseCleaner.start
+    DatabaseCleaner.clean
   end
 
   config.after(:each) do
