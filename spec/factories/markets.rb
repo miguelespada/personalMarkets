@@ -2,9 +2,10 @@
 
 FactoryGirl.define do
   factory :market do
-    name "My personal market"
-    description "My market description"
+    sequence(:name) { |n| "My market #{n}" }
+    sequence(:description) { |n| "My market description #{n}" }
   end
+  
   factory :market_with_photo, class: Market do
     name "My personal market"
     description "My market description"

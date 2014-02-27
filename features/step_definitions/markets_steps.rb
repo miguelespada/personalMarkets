@@ -29,24 +29,17 @@ Then(/^I should be notified that the market has been added$/) do
   expect(page).to have_content "Market was successfully created."
 end
 
-
-
-Given(/^I am in my personal market page$/) do
-  @market = FactoryGirl.create(:market)
-  
-  visit market_path(@market)
+Given(/^I go to the market manager page$/) do
+  @markets = FactoryGirl.create_list(:market, 5)
+  visit "/"
+  click_on "Manage markets"
 end
 
-When(/^I upload a photo$/) do
-	pending
-	#click_on "Save" 
-
+Given(/^There are some markets$/) do
 end
 
-Then(/^I should see the photo$/) do
- # pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I should be notified that the featured photo has been added$/) do
- pending # express the regexp above with the code you wish you had
+Then(/^I should see the lists of markets$/) do
+  @markets.each do |m|
+    expect(page).to have_content m.name
+  end
 end

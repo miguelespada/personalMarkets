@@ -62,13 +62,13 @@ group :test do
   gem "capybara"
   gem 'capybara-webkit'
   gem "launchy"
+end
+
+group :development, :test do
   gem "factory_girl_rails"
   gem 'jasmine-rails'
   gem 'pry'
   gem "rspec-rails"
-end
-
-group :development, :test do
 end
 
 

@@ -6,6 +6,13 @@ describe MarketsController do
   let(:market) { FactoryGirl.create(:market) } 
   let(:market_params) { FactoryGirl.attributes_for(:market) } 
 
+  describe "GET index" do
+   it "renders the index template" do
+      get :index, valid_session
+      expect(response).to render_template("index")
+    end
+  end
+
   describe "Creating a new market" do
     it "assigns a new market" do
       get :new, {}, valid_session
