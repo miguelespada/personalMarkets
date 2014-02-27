@@ -45,7 +45,6 @@ RSpec.configure do |config|
   config.color_enabled = true
   config.formatter = :documentation
   config.include Capybara::DSL, :type => :request
-  config.include Mongoid::Matchers
 
   # Clean up the database
   require 'database_cleaner'
@@ -56,6 +55,11 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.start
+  end
+
+  config.around(:each) do
+    DatabaseCleaner.start
+    DatabaseCleaner.clean
   end
 
   config.after(:each) do
