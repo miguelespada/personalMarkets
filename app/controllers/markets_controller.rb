@@ -1,5 +1,5 @@
 class MarketsController < ApplicationController
-  def index
+   def index
     @markets = Market.all
   end
 
@@ -13,6 +13,7 @@ class MarketsController < ApplicationController
 
   def create
     @market = Market.new(market_params)
+
     respond_to do |format|
       if @market.save
         format.html { redirect_to market_path(@market), notice: 'Market was successfully created.' }

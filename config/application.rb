@@ -21,7 +21,10 @@ module PopUpStores
 
     Mongoid.logger.level = Logger::ERROR
     Moped.logger.level = Logger::ERROR  
+<<<<<<< HEAD
     
+=======
+>>>>>>> 8a1f3a86e0a2d3243f272df5379926dc6f130fb9
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

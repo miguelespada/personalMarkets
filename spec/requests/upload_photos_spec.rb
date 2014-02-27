@@ -5,8 +5,8 @@ describe "Update market" do
     	@market = FactoryGirl.create(:market_with_photo)
     	Market.stub(:find).and_return(@market)
   		visit market_path(@market)
-		click_on "Update Market"
-		page.should have_content("Featured photo successfully updated!")
+		  click_on "Update Market"
+		  page.should have_content("Featured photo successfully updated!")
     end
 
     it "Update market remove photo",  :js => true do
@@ -16,5 +16,9 @@ describe "Update market" do
       visit market_path(@market)
       click_on "Update Market"
       page.should have_content("Featured photo was removed!")
+    end
+    it "dummy test" do
+      visit "/"
+      click_on "Mother fucker link"
     end
   end
