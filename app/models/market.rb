@@ -1,4 +1,5 @@
 class Market
+
   include Mongoid::Document
 
   field :name, type: String
@@ -8,5 +9,4 @@ class Market
   belongs_to :category
 
   validates_presence_of :name, :description
-
 end

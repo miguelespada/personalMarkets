@@ -27,14 +27,13 @@ class MarketsController < ApplicationController
 
   def update
     @market = Market.find(params[:id])
-    @market.update_attribute(:featured, params[:market][:featured])
-
-    if market_params[:featured] != ""
-      flash[:notice] = "Featured photo successfully updated!"
+    @market.update(market_params)
+    if @market.changed?
+      flash[:notice] = "Market successfully updated!"
     else
-        flash[:notice] = "Featured photo was removed!"
+      flash[:notice] = "Nothing changed!"
     end
-    
+
   end
 
   private

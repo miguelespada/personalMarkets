@@ -57,7 +57,7 @@ describe MarketsController do
     end
 
 
-      describe "updload foto" do
+      describe "upload foto" do
         it "uploads a valid featured photo" do
           market.stub(:featured).and_return('[{"public_id":"dummy",
             "version":1,
@@ -83,5 +83,16 @@ describe MarketsController do
           expect(market.featured).to be_nil
         end
     end
+
+    describe "update market attributes" do
+      it "change name" do
+        put :update, {id: market.to_param, 
+                      :market => { "name" => "New dummy name" }}, 
+                      valid_session
+        market.reload
+        expect(market.name).to eq("New dummy name") 
+      end
+    end
+    
 
 end
