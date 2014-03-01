@@ -31,9 +31,6 @@ class MarketsController < ApplicationController
 
   def update
     @market = Market.find(params[:id])
-    
-
-
     respond_to do |format|
       if @market.update(market_params)
         format.html { redirect_to market_path(@market), 
