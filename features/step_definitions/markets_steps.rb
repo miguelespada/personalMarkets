@@ -70,7 +70,7 @@ Then(/^I should be notified that the market has been succesfully updated$/) do
   expect(page).to have_content "Market successfully updated."
 end
 
-When(/^I fill the name with a the same name$/) do
+When(/^I do not chagen anything$/) do
 end
 
 When(/^I should be notified that the market was not updated$/) do
