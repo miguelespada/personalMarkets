@@ -52,12 +52,12 @@ describe MarketsController do
       end
     end
   end
-  describe "remove market" do
-        before :each do
-           @market = FactoryGirl.create(:market, 
-                :user => FactoryGirl.create(:user),
-                :category => FactoryGirl.create(:category))  
-        end
+  describe "remove or modifies market" do
+      before :each do
+         @market = FactoryGirl.create(:market, 
+              :user => FactoryGirl.create(:user),
+              :category => FactoryGirl.create(:category))  
+      end
 
       it "deletes market" do
           expect {
@@ -68,14 +68,13 @@ describe MarketsController do
           delete :destroy, { id: @market.to_param, user_id: @market.user.id }, valid_session
          response.should redirect_to @market.user
       end
-  end
-  describe "update market attributes" do
+
       it "change name" do
-        @market.name = "New dummy name"
-        put :update, { id: @market.to_param, user_id: @market.user.id }, 
+        @market.attributes["name"] = "New dummy name"
+        put :update, { id: @market.to_param, user_id: @market.user.id, :market => @market.attributes}, 
                       valid_session
-        market.reload
-        expect(market.name).to eq("New dummy name") 
+        @market.reload
+        expect(@market.name).to eq("New dummy name") 
       end
   end 
 end

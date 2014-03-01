@@ -53,7 +53,9 @@ class MarketsController < ApplicationController
       params.require(:market).permit(
         :name, 
         :description,
-        :featured,
+        :featured, 
+        :_id, 
+        :user_id,
         [:signature, :created_at, :tags, :bytes, :type, :etag, :url, :secure_url],
         :category_id
         )
