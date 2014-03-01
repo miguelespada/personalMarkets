@@ -64,9 +64,9 @@ describe MarketsController do
             delete :destroy, { id: @market.to_param, user_id: @market.user.id }, valid_session
           }.to change(Market, :count).by(-1)
       end
-      it "redirects to contacts#index" do
-          delete :destroy, id: @market
-        response.should redirect_to user_path
+      it "redirects to user#index" do
+          delete :destroy, { id: @market.to_param, user_id: @market.user.id }, valid_session
+         response.should redirect_to @market.user
       end
     end 
 end
