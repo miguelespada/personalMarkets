@@ -8,6 +8,7 @@
   <%= cloudinary_js_config %>
 </head>
 <body>
+
 <ul class="nav nav-pills pull-right">
   <% if user_signed_in? %>
     <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
