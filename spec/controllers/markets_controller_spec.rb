@@ -76,5 +76,32 @@ describe MarketsController do
         @market.reload
         expect(@market.name).to eq("New dummy name") 
       end
+        describe "upload foto" do
+      
+       it "update with no photo" do
+          put :update, { id: @market.to_param, user_id: @market.user.id, :market => @market.attributes}, valid_session          
+          expect(@market.featured).to be_nil
+        end
+
+        it "uploads a valid featured photo" do
+            @market.stub(:featured).and_return('[{"public_id":"dummy",
+              "version":1,
+              "signature":"dummy",
+              "width":75,
+              "height":75,
+              "format":"png",
+              "resource_type":"image",
+              "created_at":"dummy_data",
+              "tags":["attachinary_tmp","development_env"],
+              "bytes":0,
+              "type":"upload",
+              "etag":"dummy_etag",
+              "url":"http://dummy.png",
+              "secure_url":"http://dummy.png"}]')
+
+            put :update, { id: @market.to_param, user_id: @market.user.id, :market => @market.attributes}, valid_session
+            expect(@market.featured).not_to be_nil
+          end
+        end
   end 
 end
