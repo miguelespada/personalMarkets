@@ -60,12 +60,13 @@ describe MarketsController do
         end
 
       it "deletes market" do
-          puts "*-*" * 20
-          puts @market.to_param
-          puts "*-*" * 20
           expect {
             delete :destroy, { id: @market.to_param, user_id: @market.user.id }, valid_session
           }.to change(Market, :count).by(-1)
+      end
+      it "redirects to contacts#index" do
+          delete :destroy, id: @market
+        response.should redirect_to user_path
       end
     end 
 end
