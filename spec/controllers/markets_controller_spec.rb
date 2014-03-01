@@ -66,7 +66,7 @@ describe MarketsController do
       end
       it "redirects to user#index" do
           delete :destroy, { id: @market.to_param, user_id: @market.user.id }, valid_session
-         response.should redirect_to @market.user
+         response.should redirect_to user_markets_path(@market.user)
       end
 
       it "change name" do

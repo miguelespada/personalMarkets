@@ -44,7 +44,7 @@ class MarketsController < ApplicationController
     @market = @user.markets.find(params[:id])
     @market.destroy
     respond_to do |format|
-      format.html { redirect_to  [@user] }
+      format.html { redirect_to  user_markets_path(@user) }
     end
   end
 
