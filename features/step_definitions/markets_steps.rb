@@ -80,6 +80,7 @@ Then(/^I should go to the market manager page$/) do
 end
 Then(/^I should not see the market$/) do
   expect(page).not_to have_xpath("//tr[@id='"+@markets[0].id+"']")
+  
 end
 
 

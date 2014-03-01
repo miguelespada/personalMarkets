@@ -1,6 +1,11 @@
 PopUpStores::Application.routes.draw do
+  get "users/index"
+  get "users/show"
   resources :markets
+
   devise_for :users
+  resources :users, :only => [:show, :index]
+
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   mount Attachinary::Engine => "/attachinary"
   root "static_pages#home"
