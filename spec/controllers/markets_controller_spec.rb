@@ -27,6 +27,13 @@ describe MarketsController do
           }.to change(Market, :count).by(1)
         end
     end
+    context "with valid params" do
+        it "creates a new Market" do
+          expect {
+            post :create, {user_id: user.to_param, :market => market.attributes }, valid_session
+          }.to change(Market, :count).by(1)
+        end
+    end
   end
   
     
