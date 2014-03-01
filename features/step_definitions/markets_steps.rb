@@ -26,62 +26,13 @@ Then(/^I should be notified that the market has been added$/) do
   expect(page).to have_content "Market was successfully created."
 end
 
-Given(/^I go to the market manager page$/) do
-  @markets = FactoryGirl.create_list(:market, 5)
-  visit "/"
-  click_on "Manage markets"
-end
 
-Given(/^There are some markets$/) do
+Given(/^I go to the my List of Markets$/) do
+  visit user_path(@user)
+  click_on "List of Markets"
 end
 
 Then(/^I should see the lists of markets$/) do
-  @markets.each do |m|
-    expect(page).to have_content m.name
-  end
+  expect(page).to have_content "Your Markets"
+  expect(page).to have_content "Dummy Market"
 end
-
-Given(/^There is a market$/) do
-  @market = FactoryGirl.create(:market)
-end
-
-When(/^I click on a market$/) do
-    visit market_path(@market) 
-end
-
-When(/^I click the edit button$/) do
-  visit edit_market_path(@market) 
-end
-
-When(/^I fill the name with a new name$/) do
-  fill_in "Name",  with: "New dummy Market"
-end
-
-When(/^I click on the update market button$/) do
-  click_on "Update Market"
-end
-
-Then(/^I should see my personal market page with the new name$/) do
-  expect(page).to have_content "New dummy Market"
-end
-
-Then(/^I should be notified that the market has been succesfully updated$/) do
-  expect(page).to have_content "Market successfully updated."
-end
-
-When(/^I click the delete button$/) do
-    within(:xpath, "//tr[@id='"+@markets[0].id+"']") do
-      click_on "Delete"
-    end
-end
-
-Then(/^I should go to the market manager page$/) do
-    expect(page).to have_content "Market list"
-end
-Then(/^I should not see the market$/) do
-  expect(page).not_to have_xpath("//tr[@id='"+@markets[0].id+"']")
-  
-end
-
-
-

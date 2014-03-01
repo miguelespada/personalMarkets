@@ -1,11 +1,12 @@
-<h1>Market list</h1>
+<h1>Your Markets</h1>
 <table>
 <% @markets.each do |market| %>
 	 <tr id = '<%= market.id %>' >
+       <td> <%=  market.user.email %> </td>
        <td> <%=  market.name %> </td>
        <td> <%=  market.description %> </td>
-       <td> <%= link_to "Edit", market_path(market)%></td>
-       <td> <%= link_to "Delete", market_path(market), :method => :delete %></td>
+       <td> <%= link_to "Edit", user_market_path(market.user, market)%></td>
+       <td> <%= link_to "Delete", user_market_path(market.user, market), :method => :delete %></td>
      </tr>
 <% end %>
 </table>
