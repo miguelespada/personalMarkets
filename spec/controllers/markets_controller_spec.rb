@@ -45,10 +45,9 @@ describe MarketsController do
             post :create, {user_id: user.to_param, :market => market.attributes }, valid_session
             expect(assigns(:market)).to be_a_new(Market)
           end
-
-          it "re-renders the 'new' template" do
-            post :create, {user_id: user.to_param, :market => market.attributes }, valid_session
-            expect(response).to render_template("new")
+           it "re-renders the 'new' template" do
+              post :create, {user_id: user.to_param, :market => market.attributes }, valid_session
+              expect(response).to render_template("new")
           end
       end
     end
