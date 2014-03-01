@@ -2,7 +2,6 @@ PopUpStores::Application.routes.draw do
 
   devise_for :users
   resources :users, :only => [:index, :show]
-  resources :markets
   resources :users do
     resources :markets
   end

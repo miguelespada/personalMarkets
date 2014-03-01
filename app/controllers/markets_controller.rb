@@ -41,10 +41,10 @@ class MarketsController < ApplicationController
   end
 
   def destroy
-    @market = Market.find(params[:id])
+    @market = @user.markets.find(params[:id])
     @market.destroy
     respond_to do |format|
-      format.html { redirect_to markets_path }
+      format.html { redirect_to  [@user] }
     end
   end
 

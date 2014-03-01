@@ -51,9 +51,21 @@ describe MarketsController do
           end
       end
     end
-
   end
-  
-    
+    describe "remove market" do
+        before :each do
+           @market = FactoryGirl.create(:market, 
+                :user => FactoryGirl.create(:user),
+                :category => FactoryGirl.create(:category))  
+        end
 
+      it "deletes market" do
+          puts "*-*" * 20
+          puts @market.to_param
+          puts "*-*" * 20
+          expect {
+            delete :destroy, { id: @market.to_param, user_id: @market.user.id }, valid_session
+          }.to change(Market, :count).by(-1)
+      end
+    end 
 end
