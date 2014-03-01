@@ -1,0 +1,8 @@
+<h2>User List</h2>
+<table>
+<% @users.each do |user| %>
+	 <tr id = '<%= user.id %>' >
+       <td> <%=  link_to user.email, user_path(user) %> </td>
+     </tr>
+<% end %>
+</table>
