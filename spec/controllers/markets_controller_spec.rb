@@ -37,7 +37,22 @@ describe MarketsController do
           post :create, {user_id: user.to_param, :market => market.attributes }, valid_session
           expect(response).to redirect_to(user_market_path(user,Market.last))
         end
+        describe "with invalid params" do
+          before(:each) do
+            Market.any_instance.stub(:save).and_return(false)
+          end
+          it "assigns a newly created but unsaved market" do
+            post :create, {user_id: user.to_param, :market => market.attributes }, valid_session
+            expect(assigns(:market)).to be_a_new(Market)
+          end
+
+          it "re-renders the 'new' template" do
+            post :create, {user_id: user.to_param, :market => market.attributes }, valid_session
+            expect(response).to render_template("new")
+          end
+      end
     end
+
   end
   
     
