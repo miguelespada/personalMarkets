@@ -5,7 +5,7 @@
        <td> <%=  market.user.email %> </td>
        <td> <%=  market.name %> </td>
        <td> <%=  market.description %> </td>
-       <td> <%= link_to "Edit", user_market_path(market.user, market)%></td>
+       <td> <%= link_to "Show", user_market_path(market.user, market)%></td>
        <td> <%= link_to "Delete", user_market_path(market.user, market), :method => :delete %></td>
      </tr>
 <% end %>

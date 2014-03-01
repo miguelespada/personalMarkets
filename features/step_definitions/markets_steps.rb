@@ -35,4 +35,26 @@ end
 Then(/^I should see the lists of markets$/) do
   expect(page).to have_content "Your Markets"
   expect(page).to have_content "Dummy Market"
+  expect(page).to have_content @user.email
+end
+
+When(/^I click on edit a market$/) do
+  click_on "Show"
+  click_on "Edit"
+end
+
+When(/^I fill the name with a new name$/) do
+  fill_in "Name",  with: "New dummy Market"
+end
+
+When(/^I click on the update market button$/) do
+  click_on "Update Market"
+end
+
+Then(/^I should see my personal market page with the new name$/) do
+  expect(page).to have_content "New dummy Market"
+end
+
+Then(/^I should be notified that the market has been succesfully updated$/) do
+  expect(page).to have_content "Market successfully updated."
 end
