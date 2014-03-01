@@ -1,5 +1,4 @@
 PopUpStores::Application.routes.draw do
-  get "users_controller/show"
   resources :markets
   devise_for :users
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
