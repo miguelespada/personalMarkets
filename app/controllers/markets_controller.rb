@@ -19,7 +19,6 @@ class MarketsController < ApplicationController
 
   def create
     @market = @user.markets.new(market_params)
-    @market.save!
     respond_to do |format|
       format.html {redirect_to [@user, @market], notice: 'Market was successfully created.' }
     end
