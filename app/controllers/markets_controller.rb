@@ -10,6 +10,10 @@ class MarketsController < ApplicationController
   def show
     @market = Market.find(params[:id])
   end
+  
+  def edit
+    @market = Market.find(params[:id])
+  end
 
   def create
     @market = Market.new(market_params)
@@ -27,13 +31,18 @@ class MarketsController < ApplicationController
 
   def update
     @market = Market.find(params[:id])
-    @market.update(market_params)
-    if @market.changed?
-      flash[:notice] = "Market successfully updated!"
-    else
-      flash[:notice] = "Nothing changed!"
-    end
+    @market.update!(market_params)
 
+
+    respond_to do |format|
+      if @market.previous_changes.count > 0
+        format.html { redirect_to market_path(@market), 
+                      notice: "Market successfully updated."}
+      else
+        format.html { redirect_to market_path(@market), 
+                      notice: "Nothing changes." }
+      end
+    end
   end
 
   private

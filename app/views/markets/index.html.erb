@@ -1,4 +1,5 @@
 
 <% @markets.each do |market| %>
+      <p> <%= link_to market.id, market_path(market)%></p>
       <p> <%= market.name %></p>
 <% end %>

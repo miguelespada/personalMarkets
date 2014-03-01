@@ -40,3 +40,40 @@ Then(/^I should see the lists of markets$/) do
     expect(page).to have_content m.name
   end
 end
+
+Given(/^There is a market$/) do
+  @market = FactoryGirl.create(:market)
+end
+
+When(/^I click on a market$/) do
+    visit market_path(@market) 
+end
+
+When(/^I click the edit button$/) do
+  visit edit_market_path(@market) 
+end
+
+When(/^I fill the name with a new name$/) do
+  fill_in "Name",  with: "New dummy Market"
+end
+
+When(/^I click on the update market button$/) do
+  click_on "Update Market"
+end
+
+Then(/^I should see my personal market page with the new name$/) do
+  expect(page).to have_content "New dummy Market"
+end
+
+
+Then(/^I should be notified that the market has been succesfully updated$/) do
+  expect(page).to have_content "Market successfully updated."
+end
+
+When(/^I fill the name with a the same name$/) do
+end
+
+When(/^I should be notified that the market was not updated$/) do
+  expect(page).to have_content "Nothing changes."
+end
+
