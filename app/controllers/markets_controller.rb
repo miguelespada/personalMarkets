@@ -1,39 +1,36 @@
 class MarketsController < ApplicationController
+  before_filter :load_user
+
    def index
-    @markets = Market.all
+    @markets = @user.markets.all
   end
 
   def new
-    @market = Market.new
+    @market = @user.markets.new
   end
 
   def show
-    @market = Market.find(params[:id])
+    @market = @user.markets.find(params[:id])
   end
   
   def edit
-    @market = Market.find(params[:id])
+    @market = @user.markets.find(params[:id])
   end
 
   def create
-    @market = Market.new(market_params)
-
+    @market = @user.markets.new(market_params)
+    @market.save!
     respond_to do |format|
-      if @market.save
-        format.html { redirect_to market_path(@market), notice: 'Market was successfully created.' }
-
-      else
-        format.html { render action: 'new' }
-      end
+      format.html {redirect_to [@user, @market], notice: 'Market was successfully created.' }
     end
   end
 
 
   def update
-    @market = Market.find(params[:id])
+    @market = @user.markets.find(params[:id])
     respond_to do |format|
       if @market.update(market_params)
-        format.html { redirect_to market_path(@market), 
+        format.html { redirect_to [@user, @market], 
                       notice: "Market successfully updated."}
       end
     end
@@ -57,4 +54,7 @@ class MarketsController < ApplicationController
         :category_id
         )
     end
+    def load_user
+     @user = User.find(params[:user_id])
+   end
 end

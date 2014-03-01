@@ -2,7 +2,7 @@
 <p>Find me in app/views/markets/new.html.erb</p>
 
 <h1>Create new market</h1>
-<%= simple_form_for @market do |f| %>
+<%= simple_form_for [@user, @market] do |f| %>
   <%= f.input :name, imput_html: { class: 'market-name' }%>
   <%= f.input :description, label_html: { class: 'market-description' } %>
   <%= f.association :category, :include_blank => false %>

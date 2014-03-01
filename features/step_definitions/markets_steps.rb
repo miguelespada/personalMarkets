@@ -1,15 +1,15 @@
-Given(/^I am in the add market page$/) do
-  @categories = FactoryGirl.create_list(:category, 5)
-  visit '/markets/new'
+Given(/^I am in my user space$/) do
+  @user = FactoryGirl.create(:user)
+  @category = FactoryGirl.create(:category)
+  visit user_path(@user)
+end
+When(/^I click on add market$/) do
+  click_on "Add market"
 end
 
 When(/^I fill in the name and description$/) do
   fill_in "Name",  with: "Dummy Market"
   fill_in "Description",  with: "Dummy description"
-end
-
-When(/^I fill the category$/) do
-  select @categories.last.name
 end
 
 When(/^I click on the save market button$/) do
@@ -19,7 +19,7 @@ end
 Then(/^I should see my personal market page$/) do
   expect(page).to have_content "Dummy Market"
   expect(page).to have_content "Dummy description"
-  expect(page).to have_content  @categories.last.name
+  expect(page).to have_content @user.email
 end
 
 Then(/^I should be notified that the market has been added$/) do
