@@ -69,4 +69,18 @@ Then(/^I should be notified that the market has been succesfully updated$/) do
   expect(page).to have_content "Market successfully updated."
 end
 
+When(/^I click the delete button$/) do
+    within(:xpath, "//tr[@id='"+@markets[0].id+"']") do
+      click_on "Delete"
+    end
+end
+
+Then(/^I should go to the market manager page$/) do
+    expect(page).to have_content "Market list"
+end
+Then(/^I should not see the market$/) do
+  expect(page).not_to have_xpath("//tr[@id='"+@markets[0].id+"']")
+end
+
+
 

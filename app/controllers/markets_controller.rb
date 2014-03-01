@@ -42,6 +42,14 @@ class MarketsController < ApplicationController
     end
   end
 
+  def destroy
+    @market = Market.find(params[:id])
+    @market.destroy
+    respond_to do |format|
+      format.html { redirect_to markets_path }
+    end
+  end
+
   private
     def market_params
       params.require(:market).permit(

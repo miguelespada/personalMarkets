@@ -94,5 +94,20 @@ describe MarketsController do
       end
     end
     
+    describe "remove market" do
+      before :each do
+       @market = FactoryGirl.create(:market)
+      end
+      it "deletes market" do
+          expect {
+            delete :destroy, { id: @market.to_param }, valid_session
+          }.to change(Market, :count).by(-1)
+      end
+      it "redirects to contacts#index" do
+          delete :destroy, id: @market
+        response.should redirect_to markets_path
+      end
+    end
+    
 
 end
