@@ -31,16 +31,13 @@ class MarketsController < ApplicationController
 
   def update
     @market = Market.find(params[:id])
-    @market.update!(market_params)
+    
 
 
     respond_to do |format|
-      if @market.previous_changes.count > 0
+      if @market.update(market_params)
         format.html { redirect_to market_path(@market), 
                       notice: "Market successfully updated."}
-      else
-        format.html { redirect_to market_path(@market), 
-                      notice: "Nothing changes." }
       end
     end
   end
@@ -51,6 +48,7 @@ class MarketsController < ApplicationController
         :name, 
         :description,
         :featured,
+        [:signature, :created_at, :tags, :bytes, :type, :etag, :url, :secure_url],
         :category_id
         )
     end

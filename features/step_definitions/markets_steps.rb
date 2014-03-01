@@ -65,15 +65,8 @@ Then(/^I should see my personal market page with the new name$/) do
   expect(page).to have_content "New dummy Market"
 end
 
-
 Then(/^I should be notified that the market has been succesfully updated$/) do
   expect(page).to have_content "Market successfully updated."
 end
 
-When(/^I do not chagen anything$/) do
-end
-
-When(/^I should be notified that the market was not updated$/) do
-  expect(page).to have_content "Nothing changes."
-end
 

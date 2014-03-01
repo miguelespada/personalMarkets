@@ -10,12 +10,10 @@ Feature: Markets update
 	  And I click the edit button
 
 	Scenario: Change name
-	  And I fill the name with a new name	  
+	  And I fill the name with a new name
 	  And I click on the update market button
 	  Then I should see my personal market page with the new name
 	  And I should be notified that the market has been succesfully updated
 
-	Scenario: Update with no changes
-	  And I do not chagen anything	  
-	  And I click on the update market button
-	  And I should be notified that the market was not updated
+
+
