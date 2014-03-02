@@ -1,11 +1,7 @@
 <p> <%= @market.user.email %> </p>
-
 <p> <%= @market.name %> </p>
 <p> <%= @market.description %> </p>
-
-<% if @market.category %>
 <p> <%= @market.category.name %> </p> 
-<% end %>
 
 <% if @market.featured? %>
 	<div class="featured-photo">
