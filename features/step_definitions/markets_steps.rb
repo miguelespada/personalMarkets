@@ -75,7 +75,7 @@ end
 Given(/^There are some markets$/) do
   FactoryGirl.create(:market, :name => "Market one")
   FactoryGirl.create(:market, :name => "Market two")
-  sleep(1)
+  Market.es.index.refresh
 end
 
 And(/^I am in the search page$/) do
@@ -88,11 +88,10 @@ When(/^I fill the search field$/) do
 end
 
 When(/^I click search$/) do
-  click_on "Search"
+  click_on "Search" 
 end
 
 Then(/^I should see the results of my search$/) do
-  save_and_open_page
   expect(page).to have_content "Market one"
   expect(page).not_to have_content "Market two"
   Market.es.index.delete
