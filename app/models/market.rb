@@ -2,7 +2,7 @@ class Market
 
   include Mongoid::Document
   include Mongoid::Elasticsearch
-  elasticsearch!
+  
 
   field :name, type: String
   field :description, type: String
@@ -12,4 +12,7 @@ class Market
   belongs_to :user
 
   validates_presence_of :name, :description, :user, :category
+
+  elasticsearch! 
+  
 end
