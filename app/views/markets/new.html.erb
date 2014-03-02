@@ -1,12 +1,4 @@
-<h1>Markets#new</h1>
-<p>Find me in app/views/markets/new.html.erb</p>
-
 <h1>Create new market</h1>
-<%= simple_form_for [@user, @market] do |f| %>
-  <%= f.input :name, imput_html: { class: 'market-name' }%>
-  <%= f.input :description, label_html: { class: 'market-description' } %>
-  <%= f.association :category, :include_blank => false %>
-  <%= f.button :submit %>
-<% end %>
+<%= render partial: "markets/shared/form", locals: {user: @user, market: @market}%>
 
 
