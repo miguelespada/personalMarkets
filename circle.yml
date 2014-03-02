@@ -3,6 +3,6 @@ deployment:
     branch: master
     heroku:
       appname: magdalenasfederico
-	machine:
-  	services:
-    	elasticsearch
+machine:
+  services:
+    - elasticsearch
