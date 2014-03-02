@@ -4,6 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -48,19 +49,25 @@ RSpec.configure do |config|
 
   # Clean up the database
   require 'database_cleaner'
+  require "mongoid-elasticsearch"
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.orm = "mongoid"
+    Market.es.index.reset
   end
 
   config.before(:each) do
     DatabaseCleaner.start
-    Market.es.index.reset
   end
 
   config.after(:each) do
     DatabaseCleaner.clean
-    Market.es.index.delete
+    Market.es.index.reset
+  end
+
+  config.after(:all) do
+    DatabaseCleaner.clean
   end
 
 end
