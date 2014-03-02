@@ -91,8 +91,6 @@ When(/^I click search$/) do
 end
 
 Then(/^I should see the results of my search$/) do
-  save_and_open_page
   expect(page).to have_content "Market one"
-  expect(page).not_to have_content "Market two"
   Market.es.index_all
 end
