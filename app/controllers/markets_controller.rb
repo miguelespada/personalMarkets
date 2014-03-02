@@ -2,7 +2,19 @@ class MarketsController < ApplicationController
   before_filter :load_user
 
    def index
-    @markets = @user.markets.all
+    if @user
+      @markets = @user.markets.all
+    else
+      if params[:query].present?
+        result = Market.es.search params[:query]
+        @markets = result.results
+        puts "*-*" * 10
+        puts @markets.count
+        puts "*-*" * 10
+      else
+        @markets = Market.all
+      end
+    end          
   end
 
   def new
@@ -54,13 +66,16 @@ class MarketsController < ApplicationController
         :name, 
         :description,
         :featured, 
-        :_id, 
-        :user_id,
         [:signature, :created_at, :tags, :bytes, :type, :etag, :url, :secure_url],
+        :_id,
+        :query, 
+        :user_id,
         :category_id
         )
     end
     def load_user
-     @user = User.find(params[:user_id])
+      if params[:user_id].present?
+        @user = User.find(params[:user_id])
+      end 
    end
 end

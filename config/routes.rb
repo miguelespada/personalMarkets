@@ -1,6 +1,7 @@
 PopUpStores::Application.routes.draw do
 
   devise_for :users
+  resources :markets, :only => [:index]
   resources :users, :only => [:index, :show]
   resources :users do
     resources :markets

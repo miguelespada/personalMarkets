@@ -66,8 +66,33 @@ end
 Then(/^I should go to the market manager page$/) do
     expect(page).to have_content "Your Markets"
 end
+
 Then(/^I should not see the market$/) do
   expect(page).not_to have_content "Dummy Market"
-  
 end
 
+
+Given(/^There are some markets$/) do
+  DatabaseCleaner.clean
+  FactoryGirl.create(:market, :name => "Market one")
+  FactoryGirl.create(:market, :name => "Market two")
+end
+
+And(/^I am in the search page$/) do
+  visit "/"
+  click_on "Browse markets"
+end
+
+When(/^I fill the search field$/) do
+  fill_in "query",  with: "one"
+end
+
+When(/^I click search$/) do
+  click_on "Search"
+end
+
+Then(/^I should see the results of my search$/) do
+  save_and_open_page
+  expect(page).to have_content "Market one"
+  expect(page).not_to have_content "Market two"
+end

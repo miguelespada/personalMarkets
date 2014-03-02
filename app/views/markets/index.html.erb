@@ -1,12 +1,23 @@
 <h1>Your Markets</h1>
 <table>
+
 <% @markets.each do |market| %>
 	 <tr id = '<%= market.id %>' >
-       <td> <%=  market.user.email %> </td>
        <td> <%=  market.name %> </td>
        <td> <%=  market.description %> </td>
-       <td> <%= link_to "Show", user_market_path(market.user, market)%></td>
-       <td> <%= link_to "Delete", user_market_path(market.user, market), :method => :delete %></td>
+		<% if market.user %>
+	       <td> <%=  market.user.email %> </td>
+	       <td> <%= link_to "Show", user_market_path(market.user, market)%></td>
+	       <td> <%= link_to "Delete", user_market_path(market.user, market), :method => :delete %></td>
+		<% end %>
      </tr>
 <% end %>
 </table>
+
+
+<%= form_tag markets_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>

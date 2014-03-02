@@ -37,6 +37,8 @@ gem 'attachinary', git: 'git://github.com/rochers/attachinary.git', branch: 'rai
 # forms
 gem 'simple_form'
 
+# search
+gem 'mongoid-elasticsearch'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
