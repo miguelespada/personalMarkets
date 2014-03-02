@@ -73,7 +73,6 @@ end
 
 
 Given(/^There are some markets$/) do
-  DatabaseCleaner.clean
   FactoryGirl.create(:market, :name => "Market one")
   FactoryGirl.create(:market, :name => "Market two")
 end
@@ -92,7 +91,6 @@ When(/^I click search$/) do
 end
 
 Then(/^I should see the results of my search$/) do
-  save_and_open_page
   expect(page).to have_content "Market one"
   expect(page).not_to have_content "Market two"
 end

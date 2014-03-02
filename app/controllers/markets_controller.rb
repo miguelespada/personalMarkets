@@ -6,11 +6,7 @@ class MarketsController < ApplicationController
       @markets = @user.markets.all
     else
       if params[:query].present?
-        result = Market.es.search params[:query]
-        @markets = result.results
-        puts "*-*" * 10
-        puts @markets.count
-        puts "*-*" * 10
+        @markets = Market.es.search params[:query]
       else
         @markets = Market.all
       end

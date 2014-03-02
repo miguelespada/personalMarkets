@@ -55,10 +55,12 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.start
+    Market.es.index.reset
   end
 
   config.after(:each) do
     DatabaseCleaner.clean
+    Market.es.index.delete
   end
 
 end
