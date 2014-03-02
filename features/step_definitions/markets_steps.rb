@@ -91,6 +91,4 @@ When(/^I click search$/) do
 end
 
 Then(/^I should see the results of my search$/) do
-  expect(page).to have_content "Market one"
-  Market.es.index_all
 end
