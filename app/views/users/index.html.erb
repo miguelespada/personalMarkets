@@ -1,8 +1,10 @@
-<h2>User List</h2>
+
+<h3>User List</h3>
 <table>
 <% @users.each do |user| %>
 	 <tr id = '<%= user.id %>' >
-       <td> <%=  link_to user.email, user_path(user) %> </td>
+       <td> <%= user.email %> </td>
+       <td> <%=  link_to "wall", user_path(user) %> </td>
      </tr>
 <% end %>
 </table>

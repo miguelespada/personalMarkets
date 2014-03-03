@@ -8,13 +8,20 @@
   <%= cloudinary_js_config %>
 </head>
 <body>
-  
-<h2> Personal Markets </h2>
+
 <% if flash[:notice] %>
     <div id="notice"><%= flash[:notice] %></div>
 <% end %>
 
+
+<div>
+<h2> Personal Markets </h2>
+</div>
+
+
+<div>
 <%= yield %>
+</div>
 
 <hr>
 <div>
