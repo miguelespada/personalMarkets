@@ -109,6 +109,11 @@ describe MarketsController do
       end
 
       describe "search model" do
+        it "creates index" do
+            Market.es.index.delete
+            get :index, {id: @market.to_param}, valid_session
+            expect(Market.es.index.exists?).to eq true
+        end
         it "searches with no markets and no index" do
           Market.destroy_all
           Market.es.index.delete
