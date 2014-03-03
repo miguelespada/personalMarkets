@@ -124,20 +124,20 @@ describe MarketsController do
              Market.es.index.refresh
           end
           it "searches with no query" do
+            get :index, {id: @market.to_param}, valid_session
+            markets = assigns(:markets)
+            expect(markets.count).to eq 10
+          end
+          it "searches with blank query" do
             get :index, {id: @market.to_param, query: ""}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 10
           end
-          it "searches with user" do
-            m = FactoryGirl.create(:market)
-            m.update_attribute(:name, "Test")
-            get :index, {id: @market.to_param, query: ""}, valid_session
-          end
           xit "searches with query and no user" do
             m = FactoryGirl.create(:market)
             Market.es.index.refresh
-            m.update_attribute(:name, "Test")
-            get :index, {id: @market.to_param, query: "Test"}, valid_session
+            m.update_attribute(:name, "test")
+            get :index, {id: @market.to_param, query: "test"}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 1
           end
