@@ -4,9 +4,7 @@ describe MarketsController do
 
   let(:valid_session) { {} }
   let(:user) { FactoryGirl.create(:user) } 
-  let(:market) { FactoryGirl.build(:market, 
-            :user => FactoryGirl.create(:user),
-            :category => FactoryGirl.create(:category)) } 
+  let(:market) { FactoryGirl.build(:market) } 
 
   describe "list" do
    it "renders the index template" do

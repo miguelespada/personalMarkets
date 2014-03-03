@@ -94,5 +94,5 @@ end
 Then(/^I should see the results of my search$/) do
   expect(page).to have_content "Market one"
   expect(page).not_to have_content "Market two"
-  Market.es.index.delete
+  Market.es.index.reset
 end
