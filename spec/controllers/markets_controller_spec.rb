@@ -109,10 +109,18 @@ describe MarketsController do
       end
 
       describe "search model" do
-        context 'destroy' do
+        it "searches with no markets and no index" do
+          Market.destroy_all
+          Market.es.index.delete
+          get :index, {id: @market.to_param, query: ""}, valid_session
+          markets = assigns(:markets)
+          expect(markets.count).to eq 0
+        end
+        context 'with markets' do
           before :each do
              Market.destroy_all
-             10.times {FactoryGirl.create(:market)}
+             @markets = []
+             10.times { @markets << FactoryGirl.create(:market)}
              Market.es.index.refresh
           end
           it "searches with no query" do
@@ -120,23 +128,22 @@ describe MarketsController do
             markets = assigns(:markets)
             expect(markets.count).to eq 10
           end
+          it "searches with user" do
+            m = FactoryGirl.create(:market)
+            m.update_attribute(:name, "Test")
+            get :index, {id: @market.to_param, query: ""}, valid_session
+          end
+          xit "searches with query and no user" do
+            m = FactoryGirl.create(:market)
+            Market.es.index.refresh
+            m.update_attribute(:name, "Test")
+            get :index, {id: @market.to_param, query: "Test"}, valid_session
+            markets = assigns(:markets)
+            expect(markets.count).to eq 1
+          end
         end
 
-        it "searches with no query" do
-          pending("Should give all models")
-        end
 
-        xit "searches with no markets" do
-          pending("Should not give and error because there is no index")
-        end
-
-        xit "searches with no user" do
-          pending("Should search in all markets")
-        end
-
-        xit "searches with user" do
-          pending("Should search in user markets")
-        end
       end
   end 
 
