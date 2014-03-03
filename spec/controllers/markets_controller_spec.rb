@@ -107,6 +107,7 @@ describe MarketsController do
         end
       end
   end 
+
   describe "Search elastic search" do
       it 'creates and destroys index' do
         FactoryGirl.create(:market)
@@ -116,23 +117,27 @@ describe MarketsController do
         Market.es.index.delete
         Market.es.index.exists?.should be_false
       end
-      it 'searches and returns models' do
+      context 'search' do
+        before :each do
           Market.es.index.delete
           @m1 = FactoryGirl.create(:market)
-          @m1.update_attribute(:name, "Test")
           @m2 = FactoryGirl.create(:market)
           @m3 = FactoryGirl.create(:market)
-          puts Market.all.to_json
-          puts Market.all.count
+          @m1.update_attribute(:name, "Test")
           Market.es.index.refresh
-          results = Market.es.search q: 'Market'
-          results.count.should eq 3
-          results.to_a.count.should eq 3
-          results = Market.es.search q: @m1.name
-          results.count.should eq 1
-          results.to_a.count.should eq 1
-          results.first.id.should eq @m1.id
-          results.first.user_id.should eq @m1.user_id
+        end 
+        it 'searches all models' do
+            results = Market.es.search q: 'Market'
+            results.count.should eq 3
+            results.to_a.count.should eq 3
+        end
+        it 'searches one model' do
+            results = Market.es.search q: @m1.name
+            results.count.should eq 1
+            results.to_a.count.should eq 1
+            results.first.id.should eq @m1.id
+            results.first.user_id.should eq @m1.user_id
+        end
       end
       context 'destroy' do
         before :each do
@@ -146,7 +151,7 @@ describe MarketsController do
           Market.es.index.refresh
           Market.es.all.count.should eq 9
         end
-        it 'destroy_all' do
+        it 'destroy all' do
           Market.es.all.count.should eq 10
           Market.destroy_all
           Market.es.index.refresh
