@@ -1,17 +1,18 @@
-<table>
-<% @markets.each do |market| %>
-	 <tr id = '<%= market.id %>' >
-       <td> <%=  market.name %> </td>
-       <td> <%=  market.description %> </td>
-		<% if market.user %>
-	       <td> <%=  market.user.email %> </td>
-	       <td> <%= link_to "Show", user_market_path(market.user, market)%></td>
-	       <td> <%= link_to "Delete", user_market_path(market.user, market), :method => :delete %></td>
-		<% end %>
-     </tr>
-<% end %>
+<table class="table">
+  <% @markets.each do |market| %>
+  	 <tr id = '<%= market.id %>' >
+         <td> <%=  market.name %> </td>
+         <td> <%=  market.description %> </td>
+  		<% if market.user %>
+  	       <td> <%=  market.user.email %> </td>
+  	       <td> <%= link_to "Show", user_market_path(market.user, market)%></td>
+  	       <td> <%= link_to "Delete", user_market_path(market.user, market), :method => :delete %></td>
+  		<% end %>
+       </tr>
+  <% end %>
 </table>
 
+<div>
 
 <%= form_tag markets_path, method: :get do %>
   <p>
@@ -19,3 +20,5 @@
     <%= submit_tag "Search", name: nil %>
   </p>
 <% end %>
+
+</div>

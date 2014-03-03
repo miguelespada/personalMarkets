@@ -1,12 +1,5 @@
-
-<ul>
-<li>
-<%= @user.email %> personal wall</h3>
-</li>
-<li>
-<%= link_to "Add market", new_user_market_path(@user)  %>
-</li>
-<li>
-<%= link_to "My list of markets", user_markets_path(@user)  %>
-</li>
+<ul class="list-group">
+<li class="list-group-item"><%= @user.email %></li>
+<li class="list-group-item"><%= link_to "Add market", new_user_market_path(@user) %></li>
+<li class="list-group-item"><%= link_to "My list of markets", user_markets_path(@user) %></li>
 </ul>

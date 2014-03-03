@@ -1,10 +1,9 @@
-
-<h3>User List</h3>
-<table>
-<% @users.each do |user| %>
-	 <tr id = '<%= user.id %>' >
-       <td> <%= user.email %> </td>
-       <td> <%=  link_to "wall", user_path(user) %> </td>
-     </tr>
-<% end %>
+<h4>User List</h4>
+<table class="table">
+	<% @users.each do |user| %>
+		 <tr id = '<%= user.id %>' >
+	       <td> <%= user.email %> </td>
+	       <td> <%= link_to "wall", user_path(user) %> </td>
+	     </tr>
+	<% end %>
 </table>

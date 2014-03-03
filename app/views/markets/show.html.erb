@@ -1,12 +1,21 @@
-<p> <%= @market.user.email %> </p>
-<p> <%= @market.name %> </p>
-<p> <%= @market.description %> </p>
-<p> <%= @market.category.name %> </p> 
 
+<h4> <%= @market.name %> </h4>
 <% if @market.featured? %>
-	<div class="featured-photo">
-    	<%= cl_image_tag(@market.featured.path, { size: '50x50', crop: :fit}) %>
-    <div>
+<div class="featured-photo">
+	<%= cl_image_tag(@market.featured.path, { size: '50x50', crop: :fit}) %>
+</div>
 <% end %>
 
-<%= link_to "Edit", edit_user_market_path(@market.user, @market) %>
+<table class="table">
+<tr>
+<td> <%= @market.description %> </td>
+<td> <%= @market.category.name %> </td>
+<td> <%= @market.user.email %> </td>
+<td>
+
+
+
+<td><%= link_to "Edit", edit_user_market_path(@market.user, @market) %></td>
+<td> <%= link_to "Delete", user_market_path(@market.user, @market), :method => :delete %></td>
+</tr>
+</table>
