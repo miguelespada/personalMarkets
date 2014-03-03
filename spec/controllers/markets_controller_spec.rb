@@ -4,7 +4,22 @@ describe MarketsController do
 
   let(:valid_session) { {} }
   let(:user) { FactoryGirl.create(:user) } 
-  let(:market) { FactoryGirl.build(:market) } 
+  let(:market) { FactoryGirl.build(:market) }
+  let(:photo_json) {'[{"public_id":"dummy",
+              "version":1,
+              "signature":"dummy",
+              "width":75,
+              "height":75,
+              "format":"png",
+              "resource_type":"image",
+              "created_at":"dummy_data",
+              "tags":["attachinary_tmp","development_env"],
+              "bytes":0,
+              "type":"upload",
+              "etag":"dummy_etag",
+              "url":"http://dummy.png",
+              "secure_url":"http://dummy.png"}]'
+  } 
 
   describe "list" do
    it "renders the index template" do
@@ -82,20 +97,7 @@ describe MarketsController do
         end
 
         it "uploads a valid featured photo" do
-            @market.stub(:featured).and_return('[{"public_id":"dummy",
-              "version":1,
-              "signature":"dummy",
-              "width":75,
-              "height":75,
-              "format":"png",
-              "resource_type":"image",
-              "created_at":"dummy_data",
-              "tags":["attachinary_tmp","development_env"],
-              "bytes":0,
-              "type":"upload",
-              "etag":"dummy_etag",
-              "url":"http://dummy.png",
-              "secure_url":"http://dummy.png"}]')
+            @market.stub(:featured).and_return(photo_json)
 
             put :update, { id: @market.to_param, user_id: @market.user.id, :market => @market.attributes}, valid_session
             expect(@market.featured).not_to be_nil
