@@ -25,7 +25,7 @@ Given(/^there are some users$/) do
 end
 
 When(/^I click on User List$/) do
-	click_on "Users"
+	click_on "Browse users"
 end
 
 Then(/^I should see the list of users$/) do

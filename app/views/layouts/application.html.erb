@@ -8,14 +8,19 @@
   <%= cloudinary_js_config %>
 </head>
 <body>
-
+  
+<h2> Personal Markets </h2>
 <% if flash[:notice] %>
     <div id="notice"><%= flash[:notice] %></div>
 <% end %>
 
+<%= yield %>
+
+<hr>
 <div>
-<ul class="nav masthead-nav">
+<ul >
   <% if user_signed_in? %>
+     <li> You are logged as: <%= current_user.email %>
     <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
   <% else %>
     <li><%= link_to "Sign in", new_user_session_path %></li>
@@ -23,10 +28,6 @@
   <% end %>
 </ul>
 <div>
-
-
-<%= yield %>
-
 
 <script>
 $( document ).ready(function() {
