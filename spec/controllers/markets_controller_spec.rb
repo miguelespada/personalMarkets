@@ -107,13 +107,25 @@ describe MarketsController do
         end
       end
       describe "search model" do
-        xit "searches with no query" do
+
+        it "searches with no query" do
+          pending("Return correct markets")
+        end
+
+        it "searches with no query" do
+          pending("Should give all models")
         end
 
         xit "searches with no markets" do
+          pending("Should not give and error because there is no index")
         end
 
         xit "searches with no user" do
+          pending("Should search in all markets")
+        end
+
+        xit "searches with user" do
+          pending("Should search in user markets")
         end
       end
   end 
