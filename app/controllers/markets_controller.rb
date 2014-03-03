@@ -2,6 +2,7 @@ class MarketsController < ApplicationController
   before_filter :load_user
 
    def index
+    @markets = []
     if @user
       @markets = @user.markets.all
     else

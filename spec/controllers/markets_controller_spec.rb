@@ -21,12 +21,7 @@ describe MarketsController do
               "secure_url":"http://dummy.png"}]'
   } 
 
-  describe "list" do
-   it "renders the index template" do
-      get :index, {user_id: user.to_param}, valid_session
-      expect(response).to render_template("index")
-    end
-  end
+  
 
   describe "Creating a new market" do
     it "assigns a new market" do
@@ -106,10 +101,23 @@ describe MarketsController do
             expect(@market.featured).not_to be_nil
         end
       end
-      describe "search model" do
+      describe "list" do
+       it "renders the index template" do
+          get :index, {user_id: user.to_param}, valid_session
+          expect(response).to render_template("index")
+       end
+      end
 
-        it "searches with no query" do
-          pending("Return correct markets")
+      describe "search model" do
+        context 'destroy' do
+          before :each do
+             Market.destroy_all
+             10.times {FactoryGirl.create(:market)}
+             Market.es.index.refresh
+          end
+          xit "searches with no query" do
+            get :index, {id: @market.to_param, query: ""}, valid_session
+          end
         end
 
         it "searches with no query" do
@@ -130,56 +138,6 @@ describe MarketsController do
       end
   end 
 
-  describe "Elastic search" do
-      it 'creates and destroys index' do
-        FactoryGirl.create(:market)
-        Market.es.index.refresh
-        Market.es.index.exists?.should be_true
-        Market.es_index_name.should eq 'markets'
-        Market.es.index.delete
-        Market.es.index.exists?.should be_false
-      end
-      context 'search' do
-        before :each do
-          Market.es.index.delete
-          @m1 = FactoryGirl.create(:market)
-          @m2 = FactoryGirl.create(:market)
-          @m3 = FactoryGirl.create(:market)
-          @m1.update_attribute(:name, "Test")
-          Market.es.index.refresh
-        end 
-        it 'searches all models' do
-            results = Market.es.search q: 'Market'
-            results.count.should eq 3
-            results.to_a.count.should eq 3
-        end
-        it 'searches one model' do
-            results = Market.es.search q: @m1.name
-            results.count.should eq 1
-            results.to_a.count.should eq 1
-            results.first.id.should eq @m1.id
-            results.first.user_id.should eq @m1.user_id
-        end
-      end
-      context 'destroy' do
-        before :each do
-           @markets = []
-           10.times { @markets << FactoryGirl.create(:market)}
-           Market.es.index.refresh
-        end
-        it 'destroy' do
-          Market.es.all.count.should eq 10
-          @markets[0].destroy
-          Market.es.index.refresh
-          Market.es.all.count.should eq 9
-        end
-        it 'destroy all' do
-          Market.es.all.count.should eq 10
-          Market.destroy_all
-          Market.es.index.refresh
-          Market.es.all.count.should eq 0
-        end
-      end
-  end
+  
 
 end
