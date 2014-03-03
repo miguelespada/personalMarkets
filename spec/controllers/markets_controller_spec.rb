@@ -133,12 +133,11 @@ describe MarketsController do
             markets = assigns(:markets)
             expect(markets.count).to eq 10
           end
-          xit "searches with query and no user" do
-            Market.destroy_all
+          it "searches with query and no user" do
             m = FactoryGirl.create(:market)
+            m.update_attribute(:name, "dummy")
             Market.es.index.refresh
-            m.update_attribute(:name, "test")
-            get :index, {id: @market.to_param, query: "test"}, valid_session
+            get :index, {id: @market.to_param, query: m.name}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 1
           end
