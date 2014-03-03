@@ -119,7 +119,7 @@ describe MarketsController do
       it 'searches and returns models' do
           Market.es.index.delete
           @m1 = FactoryGirl.create(:market)
-          @m1.update_attribute(:name, "Test Market")
+          @m1.update_attribute(:name, "Test")
           @m2 = FactoryGirl.create(:market)
           @m3 = FactoryGirl.create(:market)
           puts Market.all.to_json
@@ -134,11 +134,25 @@ describe MarketsController do
           results.first.id.should eq @m1.id
           results.first.user_id.should eq @m1.user_id
       end
-      if "deletes a model" do
-          results = Market.es.search q: 'Market'
-          results.count.should eq 3
-
-      end 
+      context 'destroy' do
+        before :each do
+           @markets = []
+           10.times { @markets << FactoryGirl.create(:market)}
+           Market.es.index.refresh
+        end
+        it 'destroy' do
+          Market.es.all.count.should eq 10
+          @markets[0].destroy
+          Market.es.index.refresh
+          Market.es.all.count.should eq 9
+        end
+        it 'destroy_all' do
+          Market.es.all.count.should eq 10
+          Market.destroy_all
+          Market.es.index.refresh
+          Market.es.all.count.should eq 0
+        end
+      end
   end
 
 end
