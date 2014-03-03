@@ -115,8 +115,10 @@ describe MarketsController do
              10.times {FactoryGirl.create(:market)}
              Market.es.index.refresh
           end
-          xit "searches with no query" do
+          it "searches with no query" do
             get :index, {id: @market.to_param, query: ""}, valid_session
+            markets = assigns(:markets)
+            expect(markets.count).to eq 10
           end
         end
 
