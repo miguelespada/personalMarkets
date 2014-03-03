@@ -54,7 +54,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.orm = "mongoid"
-    Market.es.index.reset
+    Market.es.index.delete
   end
 
   config.before(:each) do
@@ -68,6 +68,7 @@ RSpec.configure do |config|
 
   config.after(:all) do
     DatabaseCleaner.clean
+    Market.es.index.delete
   end
 
 end
