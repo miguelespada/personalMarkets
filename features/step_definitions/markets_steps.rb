@@ -29,11 +29,10 @@ end
 
 Given(/^I go to the my List of Markets$/) do
   visit user_path(@user)
-  click_on "List of Markets"
+  click_on "My list of markets"
 end
 
 Then(/^I should see the lists of markets$/) do
-  expect(page).to have_content "Your Markets"
   expect(page).to have_content "Dummy Market"
   expect(page).to have_content @user.email
 end
@@ -64,7 +63,6 @@ When(/^I click the delete button$/) do
 end
 
 Then(/^I should go to the market manager page$/) do
-    expect(page).to have_content "Your Markets"
 end
 
 Then(/^I should not see the market$/) do
