@@ -116,16 +116,19 @@ describe MarketsController do
         Market.es.index.delete
         Market.es.index.exists?.should be_false
       end
-     it 'searches and returns models' do
-        @m1 = FactoryGirl.create(:market)
-        @m2 = FactoryGirl.create(:market)
-        @m3 = FactoryGirl.create(:market)
-        Market.es.index.refresh
-        results = Market.es.search q: 'Market'
-        results.count.should eq 3
-        results.to_a.count.should eq 3
-        results.first.id.should eq @m1.id
-    end
+      context 'searching' do
+        before :each do
+          @m1 = FactoryGirl.create(:market)
+          @m2 = FactoryGirl.create(:market)
+          @m3 = FactoryGirl.create(:market)
+          Market.es.index.refresh
+        end
+        it 'searches and returns models' do
+          results = Market.es.search q: 'Market'
+          results.count.should eq 3
+          results.to_a.count.should eq 3
+          results.first.id.should eq @m1.id
+        end
   end
 
 end
