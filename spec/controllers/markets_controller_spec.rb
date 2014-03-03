@@ -134,6 +134,7 @@ describe MarketsController do
             expect(markets.count).to eq 10
           end
           xit "searches with query and no user" do
+            Market.destroy_all
             m = FactoryGirl.create(:market)
             Market.es.index.refresh
             m.update_attribute(:name, "test")
