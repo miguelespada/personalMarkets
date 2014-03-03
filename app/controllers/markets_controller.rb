@@ -1,7 +1,12 @@
 class MarketsController < ApplicationController
   before_filter :load_user
 
-   def index
+  def index
+    @markets = []
+    if !Market.es.index.exists? 
+      Market.es.index_all
+    end
+
     if @user
       if params[:query].present?
         @markets = Market.es.search (params[:query] + " AND " + @user.to_param)
@@ -15,8 +20,6 @@ class MarketsController < ApplicationController
         @markets = Market.all
       end
     end
-    rescue Exception => each
-      @markets = []
   end
 
   def new
