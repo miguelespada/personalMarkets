@@ -20,7 +20,7 @@ Then(/^I should see my personal market page$/) do
   expect(page).to have_content "Dummy Market"
   expect(page).to have_content "Dummy description"
   expect(page).to have_content @user.email
-end
+end 
 
 Then(/^I should be notified that the market has been added$/) do
   expect(page).to have_content "Market was successfully created."
