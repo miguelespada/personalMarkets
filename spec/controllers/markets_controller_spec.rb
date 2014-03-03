@@ -33,6 +33,7 @@ describe MarketsController do
       get :new, {user_id: user.to_param}, valid_session
       expect(assigns(:market)).to be_a_new(Market)
     end
+
     context "with valid params" do
         it "creates a new Market" do
           expect {
@@ -65,7 +66,7 @@ describe MarketsController do
       end
     end
   end
-  describe "remove or modifies market" do
+  describe "removes or modifies market" do
       before :each do
          @market = FactoryGirl.create(:market, 
               :user => FactoryGirl.create(:user),
@@ -94,7 +95,7 @@ describe MarketsController do
       
        it "update with no photo" do
           put :update, { id: @market.to_param, user_id: @market.user.id, 
-              :market => @market.attributes}, valid_session          
+              :market => @market.attributes}, valid_session
           expect(@market.featured).to be_nil
         end
 
@@ -103,7 +104,21 @@ describe MarketsController do
             put :update, { id: @market.to_param, user_id: @market.user.id, 
                 :market => @market.attributes}, valid_session
             expect(@market.featured).not_to be_nil
-          end
         end
+      end
   end 
+  describe "Search index with elastic search" do
+
+    context 'index operations' do
+      it 'creates and destroys index' do
+        FactoryGirl.create(:market)
+        Market.es.index.refresh
+        Market.es.index.exists?.should be_true
+        Market.es_index_name.should eq 'markets'
+        Market.es.index.delete
+        Market.es.index.exists?.should be_false
+      end
+    end
+  end
+
 end
