@@ -106,9 +106,19 @@ describe MarketsController do
             expect(@market.featured).not_to be_nil
         end
       end
+      describe "search model" do
+        xit "searches with no query" do
+        end
+
+        xit "searches with no markets" do
+        end
+
+        xit "searches with no user" do
+        end
+      end
   end 
 
-  describe "Search elastic search" do
+  describe "Elastic search" do
       it 'creates and destroys index' do
         FactoryGirl.create(:market)
         Market.es.index.refresh
