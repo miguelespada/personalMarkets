@@ -141,6 +141,15 @@ describe MarketsController do
             markets = assigns(:markets)
             expect(markets.count).to eq 1
           end
+
+          it "searches with user" do
+            m = FactoryGirl.create(:market)
+            m.update_attribute(:name, "dummy")
+            Market.es.index.refresh
+            get :index, {id: @market.to_param, user_id: m.user_id}, valid_session
+            markets = assigns(:markets)
+            expect(markets.count).to eq 1
+          end
         end
 
 

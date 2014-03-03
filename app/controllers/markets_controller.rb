@@ -8,11 +8,6 @@ class MarketsController < ApplicationController
     else
       if params[:query].present?
         @markets = Market.es.search params[:query]
-        puts "*-*"*20
-        puts Market.all.to_json
-        puts "*-*"*20
-        puts @markets.to_json
-        puts "*-*"*20
       else
         @markets = Market.all
       end
