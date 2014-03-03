@@ -4,7 +4,7 @@ describe MarketsController do
 
   let(:valid_session) { {} }
   let(:user) { FactoryGirl.create(:user) } 
-  let(:market) { FactoryGirl.build(:market) }
+  let(:market) { FactoryGirl.build(:market)}
   let(:photo_json) {'[{"public_id":"dummy",
               "version":1,
               "signature":"dummy",
@@ -84,22 +84,24 @@ describe MarketsController do
 
       it "change name" do
         @market.attributes["name"] = "New dummy name"
-        put :update, { id: @market.to_param, user_id: @market.user.id, :market => @market.attributes}, 
-                      valid_session
+        put :update, { id: @market.to_param, user_id: @market.user.id, 
+            :market => @market.attributes}, valid_session
         @market.reload
         expect(@market.name).to eq("New dummy name") 
       end
-        describe "upload foto" do
+      
+      describe "upload foto" do
       
        it "update with no photo" do
-          put :update, { id: @market.to_param, user_id: @market.user.id, :market => @market.attributes}, valid_session          
+          put :update, { id: @market.to_param, user_id: @market.user.id, 
+              :market => @market.attributes}, valid_session          
           expect(@market.featured).to be_nil
         end
 
         it "uploads a valid featured photo" do
             @market.stub(:featured).and_return(photo_json)
-
-            put :update, { id: @market.to_param, user_id: @market.user.id, :market => @market.attributes}, valid_session
+            put :update, { id: @market.to_param, user_id: @market.user.id, 
+                :market => @market.attributes}, valid_session
             expect(@market.featured).not_to be_nil
           end
         end
