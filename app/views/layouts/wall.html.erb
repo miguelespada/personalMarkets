@@ -13,13 +13,29 @@
  		<%= stylesheet_link_tag "uncompressed/ace-skins.css" %>
 		<%= javascript_include_tag "uncompressed/ace-extra.js" %>
 
+		<%= csrf_meta_tags %>
+		<%= cloudinary_js_config %>
+
 	</head>
 
 	<body>
-				
+
 		<% if flash[:notice] %>
 		    <div id="notice"><%= flash[:notice] %></div>
 		<% end %>
+		<div>
+		<ul >
+		  <% if user_signed_in? %>
+		     <li> You are logged as: <%= current_user.email %>
+		    <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+		  <% else %>
+		    <li><%= link_to "Sign in", new_user_session_path %></li>
+		    <li><%= link_to "Sign up", new_user_registration_path %></li>
+		  <% end %>
+		</ul>
+		</div>
+
+
 		<div class="navbar navbar-default" id="navbar">
 			<script type="text/javascript">
 				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
@@ -29,8 +45,8 @@
 				<div class="navbar-header pull-left">
 					<a href="#" class="navbar-brand">
 						<small>
-						<%= fa_icon "desktop" %>
-						 Markets Admin
+						<%= fa_icon "dashboard" %>
+						 Personal Markets
 						</small>
 					</a><!-- /.brand -->
 				</div><!-- /.navbar-header -->

@@ -1,6 +1,4 @@
 class MarketsController < ApplicationController
-  layout "wall"
-
   before_filter :load_user
 
   def index
