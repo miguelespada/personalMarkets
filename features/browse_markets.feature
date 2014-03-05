@@ -3,9 +3,9 @@ Feature: Browse markets
   I want to browse markets
 
   Background:
-	Given I go to browse markets
-	And there are some markets
-
+	Given There are some indexed markets
+	When I go to the Markets
+	
 	Scenario: I want to see the list of Markets
 		Then I should see all the markets
 

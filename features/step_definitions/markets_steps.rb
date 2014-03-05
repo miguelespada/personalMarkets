@@ -72,28 +72,3 @@ Then(/^I should not see the market$/) do
   expect(page).not_to have_content "Dummy Market"
 end
 
-
-Given(/^There are some markets$/) do
-  FactoryGirl.create(:market, :name => "Market one")
-  FactoryGirl.create(:market, :name => "Market two")
-  Market.es.index.refresh
-end
-
-And(/^I am in the search page$/) do
-  visit "/"
-  click_on "Markets"
-end
-
-When(/^I fill the search field$/) do
-  fill_in "query",  with: "one"
-end
-
-When(/^I click search$/) do
-  click_on "Search" 
-end
-
-Then(/^I should see the results of my search$/) do
-  expect(page).to have_content "Market one"
-  expect(page).not_to have_content "Market two"
-  Market.es.index.reset
-end
