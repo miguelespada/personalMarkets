@@ -3,10 +3,14 @@
 <div class="col-xs-12">
 <div class="table-responsive">
 	<table class="table table-striped table-bordered table-hover">
+		<tr>
+  		<th>Email</th>
+  		<th>Market Count</th>
+  		</tr>
 		<% @users.each do |user| %>
 			 <tr id = '<%= user.id %>' >
 		       <td> <%= user.email %> </td>
-		       <td> <%= link_to "wall", user_path(user) %> </td>
+		       <td> <%= user.markets.count %></td>
 		     </tr>
 		<% end %>
 	</table>
