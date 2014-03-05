@@ -27,5 +27,5 @@ Feature: Manage market
 	Scenario: delete market
 	  And I go to the my markets
 	  When I click the delete button
-	  Then I should go to the market manager page
+	  Then I go to the my markets
 	  And I should not see the market

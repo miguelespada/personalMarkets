@@ -54,12 +54,10 @@ Then(/^I should see my personal market page with the new name$/) do
 end
 
 
-
 Then(/^I should see the lists of markets$/) do
   expect(page).to have_content "Dummy Market"
   expect(page).to have_content @user.email
 end
-
 
 
 Then(/^I should be notified that the market has been succesfully updated$/) do
@@ -68,9 +66,6 @@ end
 
 When(/^I click the delete button$/) do
   click_on "Delete"
-end
-
-Then(/^I should go to the market manager page$/) do
 end
 
 Then(/^I should not see the market$/) do
