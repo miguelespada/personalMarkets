@@ -78,7 +78,7 @@ end
 
 And(/^I am in the search page$/) do
   visit "/"
-  click_on "Browse markets"
+  click_on "Markets"
 end
 
 When(/^I fill the search field$/) do

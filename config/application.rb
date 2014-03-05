@@ -38,4 +38,5 @@ module PopUpStores
   end
   
 require "attachinary/orm/mongoid"
+
 end

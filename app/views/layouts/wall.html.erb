@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Personal Markets</title>
+		<meta name="description" content="Minimal empty page" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  		<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+ 		<%= stylesheet_link_tag "ace-fonts.css" %>
+
+ 		<%= stylesheet_link_tag "uncompressed/ace.css" %>
+ 		<%= stylesheet_link_tag "uncompressed/ace-rtl.css" %>
+ 		<%= stylesheet_link_tag "uncompressed/ace-skins.css" %>
+		<%= javascript_include_tag "uncompressed/ace-extra.js" %>
+
+	</head>
+
+	<body>
+				
+		<% if flash[:notice] %>
+		    <div id="notice"><%= flash[:notice] %></div>
+		<% end %>
+		<div class="navbar navbar-default" id="navbar">
+			<script type="text/javascript">
+				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+			</script>
+
+			<div class="navbar-container" id="navbar-container">
+				<div class="navbar-header pull-left">
+					<a href="#" class="navbar-brand">
+						<small>
+						<%= fa_icon "desktop" %>
+						 Markets Admin
+						</small>
+					</a><!-- /.brand -->
+				</div><!-- /.navbar-header -->
+
+				<div class="navbar-header pull-right" role="navigation">
+					<ul class="nav ace-nav">
+				
+						<li class="purple">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<%= fa_icon "bell" %>
+								<span class="badge badge-important">8</span>
+							</a>
+						</li>
+
+						<li class="green">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+							   <%= fa_icon "envelope" %>
+								<span class="badge badge-success">5</span>
+							</a>
+
+							<ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+								<li class="dropdown-header">
+									<%= fa_icon "envelope-alt" %>
+									<i class="icon-envelope-alt"></i>
+									5 Messages
+								</li>
+
+								<li>
+									<a href="#">
+										<%= link_to image_tag("avatar.png", class: "msg-photo") %>
+
+										<span class="msg-body">
+											<span class="msg-title">
+												<span class="blue">Alex:</span>
+												Message Summary
+											</span>
+
+											<span class="msg-time">
+												<%= fa_icon "time" %>
+												<i class="icon-time"></i>
+												<span>Message Time</span>
+											</span>
+										</span>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										See all messages
+										<%= fa_icon "arrow-right" %>
+
+									</a>
+								</li>
+							</ul>
+						</li>
+
+						<li class="light-blue">
+							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+								<%= link_to image_tag("user.jpg", class: "nav-user-photo") %>
+								<span class="user-info">
+									<small>Welcome,</small>
+									User
+								</span>
+								<%= fa_icon "caret-down" %>
+							</a>
+
+							<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+								<li>
+									<a href="#">
+										<%= fa_icon "cog" %>
+										Settings
+									</a>
+								</li>
+
+								<li class="divider"></li>
+
+								<li>
+									<a href="#">
+
+										<%= fa_icon "off" %>
+										Logout
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul><!-- /.ace-nav -->
+				</div><!-- /.navbar-header -->
+			</div><!-- /.container -->
+		</div>
+
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<div class="main-container-inner">
+				<a class="menu-toggler" id="menu-toggler" href="#">
+					<span class="menu-text"></span>
+				</a>
+
+				<div class="sidebar" id="sidebar">
+					<script type="text/javascript">
+						try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+					</script>
+
+					<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+						<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+							<button class="btn btn-success">
+								<%= fa_icon "signal" %>
+							</button>
+
+							<button class="btn btn-info">
+								<%= fa_icon "pencil" %>
+							</button>
+
+							<button class="btn btn-warning">
+
+								<%= fa_icon "group" %>
+							</button>
+
+							<button class="btn btn-danger">
+
+								<%= fa_icon "cogs" %>
+							</button>
+						</div>
+
+						<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+							<span class="btn btn-success"></span>
+
+							<span class="btn btn-info"></span>
+
+							<span class="btn btn-warning"></span>
+
+							<span class="btn btn-danger"></span>
+						</div>
+					</div><!-- #sidebar-shortcuts -->
+
+					<ul class="nav nav-list">
+						<li>	
+							<%= link_to"/" do %> 
+								<%= fa_icon "home" %>
+								<span class="menu-text"> Home </span>
+							<% end %>
+						</li>
+
+						<li>	
+							<%= link_to markets_path do %> 
+								<%= fa_icon "shopping-cart" %>
+								<span class="menu-text"> Markets </span>
+							<% end %>
+						</li>
+
+						<li>	
+							<%= link_to users_path do %> 
+								<%= fa_icon "users" %>
+								<span class="menu-text"> Users </span>
+							<% end %>
+						</li>
+					</ul><!-- /.nav-list -->
+
+					<div class="sidebar-collapse" id="sidebar-collapse">
+							<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right">
+							</i>
+					</div>
+
+					<script type="text/javascript">
+						try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+					</script>
+				</div>
+
+				<div class="main-content">
+					<div class="page-content">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+
+								<div>
+								<%= yield %>
+								</div>
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div><!-- /.main-content -->
+		</div>
+
+		<%= javascript_include_tag "jquery-2.0.3.min.js" %>
+
+		<%= javascript_include_tag "jquery.mobile.custom.min.js" %>
+		<%= javascript_include_tag "bootstrap.min.js" %>
+		<%= javascript_include_tag "typeahead-bs2.min.js" %>
+ 
+		<%= javascript_include_tag "ace-elements.min.js" %>
+		<%= javascript_include_tag "ace.min.js" %>
+
+	</body>
+</html>

@@ -25,15 +25,12 @@ Given(/^there are some users$/) do
 end
 
 When(/^I click on User List$/) do
-	click_on "Browse users"
+	click_on "Users"
 end
 
 Then(/^I should see the list of users$/) do
-	expect(page).to have_content "User List"
-
   @users.each do |u|
     expect(page).to have_content u.email
   end
-
 end
 

@@ -5,3 +5,40 @@
   <%= f.input :featured, as: :attachinary %>
   <%= f.button :submit %>
 <% end %>
+
+<script>
+
+var button = $('#commit');
+var orig = [];
+
+$.fn.getType = function () {
+    return this[0].tagName == "INPUT" ? $(this[0]).attr("type").toLowerCase() : this[0].tagName.toLowerCase();
+}
+
+$("form :input").each(function () {
+    var type = $(this).getType();
+    var tmp = {
+        'type': type,
+        'value': $(this).val()
+    };
+    orig[$(this).attr('id')] = tmp;
+});
+
+$('form').bind('change keyup', function () {
+
+    var disable = true;
+    $("form :input").each(function () {
+        var type = $(this).getType();
+        var id = $(this).attr('id');
+
+        if (type == 'text' || type == 'select') {
+            disable = (orig[id].value == $(this).val());
+        } 
+        if (!disable) {
+            return false; // break out of loop
+        }
+    });
+
+    button.prop('disabled', disable);
+});
+</script>
