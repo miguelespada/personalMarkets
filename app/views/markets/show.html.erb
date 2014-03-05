@@ -1,36 +1,15 @@
+<div class="col-xs-4">
+
+</div>
+<div class="col-xs-4">
+<h2> <%= @market.name %> </h2>
 <% if @market.featured? %>
 <td class="featured-photo">
-	<%= cl_image_tag(@market.featured.path, { size: '80x80', crop: :fit}) %>
+	<%= cl_image_tag(@market.featured.path, { size: '200x200', crop: :fit}) %>
 </td>
 <% end %>
+</div>
 
-
-<table class="table">
-  <tr>
-  <th>Featured photo</th>
-  <th>Name</th> 
-  <th>Description</th> 
-  <th>Category</th>
-  <th>Owner</th>
-  <th></th>
-  <th></th>
-  </tr>
-
-	<% if @market.featured? %>
-	<td class="featured-photo">
-		<%= cl_image_tag(@market.featured.path, { size: '20x20', crop: :fit}) %>
-	</td>
-	<% else %>
-	<td></td>
-	<% end %>
-
-	<td> <%= @market.name %> </td>
-	<td> <%= @market.description %> </td>
-	<td> <%= @market.category.name %> </td>
-	<td> <%= @market.user.email %> </td>
-
-
-<td><%= link_to "Edit", edit_user_market_path(@market.user, @market) %></td>
-<td> <%= link_to "Delete", user_market_path(@market.user, @market), :method => :delete %></td>
-</tr>
-</table>
+<div class="col-xs-12">
+<%= render partial: "markets/shared/slug", locals: {markets: [@market]}%>
+</div>
