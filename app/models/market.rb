@@ -1,5 +1,4 @@
 class Market
-
   include Mongoid::Document
   include Mongoid::Elasticsearch
   

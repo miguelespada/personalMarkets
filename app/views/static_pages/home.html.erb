@@ -1,4 +1,8 @@
 <%= link_to users_path do %> 
-								<%= fa_icon "users" %>
-								<span class="menu-text"> Users </span>
-							<% end %>
+	<%= fa_icon "users" %>
+	<span class="menu-text"> Users </span>
+<% end %>
+
+<% if user_signed_in? %>
+	<li class="list-group-item"><%= link_to "Add market", new_user_market_path(current_user) %></li>
+<% end %>
