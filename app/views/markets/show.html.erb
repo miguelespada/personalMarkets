@@ -2,10 +2,13 @@
 
 </div>
 <div class="col-xs-4">
-<h2> <%= @market.name %> </h2>
+<h2> HI! <%= @market.name %> </h2>
 <% if @market.featured? %>
 <td class="featured-photo">
 	<%= cl_image_tag(@market.featured.path, { size: '200x200', crop: :fit}) %>
+	<div class="caption">
+        <h3><%= @market.description %></h3>
+     </diV>
 </td>
 <% end %>
 </div>
