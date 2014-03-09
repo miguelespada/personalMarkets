@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
   def destroy
     @user = User.find(params[:id])
+    @user.markets.delete_all
     @user.destroy
     redirect_to action: 'index'
   end

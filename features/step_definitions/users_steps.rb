@@ -89,5 +89,17 @@ Then(/^I should not see the deleted user$/) do
 end
 
 
+Given(/^the user has one market$/) do
+  @market = FactoryGirl.create(:market, :name => "Dummy Market", :user => @user)
+end
+
+When(/^I go to the market list$/) do
+  visit markets_path
+end
+
+When(/^I should not see the user's market$/) do
+  expect(page).not_to have_content "Dummy Market"
+end
+
 
 
