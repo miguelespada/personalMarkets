@@ -72,3 +72,4 @@ Then(/^I should not see the market$/) do
   expect(page).not_to have_content "Dummy Market"
 end
 
+

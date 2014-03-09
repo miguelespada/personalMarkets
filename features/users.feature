@@ -6,9 +6,9 @@ Feature: Manage users
   Scenario: Sign up
     Given I am in the home page
     When I click on sign up
-	  And I fill in the email and password
-	  And I click on the sign up button
-	  Then I should be notified that the user has been added
+    And I fill in the email and password
+    And I click on the sign up button
+    Then I should be notified that the user has been added
     And I should see that I am logged 
 
   Scenario: Sign in 
@@ -26,7 +26,16 @@ Feature: Manage users
     Then I should see that that I am not logged
 
   Scenario: See User List
-  	Given there are some users
+    Given there are some users
     And I am in the home page
-  	When I click on User List
-  	Then I should see the list of users
+    When I click on User List
+    Then I should see the list of users
+
+  Scenario: Delete User 
+    Given there is one user
+    When I go to the user list
+    And I click on delete user
+    And I go to the user list
+    And I should not see the deleted user
+
+

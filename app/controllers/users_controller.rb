@@ -7,4 +7,9 @@ class UsersController < ApplicationController
   	rescue Exception => each 
   		redirect_to action: 'index'
   end
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to action: 'index'
+  end
 end

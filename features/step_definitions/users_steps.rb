@@ -72,5 +72,22 @@ Then(/^I should see the list of users$/) do
   end
 end
 
+Given(/^there is one user$/) do
+  @user = FactoryGirl.create(:user)
+end 
+
+When(/^I go to the user list$/) do
+  visit users_path
+end
+
+When(/^I click on delete user$/) do
+  click_on "Delete"
+end
+
+Then(/^I should not see the deleted user$/) do
+    expect(page).not_to have_content @user.email
+end
+
+
 
 
