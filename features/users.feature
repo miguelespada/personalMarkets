@@ -38,4 +38,11 @@ Feature: Manage users
     And I go to the user list
     And I should not see the deleted user
 
+  Scenario: Delete User's markets 
+    Given there is one user
+    And the user has one market
+    When I go to the user list
+    And I click on delete user
+    And I go to the market list
+    And I should not see the user's market
 
