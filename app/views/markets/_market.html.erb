@@ -1,18 +1,16 @@
-<tr id = '<%= market.id %>' >
-        <% if market.featured? %>
-        <td class="featured-photo">
-          <%= cl_image_tag(market.featured.path, { size: '20x20', crop: :fit}) %>
-        </td>
-        <% else %>
-        <td></td>
-        <% end %>
-         <td> <%=  market.name %> </td>
-         <td> <%=  market.description %> </td>
-          <td> <%= market.category.name %> </td>
-      <% if market.user %>
-           <td> <%=  market.user.email %> </td>
-           <td><%= link_to "Edit", edit_user_market_path(market.user, market) %></td>
-           <td> <%= link_to "Show", user_market_path(market.user, market)%></td>
-           <td> <%= link_to "Delete", user_market_path(market.user, market), :method => :delete %></td>
+<%= content_tag_for(:tr, market) do %>
+  <td class="featured-photo">
+      <% if market.featured? %> 
+        <%= cl_image_tag(market.featured.path, { size: '20x20', crop: :fit}) %>
       <% end %>
-       </tr>
+    </td>
+    <td> <%=  market.name %> </td>
+    <td> <%=  market.description %> </td>
+    <td> <%= market.category.name %> </td>
+    <% if market.user %>
+       <td> <%= market.user.email %> </td>
+       <td> <%= link_to "Edit", edit_user_market_path(market.user, market) %></td>
+       <td> <%= link_to "Show", user_market_path(market.user, market)%></td>
+       <td> <%= link_to "Delete", user_market_path(market.user, market), :method => :delete %></td>
+    <% end %>
+<% end %>
