@@ -1,6 +1,7 @@
 class User
   include Mongoid::Document
-  has_many :markets
+  has_many :markets, dependent: :delete
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

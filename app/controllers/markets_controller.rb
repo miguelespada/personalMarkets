@@ -20,6 +20,11 @@ class MarketsController < ApplicationController
         @markets = Market.all
       end
     end
+    respond_to do |format|
+
+        format.html 
+        format.json {render json: @markets}
+    end
   end
 
   def new
