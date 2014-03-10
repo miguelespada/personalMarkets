@@ -1,17 +1,4 @@
-<table class="table">
-  <tr>
-  <th>Featured photo</th>
-  <th>Name</th>
-  <th>Description</th> 
-  <th>Category</th>
-  <th>Owner</th>
-  <th></th>
-  <th></th>
-  <th></th>
-  </tr>
-
-  <% markets.each do |market| %>
-	<tr id = '<%= market.id %>' >
+<tr id = '<%= market.id %>' >
         <% if market.featured? %>
         <td class="featured-photo">
           <%= cl_image_tag(market.featured.path, { size: '20x20', crop: :fit}) %>
@@ -22,12 +9,10 @@
          <td> <%=  market.name %> </td>
          <td> <%=  market.description %> </td>
           <td> <%= market.category.name %> </td>
-  		<% if market.user %>
-  	       <td> <%=  market.user.email %> </td>
+      <% if market.user %>
+           <td> <%=  market.user.email %> </td>
            <td><%= link_to "Edit", edit_user_market_path(market.user, market) %></td>
            <td> <%= link_to "Show", user_market_path(market.user, market)%></td>
-  	       <td> <%= link_to "Delete", user_market_path(market.user, market), :method => :delete %></td>
-  		<% end %>
+           <td> <%= link_to "Delete", user_market_path(market.user, market), :method => :delete %></td>
+      <% end %>
        </tr>
-  <% end %>
-</table>

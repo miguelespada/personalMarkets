@@ -1,5 +1,5 @@
 
-<%= render partial: "markets/shared/slug", locals: {markets: @markets}%>
+<%= render "markets", :markets => @markets%>
 
 <div>
 <%= form_tag markets_path, method: :get do %>
