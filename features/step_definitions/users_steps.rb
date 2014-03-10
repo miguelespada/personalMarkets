@@ -24,7 +24,6 @@ Then(/^I should see that I am logged$/) do
   expect(page).to have_content "You are logged as: dummy@email.com"
 end
 
-
 Given(/^I am a registered user$/) do
   @user = FactoryGirl.create(:user)
   visit "/"
@@ -57,7 +56,6 @@ Then(/^I should see that that I am not logged$/) do
   expect(page).not_to have_content "You are logged as: dummy@email.com"
 end
 
-
 Given(/^there are some users$/) do
   @users = FactoryGirl.create_list(:user, 5)
 end
@@ -88,7 +86,6 @@ Then(/^I should not see the deleted user$/) do
     expect(page).not_to have_content @user.email
 end
 
-
 Given(/^the user has one market$/) do
   @market = FactoryGirl.create(:market, :name => "Dummy Market", :user => @user)
 end
@@ -100,6 +97,3 @@ end
 When(/^I should not see the user's market$/) do
   expect(page).not_to have_content "Dummy Market"
 end
-
-
-

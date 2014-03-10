@@ -1,5 +1,5 @@
 <%= content_tag_for(:tr, market) do %>
-  <td class="featured-photo">
+    <td class="featured-photo">
       <% if market.featured? %> 
         <%= cl_image_tag(market.featured.path, { size: '20x20', crop: :fit}) %>
       <% end %>
@@ -7,8 +7,8 @@
     <td> <%=  market.name %> </td>
     <td> <%=  market.description %> </td>
     <td> <%= market.category.name %> </td>
-    <% if market.user %>
-       <td> <%= market.user.email %> </td>
+    <td> <%= market.user.try(:email) %> </td>
+    <% if market.user? %>
        <td> <%= link_to "Edit", edit_user_market_path(market.user, market) %></td>
        <td> <%= link_to "Show", user_market_path(market.user, market)%></td>
        <td> <%= link_to "Delete", user_market_path(market.user, market), :method => :delete %></td>

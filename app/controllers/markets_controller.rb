@@ -6,7 +6,6 @@ class MarketsController < ApplicationController
     if !Market.es.index.exists? 
       Market.es.index_all
     end
-
     if @user
       if params[:query].present?
         @markets = Market.es.search (params[:query] + " AND " + @user.to_param)

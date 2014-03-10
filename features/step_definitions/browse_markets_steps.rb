@@ -1,4 +1,3 @@
-
 Given(/^There are some indexed markets$/) do
   Market.es.index.reset
   @market0 = FactoryGirl.create(:market, :name => "Market one")
@@ -9,7 +8,6 @@ end
 When(/^I go to the Markets$/) do  visit "/"
   click_on "Markets"
 end
-
 
 Then(/^I should see all the markets$/) do
   expect(page).to have_content "Market one"
@@ -61,11 +59,9 @@ end
 Then(/^I should see all my markets$/) do
   expect(page).to have_content "My market one"
   expect(page).to have_content "My market two"
-
 end
 
 Then(/^I should see only my markets$/) do
   expect(page).not_to have_content "Market one"
   expect(page).not_to have_content "Market two"
 end
-

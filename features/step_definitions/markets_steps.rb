@@ -1,9 +1,3 @@
-# Given(/^I am in my user space$/) do
-#   @user = FactoryGirl.create(:user)
-#   @category = FactoryGirl.create(:category)
-#   visit user_path(@user)
-# end
-
 When(/^I click on add market$/) do
   click_on "Add market"
 end
@@ -11,7 +5,6 @@ end
 Given(/^There is one category$/) do
   @category = FactoryGirl.create(:category)
 end
-
 
 When(/^I fill in the name and description$/) do
   fill_in "Name",  with: "Dummy Market"
@@ -53,12 +46,10 @@ Then(/^I should see my personal market page with the new name$/) do
   expect(page).to have_content "New dummy Market"
 end
 
-
 Then(/^I should see the lists of markets$/) do
   expect(page).to have_content "Dummy Market"
   expect(page).to have_content @user.email
 end
-
 
 Then(/^I should be notified that the market has been succesfully updated$/) do
   expect(page).to have_content "Market successfully updated."
@@ -71,5 +62,3 @@ end
 Then(/^I should not see the market$/) do
   expect(page).not_to have_content "Dummy Market"
 end
-
-
