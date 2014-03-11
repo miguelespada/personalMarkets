@@ -9,6 +9,7 @@ PopUpStores::Application.routes.draw do
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   mount Attachinary::Engine => "/attachinary"
+  get "markets/search"
   root "static_pages#home"
 
    # The priority is based upon order of creation: first created -> highest priority.

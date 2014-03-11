@@ -1,6 +1,6 @@
 Given(/^There are some indexed markets$/) do
   Market.es.index.reset
-  @market0 = FactoryGirl.create(:market, :name => "Market one")
+  @market_0 = FactoryGirl.create(:market, :name => "Market one")
   FactoryGirl.create(:market, :name => "Market two")
   Market.es.index.refresh
 end
@@ -28,16 +28,16 @@ Then(/^I should see the markets that match my search$/) do
 end
 
 When(/^I click the details link of a market$/) do
-  within("//tr[@id='market_#{@market0.id}']") do
+  within("//tr[@id='market_#{@market_0.id}']") do
     click_on "Show"
   end
 end
 
 Then(/^I should see the full description of a market$/) do
-  expect(page).to have_content @market0.name
-  expect(page).to have_content @market0.description
-  expect(page).to have_content @market0.category.name
-  expect(page).to have_content @market0.user.email
+  expect(page).to have_content @market_0.name
+  expect(page).to have_content @market_0.description
+  expect(page).to have_content @market_0.category.name
+  expect(page).to have_content @market_0.user.email
 end
 
 Given(/^I am a signed in$/) do
@@ -62,6 +62,17 @@ Then(/^I should see all my markets$/) do
 end
 
 Then(/^I should see only my markets$/) do
+  expect(page).not_to have_content "Market one"
+  expect(page).not_to have_content "Market two"
+end
+
+When(/^I select one category$/) do
+  pending 
+end
+
+Then(/^I should see the markets that match my search and category$/) do
+  pending 
+
   expect(page).not_to have_content "Market one"
   expect(page).not_to have_content "Market two"
 end

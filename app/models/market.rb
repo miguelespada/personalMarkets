@@ -12,4 +12,12 @@ class Market
   validates_presence_of :name, :description, :user, :category
 
   elasticsearch! 
+
+  def self.find_all(user = nil)
+    if user
+      user.markets.all
+    else
+      Market.all
+    end
+  end
 end

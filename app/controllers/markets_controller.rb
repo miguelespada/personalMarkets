@@ -2,28 +2,25 @@ class MarketsController < ApplicationController
   before_filter :load_user
 
   def index
-    @markets = []
-    if !Market.es.index.exists? 
-      Market.es.index_all
-    end
-    if @user
-      if params[:query].present?
-        @markets = Market.es.search (params[:query] + " AND " + @user.to_param)
-      else
-        @markets = @user.markets.all
-      end
-    else
-      if params[:query].present?
-        @markets = Market.es.search params[:query]
-      else
-        @markets = Market.all
-      end
-    end
-    respond_to do |format|
+    @markets ||= Market.find_all(@user)
 
+    respond_to do |format|
         format.html 
         format.json {render json: @markets}
     end
+  end
+
+  def search
+    if !Market.es.index.exists? 
+      Market.es.index_all
+    end
+
+    if params[:query].present?
+      @markets = Market.es.search(params[:query])
+    else
+      @markets = []
+    end
+    render 'index' 
   end
 
   def new
@@ -78,6 +75,7 @@ class MarketsController < ApplicationController
         [:signature, :created_at, :tags, :bytes, :type, :etag, :url, :secure_url],
         :_id,
         :query, 
+        :category,
         :user_id,
         :category_id
         )
