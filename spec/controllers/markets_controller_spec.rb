@@ -109,16 +109,15 @@ describe MarketsController do
       end
 
       describe "search model" do
-        xit "creates index" do
-            Market.destroy_all
+        it "creates index" do
             Market.es.index.delete
             get :search, {}, valid_session
             expect(Market.es.index.exists?).to eq true
         end
-        xit "searches with no markets and no index" do
+        it "searches with no markets and no index" do
           Market.destroy_all
           Market.es.index.delete
-          get :seach, {id: @market.to_param, query: ""}, valid_session
+          get :search, {}, valid_session
           markets = assigns(:markets)
           expect(markets.count).to eq 0
         end
@@ -130,20 +129,20 @@ describe MarketsController do
              Market.es.index.refresh
           end
           xit "searches with no query" do
-            get :search, {id: @market.to_param}, valid_session
+            get :search, {}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 10
           end
           xit "searches with blank query" do
-            get :search, {id: @market.to_param, query: ""}, valid_session
+            get :search, {query: ""}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 10
           end
-          xit "searches with query and no user" do
+          it "searches with query and no user" do
             m = FactoryGirl.create(:market)
             m.update_attribute(:name, "dummy")
             Market.es.index.refresh
-            get :search, {id: @market.to_param, query: m.name}, valid_session
+            get :search, {query: m.name}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 1
           end
@@ -152,7 +151,7 @@ describe MarketsController do
             m = FactoryGirl.create(:market)
             m.update_attribute(:name, "dummy")
             Market.es.index.refresh
-            get :search, {id: @market.to_param, user_id: m.user_id}, valid_session
+            get :search, {user_id: m.user_id}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 1
           end
@@ -168,7 +167,7 @@ describe MarketsController do
             m2.update_attribute(:name, "notDummy")
 
             Market.es.index.refresh
-            get :search, {id: @market.to_param, user_id: m0.user_id, query: m0.name}, valid_session
+            get :search, {user_id: m0.user_id, query: m0.name}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 1
           end
