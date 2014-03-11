@@ -149,7 +149,7 @@ describe MarketsController do
             markets = assigns(:markets)
             expect(markets.count).to eq 10
           end
-          it "searches with query and no user" do
+          it "searches with query" do
             m = FactoryGirl.create(:market)
             m.update_attribute(:name, "dummy")
             Market.es.index.refresh

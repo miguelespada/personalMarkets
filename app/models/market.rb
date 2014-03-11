@@ -21,7 +21,7 @@ class Market
     end
   end
 
-  def self.search(user, query, category_id)
+  def self.search(query, category_id)
     if !Market.es.index.exists? 
       Market.es.index_all
     end
