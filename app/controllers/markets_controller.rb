@@ -11,15 +11,7 @@ class MarketsController < ApplicationController
   end
 
   def search
-    if !Market.es.index.exists? 
-      Market.es.index_all
-    end
-
-    if params[:query].present?
-      @markets = Market.es.search(params[:query])
-    else
-      @markets = []
-    end
+    @markets = Market.search(@user, params[:query], params[:category_id])
     render 'index' 
   end
 

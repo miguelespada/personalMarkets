@@ -106,9 +106,21 @@ describe MarketsController do
           get :index, {user_id: user.to_param}, valid_session
           expect(response).to render_template("index")
        end
+       it "list user markets" do
+         m = FactoryGirl.create(:market)
+         m.update_attribute(:name, "dummy")
+         get :index, {user_id: m.user_id}, valid_session
+         markets = assigns(:markets)
+         expect(markets.count).to eq 1
+        end
       end
 
+
       describe "search model" do
+       it "renders the index template" do
+          get :search, {}, valid_session
+          expect(response).to render_template("index")
+       end
         it "creates index" do
             Market.es.index.delete
             get :search, {}, valid_session
@@ -116,7 +128,6 @@ describe MarketsController do
         end
         it "searches with no markets and no index" do
           Market.destroy_all
-          Market.es.index.delete
           get :search, {}, valid_session
           markets = assigns(:markets)
           expect(markets.count).to eq 0
@@ -128,12 +139,12 @@ describe MarketsController do
              10.times { @markets << FactoryGirl.create(:market)}
              Market.es.index.refresh
           end
-          xit "searches with no query" do
+          it "searches with no query" do
             get :search, {}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 10
           end
-          xit "searches with blank query" do
+          it "searches with blank query" do
             get :search, {query: ""}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 10
@@ -143,31 +154,6 @@ describe MarketsController do
             m.update_attribute(:name, "dummy")
             Market.es.index.refresh
             get :search, {query: m.name}, valid_session
-            markets = assigns(:markets)
-            expect(markets.count).to eq 1
-          end
-
-          xit "searches with user" do
-            m = FactoryGirl.create(:market)
-            m.update_attribute(:name, "dummy")
-            Market.es.index.refresh
-            get :search, {user_id: m.user_id}, valid_session
-            markets = assigns(:markets)
-            expect(markets.count).to eq 1
-          end
-          xit "searches with user and query" do
-            m0 = FactoryGirl.create(:market)
-            m0.update_attribute(:name, "dummy")
-            
-            m1 = FactoryGirl.create(:market)
-            m1.update_attribute(:name, "dummy")
-
-            m2 = FactoryGirl.create(:market)
-            m2.update_attribute(:user, m0.user)
-            m2.update_attribute(:name, "notDummy")
-
-            Market.es.index.refresh
-            get :search, {user_id: m0.user_id, query: m0.name}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 1
           end

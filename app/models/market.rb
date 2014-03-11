@@ -20,4 +20,15 @@ class Market
       Market.all
     end
   end
+
+  def self.search(user, query, category_id)
+    if !Market.es.index.exists? 
+      Market.es.index_all
+    end
+    if query.blank?
+      query = {body: {query: {match_all: { }}}}
+    end
+    Market.es.search(query)
+
+  end
 end
