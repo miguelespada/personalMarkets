@@ -11,11 +11,7 @@ class MarketsController < ApplicationController
   end
 
   def search
-    @category_query = ""
-    if params[:category] and params[:category][:category_id]
-      @category_query = params[:category][:category_id]
-    end
-    
+    @category_query = load_category
     @markets = Market.search(params[:query], @category_query)
     render 'index' 
   end
@@ -77,9 +73,13 @@ class MarketsController < ApplicationController
         :category_id
         )
     end
-    def load_user
+     def load_user
       if params[:user_id].present?
         @user = User.find(params[:user_id])
       end 
-   end
+    end
+    def load_category
+      params[:category][:category_id]
+      rescue => e
+    end 
 end
