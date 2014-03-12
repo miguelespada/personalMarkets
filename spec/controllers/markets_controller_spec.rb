@@ -121,6 +121,7 @@ describe MarketsController do
           get :search, {}, valid_session
           expect(response).to render_template("index")
         end
+        
         it "creates index" do
             Market.delete_index
             get :search, {}, valid_session
