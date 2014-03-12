@@ -7,6 +7,7 @@ class MarketsController < ApplicationController
     respond_to do |format|
         format.html 
         format.json {render json: @markets}
+        format.xml {render xml: @markets}
     end
   end
 
@@ -15,7 +16,7 @@ class MarketsController < ApplicationController
     @markets = Market.search(params[:query], @category_query)
     render 'index' 
   end
-
+  
   def new
     @market = @user.markets.new
   end
@@ -29,6 +30,7 @@ class MarketsController < ApplicationController
   end
 
   def create
+
     @market = @user.markets.new(market_params)
     @market.save
     respond_to do |format|
