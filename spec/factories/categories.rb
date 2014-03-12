@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :category do    
-  	sequence(:name) { |n| "Dummy category #{n}" }
+  	sequence(:name) { |n| "Dummy_category_#{n}" }
 
   end
 

@@ -38,7 +38,6 @@ gem 'attachinary', git: 'git://github.com/rochers/attachinary.git', branch: 'rai
 gem 'simple_form'
 
 # search
-gem 'mongoid-elasticsearch'
 gem "tire", "~> 0.6.2"
 
 group :doc do

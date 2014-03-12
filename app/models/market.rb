@@ -29,6 +29,19 @@ class Market
     end
   end
 
+  def self.reindex
+     delete_index
+     index_all
+  end
+
+  def self.delete_index
+     Tire.index('markets').delete
+  end
+
+  def self.refresh_index
+     Tire.index('markets').refresh
+  end
+
   def self.index_all
     unless Tire.index('markets').exists?
       Tire.index 'markets' do
@@ -45,6 +58,7 @@ class Market
         end 
       end
   end
+
   def self.search(query, category)
     index_all
     query = query.blank? ? '*' : query

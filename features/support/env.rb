@@ -58,6 +58,8 @@ end
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
 # Elastic Search cleaning
+
+Market.delete_index #remove at the beginning
+
 at_exit do
-    Market.es.index.delete
 end

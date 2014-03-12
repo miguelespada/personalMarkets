@@ -1,8 +1,7 @@
 Given(/^There are some indexed markets$/) do
-  Market.es.index.reset
   @market_0 = FactoryGirl.create(:market, :name => "Market one")
   FactoryGirl.create(:market, :name => "Market two")
-  Market.es.index.refresh
+  Market.reindex
 end
 
 When(/^I go to the Markets$/) do  visit "/"
@@ -67,12 +66,10 @@ Then(/^I should see only my markets$/) do
 end
 
 When(/^I select one category$/) do
-  pending 
+  select @market_0.category.name
 end
 
-Then(/^I should see the markets that match my search and category$/) do
-  pending 
-
-  expect(page).not_to have_content "Market one"
+Then(/^I should see the markets that match my category$/) do
+  expect(page).to have_content "Market one"
   expect(page).not_to have_content "Market two"
 end
