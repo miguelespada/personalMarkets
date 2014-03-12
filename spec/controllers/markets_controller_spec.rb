@@ -117,16 +117,16 @@ describe MarketsController do
 
 
       describe "search model" do
-       it "renders the index template" do
+       xit "renders the index template" do
           get :search, {}, valid_session
           expect(response).to render_template("index")
        end
-        it "creates index" do
+        xit "creates index" do
             Market.es.index.delete
             get :search, {}, valid_session
             expect(Market.es.index.exists?).to eq true
         end
-        it "searches with no markets and no index" do
+        xit "searches with no markets and no index" do
           Market.destroy_all
           get :search, {}, valid_session
           markets = assigns(:markets)
@@ -139,17 +139,17 @@ describe MarketsController do
              10.times { @markets << FactoryGirl.create(:market)}
              Market.es.index.refresh
           end
-          it "searches with no query" do
+          xit "searches with no query" do
             get :search, {}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 10
           end
-          it "searches with blank query" do
+          xit "searches with blank query" do
             get :search, {query: ""}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 10
           end
-          it "searches with query" do
+          xit "searches with query" do
             m = FactoryGirl.create(:market)
             m.update_attribute(:name, "dummy")
             Market.es.index.refresh
