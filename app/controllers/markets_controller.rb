@@ -11,11 +11,11 @@ class MarketsController < ApplicationController
   end
 
   def search
+    @category_query = ""
+    if params[:category] and params[:category][:category_id]
+      @category_query = params[:category][:category_id]
+    end
     
-    @category_query = params[:category][:category_id]
-    rescue => e
-      @category_query = ""
-      
     @markets = Market.search(params[:query], @category_query)
     render 'index' 
   end

@@ -158,6 +158,18 @@ describe MarketsController do
             markets = assigns(:markets)
             expect(markets.count).to eq 1
           end
+
+          it "filter with blank category" do
+          end
+
+          it "filter match category" do
+          end
+
+          it "filter do not match category" do
+          end
+
+          it "search and filter" do
+          end
         end
       end
   end
