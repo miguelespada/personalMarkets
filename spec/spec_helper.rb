@@ -58,7 +58,6 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.start
-    Market.delete_index
   end
 
   config.after(:each) do

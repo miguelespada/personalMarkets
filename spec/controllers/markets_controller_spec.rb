@@ -142,15 +142,17 @@ describe MarketsController do
              10.times { @markets << FactoryGirl.create(:market)}
              Market.refresh_index
           end
+          
           it "searches with no query" do
             get :search, {}, valid_session
             markets = assigns(:markets)
-            expect(markets.count).to eq 10
+            expect(markets.count).to eq Market.all.count
           end
+
           it "searches with blank query" do
             get :search, {query: ""}, valid_session
             markets = assigns(:markets)
-            expect(markets.count).to eq 10
+            expect(markets.count).to eq Market.all.count
           end
 
           it "searches with generic name" do
