@@ -137,6 +137,7 @@ describe MarketsController do
         context 'with markets' do
           before :each do
              Market.destroy_all
+             Market.create_index
              @markets = []
              10.times { @markets << FactoryGirl.create(:market)}
              Market.refresh_index
@@ -151,6 +152,15 @@ describe MarketsController do
             markets = assigns(:markets)
             expect(markets.count).to eq 10
           end
+
+          it "searches with generic name" do
+            m = FactoryGirl.create(:market, :name => "dummy")
+            Market.refresh_index
+            get :search, {query: "market"}, valid_session
+            markets = assigns(:markets)
+            expect(markets.count).to eq (Market.all.count - 1)
+          end
+
           it "searches with query" do
             m = FactoryGirl.create(:market, :name => "dummy")
             Market.refresh_index
@@ -160,15 +170,29 @@ describe MarketsController do
           end
 
           it "filter with blank category" do
+            get :search, {category: ""}, valid_session
+            markets = assigns(:markets)
+            expect(markets.count).to eq Market.all.count
           end
 
           it "filter match category" do
+            get :search, {category: {"category_id"=>@markets.first.category.name}}, valid_session
+            markets = assigns(:markets)
+            expect(markets.count).to eq 1
           end
 
-          it "filter do not match category" do
+          it "filter do not match any category" do
+            get :search, {category: {"category_id"=>"wrong"}}, valid_session
+            markets = assigns(:markets)
+            expect(markets.count).to eq 0
           end
 
           it "search and filter" do
+            m = FactoryGirl.create(:market)
+            Market.refresh_index
+            get :search, {query: "market", category: {"category_id"=>m.category.name}}, valid_session
+            markets = assigns(:markets)
+            expect(markets.count).to eq 1
           end
 
           it "remembers category after search" do
@@ -178,5 +202,6 @@ describe MarketsController do
           end
         end
       end
+
   end
 end

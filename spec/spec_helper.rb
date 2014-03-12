@@ -63,11 +63,11 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+    Market.delete_index
   end
 
   config.after(:all) do
     DatabaseCleaner.clean
     Market.delete_index 
   end
-
 end

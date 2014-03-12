@@ -46,17 +46,23 @@ class Market
      Tire.index('markets').refresh
   end
 
-  def self.index_all
-    unless Tire.index('markets').exists?
-      Tire.index 'markets' do
-          delete
-          create mappings: {
-            market: {
-              properties: {
-                  category: { type: 'string', analyzer: 'keyword' }
-              }
+  def self.create_index
+     Tire.index 'markets' do
+        delete
+        create mappings: {
+          market: {
+            properties: {
+                category: { type: 'string', analyzer: 'keyword' }
             }
           }
+        }
+      end 
+  end
+
+  def self.index_all
+    unless Tire.index('markets').exists?
+      create_index
+      Tire.index 'markets' do
           import Market.all
           refresh
         end 
