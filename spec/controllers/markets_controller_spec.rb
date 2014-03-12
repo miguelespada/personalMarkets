@@ -139,22 +139,21 @@ describe MarketsController do
              Market.destroy_all
              @markets = []
              10.times { @markets << FactoryGirl.create(:market)}
-             Market.es.index.refresh
+             Market.refresh_index
           end
           it "searches with no query" do
             get :search, {}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 10
           end
-          xit "searches with blank query" do
+          it "searches with blank query" do
             get :search, {query: ""}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 10
           end
-          xit "searches with query" do
-            m = FactoryGirl.create(:market)
-            m.update_attribute(:name, "dummy")
-            Market.es.index.refresh
+          it "searches with query" do
+            m = FactoryGirl.create(:market, :name => "dummy")
+            Market.refresh_index
             get :search, {query: m.name}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 1
