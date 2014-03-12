@@ -4,15 +4,16 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user =  User.find(params[:id])
+    @user ||=  User.find(params[:id])
     rescue Exception => each 
       redirect_to action: 'index'
   end
 
   def favorite
-    user = User.find(params[:user_id])
+    @user = User.find(params[:user_id])
     market = Market.find(params[:market_id])
-    user.favorites.push(market)
+    @user[:favorites] ||= []
+    @user[:favorites] << [market]
     render 'show'
   end
 

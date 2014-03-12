@@ -1,7 +1,7 @@
 class User
   include Mongoid::Document
-  has_many :markets, dependent: :delete
-  has_many :favorites, class_name: "Market"
+  has_many :markets, class_name: "Market", dependent: :delete, inverse_of: :users
+  has_many :favorites, class_name: "Market", inverse_of: :favorited
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

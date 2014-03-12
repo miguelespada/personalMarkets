@@ -8,7 +8,8 @@ class Market
   has_attachment  :featured, accept: [:jpg, :png, :gif]
 
   belongs_to :category
-  belongs_to :user
+  belongs_to :user, class_name: "User", inverse_of: :markets
+  belongs_to :favorited, class_name: "User", inverse_of: :favorites
 
   validates_presence_of :name, :description, :user, :category
 
