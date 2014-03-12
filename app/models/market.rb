@@ -45,15 +45,17 @@ class Market
         end 
       end
   end
-
   def self.search(query, category)
     index_all
     query = query.blank? ? '*' : query
+
     s = Tire.search 'markets' do
       query do
         filtered do
           query {string query}
-          filter :terms, category: [category]
+          unless category.blank?
+            filter :terms, category: [category]
+          end
         end
       end
     end
