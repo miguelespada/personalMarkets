@@ -34,6 +34,10 @@ class Market
      index_all
   end
 
+  def self.exists_index?
+    Tire.index('markets').exists?
+  end
+
   def self.delete_index
      Tire.index('markets').delete
   end
