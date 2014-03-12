@@ -121,7 +121,7 @@ describe MarketsController do
           get :search, {}, valid_session
           expect(response).to render_template("index")
         end
-        
+
         it "creates index" do
             Market.delete_index
             get :search, {}, valid_session
@@ -141,7 +141,7 @@ describe MarketsController do
              10.times { @markets << FactoryGirl.create(:market)}
              Market.es.index.refresh
           end
-          xit "searches with no query" do
+          it "searches with no query" do
             get :search, {}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 10
