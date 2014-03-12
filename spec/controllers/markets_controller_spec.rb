@@ -117,16 +117,17 @@ describe MarketsController do
 
 
       describe "search model" do
-       xit "renders the index template" do
+        it "renders the index template" do
           get :search, {}, valid_session
           expect(response).to render_template("index")
-       end
-        xit "creates index" do
-            Market.es.index.delete
-            get :search, {}, valid_session
-            expect(Market.es.index.exists?).to eq true
         end
-        xit "searches with no markets and no index" do
+        it "creates index" do
+            Market.delete_index
+            get :search, {}, valid_session
+            expect(Market.exists_index?).to eq true
+        end
+        
+        it "searches with no markets and no index" do
           Market.destroy_all
           get :search, {}, valid_session
           markets = assigns(:markets)
