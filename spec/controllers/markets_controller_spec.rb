@@ -170,6 +170,12 @@ describe MarketsController do
 
           it "search and filter" do
           end
+
+          it "remembers category after search" do
+            get :search, {}, valid_session
+            category_query = assigns(:category_query)
+            expect(category_query).not_to be_nil
+          end
         end
       end
   end
