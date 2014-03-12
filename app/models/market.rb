@@ -1,6 +1,7 @@
 class Market
   include Mongoid::Document
-  include Mongoid::Elasticsearch
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
   
   field :name, type: String
   field :description, type: String
@@ -11,7 +12,14 @@ class Market
 
   validates_presence_of :name, :description, :user, :category
 
-  elasticsearch! 
+  def to_indexed_json
+        {
+          :id   => id,
+          :name => name,
+          :description => description,
+          :category => category.name,
+        }.to_json
+  end
 
   def self.find_all(user = nil)
     if user
@@ -21,14 +29,34 @@ class Market
     end
   end
 
-  def self.search(query, category_id)
-    if !Market.es.index.exists? 
-      Market.es.index_all
-    end
-    if query.blank?
-      query = {body: {query: {match_all: { }}}}
-    end
-    Market.es.search(query)
+  def self.index_all
+    unless Tire.index('markets').exists?
+      Tire.index 'markets' do
+          delete
+          create mappings: {
+            market: {
+              properties: {
+                  category: { type: 'string', analyzer: 'keyword' }
+              }
+            }
+          }
+          import Market.all
+          refresh
+        end 
+      end
+  end
 
+  def self.search(query, category)
+    index_all
+    query = query.blank? ? '*' : query
+    s = Tire.search 'markets' do
+      query do
+        filtered do
+          query {string query}
+          filter :terms, category: [category]
+        end
+      end
+    end
+    markets = s.results.collect{|result| self.find(result.to_hash[:id])}
   end
 end

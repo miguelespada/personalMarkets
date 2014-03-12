@@ -39,6 +39,7 @@ gem 'simple_form'
 
 # search
 gem 'mongoid-elasticsearch'
+gem "tire", "~> 0.6.2"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

@@ -3,6 +3,7 @@ class MarketsController < ApplicationController
 
   def index
     @markets ||= Market.find_all(@user)
+
     respond_to do |format|
         format.html 
         format.json {render json: @markets}
@@ -10,7 +11,8 @@ class MarketsController < ApplicationController
   end
 
   def search
-    @markets = Market.search(params[:query], params[:category_id])
+    @category_query = params[:category][:category_id]
+    @markets = Market.search(params[:query], @category_query)
     render 'index' 
   end
 
