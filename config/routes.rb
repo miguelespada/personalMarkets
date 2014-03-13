@@ -7,6 +7,7 @@ PopUpStores::Application.routes.draw do
   resources :users do
     resources :markets
   end
+  resources :maps, :only => [:index]
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   mount Attachinary::Engine => "/attachinary"

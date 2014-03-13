@@ -1,0 +1,25 @@
+<div style='width: 100%;'>
+  <div id="map" style='width: 100%; height: 550px;'></div>
+</div>
+
+<script>
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {
+  zoom: 12,
+  center: new google.maps.LatLng(40.4, -3.6833333),
+  mapTypeId: google.maps.MapTypeId.ROADMAP,
+  panControl: false,
+  zoomControl: true,
+  zoomControlOptions: {
+    style: google.maps.ZoomControlStyle.SMALL
+  },
+  mapTypeControl: false,
+  scaleControl: false,
+  streetViewControl: false,
+  overviewMapControl: false
+	}, internal: {id: 'map'}}, function(){
+  handler.fitMapToBounds();
+  markers = handler.addMarkers(<%= raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+});
+</script>

@@ -23,10 +23,6 @@ class MarketsController < ApplicationController
 
   def show
     @market = @user.markets.find(params[:id])
-    @hash = Gmaps4rails.build_markers(@market) do |market, marker|
-      marker.lat market.latitude
-      marker.lng market.longitude
-    end
   end
   
   def edit
