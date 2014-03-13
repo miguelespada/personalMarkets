@@ -62,4 +62,5 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 Market.delete_index #remove at the beginning
 
 at_exit do
+  Market.delete_index 
 end
