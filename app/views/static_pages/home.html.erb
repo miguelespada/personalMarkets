@@ -1,10 +1,7 @@
-<ul>
 <li> <%= link_to "Markets", markets_path %> </li>
 <li> <%= link_to "Users", users_path %> </li>
 <li> <%= link_to "Maps" , maps_path %> </li>
-</ul>
-
 
 <% if user_signed_in? %>
-  <li class="list-group-item"><%= link_to "Add market", new_user_market_path(current_user) %></li>
+  <li><%= link_to "Add market", new_user_market_path(current_user) %></li>
 <% end %>

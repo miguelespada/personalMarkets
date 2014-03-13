@@ -1,6 +1,7 @@
 <%= content_tag_for(:tr, user) do %>
     <td> <%= user.email %> </td>
     <td> <%= user.markets.count %></td>
+    <td> <%= user.favorites.count %></td>
     <td> <%= link_to "Show", user_path(user), :method => :get %></td>
     <td> <%= link_to "Delete", user_path(user), :method => :delete %></td>
 <% end %>

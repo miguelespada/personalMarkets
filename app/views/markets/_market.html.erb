@@ -4,8 +4,8 @@
         <%= cl_image_tag(market.featured.path, { size: '20x20', crop: :fit}) %>
       <% end %>
     </td>
-    <td> <%=  market.name %> </td>
-    <td> <%=  market.description %> </td>
+    <td> <%= market.name %> </td>
+    <td> <%= market.description %> </td>
     <td> <%= market.longitude %> </td>
     <td> <%= market.latitude %> </td>
     <td> <%= market.category.name %> </td>   
@@ -16,8 +16,12 @@
        <td> <%= link_to "Delete", user_market_path(market.user, market), 
         :method => :delete %></td>
         <% if user_signed_in? %>
-        <td>   <%= link_to "Unlike", favorite_path(current_user, market, :v => 0) %>
+          <td> <%= link_to "Like", 
+              favorite_path(current_user, market, :v => 1) %> 
+          </td>
+          <td> <%= link_to "Unlike", 
+              favorite_path(current_user, market, :v => 0) %> 
+          </td>
         <% end %>
-        </td>
     <% end %>
 <% end %>

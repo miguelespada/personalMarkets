@@ -1,44 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Magdalenas Federico</title>
+  <title>Personal markets</title>
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-  
-  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBkhXw8kMql7c4tc1LwaMGbm9024z03AKU&sensor=false"></script>
-  <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>  
-  <%= yield :javascripts %>
-
 </head>
-<body>
 
+<body>
 <% if flash[:notice] %>
     <div id="notice"><%= flash[:notice] %></div>
 <% end %>
 
 <div>
-<h2> Personal Markets </h2>
+<h2>Personal Markets</h2>
 </div>
 
 <div>
 <%= yield %>
 </div>
 
-<hr>
 <div>
-<ul >
-  <% if user_signed_in? %>
-  <li><%= link_to "My wall", user_markets_path(current_user) %> </li>
-    <li> You are logged as: <%= current_user.email %>
-    <li><%= link_to "Sign out", destroy_user_session_path %></li>
-  <% else %>
-    <li><%= link_to "Sign in", new_user_session_path %></li>
-    <li><%= link_to "Sign up", new_user_registration_path %></li>
-  <% end %>
-</ul>
+  <ul >
+    <% if user_signed_in? %>
+      <li><%= link_to "My wall", user_markets_path(current_user) %> </li>
+      <li> You are logged as: <%= current_user.email %>
+      <li><%= link_to "Sign out", destroy_user_session_path %></li>
+    <% else %>
+      <li><%= link_to "Sign in", new_user_session_path %></li>
+      <li><%= link_to "Sign up", new_user_registration_path %></li>
+    <% end %>
+  </ul>
 </div>
-
-<hr>
 
 <div>
   <%= link_to "Home", "/" %>
