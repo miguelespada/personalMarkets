@@ -3,5 +3,7 @@
   <%= f.input :description, label_html: { class: 'market-description' } %>
   <%= f.association :category, :include_blank => false %>
   <%= f.input :featured, as: :attachinary %>
+  <%= f.input :longitude %>
+  <%= f.input :latitude %>
   <%= f.button :submit %>
 <% end %>

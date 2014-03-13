@@ -5,6 +5,8 @@ class Market
   
   field :name, type: String
   field :description, type: String
+  field :longitude, type: String
+  field :latitude, type: String
   has_attachment  :featured, accept: [:jpg, :png, :gif]
 
   belongs_to :category
@@ -18,6 +20,8 @@ class Market
           :id   => id,
           :name => name,
           :description => description,
+          :longitude => longitude,
+          :latitude => latitude,
           :category => category.name,
         }.to_json
   end

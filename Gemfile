@@ -40,6 +40,9 @@ gem 'simple_form'
 # search
 gem "tire", "~> 0.6.2"
 
+# google maps
+gem 'gmaps4rails'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
