@@ -21,7 +21,7 @@
 
   <% if user_signed_in? %>
   <p>
-  <%= link_to "Like", favorite_path(current_user, @market) %>
+  <%= link_to "Like", favorite_path(current_user, @market, :v => true) %>
   </p>
   <% end %>
 

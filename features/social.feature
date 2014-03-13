@@ -23,12 +23,14 @@ Feature: Social feature
       And I unlike the market
       Then The market is not in my favorites
       And The market does not have my like
+
+    Scenario:
+      When I go to my markets
+      Then I cannot like my own markets
     
     Scenario:
       When I go to my favorites
       Then I cannot unlike the market
 
-    Scenario:
-      When I go to my markets
-      Then I cannot like my own markets
+
 
