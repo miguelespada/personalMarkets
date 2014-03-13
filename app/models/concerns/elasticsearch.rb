@@ -49,8 +49,14 @@ module Elasticsearch
           end 
         end
     end
-
-
+    
   end
   
+  def to_indexed_json
+        { :id   => id,
+          :name => name,
+          :description => description,
+          :category => category.name
+        }.to_json
+  end
 end

@@ -43,6 +43,6 @@ class Market
           end
         end
       end
-      markets = s.results.collect{|result| find(result.to_hash[:id])}
+      s.results.collect{|result| find(result.to_hash[:id])}
     end
 end
