@@ -62,3 +62,18 @@ end
 Then(/^I should not see the market$/) do
   expect(page).not_to have_content "Dummy Market"
 end
+
+When(/^I fill latitude and longitude$/) do
+
+  fill_in "Latitude",  with: "40"
+  fill_in "Longitude",  with: "-3"
+end
+
+Then(/^I should see my personal market page with the new latitude and longitude$/) do
+  within(:css, "div#latitude") do
+    expect(page).to have_content "40"
+  end 
+  within(:css, "div#longitude") do
+    expect(page).to have_content "-3"
+  end 
+end

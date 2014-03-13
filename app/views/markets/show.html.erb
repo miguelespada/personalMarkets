@@ -24,7 +24,8 @@
   <%= link_to "Like", favorite_path(current_user, @market, :v => true) %>
   </p>
   <% end %>
-
+  <div id = "latitude"> <%= @market.latitude %> </div>
+  <div id = "longitude"> <%= @market.longitude %> </div>
 <% end %>
 
 <h3>All markets </h3>

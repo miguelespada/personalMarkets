@@ -71,6 +71,8 @@ class MarketsController < ApplicationController
         :name, 
         :description,
         :featured, 
+        :latitude,
+        :longitude,
         [:signature, :created_at, :tags, :bytes, :type, :etag, :url, :secure_url],
         :_id,
         :query, 

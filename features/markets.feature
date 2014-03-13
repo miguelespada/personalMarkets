@@ -24,6 +24,17 @@ Feature: Manage market
     Then I should see my personal market page with the new name
     And I should be notified that the market has been succesfully updated
 
+  @coords
+  Scenario: modify market
+    And I go to the my markets
+    And I click on edit a market
+    And I fill latitude and longitude
+    And I click on update market
+    Then I should see my personal market page with the new latitude and longitude
+    And I should be notified that the market has been succesfully updated
+
+
+
   Scenario: delete market
     And I go to the my markets
     When I click the delete button
