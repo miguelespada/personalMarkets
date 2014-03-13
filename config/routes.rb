@@ -1,5 +1,6 @@
 PopUpStores::Application.routes.draw do
 
+  get "category/index"
   devise_for :users
   resources :markets, :only => [:index]
   resources :users, :only => [:index, :show]
