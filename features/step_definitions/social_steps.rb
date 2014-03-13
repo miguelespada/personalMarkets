@@ -39,3 +39,29 @@ Then(/^The market gets my like$/) do
   end
 end
 
+When(/^I go to my favorites$/) do
+  visit user_path(@user)
+  page.should have_content "Favorites of #{@user.email}" 
+end
+
+When(/^I unlike the market$/) do
+  click_on "Unlike"
+end
+
+Then(/^The market is not in my favorites$/) do
+  visit user_path(@user)
+  page.should have_content "Favorites of #{@user.email}" 
+  within(:css, "div.favorites") do
+    page.should_not have_content @market.name
+  end
+end
+
+Then(/^The market does not have my like$/) do
+  visit user_market_path(@market.user, @market)
+  page.should have_content "Favorited by" 
+  within(:css, "div.favorited") do
+    page.should_not have_content @user.email
+  end
+end
+
+

@@ -12,6 +12,7 @@
        <td> <%= link_to "Edit", edit_user_market_path(market.user, market) %></td>
        <td> <%= link_to "Show", user_market_path(market.user, market)%></td>
        <td> <%= link_to "Delete", user_market_path(market.user, market), :method => :delete %></td>
-       
+       <td>   <%= link_to "Unlike", unfavorite_path(current_user, market) %>
+ </td>
     <% end %>
 <% end %>

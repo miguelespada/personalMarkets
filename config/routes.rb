@@ -12,6 +12,8 @@ PopUpStores::Application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
   get "markets/search"
   get "/users/:user_id/favorite/:market_id",  to: 'users#favorite', as: 'favorite'
+  get "/users/:user_id/unfavorite/:market_id",  to: 'users#unfavorite', as: 'unfavorite'
+
   root "static_pages#home"
 
    # The priority is based upon order of creation: first created -> highest priority.

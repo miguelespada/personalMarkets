@@ -18,7 +18,15 @@ class UsersController < ApplicationController
     market.save!
     render 'show'
   end
-
+  def unfavorite
+    @user = User.find(params[:user_id])
+    market = Market.find(params[:market_id])
+    @user.favorites.delete(market)
+    market.favorited.delete(@user)
+    @user.save!
+    market.save!
+    render 'show'
+  end
   def destroy
     @user = User.find(params[:id])
     @user.destroy
