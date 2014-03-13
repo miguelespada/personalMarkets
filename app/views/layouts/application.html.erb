@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>Magdalenas Federico</title>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+      <%= csrf_meta_tags %>
 </head>
 <body>
 
@@ -38,11 +40,5 @@
   <%= link_to "Home", "/" %>
 </div>
 
-
-<script>
-$( document ).ready(function() {
-  $('.attachinary-input').attachinary();
-});
-</script>
 </body>
 </html>
