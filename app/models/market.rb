@@ -26,6 +26,10 @@ class Market
         }.to_json
   end
 
+  def like(user, value)
+     value ? (favorited << user) :  (favorited.delete(user))
+  end
+
   def self.find_all(user = nil)
     if user
       user.markets.all

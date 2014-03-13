@@ -12,13 +12,9 @@ class UsersController < ApplicationController
   def favorite
     @user = User.find(params[:user_id])
     market = Market.find(params[:market_id])
-    if params[:v] == "true"
-      @user.favorites << market
-      market.favorited << @user
-    else
-      @user.favorites.delete(market)
-      market.favorited.delete(@user)
-    end
+    v = params[:v] == "1"
+    @user.like(market, v)
+    market.like(@user, v)
     render 'show'
   end
 

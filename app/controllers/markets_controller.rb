@@ -86,6 +86,7 @@ class MarketsController < ApplicationController
         @user = User.find(params[:user_id])
       end 
     end
+    
     def load_category
       params[:category][:category_id]
       rescue => e

@@ -20,10 +20,11 @@
   </div>
 
   <% if user_signed_in? %>
-  <p>
-  <%= link_to "Like", favorite_path(current_user, @market, :v => true) %>
-  </p>
+    <p>
+    <%= link_to "Like", favorite_path(current_user, @market, :v => 1) %>
+    </p>
   <% end %>
+
   <div id = "latitude"> <%= @market.latitude %> </div>
   <div id = "longitude"> <%= @market.longitude %> </div>
 <% end %>
