@@ -28,5 +28,11 @@ let(:market) { FactoryGirl.create(:market)}
         change(user.favorites, :count).by(-1)
         change(market.favorited, :count).by(-1)
    end
+
+    it "remove like when no like" do
+      get :favorite,{ user_id: user.to_param, market_id: market.to_param, v: false}, valid_session
+      change(user.favorites, :count).by(0)
+      change(market.favorited, :count).by(0)
+   end
  end
 end
