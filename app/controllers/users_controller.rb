@@ -12,8 +12,10 @@ class UsersController < ApplicationController
   def favorite
     @user = User.find(params[:user_id])
     market = Market.find(params[:market_id])
-    @user[:favorites] ||= []
-    @user[:favorites] << [market]
+    @user.favorites << market
+    market.favorited << @user
+    @user.save!
+    market.save!
     render 'show'
   end
 

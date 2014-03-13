@@ -23,6 +23,9 @@
 <div>
 <ul >
   <% if user_signed_in? %>
+  
+  <li><%= link_to "Home", user_markets_path(current_user) %> </li>
+
      <li> You are logged as: <%= current_user.email %>
     <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
   <% else %>

@@ -9,7 +9,7 @@ class Market
 
   belongs_to :category
   belongs_to :user, class_name: "User", inverse_of: :markets
- # belongs_to :favorited, class_name: "User", inverse_of: :favorites
+  has_and_belongs_to_many :favorited, class_name: "User", inverse_of: :favorites
 
   validates_presence_of :name, :description, :user, :category
 

@@ -1,6 +1,4 @@
-<h3>Favorite</h3>
-<div id = "favorites">
-  <% @user.favorites.each do |favorite| %>
-      <%= render favorite %>
-  <% end %>
-</div>
+<%= div_for @user, class: "favorites" do %>
+  <h3>Favorites of <%= @user.email %></h3>
+  <%= render @user.favorites %>
+<% end %>
