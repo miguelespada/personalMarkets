@@ -15,13 +15,9 @@ class UsersController < ApplicationController
     if params[:v] == "true"
       @user.favorites << market
       market.favorited << @user
-      @user.save!
-      market.save!
     else
       @user.favorites.delete(market)
       market.favorited.delete(@user)
-      @user.save!
-      market.save!
     end
     render 'show'
   end
