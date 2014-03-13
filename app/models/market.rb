@@ -22,14 +22,13 @@ class Market
   end
 
   def to_indexed_json
-        {
-          :id   => id,
+        { :id   => id,
           :name => name,
           :description => description,
           :category => category.name
         }.to_json
   end
-  
+
   def self.search(query, category)
       index_all
       query = query.blank? ? '*' : query
