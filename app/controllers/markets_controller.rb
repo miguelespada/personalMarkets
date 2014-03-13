@@ -16,7 +16,7 @@ class MarketsController < ApplicationController
     @markets = Market.search(params[:query], @category_query)
     render 'index' 
   end
-  
+
   def new
     @market = @user.markets.new
   end
