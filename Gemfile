@@ -76,7 +76,5 @@ group :test, :development do
   gem "rspec-rails"
 end
 
-gem "font-awesome-rails"
-gem 'keen'
 
 
