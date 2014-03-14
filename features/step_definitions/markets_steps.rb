@@ -59,12 +59,15 @@ When(/^I click the delete button$/) do
   click_on "Delete"
 end
 
+Then(/^I should be notified that the market has been succesfully deleted$/) do
+  expect(page).to have_content "Market successfully deleted."
+end
+
 Then(/^I should not see the market$/) do
   expect(page).not_to have_content "Dummy Market"
 end
 
 When(/^I fill latitude and longitude$/) do
-
   fill_in "Latitude",  with: "40"
   fill_in "Longitude",  with: "-3"
 end

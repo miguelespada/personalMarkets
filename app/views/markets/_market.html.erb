@@ -1,4 +1,4 @@
-<%= content_tag_for(:tr, market) do %>
+<%= content_tag(:tr, :id => "market_slug_#{market.id}", :class => "market_slug") do %>
     <td class="featured-photo">
       <% if market.featured? %> 
         <%= cl_image_tag(market.featured.path, { size: '20x20', crop: :fit}) %>

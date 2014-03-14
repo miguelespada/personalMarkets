@@ -65,3 +65,22 @@ Then(/^The market does not have my like$/) do
 end
 
 
+Then(/^I cannot like the market again$/) do
+  within("//tr[@id='market_slug_#{@market}']") do
+    page.should_not have_content "Like"
+  end
+end
+
+Then(/^I cannot unlike the market again$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Given(/^I have a market$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I cannot like the market$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+

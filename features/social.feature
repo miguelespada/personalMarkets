@@ -15,6 +15,7 @@ Feature: Social feature
       Then The market is in my favorites
       And The market gets my like
 
+    @social
     Scenario:
       When I go to the market page
       Then I cannot like the market again
@@ -31,7 +32,7 @@ Feature: Social feature
     Scenario:
       When I go to the market page
       Then I cannot unlike the market again
-    
+
     Scenario:
       Given I have a market
       When I go to my markets
