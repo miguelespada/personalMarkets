@@ -4,7 +4,9 @@ describe UsersController do
 	
  let(:valid_session) { {} }
  let(:user) { FactoryGirl.create(:user) } 
+ let(:second_user) { FactoryGirl.create(:user) } 
  let(:market) { FactoryGirl.create(:market)}
+ let(:second_market) { FactoryGirl.create(:market)}
 
  it "renders the index template" do
       get :index, valid_session
@@ -63,6 +65,22 @@ describe UsersController do
           market.reload
           market.favorited.count.should eq 0
           market.favorited.include?(assigns(:user)).should eq false
+     end
+
+     it "user likes two markets" do
+          user.favorites.count.should eq 1
+          get :favorite,{ user_id: user.to_param, market_id: second_market.to_param, :v => 1}, valid_session
+          assigns(:user).favorites.count.should eq 2
+          assigns(:user).favorites.include?(market).should eq true
+          assigns(:user).favorites.include?(second_market).should eq true
+     end
+
+     it "market gets two likes" do
+          market.favorited.count.should eq 1
+          get :favorite,{ user_id: second_user.to_param, market_id: market.to_param, :v => 1}, valid_session
+          market.reload
+          market.favorited.count.should eq 2
+          market.favorited.include?(assigns(:user)).should eq true
      end
   end
 
