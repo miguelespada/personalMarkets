@@ -87,4 +87,9 @@ Then(/^I cannot like the market$/) do
   end
 end
 
+When(/^The market is deleted$/) do
+  click_on "Delete"
+end
+
+
 
