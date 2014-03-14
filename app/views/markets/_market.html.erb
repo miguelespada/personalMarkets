@@ -17,10 +17,10 @@
         :method => :delete %></td>
         <% if user_signed_in? %>
           <td> <%= link_to "Like", 
-              favorite_path(current_user, market, :v => 1) %> 
+              like_path(current_user, market, :v => 1) %> 
           </td>
           <td> <%= link_to "Unlike", 
-              favorite_path(current_user, market, :v => 0) %> 
+              like_path(current_user, market, :v => 0) %> 
           </td>
         <% end %>
     <% end %>

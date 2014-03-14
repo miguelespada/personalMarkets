@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       redirect_to action: 'index'
   end
 
-  def favorite
+  def like
     @user = User.find(params[:user_id])
     market = Market.find(params[:market_id])
     v = params[:v] == "1"
