@@ -45,4 +45,5 @@ class Market
       end
       s.results.collect{|result| find(result.to_hash[:id])}
     end
+
 end

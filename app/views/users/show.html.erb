@@ -1,4 +1,4 @@
 <%= div_for @user, class: "favorites" do %>
   <h3>Favorites of <%= @user.email %></h3>
-  <%= render @user.favorites %>
+  <%= render "markets/markets", :markets => [@user.favorites] %>
 <% end %>

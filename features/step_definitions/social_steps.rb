@@ -64,23 +64,32 @@ Then(/^The market does not have my like$/) do
   end
 end
 
-
 Then(/^I cannot like the market again$/) do
-  within("//tr[@id='market_slug_#{@market}']") do
+  within("//tr[@id='market_slug_#{@market.id}']") do
     page.should_not have_content "Like"
   end
 end
 
 Then(/^I cannot unlike the market again$/) do
-  pending # express the regexp above with the code you wish you had
+  within("//tr[@id='market_slug_#{@market.id}']") do
+    page.should_not have_content "Unlike"
+  end
 end
 
 Given(/^I have a market$/) do
-  pending # express the regexp above with the code you wish you had
+  @myMarket = FactoryGirl.create(:market, :name => "Dummy Market", :user => @user)
 end
 
 Then(/^I cannot like the market$/) do
-  pending # express the regexp above with the code you wish you had
+  within("//tr[@id='market_slug_#{@myMarket.id}']") do
+    page.should_not have_content "Unlike"
+    page.should_not have_content "Like"
+  end
 end
+
+When(/^The market is deleted$/) do
+  click_on "Delete"
+end
+
 
 
