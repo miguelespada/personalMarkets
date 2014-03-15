@@ -11,5 +11,4 @@
     <td> <%= market.category.name %> </td>   
     <td> <%= market.user.try(:email) %> </td>
     <%= render partial: "markets/shared/actions", locals: {market: market} %>
-
 <% end %>
