@@ -1,0 +1,17 @@
+<td> <%= link_to "Edit", edit_user_market_path(market.user, market) %></td>
+<td> <%= link_to "Show", user_market_path(market.user, market)%></td>
+<td> <%= link_to "Delete", user_market_path(market.user, market), 
+:method => :delete %></td>
+<% if user_signed_in? %>
+    <% unless current_user == market.user %>
+      <% if current_user.favorites.include?(market) %>
+        <td> <%= link_to "Unlike", 
+            like_path(current_user, market, :v => 0) %> 
+        </td>
+      <% else %>
+        <td> <%= link_to "Like", 
+            like_path(current_user, market, :v => 1) %> 
+        </td>
+      <% end %>
+  <% end %>
+<% end %>
