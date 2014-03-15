@@ -1,6 +1,6 @@
 class MapsController < ApplicationController
   def index
-    @markets = Market.find({"latitude":{$exists:true}, {"longitude":{$exists:true})
+    @markets = Market.where(latitude: {neq: nil}, longitude: {neq: nil})
     @hash = Gmaps4rails.build_markers(@markets) do |market, marker|
         marker.lat market.latitude
         marker.lng market.longitude
