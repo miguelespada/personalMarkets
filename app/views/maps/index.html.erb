@@ -31,10 +31,6 @@
     handler.buildMap({ 
       provider: mapOptions, 
       internal: {id: 'map'}
-    }, function(){
-      markers = handler.addMarkers(<%=raw @hash.to_json %>);
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
     });
     handler.getMap().mapTypes.set('map_style00', styledMap00);
     handler.getMap().setMapTypeId('map_style00');
