@@ -10,6 +10,7 @@ class Market
   field :description, type: String
   field :longitude, type: String
   field :latitude, type: String
+  
   has_attachment  :featured, accept: [:jpg, :png, :gif]
 
   belongs_to :category
@@ -17,6 +18,7 @@ class Market
   has_and_belongs_to_many :favorited, class_name: "User", inverse_of: :favorites
 
   validates_presence_of :name, :description, :user, :category
+
 
   def like(user, value)
      value ? (favorited << user) :  (favorited.delete(user))

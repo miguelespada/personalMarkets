@@ -30,3 +30,20 @@ Feature: Manage tags
       And I click on a tag
       Then I see the markets matching the tag
 
+    @suggested
+    Scenario: Star one tag
+      When there are some tagged markets
+      And I go to tag list
+      And I click star tag
+      And I go to add market
+      Then I should see tag as suggested tag
+
+    @suggested
+    Scenario: UnStar one tag
+      When there are some tagged markets
+      And I go to tag list
+      And I click star tag
+      And I click unstar tag
+      Then I click star tag
+
+

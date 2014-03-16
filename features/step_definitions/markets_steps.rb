@@ -127,4 +127,28 @@ Then(/^I see the markets matching the tag$/) do
   expect(page).to have_content "Market one"
 end
 
+When(/^I click star tag$/) do
+  within(:css, "span#one") do
+      click_link "star"
+  end 
+end
+
+
+Then(/^I should see tag as suggested tag$/) do
+  within(:css, "div#suggested-tags") do
+      expect(page).to have_content "one"
+  end
+end
+
+
+When(/^I go to add market$/) do
+  visit "/"
+  click_on "Add market"
+end
+
+When(/^I click unstar tag$/) do
+  within(:css, "span#one") do
+      click_link "unstar"
+  end 
+end
 

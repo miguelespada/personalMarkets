@@ -19,6 +19,7 @@ class MarketsController < ApplicationController
 
   def new
     @market = @user.markets.new
+    @suggested_tags = Tag.all
   end
 
   def show

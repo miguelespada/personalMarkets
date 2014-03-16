@@ -10,4 +10,9 @@
   <%= f.button :submit %>
 <% end %>
 
-
+<div id = "suggested-tags">
+    <span>Suggested tags: </span>
+      <% @suggested_tags.each do |tag| %>
+        <span> <%= tag.name %> </span>
+      <% end %>
+</div>

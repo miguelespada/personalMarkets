@@ -19,6 +19,8 @@ PopUpStores::Application.routes.draw do
 
   get "markets/search"
   get "/users/:user_id/like/:market_id",  to: 'users#like', as: 'like'
+  get "/like/:tag_name",  to: 'tags#create', as: 'like_tag'
+  get "/dislike/:tag_name",  to: 'tags#destroy', as: 'dislike_tag'
   root "static_pages#home"
 
    # The priority is based upon order of creation: first created -> highest priority.
