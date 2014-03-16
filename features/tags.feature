@@ -27,10 +27,6 @@ Feature: Manage tags
       When there are some tagged markets
       And I go to tag list
       Then I can see all the tags
-
-    @tagsSearch
-    Scenario: Search from tag list
-      When there are some tagged markets
-      And I go to tag list
-      And I can click on a tag
+      And I click on a tag
       Then I see the markets matching the tag
+

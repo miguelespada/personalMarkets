@@ -106,6 +106,7 @@ When(/^there are some tagged markets$/) do
   @market_1 = FactoryGirl.create(:market, :name => "Market one", :tags => "one, two, three")
   @market_2 = FactoryGirl.create(:market, :name => "Market two", :tags => "one, three")
   @market_3 = FactoryGirl.create(:market, :name => "Market thre", :tags => "four")
+  Market.reindex
 end
 
 When(/^I go to tag list$/) do
@@ -117,3 +118,13 @@ Then(/^I can see all the tags$/) do
   expect(page).to have_content "two"
   expect(page).to have_content "three"
 end
+
+When(/^I click on a tag$/) do
+  click_link "one"
+end
+
+Then(/^I see the markets matching the tag$/) do
+  expect(page).to have_content "Market one"
+end
+
+

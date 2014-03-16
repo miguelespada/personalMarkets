@@ -1,7 +1,6 @@
-
-<h2>Tags</h2>
+<h4>Tags</h4>
 <% @tags.each do |tag| %>
-  <%= content_tag(:span, class: "tag") do %>  
-       <%= tag %>
+  <%= content_tag(:span, class: "tag", id: tag) do %>  
+       <%= link_to tag, markets_search_path({"query" => tag }) %>
   <% end %>
 <% end %>

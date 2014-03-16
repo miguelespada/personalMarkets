@@ -36,7 +36,10 @@ gem 'attachinary', git: 'git://github.com/rochers/attachinary.git', branch: 'rai
 
 # forms
 gem 'simple_form'
+
+#tags
 gem 'mongoid_taggable'
+gem "tagmanager-rails", "~> 3.0.1.0"
 
 
 # search
@@ -44,6 +47,7 @@ gem "tire", "~> 0.6.2"
 
 # google maps
 gem 'gmaps4rails'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
