@@ -1,10 +1,6 @@
 Feature: Manage categories
   I want to add and delete categories
 
-  @categories
-  Scenario: Default category is always present
-    When I go to category list
-    Then should the uncategorized category
 
   @categories
   Scenario: Add category

@@ -74,7 +74,6 @@ class MarketsController < ApplicationController
         :category,
         :user_id,
         :category_id,
-        :category_name
         )
     end
     
@@ -85,9 +84,7 @@ class MarketsController < ApplicationController
     end
     
     def load_category
-      params[:category][:category_id]
-      rescue => e
-        params[:category_name]
+        params[:category][:category_id]
       rescue => e
         ""
     end 

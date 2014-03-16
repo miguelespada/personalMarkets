@@ -64,9 +64,6 @@ Then(/^I should be notified that the category has not been deleted$/) do
   expect(page).to have_content "Cannot delete category."
 end
 
-Then(/^should the uncategorized category$/) do
-    expect(page).to have_content "Uncategorized"
-end
 
 When(/^I click on show markets$/) do
   within(:css, "tr#category_#{@market.category.id}") do
