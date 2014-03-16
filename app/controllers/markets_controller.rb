@@ -28,6 +28,7 @@ class MarketsController < ApplicationController
   
   def edit
     @market = @user.markets.find(params[:id])
+    @suggested_tags = Tag.all
   end
 
   def create
