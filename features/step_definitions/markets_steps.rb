@@ -101,3 +101,19 @@ Then(/^I should see my personal market page without the tag$/) do
   expect(page).to have_content "tag_2"
   expect(page).to have_content "tag_3"
 end
+
+When(/^there are some tagged markets$/) do
+  @market_1 = FactoryGirl.create(:market, :name => "Market one", :tags => "one, two, three")
+  @market_2 = FactoryGirl.create(:market, :name => "Market two", :tags => "one, three")
+  @market_3 = FactoryGirl.create(:market, :name => "Market thre", :tags => "four")
+end
+
+When(/^I go to tag list$/) do
+  visit tags_path
+end
+
+Then(/^I can see all the tags$/) do
+  expect(page).to have_content "one"
+  expect(page).to have_content "two"
+  expect(page).to have_content "three"
+end

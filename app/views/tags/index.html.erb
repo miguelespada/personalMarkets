@@ -1,0 +1,7 @@
+
+<h2>Tags</h2>
+<% @tags.each do |tag| %>
+  <%= content_tag(:span, class: "tag") do %>  
+       <%= tag %>
+  <% end %>
+<% end %>

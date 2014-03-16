@@ -1,9 +1,12 @@
 PopUpStores::Application.routes.draw do
 
+  get "tags/index"
+  get "tag/index"
   devise_for :users
   resources :markets, :only => [:index]
   resources :categories, :only => [:index, :new, :destroy, :create]
   resources :users, :only => [:index, :show]
+  resources :tags, :only => [:index]
   
   resources :users do
     resources :markets
