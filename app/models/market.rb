@@ -1,5 +1,7 @@
+
 class Market
   include Mongoid::Document
+  include Mongoid::Taggable
   include Tire::Model::Search
   include Tire::Model::Callbacks
   include Elasticsearch
@@ -15,7 +17,6 @@ class Market
   has_and_belongs_to_many :favorited, class_name: "User", inverse_of: :favorites
 
   validates_presence_of :name, :description, :user, :category
-
 
   def like(user, value)
      value ? (favorited << user) :  (favorited.delete(user))

@@ -8,7 +8,8 @@
     <td> <%= market.description %> </td>
     <td> <%= market.longitude %> </td>
     <td> <%= market.latitude %> </td>
-    <td> <%= market.category.name %> </td>   
+    <td> <%= market.category.name %> </td>  
+    <td> <%= market.tags %> </td> 
     <td> <%= market.user.try(:email) %> </td>
     <%= render partial: "markets/shared/actions", locals: {market: market} %>
 <% end %>

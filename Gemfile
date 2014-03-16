@@ -36,6 +36,8 @@ gem 'attachinary', git: 'git://github.com/rochers/attachinary.git', branch: 'rai
 
 # forms
 gem 'simple_form'
+gem 'mongoid_taggable'
+
 
 # search
 gem "tire", "~> 0.6.2"

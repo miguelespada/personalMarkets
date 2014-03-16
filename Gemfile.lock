@@ -129,6 +129,9 @@ GEM
       mongoid (>= 3.0.1)
       rake
       rspec (>= 2.14)
+    mongoid_taggable (1.1.1)
+      mongoid (>= 3)
+      rake
     moped (2.0.0.beta6)
       bson (~> 2.2)
       connection_pool (~> 1.2)
@@ -255,6 +258,7 @@ DEPENDENCIES
   launchy
   mongoid (>= 2.0.0.beta.19)
   mongoid-rspec
+  mongoid_taggable
   pry
   rails (= 4.0.2)
   rails_12factor
