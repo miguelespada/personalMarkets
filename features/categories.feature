@@ -35,3 +35,11 @@ Feature: Manage categories
     And I should be notified that the category has not been deleted
     And I go to category list
     Then I should see the market's category
+
+  @categoriesSearch
+  Scenario: I can access to markets by category
+    Given there is an indexed market
+    When I go to category list
+    And I click on show markets
+    And I should see the market 
+

@@ -68,4 +68,18 @@ Then(/^should the uncategorized category$/) do
     expect(page).to have_content "Uncategorized"
 end
 
+When(/^I click on show markets$/) do
+  within(:css, "tr#category_#{@market.category.id}") do
+    click_on "Show"
+  end 
+end
+
+When(/^I should see the market$/) do
+  expect(page).to have_content @market.name
+end
+
+Given(/^there is an indexed market$/) do
+  @market = FactoryGirl.create(:market)
+  Market.refresh_index
+end
 

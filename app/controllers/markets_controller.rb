@@ -73,7 +73,8 @@ class MarketsController < ApplicationController
         :query, 
         :category,
         :user_id,
-        :category_id
+        :category_id,
+        :category_name
         )
     end
     
@@ -85,6 +86,8 @@ class MarketsController < ApplicationController
     
     def load_category
       params[:category][:category_id]
+      rescue => e
+        params[:category_name]
       rescue => e
         ""
     end 
