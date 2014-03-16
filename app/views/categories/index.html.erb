@@ -1,10 +1,20 @@
-<h3>Categories</h3>
 
-<% @categories.each do |category| %>
-  <li class = "category"> <span> <%= category.name %> </span> 
-  <span class = "market-counter"> <%= category.markets.count %> </span>
-  <span> <%= link_to "Delete", category_path(category), :method => :delete %> </span>
-   </li>   
-<% end %>
+<h2>Categories</h2>
+
+<table class="table">
+  <tr>
+  <th>Name</th>
+  <th>Market Count</th>
+  <th>Actions</th>
+  </tr>
+
+  <% @categories.each do |category| %>
+    <tr class = "category"> 
+        <td> <%= category.name %> </td> 
+        <td class = "market-counter"> <%= category.markets.count %> </td>
+        <td> <%= link_to "Delete", category_path(category), :method => :delete %> </td>
+    </tr>   
+  <% end %>
+</table>
 
 <%= link_to "New", new_category_path %>
