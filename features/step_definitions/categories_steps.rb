@@ -61,7 +61,7 @@ Then(/^I should see the market's category$/) do
 end
 
 Then(/^I should be notified that the category has not been deleted$/) do
-  expect(page).to have_content "Cannot delete a non empty category."
+  expect(page).to have_content "Cannot delete category."
 end
 
 

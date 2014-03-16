@@ -32,7 +32,7 @@ class CategoriesController < ApplicationController
                       notice: "Category successfully deleted."}
       else  
         format.html { redirect_to categories_path, 
-                      :flash => { :error => "Cannot delete a non empty category." }}
+                      :flash => { :error => "Cannot delete category." }}
       end
     end
 

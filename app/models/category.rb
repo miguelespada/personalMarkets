@@ -5,7 +5,7 @@ class Category
   has_many :markets
 
   def destroy
-    return false if self.markets.count > 0
+    return false if self.markets.count > 0 || name == "Uncategorized"
     self.delete
   end
 end

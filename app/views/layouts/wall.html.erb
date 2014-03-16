@@ -1,209 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>  
-		<title>Magdalenas Federico</title>
-		  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-		  <%= csrf_meta_tags %>
-		  <%= cloudinary_js_config %>
+  <head>  
+    <title>Magdalenas Federico</title>
+      <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+      <%= csrf_meta_tags %>
+      <%= cloudinary_js_config %>
 
-		  <%= stylesheet_link_tag "ace-fonts.css" %>
+      <%= stylesheet_link_tag "ace-fonts.css" %>
 
- 		<%= stylesheet_link_tag "uncompressed/ace.css" %>
- 		<%= stylesheet_link_tag "uncompressed/ace-rtl.css" %>
- 		<%= stylesheet_link_tag "uncompressed/ace-skins.css" %>
-		<%= javascript_include_tag "uncompressed/ace-extra.js" %>
-
-
-	</head>
-
-	<body>
-
-		<% if flash[:notice] %>
-		    <div id="notice"><%= flash[:notice] %></div>
-		<% end %>
-		<ul >
-		  <% if user_signed_in? %>
-		     <li> You are logged as: <br> <%= current_user.email %>
-		    <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-		  <% else %>
-		    <li><%= link_to "Sign in", new_user_session_path %></li>
-		    <li><%= link_to "Sign up", new_user_registration_path %></li>
-		  <% end %>
-		</ul>
+    <%= stylesheet_link_tag "uncompressed/ace.css" %>
+    <%= stylesheet_link_tag "uncompressed/ace-rtl.css" %>
+    <%= stylesheet_link_tag "uncompressed/ace-skins.css" %>
+    <%= javascript_include_tag "uncompressed/ace-extra.js" %>
 
 
-		<div class="navbar navbar-default" id="navbar">
-			<script type="text/javascript">
-				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
-			</script>
+  </head>
 
-			<div class="navbar-container" id="navbar-container">
-				<div class="navbar-header pull-left">
-					<a href="#" class="navbar-brand">
-						<small>
-						<%= fa_icon "dashboard" %>
-						 Personal Markets
-						</small>
-					</a><!-- /.brand -->
-				</div><!-- /.navbar-header -->
+  <body>
 
-				<div class="navbar-header pull-right" role="navigation">
-					<ul class="nav ace-nav">
-						
-						<li class="green">
-							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							   <%= fa_icon "calendar" %>
-								<span class="badge badge-important">2</span>
-							</a>
+    <% if flash[:notice] %>
+        <div id="notice"><%= flash[:notice] %></div>
+    <% end %>
+    <ul >
+      <% if user_signed_in? %>
+         <li> You are logged as: <br> <%= current_user.email %>
+        <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+      <% else %>
+        <li><%= link_to "Sign in", new_user_session_path %></li>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
+      <% end %>
+    </ul>
 
-						</li>
+    <div class="navbar navbar-default" id="navbar">
+      <script type="text/javascript">
+        try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+      </script>
 
-						<li class="purple">
-							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-								<%= fa_icon "bell" %>
-								<span class="badge badge-important">8</span>
-							</a>
-						</li>
+      <div class="navbar-container" id="navbar-container">
+        <div class="navbar-header pull-left">
+          <a href="#" class="navbar-brand">
+            <small>
+            <%= fa_icon "dashboard" %>
+             Personal Markets
+            </small>
+          </a><!-- /.brand -->
+        </div><!-- /.navbar-header -->
 
-						<li class="red">
-							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							   <%= fa_icon "heart" %>
-								<span class="badge badge-important">9</span>
-							</a>
+        <div class="navbar-header pull-right" role="navigation">
+          <ul class="nav ace-nav">
+            
+            <li class="green">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                 <%= fa_icon "calendar" %>
+                <span class="badge badge-important">2</span>
+              </a>
 
-						</li>
-						<li class="light-blue">
-							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							   <%= fa_icon "user" %>
+            </li>
 
-							</a>
+            <li class="purple">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <%= fa_icon "bell" %>
+                <span class="badge badge-important">8</span>
+              </a>
+            </li>
 
-						
-						</li>
+            <li class="red">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                 <%= fa_icon "heart" %>
+                <span class="badge badge-important">9</span>
+              </a>
 
-					</ul><!-- /.ace-nav -->
-				</div><!-- /.navbar-header -->
-			</div><!-- /.container -->
-		</div>
+            </li>
+            <li class="light-blue">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                 <%= fa_icon "user" %>
 
-		<div class="main-container" id="main-container">
-			<script type="text/javascript">
-				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
-			</script>
+              </a>
 
-			<div class="main-container-inner">
-				<a class="menu-toggler" id="menu-toggler" href="#">
-					<span class="menu-text"></span>
-				</a>
+            
+            </li>
 
-				<div class="sidebar" id="sidebar">
-					<script type="text/javascript">
-						try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
-					</script>
+          </ul><!-- /.ace-nav -->
+        </div><!-- /.navbar-header -->
+      </div><!-- /.container -->
+    </div>
 
-					<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-						<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-						
+    <div class="main-container" id="main-container">
+      <script type="text/javascript">
+        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+      </script>
 
-							<button class="btn btn-info">
-								<% if user_signed_in? %>
-									<%= link_to new_user_market_path(current_user) do %> 
-										<%= fa_icon "edit" %>
-									<% end %>
-								<% else %>
-										<%= fa_icon "ban" %>
-								<% end %>
+      <div class="main-container-inner">
+        <a class="menu-toggler" id="menu-toggler" href="#">
+          <span class="menu-text"></span>
+        </a>
 
-							</button>
+        <div class="sidebar" id="sidebar">
+          <script type="text/javascript">
+            try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+          </script>
 
-							<button class="btn btn-success">
-								<%= fa_icon "signal" %>
-							</button>
+          <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+            <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+            
 
-							<button class="btn btn-warning">
+              <button class="btn btn-info">
+                <% if user_signed_in? %>
+                  <%= link_to new_user_market_path(current_user) do %> 
+                    <%= fa_icon "edit" %>
+                  <% end %>
+                <% else %>
+                    <%= fa_icon "ban" %>
+                <% end %>
 
-								<%= fa_icon "group" %>
-							</button>
+              </button>
 
-							<button class="btn btn-danger">
+              <button class="btn btn-success">
+                <%= fa_icon "signal" %>
+              </button>
 
-								<%= fa_icon "cogs" %>
-							</button>
-						</div>
+              <button class="btn btn-warning">
 
-						<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-							<span class="btn btn-success"></span>
+                <%= fa_icon "group" %>
+              </button>
 
-							<span class="btn btn-info"></span>
+              <button class="btn btn-danger">
 
-							<span class="btn btn-warning"></span>
+                <%= fa_icon "cogs" %>
+              </button>
+            </div>
 
-							<span class="btn btn-danger"></span>
-						</div>
-					</div><!-- #sidebar-shortcuts -->
+            <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+              <span class="btn btn-success"></span>
 
-					<ul class="nav nav-list">
-						<li>
-							<% if user_signed_in? %>
-								<%= link_to user_markets_path(current_user) do %> 
-									<%= fa_icon "home" %>
-									<span class="menu-text"> Home </span>
-								<% end %>
-							<% end %>
+              <span class="btn btn-info"></span>
 
-						</li>
+              <span class="btn btn-warning"></span>
 
-						<li>	
-							<%= link_to markets_path do %> 
-								<%= fa_icon "shopping-cart" %>
-								<span class="menu-text"> Markets </span>
-							<% end %>
-						</li>
+              <span class="btn btn-danger"></span>
+            </div>
+          </div><!-- #sidebar-shortcuts -->
 
-						<li>	
-							<%= link_to users_path do %> 
-								<%= fa_icon "users" %>
-								<span class="menu-text"> Users </span>
-							<% end %>
-						</li>
-					</ul><!-- /.nav-list -->
+          <ul class="nav nav-list">
+            <li>
+              <% if user_signed_in? %>
+                <%= link_to user_markets_path(current_user) do %> 
+                  <%= fa_icon "home" %>
+                  <span class="menu-text"> Home </span>
+                <% end %>
+              <% end %>
 
-					<div class="sidebar-collapse" id="sidebar-collapse">
-							<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right">
-							</i>
-					</div>
+            </li>
 
-					<script type="text/javascript">
-						try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
-					</script>
-				</div>
+            <li>  
+              <%= link_to markets_path do %> 
+                <%= fa_icon "shopping-cart" %>
+                <span class="menu-text"> Markets </span>
+              <% end %>
+            </li>
 
-				<div class="main-content">
-					<div class="page-content">
-						<div class="row">
-							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
+            <li>  
+              <%= link_to users_path do %> 
+                <%= fa_icon "users" %>
+                <span class="menu-text"> Users </span>
+              <% end %>
+            </li>
+          </ul><!-- /.nav-list -->
 
-								<div>
-								<%= yield %>
-								</div>
+          <div class="sidebar-collapse" id="sidebar-collapse">
+              <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right">
+              </i>
+          </div>
 
-								<!-- PAGE CONTENT ENDS -->
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div><!-- /.page-content -->
-				</div><!-- /.main-content -->
-		</div>
+          <script type="text/javascript">
+            try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+          </script>
+        </div>
+
+        <div class="main-content">
+          <div class="page-content">
+            <div class="row">
+              <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+
+                <div>
+                <%= yield %>
+                </div>
+
+                <!-- PAGE CONTENT ENDS -->
+              </div><!-- /.col -->
+            </div><!-- /.row -->
+          </div><!-- /.page-content -->
+        </div><!-- /.main-content -->
+    </div>
 
 
-		<%= javascript_include_tag "typeahead-bs2.min.js" %>
-		<%= javascript_include_tag "ace-elements.min.js" %>
-		<%= javascript_include_tag "ace.min.js" %>
+    <%= javascript_include_tag "typeahead-bs2.min.js" %>
+    <%= javascript_include_tag "ace-elements.min.js" %>
+    <%= javascript_include_tag "ace.min.js" %>
 
-		<script>
-		$( document ).ready(function() {
-			$('.attachinary-input').attachinary();
-		});
-		</script>
-	</body>
+    <script>
+    $( document ).ready(function() {
+      $('.attachinary-input').attachinary();
+    });
+    </script>
+  </body>
 </html>
