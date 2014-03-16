@@ -80,3 +80,13 @@ Then(/^I should see my personal market page with the new latitude and longitude$
     expect(page).to have_content "-3"
   end 
 end
+
+When(/^I fill the tag list$/) do
+  fill_in "Tags", with: "tag_1, tag_2, tag_3"
+end
+
+Then(/^I should see my personal market page with the tags$/) do
+  expect(page).to have_content "tag_1"
+  expect(page).to have_content "tag_2"
+  expect(page).to have_content "tag_3"
+end

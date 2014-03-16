@@ -43,7 +43,7 @@ class MarketsController < ApplicationController
 
   def update
     @market = @user.markets.find(params[:id])
-      load_hidden_tags
+    load_hidden_tags
     respond_to do |format|
       if @market.update(market_params)
         format.html { redirect_to [@user, @market], 
@@ -80,7 +80,9 @@ class MarketsController < ApplicationController
         )
     end
     def load_hidden_tags
-      params[:market][:tags] += "," + params["hidden-market"][:tags]
+      if params["hidden-market"].present?
+        params[:market][:tags] += "," + params["hidden-market"][:tags]
+      end
     end 
     def load_user
       if params[:user_id].present?
