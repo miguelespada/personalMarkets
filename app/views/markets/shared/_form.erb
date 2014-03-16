@@ -1,4 +1,5 @@
-<%= simple_form_for [user, market] do |f| %>
+<%= simple_form_for [user, market], 
+  :html => {"data-tags" => "#{raw_tags(market)}"}  do |f| %>
   <%= f.input :name, input_html: { class: 'market-name' }%>
   <%= f.input :description, label_html: { class: 'market-description' } %>
   <%= f.association :category, :include_blank => false %>
@@ -10,9 +11,3 @@
 <% end %>
 
 
-<%= javascript_include_tag "tagmanager.js" %>
-<%= stylesheet_link_tag "tagmanager.css" %>
-
-<script>
-  jQuery(".tm-input").tagsManager({prefilled: <%= raw market.tags.split(/,/) %>});
-</script>
