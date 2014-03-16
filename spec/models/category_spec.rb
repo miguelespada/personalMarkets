@@ -7,5 +7,4 @@ describe Category do
   	pending "Check is the best way to create de default 'Uncategorized' record?"
   	Category.where(name: "Uncategorized").count.should eq 1
   end
-
 end

@@ -12,6 +12,10 @@
     <div id="notice"><%= flash[:notice] %></div>
 <% end %>
 
+<% if flash[:error] %>
+    <div id="error"><%= flash[:error] %></div>
+<% end %>
+
 <div>
   <h2>Personal Markets</h2>
 </div>
@@ -36,6 +40,10 @@
 
 <div>
   <%= link_to "Home", "/" %>
+</div>
+
+<div>
+  <%= link_to "Categories", categories_path %>
 </div>
 
 </body>

@@ -30,9 +30,7 @@ class MarketsController < ApplicationController
   end
 
   def create
-
     @market = @user.markets.new(market_params)
-    @market.save
     respond_to do |format|
       if @market.save
         format.html {redirect_to [@user, @market], notice: 'Market was successfully created.' }
@@ -78,7 +76,8 @@ class MarketsController < ApplicationController
         :category_id
         )
     end
-     def load_user
+    
+    def load_user
       if params[:user_id].present?
         @user = User.find(params[:user_id])
       end 

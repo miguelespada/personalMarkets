@@ -1,16 +1,19 @@
 PopUpStores::Application.routes.draw do
 
-  get "category/index"
   devise_for :users
   resources :markets, :only => [:index]
+  resources :categories, :only => [:index, :new, :destroy, :create]
   resources :users, :only => [:index, :show]
+  
   resources :users do
     resources :markets
   end
+  
   resources :maps, :only => [:index]
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   mount Attachinary::Engine => "/attachinary"
+
   get "markets/search"
   get "/users/:user_id/like/:market_id",  to: 'users#like', as: 'like'
   root "static_pages#home"
