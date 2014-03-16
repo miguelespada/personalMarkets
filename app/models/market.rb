@@ -26,7 +26,8 @@ class Market
         { :id   => id,
           :name => name,
           :description => description,
-          :category => category.name
+          :category => category.name,
+          :tags => tags
         }.to_json
   end
 

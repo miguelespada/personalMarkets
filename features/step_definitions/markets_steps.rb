@@ -90,3 +90,14 @@ Then(/^I should see my personal market page with the tags$/) do
   expect(page).to have_content "tag_2"
   expect(page).to have_content "tag_3"
 end
+
+When(/^I remove one tag$/) do
+  save_and_open_page
+  find(:xpath, "//input[@name='hidden-market[tags]']").set "tag_1,tag_3"
+end
+
+Then(/^I should see my personal market page without the tag$/) do
+  expect(page).to have_content "tag_1"
+  expect(page).to have_content "tag_2"
+  expect(page).to have_content "tag_3"
+end

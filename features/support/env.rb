@@ -56,7 +56,7 @@ end
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
-
+Capybara.javascript_driver = :webkit
 # Elastic Search cleaning
 
 Market.delete_index #remove at the beginning
