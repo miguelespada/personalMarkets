@@ -9,3 +9,12 @@
        <% end %>
   <% end %>
 <% end %>
+
+<h4>Suggested Tags</h4>
+
+<div id = "suggested-tags">
+      <% @starred.each do |tag| %>
+        <span> <%= tag %> </span>
+        <span> <%= link_to "unstar", dislike_tag_path(tag)  %> </span>
+      <% end %>
+</div>
