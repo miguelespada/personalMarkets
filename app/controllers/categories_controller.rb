@@ -25,18 +25,17 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category = Category.find(params[:id])
-    if @category.markets.count == 0
-      @category.destroy
-      respond_to do |format|
+
+    respond_to do |format|
+      if @category.destroy
         format.html { redirect_to categories_path, 
-                        notice: "Category successfully deleted."}
-      end
-    else
-      respond_to do |format|
+                      notice: "Category successfully deleted."}
+      else  
         format.html { redirect_to categories_path, 
-                        :flash => { :error => "Cannot delete a non empty category." }}
+                      :flash => { :error => "Cannot delete a non empty category." }}
       end
     end
+
   end
   
   private

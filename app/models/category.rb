@@ -3,4 +3,9 @@ class Category
   validates :name, uniqueness: {message: "Category name must be unique"}
   field :name, type: String 
   has_many :markets
+
+  def destroy
+    return false if self.markets.count > 0
+    self.delete
+  end
 end
