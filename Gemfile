@@ -83,4 +83,6 @@ group :test, :development do
 end
 gem "font-awesome-rails"
 
+gem 'draper', '~> 1.3'
+
 

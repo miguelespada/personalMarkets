@@ -1,6 +1,5 @@
 <%= simple_form_for [user, market], 
-  :html => {"data-tags" => "#{raw_tags(market)}", 
-          "data-suggested-tags" => "#{raw_suggested_tags(@suggested_tags)}" }  do |f| %>
+  :html => {"data-tags" => "#{raw_tags(market)}" }  do |f| %>
   <%= f.input :name, input_html: { class: 'market-name' }%>
   <%= f.input :description, label_html: { class: 'market-description' } %>
   <%= f.association :category, :include_blank => false %>
@@ -10,10 +9,3 @@
   <%= f.input :tags, input_html: { class: 'tm-input' } %>
   <%= f.button :submit %>
 <% end %>
-
-<div id = "suggested-tags">
-    <span>Suggested tags: </span>
-      <% @suggested_tags.each do |tag| %>
-        <span> <%= tag.name %> </span>
-      <% end %>
-</div>
