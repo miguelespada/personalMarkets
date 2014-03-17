@@ -18,7 +18,7 @@ PopUpStores::Application.routes.draw do
 
   get "markets/search"
   get "/users/:user_id/like/:market_id",  to: 'users#like', as: 'like'
-  get "/users/:user_id/unike/:market_id",  to: 'users#unlike', as: 'unlike'
+  get "/users/:user_id/unlike/:market_id",  to: 'users#unlike', as: 'unlike'
 
   root "static_pages#home"
 
