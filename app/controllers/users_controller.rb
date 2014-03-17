@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   
   def show
     @user ||=  User.find(params[:id])
-    rescue Exception => each 
-      redirect_to action: 'index'
+  rescue Exception => each 
+    redirect_to action: 'index'
   end
 
   def like

@@ -34,7 +34,7 @@ class MarketsController < ApplicationController
     @market = @user.markets.new(market_params)
     respond_to do |format|
       if @market.save
-        format.html {redirect_to [@user, @market], notice: 'Market was successfully created.' }
+        format.html { redirect_to [@user, @market], notice: 'Market was successfully created.' }
       else
         format.html { render action: 'new' }
       end 
@@ -47,8 +47,7 @@ class MarketsController < ApplicationController
     load_hidden_tags
     respond_to do |format|
       if @market.update(market_params)
-        format.html { redirect_to [@user, @market], 
-                      notice: "Market successfully updated."}
+        format.html { redirect_to [@user, @market], notice: "Market successfully updated."}
       end
     end
   end
@@ -93,7 +92,7 @@ class MarketsController < ApplicationController
     
     def load_category
         params[:category][:category_id]
-      rescue => e
+    rescue => e
         ""
     end 
 

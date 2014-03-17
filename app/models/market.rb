@@ -29,11 +29,11 @@ class Market
   end
   
   def to_indexed_json
-        { :id   => id,
-          :name => name,
-          :description => description,
-          :category => category.name,
-          :tags => tags
+        { id: id,
+          name: name,
+          description: description,
+          category: category.name,
+          tags: tags
         }.to_json
   end
 
@@ -41,7 +41,7 @@ class Market
       index_all
       query = query.blank? ? '*' : query
 
-      s = Tire.search 'markets' do
+      search = Tire.search 'markets' do
         query do
           filtered do
             query {string query}
@@ -51,7 +51,7 @@ class Market
           end
         end
       end
-      s.results.collect{|result| find(result.to_hash[:id])}
-    end
+    search.results.collect{|result| find(result.to_hash[:id])}
+  end
 
 end
