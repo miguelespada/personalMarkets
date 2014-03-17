@@ -8,15 +8,16 @@ describe UsersController do
  let(:market) { FactoryGirl.create(:market)}
  let(:second_market) { FactoryGirl.create(:market)}
 
- it "renders the index template" do
-      get :index, valid_session
-      expect(response).to render_template("index")
- end
+  it "renders the index template" do
+    get :index, valid_session
+    expect(response).to render_template(:index)
+  end
 
   describe "Like" do
+   
    it "render index" do
-        get :like,{ user_id: user.to_param, market_id: market.to_param}, valid_session
-        expect(response).to render_template("show")
+    get :like,{ user_id: user.to_param, market_id: market.to_param}, valid_session
+    expect(response).to render_template(:show)
    end
 
    it "user likes market" do

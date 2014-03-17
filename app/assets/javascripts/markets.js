@@ -6,5 +6,5 @@
 
 $( document ).ready(function() {
   $(".tm-input").tagsManager({prefilled: $( "form" ).data( "tags")});
-  $('.attachinary-input').attachinary()
+  $('.attachinary-input').attachinary();
 });

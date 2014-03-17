@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
   def index
     @tags = Market.tags
-    @starred = Tag.all.map{|t| t.name}
+    @starred = Tag.all.map{ |tag| tag.name}
   end
 
   def create 

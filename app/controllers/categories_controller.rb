@@ -14,6 +14,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
+    
     respond_to do |format|
       if @category.save
         format.html { redirect_to categories_path, notice: 'Category was successfully created.' }
@@ -32,7 +33,7 @@ class CategoriesController < ApplicationController
                       notice: "Category successfully deleted."}
       else  
         format.html { redirect_to categories_path, 
-                      :flash => { :error => "Cannot delete category." }}
+                      flash: { error: "Cannot delete category." }}
       end
     end
 
