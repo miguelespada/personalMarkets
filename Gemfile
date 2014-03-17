@@ -74,13 +74,14 @@ group :test do
   gem 'capybara-webkit'
   gem "launchy"
   gem "factory_girl_rails"
-  gem 'jasmine-rails'
   gem 'pry'
 end
 
 group :test, :development do
   gem "rspec-rails"
+  gem 'jasmine'
 end
+
 gem "font-awesome-rails"
 
 gem 'draper', '~> 1.3'
