@@ -1,4 +1,3 @@
-<% market = market.decorate %>
 
 <%= content_tag(:tr, :id => "market_slug_#{market.id}", :class => "market_slug") do %>
     <td class="featured-photo">
@@ -14,6 +13,7 @@
     <td> <%= market.tags %> </td> 
     <td> <%= market.user.email %> </td>
 
+    <% market = market.decorate %>
     <%= market.show_link %>
     <%= market.edit_link %>
     <%= market.delete_link %>
