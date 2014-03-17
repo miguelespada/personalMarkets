@@ -11,5 +11,9 @@
     <td> <%= market.category.name %> </td>  
     <td> <%= market.tags %> </td> 
     <td> <%= market.user.try(:email) %> </td>
-    <%= render partial: "markets/shared/actions", locals: {market: market} %>
+    
+    <%= market.decorate.show_link %>
+    <%= market.decorate.edit_link %>
+    <%= market.decorate.delete_link %>
+    <%= market.decorate.like_link %> 
 <% end %>
