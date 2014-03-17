@@ -1,4 +1,4 @@
-<td> <%= link_to "Edit", edit_user_market_path(market.user, market) %></td>
-<td> <%= link_to "Show", user_market_path(market.user, market)%></td>
-<td> <%= link_to "Delete", user_market_path(market.user, market), :method => :delete %></td>
-<td> <%= market.decorate.like_action %> </td>
+<%= market.decorate.show_link %>
+<%= market.decorate.edit_link %>
+<%= market.decorate.delete_link %>
+<%= market.decorate.like_link %> 

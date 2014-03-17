@@ -88,7 +88,7 @@ Then(/^I cannot like the market$/) do
 end
 
 When(/^The market is deleted$/) do
-  click_on "Delete"
+  @market.destroy
 end
 
 
