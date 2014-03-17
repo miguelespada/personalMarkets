@@ -2,19 +2,15 @@
 <% @tags.each do |tag| %>
   <%= content_tag(:span, class: "tag", id: tag) do %>  
        <%= link_to tag, markets_search_path({"query" => tag }) %>
-       <% if @starred.include?(tag) %>
-          <%= link_to "unstar", dislike_tag_path(tag)  %>
-        <% else %>
-          <%= link_to "star", like_tag_path(tag) %>
-       <% end %>
   <% end %>
 <% end %>
 
 <h4>Suggested Tags</h4>
 
 <div id = "suggested-tags">
-      <% @starred.each do |tag| %>
-        <span> <%= tag %> </span>
-        <span> <%= link_to "unstar", dislike_tag_path(tag)  %> </span>
+    <% @starred.each do |tag| %>
+      <%= content_tag(:span, class: "tag", id: tag) do %>  
+           <%= link_to tag, markets_search_path({"query" => tag }) %>
       <% end %>
+    <% end %>
 </div>

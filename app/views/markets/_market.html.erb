@@ -1,3 +1,5 @@
+<% market = market.decorate %>
+
 <%= content_tag(:tr, :id => "market_slug_#{market.id}", :class => "market_slug") do %>
     <td class="featured-photo">
       <% if market.featured? %> 
@@ -10,10 +12,10 @@
     <td> <%= market.latitude %> </td>
     <td> <%= market.category.name %> </td>  
     <td> <%= market.tags %> </td> 
-    <td> <%= market.user.try(:email) %> </td>
-    
-    <%= market.decorate.show_link %>
-    <%= market.decorate.edit_link %>
-    <%= market.decorate.delete_link %>
-    <%= market.decorate.like_link %> 
+    <td> <%= market.user.email) %> </td>
+
+    <%= market.show_link %>
+    <%= market.edit_link %>
+    <%= market.delete_link %>
+    <%= market.like_link %> 
 <% end %>

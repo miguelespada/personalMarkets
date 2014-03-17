@@ -3,15 +3,4 @@ class TagsController < ApplicationController
     @tags = Market.tags
     @starred = Tag.all.map{ |tag| tag.name}
   end
-
-  def create 
-    Tag.create(name: params[:tag_name])
-    redirect_to tags_path
-  end
-
-  def destroy
-    tag = Tag.where(name: params[:tag_name])
-    tag.destroy
-    redirect_to tags_path
-  end
 end

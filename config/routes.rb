@@ -19,9 +19,6 @@ PopUpStores::Application.routes.draw do
   get "markets/search"
   get "/users/:user_id/like/:market_id",  to: 'users#like', as: 'like'
   get "/users/:user_id/unike/:market_id",  to: 'users#unlike', as: 'unlike'
-  
-  get "/like/:tag_name",  to: 'tags#create', as: 'like_tag'
-  get "/dislike/:tag_name",  to: 'tags#destroy', as: 'dislike_tag'
 
   root "static_pages#home"
 
