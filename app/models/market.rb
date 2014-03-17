@@ -20,10 +20,14 @@ class Market
   validates_presence_of :name, :description, :user, :category
 
 
-  def like(user, value)
-     value ? (favorited << user) :  (favorited.delete(user))
+  def like(user)
+    favorited << user
   end
 
+  def unlike(user)
+    favorited.delete(user)
+  end
+  
   def to_indexed_json
         { :id   => id,
           :name => name,

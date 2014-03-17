@@ -12,9 +12,16 @@ class UsersController < ApplicationController
   def like
     @user = User.find(params[:user_id])
     market = Market.find(params[:market_id])
-    v = params[:v] == "1"
-    @user.like(market, v)
-    market.like(@user, v)
+    @user.like(market)
+    market.like(@user)
+    render 'show'
+  end
+
+  def unlike
+    @user = User.find(params[:user_id])
+    market = Market.find(params[:market_id])
+    @user.unlike(market)
+    market.unlike(@user)
     render 'show'
   end
 
