@@ -3,8 +3,7 @@
     <p>
       <%= text_field_tag :query, params[:query] %>
       <%= collection_select(:category, :category_id, Category.all, :name, :name, 
-                            {:selected => @category_query,
-                              :include_blank => ""}) %>
+                            {:selected => @category_query, :include_blank => ""}) %>
       <%= submit_tag "Search", name: nil %>
     </p>
   <% end %>
