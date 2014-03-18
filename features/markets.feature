@@ -24,6 +24,7 @@ Feature: Manage market
     Then I should see my personal market page with the new name
     And I should be notified that the market has been succesfully updated
 
+    @coordinates
   Scenario: Add coordinates to a market
     And I go to the my markets
     And I click on edit a market

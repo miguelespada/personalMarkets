@@ -73,10 +73,10 @@ When(/^I fill latitude and longitude$/) do
 end
 
 Then(/^I should see my personal market page with the new latitude and longitude$/) do
-  within(:css, "div#latitude") do
+  within(:css, "div.market-latitude") do
     expect(page).to have_content "40"
   end 
-  within(:css, "div#longitude") do
+  within(:css, "div.market-longitude") do
     expect(page).to have_content "-3"
   end 
 end

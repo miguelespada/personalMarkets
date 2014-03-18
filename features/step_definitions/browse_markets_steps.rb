@@ -27,7 +27,7 @@ Then(/^I should see the markets that match my search$/) do
 end
 
 When(/^I click the details link of a market$/) do
-  within("//tr[@id='market_slug_#{@market_0.id}']") do
+  within("//div[@id='market_#{@market_0.id}']") do
     click_on "Show"
   end
 end

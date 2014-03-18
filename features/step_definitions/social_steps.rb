@@ -65,13 +65,13 @@ Then(/^The market does not have my like$/) do
 end
 
 Then(/^I cannot like the market again$/) do
-  within("//tr[@id='market_slug_#{@market.id}']") do
+  within("//div[@id='market_#{@market.id}']") do
     page.should_not have_content "Like"
   end
 end
 
 Then(/^I cannot unlike the market again$/) do
-  within("//tr[@id='market_slug_#{@market.id}']") do
+  within("//div[@id='market_#{@market.id}']") do
     page.should_not have_content "Unlike"
   end
 end
@@ -81,7 +81,7 @@ Given(/^I have a market$/) do
 end
 
 Then(/^I cannot like the market$/) do
-  within("//tr[@id='market_slug_#{@myMarket.id}']") do
+  within("//div[@id='market_#{@myMarket.id}']") do
     page.should_not have_content "Unlike"
     page.should_not have_content "Like"
   end
