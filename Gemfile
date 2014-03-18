@@ -40,6 +40,7 @@ gem 'simple_form'
 #tags
 gem 'mongoid_taggable'
 gem "tagmanager-rails", "~> 3.0.1.0"
+gem 'twitter-typeahead-rails'
 
 
 # search

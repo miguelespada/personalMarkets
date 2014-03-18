@@ -88,10 +88,7 @@ Then(/^I should see my personal market page with the tags$/) do
   expect(page).to have_content "tag_3"
 end
 
-When(/^I remove one tag$/) do
-  save_and_open_page
-  find(:xpath, "//input[@name='hidden-market[tags]']").set "tag_1,tag_3"
-end
+
 
 Then(/^I should see my personal market page without the tag$/) do
   expect(page).to have_content "tag_1"
@@ -142,6 +139,10 @@ When(/^I click unstar tag$/) do
   within(:css, "span#one") do
       click_link "unstar"
   end 
+end
+
+When(/^I remove one tag$/) do
+  find(:xpath, "//input[@name='hidden-market[tags]']").set "tag_1,tag_3"
 end
 
 Then(/^I should see its tags in the form$/) do

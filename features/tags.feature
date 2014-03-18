@@ -13,7 +13,7 @@ Feature: Manage tags
     When I fill in the name and description
     And I click on the save market button
 
-    @tagsList
+    @tags
     Scenario: Add tag list
       When I go to my markets
       And I click on edit a market
