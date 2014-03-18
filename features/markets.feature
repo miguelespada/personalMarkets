@@ -17,7 +17,7 @@ Feature: Manage market
     And I should be notified that the market has been added
 
   Scenario: modify market
-    And I go to the my markets
+    And I go to my markets
     And I click on edit a market
     And I fill the name field with a new name
     And I click on update market
@@ -26,7 +26,7 @@ Feature: Manage market
 
     @coordinates
   Scenario: Add coordinates to a market
-    And I go to the my markets
+    And I go to my markets
     And I click on edit a market
     And I fill latitude and longitude
     And I click on update market
@@ -35,8 +35,8 @@ Feature: Manage market
 
   @delete
   Scenario: delete market
-    And I go to the my markets
+    And I go to my markets
     When I click the delete button
     Then I should be notified that the market has been succesfully deleted
-    Then I go to the my markets
+    Then I go to my markets
     And I should not see the market
