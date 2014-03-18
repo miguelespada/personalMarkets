@@ -26,9 +26,6 @@ Then(/^I should be notified that the market has been added$/) do
   expect(page).to have_content "Market was successfully created."
 end
 
-When(/^I go to the my markets$/) do
-  visit user_markets_path(@user)
-end
 
 When(/^I click on edit a market$/) do
   click_on "Edit"
@@ -105,9 +102,11 @@ end
 When(/^there are some tagged markets$/) do
   @market_1 = FactoryGirl.create(:market, :name => "Market one", :tags => "one, two, three")
   @market_2 = FactoryGirl.create(:market, :name => "Market two", :tags => "one, three")
-  @market_3 = FactoryGirl.create(:market, :name => "Market thre", :tags => "four")
+  @market_3 = FactoryGirl.create(:market, :name => "Market three", :tags => "four")
   Market.reindex
 end
+
+
 
 When(/^I go to tag list$/) do
   visit tags_path
@@ -134,13 +133,6 @@ When(/^I click star tag$/) do
 end
 
 
-Then(/^I should see tag as suggested tag$/) do
-  # within(:css, "div#suggested-tags") do
-  #     expect(page).to have_content "one"
-  # end
-end
-
-
 When(/^I go to add market$/) do
   visit "/"
   click_on "Add market"
@@ -150,5 +142,9 @@ When(/^I click unstar tag$/) do
   within(:css, "span#one") do
       click_link "unstar"
   end 
+end
+
+Then(/^I should see its tags in the form$/) do
+  page.should have_css('form[data-tags=\'["tag_1", "tag_2", "tag_3"]\']')
 end
 

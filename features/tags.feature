@@ -13,14 +13,16 @@ Feature: Manage tags
     When I fill in the name and description
     And I click on the save market button
 
-    @tags
+    @tagsList
     Scenario: Add tag list
-      When I go to the my markets
+      When I go to my markets
       And I click on edit a market
       And I fill the tag list
       And I click on update market 
       Then I should see my personal market page with the tags
       And I should be notified that the market has been succesfully updated
+      When I click on edit a market
+      Then I should see its tags in the form
 
     @tags
     Scenario: See tag list
