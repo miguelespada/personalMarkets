@@ -1,10 +1,8 @@
-<div>
-  <%= form_tag markets_search_path, method: "get" do %>
-    <p>
-      <%= text_field_tag :query, params[:query] %>
-      <%= collection_select(:category, :category_id, Category.all, :name, :name, 
-                            {:selected => @category_query, :include_blank => ""}) %>
-      <%= submit_tag "Search", name: nil %>
-    </p>
-  <% end %>
-</div>
+<%= form_tag markets_search_path, method: "get" do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= collection_select(:category, :category_id, Category.all, :name, :name, 
+                          {:selected => @category_query, :include_blank => ""}) %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>

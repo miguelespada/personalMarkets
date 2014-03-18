@@ -1,2 +1,3 @@
-<%= render "markets", :markets => @markets %>
-<%= render partial: "markets/shared/search" %>
+<%= page_title "Markets gallery" %>
+<%= gallery(@markets) %>
+<%= search_box %>

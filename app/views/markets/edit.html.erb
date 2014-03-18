@@ -1,2 +1,2 @@
-<h4>Edit market</h4>
-<%= render partial: "markets/shared/form", locals: {user: @user, market: @market}%>
+<%=  page_title "Edit market" %>
+<%= market_form(@user, @market) %>

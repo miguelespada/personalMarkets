@@ -1,5 +1,4 @@
-<h4>Create new market</h4>
-<p><%= @user.email %></p>
-<%= render partial: "markets/shared/form", locals: {user: @user, market: @market} %>
+<%= page_title "Create new market for #{@user.email}" %>
+<%= market_form(@user, @market) %>
 
 

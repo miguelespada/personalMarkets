@@ -1,4 +1,2 @@
-<%= div_for @user, class: "favorites" do %>
-  <h3>Favorites of <%= @user.email %></h3>
-  <%= render "markets/markets", :markets => [@user.favorites] %>
-<% end %>
+<%=  page_title "Favorites of #{@user.email}" %>
+<%= slugs(@user.favorites) %>
