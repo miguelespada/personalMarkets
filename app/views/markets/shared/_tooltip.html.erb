@@ -1,11 +1,3 @@
-<%= content_tag(:tr, :id => "market_tooltip_#{market.id}", :class => "market_tooltip") do %>
-    <td class="tooltip_photo">
-      <% if market.featured? %> 
-        <%= cl_image_tag(market.featured.path, { size: '150x150', crop: :fit}) %>
-      <% end %>
-    </td>
-    <br>
-    <td class="tooltip_name"> <%= market.name %> </td>
-    <br>
-    <td class="tooltip_description"> <%= market.description %> </td>
-<% end %>
+<div class "market-tooltip" >
+  <%= render market, :image_size => "50" %>
+</div>

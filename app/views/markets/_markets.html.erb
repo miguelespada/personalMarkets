@@ -1,18 +1,5 @@
-<table class="table">
-  <tr>
-  <th>Featured photo</th>
-  <th>Name</th>
-  <th>Description</th>
-  <th>Longitude</th>
-  <th>Latitude</th>
-  <th>Category</th>
-  <th>Tags</th>
-  <th>Owner</th>
-  <th></th>
-  <th></th>
-  <th></th>
-  </tr>
-  <% markets.each do |market| %>
-      <%= render market %>
-  <% end %>
-</table>
+<% markets.each do |market| %>
+  <div class="market-gallery" >
+    <%= render market, :image_size => "100" %>
+  </div>
+<% end %>
