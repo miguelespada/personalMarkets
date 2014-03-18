@@ -183,6 +183,9 @@ GEM
     request_store (1.0.5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rqrcode (0.4.2)
+    rqrcode-rails3 (0.1.7)
+      rqrcode (>= 0.4.2)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -278,6 +281,7 @@ DEPENDENCIES
   pry
   rails (= 4.0.2)
   rails_12factor
+  rqrcode-rails3
   rspec-rails
   sass-rails (~> 4.0.0)
   sdoc

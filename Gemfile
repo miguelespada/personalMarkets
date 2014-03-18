@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 1.2'
 # Photo management
 gem 'cloudinary'
 gem 'attachinary', git: 'git://github.com/rochers/attachinary.git', branch: 'rails4'
+gem 'rqrcode-rails3'
 
 # forms
 gem 'simple_form'
@@ -41,7 +42,6 @@ gem 'simple_form'
 gem 'mongoid_taggable'
 gem "tagmanager-rails", "~> 3.0.1.0"
 gem 'twitter-typeahead-rails'
-
 
 # search
 gem "tire", "~> 0.6.2"
@@ -87,5 +87,3 @@ group :test, :development do
 end
 
 gem "font-awesome-rails"
-
-

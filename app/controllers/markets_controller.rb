@@ -24,6 +24,10 @@ class MarketsController < ApplicationController
 
   def show
     @market = @user.markets.find(params[:id])
+    respond_to do |format|
+        format.html   
+        format.svg  { render :qrcode => request.url, :level => :l, :unit => 10 }
+    end
   end
   
   def edit
