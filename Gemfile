@@ -37,7 +37,6 @@ gem 'rqrcode-rails3'
 
 # forms
 gem 'simple_form'
-gem 'jquery_datepicker'
 
 #tags
 gem 'mongoid_taggable'
