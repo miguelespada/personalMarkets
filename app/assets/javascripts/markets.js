@@ -42,5 +42,12 @@ $( document ).ready(function() {
       });
   });
 
+  $(function() {
+    $( "#datepicker" ).datepicker({
+      showWeek: true,
+      firstDay: 1
+    });
+  });
+
 });
 

@@ -10,7 +10,7 @@ class Market
   field :description, type: String
   field :longitude, type: String
   field :latitude, type: String
-  
+  field :date, type: String
   has_attachment  :featured, accept: [:jpg, :png, :gif]
 
   belongs_to :category
