@@ -1,6 +1,10 @@
 <%=  page_title "Market full description" %>
 <%= full_description(@market) %>
 
+
+
+
+
 <p> Favorited by </p>
 <%= content_tag :div, class: "favorited" do %>
   <% @market.favorited.each do |user| %>
