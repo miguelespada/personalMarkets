@@ -39,6 +39,7 @@ class Market
   end
 
   def format_date 
+
      Date.strptime(date, "%d/%m/%Y").strftime("%Y%m%d") if date.present?
   end 
 
@@ -47,14 +48,14 @@ class Market
       query = query.blank? ? '*' : query
 
       the_query = lambda do |boolean|
-         boolean.must {string 'date:[20140319 TO 20140321]' }
+         boolean.must {string query}
+         boolean.must {string 'date:[20140319 TO 20140320]' }
       end
 
       search = Tire.search 'markets' do
         query do
           boolean &the_query
           filtered do
-            query {string query}
             unless category.blank?
               filter :terms, category: [category]
             end
