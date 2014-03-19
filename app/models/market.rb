@@ -50,12 +50,12 @@ class Market
       from =  "19/03/2014"
       to = "21/03/2014"
       # Default elasticsearch format yyyymmdd
-      to = Date.strptime(to, "%d/%m/%Y").strftime("%Y%m%d") if !to.blank?
-      from = Date.strptime(from, "%d/%m/%Y").strftime("%Y%m%d") if !from.blank?
+      #to = Date.strptime(to, "%d/%m/%Y").strftime("%Y%m%d") if !to.blank?
+      #from = Date.strptime(from, "%d/%m/%Y").strftime("%Y%m%d") if !from.blank?
 
       the_query = lambda do |boolean|
          boolean.must {string query}
-         boolean.must {string "date:[#{from} TO #{to}]" } if (!to.blank? && !from.blank?)
+      #   boolean.must {string "date:[#{from} TO #{to}]" } if (!to.blank? && !from.blank?)
       end
 
       search = Tire.search 'markets' do
