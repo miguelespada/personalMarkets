@@ -91,5 +91,7 @@ When(/^The market is deleted$/) do
   @market.destroy
 end
 
-
+Given(/^I go to edit market$/) do
+  visit edit_user_market_path(@user, @myMarket)
+end
 

@@ -149,3 +149,17 @@ Then(/^I should see its tags in the form$/) do
   page.should have_css('form[data-tags=\'["tag_1", "tag_2", "tag_3"]\']')
 end
 
+Given(/^I go to edit my market$/) do
+  visit edit_user_market_path(@user, @myMarket)
+end
+
+When(/^I fill the date field$/) do
+    fill_in "Date",  with: "13/05/2014"
+end
+
+Then(/^I should see the calendar with my calendar$/) do
+    within(:css, "div.calendar") do
+      expect(page).to have_content @myMarket.name
+      expect(page).to have_content "13/05/2014"
+    end 
+end

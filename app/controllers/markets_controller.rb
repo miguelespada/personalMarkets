@@ -73,6 +73,7 @@ class MarketsController < ApplicationController
         :latitude,
         :longitude,
         :tags,
+        :date,
         "hidden-market",
         [:signature, :created_at, :tags, :bytes, :type, :etag, :url, :secure_url],
         :_id,
@@ -87,6 +88,7 @@ class MarketsController < ApplicationController
         params[:market][:tags] += "," + params["hidden-market"][:tags]
       end
     end 
+    
     def load_user
       if params[:user_id].present?
         @user = User.find(params[:user_id])
