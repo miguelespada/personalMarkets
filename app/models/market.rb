@@ -45,12 +45,17 @@ class Market
 
   def self.search(query, category, from = "",  to = "" )
       index_all
+
       query = query.blank? ? '*' : query
-      # Date formate 20140320
+      from =  "19/03/2014"
+      to = "21/03/2014"
+      # Default elasticsearch format yyyymmdd
+      to = Date.strptime(to, "%d/%m/%Y").strftime("%Y%m%d") if !to.blank?
+      from = Date.strptime(from, "%d/%m/%Y").strftime("%Y%m%d") if !from.blank?
 
       the_query = lambda do |boolean|
          boolean.must {string query}
-         boolean.must {string "date:[#{from} TO #{to}]" } if (!to.blank? && !from.blank)
+         boolean.must {string "date:[#{from} TO #{to}]" } if (!to.blank? && !from.blank?)
       end
 
       search = Tire.search 'markets' do
@@ -63,7 +68,7 @@ class Market
           end
         end
       end
-    search.results.collect{|result| find(result.to_hash[:id])}
+      search.results.collect{|result| find(result.to_hash[:id])}
   end
 
 end
