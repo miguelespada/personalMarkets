@@ -6,9 +6,9 @@ $(document).ready(function(){
 	$.get( "/maps.json", function( data ) {
     var markers = map.markerLayer.setGeoJSON(data);
     markers.eachLayer(function(layer) {
-    var content = '<div>' + layer.feature.properties.name + '<br>' +layer.feature.properties.description +'<\/div>';
-    	layer.bindPopup(content);
+    var popup = '<div>' + layer.feature.properties.content +'<\/div>';
+    	layer.bindPopup(popup);
 		});
- 		map.addLayer(markers);	
+ 		map.addLayer(markers);
   });
 });

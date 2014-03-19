@@ -6,3 +6,10 @@
 	width:100%;
 	height:600px;
 }
+
+.market-tooltip {
+  .label { display : none }
+  .market-user-email { display : none }
+  .market-longitude { display : none }
+  .market-latitude { display : none }
+}
