@@ -5,6 +5,10 @@ $(document).ready(function(){
 	
 	$.get( "/maps.json", function( data ) {
     var markers = map.markerLayer.setGeoJSON(data);
- 		map.addLayer(markers);
+    markers.eachLayer(function(layer) {
+    var content = '<div>' + layer.feature.properties.name + '<br>' +layer.feature.properties.description +'<\/div>';
+    	layer.bindPopup(content);
+		});
+ 		map.addLayer(markers);	
   });
 });
