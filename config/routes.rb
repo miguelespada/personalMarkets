@@ -6,7 +6,8 @@ PopUpStores::Application.routes.draw do
   resources :categories, :only => [:index, :new, :destroy, :create]
   resources :users, :only => [:index, :show]
   resources :tags, :only => [:index]
-  
+  resources :maps, :only => [:index]
+
   resources :users do
     resources :markets
   end

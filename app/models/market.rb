@@ -54,4 +54,19 @@ class Market
     search.results.collect{|result| find(result.to_hash[:id])}
   end
 
+  def to_marker
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [longitude, latitude]
+        },
+        properties: {
+          name: name,
+          :'marker-color' => '#00607d',
+          :'marker-symbol' => 'circle',
+          :'marker-size' => 'medium'
+        }
+      }
+  end
 end

@@ -46,12 +46,11 @@ gem 'twitter-typeahead-rails'
 # search
 gem "tire", "~> 0.6.2"
 
-# google maps
-gem 'gmaps4rails'
-
 # Refacoring
 gem 'draper', '~> 1.3'
 
+# Mapbox
+gem 'mapbox-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

@@ -1,48 +1,5 @@
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBkhXw8kMql7c4tc1LwaMGbm9024z03AKU&sensor=false" %>
-<%= javascript_include_tag "http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
-<%= javascript_include_tag "maps" %>
-<%= javascript_include_tag "mapstyles" %>
-<%= yield :javascripts %>
-<%= stylesheet_link_tag "maps" %>
-<div id="map">
-  <%= javascript_tag do %>
-    var styledMap00 = new google.maps.StyledMapType(mapStyle00,{name: "Grey"});
-    var styledMap01 = new google.maps.StyledMapType(mapStyle01,{name: "Blue"});
-    var styledMap02 = new google.maps.StyledMapType(mapStyle02,{name: "Cian"});
-    var styledMapDefault = new google.maps.StyledMapType(google.maps.MapTypeId.ROADMAP,{name: "Default"});
-    var mapOptions = {
-      zoom: 12,
-      center: new google.maps.LatLng(40.4, -3.6833333),
-      panControl: false,
-      zoomControl: true,
-      zoomControlOptions: {
-        style: google.maps.ZoomControlStyle.SMALL
-      },
-      mapTypeControl: true,
-      mapTypeControlOptions: {
-        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-        mapTypeIds: ['map_style00', 'map_style01', 'map_style02', 'map_style_default']
-      },
-      scaleControl: false,
-      streetViewControl: false,
-      overviewMapControl: false
-    };
-    handler = Gmaps.build('Google');
-    handler.buildMap({ 
-      provider: mapOptions, 
-      internal: {id: 'map'}
-    }, function(){
-      markers = handler.addMarkers(<%=raw @hash.to_json %>);
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-    });
-    handler.getMap().mapTypes.set('map_style00', styledMap00);
-    handler.getMap().setMapTypeId('map_style00');
-    handler.getMap().mapTypes.set('map_style01', styledMap01);
-    handler.getMap().setMapTypeId('map_style01');
-    handler.getMap().mapTypes.set('map_style02', styledMap02);
-    handler.getMap().setMapTypeId('map_style02');
-    handler.getMap().mapTypes.set('map_style_default', styledMapDefault);
-    handler.getMap().setMapTypeId('map_style_default');
-  <% end %>
+<div id="map"></div>
+
+<div id="geojson" type="text/json">
+    <%= @geojson.to_json %>
 </div>
