@@ -4,8 +4,8 @@ class MapsController < ApplicationController
     @geojson = @markets.collect{|market| market.to_marker(view_context.tooltip(market))}
 
     respond_to do |format|
-        format.html 
-        format.json {render json: @geojson}
+      format.html 
+      format.json {render json: @geojson}
     end
   end
 end
