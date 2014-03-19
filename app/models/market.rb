@@ -33,16 +33,26 @@ class Market
           name: name,
           description: description,
           category: category.name,
-          tags: tags
+          tags: tags,
+          date: format_date
         }.to_json
   end
+
+  def format_date 
+     Date.strptime(date, "%d/%m/%Y").strftime("%Y%m%d") if date.present?
+  end 
 
   def self.search(query, category)
       index_all
       query = query.blank? ? '*' : query
 
+      the_query = lambda do |boolean|
+         boolean.must {string 'date:[20140319 TO 20140321]' }
+      end
+
       search = Tire.search 'markets' do
         query do
+          boolean &the_query
           filtered do
             query {string query}
             unless category.blank?
