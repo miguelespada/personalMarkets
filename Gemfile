@@ -37,11 +37,13 @@ gem 'rqrcode-rails3'
 
 # forms
 gem 'simple_form'
+gem 'bootstrap-datepicker-rails'
 
 #tags
 gem 'mongoid_taggable'
 gem "tagmanager-rails", "~> 3.0.1.0"
 gem 'twitter-typeahead-rails'
+
 
 # search
 gem "tire", "~> 0.6.2"

@@ -4,6 +4,7 @@
 //= require jquery.fileupload
 //= require attachinary
 //= require twitter/typeahead
+//= require bootstrap-datepicker
 
 var substringMatcher = function(strs) {
   return function findMatches(q, cb) {
@@ -41,13 +42,7 @@ $( document ).ready(function() {
         source: substringMatcher(data)
       });
   });
-
-  $(function() {
-    $( "#datepicker" ).datepicker({
-      showWeek: true,
-      firstDay: 1
-    });
-  });
-
+  
+  $('[data-behaviour~=datepicker]').datepicker();
 });
 
