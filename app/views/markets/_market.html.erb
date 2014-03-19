@@ -2,7 +2,7 @@
 <div class="featured-photo"> <%= market.featured_photo(image_size) %></div>
 
 <div> 
-  <p class = "label"> Description: </p>  
+  <p class = "label"><%= Market.human_attribute_name(:description) %> </p>  
   <%= market.description %> 
 </div>
 
