@@ -1,0 +1,1 @@
+STARRED_TAGS = YAML.load_file(Rails.root.join("config", "tags.yml"))

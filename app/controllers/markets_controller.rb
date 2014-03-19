@@ -1,6 +1,5 @@
 class MarketsController < ApplicationController
   before_filter :load_user
-  before_filter :load_suggested_tags, only: [:new, :edit]
 
   def index
     @markets ||= Market.find_all(@user)
@@ -99,8 +98,4 @@ class MarketsController < ApplicationController
     rescue => e
         ""
     end 
-
-    def load_suggested_tags
-      @suggested_tags = Tag.all
-    end
 end
