@@ -43,13 +43,14 @@ class Market
      Date.strptime(date, "%d/%m/%Y").strftime("%Y%m%d") if date.present?
   end 
 
-  def self.search(query, category)
+  def self.search(query, category, from = "",  to = "" )
       index_all
       query = query.blank? ? '*' : query
+      # Date formate 20140320
 
       the_query = lambda do |boolean|
          boolean.must {string query}
-         boolean.must {string 'date:[20140319 TO 20140320]' }
+         boolean.must {string "date:[#{from} TO #{to}]" } if (!to.blank? && !from.blank)
       end
 
       search = Tire.search 'markets' do
