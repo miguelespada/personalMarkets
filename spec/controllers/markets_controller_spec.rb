@@ -308,14 +308,14 @@ describe MarketsController do
               FactoryGirl.create(:market, name: "foo market", date: "12/01/2014")
               Market.refresh_index
             end
-            it "respons successfull with wrong date formats ", :focus => true do
+            it "respons successfull with wrong date formats " do
               get :search, {from: "07/xx/2014", to: "13/01/2014"}, valid_session
               response.should be_success
               markets = assigns(:markets)
               expect(markets.count).to eq 2
             end
 
-            it "respons successfull with only one date param", :focus => true do
+            it "respons successfull with only one date param" do
               get :search, {from: "11/01/2014"}, valid_session
               response.should be_success
               markets = assigns(:markets)

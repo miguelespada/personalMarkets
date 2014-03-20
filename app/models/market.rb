@@ -47,19 +47,7 @@ class Market
       index_all
 
       query = query.blank? ? '*' : query
-      # Default elasticsearch format yyyymmdd
-
-      begin 
-        range = Date.strptime(from, "%d/%m/%Y").strftime("%Y%m%d")
-        range += " TO "
-        begin
-          range += Date.strptime(to, "%d/%m/%Y").strftime("%Y%m%d")
-        rescue
-          range += "99991231"
-        end
-      rescue
-      end
-      range ||= ""
+      range = format_range_query(from, to)
 
       the_query = lambda do |boolean|
          boolean.must {string query}
@@ -79,4 +67,18 @@ class Market
       search.results.collect{|result| find(result.to_hash[:id])}
   end
 
+  def self.format_range_query(from, to)
+      # Default elasticsearch format yyyymmdd
+     begin 
+      range = Date.strptime(from, "%d/%m/%Y").strftime("%Y%m%d")
+      range += " TO "
+      begin
+        range += Date.strptime(to, "%d/%m/%Y").strftime("%Y%m%d")
+      rescue
+        range += "99991231"
+      end
+    rescue
+    end
+      range ||= ""
+    end
 end
