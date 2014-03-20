@@ -158,7 +158,7 @@ When(/^I fill the date field$/) do
 end
 
 Then(/^I should see the calendar with my calendar$/) do
-    within(:css, "div.calendar") do
+    within(:css, "div.market-calendar") do
       expect(page).to have_content @myMarket.name
       expect(page).to have_content "13/05/2014"
     end 
