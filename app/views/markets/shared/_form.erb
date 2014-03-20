@@ -4,8 +4,8 @@
   <%= f.input :description, label_html: { class: 'market-description' } %>
   <%= f.association :category, :include_blank => false %>
   <%= f.input :featured, as: :attachinary %>
-  <%= f.input :longitude %>
-  <%= f.input :latitude %>  
+  <%= f.input :longitude, :disabled=>true %>
+  <%= f.input :latitude, :disabled=>true %>  
   <%= f.input :date, input_html: { "data-behaviour" => 'datepicker' } %>  
   <%= f.input :tags, input_html: { class: 'tm-input typeahead', placeholder: "Tags" } %>
   <%= f.button :submit %>
@@ -13,6 +13,5 @@
 
 
 <div id="map-small">
-  <%= javascript_include_tag 'map-small'%>
   <%= stylesheet_link_tag 'map-small'%>
 </div>

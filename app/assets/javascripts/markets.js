@@ -5,6 +5,7 @@
 //= require attachinary
 //= require twitter/typeahead
 //= require bootstrap-datepicker
+//= require map-small
 
 var substringMatcher = function(strs) {
   return function findMatches(q, cb) {
