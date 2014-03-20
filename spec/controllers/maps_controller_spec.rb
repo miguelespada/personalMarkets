@@ -9,5 +9,9 @@ describe MapsController do
       get 'index'
       response.should be_success
     end
+    it "no marker if no markets" do
+      get 'index'
+      expect(assigns(:geojson)).to eq ""
+    end
   end
 end
