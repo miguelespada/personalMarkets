@@ -158,71 +158,148 @@ describe MarketsController do
            @markets = []
            10.times { @markets << FactoryGirl.create(:market)}
            Market.refresh_index
-         end
+          end
 
-         it "searches with no query" do
-          get :search, {}, valid_session
-          markets = assigns(:markets)
-          expect(markets.count).to eq Market.all.count
-        end
+          it "searches with no query" do
+            get :search, {}, valid_session
+            markets = assigns(:markets)
+            expect(markets.count).to eq Market.all.count
+          end
 
-        it "searches with blank query" do
-          get :search, {query: ""}, valid_session
-          markets = assigns(:markets)
-          expect(markets.count).to eq Market.all.count
-        end
+          it "searches with blank query" do
+            get :search, {query: ""}, valid_session
+            markets = assigns(:markets)
+            expect(markets.count).to eq Market.all.count
+          end
 
-        it "searches with generic name" do
-          FactoryGirl.create(:market, :name => "dummy")
-          Market.refresh_index
-          get :search, {query: "market"}, valid_session
-          markets = assigns(:markets)
-          expect(markets.count).to eq (Market.all.count - 1)
-        end
+          it "searches with generic name" do
+            FactoryGirl.create(:market, :name => "dummy")
+            Market.refresh_index
+            get :search, {query: "market"}, valid_session
+            markets = assigns(:markets)
+            expect(markets.count).to eq (Market.all.count - 1)
+          end
 
-        it "searches with query" do
-          market = FactoryGirl.create(:market, :name => "dummy")
-          Market.refresh_index
-          get :search, {query: market.name}, valid_session
-          markets = assigns(:markets)
-          expect(markets.count).to eq 1
-        end
-
-        it "filter with blank category" do
-          get :search, { category: "" }, valid_session
-          markets = assigns(:markets)
-          expect(markets.count).to eq Market.all.count
-        end
-
-        it "filter match category" do
-          get :search, { category: { "category_id" => @markets.first.category.name } }, valid_session
-          markets = assigns(:markets)
-          expect(markets.count).to eq 1
-        end
-
-        it "filter do not match any category" do
-          get :search, { category: { "category_id" => "wrong" } }, valid_session
-          markets = assigns(:markets)
-          expect(markets.count).to eq 0
-        end
-
-        it "search and filter" do
-          market = FactoryGirl.create(:market)
-          Market.refresh_index
-          get :search, {
-            query: "market",
-            category: { "category_id" => market.category.name}}, valid_session
+          it "searches with query" do
+            market = FactoryGirl.create(:market, :name => "dummy")
+            Market.refresh_index
+            get :search, {query: market.name}, valid_session
             markets = assigns(:markets)
             expect(markets.count).to eq 1
           end
 
-          it "remembers category after search" do
-            get :search, {}, valid_session
-            category_query = assigns(:category_query)
-            expect(category_query).not_to be_nil
+          it "filter with blank category" do
+            get :search, { category: "" }, valid_session
+            markets = assigns(:markets)
+            expect(markets.count).to eq Market.all.count
           end
+
+          it "filter match category" do
+            get :search, { category: { "category_id" => @markets.first.category.name } }, valid_session
+            markets = assigns(:markets)
+            expect(markets.count).to eq 1
+          end
+
+          it "filter do not match any category" do
+            get :search, { category: { "category_id" => "wrong" } }, valid_session
+            markets = assigns(:markets)
+            expect(markets.count).to eq 0
+          end
+
+          it "search and filter" do
+            market = FactoryGirl.create(:market)
+            Market.refresh_index
+            get :search, {
+              query: "market",
+              category: { "category_id" => market.category.name}}, valid_session
+              markets = assigns(:markets)
+              expect(markets.count).to eq 1
+            end
+
+            it "remembers category after search" do
+              get :search, {}, valid_session
+              category_query = assigns(:category_query)
+              expect(category_query).not_to be_nil
+            end
           
-        end
+          end
+          context 'search by date' do
+            before :each do
+              Market.destroy_all
+              Market.create_index
+              FactoryGirl.create(:market, date: "10/01/2014")
+              FactoryGirl.create(:market, date: "12/01/2014")
+              Market.refresh_index
+            end
+            it "they match inside the a range" do
+              get :search, {from: "09/01/2014", to: "13/01/2014"}, valid_session
+              markets = assigns(:markets)
+              expect(markets.count).to eq 2
+            end
+
+            it "some match inside the a range" do
+              get :search, {from: "11/01/2014", to: "13/01/2014"}, valid_session
+              markets = assigns(:markets)
+              expect(markets.count).to eq 1
+            end
+
+            it "they do no match outside range" do
+              get :search, {from: "14/01/2014", to: "17/01/2014"}, valid_session
+              markets = assigns(:markets)
+              expect(markets.count).to eq 0
+            end
+          end
+          context 'search by date and category' do
+            before :each do
+              Market.destroy_all
+              Market.create_index
+              @market = FactoryGirl.create(:market, date: "08/01/2014",)
+              FactoryGirl.create(:market, date: "12/01/2014")
+              Market.refresh_index
+            end
+            it "they match inside the a range filtered by category " do
+              get :search, {category: { "category_id" => @market.category.name }, 
+                            from: "07/01/2014", to: "13/01/2014"}, valid_session
+              markets = assigns(:markets)
+              expect(markets.count).to eq 1
+            end
+
+            it "they do not match inside the a range with wrong category " do
+              get :search, {category: { "category_id" => "wrong" }, 
+                            from: "07/01/2014", to: "13/01/2014"}, valid_session
+              markets = assigns(:markets)
+              expect(markets.count).to eq 0
+            end
+          end
+          context 'search by date and query' do
+            before :each do
+              Market.destroy_all
+              Market.create_index
+              FactoryGirl.create(:market, name: "dummy market", date: "08/01/2014",)
+              FactoryGirl.create(:market, name: "foo market", date: "12/01/2014")
+              Market.refresh_index
+            end
+            it "they match inside the a range with tag " do
+              get :search, {query: "dummy", 
+                            from: "07/01/2014", to: "13/01/2014"}, valid_session
+              markets = assigns(:markets)
+              expect(markets.count).to eq 1
+            end
+
+            it "they match inside the a range with tag " do
+              get :search, {query: "market", 
+                            from: "07/01/2014", to: "13/01/2014"}, valid_session
+              markets = assigns(:markets)
+              expect(markets.count).to eq 2
+            end
+
+            it "they do not match inside the a range with tag " do
+              get :search, {query: "wrong", 
+                            from: "07/01/2014", to: "13/01/2014"}, valid_session
+              markets = assigns(:markets)
+              expect(markets.count).to eq 0
+            end
+          end
       end
     end
   end

@@ -13,7 +13,7 @@ class MarketsController < ApplicationController
 
   def search
     @category_query = load_category
-    @markets = Market.search(params[:query], @category_query)
+    @markets = Market.search(params[:query], @category_query, params[:from], params[:to])
     render 'index' 
   end
 
@@ -74,6 +74,8 @@ class MarketsController < ApplicationController
         :longitude,
         :tags,
         :date,
+        :from,
+        :to,
         "hidden-market",
         [:signature, :created_at, :tags, :bytes, :type, :etag, :url, :secure_url],
         :_id,
