@@ -10,14 +10,15 @@ Feature: Browse
     When I click on add market
 
   @slow @javascript
-  Scenario: See smallmap
+  Scenario: Use small map to update location and address in add market
     Then I should see a smallmap
     And I click on the smallmap
     Then I should see a marker on the map
-
-  @smallmap
-  Scenario: Fill the form and add market
     Given I have filled the name and description
-    Then I click on add market
+    Then I click on create market
+    Then I should see the location
+    Then I should see the address
+
+
 
 
