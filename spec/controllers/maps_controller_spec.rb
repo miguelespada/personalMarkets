@@ -6,11 +6,16 @@ describe MapsController do
 
   describe "GET 'index'" do
     it "returns http success" do
-      get 'index'
+      get 'index', valid_session
       response.should be_success
     end
     it "no marker if no markets" do
-      get 'index'
+      get 'index', valid_session
+      expect(assigns(:geojson)).to eq ""
+    end
+    it "marker without location" do
+      FactoryGirl.create(:market)
+      get 'index', valid_session
       expect(assigns(:geojson)).to eq ""
     end
   end
