@@ -8,6 +8,7 @@ class Market
 
   field :name, type: String
   field :description, type: String
+  field :address, type: String
   field :longitude, type: Float
   field :latitude, type: Float
   field :date, type: String
