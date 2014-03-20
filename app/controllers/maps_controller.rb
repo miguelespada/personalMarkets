@@ -8,9 +8,7 @@ class MapsController < ApplicationController
     end
   end
   private 
-  def generate_geojson(markets)
-    if markets.count > 0
-      markets.collect{|market| market.to_marker(view_context.tooltip(market))}
+    def generate_geojson(markets)
+      markets.collect{|market| market.to_marker(view_context.tooltip(market))} if markets.count > 0
     end
-  end
 end
