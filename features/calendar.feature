@@ -17,5 +17,6 @@ Feature: Manage market dates
     Given I am in the search page
     And There are some markets with date
     When I select a 'from' date
+    When I select a 'to' date
     And I click on search
     Then I should see the markets that match my search with date

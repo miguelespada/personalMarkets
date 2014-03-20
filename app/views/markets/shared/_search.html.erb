@@ -3,6 +3,7 @@
     <%= collection_select(:category, :category_id, Category.all, :name, :name, 
                           {:selected => @category_query, :include_blank => ""}) %>
 
-    <%= text_field_tag :from, params[:from], data: {:behaviour => 'datepicker'} %>  
+    <p> From: </p> <%= text_field_tag :from, params[:from], data: {:behaviour => 'datepicker'} %>  
+    <p> To: </p> <%= text_field_tag :to, params[:to], data: {:behaviour => 'datepicker'} %>  
     <%= submit_tag "Search", name: nil %>
 <% end %>

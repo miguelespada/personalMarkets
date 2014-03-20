@@ -158,7 +158,7 @@ When(/^I fill the date field$/) do
 end
 
 Then(/^I should see the calendar with my calendar$/) do
-    within(:css, "div.calendar") do
+    within(:css, "div.market-calendar") do
       expect(page).to have_content @myMarket.name
       expect(page).to have_content "13/05/2014"
     end 
@@ -178,12 +178,16 @@ end
 When(/^I select a 'from' date$/) do
     fill_in "from",  with: "16/05/2014"
 end
+When(/^I select a 'to' date$/) do
+    fill_in "to",  with: "20/07/2014"
+end
 
 When(/^I click on search$/) do
   click_button "Search"
 end
 
 Then(/^I should see the markets that match my search with date$/) do
-  expect(page).to have_content "Market three"
+  expect(page).not_to have_content "Market one"
   expect(page).to have_content "Market two"
+  expect(page).not_to have_content "Market three"
 end
