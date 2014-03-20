@@ -55,7 +55,7 @@ function getAddress(lng, lat){
 function updateLocation (latlng){
   marker = L.marker(latlng, 
            {icon: L.mapbox.marker.icon(
-              {'marker-color': '#00607d',
+              {'marker-color': '#48a',
                'marker-symbol' : 'circle',
                'marker-size' : 'medium'}),
            draggable: true

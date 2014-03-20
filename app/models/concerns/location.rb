@@ -17,7 +17,7 @@ module Location
         },
         properties: {
           content: content,
-          :'marker-color' => '#00607d',
+          :'marker-color' => '#48a',
           :'marker-symbol' => 'circle',
           :'marker-size' => 'medium'
         }
