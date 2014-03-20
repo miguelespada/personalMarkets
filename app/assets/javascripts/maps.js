@@ -9,7 +9,7 @@ $(document).ready(function(){
     var markers = map.markerLayer.setGeoJSON(data);
     markers.eachLayer(function(layer) {
     var popup = '<div>' + layer.feature.properties.content +'<\/div>';
-      layer.bindPopup(popup);
+      layer.bindPopup(popup,{ maxWidth: 200, minWidth: 200 });
     });
     map.addLayer(markers);
   });
