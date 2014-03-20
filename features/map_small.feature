@@ -17,7 +17,21 @@ Feature: Browse
     Given I have filled the name and description
     Then I click on create market
     Then I should see the location
-    Then I should see the address
+    And I should see the address
+  
+  @smallmap @javascript
+  Scenario: Use small map to update location and address in my markets
+    Given I have filled the information for a new market
+    Then I click on create market
+    When I click on my markets
+    Then I should see the market I added
+    When I click on edit market
+    Then I should see a smallmap
+    And I click on the smallmap
+    When I click on update market
+    Then I should see the location updated
+    And I should see the address also updated
+
 
 
 
