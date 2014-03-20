@@ -19,62 +19,18 @@ $(document).ready(function(){
   }
 
   if (locationExist == -1){
-    marker = L.marker([originLat, originLng], 
-             {icon: L.mapbox.marker.icon(
-                {'marker-color': '#00607d',
-                 'marker-symbol' : 'circle',
-                 'marker-size' : 'medium'}),
-             draggable: true
-    });
-    marker.addTo(map);
-    locationExist = 1;
-    getAddress(marker.getLatLng().lng, marker.getLatLng().lat);
-    marker.on('dragend',function(e){
-      $("#market_latitude").val(marker.getLatLng().lat);
-      $("#market_longitude").val(marker.getLatLng().lng);
-      getAddress(marker.getLatLng().lng, marker.getLatLng().lat);
-    });
+    updateLocation([originLat, originLng]);
+    locationExist = 1;  
   }
 
-  map.on('click', function(e){
-    
+  map.on('click', function(e){    
     if (locationExist == 0){
-      marker = L.marker(e.latlng, 
-            {icon: L.mapbox.marker.icon(
-              {'marker-color': '#00607d',
-               'marker-symbol' : 'circle',
-               'marker-size' : 'medium'}),
-            draggable: true
-      });
-      marker.addTo(map);
-      $("#market_latitude").val(marker.getLatLng().lat);
-      $("#market_longitude").val(marker.getLatLng().lng);
-      getAddress(marker.getLatLng().lng, marker.getLatLng().lat);
+      updateLocation(e.latlng);
       locationExist = 1;
-      marker.on('dragend',function(e){
-        $("#market_latitude").val(marker.getLatLng().lat);
-        $("#market_longitude").val(marker.getLatLng().lng);
-        getAddress(marker.getLatLng().lng, marker.getLatLng().lat);
-      });
     }
     else if (locationExist == 1){
       map.removeLayer(marker);
-      marker = L.marker(e.latlng, 
-            {icon: L.mapbox.marker.icon(
-              {'marker-color': '#00607d',
-               'marker-symbol' : 'circle',
-               'marker-size' : 'medium'}),
-            draggable: true
-      });
-      marker.addTo(map);
-      $("#market_latitude").val(marker.getLatLng().lat);
-      $("#market_longitude").val(marker.getLatLng().lng);
-      getAddress(marker.getLatLng().lng, marker.getLatLng().lat);
-      marker.on('dragend',function(e){
-        $("#market_latitude").val(marker.getLatLng().lat);
-        $("#market_longitude").val(marker.getLatLng().lng);
-        getAddress(marker.getLatLng().lng, marker.getLatLng().lat);
-      });
+      updateLocation(e.latlng);
     }
   });
 });
@@ -93,5 +49,24 @@ function getAddress(lng, lat){
     else {
       $("#market_address").val("Not available");
     }
+  });
+}
+
+function updateLocation (latlng){
+  marker = L.marker(latlng, 
+           {icon: L.mapbox.marker.icon(
+              {'marker-color': '#00607d',
+               'marker-symbol' : 'circle',
+               'marker-size' : 'medium'}),
+           draggable: true
+  });
+  marker.addTo(map);
+  $("#market_latitude").val(marker.getLatLng().lat);
+  $("#market_longitude").val(marker.getLatLng().lng);
+  getAddress(marker.getLatLng().lng, marker.getLatLng().lat);
+  marker.on('dragend',function(e){
+    $("#market_latitude").val(marker.getLatLng().lat);
+    $("#market_longitude").val(marker.getLatLng().lng);
+    getAddress(marker.getLatLng().lng, marker.getLatLng().lat);
   });
 }
