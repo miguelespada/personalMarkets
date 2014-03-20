@@ -4,6 +4,7 @@ class Market
   include Tire::Model::Search
   include Tire::Model::Callbacks
   include Elasticsearch
+  include Location
 
   field :name, type: String
   field :description, type: String
@@ -50,21 +51,5 @@ class Market
         end
       end
     search.results.collect{|result| find(result.to_hash[:id])}
-  end
-
-  def to_marker(content)
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [longitude, latitude]
-        },
-        properties: {
-          content: content,
-          :'marker-color' => '#00607d',
-          :'marker-symbol' => 'circle',
-          :'marker-size' => 'medium'
-        }
-      }
   end
 end
