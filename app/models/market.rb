@@ -48,12 +48,22 @@ class Market
 
       query = query.blank? ? '*' : query
       # Default elasticsearch format yyyymmdd
-      to = Date.strptime(to, "%d/%m/%Y").strftime("%Y%m%d") if !to.blank?
-      from = Date.strptime(from, "%d/%m/%Y").strftime("%Y%m%d") if !from.blank?
+
+      begin 
+        range = Date.strptime(from, "%d/%m/%Y").strftime("%Y%m%d")
+        range += " TO "
+        begin
+          range += Date.strptime(to, "%d/%m/%Y").strftime("%Y%m%d")
+        rescue
+          range += "99991231"
+        end
+      rescue
+      end
+      range ||= ""
 
       the_query = lambda do |boolean|
          boolean.must {string query}
-         boolean.must {string "date:[#{from} TO #{to}]" } if (!to.blank? && !from.blank?)
+         boolean.must {string "date:[#{range}]" } if !range.blank? 
       end
 
       search = Tire.search 'markets' do

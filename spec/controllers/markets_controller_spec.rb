@@ -300,6 +300,28 @@ describe MarketsController do
               expect(markets.count).to eq 0
             end
           end
+          context 'fail tolerante search' do
+            before :each do
+              Market.destroy_all
+              Market.create_index
+              FactoryGirl.create(:market, name: "dummy market", date: "08/01/2014",)
+              FactoryGirl.create(:market, name: "foo market", date: "12/01/2014")
+              Market.refresh_index
+            end
+            it "respons successfull with wrong date formats ", :focus => true do
+              get :search, {from: "07/xx/2014", to: "13/01/2014"}, valid_session
+              response.should be_success
+              markets = assigns(:markets)
+              expect(markets.count).to eq 2
+            end
+
+            it "respons successfull with only one date param", :focus => true do
+              get :search, {from: "11/01/2014"}, valid_session
+              response.should be_success
+              markets = assigns(:markets)
+              expect(markets.count).to eq 1
+            end
+          end
       end
     end
   end

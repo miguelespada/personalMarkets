@@ -12,11 +12,11 @@ Feature: Manage market dates
     And I click on update market
     Then I should see the calendar with my calendar
 
-  @calendar
-  Scenario: Search by date
-    Given I am in the search page
-    And There are some markets
-    When I select a 'from' date
-    And I select a 'to' date
-    And I click on search
-    Then I should see the markets that match my search
+#  @calendar
+#  Scenario: Search by date
+#    Given I am in the search page
+#    And There are some markets
+#    When I select a 'from' date
+#    And I select a 'to' date
+#    And I click on search
+#    Then I should see the markets that match my search
