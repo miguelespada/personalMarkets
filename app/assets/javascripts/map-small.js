@@ -82,14 +82,16 @@ $(document).ready(function(){
 function getAddress(lng, lat){
   var locationJson = 'http://api.tiles.mapbox.com/v3/jameshedaweng.hf5b366j/geocode/'+lng+','+lat+'.json'
   $.get(locationJson, function( data ) {
-    street = data.results[0][0];
-    city = data.results[0][1];
-    province = data.results[0][2];
-    country = data.results[0][3];
-    address = street.name + ", " + city.name + ", " + province.name + ", " + country.name;
-    $("#market_address").val(address);
-  })
-  .fail(function() {
-    $("#market_address").val("Not available");
+    if (data.results[0].length == 4) {
+      street = data.results[0][0];
+      city = data.results[0][1];
+      province = data.results[0][2];
+      country = data.results[0][3];
+      address = street.name + ", " + city.name + ", " + province.name + ", " + country.name;
+      $("#market_address").val(address);
+    }
+    else {
+      $("#market_address").val("Not available");
+    }
   });
 }

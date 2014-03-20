@@ -9,4 +9,7 @@ Then(/^I click on the smallmap$/) do
   end
 end
 
-
+Given(/^I have filled the name and description$/) do
+  fill_in "Name",  with: "Dummy Market"
+  fill_in "Description",  with: "Dummy description"
+end

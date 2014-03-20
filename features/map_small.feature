@@ -9,9 +9,15 @@ Feature: Browse
     And I fill a valid email and password
     When I click on add market
 
-  @smallmap @javascript
+  @slow @javascript
   Scenario: See smallmap
     Then I should see a smallmap
     And I click on the smallmap
     Then I should see a marker on the map
+
+  @smallmap
+  Scenario: Fill the form and add market
+    Given I have filled the name and description
+    Then I click on add market
+
 
