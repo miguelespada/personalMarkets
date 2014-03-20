@@ -12,4 +12,6 @@ Feature: Browse
   @smallmap @javascript
   Scenario: See smallmap
     Then I should see a smallmap
+    And I click on the smallmap
+    Then I should see a marker on the map
 
