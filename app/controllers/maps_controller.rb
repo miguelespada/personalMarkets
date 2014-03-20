@@ -1,13 +1,14 @@
 class MapsController < ApplicationController
   def index
-    @markets = Market.where(latitude: { neq: nil }, longitude: { neq: nil })
-    @hash = Gmaps4rails.build_markers(@markets) do |market, marker|
-        marker.lat market.latitude
-        marker.lng market.longitude
-        marker.infowindow render_to_string(
-          :partial => "/markets/shared/tooltip",
-          :locals => { :market => market}
-          )
+    @geojson = generate_geojson(Market.with_location) || ""
+
+    respond_to do |format|
+      format.html 
+      format.json {render json: @geojson}
     end
   end
+  private 
+    def generate_geojson(markets)
+      markets.collect{|market| market.to_marker(view_context.tooltip(market))} if markets.count > 0
+    end
 end

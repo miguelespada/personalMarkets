@@ -1,11 +1,15 @@
 //= require tagmanager.css
 //= require bootstrap-datepicker
 
-.market-gallery-item {
-  .market-user-email { display : none}
-  .label { color: red}
-  }
-
 .market-tooltip {
-  .market-user-email { display : none}
+  .market-name { font-size: 22px; font-weight:100; line-height:36px;}
+  .market-description { padding-top: 10px; padding-bottom: 5px; font-size: 12px; line-height:16px;}
+  .market-favorite { padding-top: 5px; font-size: 12px; line-height:16px;}
+  .label { display : none }
+  .market-category { display : none }
+  .market-user-email { display : none }
+  .market-longitude { display : none }
+  .market-latitude { display : none }
+  .market-links { display : none }
+  .market-qr-links { display : none }
 }

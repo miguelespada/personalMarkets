@@ -1,15 +1,15 @@
-
-class Market
+class Market 
   include Mongoid::Document
   include Mongoid::Taggable
   include Tire::Model::Search
   include Tire::Model::Callbacks
   include Elasticsearch
+  include Location
 
   field :name, type: String
   field :description, type: String
-  field :longitude, type: String
-  field :latitude, type: String
+  field :longitude, type: Float
+  field :latitude, type: Float
   field :date, type: String
   has_attachment  :featured, accept: [:jpg, :png, :gif]
 
@@ -18,7 +18,6 @@ class Market
   has_and_belongs_to_many :favorited, class_name: "User", inverse_of: :favorites
 
   validates_presence_of :name, :description, :user, :category
-
 
   def like(user)
     favorited << user
@@ -66,7 +65,6 @@ class Market
       end
       search.results.collect{|result| find(result.to_hash[:id])}
   end
-
   def self.format_range_query(from, to)
       # Default elasticsearch format yyyymmdd
      begin 

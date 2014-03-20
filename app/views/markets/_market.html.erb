@@ -1,23 +1,28 @@
-<div> <%= market.name %> </div>
-<div class="featured-photo"> <%= market.featured_photo(image_size) %></div>
+<div class = "market-name"> <%= market.name %> </div>
+<div class = "featured-photo"> <%= market.featured_photo(image_size) %></div>
 
-<div> 
-  <p class = "label"><%= Market.human_attribute_name(:description) %> </p>  
-  <%= market.description %> 
+
+<div class = "market-description"> 
+  <p class = "label"> <%= Market.human_attribute_name(:description) %></p>  
+  <%=  market.description %> 
 </div>
 
 <div class = "market-longitude"> <%= market.longitude %> </div>
 <div class = "market-latitude"> <%= market.latitude %> </div>
-<div class = "market-user-email"> <%= market.category.name %> </div>  
-<div> <%= market.tags %> </div> 
+<div class = "market-category"> <%= market.category.name %> </div>  
+<div class = "market-tags"> <%= market.tags %> </div> 
 <div class = "market-user-email"> <%= market.user.email %> </div>
-<div> <%= market.show_link %> </div>
-<div> <%= market.edit_link %> </div>
-<div> <%= market.delete_link %> </div>
-<div> <%= market.like_link %>  </div>
-<div> <%= market.qr_code_link %>  </div>
 
-<div> 
+<div class = "market-links">
+  <div> <%= market.show_link %> </div>
+  <div> <%= market.edit_link %> </div>
+  <div> <%= market.delete_link %> </div>
+  <div> <%= market.like_link %>  </div> 
+</div>
+
+<div class = "market-qr-links"> <%= market.qr_code_link %>  </div>
+
+<div class = "market-favorite"> 
   <span> Number of likes: </span>  
   <span> <%= market.favorited.count %>  </span>
 </div>

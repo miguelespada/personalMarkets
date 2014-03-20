@@ -10,3 +10,9 @@
   <%= f.input :tags, input_html: { class: 'tm-input typeahead', placeholder: "Tags" } %>
   <%= f.button :submit %>
 <% end %>
+
+
+<div id="map-small">
+  <%= javascript_include_tag 'map-small'%>
+  <%= stylesheet_link_tag 'map-small'%>
+</div>
