@@ -70,7 +70,7 @@ class MarketsController < ApplicationController
       params.require(:market).permit(
         :name, 
         :description,
-        :featured, 
+        :featured,
         :latitude,
         :longitude,
         :tags,
