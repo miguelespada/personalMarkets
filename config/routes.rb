@@ -18,6 +18,7 @@ PopUpStores::Application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
 
   get "markets/search"
+  get "static_pages/search", as: 'search'
   get "/users/:user_id/like/:market_id",  to: 'users#like', as: 'like'
   get "/users/:user_id/unlike/:market_id",  to: 'users#unlike', as: 'unlike'
 

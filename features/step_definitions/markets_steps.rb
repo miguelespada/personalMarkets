@@ -163,3 +163,27 @@ Then(/^I should see the calendar with my calendar$/) do
       expect(page).to have_content "13/05/2014"
     end 
 end
+
+Given(/^I am in the search page$/) do
+  visit search_path
+end
+
+Given(/^There are some markets with date$/) do
+   @market_1 = FactoryGirl.create(:market, :name => "Market one", :date => "13/05/2014")
+   @market_2 = FactoryGirl.create(:market, :name => "Market two", :date => "17/07/2014")
+   @market_3 = FactoryGirl.create(:market, :name => "Market three", :date => "20/09/2014")
+   Market.reindex
+end
+
+When(/^I select a 'from' date$/) do
+    fill_in "from",  with: "16/05/2014"
+end
+
+When(/^I click on search$/) do
+  click_button "Search"
+end
+
+Then(/^I should see the markets that match my search with date$/) do
+  expect(page).to have_content "Market three"
+  expect(page).to have_content "Market two"
+end
