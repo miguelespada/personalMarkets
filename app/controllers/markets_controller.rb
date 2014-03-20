@@ -70,6 +70,7 @@ class MarketsController < ApplicationController
         :name, 
         :description,
         :featured,
+        :address,
         :latitude,
         :longitude,
         :tags,
