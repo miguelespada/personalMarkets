@@ -7,28 +7,28 @@ class MarketDecorator < Draper::Decorator
   end 
 
   def show_link
-    h.link_to("Show", h.user_market_path(market.user, market))
+    h.link_to("Show", h.user_market_path(market.user, market), :class => "btn btn-default")
   end
   
   def edit_link
     if market_belongs_to_user?
-      h.link_to("Edit", h.edit_user_market_path(market.user, market))
+      h.link_to("Edit", h.edit_user_market_path(market.user, market), :class => "btn btn-default")
     end
   end
 
   def delete_link
     if market_belongs_to_user?
-      h.link_to("Delete", h.user_market_path(market.user, market), :method => :delete)
+      h.link_to("Delete", h.user_market_path(market.user, market), :method => :delete, :class => "btn btn-default" )
     end
   end
 
   def like_link
     if market_does_not_belong_to_user?
       if user_does_not_like_market?
-       h.link_to("Like", h.like_path(h.current_user, market))
+        h.link_to("", h.like_path(h.current_user, market), :class => "btn btn-default glyphicon glyphicon-heart", :id => "Like"  ) 
       else
-        h.link_to("Unlike", h.unlike_path(h.current_user, market))
-      end
+        h.link_to("", h.unlike_path(h.current_user, market), :class => "btn btn-default glyphicon glyphicon-heart-empty", :id => "Unlike" )
+      end     
     end
   end
 

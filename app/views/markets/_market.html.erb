@@ -13,16 +13,16 @@
 			<div class = "market-category"> <%= market.category.name %> </div>  
 			<div class = "market-tags"> <%= market.tags %> </div> 
 			<div class = "market-user-email"> <%= market.user.email %> </div>
+		<div class = "market-favorite"> 
+  			<span> Number of likes: </span>  
+  			<span> <%= market.favorited.count %> </span>
+		</div>
 
-			<div class = "market-links btn-group">
+			<div class = "market-links btn-group btn-group-sm">
 			  <div> <%= market.show_link %> </div>
 			  <div> <%= market.edit_link %> </div>
 			  <div> <%= market.delete_link %> </div>
-			  <div> <%= market.like_link %>  </div> 
-			</div>
-			<div class = "market-favorite"> 
-  			<span> Number of likes: </span>  
-  			<span> <%= market.favorited.count %> </span>
+			  <div> <%= market.like_link %> </div>
 			</div>
 		</div>
 	</div>
@@ -33,4 +33,3 @@
 	  <span> <%= market.date %>  </span>
 	</div>
 </div>
-
