@@ -14,6 +14,8 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
                   <li><%= link_to "Home", "/" %></li>
+                  <li><%= link_to "Markets", markets_path %></li>
+                  <li><%= link_to "Users", users_path %></li>
                   <li><%= link_to "Categories", categories_path %></li>
                   <li><%= link_to "Tags", tags_path %></li>
                   <li><%= link_to "Search", search_path %></li>
@@ -22,18 +24,14 @@
                   <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">User account<b class="caret"></b></a>
                 <ul class="dropdown-menu" role="menu">
-                <% if user_signed_in? %>
-                  <li><%= link_to "My markets", user_markets_path(current_user) %></li>
-                  <li><%= link_to "My favorites", user_path(current_user) %></li>
-                  <li class="divider"></li>
-                  <li><%= link_to "Sign out", destroy_user_session_path %></li>
-                  <li>You are logged as: <%= current_user.email %></li>
-                <% else %>
-                  <li><%= link_to "Sign in", new_user_session_path %></li>
-                  <li><%= link_to "Sign up", new_user_registration_path %></li>
-                <% end %>
-                  </li>
-                  </ul>
+                  <% if user_signed_in? %>
+                    <li><%= link_to "Sign out", destroy_user_session_path %></li>
+                    <li>You are logged as: <%= current_user.email %></li>
+                  <% else %>
+                    <li><%= link_to "Sign in", new_user_session_path %></li>
+                    <li><%= link_to "Sign up", new_user_registration_path %></li>
+                  <% end %>
+                </ul>
             </div>
         </div>
     </nav>
