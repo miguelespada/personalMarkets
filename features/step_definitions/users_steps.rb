@@ -30,7 +30,8 @@ Given(/^I am a registered user$/) do
 end
 
 Then(/^I click to sign in$/) do
-  click_link "Sign in"
+  click_on "User account"
+  click_on "Sign in"
 end
 
 Then(/^I fill a valid email and password$/) do
