@@ -36,7 +36,7 @@ describe CategoriesController do
 
         it "redirects to the list of categories" do
           post :create, category_params, valid_session
-          expect(response).should redirect_to categories_path
+          expect(response).to redirect_to categories_path
         end
 
       end
@@ -53,7 +53,7 @@ describe CategoriesController do
 
       it "redirects to the list of categories" do
         delete :destroy, { id: @category.to_param }, valid_session
-        expect(response).should redirect_to categories_path
+        expect(response).to redirect_to categories_path
       end
 
       it "cannot delete category with markets" do

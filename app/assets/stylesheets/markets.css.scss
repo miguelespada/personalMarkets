@@ -1,28 +1,29 @@
 //= require tagmanager.css
-
-.market-gallery-item {
-  .market-user-email { display : none}
-  .label {display: none}
-}
+//= require bootstrap-datepicker
+//= require map-small
 
 .market-tooltip {
-  .market-user-email { display : none}
+  .market-name { font-size: 22px; font-weight:100; line-height:36px;}
+  .market-description { padding-top: 10px; padding-bottom: 5px; font-size: 12px; line-height:16px;}
+  .market-favorite { padding-top: 5px; font-size: 12px; line-height:16px;}
+  .label { display : none }
+  .market-category { display : none }
+  .market-user-email { display : none }
+  .market-address { padding-top: 5px; padding-bottom: 5px; font-size: 12px; line-height:16px;}
+  .market-longitude { display : none }
+  .market-latitude { display : none }
+  .market-links { display : none }
+  .market-qr-links { display : none }
+  .market-calendar { display : none }
 }
+
 
 .market-full-description {
-  .market-user-email { display : none}
-  .label { display : none}
-  .market-name {color : red;
-  	}
-}
 
-.thumbnail {
-	text-align:center;
-}
-
-.featured-photo {
-}
-
-.caption {
-  height: 80px;
-}
+}	
+	.thumbnail {
+		text-align:center;
+	}
+	.caption {
+	  height: 80px;
+	}

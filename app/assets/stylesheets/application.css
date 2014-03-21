@@ -11,4 +11,6 @@
  *= require_self
  *= require custom
  *= require homepage
+ *= require markets
+ *= require devise/sessions
  */

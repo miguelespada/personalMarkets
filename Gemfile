@@ -33,24 +33,26 @@ gem 'jbuilder', '~> 1.2'
 # Photo management
 gem 'cloudinary'
 gem 'attachinary', git: 'git://github.com/rochers/attachinary.git', branch: 'rails4'
+gem 'rqrcode-rails3'
 
 # forms
 gem 'simple_form'
+gem 'bootstrap-datepicker-rails'
 
 #tags
 gem 'mongoid_taggable'
 gem "tagmanager-rails", "~> 3.0.1.0"
+gem 'twitter-typeahead-rails'
 
 
 # search
 gem "tire", "~> 0.6.2"
 
-# google maps
-gem 'gmaps4rails'
-
 # Refacoring
 gem 'draper', '~> 1.3'
 
+# Mapbox
+gem 'mapbox-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -86,5 +88,3 @@ group :test, :development do
 end
 
 gem "font-awesome-rails"
-
-

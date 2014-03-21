@@ -1,6 +1,5 @@
 class MarketsController < ApplicationController
   before_filter :load_user
-  before_filter :load_suggested_tags, only: [:new, :edit]
 
   def index
     @markets ||= Market.find_all(@user)
@@ -14,7 +13,7 @@ class MarketsController < ApplicationController
 
   def search
     @category_query = load_category
-    @markets = Market.search(params[:query], @category_query)
+    @markets = Market.search(params[:query], @category_query, params[:from], params[:to])
     render 'index' 
   end
 
@@ -24,6 +23,10 @@ class MarketsController < ApplicationController
 
   def show
     @market = @user.markets.find(params[:id])
+    respond_to do |format|
+        format.html   
+        format.svg  { render :qrcode => request.url, :level => :l, :unit => 10 }
+    end
   end
   
   def edit
@@ -66,10 +69,14 @@ class MarketsController < ApplicationController
       params.require(:market).permit(
         :name, 
         :description,
-        :featured, 
+        :featured,
+        :address,
         :latitude,
         :longitude,
         :tags,
+        :date,
+        :from,
+        :to,
         "hidden-market",
         [:signature, :created_at, :tags, :bytes, :type, :etag, :url, :secure_url],
         :_id,
@@ -84,6 +91,7 @@ class MarketsController < ApplicationController
         params[:market][:tags] += "," + params["hidden-market"][:tags]
       end
     end 
+    
     def load_user
       if params[:user_id].present?
         @user = User.find(params[:user_id])
@@ -95,8 +103,4 @@ class MarketsController < ApplicationController
     rescue => e
         ""
     end 
-
-    def load_suggested_tags
-      @suggested_tags = Tag.all
-    end
 end

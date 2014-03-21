@@ -1,16 +1,17 @@
-
-class Market
+class Market 
   include Mongoid::Document
   include Mongoid::Taggable
   include Tire::Model::Search
   include Tire::Model::Callbacks
   include Elasticsearch
+  include Location
 
   field :name, type: String
   field :description, type: String
-  field :longitude, type: String
-  field :latitude, type: String
-  
+  field :address, type: String
+  field :longitude, type: Float
+  field :latitude, type: Float
+  field :date, type: String
   has_attachment  :featured, accept: [:jpg, :png, :gif]
 
   belongs_to :category
@@ -18,7 +19,6 @@ class Market
   has_and_belongs_to_many :favorited, class_name: "User", inverse_of: :favorites
 
   validates_presence_of :name, :description, :user, :category
-
 
   def like(user)
     favorited << user
@@ -33,25 +33,51 @@ class Market
           name: name,
           description: description,
           category: category.name,
-          tags: tags
+          tags: tags,
+          date: format_date
         }.to_json
   end
 
-  def self.search(query, category)
+  def format_date 
+
+     Date.strptime(date, "%d/%m/%Y").strftime("%Y%m%d") if date.present?
+  end 
+
+  def self.search(query, category, from = "",  to = "" )
       index_all
+
       query = query.blank? ? '*' : query
+      range = format_range_query(from, to)
+
+      the_query = lambda do |boolean|
+         boolean.must {string query}
+         boolean.must {string "date:[#{range}]" } if !range.blank? 
+      end
 
       search = Tire.search 'markets' do
         query do
+          boolean &the_query
           filtered do
-            query {string query}
             unless category.blank?
               filter :terms, category: [category]
             end
           end
         end
       end
-    search.results.collect{|result| find(result.to_hash[:id])}
+      search.results.collect{|result| find(result.to_hash[:id])}
   end
-
+  def self.format_range_query(from, to)
+      # Default elasticsearch format yyyymmdd
+     begin 
+      range = Date.strptime(from, "%d/%m/%Y").strftime("%Y%m%d")
+      range += " TO "
+      begin
+        range += Date.strptime(to, "%d/%m/%Y").strftime("%Y%m%d")
+      rescue
+        range += "99991231"
+      end
+    rescue
+    end
+      range ||= ""
+    end
 end

@@ -26,9 +26,6 @@ Then(/^I should be notified that the market has been added$/) do
   expect(page).to have_content "Market was successfully created."
 end
 
-When(/^I go to the my markets$/) do
-  visit user_markets_path(@user)
-end
 
 When(/^I click on edit a market$/) do
   click_on "Edit"
@@ -91,10 +88,7 @@ Then(/^I should see my personal market page with the tags$/) do
   expect(page).to have_content "tag_3"
 end
 
-When(/^I remove one tag$/) do
-  save_and_open_page
-  find(:xpath, "//input[@name='hidden-market[tags]']").set "tag_1,tag_3"
-end
+
 
 Then(/^I should see my personal market page without the tag$/) do
   expect(page).to have_content "tag_1"
@@ -105,9 +99,11 @@ end
 When(/^there are some tagged markets$/) do
   @market_1 = FactoryGirl.create(:market, :name => "Market one", :tags => "one, two, three")
   @market_2 = FactoryGirl.create(:market, :name => "Market two", :tags => "one, three")
-  @market_3 = FactoryGirl.create(:market, :name => "Market thre", :tags => "four")
+  @market_3 = FactoryGirl.create(:market, :name => "Market three", :tags => "four")
   Market.reindex
 end
+
+
 
 When(/^I go to tag list$/) do
   visit tags_path
@@ -134,13 +130,6 @@ When(/^I click star tag$/) do
 end
 
 
-Then(/^I should see tag as suggested tag$/) do
-  # within(:css, "div#suggested-tags") do
-  #     expect(page).to have_content "one"
-  # end
-end
-
-
 When(/^I go to add market$/) do
   visit "/"
   click_on "Add market"
@@ -152,3 +141,53 @@ When(/^I click unstar tag$/) do
   end 
 end
 
+When(/^I remove one tag$/) do
+  find(:xpath, "//input[@name='hidden-market[tags]']").set "tag_1,tag_3"
+end
+
+Then(/^I should see its tags in the form$/) do
+  page.should have_css('form[data-tags=\'["tag_1", "tag_2", "tag_3"]\']')
+end
+
+Given(/^I go to edit my market$/) do
+  visit edit_user_market_path(@user, @myMarket)
+end
+
+When(/^I fill the date field$/) do
+    fill_in "Date",  with: "13/05/2014"
+end
+
+Then(/^I should see the calendar with my calendar$/) do
+    within(:css, "div.market-calendar") do
+      expect(page).to have_content @myMarket.name
+      expect(page).to have_content "13/05/2014"
+    end 
+end
+
+Given(/^I am in the search page$/) do
+  visit search_path
+end
+
+Given(/^There are some markets with date$/) do
+   @market_1 = FactoryGirl.create(:market, :name => "Market one", :date => "13/05/2014")
+   @market_2 = FactoryGirl.create(:market, :name => "Market two", :date => "17/07/2014")
+   @market_3 = FactoryGirl.create(:market, :name => "Market three", :date => "20/09/2014")
+   Market.reindex
+end
+
+When(/^I select a 'from' date$/) do
+    fill_in "from",  with: "16/05/2014"
+end
+When(/^I select a 'to' date$/) do
+    fill_in "to",  with: "20/07/2014"
+end
+
+When(/^I click on search$/) do
+  click_button "Search"
+end
+
+Then(/^I should see the markets that match my search with date$/) do
+  expect(page).not_to have_content "Market one"
+  expect(page).to have_content "Market two"
+  expect(page).not_to have_content "Market three"
+end

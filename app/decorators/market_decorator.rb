@@ -32,6 +32,10 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
+  def qr_code_link
+    h.link_to("QR", h.user_market_path(market.user, market, :svg))
+  end
+
   private 
 
     def market_belongs_to_user?
