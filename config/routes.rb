@@ -13,13 +13,13 @@ PopUpStores::Application.routes.draw do
     resources :markets
   end
   
-  resources :maps, :only => [:index]
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   mount Attachinary::Engine => "/attachinary"
 
   get "markets/search"
   get "static_pages/search", path: "/search", as: 'search'
+  get "static_pages/calendar", path: "/calendar", as: 'calendar'
   get "/users/:user_id/like/:market_id",  to: 'users#like', as: 'like'
   get "/users/:user_id/unlike/:market_id",  to: 'users#unlike', as: 'unlike'
 

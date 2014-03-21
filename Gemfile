@@ -54,6 +54,9 @@ gem 'draper', '~> 1.3'
 # Mapbox
 gem 'mapbox-rails'
 
+#D3
+gem 'd3-rails', '~> 3.3.7'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
