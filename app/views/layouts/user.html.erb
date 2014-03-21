@@ -7,11 +7,7 @@
 
 <%= render "layouts/shared/navbarhorizontal" %>
 
-<% if user_signed_in? %>
-	<%= render "layouts/shared/container_admin" %>
-<% else %>
-	<%= render "layouts/shared/container" %>
-<% end %>
+<%= render "layouts/shared/container_admin" %>
 
 <%= render "layouts/shared/footer" %>
 

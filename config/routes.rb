@@ -1,12 +1,13 @@
 PopUpStores::Application.routes.draw do
 
+
   get "tags/index"
   devise_for :users
   resources :markets, :only => [:index]
   resources :categories, :only => [:index, :new, :destroy, :create]
   resources :users, :only => [:index, :show]
   resources :tags, :only => [:index]
-  
+
   resources :users do
     resources :markets
   end
@@ -16,6 +17,7 @@ PopUpStores::Application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   mount Attachinary::Engine => "/attachinary"
 
+  get "static_pages/search", as: "search"
   get "markets/search"
   get "/users/:user_id/like/:market_id",  to: 'users#like', as: 'like'
   get "/users/:user_id/unlike/:market_id",  to: 'users#unlike', as: 'unlike'
