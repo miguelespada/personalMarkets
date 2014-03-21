@@ -21,9 +21,14 @@
 .market-full-description {
 
 }	
-	.thumbnail {
-		text-align:center;
-	}
-	.caption {
-	  height: 80px;
-	}
+
+.market-gallery-item {
+
+   .thumbnail {text-align:center;}
+   .caption {height: 200px;}
+   .market-longitude { display : none }
+   .market-latitude { display : none }
+   .market-user-email { display : none }
+   .label { display : none }
+
+} 
