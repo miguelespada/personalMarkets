@@ -20,15 +20,20 @@
 
 .market-full-description {
 
+   .thumbnail {text-align:center; width: 540px;}
+   .caption {height: 200px;}
+   .market-user-email { display : none }
+   .label { display : none }
+
 }	
 
 .market-gallery-item {
 
    .thumbnail {text-align:center;}
-   .caption {height: 200px;}
+   .caption {height: 150px;}
    .market-longitude { display : none }
    .market-latitude { display : none }
    .market-user-email { display : none }
-   .label { display : none }
+   .market-address { display : none }
 
 } 

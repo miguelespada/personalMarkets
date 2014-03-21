@@ -25,7 +25,7 @@ module MarketsHelper
     end
   end
 
-  def gallery(markets, &block)
+  def gallery(markets, &block) 
       markets.collect{|market| concat(gallery_item(market))}
       yield if block_given?
   end
