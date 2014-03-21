@@ -1,38 +1,40 @@
 //= require mapbox
 
 $(document).ready(function(){
-  map = L.mapbox.map('map-small').setView([40.416775, -3.703790], 14);
-  var mapTiles = L.mapbox.tileLayer('jameshedaweng.hf5b366j');
-  map.addLayer(mapTiles);
-  
-  var locationExist, address;
-  var originLatS = $("#market_latitude").val();
-  var originLngS = $("#market_longitude").val();
-  var originLat = parseFloat($("#market_latitude").val());
-  var originLng = parseFloat($("#market_longitude").val());  
-  
-  if (originLatS != "" && originLatS != "") {
-    locationExist = -1;
-  }
-  else {
-    locationExist = 0;
-  }
-
-  if (locationExist == -1){
-    updateLocation([originLat, originLng]);
-    locationExist = 1;  
-  }
-
-  map.on('click', function(e){    
-    if (locationExist == 0){
-      updateLocation(e.latlng);
-      locationExist = 1;
+  if ($("#map-small").length > 0){
+    map = L.mapbox.map('map-small').setView([40.416775, -3.703790], 14);
+    var mapTiles = L.mapbox.tileLayer('jameshedaweng.hf5b366j');
+    map.addLayer(mapTiles);
+    
+    var locationExist, address;
+    var originLatS = $("#market_latitude").val();
+    var originLngS = $("#market_longitude").val();
+    var originLat = parseFloat($("#market_latitude").val());
+    var originLng = parseFloat($("#market_longitude").val());  
+    
+    if (originLatS != "" && originLatS != "") {
+      locationExist = -1;
     }
-    else if (locationExist == 1){
-      map.removeLayer(marker);
-      updateLocation(e.latlng);
+    else {
+      locationExist = 0;
     }
-  });
+  
+    if (locationExist == -1){
+      updateLocation([originLat, originLng]);
+      locationExist = 1;  
+    }
+  
+    map.on('click', function(e){    
+      if (locationExist == 0){
+        updateLocation(e.latlng);
+        locationExist = 1;
+      }
+      else if (locationExist == 1){
+        map.removeLayer(marker);
+        updateLocation(e.latlng);
+      }
+    });
+  }
 });
 
 function getAddress(lng, lat){
