@@ -8,6 +8,10 @@ When(/^I go to the Markets$/) do  visit "/"
   click_on "Markets"
 end
 
+When(/^I go to Search$/) do  visit "/"
+  visit search_path
+end
+
 Then(/^I should see all the markets$/) do
   expect(page).to have_content "Market one"
   expect(page).to have_content "Market two"
