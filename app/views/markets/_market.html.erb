@@ -1,11 +1,7 @@
 <div class = "market-name"> <%= market.name %> </div>
 <div class = "featured-photo"> <%= market.featured_photo(image_size) %></div>
 
-
-<div class = "market-description"> 
-  <p class = "label"> <%= Market.human_attribute_name(:description) %></p>  
-  <%=  market.description %> 
-</div>
+<div class = "market-description"> <%=  market.description %> </div>
 
 <div class = "market-address"> <%= market.address %> </div>
 <div class = "market-longitude"> <%= market.longitude %> </div>
