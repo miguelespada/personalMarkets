@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%= render "layouts/shared/head" %>
+  <%= render "layouts/shared/header" %>
 
 <body>
-<% if flash[:notice] %>
-    <div id="notice"><%= flash[:notice] %></div>
-<% end %>
+  <% if flash[:notice] %>
+      <div id="notice"><%= flash[:notice] %></div>
+  <% end %>
 
-<% if flash[:error] %>
-    <div id="error"><%= flash[:error] %></div>
-<% end %>
-	
-<%= render "layouts/shared/navbarhorizontal" %>
+  <% if flash[:error] %>
+      <div id="error"><%= flash[:error] %></div>
+  <% end %>
+  
+  <%= render "layouts/shared/navbarhorizontal" %>
 
-<% if user_signed_in? %>
-	<%= render "layouts/shared/container_admin" %>
-<% else %>
-	<%= render "layouts/shared/container" %>
-<% end %>
+  <div class="container">
+    <div class="row">
+      <%= render "layouts/shared/navbarvertical" if user_signed_in? %>
+      <div class="col-md-9">
+        <div class="row">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<%= render "layouts/shared/footer" %>
+  <%= render "layouts/shared/footer" %>
 
 </body>
 

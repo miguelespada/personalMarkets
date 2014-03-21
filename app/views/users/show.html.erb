@@ -1,4 +1,3 @@
-
 <%=  page_title "Favorites of #{@user.email}" %>
 <%= content_tag :div, class: "favorites" do %>
   <%= slugs(@user.favorites) %>

@@ -55,5 +55,17 @@ $( document ).ready(function() {
     }
 
     );
+
+   $(function() {
+      $( "#slider-range" ).slider({
+        orientation: "horizontal",
+        range: true,
+        values: [40, 80], 
+        height: 40,
+        slide: function( event, ui ) {
+          $( "#amount" ).val( ui.values[ 0 ] * 24 / 100 + " - " + ui.values[ 1 ] * 24 / 100 );
+        }
+      });
+    });
 });
 

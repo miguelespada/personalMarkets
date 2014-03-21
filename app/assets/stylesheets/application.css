@@ -13,4 +13,6 @@
  *= require homepage
  *= require markets
  *= require devise/sessions
+ *= require jquery.ui.all
  */
+

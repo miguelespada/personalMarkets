@@ -1,5 +1,16 @@
-<!-- Header START -->
-<div class="page-header">
-  <h1>Personal Markets<small> World wide store</small></h1>
-</div>
-<!-- Header STOP -->
+<head>
+  <title>Personal markets</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  
+  <%= javascript_include_tag params[:controller] %> 
+  <%= stylesheet_link_tag params[:controller] %>
+  
+  <%= cloudinary_js_config %>
+</head>
