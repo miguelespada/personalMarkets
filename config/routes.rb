@@ -6,7 +6,6 @@ PopUpStores::Application.routes.draw do
   resources :markets, :only => [:index]
   resources :categories, :only => [:index, :new, :destroy, :create]
   resources :users, :only => [:index, :show]
-  resources :maps, :only => [:index]
   resources :tags, :only => [:index]
 
   resources :users do
@@ -20,6 +19,7 @@ PopUpStores::Application.routes.draw do
   get "markets/search"
   get "static_pages/search", path: "/search", as: 'search'
   get "static_pages/calendar", path: "/calendar", as: 'calendar'
+  get "static_pages/map", path: "/map", as: 'map'
   get "/users/:user_id/like/:market_id",  to: 'users#like', as: 'like'
   get "/users/:user_id/unlike/:market_id",  to: 'users#unlike', as: 'unlike'
 

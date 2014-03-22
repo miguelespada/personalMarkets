@@ -9,7 +9,7 @@ $(document).ready(function(){
   var mapTiles = L.mapbox.tileLayer('jameshedaweng.hf5b366j');
   map.addLayer(mapTiles);
   
-  $.get( "/maps.json", function( data ) {
+  $.get( "/map.json", function( data ) {
     var markers = map.markerLayer.setGeoJSON(data);
     markers.eachLayer(function(layer) {
     var popup = '<div>' + layer.feature.properties.content +'<\/div>';
