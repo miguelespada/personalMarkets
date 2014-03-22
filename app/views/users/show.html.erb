@@ -1,5 +1,5 @@
-<%=  page_title "Favorites of #{@user.email}" %>
+<%=  page_title "Likes of #{@user.email}" %>
 
-<%= content_tag :div, class: "market-slugs" do %>
-  <%= market_list(@user.favorites, "slugs") %>
-<% end %> 
+<%= content_tag :div, class: "likes" do %>
+<%= render template: "markets/index", :locals => {:markets => @user.favorites, :layout => "slugs"} %>
+<% end %>

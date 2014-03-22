@@ -3,7 +3,12 @@
   check makers_helper to see the function description.  
 -->
 <% params[:layout] ||= "gallery" %>
+
+<!-- The view can be render as partial with local varibles. -->
+<% markets ||= @markets %> 
+<!--  -->
+
 <%= content_tag :div, class: "market-#{params[:layout]}" do %>
-  <%= market_list(@markets, params[:layout]) %>
+  <%= market_list(markets, params[:layout]) %>
 <% end %>
 

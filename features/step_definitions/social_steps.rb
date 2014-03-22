@@ -25,23 +25,23 @@ end
 
 Then(/^The market is in my favorites$/) do
   visit user_path(@user)
-  page.should have_content "Favorites of #{@user.email}" 
-  within(:css, "div.favorites") do
+  page.should have_content "Likes of #{@user.email}" 
+  within(:css, "div.likes") do
     page.should have_content @market.name
   end
 end
 
 Then(/^The market gets my like$/) do
   visit user_market_path(@market.user, @market)
-  page.should have_content "Favorited by" 
-  within(:css, "div.favorited") do
+  page.should have_content "Liked by" 
+  within(:css, "div.market-likes") do
     page.should have_content @user.email
   end
 end
 
 When(/^I go to my favorites$/) do
   visit user_path(@user)
-  page.should have_content "Favorites of #{@user.email}" 
+  page.should have_content "Likes of #{@user.email}" 
 end
 
 When(/^I unlike the market$/) do
@@ -50,16 +50,16 @@ end
 
 Then(/^The market is not in my favorites$/) do
   visit user_path(@user)
-  page.should have_content "Favorites of #{@user.email}" 
-  within(:css, "div.favorites") do
+  page.should have_content "Likes of #{@user.email}" 
+  within(:css, "div.likes") do
     page.should_not have_content @market.name
   end
 end
 
 Then(/^The market does not have my like$/) do
   visit user_market_path(@market.user, @market)
-  page.should have_content "Favorited by" 
-  within(:css, "div.favorited") do
+  page.should have_content "Liked by" 
+  within(:css, "div.market-likes") do
     page.should_not have_content @user.email
   end
 end
