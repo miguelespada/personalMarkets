@@ -26,3 +26,13 @@ Given(/^I sign in$/) do
     click_on "Sign in"
   end
 end
+
+Given(/^I am logged in$/) do
+  step "I am a registerd user"
+  step "I sign in"
+end
+
+Given(/^I have one market$/) do
+  @market = FactoryGirl.create(:market, :user => @user)
+  @user.markets << @market
+end
