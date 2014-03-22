@@ -12,4 +12,5 @@ describe "Like market" do
   xit "No double likes allowed"
   xit "No double likes allowed"
   xit "If market is deleted, is not anymore in my favorites [controller specs]"
+  xit "When I go to my markets I only see my markets"
 end
