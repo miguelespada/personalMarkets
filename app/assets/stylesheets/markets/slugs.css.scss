@@ -21,6 +21,7 @@
   .market-actions{
     @extend .col-md-4; 
     .market-action{
+      @extend .btn;
       @extend .btn-sm;
     }
   }
