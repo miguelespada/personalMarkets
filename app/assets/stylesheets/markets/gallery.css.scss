@@ -27,7 +27,7 @@
   .market-info { display : none }
   
   .market-action{
-     @extend .btn;
+    @extend .btn;
     @extend .btn-default;
   }
 } 

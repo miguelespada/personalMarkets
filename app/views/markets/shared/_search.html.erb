@@ -1,9 +1,23 @@
 <%= form_tag markets_search_path, method: "get" do %>
-    <%= text_field_tag :query, params[:query] %>
-    <%= collection_select(:category, :category_id, Category.all, :name, :name, 
-                          {:selected => @category_query, :include_blank => ""}) %>
+  <div "form-inputs">
+    <div class="query">
+    <p>Query:</p>
+     <%= text_field_tag :query, params[:query] %>
+    </div>
 
-    <p> From: </p> <%= text_field_tag :from, params[:from], data: {:behaviour => 'datepicker'} %>  
-    <p> To: </p> <%= text_field_tag :to, params[:to], data: {:behaviour => 'datepicker'} %>  
+    <div class="category">
+    <p>Category:</p>
+    <%= collection_select(:category, :category_id, Category.all, :name, :name, 
+                        {:selected => @category_query, :include_blank => ""}) %>
+    </div>
+
+    <div class="date-range">
+      <p>From:</p> <%= text_field_tag :from, params[:from], data: {:behaviour => 'datepicker'} %>  
+      <p>To:</p> <%= text_field_tag :to, params[:to], data: {:behaviour => 'datepicker'} %>  
+    </div>
+  </div>
+
+  <div "form-actions">
     <%= submit_tag "Search", name: nil %>
+  </div>
 <% end %>

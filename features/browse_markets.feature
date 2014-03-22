@@ -6,7 +6,6 @@ Feature: Browse markets
   Given There are some indexed markets
   When I go to Search
 
-  
     @browse
     Scenario: I want to see the list of Markets
       When I go to the Markets
