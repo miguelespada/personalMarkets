@@ -30,6 +30,10 @@
 }
 
 .market-gallery-item {
+  .market-name{
+    @extend h4;
+    @extend .thumbnail;
+  }
   .market-longitude { display : none }
   .market-latitude { display : none }
   .market-user-email { display : none }

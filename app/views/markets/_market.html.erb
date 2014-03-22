@@ -1,13 +1,21 @@
-<div class = "market-name"> <%= market.name %> </div>
-<div class = "featured-photo"> <%= market.featured_photo(image_size) %></div>
-<div class = "market-description"> <%=  market.description %> </div>
+<div class = "market-thumbnail">
+  <div class = "market-name"> <%= market.name %> </div>
+  <div class = "featured-photo"> <%= market.featured_photo(image_size) %></div>
+  <div class = "market-description"> <%=  market.description %> </div>
+</div>
 
-<div class = "market-address"> <%= market.address %> </div>
-<div class = "market-longitude"> <%= market.longitude %> </div>
-<div class = "market-latitude"> <%= market.latitude %> </div>
-<div class = "market-category"> <%= market.category.name %> </div>  
-<div class = "market-tags"> <%= market.tags %> </div> 
-<div class = "market-user-email"> <%= market.user.email %> </div>
+<div class = "market-meta">
+  <div class = "market-category"> <%= market.category.name %> </div>  
+  <div class = "market-tags"> <%= market.tags %> </div> 
+</div>
+
+<div class = "market-info">
+  <div class = "market-user-email"> <%= market.user.email %> </div>
+  <div class = "market-address"> <%= market.address %> </div>
+  <div class = "market-longitude"> <%= market.longitude %> </div>
+  <div class = "market-latitude"> <%= market.latitude %> </div>  
+  <div class = "market-date"> <%= market.date %> </span>
+</div>
 
 <div class = "market-actions">
   <%= market.show_link %>
@@ -16,14 +24,13 @@
   <%= market.like_link %>
 </div>
 
-<div class="market-calendar"> 
-  <span> Calendar for: <%= market.name %>  </span>
-  <span> <%= market.date %>  </span>
+<div class = "market-stats">
+  <div class = "market-likes"> 
+    Likes: <%= market.favorited.count %>
+  </div>
 </div>
 
-<div class = "market-qr-link"> <%= market.qr_code_link %>  </div>
-
-<div class = "market-favorite"> 
-  <span> Number of likes: </span>  
-  <span> <%= market.favorited.count %> </span>
+<div class = "market-widgets">
+  <div class="market-calendar"> Set Calendar for: <%= market.name %> on <%= market.date %> </div>
+  <div class = "market-qr-link"> <%= market.qr_code_link %> </div>
 </div>
