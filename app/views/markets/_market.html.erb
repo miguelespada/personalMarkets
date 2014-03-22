@@ -24,9 +24,9 @@
   <div class="market-date"> <%= market.date %> </div>
 </div>
 
-
 <div class="market-stats">
-  <div class="market-likes"> Likes: <%= market.favorited.count %> </div>
+  <div class="market-likes-number"> Likes: <%= market.favorited.count %> </div>
+  <div class="market-likes"> Liked by <%= likes(market) %> </div>
 </div>
 
 <div class="market-widgets">

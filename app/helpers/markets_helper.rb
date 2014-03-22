@@ -30,7 +30,7 @@ module MarketsHelper
       yield if block_given?
   end
 
-  def slugs(markets)
+  def slugs(markets, &block)
       markets.collect{|market| concat(slug_item(market))}
       yield if block_given?
   end
@@ -41,5 +41,10 @@ module MarketsHelper
 
   def search_box
     render partial: "markets/shared/search"
+  end
+
+  def likes(market, &block)
+    market.favorited.collect{|user| concat(user.email + " ")}
+    yield if block_given?
   end
 end
