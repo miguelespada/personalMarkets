@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe "Update market" do
   xit "Add location"
+  xit "Add date"
+  xit "Add map"
 end
 
 describe "Like market" do

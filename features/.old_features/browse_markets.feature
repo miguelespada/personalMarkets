@@ -6,10 +6,6 @@ Feature: Browse markets
   Given There are some indexed markets
   When I go to Search
 
-<<<<<<< HEAD:features/browse_markets.feature
-=======
-
->>>>>>> a652064b391cffbf1846f8646e392d1a7efa10ec:features/.old_features/browse_markets.feature
     @browse
     Scenario: I want to see the list of Markets
       When I go to the Markets
