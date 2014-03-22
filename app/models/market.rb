@@ -1,4 +1,4 @@
-class Market 
+class Market
   include Mongoid::Document
   include Mongoid::Taggable
   include Tire::Model::Search
@@ -27,7 +27,7 @@ class Market
   def unlike(user)
     favorited.delete(user)
   end
-  
+
   def to_indexed_json
         { id: id,
           name: name,
@@ -38,10 +38,9 @@ class Market
         }.to_json
   end
 
-  def format_date 
-
+  def format_date
      Date.strptime(date, "%d/%m/%Y").strftime("%Y%m%d") if date.present?
-  end 
+  end
 
   def self.search(query, category, from = "",  to = "" )
       index_all
@@ -51,7 +50,7 @@ class Market
 
       the_query = lambda do |boolean|
          boolean.must {string query}
-         boolean.must {string "date:[#{range}]" } if !range.blank? 
+         boolean.must {string "date:[#{range}]" } if !range.blank?
       end
 
       search = Tire.search 'markets' do
@@ -66,9 +65,10 @@ class Market
       end
       search.results.collect{|result| find(result.to_hash[:id])}
   end
+  
   def self.format_range_query(from, to)
       # Default elasticsearch format yyyymmdd
-     begin 
+     begin
       range = Date.strptime(from, "%d/%m/%Y").strftime("%Y%m%d")
       range += " TO "
       begin
