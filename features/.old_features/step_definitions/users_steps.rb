@@ -40,7 +40,6 @@ Then(/^I fill a valid email and password$/) do
   click_button "Sign in"
 end
 
-
 Then(/^I should see that I am logged as myself$/) do
   expect(page).to have_content "You are logged as: " + @user.email
 end
