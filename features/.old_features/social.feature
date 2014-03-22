@@ -28,7 +28,6 @@ Feature: Social feature
       When I go to the market page
       Then I cannot unlike the market again
 
-
     @social
     Scenario:
       Given I have a market

@@ -36,3 +36,9 @@ Given(/^I have one market$/) do
   @market = FactoryGirl.create(:market, :user => @user)
   @user.markets << @market
 end
+
+Given(/^There is someone else's market$/) do
+  user = FactoryGirl.create(:user)
+  @some_market = FactoryGirl.create(:market, :user => user)
+end
+
