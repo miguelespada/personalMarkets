@@ -4,9 +4,8 @@ Feature: Manage market
   I want to modify my market
 
   Background:
-    Given I am logged in
-    And I add a market
-    And I go to my markets page
+    Given I am logged user 
+    And I have with some markets
 
   Scenario: Modify market
     When I edit my market
