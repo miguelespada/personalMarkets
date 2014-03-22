@@ -37,7 +37,7 @@ module Elasticsearch
               }
             }
           }
-        end 
+        end
     end
 
     def index_all
@@ -46,10 +46,10 @@ module Elasticsearch
         Tire.index 'markets' do
             import Market.all
             refresh
-          end 
         end
+      end
     end
-    
+
   end
-  
+
 end

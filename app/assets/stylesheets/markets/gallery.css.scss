@@ -13,22 +13,24 @@
 
   .market-thumbnail{
     @extend .thumbnail;
-    text-align:center; 
+    text-align:center;
   }
-  .market-name{
+
+  .market-name {
     @extend h4;
   }
-  .market-description{
+
+  .market-description {
     @extend .caption;
   }
+
   .market-meta { display : none }
   .market-widgets { display : none }
   .market-stats { display : none }
   .market-info { display : none }
-  
-  .market-action{
-     @extend .btn;
+
+  .market-action {
+    @extend .btn;
     @extend .btn-default;
   }
-} 
-
+}
