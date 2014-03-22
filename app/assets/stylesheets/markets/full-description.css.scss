@@ -1,0 +1,26 @@
+@import "bootstrap";
+@import "bootstrap/theme";
+
+.market-full-description{
+  text-align: center;
+
+  @extend .row;
+  .market-name {
+    @extend h2;
+  }
+
+  .market-description {
+    @extend h4;
+  }
+
+  .market-action{
+    @extend .btn;
+    @extend .btn-default;
+  }
+
+  .market-meta { display : none }
+  .market-widgets { display : none }
+  .market-stats { display : none }
+  .market-info { display : none }
+
+}
