@@ -1,7 +1,7 @@
 Feature: Manage market
   In order to other users can see my market
   As a registered user
-  I want to add and manage a market
+  I want to modify my market
 
   Background:
     Given I am logged in
@@ -15,7 +15,6 @@ Feature: Manage market
 
   @coordinates
   Scenario: Add coordinates to a market
-
 
   @delete
   Scenario: delete market
