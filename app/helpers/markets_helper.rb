@@ -25,13 +25,12 @@ module MarketsHelper
     end
   end
 
-  def gallery(markets, &block) 
-      markets.collect{|market| concat(gallery_item(market))}
-      yield if block_given?
-  end
-
-  def slugs(markets, &block)
-      markets.collect{|market| concat(slug_item(market))}
+  def market_list(markets, layout, &block) 
+      if layout == "slugs"
+        markets.collect{|market| concat(slug_item(market))}
+      else
+        markets.collect{|market| concat(gallery_item(market))}
+      end
       yield if block_given?
   end
 

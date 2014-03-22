@@ -1,1 +1,3 @@
-<div class="market-gallery"> <%= gallery(@markets) %> </div>
+<%= content_tag :div, class: "market-#{params[:layout]}" do %>
+  <%= market_list(@markets, params[:layout]) %>
+<% end %>
