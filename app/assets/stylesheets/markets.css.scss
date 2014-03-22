@@ -16,6 +16,10 @@
 .market-gallery-item {
   .market-thumbnail{
     @extend .thumbnail;
+    @extend col-xs-12;
+    @extend col-md-8;
+    @extend .col-xs-6;
+    @extend .col-sm-3;
     text-align:center; 
   }
   .market-name{
