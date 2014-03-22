@@ -4,7 +4,6 @@
 //= require jquery.fileupload
 //= require attachinary
 //= require twitter/typeahead
-//= require datepicker
 //= require map-small
 
 var substringMatcher = function(strs) {

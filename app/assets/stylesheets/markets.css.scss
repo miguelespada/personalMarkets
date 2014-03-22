@@ -1,12 +1,12 @@
 //= require tagmanager.css
-//= require bootstrap-datepicker
 //= require map-small
+@import "bootstrap";
+@import "bootstrap/theme";
 
 .market-tooltip {
   .market-name { font-size: 22px; font-weight:100; line-height:36px;}
   .market-description { padding-top: 10px; padding-bottom: 5px; font-size: 12px; line-height:16px;}
   .market-favorite { padding-top: 5px; font-size: 12px; line-height:16px;}
-  .label { display : none }
   .market-category { display : none }
   .market-user-email { display : none }
   .market-address { padding-top: 5px; padding-bottom: 5px; font-size: 12px; line-height:16px;}
@@ -17,23 +17,23 @@
   .market-calendar { display : none }
 }
 
-
 .market-full-description {
+  .thumbnail {text-align:center; width: 540px;}
+  .caption {height: 200px;}
+  .market-user-email { display : none }
+  .label { display : none }
+}
 
-   .thumbnail {text-align:center; width: 540px;}
-   .caption {height: 200px;}
-   .market-user-email { display : none }
-   .label { display : none }
-
-}	
+.market-action{
+  @extend .btn;
+  @extend .btn-default;
+}
 
 .market-gallery-item {
-
-   .thumbnail {text-align:center;}
-   .caption {height: 150px;}
-   .market-longitude { display : none }
-   .market-latitude { display : none }
-   .market-user-email { display : none }
-   .market-address { display : none }
-
+  .market-longitude { display : none }
+  .market-latitude { display : none }
+  .market-user-email { display : none }
+  .market-address { display : none }
+  .market-qr-link { display : none }
+  .market-calendar { display : none }
 } 

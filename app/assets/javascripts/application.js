@@ -14,4 +14,3 @@
 //= require jquery_ujs
 //= require cloudinary/jquery.cloudinary
 //= require bootstrap.min.js
-//= require jquery.ui.all
