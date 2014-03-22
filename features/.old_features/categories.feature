@@ -26,7 +26,7 @@ Feature: Manage categories
   Scenario: I cannot delete a category with markets
     Given there is a market
     When I go to category list
-    And I should see the market category with the number of markets     
+    And I should see the market category with the number of markets
     Then I click on delete category
     And I should be notified that the category has not been deleted
     And I go to category list
@@ -37,5 +37,4 @@ Feature: Manage categories
     Given there is an indexed market
     When I go to category list
     And I click on show markets
-    And I should see the market 
-
+    And I should see the market

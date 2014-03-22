@@ -34,7 +34,7 @@ Feature: Social feature
       Given I have a market
       When I go to my markets
       Then I cannot like the market
-    
+
     @socialdelete
     Scenario:
       When I go to the market page
@@ -42,5 +42,3 @@ Feature: Social feature
       And The market is deleted
       And I go to my favorites
       Then The market is not in my favorites
-
-

@@ -15,4 +15,3 @@ Feature: Browse
     Then I should see a marker on the map
     When I click on the marker
     Then I should see the market tooltip
-
