@@ -4,7 +4,7 @@
 //= require jquery.fileupload
 //= require attachinary
 //= require twitter/typeahead
-//= require bootstrap-datepicker
+//= require datepicker
 //= require map-small
 
 var substringMatcher = function(strs) {
@@ -21,7 +21,6 @@ var substringMatcher = function(strs) {
   };
 };
 
-
 $( document ).ready(function() {
    $('.attachinary-input').attachinary();
 
@@ -34,7 +33,6 @@ $( document ).ready(function() {
       $('.typeahead').typeahead({
         hint: true,
         highlight: true,
-
         minLength: 1
       },
       {
@@ -43,29 +41,5 @@ $( document ).ready(function() {
         source: substringMatcher(data)
       });
   });
-  
-  $('[data-behaviour~=datepicker]').datepicker({
-
-      format: "dd/mm/yyyy",
-      startDate: "+0d",
-      endDate: "+30d",
-      todayHighlight: true,
-      todayBtn: true,
-      language: "es"
-    }
-
-    );
-
-   $(function() {
-      $( "#slider-range" ).slider({
-        orientation: "horizontal",
-        range: true,
-        values: [40, 80], 
-        height: 40,
-        slide: function( event, ui ) {
-          $( "#amount" ).val( ui.values[ 0 ] * 24 / 100 + " - " + ui.values[ 1 ] * 24 / 100 );
-        }
-      });
-    });
 });
 

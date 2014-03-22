@@ -4,7 +4,10 @@ $(document).ready(function(){
   if ($("#map-small").length > 0){
     var viewLat = 40.416775;
     var viewLng = -3.703790;
+
     map = L.mapbox.map('map-small').setView([viewLat, viewLng], 14);
+    
+    map.scrollWheelZoom.disable();
     var mapTiles = L.mapbox.tileLayer('jameshedaweng.hf5b366j');
     map.addLayer(mapTiles);
     
