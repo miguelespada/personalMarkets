@@ -1,3 +1,9 @@
+<!-- 
+  params[:layout] allows to render diffente list styles [slugs, gallery (default),... ] 
+  check makers_helper to see the function description.  
+-->
+<% params[:layout] ||= "gallery" %>
 <%= content_tag :div, class: "market-#{params[:layout]}" do %>
   <%= market_list(@markets, params[:layout]) %>
 <% end %>
+

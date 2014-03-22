@@ -1,5 +1,5 @@
 <%=  page_title "Favorites of #{@user.email}" %>
 
-<%= content_tag :div, class: "favorites" do %>
-  <%= slugs(@user.favorites) %>
+<%= content_tag :div, class: "market-slugs" do %>
+  <%= market_list(@user.favorites, "slugs") %>
 <% end %> 
