@@ -41,3 +41,17 @@ Then(/^I should be notified that the market has been succesfully updated$/) do
   expect(page).to have_content "Market successfully updated."
 end
 
+When(/^I delete my market$/) do
+  visit user_market_path(@user, @market)
+  click_on "Delete"
+end
+
+Then(/^I should not see the market in my markets list$/) do
+  visit user_markets_path(@user)
+  expect(page).not_to have_content @market.name
+  expect(page).not_to have_content @market.description
+end
+
+Then(/^I should be notified that the market has been succesfully deleted$/) do
+  expect(page).to have_content "Market successfully deleted."
+end

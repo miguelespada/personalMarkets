@@ -9,7 +9,10 @@ Feature: Manage market
 
   Scenario: Modify market
     When I edit my market
-    Then I should see my personal market page with the new data
-    And I should be notified that the market has been succesfully updated
+    Then I should be notified that the market has been succesfully updated
+    And I should see my personal market page with the new data
 
   Scenario: delete market
+    When I delete my market
+    Then I should be notified that the market has been succesfully deleted
+    And I should not see the market in my markets list
