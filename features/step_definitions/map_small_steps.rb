@@ -43,6 +43,7 @@ Given(/^I have filled the information for a new market$/) do
 end
 
 When(/^I click on my markets$/) do
+  click_on "User"
   click_on "My markets"
 end
 

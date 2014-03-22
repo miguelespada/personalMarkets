@@ -14,13 +14,8 @@
   
   <%= render "layouts/shared/navbarhorizontal" %>
 
-  <div class="container">
-    <div class="row col-md-3">
-      <%= render "layouts/shared/navbarvertical"%>
-    </div>
-    <div class="row col-md-9">
+  <div class="container-fluid">
       <%= yield %>
-    </div>
   </div>
 
   <%= render "layouts/shared/footer" %>

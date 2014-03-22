@@ -1,4 +1,5 @@
 When(/^I click on add market$/) do
+  click_on "User"
   click_on "Add market"
 end
 
