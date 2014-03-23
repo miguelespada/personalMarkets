@@ -130,8 +130,5 @@ describe MarketsController do
            expect(markets.count).to eq 1
          end
        end
-
-
-      
     end
   end
