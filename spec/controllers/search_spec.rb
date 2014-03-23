@@ -7,7 +7,7 @@ describe MarketsController do
   let(:market) { FactoryGirl.build(:market)}
 
   describe "creating an index" do
-    it "creates index" do
+    xit "creates index" do
       Market.delete_index
       Market.destroy_all
       get :search, {}, valid_session
@@ -15,9 +15,6 @@ describe MarketsController do
     end
   end
   describe "search markets" do
-    before :each do
-      Market.reindex
-    end
     it "renders the index template" do
       get :search, {}, valid_session
       expect(response).to render_template("index")
