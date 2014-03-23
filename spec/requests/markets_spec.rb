@@ -5,6 +5,7 @@ describe "Update market" do
   xit "Add date"
   xit "Add map"
   xit "Add tags"
+  xit "Use map to add location and address to a market"
 end
 
 describe "All" do
