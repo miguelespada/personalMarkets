@@ -55,3 +55,13 @@ end
 Then(/^I should be notified that the market has been succesfully deleted$/) do
   expect(page).to have_content "Market successfully deleted."
 end
+
+Then(/^I should see the market in my markets list$/) do
+  visit user_markets_path(@user)
+  expect(page).to have_content @market.name
+  expect(page).to have_content @market.description
+end
+
+
+
+

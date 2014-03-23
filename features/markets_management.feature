@@ -7,6 +7,9 @@ Feature: Manage market
     Given I am logged in
     And I have one market
 
+  Scenario: Browse my markets
+    Then I should see the market in my markets list
+
   Scenario: Modify market
     When I edit my market
     Then I should be notified that the market has been succesfully updated

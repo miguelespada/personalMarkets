@@ -10,6 +10,3 @@ Feature: Add market
   Scenario: Add Market
     Then I should see the market page
     And I should be notified that the market has been added
-
-  Scenario: Browse my markets
-    Then I should see the market in my markets
