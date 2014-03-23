@@ -5,12 +5,12 @@ When(/^I add a category$/) do
 end
 
 Then(/^I should see the category in the category list$/) do
-  step "I go to category list"
+  step "I go to Category list"
   expect(page).to have_content "New dummy Category"
 end
 
 Then(/^I should not see the category in the category list$/) do
-  step "I go to category list"
+  step "I go to Category list"
   expect(page).not_to have_content @category.name
 end
 
