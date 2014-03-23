@@ -5,8 +5,11 @@ Feature: Add market
 
   Background:
     Given I am logged in
+    When I add a market
     
   Scenario: Add Market
-    When I add a market
     Then I should see the market page
     And I should be notified that the market has been added
+
+  Scenario: Browse my markets
+    Then I should see the market in my markets

@@ -6,18 +6,18 @@ Feature: Browse markets
   Given There are some indexed markets
 
   @browse
-  Scenario: I want to see the list of Markets
+  Scenario: Browse the list of Markets
     When I go to Markets
     Then I should see all the markets
 
   @browse
-  Scenario: I want to see the full description of a market
-    When I go to the Markets
+  Scenario: See the full description of a market
+    When I go to Markets
     And I click the details link of a market
     Then I should see the full description of a market
 
   @browse
-  Scenario: I want to see my markets
-    Given I have some markets
-    And I go to my markets
-    Then I should see all my markets
+  Scenario: Browse by tag
+    And I go to tag list
+    And I select one tag
+    Then I see the markets matching the tag
