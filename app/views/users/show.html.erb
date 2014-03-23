@@ -1,5 +1,2 @@
 <%=  page_title "Likes of #{@user.email}" %>
-
-<%= content_tag :div, class: "likes" do %>
-<%= render template: "markets/index", :locals => {:markets => @user.favorites, :layout => "slugs"} %>
-<% end %>
+<%= user_likes(@user) %>
