@@ -27,3 +27,9 @@ Feature: Browse markets
     When I go to category list
     And I select one category
     Then I see the markets matching the category
+
+  @browse_map @javascript
+  Scenario: Browse maps
+    When I go to maps
+    Then I should see a marker on the map
+    And The market has tooltip

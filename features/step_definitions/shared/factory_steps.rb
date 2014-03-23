@@ -3,7 +3,8 @@ Given(/^There are some indexed markets$/) do
   @market_0 = FactoryGirl.create(:market, 
               :name => "Market one", 
               :category => @category, 
-              :tags => "one, two, three")
+              :tags => "one, two, three",
+              :latitude => "40", :longitude=> "-3.7")
   @market_1 = FactoryGirl.create(:market, 
               :name => "Supermarket one", 
               :date => "13/05/2014", 

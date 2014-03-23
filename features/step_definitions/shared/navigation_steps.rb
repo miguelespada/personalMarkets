@@ -17,3 +17,7 @@ end
 Given(/^I go to category list$/) do
   visit categories_path
 end
+
+When(/^I go to maps$/) do
+  visit map_path
+end
