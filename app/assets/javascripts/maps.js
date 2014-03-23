@@ -1,6 +1,15 @@
 //= require mapbox
 
 $(document).ready(function(){
+
+// THis is for demo of calendar
+  try{
+    var timeline = new Timeline("timeline");
+  }
+  catch(err){}
+// 
+
+
   var viewLat = 40.416775;
   var viewLng = -3.703790;
   map = L.mapbox.map('map').setView([viewLat, viewLng], 14);

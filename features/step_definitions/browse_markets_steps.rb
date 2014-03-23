@@ -54,16 +54,12 @@ Then(/^The market has tooltip$/) do
 end
 
 Then(/^I should see the markets in the calendar$/) do
-  within(:css, "#calendar") do
-    expect(page).not_to have_content @market_0.name
-    expect(page).to have_content @market_1.name
-    expect(page).to have_content @market_2.name
-    expect(page).to have_content @market_3.name
-    expect(page).not_to have_content @market_4.name
-    expect(page).not_to have_content @market_5.name
-
-    expect(page).to have_content @market_1.date
-    expect(page).to have_content @market_2.date
-    expect(page).to have_content @market_3.date
+  within(:css, ".calendar") do
+    expect(page).not_to have_content @market_0.description
+    expect(page).to have_content @market_1.description
+    expect(page).to have_content @market_2.description
+    expect(page).to have_content @market_3.description
+    expect(page).not_to have_content @market_4.description
+    expect(page).not_to have_content @market_5.description
   end
 end

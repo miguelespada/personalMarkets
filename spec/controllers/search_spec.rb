@@ -193,7 +193,7 @@ describe MarketsController do
     end
 
   end 
-  describe 'fail tolerante search' do
+  describe 'fault tolerance search' do
     before :each do
       Market.destroy_all
       Market.create_index
