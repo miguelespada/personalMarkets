@@ -5,7 +5,7 @@ Feature: Manage categories
   Background:
     Given I am logged in
     And There are some categories 
-    When I go to category list
+    When I go to Category list
 
   @categories
   Scenario: Add category
