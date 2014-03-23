@@ -8,20 +8,20 @@ class MarketDecorator < Draper::Decorator
 
   def show_link
     h.link_to("Show", h.user_market_path(market.user, market), 
-      :class => "market-action")
+      :class => "show market-action")
   end
   
   def edit_link
     if market_belongs_to_user?
       h.link_to("Edit", h.edit_user_market_path(market.user, market), 
-        :class => "market-action")
+        :class => "edit market-action")
     end
   end
 
   def delete_link
     if market_belongs_to_user?
       h.link_to("Delete", h.user_market_path(market.user, market), :method => :delete, 
-        :class => "market-action")
+        :class => "delete market-action")
     end
   end
 
@@ -29,10 +29,10 @@ class MarketDecorator < Draper::Decorator
     if market_does_not_belong_to_user?
       if user_does_not_like_market?
         h.link_to("Like", h.like_path(h.current_user, market), 
-          :class => "market-action") 
+          :class => "like market-action") 
       else
         h.link_to("Unlike", h.unlike_path(h.current_user, market), 
-          :class => "market-action")
+          :class => "like market-action")
       end
     end
   end
