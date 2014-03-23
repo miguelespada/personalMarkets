@@ -5,8 +5,8 @@ describe "browse" do
 end
 
 describe "update market" do
-  xit "Add calendar to add a date"
-  xit "Add list of tags"
+  xit "CLick on calendar to add a date"
+  xit "I can add list of tags"
   xit "Use map to add location and address to a market"
 end
 
@@ -15,15 +15,19 @@ describe "social" do
   xit "No self unlikes allowed"
   xit "No double likes allowed"
   xit "No double likes allowed"
-  xit "If market is deleted, is not anymore in my favorites"
+  xit "If market is deleted, it is not anymore in my favorites"
 end
 
 describe "category" do
-  xit "I cannot delete a category with markets"
-  xit "There is a default category"
   xit "I cannot delete the default category"
+  xit "There is a default category"
 end
 
-describe "Tags" do
-  xit "I can see the suggested tag list"
+describe "tags" do
+  it "I can see the suggested tag list" do
+    visit tags_path
+    STARRED_TAGS["tags"].each do |tag|
+      page.should have_content( tag )
+    end
+  end
 end
