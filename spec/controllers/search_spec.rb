@@ -4,7 +4,7 @@ describe MarketsController do
 
   let(:valid_session) { {} }
   let(:user) { FactoryGirl.create(:user) } 
-  let(:market) { FactoryGirl.build(:market)}
+  let(:market) { FactoryGirl.create(:market)}
 
   describe "creating an index" do
     it "creates index" do
@@ -14,12 +14,11 @@ describe MarketsController do
     end
   end
   describe "search markets" do
+
     it "renders the index template" do
       get :search, {}, valid_session
       expect(response).to render_template("index")
     end
-
-
     context "with no markets and no index" do
       it "it does no show any market" do
         Market.destroy_all
@@ -189,6 +188,7 @@ describe MarketsController do
         end
       end
     end
+
   end 
   describe 'fail tolerante search' do
     before :each do
