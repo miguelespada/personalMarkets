@@ -18,11 +18,11 @@ end
 
 When(/^I click on the marker$/) do
   within(:css, ".leaflet-marker-pane") do
-      find('img').click
+    find('img').click
   end
 end
 
 Then(/^I should see the market tooltip$/) do
-    page.should have_content @market.name
-    page.should have_content @market.description
+  page.should have_content @market.name
+  page.should have_content @market.description
 end

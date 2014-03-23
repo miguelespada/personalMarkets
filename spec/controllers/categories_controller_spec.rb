@@ -19,13 +19,17 @@ describe CategoriesController do
     end
 
     context "with valid params" do
-    
     let(:category_params) { { category_id: category.to_param, :category => category.attributes } } 
 
-      it "creates a new Category" do
+        it "creates a new category" do
         expect {
           post :create, category_params, valid_session
           }.to change(Category, :count).by(1)
+        end
+
+        it "has no markets" do
+          post :create, category_params, valid_session
+          assigns(:category).markets.should eq []
         end
 
         it "assigns a newly created category" do
@@ -38,14 +42,13 @@ describe CategoriesController do
           post :create, category_params, valid_session
           expect(response).to redirect_to categories_path
         end
-
       end
     end
     describe "Delete category" do
       before :each do
        @category = FactoryGirl.create(:category)
      end
-     it "Can delete a category" do
+     it "can delete a category" do
       expect {
         delete :destroy, { id: @category.to_param }, valid_session
         }.to change(Category, :count).by(-1)
