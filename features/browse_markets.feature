@@ -21,3 +21,9 @@ Feature: Browse markets
     And I go to Tag list
     And I select one tag
     Then I see the markets matching the tag
+
+  @browse
+  Scenario: Browse by tag
+    When I go to category list
+    And I select one category
+    Then I see the markets matching the category
