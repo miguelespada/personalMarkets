@@ -13,3 +13,7 @@ end
 Given(/^I go to Users$/) do
   visit users_path
 end
+
+Given(/^I go to category list$/) do
+  visit categories_path
+end

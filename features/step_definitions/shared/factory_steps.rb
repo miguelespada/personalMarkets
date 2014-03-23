@@ -10,6 +10,7 @@ Given(/^There are some indexed markets$/) do
               :tags => "one, three")
   @market_2 = FactoryGirl.create(:market, 
               :name => "Market two", 
+              :category => @category, 
               :date => "17/07/2014", 
               :tags => "two, three")
   @market_3 = FactoryGirl.create(:market, 
@@ -35,4 +36,9 @@ end
 Given(/^there are some users$/) do
   @user_0 = FactoryGirl.create(:user)
   @user_1 = FactoryGirl.create(:user)
+end
+
+Given(/^There are some categories$/) do
+  @category = FactoryGirl.create(:category,
+              :name => "Dummy Category")
 end

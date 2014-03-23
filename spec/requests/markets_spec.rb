@@ -18,4 +18,5 @@ describe "All" do
   xit "I cannot delete a category with markets"
   xit "There is default category"
   xit "The market counter of the category should be zero"
+  xit "I cannot delete the default category"
 end

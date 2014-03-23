@@ -29,3 +29,11 @@ end
 Then(/^I should be notified that the I signned out$/) do
   expect(page).to have_content "Signed out successfully."
 end
+
+Then(/^I should be notified that the category has been added$/) do
+  expect(page).to have_content "Category was successfully created."
+end
+
+Then(/^I should be notified that the category has been deleted$/) do
+  expect(page).to have_content "Category successfully deleted."
+end
