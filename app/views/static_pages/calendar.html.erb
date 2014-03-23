@@ -1,7 +1,6 @@
-<%= javascript_include_tag 'calendar' %>
-<%= stylesheet_link_tag 'calendar' %>
-
-<div id="calweek-title">This week</div>
-<div id="calweek"> </div>
-<div id="calmonth-title">Recent</div>
-<div id="calmonth"> </div>
+<div id="calendar">
+  <% @markets.each do |market| %>
+    <p> <%= market.name %> </p> 
+    <p>  <%= market.date %> </p>
+  <% end %>
+</div> 

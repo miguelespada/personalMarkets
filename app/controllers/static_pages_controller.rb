@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
   def search
   end
   def calendar
+    @markets = Market.search("", "", "01/01/2014", "")
   end
   def map
     @geojson = generate_geojson(Market.with_location) || ""

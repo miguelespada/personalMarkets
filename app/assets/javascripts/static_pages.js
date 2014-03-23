@@ -1,2 +1,1 @@
 //= require datepicker
-//= require maps

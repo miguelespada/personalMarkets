@@ -46,9 +46,24 @@ Then(/^I should see a marker on the map$/) do
 end
 
 Then(/^The market has tooltip$/) do
-   within(:css, ".leaflet-marker-pane") do
-      find('img').click
+  within(:css, ".leaflet-marker-pane") do
+    find('img').click
   end
   page.should have_content @market_0.name
   page.should have_content @market_0.description
+end
+
+Then(/^I should see the markets in the calendar$/) do
+  within(:css, "#calendar") do
+    expect(page).not_to have_content @market_0.name
+    expect(page).to have_content @market_1.name
+    expect(page).to have_content @market_2.name
+    expect(page).to have_content @market_3.name
+    expect(page).not_to have_content @market_4.name
+    expect(page).not_to have_content @market_5.name
+
+    expect(page).to have_content @market_1.date
+    expect(page).to have_content @market_2.date
+    expect(page).to have_content @market_3.date
+  end
 end

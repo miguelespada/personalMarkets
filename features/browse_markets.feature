@@ -24,12 +24,17 @@ Feature: Browse markets
 
   @browse
   Scenario: Browse by tag
-    When I go to category list
+    When I go to Category list
     And I select one category
     Then I see the markets matching the category
 
   @browse_map @javascript
-  Scenario: Browse maps
-    When I go to maps
+  Scenario: Browse map
+    When I go to Map
     Then I should see a marker on the map
     And The market has tooltip
+
+  @browse_calendar
+  Scenario: Browse maps
+    When I go to Calendar
+    Then I should see the markets in the calendar

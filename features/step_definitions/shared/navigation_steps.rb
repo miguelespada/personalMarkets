@@ -14,10 +14,14 @@ Given(/^I go to Users$/) do
   visit users_path
 end
 
-Given(/^I go to category list$/) do
+Given(/^I go to Category list$/) do
   visit categories_path
 end
 
-When(/^I go to maps$/) do
+When(/^I go to Map$/) do
   visit map_path
+end
+
+When(/^I go to Calendar$/) do
+  visit calendar_path
 end
