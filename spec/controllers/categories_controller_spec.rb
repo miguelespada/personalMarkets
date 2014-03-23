@@ -62,9 +62,8 @@ describe CategoriesController do
     it "is not possible when it has markets" do
       FactoryGirl.create(:market, category: @category)
       expect {
-        delete :destroy, { id: @category.to_param }, valid_session
-        }.to change(Category, :count).by(0)
-      end
+      delete :destroy, { id: @category.to_param }, valid_session
+      }.to change(Category, :count).by(0)
     end
   end
 end
