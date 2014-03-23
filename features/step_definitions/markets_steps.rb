@@ -18,10 +18,6 @@ Then(/^I should see the market page$/) do
   end 
 end
 
-Then(/^I should be notified that the market has been added$/) do
-  expect(page).to have_content "Market was successfully created."
-end
-
 When(/^I edit my market$/) do
   visit user_market_path(@user, @market)
   click_on "Edit"
@@ -37,10 +33,6 @@ Then(/^I should see my personal market page with the new data$/) do
   end 
 end
 
-Then(/^I should be notified that the market has been succesfully updated$/) do
-  expect(page).to have_content "Market successfully updated."
-end
-
 When(/^I delete my market$/) do
   visit user_market_path(@user, @market)
   click_on "Delete"
@@ -52,16 +44,8 @@ Then(/^I should not see the market in my markets list$/) do
   expect(page).not_to have_content @market.description
 end
 
-Then(/^I should be notified that the market has been succesfully deleted$/) do
-  expect(page).to have_content "Market successfully deleted."
-end
-
 Then(/^I should see the market in my markets list$/) do
   visit user_markets_path(@user)
   expect(page).to have_content @market.name
   expect(page).to have_content @market.description
 end
-
-
-
-

@@ -11,12 +11,3 @@ Feature: Manage market dates
     When I fill the date field
     And I click on update market
     Then I should see the calendar with my calendar
-
-  @searchCalendar
-  Scenario: Search by date
-    Given I am in the search page
-    And There are some markets with date
-    When I select a 'from' date
-    When I select a 'to' date
-    And I click on search
-    Then I should see the markets that match my search with date

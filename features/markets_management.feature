@@ -7,7 +7,7 @@ Feature: Manage market
     Given I am logged in
     And I have one market
 
-  Scenario: Browse my markets
+  Scenario: See my markets
     Then I should see the market in my markets list
 
   Scenario: Modify market

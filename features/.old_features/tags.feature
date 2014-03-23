@@ -24,11 +24,3 @@ Feature: Manage tags
       When I click on edit a market
       Then I should see its tags in the form
 
-    @tags
-    Scenario: See tag list
-      When there are some tagged markets
-      And I go to tag list
-      Then I can see all the tags
-      And I click on a tag
-      Then I see the markets matching the tag
-
