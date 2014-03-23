@@ -21,3 +21,18 @@ Given(/^There are some indexed markets$/) do
               :description => "Description one")
   Market.reindex
 end
+
+Given(/^I have one market$/) do
+  @market = FactoryGirl.create(:market, :user => @user)
+  @user.markets << @market
+end
+
+Given(/^There is someone else's market$/) do
+  user = FactoryGirl.create(:user)
+  @some_market = FactoryGirl.create(:market, :user => user)
+end
+
+Given(/^there are some users$/) do
+  @user_0 = FactoryGirl.create(:user)
+  @user_1 = FactoryGirl.create(:user)
+end

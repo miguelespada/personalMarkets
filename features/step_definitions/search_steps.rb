@@ -1,7 +1,3 @@
-Given(/^I go to Search$/) do
-  visit search_path
-end
-
 When(/^I search with empty fields$/) do
   within(:css, "#search_market") do
     click_on "Search"

@@ -18,6 +18,6 @@ Feature: Browse markets
 
   @browse
   Scenario: Browse by tag
-    And I go to tag list
+    And I go to Tag list
     And I select one tag
     Then I see the markets matching the tag

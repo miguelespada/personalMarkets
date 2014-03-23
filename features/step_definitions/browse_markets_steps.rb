@@ -1,7 +1,3 @@
-When(/^I go to Markets$/) do
-  visit markets_path
-end
-
 When(/^I click the details link of a market$/) do
   within(:css, "#market_#{@market_0.id}") do
     click_on "Show"
@@ -13,10 +9,6 @@ Then(/^I should see the full description of a market$/) do
     expect(page).to have_content @market_0.name
     expect(page).to have_content @market_0.description
   end
-end
-
-Given(/^I go to tag list$/) do
-    visit tags_path
 end
 
 Given(/^I select one tag$/) do
