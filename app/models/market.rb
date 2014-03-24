@@ -44,6 +44,7 @@ class Market
 
   def self.search(query, category, from = "",  to = "" )
       index_all
+      return [] if Market.count == 0 
 
       query = query.blank? ? '*' : query
       range = format_range_query(from, to)
