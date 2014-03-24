@@ -6,7 +6,9 @@ mongodb
 elasticsearch
 
 ##Installation
-Install elasticsearch: <code>$ brew install elasticsearch </code>
+Install elasticsearch: <code>brew install elasticsearch </code>
+
+run <code>elasticsearch</code> to start search engine.
 
 Install bundler: <code>gem install bundler</code>
 
