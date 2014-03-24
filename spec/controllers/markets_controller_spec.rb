@@ -129,11 +129,16 @@ describe MarketsController do
            markets = assigns(:markets)
            expect(markets.count).to eq 1
          end
+       end
+
+
+       describe "search model" do
         it "renders the index template" do
           get :search, {}, valid_session
           expect(response).to render_template("index")
         end
+
+          
       end
     end
-
   end
