@@ -30,7 +30,8 @@ describe MarketsController do
 
     context "with valid parameters" do
 
-      let(:market_params) { { user_id: user.to_param, :market => market.attributes } }
+      let(:market_params) { { user_id: user.to_param, 
+                      :market => market.attributes } }
 
       it "assigns a newly created market" do
         post :create, market_params, valid_session
@@ -65,74 +66,76 @@ describe MarketsController do
             post :create, market_params, valid_session
             expect(response).to render_template("new")
           end
-
         end
       end
     end
 
-    describe "Removing or modifying a market" do
-
+    describe "Markets actions" do
       before :each do
         user = FactoryGirl.create(:user)
         category = FactoryGirl.create(:category)
         @market = FactoryGirl.create(:market, user: user, category: category)  
       end
 
-      let(:market_params) { { id: @market.to_param, user_id: @market.user.id } }
+      let(:market_params) { { id: @market.to_param, 
+                            user_id: @market.user.id } }
       let(:market_update_params) { {
         id: @market.to_param,
         user_id: @market.user.id, 
         market: @market.attributes } } 
 
-        it "deletes the market" do
-          expect {
-            delete :destroy, market_params , valid_session
-            }.to change(Market, :count).by(-1)
-          end
+      it "deletes the market" do
+        expect {
+          delete :destroy, market_params , valid_session
+          }.to change(Market, :count).by(-1)
+      end
 
-          it "redirects to the index template" do
-            delete :destroy, market_params, valid_session
-            response.should redirect_to user_markets_path(@market.user)
-          end
+      it "redirects to the index template" do
+        delete :destroy, market_params, valid_session
+        response.should redirect_to user_markets_path(@market.user)
+      end
 
-          it "changes the name of the market" do
-            @market.attributes["name"] = "New dummy name"
-            put :update, market_update_params, valid_session
-            @market.reload
-            expect(@market.name).to eq("New dummy name") 
-          end
+      it "changes the name of the market" do
+        @market.attributes["name"] = "New dummy name"
+        put :update, market_update_params, valid_session
+        @market.reload
+        expect(@market.name).to eq("New dummy name") 
+      end
 
-          describe "upload foto" do
 
-            it "update with no photo" do
-              put :update, market_update_params, valid_session
-              expect(@market.featured).to be_nil
-            end
+    describe "update photo" do
+      it "allows no photo" do
+        put :update, market_update_params, valid_session
+        expect(@market.featured).to be_nil
+      end
 
-            it "uploads a valid featured photo" do
-              @market.stub(:featured).and_return(photo_json)
-              put :update, market_update_params, valid_session
-              expect(@market.featured).not_to be_nil
-            end
-          end
-
-          describe "list" do
-           it "renders the index template" do
-            get :index, { user_id: user.to_param }, valid_session
-            expect(response).to render_template("index")
-          end
-
-          it "list user markets" do
-           m = FactoryGirl.create(:market)
-           m.update_attribute(:name, "dummy")
-           get :index, {user_id: m.user_id}, valid_session
-           markets = assigns(:markets)
-           expect(markets.count).to eq 1
-         end
-       end
+      it "saves a valid featured photo" do
+        @market.stub(:featured).and_return(photo_json)
+        put :update, market_update_params, valid_session
+        expect(@market.featured).not_to be_nil
+      end
     end
-    it "renders the index template" do
-      get :search, {}, valid_session
-      expect(response).to render_template("index")
+
+    describe "index" do
+      it "renders the index template" do
+        get :index, { user_id: user.to_param }, valid_session
+        expect(response).to render_template("index")
+      end
+
+      it "lists user markets" do
+        m = FactoryGirl.create(:market)
+        m.update_attribute(:name, "dummy")
+        get :index, {user_id: m.user_id}, valid_session
+        markets = assigns(:markets)
+        expect(markets.count).to eq 1
+      end
+    end
+
+    describe "search" do
+      it "renders the index template" do
+        get :search, {}, valid_session
+        expect(response).to render_template("index")
+      end
     end
   end
+end
