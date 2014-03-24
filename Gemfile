@@ -90,5 +90,4 @@ group :test, :development do
   gem 'jasmine'
 end
 
-gem "font-awesome-rails"
 gem 'jquery-ui-rails'
