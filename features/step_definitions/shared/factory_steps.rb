@@ -1,26 +1,16 @@
-Given(/^There are some indexed markets$/) do
-  @category = FactoryGirl.create(:category)
+Given(/^There are some categories$/) do
+  @category = FactoryGirl.create(:category,
+              :name => "Dummy Category")
+end
+
+Given(/^There are some markets$/) do
+  step "There are some categories"
   @market_0 = FactoryGirl.create(:market, 
-              :name => "Market one", 
-              :category => @category, 
-              :tags => "one, two, three",
-              :latitude => "40", :longitude=> "-3.7")
-  @market_1 = FactoryGirl.create(:market, 
-              :name => "Supermarket one", 
-              :date => "13/05/2014", 
-              :tags => "one, three")
-  @market_2 = FactoryGirl.create(:market, 
-              :name => "Market two", 
-              :category => @category, 
-              :date => "17/07/2014", 
-              :tags => "two, three")
-  @market_3 = FactoryGirl.create(:market, 
-              :name => "Market three", 
-              :date => "20/09/2014")
-  @market_4 = FactoryGirl.create(:market, 
-              :description => "Description three")
-  @market_5 = FactoryGirl.create(:market, 
-              :description => "Description one")
+      :latitude => "40", 
+      :longitude=> "-3.7",
+      :tags => "one",
+      :category => @category,
+      :date=>"22/03/2014")
   Market.reindex
 end
 
@@ -37,9 +27,4 @@ end
 Given(/^there are some users$/) do
   @user_0 = FactoryGirl.create(:user)
   @user_1 = FactoryGirl.create(:user)
-end
-
-Given(/^There are some categories$/) do
-  @category = FactoryGirl.create(:category,
-              :name => "Dummy Category")
 end

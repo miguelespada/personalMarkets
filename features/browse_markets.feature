@@ -3,7 +3,7 @@ Feature: Browse markets
   I want to browse markets
 
   Background:
-  Given There are some indexed markets
+  Given There are some markets
 
   @browse
   Scenario: Browse the list of Markets
@@ -20,13 +20,13 @@ Feature: Browse markets
   Scenario: Browse by tag
     And I go to Tag list
     And I select one tag
-    Then I see the markets matching the tag
+    Then I see the markets matching my query
 
   @browse
-  Scenario: Browse by tag
+  Scenario: Browse by category
     When I go to Category list
     And I select one category
-    Then I see the markets matching the category
+    Then I see the markets matching my query
 
   @browse_map @javascript
   Scenario: Browse map
@@ -38,3 +38,9 @@ Feature: Browse markets
   Scenario: Browse maps
     When I go to Calendar
     Then I should see the markets in the calendar
+
+  @seach
+  Scenario: Search markets
+    When I go to Search
+    And I do a search
+    Then I see the markets matching my query

@@ -49,12 +49,6 @@ PM.initializeMap = function() {
 
 $(document).ready(function(){
 
-// THis is for demo of calendar
-  try{
-    var timeline = new Timeline("timeline");
-  }
-  catch(err){}
-//
 
 
   try{

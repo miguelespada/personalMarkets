@@ -15,28 +15,17 @@ Given(/^I select one tag$/) do
   click_on "one"
 end
 
-Then(/^I see the markets matching the tag$/) do
-  expect(page).to have_content @market_0.name
-  expect(page).to have_content @market_1.name
-  expect(page).not_to have_content @market_2.name
-  expect(page).not_to have_content @market_3.name
-  expect(page).not_to have_content @market_4.name
-  expect(page).to have_content @market_5.name
+Then(/^I see the markets matching my query$/) do
+  within(:css, ".market-gallery") do
+    page.should have_content @market_0.name
+    page.should have_content @market_0.description
+  end
 end
 
 When(/^I select one category$/) do  
   within(:css, "#category_#{@category.id}") do
     click_on "Show"
   end
-end
-
-Then(/^I see the markets matching the category$/) do
-  expect(page).to have_content @market_0.name
-  expect(page).not_to have_content @market_1.name
-  expect(page).to have_content @market_2.name
-  expect(page).not_to have_content @market_3.name
-  expect(page).not_to have_content @market_4.name
-  expect(page).not_to have_content @market_5.name
 end
 
 Then(/^I should see a marker on the map$/) do
@@ -55,11 +44,20 @@ end
 
 Then(/^I should see the markets in the calendar$/) do
   within(:css, ".calendar") do
-    expect(page).not_to have_content @market_0.description
-    expect(page).to have_content @market_1.description
-    expect(page).to have_content @market_2.description
-    expect(page).to have_content @market_3.description
-    expect(page).not_to have_content @market_4.description
-    expect(page).not_to have_content @market_5.description
+    expect(page).to have_content @market_0.name
+    expect(page).to have_content @market_0.date
   end
 end
+
+Then(/^I should see all the markets$/) do
+  page.should have_content @market_0.name
+  page.should have_content @market_0.description
+end
+
+When(/^I do a search$/) do
+  fill_in "query",  with: "market"
+  fill_in "from",  with: "21/03/2014"
+  fill_in "to",  with: "23/03/2014"
+  click_button "Search"
+end
+
