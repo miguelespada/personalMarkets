@@ -76,6 +76,11 @@ describe Market do
         expect(result.count).to eq 1
       end
 
+      it "filters by date and category" do
+        result = Market.search("market", "@category.name", "10/01/2014", "20/01/2014" )
+        expect(result.count).to eq 1
+      end
+
       xit "filters short queries" 
   end
 end
