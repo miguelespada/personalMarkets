@@ -1,16 +1,7 @@
 //= require mapbox
-
-var PM = {};
-
-var DOMAIN = {};
-
-DOMAIN.getLocations = function(callback) {
-  $.ajax({
-    url: "/map.json",
-    dataType: "json",
-    success: callback
-  });
-};
+//= require app
+//= require domain
+//= require data
 
 PM.changeTile = function(mapID) {
   PM.map.removeLayer(PM.mapTiles);
@@ -34,8 +25,8 @@ PM.addTooltipToMarker = function(layer) {
 };
 
 PM.initializeMap = function() {
-  var viewLat = 40.416775;
-  var viewLng = -3.703790;
+  var viewLat = DATA.maps.defaultLatitude;
+  var viewLng = DATA.maps.defaultLongitude;
   PM.map = L.mapbox.map('map').setView([viewLat, viewLng], 14);
 
   PM.map.scrollWheelZoom.disable();
@@ -45,8 +36,6 @@ PM.initializeMap = function() {
 };
 
 $(document).ready(function(){
-
-  try{
 
     PM.initializeMap();
 
@@ -74,8 +63,5 @@ $(document).ready(function(){
       PM.changeTile('jameshedaweng.hig7dplk');
     });
 
-  }
-  catch(err){}
-//
 
 });
