@@ -7,15 +7,15 @@
 
   <% @categories.each do |category| %>
     <%= content_tag_for(:tr, category) do %>  
-        <td> <%= category.name %> </td> 
-        <td class = "market-counter"> <%= category.markets.count %> </td>
-        <td> 
-            <span> <%= link_to "Delete", category_path(category), :method => :delete %> 
-            </span> 
-            <span> <%= link_to "Show", 
-                  markets_search_path({ "category" => { category_id: category.name} } ) %> 
-            </span> 
-        </td>
+      <td> <%= category.name %> </td> 
+      <td class = "market-counter"> <%= category.markets.count %> </td>
+      <td> 
+        <span> <%= link_to "Delete", category_path(category), :method => :delete %> 
+              </span> 
+        <span> <%= link_to "Show", 
+              markets_search_path({ "category" => { category_id: category.name} } ) %> 
+        </span> 
+      </td>
     <% end %>
   <% end %>
 </table>
