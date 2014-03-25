@@ -28,7 +28,9 @@ describe Market do
       @category =  FactoryGirl.create(:category, :name => "category") 
       @market = FactoryGirl.create(:market, 
                          :name => "Specific market", 
-                         :category => @category)
+                         :tags => "one, two, three",
+                         :category => @category,
+                         :date => "08/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 1",
                                   :date => "10/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 2",
@@ -66,7 +68,7 @@ describe Market do
         expect(result.count).to eq 1
       end
 
-      it "filters by date range" do
+      it "filters by date range, with only 'to'" do
         result = Market.search("market", "", "10/01/2014")
         expect(result.count).to eq 3
       end
@@ -77,10 +79,15 @@ describe Market do
       end
 
       it "filters by date and category" do
-        result = Market.search("market", "@category.name", "10/01/2014", "20/01/2014" )
+        result = Market.search("market", @category.name, "08/01/2014", "20/01/2014" )
         expect(result.count).to eq 1
       end
 
-      xit "filters short queries" 
+      it "search by tag" do
+        result = Market.search("one", "" )
+        expect(result.count).to eq 1
+      end
+
+      it "filters short queries" 
   end
 end
