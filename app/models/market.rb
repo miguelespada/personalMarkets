@@ -54,6 +54,8 @@ class Market
          boolean.must {string "date:[#{range}]" } if !range.blank?
       end
 
+      puts category
+      
       search = Tire.search 'markets' do
         query do
           boolean &the_query
@@ -64,7 +66,7 @@ class Market
           end
         end
       end
-      search.results.collect{|result| find(result.to_hash[:id])}
+      values = search.results.collect{|result| find(result.to_hash[:id])}
   end
   
   def self.format_range_query(from, to)
