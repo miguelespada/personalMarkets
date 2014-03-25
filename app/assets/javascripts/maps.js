@@ -33,7 +33,6 @@ PM.addTooltipToMarker = function(layer) {
     layer.bindPopup(popup,{ maxWidth: 200, minWidth: 200 });
 };
 
-
 PM.initializeMap = function() {
   var viewLat = 40.416775;
   var viewLng = -3.703790;
@@ -45,11 +44,7 @@ PM.initializeMap = function() {
   PM.addMarkersToMap();
 };
 
-
-
 $(document).ready(function(){
-
-
 
   try{
 
