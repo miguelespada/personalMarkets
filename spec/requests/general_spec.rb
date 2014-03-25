@@ -1,26 +1,26 @@
 require 'spec_helper'
 
 describe "browse" do  
-  xit "When I go to my markets I only see my markets"
+  it "When I go to my markets I only see my markets"
 end
 
 describe "update market" do
-  xit "CLick on calendar to add a date"
-  xit "I can add list of tags"
-  xit "Use map to add location and address to a market"
+  it "CLick on calendar to add a date"
+  it "I can add list of tags"
+  it "Use map to add location and address to a market"
 end
 
 describe "social" do
-  xit "No self likes allowed"
-  xit "No self unlikes allowed"
-  xit "No double likes allowed"
-  xit "No double likes allowed"
-  xit "If market is deleted, it is not anymore in my favorites"
+  it "No self likes allowed"
+  it "No self unlikes allowed"
+  it "No double likes allowed"
+  it "No double likes allowed"
+  it "If market is deleted, it is not anymore in my favorites"
 end
 
 describe "category" do
-  xit "I cannot delete the default category"
-  xit "There is a default category"
+  it "I cannot delete the default category"
+  it "There is a default category"
 end
 
 describe "tags" do

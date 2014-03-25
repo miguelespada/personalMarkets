@@ -28,7 +28,7 @@ describe Market do
       @category =  FactoryGirl.create(:category, :name => "category") 
       @market = FactoryGirl.create(:market, 
                          :name => "Specific market", 
-                         :tags => "one, two, three",
+                         :tags => "tag_one, tag_two, tag_three",
                          :category => @category,
                          :date => "08/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 1",
@@ -84,10 +84,15 @@ describe Market do
       end
 
       it "search by tag" do
-        result = Market.search("one", "" )
+        result = Market.search("tag_one", "" )
         expect(result.count).to eq 1
       end
 
-      it "filters short queries" 
+      it "filters out wrong formatted dates" do
+        result = Market.search("market", "", "xxx")
+        expect(result.count).to eq Market.all.count
+      end
+
+      it "filters out short queries"
   end
 end

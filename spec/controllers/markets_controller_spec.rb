@@ -138,5 +138,9 @@ describe MarketsController do
       get :search, {}, valid_session
       expect(response).to render_template("index")
     end
+    it "remembers category after search" do
+      get :search, {}, valid_session
+      expect(assigns(:category_query)).not_to be_nil
+    end
   end
 end
