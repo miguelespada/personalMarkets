@@ -20,6 +20,8 @@ PM.initializeMap = function(){
   PM.map.scrollWheelZoom.disable();
   PM.mapTiles = L.mapbox.tileLayer('jameshedaweng.hf5b366j');
   PM.map.addLayer(PM.mapTiles);
+  
+  PM.checkIfLocationExist();
 }
 
 PM.checkIfLocationExist = function(){
@@ -72,21 +74,20 @@ PM.getAddress = function(lng, lat){
 
 PM.updateAddress = function(data){
   if (data.results[0].length == 4)
-      PM.address = data.results[0][0].name + ", " 
-                 + data.results[0][1].name + ", " 
-                 + data.results[0][2].name + ", " 
-                 + data.results[0][3].name;
-    else
-      PM.address = "Not Available"; 
-    $("#market_address").val(PM.address);
+    PM.address = data.results[0][0].name + ", " + 
+                 data.results[0][1].name + ", " + 
+                 data.results[0][2].name + ", " + 
+                 data.results[0][3].name;
+  else
+    PM.address = "Not Available";
+  $("#market_address").val(PM.address);
 }
 
 $(document).ready(function(){
 
   try{
 
-    PM.initializeMap();
-    PM.checkIfLocationExist();  
+    PM.initializeMap();      
 
   }
 
