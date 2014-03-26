@@ -94,4 +94,5 @@ PM._validAddress = function(data) {
 
 $(document).ready(function(){
   PM.initializeSmallMap();
+  PM.setViewWithUserLocation();
 });

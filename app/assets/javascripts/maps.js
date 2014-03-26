@@ -38,6 +38,7 @@ PM.initializeMap = function() {
 $(document).ready(function(){
 
     PM.initializeMap();
+    PM.setViewWithUserLocation();
 
     $('#theme-default').on('click', function () {
       PM.changeTile('jameshedaweng.hf5b366j');
