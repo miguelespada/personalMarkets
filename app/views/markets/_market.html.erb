@@ -40,7 +40,10 @@
   <div class="market-comments">
     <ul>
       <% market.comments.each do |comment| %>
-        <li><span><%= comment.body %></span><%= link_to "Delete", market_comment_path(market, comment), :method => :delete %></li>
+        <li>
+          <span><%= comment.body %></span>
+          <%= market.delete_comment_link(comment) %>
+        </li>
       <% end %>
     </ul>
   </div>

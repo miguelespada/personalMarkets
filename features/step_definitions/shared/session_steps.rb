@@ -16,15 +16,7 @@ Given(/^I am a registered user$/) do
 end
 
 Given(/^I sign in$/) do
-  visit "/"
-  within(:css, ".user-session-menu") do
-    click_on "Sign in"
-  end
-  fill_in "Email",  with: @user.email
-  fill_in "Password",  with: @user.password, :match => :prefer_exact
-  within(:css, ".new_user") do
-    click_on "Sign in"
-  end
+  log_in_as @user
 end
 
 Given(/^I am logged in$/) do
@@ -35,5 +27,25 @@ end
 When(/^I sign out$/) do
   within(:css, ".user-session-menu") do
     click_on "Sign out"
+  end
+end
+
+Given(/^I log in as the first user$/) do
+  log_in_as @user_0
+end
+
+Given(/^I sign in as the other user$/) do
+  log_in_as @user_1
+end
+
+def log_in_as user
+  visit "/"
+  within(:css, ".user-session-menu") do
+    click_on "Sign in"
+  end
+  fill_in "Email",  with: user.email
+  fill_in "Password",  with: "password", :match => :prefer_exact
+  within(:css, ".new_user") do
+    click_on "Sign in"
   end
 end

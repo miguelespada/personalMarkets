@@ -3,7 +3,13 @@ class MarketDecorator < Draper::Decorator
 
   def comment_form
     if h.user_signed_in?
-      h.render :partial => 'comment_form', :locals => {:market => market}
+      h.render :partial => 'layouts/shared/comment_form', :locals => {:market => market}
+    end
+  end
+
+  def delete_comment_link comment
+    if comment_belogs_to_logged_user comment
+      h.link_to "Delete", h.market_comment_path(market, comment), :method => :delete
     end
   end
 
@@ -59,6 +65,10 @@ class MarketDecorator < Draper::Decorator
 
     def user_does_not_like_market?
        !h.current_user.favorites.include?(market)
+    end
+
+    def comment_belogs_to_logged_user comment
+      h.current_user.email == comment.author
     end
 
 end

@@ -72,3 +72,9 @@ Then(/^It disappears from list$/) do
   step 'I visit the other market page'
   expect(page).to_not have_content "Commenting other user market"
 end
+
+Then(/^I cant delete the comment$/) do
+  within(:css, ".market-comments") do
+    expect(page).to_not have_link "Delete"
+  end
+end

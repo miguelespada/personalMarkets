@@ -1,9 +1,9 @@
 class CommentsController < ApplicationController
-  before_filter :load_user
+  before_filter :load_market
 
   def create
-    @market = Market.find(params[:market_id])
     @comment = @market.comments.new(comment_params)
+    @comment.author = current_user.email
     if @comment.save
       @user = @market.user
       redirect_to user_market_path(@user, @market)
@@ -11,7 +11,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @market = Market.find(params[:market_id])
     @comment = @market.comments.find(params[:id])
     @comment.destroy
     @user = @market.user
@@ -23,11 +22,9 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:body)
   end
-  
-  def load_user
-    if params[:user_id].present?
-      @user = User.find(params[:user_id])
-    end 
+
+  def load_market
+    @market = Market.find(params[:market_id])
   end
   
 end
