@@ -21,10 +21,14 @@ Then(/^It appears in the list$/) do
   expect(page).to have_content "My market comment"
 end
 
-When(/^I comment other user market$/) do
+Given(/^Another user has a market$/) do
   @other_user = FactoryGirl.create(:user)
   @other_market = FactoryGirl.create(:market, :user => @other_user)
   @other_user.markets << @other_market
+end
+
+When(/^I comment other user market$/) do
+  step 'Another user has a market'
   step 'I visit the other market page'
   fill_in "Body", with: "Commenting other user market"
   click_button "Post comment"
@@ -41,4 +45,30 @@ end
 
 Then(/^I cant post a comment$/) do
   expect(page).to_not have_css "market-comment-form"
+end
+
+Given(/^I post a comment into a market$/) do
+  step 'Another user has a market'
+  step 'I visit the other market page'
+  fill_in "Body", with: "Commenting other user market"
+  click_button "Post comment"
+end
+
+Then(/^I can delete my comment$/) do
+  step 'I visit the other market page'
+  within(:css, ".market-comments") do
+    expect(page).to have_link "Delete"
+  end
+end
+
+When(/^I delete my comment$/) do
+  step 'I visit the other market page'
+  within(:css, ".market-comments") do
+    click_link "Delete"
+  end
+end
+
+Then(/^It disappears from list$/) do
+  step 'I visit the other market page'
+  expect(page).to_not have_content "Commenting other user market"
 end
