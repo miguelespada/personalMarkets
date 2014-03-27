@@ -17,6 +17,7 @@ class Market
   belongs_to :category
   belongs_to :user, class_name: "User", inverse_of: :markets
   has_and_belongs_to_many :favorited, class_name: "User", inverse_of: :favorites
+  has_many :comments, class_name: "Comment", inverse_of: :market
 
   validates_presence_of :name, :description, :user, :category
 
