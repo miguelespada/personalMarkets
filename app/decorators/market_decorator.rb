@@ -1,6 +1,12 @@
 class MarketDecorator < Draper::Decorator
   delegate_all
 
+  def comment_form
+    if h.user_signed_in?
+      h.render :partial => 'comment_form', :locals => {:market => market}
+    end
+  end
+
   def featured_photo(image_size)
     size = "#{image_size}x#{image_size}"
     h.cl_image_tag(market.featured.path,{ size: size, crop: :fill}) if market.featured?
