@@ -9,8 +9,8 @@ Feature: Market comments
     And I have one market
 
   Scenario: See market comments
-    And I sign in
     And It has comments
+    And I sign in
     When I visit the market page
     Then I should see the market comments
 
