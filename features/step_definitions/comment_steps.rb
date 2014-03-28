@@ -78,3 +78,30 @@ Then(/^I cant delete the comment$/) do
     expect(page).to_not have_link "Delete"
   end
 end
+
+Then(/^I can edit my comment$/) do
+  step 'I visit the other market page'
+  within(:css, ".market-comments") do
+    expect(page).to have_link "Edit"
+  end
+end
+
+When(/^I edit my comment$/) do
+  step 'I visit the other market page'
+  within(:css, ".market-comments") do
+    click_link "Edit"
+    fill_in "edit_comment_body", with: "updated comment"
+    click_button "Save"
+  end
+end
+
+Then(/^It is updated in the list$/) do
+  step 'I visit the other market page'
+  expect(page).to have_content "updated comment"
+end
+
+Then(/^I cant edit the comment$/) do
+  within(:css, ".market-comments") do
+    expect(page).to_not have_link "Edit"
+  end
+end

@@ -93,5 +93,6 @@ PM._validAddress = function(data) {
 };
 
 $(document).ready(function(){
-  PM.initializeSmallMap();
+  if ($('#map-small').length)
+    PM.initializeSmallMap();
 });

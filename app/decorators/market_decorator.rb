@@ -9,7 +9,13 @@ class MarketDecorator < Draper::Decorator
 
   def delete_comment_link comment
     if comment_belogs_to_logged_user comment
-      h.link_to "Delete", h.market_comment_path(market, comment), :method => :delete
+      h.link_to "Delete", h.market_comment_path(market, comment), {:class => 'delete-comment-link', :method => :delete}
+    end
+  end
+
+  def edit_comment_link comment
+    if comment_belogs_to_logged_user comment
+      h.link_to "Edit", "", {:id => "edit_link", :class => 'edit-comment-link', :data_market_id => market[:id], :data_comment_id => comment[:id]}
     end
   end
 

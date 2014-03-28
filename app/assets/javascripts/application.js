@@ -15,3 +15,5 @@
 //= require jquery.ui.all
 //= require cloudinary/jquery.cloudinary
 //= require bootstrap.js
+//= require templates.js
+//= require helper.js

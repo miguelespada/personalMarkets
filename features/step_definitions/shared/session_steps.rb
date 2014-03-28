@@ -40,6 +40,7 @@ end
 
 def log_in_as user
   visit "/"
+  click_on "User account"
   within(:css, ".user-session-menu") do
     click_on "Sign in"
   end

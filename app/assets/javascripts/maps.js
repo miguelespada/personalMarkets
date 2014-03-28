@@ -37,7 +37,8 @@ PM.initializeMap = function() {
 
 $(document).ready(function(){
 
-    PM.initializeMap();
+    if ($('#map').length)
+      PM.initializeMap();
 
     $('#theme-default').on('click', function () {
       PM.changeTile('jameshedaweng.hf5b366j');
