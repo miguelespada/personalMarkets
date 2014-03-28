@@ -37,8 +37,10 @@ PM.initializeMap = function() {
 
 $(document).ready(function(){
 
-    if ($('#map').length)
+    if ($('#map').length){
       PM.initializeMap();
+      PM.setViewWithUserLocation();
+    }
 
     $('#theme-default').on('click', function () {
       PM.changeTile('jameshedaweng.hf5b366j');

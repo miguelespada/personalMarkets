@@ -93,6 +93,8 @@ PM._validAddress = function(data) {
 };
 
 $(document).ready(function(){
-  if ($('#map-small').length)
+  if ($('#map-small').length){
     PM.initializeSmallMap();
+    PM.setViewWithUserLocation();
+  }
 });
