@@ -1,6 +1,10 @@
 class MarketDecorator < Draper::Decorator
   delegate_all
 
+  def location
+    h.render :partial => 'markets/shared/location', locals: { market: market }  if h.user_signed_in?
+  end
+
   def comment_form
     if h.user_signed_in?
       h.render :partial => 'layouts/shared/comment_form', :locals => {:market => market}
@@ -80,7 +84,7 @@ class MarketDecorator < Draper::Decorator
     end
 
     def comment_belogs_to_logged_user comment
-      h.current_user.email == comment.author
+      h.user_signed_in? &&  h.current_user.email == comment.author
     end
 
 end

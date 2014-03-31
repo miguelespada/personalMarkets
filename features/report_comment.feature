@@ -1,5 +1,4 @@
 @comments
-@wip
 Feature: Report comments
   In order to report abuse on a comment
   As a registered user
