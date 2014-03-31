@@ -1,5 +1,4 @@
 @comments
-@wip
 Feature: Edit comments
   In order to update a comment content
   As a registered user
@@ -7,7 +6,7 @@ Feature: Edit comments
 
   Background:
     Given there are some users
-    Given I log in as the first user
+    And I log in as the first user
 
   Scenario: I have a way to edit a comment
     And I post a comment into a market

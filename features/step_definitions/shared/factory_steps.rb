@@ -28,3 +28,11 @@ Given(/^there are some users$/) do
   @user_0 = FactoryGirl.create(:user)
   @user_1 = FactoryGirl.create(:user)
 end
+
+Given(/^There is a comment in a market$/) do
+  @other_user = FactoryGirl.create(:user)
+  @market = FactoryGirl.create(:market, :user => @other_user)
+  @other_user.markets << @market
+  @comment = FactoryGirl.create(:comment, :market => @market)
+  @market.comments << @comment
+end

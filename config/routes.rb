@@ -13,6 +13,8 @@ PopUpStores::Application.routes.draw do
   resources :users do
     resources :markets
   end
+
+  post "/markets/:market_id/comments/:id/report", to: "comments#report", as: 'report_comment'
   
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)

@@ -19,6 +19,12 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
+  def report_comment_link comment
+    if h.user_signed_in?
+      h.link_to "Report", h.report_comment_path(market, comment), { :class => 'report-comment-link', :method => :post }
+    end
+  end
+
   def featured_photo(image_size)
     size = "#{image_size}x#{image_size}"
     h.cl_image_tag(market.featured.path,{ size: size, crop: :fill}) if market.featured?

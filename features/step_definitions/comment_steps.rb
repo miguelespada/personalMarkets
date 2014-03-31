@@ -105,3 +105,16 @@ Then(/^I cant edit the comment$/) do
     expect(page).to_not have_link "Edit"
   end
 end
+
+When(/^I report a comment as abusive$/) do
+  visit user_market_path(@other_user, @market)
+  within(:css, ".market-comments") do
+    expect(page).to have_link "Report"
+  end
+  click_link "Report"
+end
+
+Then(/^The comment is marked as abusive$/) do
+  @comment = Comment.find(@comment.id)
+  expect(@comment.state).to eq "reported"
+end
