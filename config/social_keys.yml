@@ -1,0 +1,20 @@
+development:
+  facebook_key: "435422749928665"
+  facebook_secret: "41b63646f32ec5e54ae02e19ead5e2c1"
+
+  google_key: "448879833744-1213q1grtl4ib41krbva5ea1b5ui4472.apps.googleusercontent.com"
+  google_secret: "2HFc4pN14FlKn886WwV80SH9"
+
+test:
+  facebook_key: "435422749928665"
+  facebook_secret: "41b63646f32ec5e54ae02e19ead5e2c1"
+
+  google_key: "448879833744-1213q1grtl4ib41krbva5ea1b5ui4472.apps.googleusercontent.com"
+  google_secret: "2HFc4pN14FlKn886WwV80SH9"
+
+production:
+  facebook_key: "435422749928665"
+  facebook_secret: "41b63646f32ec5e54ae02e19ead5e2c1"
+
+  google_key: "448879833744-1213q1grtl4ib41krbva5ea1b5ui4472.apps.googleusercontent.com"
+  google_secret: "2HFc4pN14FlKn886WwV80SH9"

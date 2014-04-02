@@ -9,7 +9,8 @@ Devise.setup do |config|
   config.secret_key = '6b7b2854d317111daaac658fe7042e72f3f08760c044c0dd8812b0663f3dcc0516f2ba04daad1ea47234863dba4368bdadbb3c0a807f0a387b98325da7238945'
 
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development? 
-  config.omniauth :facebook, "435422749928665", "41b63646f32ec5e54ae02e19ead5e2c1", {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  config.omniauth :facebook, ENV["FACEBOOK_KEY"], ENV["FACEBOOK_SECRET"], { :scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  config.omniauth :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {}
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,

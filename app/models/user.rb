@@ -8,9 +8,9 @@ class User
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  :recoverable, :rememberable, :trackable, :validatable
 
-  devise :omniauthable, :omniauth_providers => [:facebook]
+  devise :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
@@ -30,6 +30,8 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
 
+  has_many :authorizations
+
   ## Confirmable
   # field :confirmation_token,   :type => String
   # field :confirmed_at,         :type => Time
@@ -48,15 +50,21 @@ class User
     favorites.delete(market)
   end
 
-  def self.find_for_facebook_oauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      # user.name = auth.info.name   # assuming the user model has a name
-      # user.image = auth.info.image # assuming the user model has an image
+  def self.from_omniauth(auth, current_user)
+    authorization = Authorization.where({:provider => auth.provider, :uid => auth.uid.to_s, :token => auth.credentials.token, :secret => auth.credentials.secret}).first_or_initialize
+    if authorization.user.blank?
+      user = current_user.nil? ? User.where({:email => auth["info"]["email"]}).first : current_user
+      if user.blank?
+        user = User.new
+        user.password = Devise.friendly_token[0,20]
+        user.email = auth.info.email
+        user.save!
+      end
+      authorization.username = auth.info.nickname
+      authorization.user_id = user.id
+      authorization.save
     end
+    authorization.user
   end
 
   def self.new_with_session(params, session)

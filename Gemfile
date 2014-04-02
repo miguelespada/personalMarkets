@@ -46,6 +46,7 @@ gem 'twitter-typeahead-rails'
 
 #omniauth
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 # search
 gem "tire", "~> 0.6.2"

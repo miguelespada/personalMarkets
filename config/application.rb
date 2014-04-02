@@ -34,6 +34,12 @@ module PopUpStores
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = false
+
+    social_keys = File.join(Rails.root, 'config', 'social_keys.yml')
+    CONFIG = HashWithIndifferentAccess.new(YAML::load(IO.read(social_keys)))[Rails.env]
+    CONFIG.each do |k,v|
+      ENV[k.upcase] ||= v
+    end
   end
   
 require "attachinary/orm/mongoid"

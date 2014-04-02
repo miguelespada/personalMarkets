@@ -14,7 +14,7 @@
 
   <div class="omniauth-sign-up">
       <%= link_to "Login with Facebook", user_omniauth_authorize_path(:facebook) %>
-      <%= link_to "Gmail", "" %>
+      <%= link_to "Login with Google", user_omniauth_authorize_path(:google_oauth2) %>
   </div>
 
 <%= render "devise/shared/links" %>

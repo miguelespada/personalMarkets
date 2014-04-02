@@ -17,6 +17,6 @@ end
 
 Then(/^I am able to sign up with Facebook and Gmail$/) do
   expect(page).to have_link "Facebook"
-  expect(page).to have_link "Gmail"
+  expect(page).to have_link "Google"
 end
 
