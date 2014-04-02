@@ -35,7 +35,16 @@ module MarketsHelper
   end
 
   def market_form(user, market)
-    render partial: "markets/shared/form", locals: {user: user, market: market}
+    if user.allowed_market_creation? 
+      render partial: "markets/shared/form", locals: {user: user, market: market.decorate }
+    else
+      message = "You have to wait one month to create another market"
+      render partial: "markets/shared/error", locals: { message: message }
+    end
+  end
+
+  def edit_market_form(user, market)
+    render partial: "markets/shared/form", locals: {user: user, market: market.decorate }
   end
 
   def search_box

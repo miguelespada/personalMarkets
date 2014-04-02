@@ -10,6 +10,7 @@ Feature: Manage market
   Scenario: See my markets
     Then I should see the market in my markets list
 
+  @wip
   Scenario: Modify market
     When I edit my market
     Then I should be notified that the market has been succesfully updated

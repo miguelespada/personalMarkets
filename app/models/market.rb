@@ -1,6 +1,7 @@
 class Market
   include Mongoid::Document
   include Mongoid::Taggable
+  include Mongoid::Timestamps::Created
   include Tire::Model::Search
   include Tire::Model::Callbacks
   include Elasticsearch
@@ -83,5 +84,9 @@ class Market
     rescue
     end
       range ||= ""
-    end
+  end
+
+  def created_one_month_ago?
+    self.created_at <= 1.month.ago
+  end
 end

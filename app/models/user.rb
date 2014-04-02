@@ -54,12 +54,7 @@ class User
     authorization = Authorization.where({:provider => auth.provider, :uid => auth.uid.to_s, :token => auth.credentials.token, :secret => auth.credentials.secret}).first_or_initialize
     if authorization.user.blank?
       user = current_user.nil? ? User.where({:email => auth["info"]["email"]}).first : current_user
-      if user.blank?
-        user = User.new
-        user.password = Devise.friendly_token[0,20]
-        user.email = auth.info.email
-        user.save!
-      end
+      user = create_with auth.info.email if user.blank?
       authorization.username = auth.info.nickname
       authorization.user_id = user.id
       authorization.save
@@ -73,5 +68,20 @@ class User
         user.email = data["email"] if user.email.blank?
       end
     end
+  end
+
+  def allowed_market_creation?
+    market = self.markets.last
+    market.nil? || market.created_one_month_ago?
+  end
+
+  private
+
+  def self.create_with email
+    user = User.new
+    user.password = Devise.friendly_token[0,20]
+    user.email = email
+    user.save!
+    user
   end
 end

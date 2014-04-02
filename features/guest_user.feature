@@ -1,7 +1,6 @@
 @users
 Feature: Guest users
 
-
   Background:
     Given I am not logged in
 

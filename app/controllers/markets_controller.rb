@@ -18,7 +18,7 @@ class MarketsController < ApplicationController
   end
 
   def new
-    @market = @user.markets.new
+    @market = Market.new
   end
 
   def show
