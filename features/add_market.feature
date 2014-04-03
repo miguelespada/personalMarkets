@@ -6,7 +6,7 @@ Feature: Add market
   Background:
     Given I am logged in
     When I add a market
-  @wip
+
   Scenario: Add Market
     Then I should see the market page
     And I should be notified that the market has been added

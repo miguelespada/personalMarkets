@@ -16,7 +16,7 @@ class MarketDecorator < Draper::Decorator
   end
 
   def delete_comment_link comment
-    if belogs_to_logged_user comment
+    if(belogs_to_logged_user(comment) || can?(:destroy, comment))
       link_options = { class: 'delete-comment-link', method: :delete }
       link_to "Delete", market_comment_path(market, comment), link_options
     end

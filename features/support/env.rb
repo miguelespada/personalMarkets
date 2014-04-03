@@ -64,3 +64,22 @@ Market.delete_index #remove at the beginning
 at_exit do
   Market.delete_index 
 end
+
+
+
+module Login
+  def log_in_as user
+    visit "/"
+    click_on "User account"
+    within(:css, ".user-session-menu") do
+      click_on "Sign in"
+    end
+    fill_in "Email",  with: user.email
+    fill_in "Password",  with: "password", :match => :prefer_exact
+    within(:css, ".new_user") do
+      click_on "Sign in"
+    end
+  end
+end
+
+World(Login)
