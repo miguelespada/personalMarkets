@@ -1,5 +1,6 @@
 class MarketsController < ApplicationController
   before_filter :load_user
+  before_filter :load_market, only: [:show ,:edit, :update, :destroy]
 
   def index
     @markets ||= Market.find_all(@user)
@@ -22,7 +23,6 @@ class MarketsController < ApplicationController
   end
 
   def show
-    @market = @user.markets.find(params[:id])
     respond_to do |format|
         format.html   
         format.svg  { render :qrcode => request.url, :level => :l, :unit => 10 }
@@ -30,7 +30,6 @@ class MarketsController < ApplicationController
   end
   
   def edit
-    @market = @user.markets.find(params[:id])
   end
 
   def create
@@ -45,7 +44,6 @@ class MarketsController < ApplicationController
   end
 
   def update
-    @market = @user.markets.find(params[:id])
     load_hidden_tags
     respond_to do |format|
       if @market.update(market_params)
@@ -55,11 +53,19 @@ class MarketsController < ApplicationController
   end
 
   def destroy
-    @market = @user.markets.find(params[:id])
     @market.destroy
     respond_to do |format|
       format.html { redirect_to  user_markets_path(@user), 
                       notice: "Market successfully deleted."}
+    end
+  end
+
+  def delete_image
+    @market = Market.find(params[:market_id])
+    @market.featured = nil
+    @market.save!
+    respond_to do |format|
+      format.html { redirect_to [@market.user, @market], notice: "Market picture deleted."}
     end
   end
 
@@ -95,6 +101,10 @@ class MarketsController < ApplicationController
       if params[:user_id].present?
         @user = User.find(params[:user_id])
       end 
+    end
+
+    def load_market
+      @market = @user.markets.find(params[:id])
     end
     
     def load_category

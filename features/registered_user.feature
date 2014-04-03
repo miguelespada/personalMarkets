@@ -19,3 +19,8 @@ Feature: Registered users
     And I have one month old market 
     When I try to create another market
     Then I can see the new market form
+
+  Scenario: Not able to delete other market featured image
+    And There is someone else's market
+    When I visit a market page
+    Then I should not be able to delete the featured image

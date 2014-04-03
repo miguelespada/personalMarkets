@@ -1,6 +1,7 @@
 class User
   include Mongoid::Document
   rolify
+
   include Mongoid::Attributes::Dynamic
 
   has_many :markets, class_name: "Market", dependent: :delete, inverse_of: :user
@@ -33,6 +34,8 @@ class User
 
   has_many :authorizations
 
+  after_create :assign_default_role
+
   ## Confirmable
   # field :confirmation_token,   :type => String
   # field :confirmed_at,         :type => Time
@@ -49,6 +52,26 @@ class User
 
   def unlike(market)
     favorites.delete(market)
+  end
+
+  def can_like market
+    does_not_own(market) && does_not_have_as_favorite(market)
+  end
+
+  def can_unlike market
+    has_as_favorite market
+  end
+
+  def does_not_own(market)
+    self != market.user
+  end
+
+  def does_not_have_as_favorite(market)
+    !has_as_favorite(market)
+  end
+
+  def has_as_favorite market
+    favorites.include?(market)
   end
 
   def self.from_omniauth(auth, current_user)
@@ -85,4 +108,9 @@ class User
     user.save!
     user
   end
+
+  def assign_default_role
+    add_role(:guest)
+  end
+
 end

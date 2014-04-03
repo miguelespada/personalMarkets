@@ -35,7 +35,9 @@ end
 
 When(/^I delete my market$/) do
   visit user_market_path(@user, @market)
-  click_on "Delete"
+  within(:css, '.market-actions') do
+    click_on "Delete"
+  end
 end
 
 Then(/^I should not see the market in my markets list$/) do

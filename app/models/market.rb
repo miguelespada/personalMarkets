@@ -1,4 +1,5 @@
 class Market
+  
   include Mongoid::Document
   include Mongoid::Taggable
   include Mongoid::Timestamps::Created

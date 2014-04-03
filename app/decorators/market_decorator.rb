@@ -3,27 +3,35 @@ class MarketDecorator < Draper::Decorator
 
   delegate_all
 
+  def delete_photo_link
+    if can? :delete_image, market
+      content_tag :div, class: "market-featured-photo-actions" do
+        link_to "Delete", delete_image_path(market), { method: :post }
+      end
+    end
+  end
+
   def location
-    if user_signed_in?
+    if can? :see_location, Market
       render partial: 'markets/shared/location', locals: { market: market }
     end
   end
 
   def comment_form
-    if user_signed_in?
+    if can? :comment, market
       render partial: 'layouts/shared/comment_form', locals: { market: market }
     end
   end
 
   def delete_comment_link comment
-    if(belogs_to_logged_user(comment) || can?(:destroy, comment))
+    if can? :destroy, comment
       link_options = { class: 'delete-comment-link', method: :delete }
       link_to "Delete", market_comment_path(market, comment), link_options
     end
   end
 
   def edit_comment_link comment
-    if belogs_to_logged_user comment
+    if can? :edit, comment
       link_options = {
         id: "edit_link",
         class: 'edit-comment-link',
@@ -35,7 +43,7 @@ class MarketDecorator < Draper::Decorator
   end
 
   def report_comment_link comment
-    if user_signed_in?
+    if can? :report, Comment
       link_to "Report", report_comment_path(market, comment),
         { :class => 'report-comment-link', :method => :post }
     end
@@ -53,29 +61,29 @@ class MarketDecorator < Draper::Decorator
   end
   
   def edit_link
-    if market_belongs_to_user?
+    if can? :edit, market
       link_to("Edit", edit_user_market_path(market.user, market), 
         :class => "edit market-action")
     end
   end
 
   def delete_link
-    if market_belongs_to_user?
+    if can? :delete, market
       link_to("Delete", user_market_path(market.user, market), method: :delete, 
         class: "delete market-action")
     end
   end
 
   def like_link
-    if market_does_not_belong_to_user?
-      if user_does_not_like_market?
-        link_to("Like", like_path(current_user, market), 
-          class: "like market-action") 
-      else
-        link_to("Unlike", unlike_path(current_user, market), 
-          class: "like market-action")
-      end
+    if can? :like, market
+      link = link_to("Like", like_path(current_user, market), 
+        class: "like market-action")
     end
+    if can? :unlike, market
+      link = link_to("Unlike", unlike_path(current_user, market), 
+        class: "like market-action")
+    end
+    link
   end
 
   def qr_code_link
@@ -94,10 +102,6 @@ class MarketDecorator < Draper::Decorator
 
     def user_does_not_like_market?
        !current_user.favorites.include?(market)
-    end
-
-    def belogs_to_logged_user comment
-      user_signed_in? &&  current_user.email == comment.author
     end
 
 end

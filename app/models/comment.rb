@@ -1,5 +1,7 @@
 class Comment
+
   include Mongoid::Document
+  resourcify
 
   field :body, type: String
   field :author, type: String

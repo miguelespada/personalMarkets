@@ -47,3 +47,9 @@ end
 Then(/^I can see the new market form$/) do
   expect(page).to have_css '#new_market'
 end
+
+Then(/^I should not be able to delete the featured image$/) do
+  within(:css, '.market-featured-photo') do
+    expect(page).to_not have_link "Delete"
+  end
+end
