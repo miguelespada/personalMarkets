@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  rolify
   include Mongoid::Attributes::Dynamic
 
   has_many :markets, class_name: "Market", dependent: :delete, inverse_of: :user

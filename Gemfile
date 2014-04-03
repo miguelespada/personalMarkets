@@ -5,8 +5,11 @@ ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 gem "devise"
-gem "bson_ext"
 gem "mongoid", ">= 2.0.0.beta.19"
+gem "cancan"
+gem "rolify"
+
+gem "bson_ext"
 gem "rails_12factor", group: :production
 
 # Use SCSS for stylesheets
