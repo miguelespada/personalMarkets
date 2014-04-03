@@ -16,6 +16,12 @@ class Ability
     end
 
     user ||= User.new
+
+    if user.has_role? :admin
+      can :edit, Comment
+      can :edit, Market
+    end
+
     if user.has_role? :moderator
       can :destroy, Comment
 

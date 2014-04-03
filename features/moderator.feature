@@ -1,5 +1,4 @@
 @moderator
-@wip
 Feature: Moderator
 
   Background:
