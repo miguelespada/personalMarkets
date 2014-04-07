@@ -4,7 +4,7 @@ describe MarketsController do
 
   let(:valid_session) { {} }
   let(:user) { FactoryGirl.create(:user) } 
-  let(:market) { FactoryGirl.build(:market)}
+  let(:market) { FactoryGirl.build(:market) }
   let(:photo_json) {'[{"public_id":"dummy",
     "version":1,
     "signature":"dummy",
@@ -102,6 +102,7 @@ describe MarketsController do
       @market.reload
       expect(@market.name).to eq("New dummy name") 
     end
+
     describe "update photo" do
       it "allows no photo" do
         put :update, market_update_params, valid_session
@@ -115,8 +116,6 @@ describe MarketsController do
       end
     end
   end
-
-
 
   describe "index" do
     it "renders the index template" do
@@ -141,6 +140,32 @@ describe MarketsController do
     it "remembers category after search" do
       get :search, {}, valid_session
       expect(assigns(:category_query)).not_to be_nil
+    end
+  end
+
+  describe "Permissions" do
+    
+    context "delete picture" do
+
+      before :each do
+        @market = FactoryGirl.create(:market)
+        @market.featured = photo_json
+      end
+
+      it "allowed for moderator" do
+        moderator = FactoryGirl.create(:user, :moderator)
+        sign_in :user, moderator
+
+        post :delete_image, { market_id: @market.id }, valid_session
+      end
+
+      it "not allowed for regular user" do
+        user = FactoryGirl.create(:user)
+        sign_in :user, user
+
+        post :delete_image, { market_id: @market.id }, valid_session
+        expect(response.response_code).to eq 401
+      end
     end
   end
 end

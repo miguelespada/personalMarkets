@@ -15,9 +15,7 @@ PopUpStores::Application.routes.draw do
   end
 
   post "/markets/:market_id/comments/:id/report", to: "comments#report", as: 'report_comment'
-
   post "/markets/:market_id/delete_image", to: "markets#delete_image", as: 'delete_image'
-  
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   mount Attachinary::Engine => "/attachinary"

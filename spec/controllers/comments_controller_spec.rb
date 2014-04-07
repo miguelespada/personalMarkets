@@ -33,7 +33,7 @@ describe CommentsController do
         market.comments << comment
 
         post :destroy, { market_id: market.id, id: comment.id }, valid_session
-        expect(response.response_code).to be 401
+        expect(response.response_code).to eq 401
       end
 
       it "allowed to regular user when is the author" do
@@ -53,7 +53,7 @@ describe CommentsController do
         market.comments << comment
 
         post :update, { market_id: market.id, id: comment.id }, valid_session
-        expect(response.response_code).to be 401
+        expect(response.response_code).to eq 401
       end
 
       it "allowed for admin" do
@@ -72,7 +72,7 @@ describe CommentsController do
         market.comments << comment
 
         post :update, { market_id: market.id, id: comment.id }, valid_session
-        expect(response.response_code).to be 401
+        expect(response.response_code).to eq 401
       end
 
       it "allowed for regular user when is the author" do

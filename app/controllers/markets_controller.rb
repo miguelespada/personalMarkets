@@ -62,11 +62,14 @@ class MarketsController < ApplicationController
 
   def delete_image
     @market = Market.find(params[:market_id])
+    authorize! :delete_image, @market
     @market.featured = nil
     @market.save!
     respond_to do |format|
       format.html { redirect_to [@market.user, @market], notice: "Market picture deleted."}
     end
+  rescue CanCan::AccessDenied
+    render status: 401, text: "Unauthorized action"
   end
 
   private
