@@ -10,10 +10,12 @@ describe CommentsController do
   describe "Permissions" do
 
     context "Destroy" do
+
+      let(:market) { FactoryGirl.create(:market) }
+      let(:comment) { FactoryGirl.create(:comment, market: market) } 
+
       it "allowed for moderator" do
         sign_in :user, moderator
-        market = FactoryGirl.create(:market)
-        comment = FactoryGirl.create(:comment, :market => market)
         market.comments << comment
 
         post :destroy, { market_id: market.id, id: comment.id }, valid_session
@@ -21,8 +23,6 @@ describe CommentsController do
 
       it "allowed for admin" do
         sign_in :user, admin
-        market = FactoryGirl.create(:market)
-        comment = FactoryGirl.create(:comment, :market => market)
         market.comments << comment
 
         post :destroy, { market_id: market.id, id: comment.id }, valid_session
@@ -30,8 +30,6 @@ describe CommentsController do
 
       it "not allowed to regular user when is not the author" do
         sign_in :user, user
-        market = FactoryGirl.create(:market)
-        comment = FactoryGirl.create(:comment, :market => market)
         market.comments << comment
 
         post :destroy, { market_id: market.id, id: comment.id }, valid_session
@@ -40,8 +38,6 @@ describe CommentsController do
 
       it "allowed to regular user when is the author" do
         sign_in :user, user
-        market = FactoryGirl.create(:market)
-        comment = FactoryGirl.create(:comment, :market => market)
         comment.author = user.email
         market.comments << comment
 
@@ -52,8 +48,8 @@ describe CommentsController do
     context "Update" do
       it "not allowed for moderator" do
         sign_in :user, moderator
-        market = FactoryGirl.create(:market, :user => user)
-        comment = FactoryGirl.create(:comment, :market => market)
+        market = FactoryGirl.create(:market, user: user)
+        comment = FactoryGirl.create(:comment, market: market)
         market.comments << comment
 
         post :update, { market_id: market.id, id: comment.id }, valid_session
@@ -62,8 +58,8 @@ describe CommentsController do
 
       it "allowed for admin" do
         sign_in :user, admin
-        market = FactoryGirl.create(:market, :user => user)
-        comment = FactoryGirl.create(:comment, :market => market)
+        market = FactoryGirl.create(:market, user: user)
+        comment = FactoryGirl.create(:comment, market: market)
         market.comments << comment
 
         post :update, { market_id: market.id, id: comment.id }, valid_session
@@ -71,8 +67,8 @@ describe CommentsController do
 
       it "not allowed for regular user when is not the author" do
         sign_in :user, user
-        market = FactoryGirl.create(:market, :user => user)
-        comment = FactoryGirl.create(:comment, :market => market)
+        market = FactoryGirl.create(:market, user: user)
+        comment = FactoryGirl.create(:comment, market: market)
         market.comments << comment
 
         post :update, { market_id: market.id, id: comment.id }, valid_session
@@ -81,15 +77,14 @@ describe CommentsController do
 
       it "allowed for regular user when is the author" do
         sign_in :user, user
-        market = FactoryGirl.create(:market, :user => user)
-        comment = FactoryGirl.create(:comment, :market => market)
+        market = FactoryGirl.create(:market, user: user)
+        comment = FactoryGirl.create(:comment, market: market)
         comment.author = user.email
         market.comments << comment
 
         post :update, { market_id: market.id, id: comment.id }, valid_session
       end
     end
-
-
   end
+
 end

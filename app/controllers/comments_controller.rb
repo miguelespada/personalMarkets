@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     @user = @market.user
     redirect_to user_market_path(@user, @market)
-  rescue CanCan::AccessDenied => e
+  rescue CanCan::AccessDenied
     render :status => :unauthorized, :text => "Unauthorized action" 
   end
 
@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
     @comment.save
     @user = @market.user
     render json: @comment
-  rescue CanCan::AccessDenied => e
+  rescue CanCan::AccessDenied
     render :status => :unauthorized, :text => "Unauthorized action" 
   end
 
