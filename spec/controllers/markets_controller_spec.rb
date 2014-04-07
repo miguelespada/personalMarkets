@@ -74,6 +74,7 @@ describe MarketsController do
   describe "Markets actions" do
     before :each do
       user = create(:user)
+      sign_in :user, user
       category = create(:category)
       @market = create(:market, user: user, category: category)  
     end
@@ -124,9 +125,9 @@ describe MarketsController do
     end
 
     it "lists user markets" do
-      m = create(:market)
-      m.update_attribute(:name, "dummy")
-      get :index, {user_id: m.user_id}, valid_session
+      market = create(:market)
+      market.update_attribute(:name, "dummy")
+      get :index, {user_id: market.user_id}, valid_session
       markets = assigns(:markets)
       expect(markets.count).to eq 1
     end
@@ -166,6 +167,44 @@ describe MarketsController do
         post :delete_image, { market_id: @market.id }, valid_session
         expect(response.response_code).to eq 401
       end
+    end
+
+    context "update market" do
+
+      let (:market_update_params) {
+        {
+          id: @market.to_param,
+          user_id: @market.user.id, 
+          market: @market.attributes
+        }
+      }
+
+      before :each do
+        @market = create(:market, :user => user)
+        @market.featured = photo_json
+      end
+
+      it "allowed for admin" do
+        admin = create(:user, :admin)
+        sign_in :user, admin
+
+        @market.attributes["name"] = "New dummy name"
+
+        put :update, market_update_params, valid_session
+        @market.reload
+        expect(@market.name).to eq("New dummy name") 
+      end
+
+      it "not allowed for non owner" do
+        other_user = create(:user)
+        sign_in :user, other_user
+
+        @market.attributes["name"] = "New dummy name"
+
+        put :update, market_update_params, valid_session
+        expect(response.response_code).to eq 401
+      end
+
     end
   end
 end

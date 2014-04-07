@@ -12,7 +12,7 @@ class Ability
     moderator_abilities
 
     can [:edit, :update], Comment, :author => @user.email
-    can :edit, Market, :user_id => @user.id
+    can [:edit, :update], Market, :user_id => @user.id
     can :delete, Market, :user_id => @user.id
   end
 
@@ -30,6 +30,7 @@ class Ability
         can :unlike, Market, Market do |market|
             @user.can_unlike market
         end
+
     end
   end
 
@@ -37,7 +38,7 @@ class Ability
     if @user.has_role? :admin
       can [:edit, :update], Comment
       can :destroy, Comment
-      can :edit, Market
+      can [:edit, :update], Market
     end
   end
 

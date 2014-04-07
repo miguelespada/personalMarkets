@@ -17,3 +17,12 @@ Then(/^I can edit the market$/) do
     expect(page).to have_link "Edit"
   end
 end
+
+When(/^I edit the market$/) do
+  within(:css, ".market-actions") do
+    click_on "Edit"
+  end
+  fill_in "Name",  with: "New dummy Market"
+  fill_in "Description",  with: "New dummy description"
+  click_on "Update Market"
+end

@@ -44,12 +44,15 @@ class MarketsController < ApplicationController
   end
 
   def update
+    authorize! :update, @market
     load_hidden_tags
     respond_to do |format|
       if @market.update(market_params)
         format.html { redirect_to [@user, @market], notice: "Market successfully updated."}
       end
     end
+  rescue CanCan::AccessDenied
+    render :status => 401, :text => "Unauthorized action"
   end
 
   def destroy
