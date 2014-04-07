@@ -16,19 +16,19 @@ describe StaticPagesController do
     end
     
     it "dos not show markers without location" do
-      FactoryGirl.create(:market)
+      create(:market)
       get 'map', valid_session
       expect(assigns(:geojson)).to eq ""
     end
 
     it "does not show markers empty location" do
-      FactoryGirl.create(:market, :latitude => "", :longitude => "")
+      create(:market, :latitude => "", :longitude => "")
       get 'map', valid_session
       expect(assigns(:geojson)).to eq ""
     end
 
     it "shows marker with location" do
-      FactoryGirl.create(:market, :latitude => "40", :longitude => "-3")
+      create(:market, :latitude => "40", :longitude => "-3")
       get 'map', valid_session
       expect(assigns(:geojson)).not_to eq ""
     end

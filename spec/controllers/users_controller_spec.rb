@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe UsersController do
   let(:valid_session) { {} }
-  let(:user) { FactoryGirl.create(:user) } 
-  let(:second_user) { FactoryGirl.create(:user) } 
-  let(:market) { FactoryGirl.create(:market)}
-  let(:second_market) { FactoryGirl.create(:market)}
+  let(:user) { create(:user) } 
+  let(:second_user) { create(:user) } 
+  let(:market) { create(:market)}
+  let(:second_market) { create(:market)}
 
 
   describe "GET 'index'" do

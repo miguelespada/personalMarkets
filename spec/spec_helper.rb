@@ -46,6 +46,7 @@ RSpec.configure do |config|
   config.color_enabled = true
   config.formatter = :documentation
   config.include Capybara::DSL, :type => :request
+  config.include FactoryGirl::Syntax::Methods
 
   # Clean up the database
   require 'database_cleaner'

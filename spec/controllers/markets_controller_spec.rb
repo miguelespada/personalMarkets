@@ -3,8 +3,8 @@ require 'spec_helper'
 describe MarketsController do
 
   let(:valid_session) { {} }
-  let(:user) { FactoryGirl.create(:user) } 
-  let(:market) { FactoryGirl.build(:market) }
+  let(:user) { create(:user) } 
+  let(:market) { build(:market) }
   let(:photo_json) {'[{"public_id":"dummy",
     "version":1,
     "signature":"dummy",
@@ -73,9 +73,9 @@ describe MarketsController do
 
   describe "Markets actions" do
     before :each do
-      user = FactoryGirl.create(:user)
-      category = FactoryGirl.create(:category)
-      @market = FactoryGirl.create(:market, user: user, category: category)  
+      user = create(:user)
+      category = create(:category)
+      @market = create(:market, user: user, category: category)  
     end
 
     let(:market_params) { { id: @market.to_param, 
@@ -124,7 +124,7 @@ describe MarketsController do
     end
 
     it "lists user markets" do
-      m = FactoryGirl.create(:market)
+      m = create(:market)
       m.update_attribute(:name, "dummy")
       get :index, {user_id: m.user_id}, valid_session
       markets = assigns(:markets)
@@ -148,19 +148,19 @@ describe MarketsController do
     context "delete picture" do
 
       before :each do
-        @market = FactoryGirl.create(:market)
+        @market = create(:market)
         @market.featured = photo_json
       end
 
       it "allowed for moderator" do
-        moderator = FactoryGirl.create(:user, :moderator)
+        moderator = create(:user, :moderator)
         sign_in :user, moderator
 
         post :delete_image, { market_id: @market.id }, valid_session
       end
 
       it "not allowed for regular user" do
-        user = FactoryGirl.create(:user)
+        user = create(:user)
         sign_in :user, user
 
         post :delete_image, { market_id: @market.id }, valid_session

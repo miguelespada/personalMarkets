@@ -3,16 +3,16 @@ require 'spec_helper'
 describe CommentsController do
 
   let(:valid_session) { {} }
-  let(:moderator) { FactoryGirl.create(:user, :moderator) } 
-  let(:admin) { FactoryGirl.create(:user, :admin) } 
-  let(:user) { FactoryGirl.create(:user) } 
+  let(:moderator) { create(:user, :moderator) } 
+  let(:admin) { create(:user, :admin) } 
+  let(:user) { create(:user) } 
 
   describe "Permissions" do
 
     context "Destroy" do
 
-      let(:market) { FactoryGirl.create(:market) }
-      let(:comment) { FactoryGirl.create(:comment, market: market) } 
+      let(:market) { create(:market) }
+      let(:comment) { create(:comment, market: market) } 
 
       it "allowed for moderator" do
         sign_in :user, moderator
@@ -48,8 +48,8 @@ describe CommentsController do
     context "Update" do
       it "not allowed for moderator" do
         sign_in :user, moderator
-        market = FactoryGirl.create(:market, user: user)
-        comment = FactoryGirl.create(:comment, market: market)
+        market = create(:market, user: user)
+        comment = create(:comment, market: market)
         market.comments << comment
 
         post :update, { market_id: market.id, id: comment.id }, valid_session
@@ -58,8 +58,8 @@ describe CommentsController do
 
       it "allowed for admin" do
         sign_in :user, admin
-        market = FactoryGirl.create(:market, user: user)
-        comment = FactoryGirl.create(:comment, market: market)
+        market = create(:market, user: user)
+        comment = create(:comment, market: market)
         market.comments << comment
 
         post :update, { market_id: market.id, id: comment.id }, valid_session
@@ -67,8 +67,8 @@ describe CommentsController do
 
       it "not allowed for regular user when is not the author" do
         sign_in :user, user
-        market = FactoryGirl.create(:market, user: user)
-        comment = FactoryGirl.create(:comment, market: market)
+        market = create(:market, user: user)
+        comment = create(:comment, market: market)
         market.comments << comment
 
         post :update, { market_id: market.id, id: comment.id }, valid_session
@@ -77,8 +77,8 @@ describe CommentsController do
 
       it "allowed for regular user when is the author" do
         sign_in :user, user
-        market = FactoryGirl.create(:market, user: user)
-        comment = FactoryGirl.create(:comment, market: market)
+        market = create(:market, user: user)
+        comment = create(:comment, market: market)
         comment.author = user.email
         market.comments << comment
 

@@ -1,5 +1,5 @@
 Given(/^It has comments$/) do
-  @comment = FactoryGirl.create(:comment, :market => @market)
+  @comment = create(:comment, :market => @market)
   @market.comments << @comment
 end
 
@@ -22,8 +22,8 @@ Then(/^It appears in the list$/) do
 end
 
 Given(/^Another user has a market$/) do
-  @other_user = FactoryGirl.create(:user)
-  @other_market = FactoryGirl.create(:market, :user => @other_user)
+  @other_user = create(:user)
+  @other_market = create(:market, :user => @other_user)
   @other_user.markets << @other_market
 end
 

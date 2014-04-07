@@ -83,3 +83,4 @@ module Login
 end
 
 World(Login)
+World(FactoryGirl::Syntax::Methods)

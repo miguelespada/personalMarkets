@@ -1,12 +1,12 @@
 Given(/^I am logged in as a moderator$/) do
-  @moderator = FactoryGirl.create(:user, :moderator)
+  @moderator = create(:user, :moderator)
   log_in_as @moderator
 end
 
 When(/^I visit a market$/) do
-  user = FactoryGirl.create(:user)
-  market = FactoryGirl.create(:market, :with_featured_image, user: user)
-  @comment = FactoryGirl.create(:comment, market: market)
+  user = create(:user)
+  market = create(:market, :with_featured_image, user: user)
+  @comment = create(:comment, market: market)
   visit user_market_path user, market
 end
 

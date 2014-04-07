@@ -1,5 +1,5 @@
 Given(/^I am logged in as an admin$/) do
-  @admin = FactoryGirl.create(:user, :admin)
+  @admin = create(:user, :admin)
   log_in_as @admin
 end
 

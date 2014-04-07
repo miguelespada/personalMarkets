@@ -25,7 +25,7 @@ Then(/^I should see the full description of the market including the address$/) 
 end
 
 Given(/^I create a market$/) do
-  @market = FactoryGirl.create(:market, :user => @user)
+  @market = create(:market, :user => @user)
   @user.markets << @market
 end
 
@@ -39,7 +39,7 @@ Then(/^I can see an error message$/) do
 end
 
 Given(/^I have one month old market$/) do
-  @market = FactoryGirl.create(:market, :user => @user)
+  @market = create(:market, :user => @user)
   @market.created_at = 1.month.ago
   @user.markets << @market
 end

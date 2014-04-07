@@ -3,7 +3,7 @@ require 'spec_helper'
 describe CategoriesController do
 
   let(:valid_session) { {} }
-  let(:category) { FactoryGirl.build(:category) } 
+  let(:category) { build(:category) } 
 
   describe "GET 'index'" do
     it "returns http success" do
