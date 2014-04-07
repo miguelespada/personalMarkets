@@ -34,8 +34,6 @@ class User
 
   has_many :authorizations
 
-  after_create :assign_default_role
-
   ## Confirmable
   # field :confirmation_token,   :type => String
   # field :confirmed_at,         :type => Time
@@ -107,10 +105,6 @@ class User
     user.email = email
     user.save!
     user
-  end
-
-  def assign_default_role
-    add_role(:guest)
   end
 
 end
