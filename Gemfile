@@ -8,6 +8,7 @@ gem "devise"
 gem "mongoid", ">= 2.0.0.beta.19"
 gem "cancan"
 gem "rolify"
+gem 'faker'
 
 gem "bson_ext"
 gem "rails_12factor", group: :production
