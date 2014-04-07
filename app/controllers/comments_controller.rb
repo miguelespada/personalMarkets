@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   before_filter :load_market
   before_filter :load_comment, only: [:destroy, :update, :report]
 
-
   def create
     @comment = @market.comments.new(comment_params)
     @comment.author = current_user.email
@@ -13,16 +12,22 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @comment
     @comment.destroy
     @user = @market.user
     redirect_to user_market_path(@user, @market)
+  rescue CanCan::AccessDenied => e
+    render :status => :unauthorized, :text => "Unauthorized action" 
   end
 
   def update
+    authorize! :update, @comment
     @comment.body = params[:body]
     @comment.save
     @user = @market.user
     render json: @comment
+  rescue CanCan::AccessDenied => e
+    render :status => :unauthorized, :text => "Unauthorized action" 
   end
 
   def report

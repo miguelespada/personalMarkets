@@ -18,7 +18,8 @@ class Ability
     user ||= User.new
 
     if user.has_role? :admin
-      can :edit, Comment
+      can [:edit, :update], Comment
+      can :destroy, Comment
       can :edit, Market
     end
 
@@ -32,7 +33,7 @@ class Ability
       can :destroy, Comment, :author => user.email
     end
 
-    can :edit, Comment, :author => user.email
+    can [:edit, :update], Comment, :author => user.email
     can :edit, Market, :user_id => user.id
     can :delete, Market, :user_id => user.id
   end
