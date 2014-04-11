@@ -1,6 +1,6 @@
 test:
   override:
-    - case $CIRCLE_NODE_INDEX in 0) rake rspec ;; 1) rake cucumber ;; esac:
+    - case $CIRCLE_NODE_INDEX in 0) rake spec ;; 1) rake cucumber ;; esac:
         parallel: true
 deployment:
   staging:
