@@ -1,9 +1,9 @@
 personal-markets
 ================
 
-Ruby 2.0.0
-mongodb
-elasticsearch
+- Ruby 2.0.0
+- mongodb
+- elasticsearch
 
 ##Installation
 Install elasticsearch: <code>brew install elasticsearch </code>
@@ -23,4 +23,4 @@ To seed the database with example data:
 
 To drop the database:
 
-<code>rake db:drop</code>
+<code>rake db:purge</code>
