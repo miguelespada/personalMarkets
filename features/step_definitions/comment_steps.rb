@@ -4,7 +4,7 @@ Given(/^It has comments$/) do
 end
 
 When(/^I visit the market page$/) do
-  visit user_market_path(@user, @market)
+  visit market_path @market
 end
 
 Then(/^I should see the market comments$/) do
@@ -35,7 +35,7 @@ When(/^I comment other user market$/) do
 end
 
 When(/^I visit the other market page$/) do
-  visit user_market_path(@other_user, @other_market)
+  visit market_path @other_market
 end
 
 Then(/^It appears in the other market list$/) do
@@ -107,7 +107,7 @@ Then(/^I cant edit the comment$/) do
 end
 
 When(/^I report a comment as abusive$/) do
-  visit user_market_path(@other_user, @market)
+  visit market_path @market
   within(:css, ".market-comments") do
     expect(page).to have_link "Report"
   end

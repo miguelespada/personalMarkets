@@ -48,8 +48,8 @@ describe MarketsController do
 
       it "redirects to the created market" do
         post :create, market_params, valid_session
-        created_market_path = user_market_path(user, Market.last)
-        expect(response).to redirect_to(created_market_path)
+        created_market_path = market_path Market.last
+        expect(response).to redirect_to created_market_path
       end
     end
         

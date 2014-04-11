@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment.author = current_user.email
     if @comment.save
       @user = @market.user
-      redirect_to user_market_path(@user, @market)
+      redirect_to market_path @market
     end
   end
 
@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     authorize! :destroy, @comment
     @comment.destroy
     @user = @market.user
-    redirect_to user_market_path(@user, @market)
+    redirect_to market_path @market
   rescue CanCan::AccessDenied
     render :status => :unauthorized, :text => "Unauthorized action" 
   end
@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
 
   def report
     @comment.mark_as_reported
-    redirect_to user_market_path(@market.user, @market), notice: "The comment was marked as reported"
+    redirect_to market_path @market, notice: "The comment was marked as reported"
   end
 
   private

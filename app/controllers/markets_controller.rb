@@ -36,7 +36,7 @@ class MarketsController < ApplicationController
     @market = @user.markets.new(market_params)
     respond_to do |format|
       if @market.save
-        format.html { redirect_to [@user, @market], notice: 'Market was successfully created.' }
+        format.html { redirect_to [@market], notice: 'Market was successfully created.' }
       else
         format.html { render action: 'new' }
       end 
@@ -48,7 +48,7 @@ class MarketsController < ApplicationController
     load_hidden_tags
     respond_to do |format|
       if @market.update(market_params)
-        format.html { redirect_to [@user, @market], notice: "Market successfully updated."}
+        format.html { redirect_to @market, notice: "Market successfully updated."}
       end
     end
   rescue CanCan::AccessDenied
@@ -69,7 +69,7 @@ class MarketsController < ApplicationController
     @market.featured = nil
     @market.save!
     respond_to do |format|
-      format.html { redirect_to [@market.user, @market], notice: "Market picture deleted."}
+      format.html { redirect_to @market, notice: "Market picture deleted."}
     end
   rescue CanCan::AccessDenied
     render status: 401, text: "Unauthorized action"
@@ -110,7 +110,7 @@ class MarketsController < ApplicationController
     end
 
     def load_market
-      @market = @user.markets.find(params[:id])
+      @market = Market.find(params[:id])
     end
     
     def load_category

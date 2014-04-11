@@ -3,7 +3,10 @@ PopUpStores::Application.routes.draw do
 
   get "tags/index"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  resources :markets, :only => [:index] do
+  resources :markets, :only => [:index, :show , :delete_image] do
+    collection do
+      get :search, action: "search", as: 'search'
+    end
     resources :comments, :only => [:create, :destroy, :update]
   end
   resources :categories, :only => [:index, :new, :destroy, :create]
@@ -11,7 +14,7 @@ PopUpStores::Application.routes.draw do
   resources :tags, :only => [:index]
 
   resources :users do
-    resources :markets
+    resources :markets, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
   post "/markets/:market_id/comments/:id/report", to: "comments#report", as: 'report_comment'
@@ -20,7 +23,6 @@ PopUpStores::Application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   mount Attachinary::Engine => "/attachinary"
 
-  get "markets/search"
   get "static_pages/search", path: "/search", as: 'search'
   get "static_pages/calendar", path: "/calendar", as: 'calendar'
   get "static_pages/map", path: "/map", as: 'map'

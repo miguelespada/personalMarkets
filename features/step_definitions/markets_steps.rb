@@ -19,7 +19,7 @@ Then(/^I should see the market page$/) do
 end
 
 When(/^I edit my market$/) do
-  visit user_market_path(@user, @market)
+  visit market_path @market
   click_on "Edit"
   fill_in "Name",  with: "New dummy Market"
   fill_in "Description",  with: "New dummy description"
@@ -34,7 +34,7 @@ Then(/^I should see my personal market page with the new data$/) do
 end
 
 When(/^I delete my market$/) do
-  visit user_market_path(@user, @market)
+  visit market_path @market
   within(:css, '.market-actions') do
     click_on "Delete"
   end

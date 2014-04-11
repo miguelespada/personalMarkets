@@ -1,5 +1,5 @@
 When(/^I like a market$/) do
-  visit user_market_path(@some_market.user, @some_market)
+  visit market_path @some_market
   click_on "Like"
 end
 
@@ -11,7 +11,7 @@ Then(/^The market is in my favorites$/) do
 end
 
 Then(/^The market has got a like$/) do
-  visit user_market_path(@some_market.user, @some_market)
+  visit market_path @some_market
   within(:css, "div.market-likes") do
     page.should have_content @user.email
   end
@@ -23,7 +23,7 @@ Given(/^I have some favorite markets$/) do
 end
 
 Given(/^I unlike a market$/) do
-  visit user_market_path(@like.user, @like)
+  visit market_path @like
   click_on "Unlike"
 end
 

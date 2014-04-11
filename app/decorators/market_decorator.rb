@@ -56,7 +56,7 @@ class MarketDecorator < Draper::Decorator
   end 
 
   def show_link
-    link_to("Show", user_market_path(market.user, market), 
+    link_to("Show", market_path(market), 
       :class => "show market-action")
   end
   

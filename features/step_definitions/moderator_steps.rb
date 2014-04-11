@@ -7,7 +7,7 @@ When(/^I visit a market$/) do
   user = create(:user)
   market = create(:market, :with_featured_image, user: user)
   @comment = create(:comment, market: market)
-  visit user_market_path user, market
+  visit market_path market
 end
 
 Then(/^I can delete the market comments$/) do
