@@ -2,9 +2,12 @@ class Market
   
   include Mongoid::Document
   include Mongoid::Taggable
+  include Mongoid::Slug
   include Mongoid::Timestamps::Created
+
   include Tire::Model::Search
   include Tire::Model::Callbacks
+
   include Elasticsearch
   include Location
 
@@ -14,12 +17,15 @@ class Market
   field :longitude, type: Float
   field :latitude, type: Float
   field :date, type: String
-  has_attachment  :featured, accept: [:jpg, :png, :gif]
 
   belongs_to :category
   belongs_to :user, class_name: "User", inverse_of: :markets
   has_and_belongs_to_many :favorited, class_name: "User", inverse_of: :favorites
   has_many :comments, class_name: "Comment", inverse_of: :market
+
+  slug :name, history: false, scope: :user
+
+  has_attachment  :featured, accept: [:jpg, :png, :gif]
 
   validates_presence_of :name, :description, :user, :category
 

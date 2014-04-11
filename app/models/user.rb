@@ -1,8 +1,9 @@
 class User
   include Mongoid::Document
-  rolify
-
+  include Mongoid::Slug
   include Mongoid::Attributes::Dynamic
+
+  rolify
 
   has_many :markets, class_name: "Market", dependent: :delete, inverse_of: :user
   has_and_belongs_to_many :favorites, class_name: "Market", inverse_of: :favorited
@@ -33,6 +34,8 @@ class User
   field :last_sign_in_ip,    :type => String
 
   has_many :authorizations
+  slug :email, history: false
+
 
   ## Confirmable
   # field :confirmation_token,   :type => String

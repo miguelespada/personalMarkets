@@ -10,6 +10,8 @@ gem "cancan"
 gem "rolify"
 gem 'faker'
 
+gem "mongoid_slug"
+
 gem "bson_ext"
 gem "rails_12factor", group: :production
 
@@ -30,6 +32,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -96,5 +99,3 @@ group :test, :development do
   gem "rspec-rails"
   gem 'jasmine'
 end
-
-gem 'jquery-ui-rails'

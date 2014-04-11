@@ -147,6 +147,9 @@ GEM
       mongoid (>= 3.0.1)
       rake
       rspec (>= 2.14)
+    mongoid_slug (3.2.1)
+      mongoid (> 3.0)
+      stringex (~> 2.0)
     mongoid_taggable (1.1.1)
       mongoid (>= 3)
       rake
@@ -256,6 +259,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    stringex (2.5.2)
     tagmanager-rails (3.0.1.0)
       railties (>= 3.0, < 5.0)
     thor (0.18.1)
@@ -313,6 +317,7 @@ DEPENDENCIES
   mapbox-rails
   mongoid (>= 2.0.0.beta.19)
   mongoid-rspec
+  mongoid_slug
   mongoid_taggable
   omniauth-facebook
   omniauth-google-oauth2
