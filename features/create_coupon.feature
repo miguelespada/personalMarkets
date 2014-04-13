@@ -13,3 +13,7 @@ Feature: Market coupons
     And I create a coupon
     Then I should be notified that the coupon has been created
     And I should see the coupon status page
+
+  Scenario: I cannot create two coupons
+
+  Scenario: Delete a coupon

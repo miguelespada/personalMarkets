@@ -22,6 +22,7 @@ class Ability
   def logged_in_abilities
     if @user
         can :comment, Market
+        can :buy_coupon, Market
         can :see_location, Market
         can :report, Comment
         can :like, Market, Market do |market|

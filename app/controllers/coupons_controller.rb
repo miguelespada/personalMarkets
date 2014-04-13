@@ -13,13 +13,16 @@ class CouponsController < ApplicationController
   end
 
   def create
-    @coupon = @market.coupons.new(coupon_params)
-    @market.number_of_coupons = params[:number] 
-    if @coupon.save and @market.update
+    @coupon = Coupon.new(coupon_params)
+    @market.coupon = @coupon
+    if @coupon.save and @market.save
       redirect_to market_coupon_path(@market, @coupon), notice: 'Coupon was successfully created.'
     end
   end
-  
+
+  def buy_coupon
+  end
+
   private
   def coupon_params
     params.require(:coupon).permit(:description, :price, :number)

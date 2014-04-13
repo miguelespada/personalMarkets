@@ -12,3 +12,7 @@ Then(/^I should see the coupon status page$/) do
   expect(page).to have_content "10"
   expect(page).to have_content "20"
 end
+
+When(/^I buy some coupons$/) do
+  click_on "Buy Coupon"
+end
