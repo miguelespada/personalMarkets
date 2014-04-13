@@ -1,8 +1,10 @@
 class CouponsController < ApplicationController
   before_filter :load_market, only: [:new, :create]
   before_filter :load_coupon, only: [:buy, :show]
+  before_filter :load_user, only: [:index]
 
   def index
+    @transactions = CouponTransaction.where(user: @user.id)
   end
 
   def new
@@ -21,11 +23,16 @@ class CouponsController < ApplicationController
     end
   end
 
-  def buy
-    number = params[:available].to_i 
+  def buy      
+    number = params[:coupon][:available].to_i 
     if @coupon.available >= number
       @coupon.available -= number
-      if @coupon.update
+      transaction = CouponTransaction.new
+      transaction.user = current_user
+      transaction.coupon = @coupon
+      transaction.number = number
+
+      if transaction.save and @coupon.update
         redirect_to market_coupon_path(@coupon.market, @coupon), notice: 'You has successfully bought the coupon.'
       end
     end
@@ -42,6 +49,10 @@ class CouponsController < ApplicationController
 
   def load_coupon
     @coupon = Coupon.find(params[:id])
+  end
+
+  def load_user
+    @user = User.find(params[:user_id])
   end
 end
 

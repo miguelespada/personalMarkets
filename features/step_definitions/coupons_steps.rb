@@ -18,3 +18,9 @@ When(/^I buy some coupons$/) do
   select "2"
   click_on "Buy"
 end
+
+Then(/^I should see the coupons in My coupons$/) do
+  click_on "My coupons"
+  expect(page).to have_content "Dummy coupon"
+  expect(page).to have_content "You have currently 2 coupons"
+end

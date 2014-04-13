@@ -33,6 +33,7 @@ PopUpStores::Application.routes.draw do
   get "/users/:user_id/unlike/:market_id",  to: 'users#unlike', as: 'unlike'
 
   patch "/coupons/:id", to: "coupons#buy", as: "coupon"
+  get "/coupons/:user_id", to: "coupons#index", as: "user_coupons"
   root "static_pages#home"
 
    # The priority is based upon order of creation: first created -> highest priority.

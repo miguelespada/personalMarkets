@@ -1,0 +1,13 @@
+<% totalNumber = 0 %>
+<ul>
+<% @transactions.each do |t| %>
+<li>
+<span> <%= t.coupon.description %> </span>
+<span> <%= t.user.email %> </span>
+<span> <%= t.number %> </span>
+<span> <% totalNumber += t.number %> </span>
+</li>
+<% end %>
+</ul>
+
+<%= "You have currently #{totalNumber} coupons" %>
