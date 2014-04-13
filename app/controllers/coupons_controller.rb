@@ -21,7 +21,7 @@ class CouponsController < ApplicationController
   
   private
   def coupon_params
-    params.require(:coupon).permit(:description, :price)
+    params.require(:coupon).permit(:description, :price, :number)
   end
 
   def load_market
