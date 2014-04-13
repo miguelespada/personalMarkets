@@ -23,8 +23,8 @@ class CouponsController < ApplicationController
     end
   end
 
-  def buy      
-    number = params[:coupon][:available].to_i 
+  def buy
+    number = params[:number].to_i 
     if @coupon.available >= number
       @coupon.available -= number
       transaction = CouponTransaction.new
@@ -40,7 +40,7 @@ class CouponsController < ApplicationController
 
   private
   def coupon_params
-    params.require(:coupon).permit(:description, :price, :available)
+    params.require(:coupon).permit(:description, :price, :available, :number)
   end
 
   def load_market

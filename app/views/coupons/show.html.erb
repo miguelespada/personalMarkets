@@ -7,8 +7,8 @@
 </ul>
 
 <div id = "buy-coupon-action">
- <%= form_for @coupon, {action: :buy} do |f| %>
- <%= f.select "available", options_for_select((1..@coupon.available))  %>
- <%= f.submit "Buy"%>
+ <%= form_tag(controller: "coupons", action: "buy", method: "get") do %>
+ <%= select_tag "number", options_for_select((1..@coupon.available))  %>
+ <%= submit_tag "Buy" %>
  <% end %>
 </diV>
