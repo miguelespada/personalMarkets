@@ -41,6 +41,6 @@ Given(/^There is a market with available coupons$/) do
   user = create(:user)
   @market = create(:market, :user => user)
   @coupon = create(:coupon)
-  @market.coupons << @coupon
-  @market.update
+  @market.coupon = @coupon
+  @market.save
 end

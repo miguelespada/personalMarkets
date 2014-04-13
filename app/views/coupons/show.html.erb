@@ -3,5 +3,12 @@
 <li> <span> Market: </span> <span> <%= @market.name %> </span> </li>
 <li> <span> Coupon Description: </span>  <span> <%= @coupon.description %> </span> </li>
 <li> <span> Coupon Price </span>  <span> <%= @coupon.price %> </span> </li>
-<li> <span> Number of available coupons </span>  <span> <%= @coupon.number %> </span> </li>
+<li> <span> Number of available</span> <span> <%= @coupon.available %> </span> </li>
 </ul>
+
+<div id = "buy-coupon-action">
+ <%= form_for @coupon, {action: :buy} do |f| %>
+ <%= f.select "available", options_for_select((1..@coupon.available))  %>
+ <%= f.submit "Buy"%>
+ <% end %>
+</diV>

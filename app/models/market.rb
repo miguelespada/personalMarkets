@@ -38,6 +38,10 @@ class Market
     favorited.delete(user)
   end
 
+  def has_coupon?
+    coupon != nil
+  end
+
   def to_indexed_json
         { id: id,
           name: name,

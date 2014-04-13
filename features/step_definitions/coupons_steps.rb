@@ -2,7 +2,7 @@ When(/^I create a coupon$/) do
   click_on "Create Coupon"
   fill_in "Description",  with: "My dummy coupon"
   fill_in "Price",  with: "10"
-  fill_in "Number",  with: "20"
+  fill_in "Available",  with: "20"
   click_on "Create Coupon"
 end
 
@@ -15,4 +15,6 @@ end
 
 When(/^I buy some coupons$/) do
   click_on "Buy Coupon"
+  select "2"
+  click_on "Buy"
 end

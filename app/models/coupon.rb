@@ -4,5 +4,5 @@ class Coupon
 
   field :description, type: String
   field :price, type: Integer
-  field :number, type: Integer
+  field :available, type: Integer
 end

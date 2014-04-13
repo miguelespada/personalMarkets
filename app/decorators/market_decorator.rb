@@ -30,8 +30,10 @@ class MarketDecorator < Draper::Decorator
   end
 
   def buy_coupon_link
-    if can? :buy_coupon, market
-      link_to "Buy Coupon", buy_coupon_path(market)
+    if market.has_coupon?
+      if can? :buy_coupon, market
+        link_to "Buy Coupon", market_coupon_path(market, market.coupon)
+      end
     end
   end
 
