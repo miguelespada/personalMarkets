@@ -17,13 +17,13 @@ class Market
   field :longitude, type: Float
   field :latitude, type: Float
   field :date, type: String
+  field :number_of_coupons, type: Integer
 
   belongs_to :category
   belongs_to :user, class_name: "User", inverse_of: :markets
   has_and_belongs_to_many :favorited, class_name: "User", inverse_of: :favorites
   has_many :comments, class_name: "Comment", inverse_of: :market
   has_many :coupons, class_name: "Coupon", inverse_of: :market
-  filed :number_of_coupons, type: Int
 
   slug :name, history: false, scope: :user
 
