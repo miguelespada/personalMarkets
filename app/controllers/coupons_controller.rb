@@ -14,7 +14,8 @@ class CouponsController < ApplicationController
 
   def create
     @coupon = @market.coupons.new(coupon_params)
-    if @coupon.save
+    @market.numner_of_coupons = params[:number] 
+    if @coupon.save and @market.update
       redirect_to market_coupon_path(@market, @coupon), notice: 'Coupon was successfully created.'
     end
   end

@@ -23,6 +23,7 @@ class Market
   has_and_belongs_to_many :favorited, class_name: "User", inverse_of: :favorites
   has_many :comments, class_name: "Comment", inverse_of: :market
   has_many :coupons, class_name: "Coupon", inverse_of: :market
+  filed :number_of_coupons, type: Int
 
   slug :name, history: false, scope: :user
 
