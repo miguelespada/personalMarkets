@@ -7,4 +7,6 @@
 
 <%= render "form", :coupon => @coupon %>
 
-<%= transactions(@coupon) %>
+<% if can? :edit, @coupon.market %>
+  <%= transactions(@coupon) %>
+<% end %>

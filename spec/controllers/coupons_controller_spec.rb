@@ -9,48 +9,48 @@ describe CouponsController do
   describe "Buy 'coupon'" do
     it "is allowed for registered user" do
       sign_in :user, user
-      post "buy", {id: coupon.to_param, number: 1, use_id: user.id}, valid_session
+      post "buy", {id: coupon.to_param, number: 1}, valid_session
       expect(response.response_code).to eq 302
       CouponTransaction.count.should eq 1
     end
 
     it "is not allowed for guest user" do
-      post "buy", {id: coupon.to_param, number: 1, use_id: user.id}, valid_session
+      post "buy", {id: coupon.to_param, number: 1}, valid_session
       expect(response.response_code).to eq 401
       CouponTransaction.count.should eq 0
     end
 
     it "is not allowed to buy zero coupons" do
       sign_in :user, user
-      post "buy", {id: coupon.to_param, number: 0, use_id: user.id}, valid_session
+      post "buy", {id: coupon.to_param, number: 0}, valid_session
       expect(response.response_code).to eq 401
       CouponTransaction.count.should eq 0
     end
 
     it "is not allowed to buy negative coupons" do
       sign_in :user, user
-      post "buy", {id: coupon.to_param, number: -1, use_id: user.id}, valid_session
+      post "buy", {id: coupon.to_param, number: -1}, valid_session
       expect(response.response_code).to eq 401
       CouponTransaction.count.should eq 0
     end
 
     it "is not allowed to buy more than available" do
       sign_in :user, user
-      post "buy", {id: coupon.to_param, number: 20, use_id: user.id}, valid_session
+      post "buy", {id: coupon.to_param, number: 20}, valid_session
       expect(response.response_code).to eq 401
       CouponTransaction.count.should eq 0
     end
 
     it "decreases the number of available coupons" do
       sign_in :user, user
-      post "buy", {id: coupon.to_param, number: 2, use_id: user.id}, valid_session
+      post "buy", {id: coupon.to_param, number: 2}, valid_session
       assigns(:coupon).available.should eq 3
       CouponTransaction.count.should eq 1
     end
 
     it "creates a correct transaction" do
       sign_in :user, user
-      post "buy", {id: coupon.to_param, number: 2, use_id: user.id}, valid_session
+      post "buy", {id: coupon.to_param, number: 2}, valid_session
       CouponTransaction.first().number.should eq 2
       CouponTransaction.first().user.should eq user
       CouponTransaction.first().coupon.should eq coupon
@@ -95,6 +95,13 @@ describe CouponsController do
       sign_in :user, market_owner
       Market.any_instance.stub(:has_coupon?).and_return(true)
       post :create, coupon_params, valid_session
+      expect(response.response_code).to eq 401
+    end
+  end
+
+  describe "List transactions" do
+    it "is not allowed for guests user" do
+      get :index, {}, valid_session
       expect(response.response_code).to eq 401
     end
   end
