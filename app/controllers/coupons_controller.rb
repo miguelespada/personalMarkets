@@ -21,12 +21,14 @@ class CouponsController < ApplicationController
 
   def show
     authorize! :edit, @coupon.market
+
     rescue CanCan::AccessDenied
       render :status => :unauthorized, :text => "Unauthorized action." 
   end
 
   def create
     authorize! :edit, @market
+    
     @market.create_coupon!(coupon_params)
 
     redirect_to coupon_path(@market.coupon), notice: 'Coupon was successfully created.'

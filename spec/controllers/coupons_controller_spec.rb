@@ -116,6 +116,7 @@ describe CouponsController do
         create(:couponTransaction, user: user, coupon: first_coupon) 
         create(:couponTransaction, user: admin, coupon: second_coupon)
       end 
+
       it "shows all transactions when logged as admin" do
         CouponTransaction.all.count.should eq 2
         sign_in :user, admin
@@ -133,24 +134,30 @@ describe CouponsController do
         sign_in :user, market_owner
         get :index, valid_session
         expect(assigns(:transactions).count).to eq 0
+        expect(response.response_code).to eq 200
       end
 
-      it "shows market transactions when logged" do
+      it "shows coupon transactions when logged" do
         sign_in :user, market_owner
         get :show, {id: first_coupon.to_param}, valid_session
         expect(assigns(:coupon).transactions.count).to eq 1
         expect(response.response_code).to eq 200
       end
 
-      it "shows market transactions when logged as admin" do
+      it "shows all coupon transactions when logged as admin" do
         sign_in :user, admin
         get :show, {id: first_coupon.to_param}, valid_session
         expect(assigns(:coupon).transactions.count).to eq 1
         expect(response.response_code).to eq 200
       end
 
-      it "shows no market transactions when user is not the owner" do
+      it "shows no coupon transactions when user is not the owner of the market" do
         sign_in :user, user
+        get :show, {id: first_coupon.to_param}, valid_session
+        expect(response.response_code).to eq 401
+      end
+
+      it "shows no coupon transactions when user is a guest" do
         get :show, {id: first_coupon.to_param}, valid_session
         expect(response.response_code).to eq 401
       end
