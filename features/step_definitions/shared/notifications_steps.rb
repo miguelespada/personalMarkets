@@ -10,10 +10,6 @@ Then(/^I should be notified that the market has been added$/) do
   expect(page).to have_content "Market was successfully created."
 end
 
-Then(/^I should be notified that the market has been succesfully updated$/) do
-  expect(page).to have_content "Market successfully updated."
-end
-
 Then(/^I should be notified that the market has been succesfully deleted$/) do
   expect(page).to have_content "Market successfully deleted."
 end

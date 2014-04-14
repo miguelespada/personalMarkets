@@ -1,4 +1,3 @@
-@wip
 Feature: Create market
   As a registered user
   I want to create a market

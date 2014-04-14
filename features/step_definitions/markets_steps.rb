@@ -58,3 +58,8 @@ Then(/^I should see it in my markets$/) do
 
   expect(page).to have_content "Dummy Market"
 end
+
+Then(/^I should be notified that the market has been succesfully updated$/) do
+  expect(page).to have_content "Market successfully updated."
+end
+
