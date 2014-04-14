@@ -6,11 +6,6 @@ Feature: Browse markets
   Given There are some markets
 
   @browse
-  Scenario: Browse the list of Markets
-    When I go to Markets
-    Then I should see all the markets
-
-  @browse
   Scenario: See the full description of a market
     When I go to Markets
     And I click the details link of a market

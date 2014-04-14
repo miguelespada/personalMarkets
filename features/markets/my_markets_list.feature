@@ -1,4 +1,3 @@
-@wip
 Feature: My markets
   As a registered user
   I want to see my markets
@@ -9,7 +8,7 @@ Feature: My markets
     And I have some markets
     When I go to my markets list
 
-  Scenario: Info shown
+  Scenario: Markets info
     Then I see their names and descriptions
 
   Scenario: Markets actions
