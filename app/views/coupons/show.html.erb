@@ -1,4 +1,3 @@
-
 <ul>
 <li> <span> Market: </span> <span> <%= @coupon.market.name %> </span> </li>
 <li> <span> Coupon Description: </span>  <span> <%= @coupon.description %> </span> </li>
@@ -6,16 +5,7 @@
 <li> <span> Available</span> <span> <%= @coupon.available %> </span> </li>
 </ul>
 
-<% if @coupon.available > 0 %>
-  <div id = "buy-coupon-action">
-   <%= form_tag(controller: "coupons", action: "buy", method: "get") do %>
-   <%= select_tag "number", options_for_select((1..@coupon.available))  %>
-   <%= submit_tag "Buy" %>
-   <% end %>
-  </diV>
-<% else %>
-  Sold out
-<% end %>
+<%= render "form", :coupon => @coupon %>
 
 <% if @coupon.market.user == current_user %>
   <%= render "transactions", :transactions => @coupon.transactions %>

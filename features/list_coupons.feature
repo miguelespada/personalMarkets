@@ -1,9 +1,8 @@
-@list_coupons
+@coupons @list_coupons
 Feature: List market coupon
   In order to admin my coupons
   As registered user
   I can see the coupons that have been sold
-
 
   Background:
     Given there are some users
