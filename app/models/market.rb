@@ -42,9 +42,9 @@ class Market
     coupon != nil
   end
 
-  def create_coupon!
+  def create_coupon!(params)
     raise "Coupon already exists." if has_coupon?
-    coupon = Coupon.new(coupon_params)
+    self.coupon = Coupon.new(params)
     save!
   end
 
