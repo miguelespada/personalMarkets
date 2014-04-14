@@ -7,10 +7,8 @@ class Coupon
   field :price, type: Integer
   field :available, type: Integer
 
-  def buy(user, number)
-    if number <= 0 || number > available 
-      return false
-    end
+  def buy!(user, number)
+    raise "Incorrect number of coupons" if number <= 0 || number > available 
     transaction = CouponTransaction.new
     transaction.user = user
     transaction.coupon = self

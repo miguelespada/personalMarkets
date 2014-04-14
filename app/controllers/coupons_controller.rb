@@ -24,10 +24,15 @@ class CouponsController < ApplicationController
   end
 
   def buy
+    authorize! :buy_coupon, @coupon.market
     number = params[:number].to_i 
-    if @coupon.buy(current_user, number)
-      redirect_to market_coupon_path(@coupon.market, @coupon), notice: 'You has successfully bought the coupon.'
-    end
+    @coupon.buy(current_user, number)
+    redirect_to market_coupon_path(@coupon.market, @coupon), notice: 'You has successfully bought the coupon.'
+    
+    rescue CanCan::AccessDenied
+      render :status => :unauthorized, :text => "Unauthorized action" 
+    rescue
+      render :status => :unauthorized, :text => "Incorrect number of coupons" 
   end
 
   private
