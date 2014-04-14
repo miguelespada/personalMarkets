@@ -91,17 +91,11 @@ describe CouponsController do
       user_market.has_coupon?.should eq true
     end
 
-    it "is not allowed when there is coupon" do
+    it "is not allowed when there is already a coupon" do
       sign_in :user, market_owner
-      user_market.stub(:has_coupon).and_return(true)
+      Market.any_instance.stub(:has_coupon?).and_return(true)
       post :create, coupon_params, valid_session
       expect(response.response_code).to eq 401
     end
   end
-
-  describe "Buy 'coupon'" do
-    it "see the correct range of available"
-    it "see sold out"
-  end
-
 end

@@ -16,7 +16,7 @@ class CouponsController < ApplicationController
 
   def create
     authorize! :edit, @market
-    @market.create_coupon(coupon_params)
+    @market.create_coupon!(coupon_params)
 
     redirect_to coupon_path(@market.coupon), notice: 'Coupon was successfully created.'
     rescue CanCan::AccessDenied
