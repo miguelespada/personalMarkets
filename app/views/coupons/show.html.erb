@@ -1,9 +1,9 @@
 
 <ul>
-<li> <span> Market: </span> <span> <%= @market.name %> </span> </li>
+<li> <span> Market: </span> <span> <%= @coupon.market.name %> </span> </li>
 <li> <span> Coupon Description: </span>  <span> <%= @coupon.description %> </span> </li>
 <li> <span> Coupon Price </span>  <span> <%= @coupon.price %> </span> </li>
-<li> <span> Number of available</span> <span> <%= @coupon.available %> </span> </li>
+<li> <span> Available</span> <span> <%= @coupon.available %> </span> </li>
 </ul>
 
 <% if @coupon.available > 0 %>
@@ -18,9 +18,5 @@
 <% end %>
 
 <% if @coupon.market.user == current_user %>
-  <ul>
-  <% @coupon.transactions.each do |t| %>
-    <li> <span> <%= t.user.email %> </span> <span> <%= t.number %> </span> </li>
-  <% end %>
-  </ul>
+  <%= render "transactions", :transactions => @coupon.transactions %>
 <% end %>

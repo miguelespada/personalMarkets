@@ -17,7 +17,6 @@ class CouponsController < ApplicationController
   end
 
   def show
-    @market = @coupon.market
   end
 
   def create

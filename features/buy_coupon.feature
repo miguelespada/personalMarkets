@@ -1,4 +1,4 @@
-@buy_coupon
+@coupons @buy_coupon
 Feature: Buy market coupon
   In order to get extra services from a market
   As registered user
