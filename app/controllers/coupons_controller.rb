@@ -25,16 +25,8 @@ class CouponsController < ApplicationController
 
   def buy
     number = params[:number].to_i 
-    if @coupon.available >= number
-      @coupon.available -= number
-      transaction = CouponTransaction.new
-      transaction.user = current_user
-      transaction.coupon = @coupon
-      transaction.number = number
-
-      if transaction.save and @coupon.update
-        redirect_to market_coupon_path(@coupon.market, @coupon), notice: 'You has successfully bought the coupon.'
-      end
+    if @coupon.buy(current_user, number)
+      redirect_to market_coupon_path(@coupon.market, @coupon), notice: 'You has successfully bought the coupon.'
     end
   end
 

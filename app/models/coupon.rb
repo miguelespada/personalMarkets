@@ -6,4 +6,17 @@ class Coupon
   field :description, type: String
   field :price, type: Integer
   field :available, type: Integer
+
+  def buy(user, number)
+    if number <= 0 || number > available 
+      return false
+    end
+    transaction = CouponTransaction.new
+    transaction.user = user
+    transaction.coupon = self
+    transaction.number = number
+    transaction.save 
+    self.available -= number
+    update
+  end
 end
