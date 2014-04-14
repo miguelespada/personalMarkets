@@ -31,6 +31,15 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
+  def coupons_sold
+    if can? :edit, market 
+      if market.has_coupon?
+        market.coupon.transactions.collect{|t| concat(t.user.email + " " + t.number.to_s)}
+      end
+    end
+    yield if block_given?
+  end
+
   def buy_coupon_link
     if can? :buy_coupon, market 
       if market.has_coupon?

@@ -37,3 +37,6 @@ end
 Given(/^I sign in as the other user$/) do
   log_in_as @user_1
 end
+
+
+
