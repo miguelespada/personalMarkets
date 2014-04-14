@@ -25,7 +25,7 @@ class CouponsController < ApplicationController
 
   def buy
     authorize! :buy_coupon, @coupon.market
-    number = params[:number].to_i 
+    
     @coupon.buy(current_user, number)
     redirect_to market_coupon_path(@coupon.market, @coupon), notice: 'You has successfully bought the coupon.'
     
@@ -51,5 +51,9 @@ class CouponsController < ApplicationController
   def load_user
     @user = User.find(params[:user_id])
   end
+
+  def number
+    params[:number].to_i 
+  end 
 end
 
