@@ -42,6 +42,12 @@ class Market
     coupon != nil
   end
 
+  def create_coupon!
+    raise "Coupon already exists." if has_coupon?
+    coupon = Coupon.new(coupon_params)
+    save!
+  end
+
   def to_indexed_json
         { id: id,
           name: name,

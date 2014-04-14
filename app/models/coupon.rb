@@ -8,13 +8,13 @@ class Coupon
   field :available, type: Integer
 
   def buy!(user, number)
-    raise "Incorrect number of coupons" if number <= 0 || number > available 
+    raise "Incorrect number of coupons" unless number > 0 && number <= available
     transaction = CouponTransaction.new
     transaction.user = user
     transaction.coupon = self
     transaction.number = number
     transaction.save 
     self.available -= number
-    update
+    self.update
   end
 end

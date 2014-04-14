@@ -9,8 +9,11 @@ PopUpStores::Application.routes.draw do
       get :search, action: "search", as: 'search'
     end
     resources :comments, :only => [:create, :destroy, :update]
-    resources :coupons, :only => [:index, :show, :create, :new]
+    resources :coupons, :only => [:create, :new]
   end
+
+  resources :coupons, :only => [:show, :index]
+  post "/coupons/:id", to: "coupons#buy", as: "buy_coupon"
 
   resources :categories, :only => [:index, :new, :destroy, :create]
   resources :users, :only => [:index, :show]
@@ -32,8 +35,6 @@ PopUpStores::Application.routes.draw do
   get "/users/:user_id/like/:market_id",  to: 'users#like', as: 'like'
   get "/users/:user_id/unlike/:market_id",  to: 'users#unlike', as: 'unlike'
 
-  post "/coupons/:id", to: "coupons#buy", as: "buy_coupon"
-  get "/coupons/:user_id", to: "coupons#index", as: "user_coupons"
   root "static_pages#home"
 
    # The priority is based upon order of creation: first created -> highest priority.

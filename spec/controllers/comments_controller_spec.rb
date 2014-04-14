@@ -26,6 +26,7 @@ describe CommentsController do
         market.comments << comment
 
         post :destroy, { market_id: market.id, id: comment.id }, valid_session
+        expect(response.response_code).to eq 302
       end
 
       it "not allowed to regular user when is not the author" do
