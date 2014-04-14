@@ -14,4 +14,4 @@ Feature: Admin
 
   Scenario: Modify market
     And I edit the market
-    Then I should be notified that the market has been succesfully updated
+    Then I am notified that the market has been succesfully updated

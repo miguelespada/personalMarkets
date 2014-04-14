@@ -9,10 +9,10 @@ Feature: My markets
     And I have some markets
     When I go to my markets list
 
-  Scenario: info shown
-    Then I should see their names and descriptions
+  Scenario: Info shown
+    Then I see their names and descriptions
 
-  Scenario: markets actions
-    Then I should see an edit button
-    And I should see an delete button
-    And I should see an show button
+  Scenario: Markets actions
+    Then I see an edit button
+    And I see a delete button
+    And I see a show button

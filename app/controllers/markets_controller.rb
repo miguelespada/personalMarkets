@@ -36,7 +36,7 @@ class MarketsController < ApplicationController
     @market = @user.markets.new(market_params)
     @market.save!
     redirect_to @market, notice: 'Market was successfully created.'
-  rescue Exception => e
+  rescue Exception
     flash[:notice] = "Something went wrong."
     render action: 'new'
   end
@@ -44,11 +44,8 @@ class MarketsController < ApplicationController
   def update
     authorize! :update, @market
     load_hidden_tags
-    respond_to do |format|
-      if @market.update(market_params)
-        format.html { redirect_to @market, notice: "Market successfully updated."}
-      end
-    end
+    @market.update!(market_params)
+    redirect_to @market, notice: "Market successfully updated."
   rescue CanCan::AccessDenied
     render :status => 401, :text => "Unauthorized action"
   end

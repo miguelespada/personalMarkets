@@ -26,7 +26,7 @@ When(/^I edit my market$/) do
   click_on "Update Market"
 end
 
-Then(/^I should see my personal market page with the new data$/) do
+Then(/^I see my personal market page with the new data$/) do
   within(:css, ".market-full-description") do
     expect(page).to have_content "New dummy Market"
     expect(page).to have_content "New dummy description"
@@ -59,14 +59,22 @@ Then(/^I should see it in my markets$/) do
   expect(page).to have_content "Dummy Market"
 end
 
-Then(/^I should be notified that the market has been succesfully updated$/) do
+Then(/^I am notified that the market has been succesfully updated$/) do
   expect(page).to have_content "Market successfully updated."
 end
 
 Given(/^I have some markets$/) do
-  @market = create(:market, :user => @user, :name => "market 1", :description => "market 1 desc")
+  @market = create(
+    :market, 
+    :user => @user, 
+    :name => "market 1", 
+    :description => "market 1 desc"
+    )
   @user.markets << @market
-  @market = create(:market, :user => @user, :name => "market 2", :description => "market 2 desc")
+  @market = create(
+    :market, :user => @user, 
+    :name => "market 2", 
+    :description => "market 2 desc")
   @user.markets << @market
 end
 
@@ -75,21 +83,21 @@ When(/^I go to my markets list$/) do
   click_on "My markets"
 end
 
-Then(/^I should see their names and descriptions$/) do
+Then(/^I see their names and descriptions$/) do
   expect(page).to have_content "market 1"
   expect(page).to have_content "market 1 desc"
   expect(page).to have_content "market 2"
   expect(page).to have_content "market 2 desc"
 end
 
-Then(/^I should see an edit button$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^I see an edit button$/) do
+  expect(all('a.edit.market-action').count).to eq @user.markets.count
 end
 
-Then(/^I should see an delete button$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^I see a delete button$/) do
+  expect(all('a.delete.market-action').count).to eq @user.markets.count
 end
 
-Then(/^I should see an show button$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^I see a show button$/) do
+  expect(all('a.show.market-action').count).to eq @user.markets.count
 end
