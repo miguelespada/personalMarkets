@@ -42,7 +42,7 @@ When(/^I should see that the coupon sold out$/) do
   expect(page).to have_content "Sold out"
 end
 
-Given(/^I have some coupons$/) do
+Given(/^there some coupons$/) do
   step "I am logged in"
   step "I have one market"
   step "I visit the market page"
@@ -50,7 +50,7 @@ Given(/^I have some coupons$/) do
   step "I sign out"
 end
 
-Given(/^Someonelse buys one of my coupons$/) do
+Given(/^someone buys one of the coupons$/) do
   step "I sign in as the other user"
   step "I visit the market page"
   step "I buy some coupons"
