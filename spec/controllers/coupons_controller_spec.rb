@@ -5,6 +5,7 @@ describe CouponsController do
   let(:market) { create(:market) } 
   let(:coupon) { create(:coupon, market: market) } 
   let(:user) { create(:user) }  
+  let(:admin) { create(:user, :admin) } 
 
   describe "Buy 'coupon'" do
     it "is allowed for registered user" do
@@ -100,9 +101,51 @@ describe CouponsController do
   end
 
   describe "List transactions" do
+    let(:market_owner) { create(:user) }  
+    let(:user_market) { create(:market, user: market_owner) } 
+    let(:first_coupon) { create(:coupon, market: user_market) } 
+    let(:second_coupon) { create(:coupon, market: market) }
+
     it "is not allowed for guests user" do
-      get :index, {}, valid_session
+      get :index, valid_session
       expect(response.response_code).to eq 401
+    end
+
+    context "with transactions" do
+      before(:each) do
+        create(:couponTransaction, user: user, coupon: first_coupon) 
+        create(:couponTransaction, user: admin, coupon: second_coupon)
+      end 
+      it "shows all transactions when logged as admin" do
+        CouponTransaction.all.count.should eq 2
+        sign_in :user, admin
+        get :index, valid_session
+        expect(assigns(:transactions).count).to eq 2
+      end
+
+      it "shows user transactions when logged" do
+        sign_in :user, user
+        get :index, valid_session
+        expect(assigns(:transactions).count).to eq 1
+      end
+
+      it "shows no transactions when no coupons had been bought" do
+        sign_in :user, market_owner
+        get :index, valid_session
+        expect(assigns(:transactions).count).to eq 0
+      end
+
+      it "shows market transactions when logged" do
+        sign_in :user, market_owner
+        get :show, {id: first_coupon.to_param}, valid_session
+        expect(assigns(:coupon).transactions.count).to eq 1
+      end
+
+      it "shows no market transactions when user is not the owner" do
+        sign_in :user, user
+        get :show, {id: first_coupon.to_param}, valid_session
+        expect(response.response_code).to eq 401
+      end
     end
   end
 end
