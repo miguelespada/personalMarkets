@@ -16,3 +16,11 @@
 <% else %>
   Sold out
 <% end %>
+
+<% if @coupon.market.user == current_user %>
+  <ul>
+  <% @coupon.transactions.each do |t| %>
+    <li> <span> <%= t.user.email %> </span> <span> <%= t.number %> </span> </li>
+  <% end %>
+  </ul>
+<% end %>

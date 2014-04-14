@@ -13,4 +13,5 @@ Feature: List market coupon
     Given Someonelse buys one of my coupons
     When I sign in
     And I visit the market page
+    And I click on coupon transactions
     Then I should see the coupons that have been sold
