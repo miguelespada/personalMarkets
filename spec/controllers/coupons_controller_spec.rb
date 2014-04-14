@@ -139,6 +139,14 @@ describe CouponsController do
         sign_in :user, market_owner
         get :show, {id: first_coupon.to_param}, valid_session
         expect(assigns(:coupon).transactions.count).to eq 1
+        expect(response.response_code).to eq 200
+      end
+
+      it "shows market transactions when logged as admin" do
+        sign_in :user, admin
+        get :show, {id: first_coupon.to_param}, valid_session
+        expect(assigns(:coupon).transactions.count).to eq 1
+        expect(response.response_code).to eq 200
       end
 
       it "shows no market transactions when user is not the owner" do
