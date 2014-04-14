@@ -34,13 +34,11 @@ class MarketsController < ApplicationController
 
   def create
     @market = @user.markets.new(market_params)
-    respond_to do |format|
-      if @market.save
-        format.html { redirect_to [@market], notice: 'Market was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end 
-    end
+    @market.save!
+    redirect_to @market, notice: 'Market was successfully created.'
+  rescue Exception => e
+    flash[:notice] = "Something went wrong."
+    render action: 'new'
   end
 
   def update

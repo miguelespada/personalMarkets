@@ -24,7 +24,7 @@ Then(/^I should see the full description of the market including the address$/) 
   expect(page).to have_css '.market-location'
 end
 
-Given(/^I create a market$/) do
+Given(/^I have a market$/) do
   @market = create(:market, :user => @user)
   @user.markets << @market
 end

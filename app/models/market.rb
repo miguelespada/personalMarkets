@@ -94,6 +94,6 @@ class Market
   end
 
   def created_one_month_ago?
-    self.created_at <= 1.month.ago
+    self.created_at? && self.created_at <= 1.month.ago
   end
 end

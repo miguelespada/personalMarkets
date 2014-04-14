@@ -1,5 +1,4 @@
 @admin
-@wip
 Feature: Admin
 
   Background:

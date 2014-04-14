@@ -8,7 +8,7 @@ When(/^I visit the market page$/) do
 end
 
 Then(/^I should see the market comments$/) do
-  expect(page).to have_content "My comment text 1"
+  expect(page).to have_content @comment.body
 end
 
 When(/^I post a comment$/) do

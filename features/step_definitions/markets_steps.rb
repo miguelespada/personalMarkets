@@ -1,4 +1,4 @@
-When(/^I add a market$/) do
+When(/^I create a market$/) do
   click_on "User"
   click_on "Add market"
 
@@ -50,4 +50,11 @@ Then(/^I should see the market in my markets list$/) do
   visit user_markets_path(@user)
   expect(page).to have_content @market.name
   expect(page).to have_content @market.description
+end
+
+Then(/^I should see it in my markets$/) do
+  click_on "User"
+  click_on "My markets"
+
+  expect(page).to have_content "Dummy Market"
 end
