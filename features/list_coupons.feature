@@ -7,8 +7,8 @@ Feature: List market coupon
 
   Background:
     Given there are some users
-    And I have some coupons
-    Given Someonelse buys one of my coupons
+    And there some coupons
+    Given Someonelse buys one of the coupons
 
   Scenario:
     When I sign in
