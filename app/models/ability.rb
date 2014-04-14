@@ -40,6 +40,7 @@ class Ability
       can [:edit, :update], Comment
       can :destroy, Comment
       can [:edit, :update], Market
+      can [:list], CouponTransaction
     end
   end
 

@@ -57,10 +57,18 @@ Given(/^Someonelse buys one of my coupons$/) do
   step "I sign out"
 end
 
-When(/^I click on coupon transactions$/) do
-  click_on "Coupon Transactions"
+When(/^I visit the market's Coupon Transactions$/) do
+  step "I visit the market page"
+  within(:css, ".market-coupons") do
+    click_on "Coupon Transactions"
+  end
 end
 
 Then(/^I should see the coupons that have been sold$/) do
   expect(page).to have_content @user_1.email + " "  + 2.to_s
 end
+
+When(/^I go to Coupon Transactions$/) do
+  click_on "Coupon Transactions"
+end
+

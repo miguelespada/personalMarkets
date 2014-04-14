@@ -8,10 +8,14 @@ Feature: List market coupon
   Background:
     Given there are some users
     And I have some coupons
+    Given Someonelse buys one of my coupons
 
   Scenario:
-    Given Someonelse buys one of my coupons
     When I sign in
-    And I visit the market page
-    And I click on coupon transactions
+    And I visit the market's Coupon Transactions
+    Then I should see the coupons that have been sold
+
+  Scenario:
+    When I am logged in as an admin
+    And I go to Coupon Transactions
     Then I should see the coupons that have been sold

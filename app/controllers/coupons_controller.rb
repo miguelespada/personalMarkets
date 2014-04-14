@@ -3,11 +3,17 @@ class CouponsController < ApplicationController
   before_filter :load_coupon, only: [:buy, :show]
 
   def index
-    @transactions = CouponTransaction.where(user: current_user.id)
+    authorize! :list, CouponTransaction
+      @transactions = CouponTransaction.all
+    rescue CanCan::AccessDenied
+      @transactions = CouponTransaction.where(user: current_user.id)
   end
 
   def new
-    @coupon = Coupon.new
+    authorize! :edit, @market
+      @coupon = Coupon.new
+    rescue CanCan::AccessDenied
+      render :status => :unauthorized, :text => "Unauthorized action." 
   end
 
   def show
