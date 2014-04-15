@@ -30,12 +30,8 @@ class Ability
         can :unlike, Market, Market do |market|
             @user.can_unlike market
         end
-<<<<<<< HEAD
-
         can :destroy, Comment, :author => @user.email
-=======
         can :see_transactions, @user
->>>>>>> coupons
     end
   end
 
