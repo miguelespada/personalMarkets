@@ -30,8 +30,12 @@ class Market
 
   validates_presence_of :name, :description, :user, :category
 
+  def can_be_published
+    self.state != "published"
+  end
+
   def publish
-    self.state = :published
+    self.state = "published"
     self.save
   end
 

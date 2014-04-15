@@ -3,7 +3,7 @@ class MarketsController < ApplicationController
   before_filter :load_market, only: [:show ,:edit, :update, :destroy]
 
   def publish
-    @market = Market.find(params[:market_id])
+    @market = Market.find params[:market_id]
     @market.publish
     redirect_to @market, notice: "Market successfully published."
   end

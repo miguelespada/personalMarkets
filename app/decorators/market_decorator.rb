@@ -4,7 +4,9 @@ class MarketDecorator < Draper::Decorator
   delegate_all
 
   def publish_link
-    link_to "Publish", market_publish_path(market), { method: :post }
+    if can? :publish, market
+      link_to "Publish", market_publish_path(market), { method: :post }
+    end
   end
 
   def delete_photo_link

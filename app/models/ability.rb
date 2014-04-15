@@ -29,7 +29,9 @@ class Ability
         can :unlike, Market, Market do |market|
             @user.can_unlike market
         end
-
+        can :publish, Market, Market do |market|
+            @user.owns(market) && market.can_be_published
+        end
         can :destroy, Comment, :author => @user.email
     end
   end

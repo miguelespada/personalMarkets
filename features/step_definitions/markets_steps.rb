@@ -255,3 +255,9 @@ Then(/^I see it in the published markets$/) do
     expect(page).to have_content @market.name
   end
 end
+
+Then(/^I cannot publish it again$/) do
+  within(:css, '.market-actions') do
+    expect(page).to_not have_link "Publish"
+  end
+end

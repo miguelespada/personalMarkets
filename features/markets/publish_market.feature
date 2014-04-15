@@ -1,4 +1,3 @@
-@wip
 Feature: Publish market
 
 Background:
@@ -16,3 +15,8 @@ Scenario: Notified when publishing
 Scenario: Appears in published markets list
   When I publish the market
   Then I see it in the published markets
+
+@wip
+Scenario: When published no publish button
+  When I publish the market
+  Then I cannot publish it again
