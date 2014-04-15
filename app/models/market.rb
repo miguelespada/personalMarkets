@@ -30,6 +30,11 @@ class Market
 
   validates_presence_of :name, :description, :user, :category
 
+  def publish
+    self.state = :published
+    self.save
+  end
+
   def like(user)
     favorited << user
   end

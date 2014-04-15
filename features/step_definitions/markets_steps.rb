@@ -248,3 +248,10 @@ end
 Then(/^I see a success publishing notification$/) do
   expect(page).to have_content "Market successfully published."
 end
+
+Then(/^I see it in the published markets$/) do
+  visit published_markets_path
+  within(:css, '.market-gallery') do
+    expect(page).to have_content @market.name
+  end
+end

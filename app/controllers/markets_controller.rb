@@ -4,6 +4,7 @@ class MarketsController < ApplicationController
 
   def publish
     @market = Market.find(params[:market_id])
+    @market.publish
     redirect_to @market, notice: "Market successfully published."
   end
 

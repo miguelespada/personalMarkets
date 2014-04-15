@@ -13,3 +13,6 @@ Scenario: Notified when publishing
   When I publish the market
   Then I see a success publishing notification
 
+Scenario: Appears in published markets list
+  When I publish the market
+  Then I see it in the published markets
