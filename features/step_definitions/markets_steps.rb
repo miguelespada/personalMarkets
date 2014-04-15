@@ -167,3 +167,15 @@ Then(/^the number of likes decrement$/) do
     expect(page).to have_content "0"
   end
 end
+
+Given(/^I am not logged in$/) do
+
+end
+
+When(/^I visit a market page$/) do
+  visit market_path @some_market
+end
+
+Then(/^I should see the full description of the market except the address$/) do
+  expect(page).to_not have_css '.market-location'
+end
