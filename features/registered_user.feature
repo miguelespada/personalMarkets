@@ -9,11 +9,6 @@ Feature: Registered users
     When I visit a market page
     Then I should see the full description of the market including the address
 
-  Scenario: Create market time restriction
-    And I have a market 
-    When I try to create another market
-    Then I can see an error message
-  
 
   Scenario: Create market time restriction
     And I have one month old market 
