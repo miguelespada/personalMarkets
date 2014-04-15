@@ -18,15 +18,32 @@ Then(/^I should see the market page$/) do
   end 
 end
 
+Then(/^I can edit the market$/) do
+  within(:css, ".market-actions") do
+    expect(page).to have_link "Edit"
+  end
+end
+
+When(/^I edit the market$/) do
+  step "I change market info"
+end
+
 When(/^I edit my market$/) do
   visit market_path @market
-  click_on "Edit"
+  step "I change market info"
+end
+
+When(/^I change market info$/) do
+  within(:css, ".market-actions") do
+    click_on "Edit"
+  end
   fill_in "Name",  with: "New dummy Market"
   fill_in "Description",  with: "New dummy description"
   click_on "Update Market"
 end
 
-Then(/^I see my personal market page with the new data$/) do
+
+Then(/^I see the market page with the new data$/) do
   within(:css, ".market-full-description") do
     expect(page).to have_content "New dummy Market"
     expect(page).to have_content "New dummy description"
@@ -179,3 +196,4 @@ end
 Then(/^I should see the full description of the market except the address$/) do
   expect(page).to_not have_css '.market-location'
 end
+
