@@ -19,8 +19,8 @@ When(/^I buy some coupons$/) do
   click_on "Buy"
 end
 
-Then(/^I should see the coupons in My coupons$/) do
-  click_on "My coupons"
+Then(/^I should see the coupons in My coupons \[BUY\]$/) do
+  click_on "My coupons (buy)"
   expect(page).to have_content "Dummy coupon"
 end
 
@@ -70,4 +70,3 @@ end
 When(/^I go to Coupon Transactions$/) do
   click_on "Coupon Transactions"
 end
-

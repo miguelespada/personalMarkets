@@ -1,6 +1,1 @@
-<%= simple_form_for [@market, @coupon] do |f| %>
-  <%= f.input :description, input_html: { class: 'coupon-description' }%>
-  <%= f.input :price, input_html: { class: 'coupon-price' }%>
-  <%= f.input :available, input_html: { class: 'coupon-available' }%>
-  <%= f.button :submit %>
-<% end %>
+<%= render "form", {:market => @market, :coupon => @coupon} %>

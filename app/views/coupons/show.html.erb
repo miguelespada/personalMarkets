@@ -1,12 +1,7 @@
-<ul>
-<li> <span> Market: </span> <span> <%= @coupon.market.name %> </span> </li>
-<li> <span> Coupon Description: </span>  <span> <%= @coupon.description %> </span> </li>
-<li> <span> Coupon Price </span>  <span> <%= @coupon.price %> </span> </li>
-<li> <span> Available</span> <span> <%= @coupon.available %> </span> </li>
-</ul>
+<%= render "coupon", :coupon => @coupon %>
 
-<%= render "form", :coupon => @coupon %>
+<%= render "buy", :coupon => @coupon %>
 
-<% if can? :edit, @coupon.market %>
+<% if can? :edit, @coupon %>
   <%= transactions(@coupon) %>
 <% end %>

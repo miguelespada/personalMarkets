@@ -1,15 +1,16 @@
-<table class="table">
-  <tr>
-  <th>Transaction id</th>
-  <th>Market name</th>
-  <th>Market owner</th>
-  <th>Coupon description</th>
-  <th>Coupon price</th>
-  <th>User email</th>
-  <th>Number</th>
-  </tr>
 
-  <% transactions.each do |transaction| %>
-      <%= render "transaction", :transaction =>transaction %>
-  <% end %>
-</table>
+  <table class="table">
+    <tr>
+    <th>Transaction id</th>
+    <th>Market name</th>
+    <th>Market owner</th>
+    <th>Coupon description</th>
+    <th>Coupon price</th>
+    <th>User email</th>
+    <th>Number</th>
+    </tr>
+
+    <% transactions.each do |transaction| %>
+        <%= render "transaction", :transaction =>transaction %>
+    <% end %>
+  </table>

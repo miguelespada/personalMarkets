@@ -12,4 +12,4 @@ Feature: Buy market coupon
     When I visit the market page
     And I buy some coupons
     Then I should be notified that the coupons has been bought
-    And I should see the coupons in My coupons
+    And I should see the coupons in My coupons [BUY]

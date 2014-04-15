@@ -1,10 +1,6 @@
-<% if coupon.available > 0 %>
-  <div id = "buy-coupon-action">
-   <%= form_tag(controller: "coupons", action: "buy", method: "get") do %>
-   <%= select_tag "number", options_for_select((1..coupon.available))  %>
-   <%= submit_tag "Buy" %>
-   <% end %>
-  </diV>
-<% else %>
-  Sold out
+<%= simple_form_for [market, coupon] do |f| %>
+  <%= f.input :description, input_html: { class: 'coupon-description' }%>
+  <%= f.input :price, input_html: { class: 'coupon-price' }%>
+  <%= f.input :available, input_html: { class: 'coupon-available' }%>
+  <%= f.button :submit %>
 <% end %>

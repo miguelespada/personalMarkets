@@ -20,10 +20,6 @@ class CouponsController < ApplicationController
   end
 
   def show
-    authorize! :edit, @coupon.market
-
-    rescue CanCan::AccessDenied
-      render :status => :unauthorized, :text => "Unauthorized action." 
   end
 
   def create
