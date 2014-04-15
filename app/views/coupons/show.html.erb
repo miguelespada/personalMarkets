@@ -1,7 +1,2 @@
 <%= render "coupon", :coupon => @coupon %>
-
 <%= render "buy", :coupon => @coupon %>
-
-<% if can? :edit, @coupon %>
-  <%= transactions(@coupon) %>
-<% end %>

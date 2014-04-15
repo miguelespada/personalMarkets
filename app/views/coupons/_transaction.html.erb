@@ -1,9 +1,9 @@
 <%= content_tag_for(:tr, transaction) do %>
-      <td> <%= transaction.id %> </td>
-      <td> <%= transaction.coupon.market.name %> </td>
-      <td> <%= transaction.coupon.market.user.email %> </td>
-      <td> <%= transaction.coupon.description %> </td>
-      <td> <%= transaction.coupon.price %> </td>
-      <td> <%= transaction.user.email %> </td>
-      <td> <%= transaction.number %> </td>
+  <td> <%= transaction.id %> </td>
+  <td> <%= transaction.coupon.market.name %> </td>
+  <td> <%= transaction.coupon.market.user.email %> </td>
+  <td> <%= transaction.coupon.description %> </td>
+  <td> <%= transaction.coupon.price %> </td>
+  <td> <%= transaction.user.email %> </td>
+  <td> <%= transaction.number %> </td>
 <% end %>

@@ -6,4 +6,6 @@
 <li> <span> Available</span> <span> <%= coupon.available %> </span> </li>
 </ul>
 
-<%= render "transactions", :transactions => coupon.transactions %>
+<% if can? :edit, coupon %>
+  <%= transactions(coupon) %>
+<% end %>
