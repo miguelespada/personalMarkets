@@ -15,6 +15,11 @@ Feature: Create market
     When I create a market
     Then I should see it in my markets
 
+  @wip
+  Scenario: Not visible in general markets list
+    When I create a market
+    Then It is not visible in guest markets
+
   Scenario: One per month
     And I have a market 
     When I try to create another market

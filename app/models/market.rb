@@ -17,6 +17,7 @@ class Market
   field :longitude, type: Float
   field :latitude, type: Float
   field :date, type: String
+  field :state, type: String
 
   belongs_to :category
   belongs_to :user, class_name: "User", inverse_of: :markets

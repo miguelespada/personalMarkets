@@ -1,3 +1,4 @@
+@wip
 Feature: Markets list
   As a registered user
   I want my markets to appear in the markets list
@@ -5,7 +6,7 @@ Feature: Markets list
 
   Background:
     Given I am logged in
-    And I have some markets
+    And I have some published markets
     And I sign out
     When I go to Markets
 

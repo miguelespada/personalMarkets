@@ -3,14 +3,15 @@ Given(/^There are some categories$/) do
               :name => "Dummy Category")
 end
 
-Given(/^There are some markets$/) do
+Given(/^There are some published markets$/) do
   step "There are some categories"
   @market_0 = create(:market, 
       :latitude => "40", 
       :longitude=> "-3.7",
       :tags => "one",
       :category => @category,
-      :date=>"22/03/2014")
+      :date=>"22/03/2014",
+      :state => :published)
   Market.reindex
 end
 

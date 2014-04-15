@@ -2,6 +2,10 @@ class MarketsController < ApplicationController
   before_filter :load_user
   before_filter :load_market, only: [:show ,:edit, :update, :destroy]
 
+  def published
+    @markets = Market.where(state: :published)
+  end
+
   def index
     @markets ||= Market.find_all(@user)
     respond_to do |format|

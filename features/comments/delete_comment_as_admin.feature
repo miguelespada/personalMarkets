@@ -1,4 +1,3 @@
-@wip
 @comments
 Feature: Delete comments as admin
   In order to delete undesired comments

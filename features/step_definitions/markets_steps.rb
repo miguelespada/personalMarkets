@@ -95,6 +95,23 @@ Given(/^I have some markets$/) do
   @user.markets << @market
 end
 
+Given(/^I have some published markets$/) do
+  @market = create(
+    :market, 
+    :user => @user, 
+    :name => "market 1", 
+    :description => "market 1 desc",
+    :state => :published
+    )
+  @user.markets << @market
+  @market = create(
+    :market, :user => @user, 
+    :name => "market 2", 
+    :description => "market 2 desc",
+    :state => :published)
+  @user.markets << @market
+end
+
 When(/^I go to my markets list$/) do
   click_on "User"
   click_on "My markets"
@@ -195,5 +212,12 @@ end
 
 Then(/^I should see the full description of the market except the address$/) do
   expect(page).to_not have_css '.market-location'
+end
+
+Then(/^It is not visible in guest markets$/) do
+  visit published_markets_path
+  within(:css, '.market-gallery') do
+    expect(page).to_not have_css '.market-gallery-item'
+  end
 end
 
