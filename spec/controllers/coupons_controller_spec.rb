@@ -110,56 +110,26 @@ describe CouponsController do
       get :index, valid_session
       expect(response.response_code).to eq 401
     end
-
+    it "is not allowed for registered user" do
+      sign_in :user, user
+      get :index, valid_session
+      expect(response.response_code).to eq 401
+    end
+    it "is allowed for admin" do
+      sign_in :user, admin
+      get :index, valid_session
+      expect(response.response_code).to eq 200
+    end
     context "with transactions" do
       before(:each) do
         create(:couponTransaction, user: user, coupon: first_coupon) 
         create(:couponTransaction, user: admin, coupon: second_coupon)
-      end 
-
-      it "shows all transactions when logged as admin" do
+      end
+      it "shows all coupons when logged as admin" do
         CouponTransaction.all.count.should eq 2
         sign_in :user, admin
         get :index, valid_session
-        expect(assigns(:transactions).count).to eq 2
-      end
-
-      it "shows user transactions when logged" do
-        sign_in :user, user
-        get :index, valid_session
-        expect(assigns(:transactions).count).to eq 1
-      end
-
-      it "shows no transactions when no coupons had been bought" do
-        sign_in :user, market_owner
-        get :index, valid_session
-        expect(assigns(:transactions).count).to eq 0
-        expect(response.response_code).to eq 200
-      end
-
-      it "shows coupon transactions when logged" do
-        sign_in :user, market_owner
-        get :show, {id: first_coupon.to_param}, valid_session
-        expect(assigns(:coupon).transactions.count).to eq 1
-        expect(response.response_code).to eq 200
-      end
-
-      it "shows all coupon transactions when logged as admin" do
-        sign_in :user, admin
-        get :show, {id: first_coupon.to_param}, valid_session
-        expect(assigns(:coupon).transactions.count).to eq 1
-        expect(response.response_code).to eq 200
-      end
-
-      it "shows no coupon transactions when user is not the owner of the market" do
-        sign_in :user, user
-        get :show, {id: first_coupon.to_param}, valid_session
-        expect(response.response_code).to eq 401
-      end
-
-      it "shows no coupon transactions when user is a guest" do
-        get :show, {id: first_coupon.to_param}, valid_session
-        expect(response.response_code).to eq 401
+        expect(assigns(:coupons).count).to eq 2
       end
     end
   end
