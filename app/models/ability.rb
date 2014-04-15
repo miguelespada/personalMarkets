@@ -9,7 +9,6 @@ class Ability
     @user ||= User.new
 
     admin_abilities
-    moderator_abilities
 
     can [:edit, :update], Comment, :author => @user.email
     can [:edit, :update], Market, :user_id => @user.id
@@ -31,6 +30,7 @@ class Ability
             @user.can_unlike market
         end
 
+        can :destroy, Comment, :author => @user.email
     end
   end
 
@@ -42,15 +42,4 @@ class Ability
     end
   end
 
-  def moderator_abilities
-    if @user.has_role? :moderator
-      can :destroy, Comment
-
-      can :delete_image, Market, Market do |market|
-        market.featured?
-      end
-    else
-      can :destroy, Comment, :author => @user.email
-    end
-  end
 end
