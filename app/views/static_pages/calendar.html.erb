@@ -6,9 +6,7 @@ To: <%= @week[:to] %>
     MON <span class="badge"><%= @monmarkets.count %></span>
     <p><%= @week[:from] %></p>
     <% @monmarkets.each do |market| %>
-      <button type="button" class="btn btn-default btn-xs">
-        <span> <%= market.name %> </span>
-      </button>
+      <span> <%= link_to(market.name, market_path(market)) %> </span>
     <% end %>
 	</div>
 
@@ -16,9 +14,7 @@ To: <%= @week[:to] %>
     TUE <span class="badge"><%= @tuemarkets.count %></span>
     <p><%= @week[:tue] %></p>
     <% @tuemarkets.each do |market| %>
-      <button type="button" class="btn btn-default btn-xs">
-        <span> <%= market.name %> </span>
-      </button>
+      <span> <%= link_to(market.name, market_path(market)) %> </span>
     <% end %>
   </div>
 
@@ -26,9 +22,7 @@ To: <%= @week[:to] %>
     WED <span class="badge"><%= @wedmarkets.count %></span>
     <p><%= @week[:wed] %></p>
     <% @wedmarkets.each do |market| %>
-      <button type="button" class="btn btn-default btn-xs">
-        <span> <%= market.name %> </span>
-      </button>
+      <span> <%= link_to(market.name, market_path(market)) %> </span>
     <% end %>
   </div>
 
@@ -36,9 +30,7 @@ To: <%= @week[:to] %>
     THU <span class="badge"><%= @thumarkets.count %></span>
     <p><%= @week[:thu] %></p>
     <% @thumarkets.each do |market| %>
-      <button type="button" class="btn btn-default btn-xs">
-        <span> <%= market.name %> </span>
-      </button>
+      <span> <%= link_to(market.name, market_path(market)) %> </span>
     <% end %>
   </div>
 
@@ -46,9 +38,7 @@ To: <%= @week[:to] %>
     FRI <span class="badge"><%= @frimarkets.count %></span>
     <p><%= @week[:fri] %></p>
     <% @frimarkets.each do |market| %>
-      <button type="button" class="btn btn-default btn-xs">
-        <span> <%= market.name %> </span>
-      </button>
+      <span> <%= link_to(market.name, market_path(market)) %> </span>
     <% end %>
   </div>
 
@@ -56,9 +46,7 @@ To: <%= @week[:to] %>
     SAT <span class="badge"><%= @satmarkets.count %></span>
     <p><%= @week[:sat] %></p>
     <% @satmarkets.each do |market| %>
-      <button type="button" class="btn btn-default btn-xs">
-        <span> <%= market.name %> </span>
-      </button><a href="#"><span> <%= market.name %> </span></a><br>
+      <span> <%= link_to(market.name, market_path(market)) %> </span>
     <% end %>
   </div>
 
@@ -66,9 +54,7 @@ To: <%= @week[:to] %>
     SUN <span class="badge"><%= @sunmarkets.count %></span>
     <p><%= @week[:to] %></p>
     <% @sunmarkets.each do |market| %>
-      <button type="button" class="btn btn-default btn-xs">
-        <span> <%= market.name %> </span>
-      </button>
+      <span> <%= link_to(market.name, market_path(market)) %> </span>
     <% end %>
   </div>
 </div>
