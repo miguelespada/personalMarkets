@@ -2,7 +2,7 @@
 Feature: Admin list market coupons
   In order to admin the coupons
   As admin
-  I can see the coupons
+  I can see the coupons 
 
   Background:
     Given There is a market with available coupons
