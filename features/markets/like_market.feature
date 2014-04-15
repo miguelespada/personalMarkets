@@ -22,7 +22,6 @@ Feature: Like a market
       And click the like button
       Then the number of likes increment
 
-    @wip
     Scenario: Disable like button when already liked
       Given There is someone else's market
       And I am logged in

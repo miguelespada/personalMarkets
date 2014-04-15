@@ -140,3 +140,30 @@ Then(/^I cannot like that market again$/) do
   visit market_path @some_market
   step "there is no like button"
 end
+
+Given(/^I liked a market$/) do
+  step "There is someone else's market"
+  step "I am logged in"
+  step "I am in the market page"
+  step "click the like button"
+  step "I am in the market page"
+end
+
+Then(/^there is an unlike button$/) do
+  within(:css, '.market-actions') do
+    expect(page).to have_link 'Unlike'
+  end
+end
+
+When(/^I click the unlike button$/) do
+  within(:css, '.market-actions') do
+    click_on "Unlike"
+  end
+  visit market_path @some_market
+end
+
+Then(/^the number of likes decrement$/) do
+  within(:css, '.market-likes-number') do
+    expect(page).to have_content "0"
+  end
+end
