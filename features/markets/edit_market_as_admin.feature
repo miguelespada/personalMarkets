@@ -1,4 +1,3 @@
-@wip
 Feature: Edit market as admin
   As an admin
   I want to modify my market

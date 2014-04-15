@@ -1,3 +1,4 @@
+@wip
 Feature: Show market
   
   Scenario: Guest users
@@ -5,3 +6,9 @@ Feature: Show market
     And There is someone else's market
     When I visit a market page
     Then I should see the full description of the market except the address
+
+  Scenario: Registered user
+    Given I am logged in
+    And There is someone else's market
+    When I visit a market page
+    Then I should see the full description of the market including the address

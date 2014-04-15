@@ -73,6 +73,12 @@ Then(/^It disappears from list$/) do
   expect(page).to_not have_content "Commenting other user market"
 end
 
+Then(/^I can delete comments$/) do
+  within(:css, ".market-comments") do
+    expect(page).to have_link "Delete"
+  end
+end
+
 Then(/^I cant delete the comment$/) do
   within(:css, ".market-comments") do
     expect(page).to_not have_link "Delete"
@@ -118,3 +124,4 @@ Then(/^The comment is marked as abusive$/) do
   @comment = Comment.find(@comment.id)
   expect(@comment.state).to eq "reported"
 end
+
