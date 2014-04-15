@@ -1,6 +1,9 @@
 <ul>
+<li> <span> Emitter: </span> <span> <%= coupon.market.user.email %> </span> </li>
 <li> <span> Market: </span> <span> <%= coupon.market.name %> </span> </li>
 <li> <span> Coupon Description: </span>  <span> <%= coupon.description %> </span> </li>
 <li> <span> Coupon Price </span>  <span> <%= coupon.price %> </span> </li>
 <li> <span> Available</span> <span> <%= coupon.available %> </span> </li>
 </ul>
+
+<%= render "transactions", :transactions => coupon.transactions %>

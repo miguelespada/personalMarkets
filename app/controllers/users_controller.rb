@@ -25,6 +25,10 @@ class UsersController < ApplicationController
     render 'show'
   end
 
+  def transactions
+    @transactions = CouponTransaction.where(user: current_user.id)
+  end
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy
