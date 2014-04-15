@@ -91,13 +91,19 @@ Then(/^I see their names and descriptions$/) do
 end
 
 Then(/^I see an edit button$/) do
-  expect(all('a.edit.market-action').count).to eq @user.markets.count
+  all('.market-gallery-item').each do |item|
+    expect(item).to have_link "Edit"
+  end
 end
 
 Then(/^I see a delete button$/) do
-  expect(all('a.delete.market-action').count).to eq @user.markets.count
+  all('.market-gallery-item').each do |item|
+    expect(item).to have_link "Delete"
+  end
 end
 
 Then(/^I see a show button$/) do
-  expect(all('a.show.market-action').count).to eq @user.markets.count
+  all('.market-gallery-item').each do |item|
+    expect(item).to have_link "Show"
+  end
 end
