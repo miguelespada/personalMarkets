@@ -204,7 +204,6 @@ describe MarketsController do
         put :update, market_update_params, valid_session
         expect(response.response_code).to eq 401
       end
-
     end
   end
 end

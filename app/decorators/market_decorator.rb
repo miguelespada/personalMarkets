@@ -29,6 +29,30 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
+  def create_coupon_link
+    if can? :edit, market 
+      if !market.has_coupon?
+        link_to "Create Coupon", new_market_coupon_path(market)
+      end
+    end
+  end
+
+  def coupon_transactions_link
+    if can? :edit, market 
+      if market.has_coupon?
+        link_to "Coupon Transactions", coupon_path(market.coupon)
+      end
+    end
+  end
+
+  def buy_coupon_link
+    if can? :buy_coupon, market 
+      if market.has_coupon?
+        link_to "Buy Coupon", coupon_path(market.coupon)
+      end
+    end
+  end
+
   def delete_comment_link comment
     if can? :destroy, comment
       link_options = { class: 'delete-comment-link', method: :delete }

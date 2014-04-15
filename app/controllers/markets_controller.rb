@@ -102,6 +102,7 @@ class MarketsController < ApplicationController
         :category_id,
         )
     end
+    
     def load_hidden_tags
       if params["hidden-market"].present?
         params[:market][:tags] += "," + params["hidden-market"][:tags]

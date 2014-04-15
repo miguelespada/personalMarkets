@@ -21,6 +21,7 @@ class Ability
   def logged_in_abilities
     if @user
         can :comment, Market
+        can :buy_coupon, Market
         can :see_location, Market
         can :report, Comment
         can :like, Market, Market do |market|
@@ -33,6 +34,7 @@ class Ability
             @user.owns(market) && market.can_be_published
         end
         can :destroy, Comment, :author => @user.email
+        can :see_transactions, @user
     end
   end
 
@@ -41,6 +43,8 @@ class Ability
       can [:edit, :update], Comment
       can :destroy, Comment
       can [:edit, :update], Market
+      can [:list], Coupon
+      can :see_transactions, User
     end
   end
 
