@@ -107,3 +107,36 @@ Then(/^I see a show button$/) do
     expect(item).to have_link "Show"
   end
 end
+
+When(/^I am in the market page$/) do
+  visit market_path @some_market
+end
+
+Then(/^there is a like button$/) do
+  within(:css, '.market-actions') do
+    expect(page).to have_link 'Like'
+  end
+end
+
+Then(/^there is no like button$/) do
+  within(:css, '.market-actions') do
+    expect(page).to_not have_link 'Like'
+  end
+end
+
+When(/^click the like button$/) do
+  within(:css, '.market-actions') do
+    click_on "Like"
+  end
+end
+
+Then(/^the number of likes increment$/) do
+  within(:css, '.market-likes-number') do
+    expect(page).to have_content "1"
+  end
+end
+
+Then(/^I cannot like that market again$/) do
+  visit market_path @some_market
+  step "there is no like button"
+end

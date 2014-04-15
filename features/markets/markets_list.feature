@@ -1,4 +1,3 @@
-@wip
 Feature: Markets list
   As a registered user
   I want my markets to appear in the markets list
