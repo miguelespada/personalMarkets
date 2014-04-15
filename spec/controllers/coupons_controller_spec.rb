@@ -100,7 +100,7 @@ describe CouponsController do
     end
   end
 
-  describe "List transactions" do
+  describe "Index 'coupons'" do
     let(:market_owner) { create(:user) }  
     let(:user_market) { create(:market, user: market_owner) } 
     let(:first_coupon) { create(:coupon, market: user_market) } 

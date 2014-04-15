@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :load_user, only: [:like, :unlike, :transactions]
+
   def index
     @users = User.all
   end
@@ -10,7 +12,6 @@ class UsersController < ApplicationController
   end
 
   def like
-    @user = User.find(params[:user_id])
     market = Market.find(params[:market_id])
     @user.like(market)
     market.like(@user)
@@ -18,15 +19,17 @@ class UsersController < ApplicationController
   end
 
   def unlike
-    @user = User.find(params[:user_id])
     market = Market.find(params[:market_id])
     @user.unlike(market)
     market.unlike(@user)
     render 'show'
   end
 
-  def transactions
-    @transactions = CouponTransaction.where(user: current_user.id)
+  def transactions    
+    authorize! :see_transactions, @user
+      @transactions = CouponTransaction.where(:user => @user)
+    rescue CanCan::AccessDenied
+     render :status => :unauthorized, :text => "Unauthorized action" 
   end
 
   def destroy
@@ -34,4 +37,9 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to action: 'index'
   end
+
+  private 
+    def load_user
+      @user = User.find(params[:user_id])
+    end
 end

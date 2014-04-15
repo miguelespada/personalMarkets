@@ -31,7 +31,7 @@ class Ability
         can :unlike, Market, Market do |market|
             @user.can_unlike market
         end
-
+        can :see_transactions, @user
     end
   end
 
@@ -41,6 +41,7 @@ class Ability
       can :destroy, Comment
       can [:edit, :update], Market
       can [:list], Coupon
+      can :see_transactions, User
     end
   end
 

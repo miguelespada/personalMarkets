@@ -3,6 +3,7 @@ require 'spec_helper'
 describe UsersController do
   let(:valid_session) { {} }
   let(:user) { create(:user) } 
+  let(:admin) { create(:user, :admin) } 
   let(:second_user) { create(:user) } 
   let(:market) { create(:market)}
   let(:second_market) { create(:market)}
@@ -86,6 +87,51 @@ describe UsersController do
       market.reload
       market.favorited.count.should eq 2
       market.favorited.include?(assigns(:user)).should eq true
+    end
+  end
+
+  describe "List coupon transactions" do
+    let(:coupon) { create(:coupon, market: market) } 
+
+    it "It is not allow for guest" do
+      sign_in :user, user
+      get :transactions, { user_id: user.to_param }, valid_session
+      expect(response.response_code).to eq 200
+    end
+
+    it "is not allow for other users" do
+      sign_in :user, second_user
+      get :transactions, { user_id: user.to_param }, valid_session
+      expect(response.response_code).to eq 401
+    end
+
+    it "is not allow for other users" do
+      get :transactions, { user_id: user.to_param }, valid_session
+      expect(response.response_code).to eq 401
+    end
+
+    context "without transactions" do
+      it "shows user transactions when logged" do
+        sign_in :user, user
+        get :transactions, { user_id: user.to_param }, valid_session
+        expect(assigns(:transactions).count).to eq 0
+      end
+    end
+
+    context "with transactions" do
+      before(:each) do
+        create(:couponTransaction, user: user, coupon: coupon) 
+      end
+      it "shows user transactions when logged" do
+        sign_in :user, user
+        get :transactions, { user_id: user.to_param }, valid_session
+        expect(assigns(:transactions).count).to eq 1
+      end
+      it "shows user transactions when logged as admin" do
+        sign_in :user, admin
+        get :transactions, { user_id: user.to_param }, valid_session
+        expect(assigns(:transactions).count).to eq 1
+      end
     end
   end
 end
