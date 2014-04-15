@@ -90,30 +90,30 @@ describe UsersController do
     end
   end
 
-  describe "List coupon transactions" do
+  describe "List outcoming coupon transactions" do
     let(:coupon) { create(:coupon, market: market) } 
 
-    it "It is not allow for guest" do
+    it "It is not allowed for guest" do
+      get :out_transactions, { user_id: user.to_param }, valid_session
+      expect(response.response_code).to eq 401
+    end
+
+    it "It is allow for registered user" do
       sign_in :user, user
-      get :transactions, { user_id: user.to_param }, valid_session
+      get :out_transactions, { user_id: user.to_param }, valid_session
       expect(response.response_code).to eq 200
     end
 
     it "is not allow for other users" do
       sign_in :user, second_user
-      get :transactions, { user_id: user.to_param }, valid_session
-      expect(response.response_code).to eq 401
-    end
-
-    it "is not allow for other users" do
-      get :transactions, { user_id: user.to_param }, valid_session
+      get :out_transactions, { user_id: user.to_param }, valid_session
       expect(response.response_code).to eq 401
     end
 
     context "without transactions" do
       it "shows user transactions when logged" do
         sign_in :user, user
-        get :transactions, { user_id: user.to_param }, valid_session
+        get :out_transactions, { user_id: user.to_param }, valid_session
         expect(assigns(:transactions).count).to eq 0
       end
     end
@@ -124,14 +124,62 @@ describe UsersController do
       end
       it "shows user transactions when logged" do
         sign_in :user, user
-        get :transactions, { user_id: user.to_param }, valid_session
+        get :out_transactions, { user_id: user.to_param }, valid_session
         expect(assigns(:transactions).count).to eq 1
       end
       it "shows user transactions when logged as admin" do
         sign_in :user, admin
-        get :transactions, { user_id: user.to_param }, valid_session
+        get :out_transactions, { user_id: user.to_param }, valid_session
         expect(assigns(:transactions).count).to eq 1
       end
+    end
+  end
+
+  describe "List incoming coupon transactions" do
+    let(:coupon) { create(:coupon, market: market) } 
+
+    it "It is not allowed for guest" do
+      get :in_transactions, { user_id: user.to_param }, valid_session
+      expect(response.response_code).to eq 401
+    end    
+
+    it "It is allowed for admin" do        
+      sign_in :user, admin
+      get :in_transactions, { user_id: user.to_param }, valid_session
+      expect(response.response_code).to eq 200
+    end
+
+    it "It is allowed for registerd user" do        
+      sign_in :user, user
+      get :in_transactions, { user_id: user.to_param }, valid_session
+      expect(response.response_code).to eq 200
+    end
+
+    context "with transactions" do
+      let(:market_owner) { create(:user) }  
+      let(:user_market) { create(:market, user: market_owner) } 
+      let(:coupon) { create(:coupon, market: user_market) } 
+      let(:user_market_2) { create(:market, user: market_owner) } 
+      let(:coupon) { create(:coupon, market: user_market) } 
+      let(:coupon_2) { create(:coupon, market: user_market_2) } 
+      
+      before(:each) do
+        create(:couponTransaction, user: user, coupon: coupon) 
+        create(:couponTransaction, user: user, coupon: coupon) 
+      end
+      
+      it "shows user incoming transactions" do
+        sign_in :user, admin
+        get :in_transactions, { user_id: market_owner.to_param }, valid_session
+        expect(assigns(:transactions).count).to eq 2
+      end
+
+      it "does not mix incoming with outcoming transactions" do
+        sign_in :user, admin
+        get :in_transactions, { user_id: user.to_param }, valid_session
+        expect(assigns(:transactions).count).to eq 0
+      end
+
     end
   end
 end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :load_user, only: [:like, :unlike, :transactions]
+  before_filter :load_user, only: [:like, :unlike, :in_transactions, :out_transactions]
 
   def index
     @users = User.all
@@ -25,9 +25,19 @@ class UsersController < ApplicationController
     render 'show'
   end
 
-  def transactions    
+  def out_transactions   
     authorize! :see_transactions, @user
       @transactions = CouponTransaction.where(:user => @user)
+      render "transactions"
+    rescue CanCan::AccessDenied
+     render :status => :unauthorized, :text => "Unauthorized action" 
+  end
+
+  def in_transactions
+    authorize! :see_transactions, @user
+    markets ||= Market.where(user: @user)
+    @transactions = CouponTransaction.transactions(markets)
+    render "transactions"
     rescue CanCan::AccessDenied
      render :status => :unauthorized, :text => "Unauthorized action" 
   end
