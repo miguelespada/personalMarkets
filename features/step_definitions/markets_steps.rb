@@ -221,3 +221,30 @@ Then(/^It is not visible in guest markets$/) do
   end
 end
 
+Then(/^I have a draft market$/) do
+  @market = create(
+    :market, 
+    :user => @user, 
+    :name => "market 1", 
+    :description => "market 1 desc"
+    )
+  @user.markets << @market
+end
+
+When(/^I go the market page$/) do
+  visit market_path @market
+end
+
+Then(/^I can publish it$/) do
+  within(:css, '.market-actions') do
+    expect(page).to have_link "Publish"
+  end
+end
+
+When(/^I publish the market$/) do
+  click_on "Publish"
+end
+
+Then(/^I see a success publishing notification$/) do
+  expect(page).to have_content "Market successfully published."
+end

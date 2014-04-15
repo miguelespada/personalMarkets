@@ -3,11 +3,12 @@ PopUpStores::Application.routes.draw do
 
   get "tags/index"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  resources :markets, :only => [:index, :show , :delete_image] do
+  resources :markets, :only => [:index, :show , :delete_image, :publish] do
     collection do
       get :search, action: "search", as: 'search'
       get :published
     end
+    post :publish
     resources :comments, :only => [:create, :destroy, :update]
   end
   resources :categories, :only => [:index, :new, :destroy, :create]

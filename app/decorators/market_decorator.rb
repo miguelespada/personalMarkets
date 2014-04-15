@@ -3,6 +3,10 @@ class MarketDecorator < Draper::Decorator
 
   delegate_all
 
+  def publish_link
+    link_to "Publish", market_publish_path(market), { method: :post }
+  end
+
   def delete_photo_link
     if can? :delete_image, market
       content_tag :div, class: "market-featured-photo-actions" do
