@@ -1,20 +1,59 @@
 @import "bootstrap";
 @import "bootstrap/theme";
-
 .market-full-description{
-  text-align: center;
-
+  text-align: left;
+  padding-left:5%;
   @extend .row;
+
   .market-name {
-    @extend h2;
+      @extend .col-md-12;
+      @extend h1;
+      font-weight: 100;
+    }
+
+  .market-thumbnail{
+    @extend .col-md-5;
+
+    .market-featured-photo{
+      img{
+        width: 90%;
+        height: auto;
+      }
+    }
+  
+    .market-description {
+      @extend h4;
+    }
+  
+    .market-action{
+      @extend .btn;
+      @extend .btn-default;
+    }
+
+    .market-show-link{
+      display:none;
+    }
   }
 
-  .market-description {
-    @extend h4;
-  }
+  .market-details{
+    @extend .col-md-5;
 
-  .market-action{
-    @extend .btn;
-    @extend .btn-default;
+    .market-meta{
+      @extend h5;
+    }
+
+    .market-info{
+      font-weight:200;
+    }
+
+    .market-stats{
+      padding-top:18px;
+    }
+
+    .market-widgets{
+      .market-calendar{
+        display:none;
+      }
+    }
   }
 }

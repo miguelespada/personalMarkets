@@ -6,7 +6,7 @@ To: <%= @week[:to] %>
     MON <span class="badge"><%= @monmarkets.count %></span>
     <p><%= @week[:from] %></p>
     <% @monmarkets.each do |market| %>
-      <span> <%= link_to(market.name, market_path(market)) %> </span>
+      <span> <%= link_to(market.name, market_path(market)) %> </span> <br>
     <% end %>
 	</div>
 
@@ -14,7 +14,7 @@ To: <%= @week[:to] %>
     TUE <span class="badge"><%= @tuemarkets.count %></span>
     <p><%= @week[:tue] %></p>
     <% @tuemarkets.each do |market| %>
-      <span> <%= link_to(market.name, market_path(market)) %> </span>
+      <span> <%= link_to(market.name, market_path(market)) %> </span> <br>
     <% end %>
   </div>
 
@@ -22,7 +22,7 @@ To: <%= @week[:to] %>
     WED <span class="badge"><%= @wedmarkets.count %></span>
     <p><%= @week[:wed] %></p>
     <% @wedmarkets.each do |market| %>
-      <span> <%= link_to(market.name, market_path(market)) %> </span>
+      <span> <%= link_to(market.name, market_path(market)) %> </span> <br>
     <% end %>
   </div>
 
@@ -30,7 +30,7 @@ To: <%= @week[:to] %>
     THU <span class="badge"><%= @thumarkets.count %></span>
     <p><%= @week[:thu] %></p>
     <% @thumarkets.each do |market| %>
-      <span> <%= link_to(market.name, market_path(market)) %> </span>
+      <span> <%= link_to(market.name, market_path(market)) %> </span> <br>
     <% end %>
   </div>
 
@@ -38,7 +38,7 @@ To: <%= @week[:to] %>
     FRI <span class="badge"><%= @frimarkets.count %></span>
     <p><%= @week[:fri] %></p>
     <% @frimarkets.each do |market| %>
-      <span> <%= link_to(market.name, market_path(market)) %> </span>
+      <span> <%= link_to(market.name, market_path(market)) %> </span> <br>
     <% end %>
   </div>
 
@@ -46,7 +46,7 @@ To: <%= @week[:to] %>
     SAT <span class="badge"><%= @satmarkets.count %></span>
     <p><%= @week[:sat] %></p>
     <% @satmarkets.each do |market| %>
-      <span> <%= link_to(market.name, market_path(market)) %> </span>
+      <span> <%= link_to(market.name, market_path(market)) %> </span> <br>
     <% end %>
   </div>
 
@@ -54,17 +54,19 @@ To: <%= @week[:to] %>
     SUN <span class="badge"><%= @sunmarkets.count %></span>
     <p><%= @week[:to] %></p>
     <% @sunmarkets.each do |market| %>
-      <span> <%= link_to(market.name, market_path(market)) %> </span>
+      <span> <%= link_to(market.name, market_path(market)) %> </span> <br>
     <% end %>
   </div>
 </div>
 
+<!--
 <ul class="calendar">
   <% @markets.each do |market| %>
     <li> <span> <%= market.name %> </span>  
     <span> <%= market.date %> </span> </li>
   <% end %>
 </ul>
+//-->
 
 <%= link_to "Previous week", calendar_path(:week => params[:week].to_i - 1)  %>
 <%= link_to "Next week", calendar_path(:week => params[:week].to_i + 1) %>
