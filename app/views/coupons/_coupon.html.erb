@@ -6,6 +6,4 @@
 <li> <span> Available</span> <span> <%= coupon.available %> </span> </li>
 </ul>
 
-<% if can? :edit, coupon %>
-  <%= transactions(coupon) %>
-<% end %>
+<%= transactions(coupon) %>

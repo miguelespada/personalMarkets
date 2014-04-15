@@ -75,6 +75,16 @@ class MarketsController < ApplicationController
     render status: 401, text: "Unauthorized action"
   end
 
+  def transactions
+    markets ||= Market.find_all(@user)
+    @transactions = []
+    markets.each do |m|
+      if m.has_coupon?
+        @transactions += CouponTransaction.where(coupon: m.coupon)
+      end
+    end  
+  end
+
   private
     def market_params
       params.require(:market).permit(

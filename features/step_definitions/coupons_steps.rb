@@ -1,4 +1,5 @@
 When(/^I buy some coupons$/) do
+  step "I visit the market page"
   click_on "Buy Coupon"
   select "2"
   click_on "Buy"
@@ -36,7 +37,6 @@ When(/^I should see that the coupon sold out$/) do
   expect(page).to have_content "Sold out"
 end
 
-
 Given(/^there are some coupons$/) do
   step "I am logged in"
   step "I have one market"
@@ -64,3 +64,34 @@ Then(/^I should see all the coupons that are emitted$/) do
   expect(page).to have_content @market.user.email
   expect(page).to have_content @coupon.description
 end
+
+Then(/^The market owner should see that I bought some coupons$/) do
+  step "Log in as market owner"
+  step "Visit coupon transactions"
+  step "See the coupon that has been sold"
+end
+
+Then(/^Log in as market owner$/) do
+  log_in_as @market_owner
+end
+
+Then(/^Visit coupon transactions$/) do
+  within(:css, ".user-links") do
+    click_on "Coupons transactions"
+  end
+end
+
+Then(/^The admin should see that I bought some coupons$/) do
+  step "I am logged in as an admin"
+  step "I go to Coupons"
+  step "See the coupon that has been sold"
+end
+
+Then(/^See the coupon that has been sold$/) do
+  expect(page).to have_content @user.email
+  expect(page).to have_content @market.name
+  expect(page).to have_content @market.user.email
+  expect(page).to have_content @coupon.description
+  expect(page).to have_content "2"
+end
+

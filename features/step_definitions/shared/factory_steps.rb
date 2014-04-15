@@ -38,8 +38,8 @@ Given(/^There is a comment in a market$/) do
 end
 
 Given(/^There is a market with available coupons$/) do
-  user = create(:user)
-  @market = create(:market, :user => user)
+  @market_owner = create(:user)
+  @market = create(:market, :user => @market_owner)
   @coupon = create(:coupon)
   @market.coupon = @coupon 
   @market.save
