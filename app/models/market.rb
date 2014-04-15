@@ -22,6 +22,7 @@ class Market
   belongs_to :user, class_name: "User", inverse_of: :markets
   has_and_belongs_to_many :favorited, class_name: "User", inverse_of: :favorites
   has_many :comments, class_name: "Comment", inverse_of: :market
+  has_one :coupon, class_name: "Coupon", inverse_of: :market
 
   slug :name, history: false, scope: :user
 
@@ -35,6 +36,16 @@ class Market
 
   def unlike(user)
     favorited.delete(user)
+  end
+
+  def has_coupon?
+    coupon != nil
+  end
+
+  def create_coupon!(params)
+    raise "Coupon already exists." if has_coupon?
+    self.coupon = Coupon.new(params)
+    save!
   end
 
   def to_indexed_json

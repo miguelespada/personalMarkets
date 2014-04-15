@@ -36,3 +36,11 @@ Given(/^There is a comment in a market$/) do
   @comment = create(:comment, :market => @market)
   @market.comments << @comment
 end
+
+Given(/^There is a market with available coupons$/) do
+  @market_owner = create(:user)
+  @market = create(:market, :user => @market_owner)
+  @coupon = create(:coupon)
+  @market.coupon = @coupon 
+  @market.save
+end
