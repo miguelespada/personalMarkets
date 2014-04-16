@@ -10,9 +10,10 @@
  *
  *= require_self
  *= require custom
- *= require homepage
- *= require markets
  *= require devise/sessions
+ *= require vegas
+ *= require font-awesome
+ *= require flexslider
  */
 
 
