@@ -1,6 +1,7 @@
 class CouponsController < ApplicationController
   before_filter :load_market, only: [:new, :create]
   before_filter :load_coupon, only: [:buy, :show]
+  before_filter :load_user, only: [:in_transactions, :out_transactions]
 
   def index
     authorize! :list, Coupon
@@ -41,6 +42,23 @@ class CouponsController < ApplicationController
     rescue
       render :status => :unauthorized, :text => "Incorrect number of coupons." 
   end
+  
+  def out_transactions   
+    authorize! :see_transactions, @user
+      @transactions = CouponTransaction.where(:user => @user)
+      render "transactions"
+    rescue CanCan::AccessDenied
+     render :status => :unauthorized, :text => "Unauthorized action" 
+  end
+
+  def in_transactions
+    authorize! :see_transactions, @user
+    markets ||= Market.where(user: @user)
+    @transactions = CouponTransaction.transactions(markets)
+    render "transactions"
+    rescue CanCan::AccessDenied
+     render :status => :unauthorized, :text => "Unauthorized action" 
+  end
 
   private
   def coupon_params
@@ -58,5 +76,9 @@ class CouponsController < ApplicationController
   def number
     params[:number].to_i 
   end 
+  
+  def load_user
+    @user = User.find(params[:user_id])
+  end
 end
 

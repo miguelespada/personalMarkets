@@ -1,5 +1,5 @@
 <li class="registered-user-action"><%= link_to "Add market", new_user_market_path(current_user) %></li>
 <li class="registered-user-action"><%= link_to "My markets", user_markets_path(current_user) %></li>
 <li class="registered-user-action"><%= link_to "My likes", user_path(current_user) %></li>
-<li class="registered-user-action"><%= link_to "My coupons", user_outcoming_transactions_path(current_user) %></li>
-<li class="registered-user-action"><%= link_to "Coupons transactions", user_incoming_transactions_path(current_user) %></li>
+<li class="registered-user-action"><%= link_to "My coupons", user_out_transactions_path(current_user) %></li>
+<li class="registered-user-action"><%= link_to "Coupons transactions", user_in_transactions_path(current_user) %></li>
