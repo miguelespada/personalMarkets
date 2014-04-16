@@ -33,13 +33,6 @@ describe MarketsController do
 
     describe "with valid parameters" do
 
-
-      xit "assigns a newly created market" do
-        post :create, market_params, valid_session
-        expect(assigns(:market)).to be_a(Market)
-        expect(assigns(:market)).to be_persisted
-      end
-
       it "creates a new Market" do
         expect {
           post :create, market_params, valid_session
@@ -57,11 +50,6 @@ describe MarketsController do
 
       before(:each) do
         Market.any_instance.stub(:save!).and_raise(MarketsDomainException)
-      end
-
-      xit "assigns a newly created but unsaved market" do
-        post :create, market_params, valid_session
-        expect(assigns(:market)).to be_a_new(Market)
       end
 
       it "re-renders the 'new' template" do
