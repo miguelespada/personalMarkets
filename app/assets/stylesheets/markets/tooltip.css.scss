@@ -2,13 +2,14 @@
 @import "bootstrap/theme";
 
 .market-tooltip{
+
   .market-thumbnail{
     @extend .thumbnail;
     text-align:center; 
     border: none;
   }
    .market-name{
-    @extend h5;
+    @extend h3;
   }
   .market-description{
     @extend .caption;

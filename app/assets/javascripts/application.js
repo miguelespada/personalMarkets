@@ -17,3 +17,6 @@
 //= require bootstrap.js
 //= require templates.js
 //= require helper.js
+//= require jquery.flexslider-min
+//= require vegas
+ 

@@ -6,10 +6,7 @@
 }
 
 .market-gallery-item {
-  @extend .col-xs-12;
-  @extend .col-sm-6;
   @extend .col-md-4;
-  @extend .col-lg-3;
 
   .market-thumbnail{
     @extend .thumbnail;
@@ -17,7 +14,7 @@
   }
 
   .market-name {
-    @extend h4;
+    @extend h2;
   }
 
   .market-description {
@@ -30,7 +27,5 @@
   .market-info { display : none }
   
   .market-action {
-    @extend .btn;
-    @extend .btn-default;
   }
 }

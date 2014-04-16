@@ -21,7 +21,12 @@ class MarketsController < ApplicationController
 
   def published
     @markets = Market.where(state: :published)
+    respond_to do |format|
+        format.html 
+        format.json {render json: gallery(@markets)}
+    end
   end
+
 
   def index
     @markets ||= Market.find_all(@user)
@@ -144,4 +149,8 @@ class MarketsController < ApplicationController
     rescue => e
         ""
     end 
+    
+    def gallery(markets)
+      markets.collect{|market| view_context.gallery_item(market)} if markets.count > 0
+    end
 end

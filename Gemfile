@@ -99,3 +99,9 @@ group :test, :development do
   gem "rspec-rails"
   gem 'jasmine'
 end
+
+# themes 
+gem "font-awesome-rails"
+gem 'flexslider'
+gem "pcs_vegas", "~> 0.0.1.alpha"
+

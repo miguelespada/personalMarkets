@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <%= render "layouts/shared/header" %>
+        <%= stylesheet_link_tag "style.min.css" %>  
+        <%= stylesheet_link_tag "maps" %>  
+        <%= javascript_include_tag "signals.min" %>
+        <%= javascript_include_tag "crossroads.min" %>
+        <%= javascript_include_tag "hasher.min" %>
+        <%= javascript_include_tag "theme" %>
+    </head>
+
+<body>
+
+  <% if flash[:notice] %>
+      <div id="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+  <% if flash[:error] %>
+      <div id="error"><%= flash[:error] %></div>
+  <% end %>
+  
+
+  <%= render "layouts/shared/navbarhorizontal" %>
+
+    <!-- home -->
+    <section id="home" class="box">
+        <div class="container">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <hgroup id="intro" style="display: none">
+                            <%= image_tag "search.png", id: "search_img" %>
+                        </hgroup>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+   
+
+
+    <section id ="map-container" class="box">
+      <%= render "static_pages/map" %>
+    </section>
+
+
+       <!-- portfolio -->
+    <section id="gallery" class="box">
+        <div class="container">
+                <div class="row-fluid">
+                    <div class="span12">
+                      <ul id="gallery-items">
+                      </ul>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+    <section id ="calendar" class="box">
+    </section>
+
+    <!-- ligthbox -->
+    <div style="display: none;" id="lightbox"><img id="bigimg" src="" /></div>
+
+
+</body>
+
+</html>
