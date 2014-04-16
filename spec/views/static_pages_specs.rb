@@ -1,4 +1,4 @@
-require 'spec_helper'
+  require 'spec_helper'
 
 describe "market" do
   it "When I am logged I should see the user actions"

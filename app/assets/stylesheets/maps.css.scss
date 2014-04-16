@@ -4,6 +4,12 @@
 
 #map{
   width:100%;
-  height:600px;
+  height:100%;
+  position:absolute;
 }
 
+#layouts{
+  position:relative;
+  padding-top: 5%;
+  margin-left: 5%;
+}

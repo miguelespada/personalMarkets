@@ -10,4 +10,4 @@ Feature: Edit market
   Scenario: Change market info
     When I edit my market
     Then I am notified that the market has been succesfully updated
-    And I see my personal market page with the new data
+    And I see the market page with the new data

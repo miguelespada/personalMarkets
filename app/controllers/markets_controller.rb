@@ -1,6 +1,32 @@
 class MarketsController < ApplicationController
+
   before_filter :load_user
   before_filter :load_market, only: [:show ,:edit, :update, :destroy]
+
+  def archive
+    domain.archive_market params[:market_id]
+  end
+
+  def archive_succeeded market
+    redirect_to market, notice: "Market successfully archived."
+  end
+
+  def publish
+    domain.publish_market params[:market_id]
+  end
+
+  def publish_succeeded market
+    redirect_to market, notice: "Market successfully published."
+  end
+
+  def published
+    @markets = Market.where(state: :published)
+    respond_to do |format|
+        format.html 
+        format.json {render json: gallery(@markets)}
+    end
+  end
+
 
   def index
     @markets ||= Market.find_all(@user)
@@ -33,10 +59,14 @@ class MarketsController < ApplicationController
   end
 
   def create
-    @market = @user.markets.new(market_params)
-    @market.save!
-    redirect_to @market, notice: 'Market was successfully created.'
-  rescue Exception
+    domain.create_market params[:user_id], market_params
+  end
+
+  def create_market_succeeded market
+    redirect_to market, notice: 'Market was successfully created.'
+  end
+
+  def create_market_failed
     flash[:notice] = "Something went wrong."
     render action: 'new'
   end
@@ -71,6 +101,11 @@ class MarketsController < ApplicationController
   end
 
   private
+
+    def domain
+      @domain ||= MarketsDomain.new self, Market, User
+    end
+
     def market_params
       params.require(:market).permit(
         :name, 
@@ -92,6 +127,7 @@ class MarketsController < ApplicationController
         :category_id,
         )
     end
+    
     def load_hidden_tags
       if params["hidden-market"].present?
         params[:market][:tags] += "," + params["hidden-market"][:tags]
@@ -113,4 +149,8 @@ class MarketsController < ApplicationController
     rescue => e
         ""
     end 
+    
+    def gallery(markets)
+      markets.collect{|market| view_context.gallery_item(market)} if markets.count > 0
+    end
 end

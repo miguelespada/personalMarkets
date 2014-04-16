@@ -7,7 +7,9 @@ module MarketsHelper
 
   def gallery_item(market)
     div_for market, class: "market-gallery-item" do
-      render market.decorate, :image_size => "180"
+      render :partial => 'markets/market',
+             :formats => [:html], 
+             :locals => {:market => market.decorate, :image_size => "180"}
     end
   end
 

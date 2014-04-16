@@ -7,6 +7,7 @@ class User
 
   has_many :markets, class_name: "Market", dependent: :delete, inverse_of: :user
   has_and_belongs_to_many :favorites, class_name: "Market", inverse_of: :favorited
+  has_many :coupon_transactions, class_name: "CouponTransaction", dependent: :delete, inverse_of: :user
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -47,6 +48,15 @@ class User
   # field :failed_attempts, :type => Integer, :default => 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
   # field :locked_at,       :type => Time
+
+  def add_market market_params
+    self.markets.new market_params
+  end
+
+  def owns market
+    market.user_id == self.id
+  end
+
   def like(market)
     favorites << market
   end

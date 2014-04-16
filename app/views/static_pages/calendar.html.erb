@@ -4,7 +4,7 @@ To: <%= @week[:to] %>
 <div class ="row">
 	<div class="day-grid">
     MON <span class="badge"><%= @monmarkets.count %></span>
-    <p><%= @week[:from] %></p>
+    <div id="date-mon"><%= @week[:from] %></div>
     <% @monmarkets.each do |market| %>
       <span> <%= link_to(market.name, market_path(market)) %> </span> <br>
     <% end %>

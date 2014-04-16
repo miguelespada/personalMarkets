@@ -1,16 +1,3 @@
-Given(/^I am not logged in$/) do
-
-end
-
-When(/^I visit a market page$/) do
-  visit market_path @some_market
-end
-
-Then(/^I should see the full description of the market except the address$/) do
-  expect(page).to_not have_css '.market-location'
-end
-
-
 When(/^I visit the sign in page$/) do
   visit new_user_session_path
 end

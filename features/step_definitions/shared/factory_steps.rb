@@ -3,14 +3,15 @@ Given(/^There are some categories$/) do
               :name => "Dummy Category")
 end
 
-Given(/^There are some markets$/) do
+Given(/^There are some published markets$/) do
   step "There are some categories"
   @market_0 = create(:market, 
       :latitude => "40", 
       :longitude=> "-3.7",
       :tags => "one",
       :category => @category,
-      :date=>"22/03/2014")
+      :date=>"22/03/2014",
+      :state => :published)
   Market.reindex
 end
 
@@ -35,4 +36,12 @@ Given(/^There is a comment in a market$/) do
   @other_user.markets << @market
   @comment = create(:comment, :market => @market)
   @market.comments << @comment
+end
+
+Given(/^There is a market with available coupons$/) do
+  @market_owner = create(:user)
+  @market = create(:market, :user => @market_owner)
+  @coupon = create(:coupon)
+  @market.coupon = @coupon 
+  @market.save
 end

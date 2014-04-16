@@ -3,6 +3,7 @@ require 'spec_helper'
 describe UsersController do
   let(:valid_session) { {} }
   let(:user) { create(:user) } 
+  let(:admin) { create(:user, :admin) } 
   let(:second_user) { create(:user) } 
   let(:market) { create(:market)}
   let(:second_market) { create(:market)}
@@ -88,4 +89,5 @@ describe UsersController do
       market.favorited.include?(assigns(:user)).should eq true
     end
   end
+
 end

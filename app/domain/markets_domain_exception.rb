@@ -1,0 +1,2 @@
+class MarketsDomainException < Exception
+end

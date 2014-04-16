@@ -3,6 +3,18 @@ class MarketDecorator < Draper::Decorator
 
   delegate_all
 
+  def archive_link
+    # if can? :archive, market
+      link_to "Archive", market_archive_path(market), { method: :post }
+    # end
+  end
+
+  def publish_link
+    if can? :publish, market
+      link_to "Publish", market_publish_path(market), { method: :post }
+    end
+  end
+
   def delete_photo_link
     if can? :delete_image, market
       content_tag :div, class: "market-featured-photo-actions" do
@@ -20,6 +32,30 @@ class MarketDecorator < Draper::Decorator
   def comment_form
     if can? :comment, market
       render partial: 'layouts/shared/comment_form', locals: { market: market }
+    end
+  end
+
+  def create_coupon_link
+    if can? :edit, market 
+      if !market.has_coupon?
+        link_to "Create Coupon", new_market_coupon_path(market)
+      end
+    end
+  end
+
+  def coupon_transactions_link
+    if can? :edit, market 
+      if market.has_coupon?
+        link_to "Coupon Transactions", coupon_path(market.coupon)
+      end
+    end
+  end
+
+  def buy_coupon_link
+    if can? :buy_coupon, market 
+      if market.has_coupon?
+        link_to "Buy Coupon", coupon_path(market.coupon)
+      end
     end
   end
 

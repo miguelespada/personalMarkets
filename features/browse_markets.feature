@@ -3,7 +3,7 @@ Feature: Browse markets
   I want to browse markets
 
   Background:
-  Given There are some markets
+  Given There are some published markets
 
   @browse
   Scenario: See the full description of a market
