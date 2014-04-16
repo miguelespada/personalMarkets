@@ -11,23 +11,9 @@ class StaticPagesController < ApplicationController
     from = beginning_of(number_of_weeks_from_now)
     to = end_of(number_of_weeks_from_now)
 
-    tue = tuesday(number_of_weeks_from_now)
-    wed = wednesday(number_of_weeks_from_now)
-    thu = thursday(number_of_weeks_from_now)
-    fri = friday(number_of_weeks_from_now)
-    sat = saturday(number_of_weeks_from_now)
-
-    @week = {:from => from, :to => to, :tue => tue, :wed => wed, :thu => thu, :fri => fri, :sat => sat}
+    @week = {:from => from, :to => to}
     
     @markets = Market.search("", "", from, to)
-    
-    @monmarkets = Market.search("", "", from, from)
-    @tuemarkets = Market.search("", "", tue, tue)
-    @wedmarkets = Market.search("", "", wed, wed)
-    @thumarkets = Market.search("", "", thu, thu)
-    @frimarkets = Market.search("", "", fri, fri)
-    @satmarkets = Market.search("", "", sat, sat)
-    @sunmarkets = Market.search("", "", to, to)
   end
 
   def map
@@ -49,26 +35,6 @@ class StaticPagesController < ApplicationController
 
   def end_of(n)
     n.to_i.week.from_now.at_end_of_week.strftime("%d/%m/%Y")
-  end
-
-  def tuesday(n)
-    (n.to_i.week.from_now.at_beginning_of_week+86400).strftime("%d/%m/%Y")
-  end
-
-  def wednesday(n)
-    (n.to_i.week.from_now.at_beginning_of_week+86400*2).strftime("%d/%m/%Y")
-  end
-
-  def thursday(n)
-    (n.to_i.week.from_now.at_beginning_of_week+86400*3).strftime("%d/%m/%Y")
-  end
-
-  def friday(n)
-    (n.to_i.week.from_now.at_beginning_of_week+86400*4).strftime("%d/%m/%Y")
-  end
-
-  def saturday(n)
-    (n.to_i.week.from_now.at_beginning_of_week+86400*5).strftime("%d/%m/%Y")
   end
 
   def number_of_weeks_from_now
