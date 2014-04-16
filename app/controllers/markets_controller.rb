@@ -1,11 +1,22 @@
 class MarketsController < ApplicationController
+
   before_filter :load_user
   before_filter :load_market, only: [:show ,:edit, :update, :destroy]
 
+  def archive
+    domain.archive_market params[:market_id]
+  end
+
+  def archive_succeeded market
+    redirect_to market, notice: "Market successfully archived."
+  end
+
   def publish
-    @market = Market.find params[:market_id]
-    @market.publish
-    redirect_to @market, notice: "Market successfully published."
+    domain.publish_market params[:market_id]
+  end
+
+  def publish_succeeded market
+    redirect_to market, notice: "Market successfully published."
   end
 
   def published
@@ -43,10 +54,14 @@ class MarketsController < ApplicationController
   end
 
   def create
-    @market = @user.markets.new(market_params)
-    @market.save!
-    redirect_to @market, notice: 'Market was successfully created.'
-  rescue Exception
+    domain.create_market params[:user_id], market_params
+  end
+
+  def create_market_succeeded market
+    redirect_to market, notice: 'Market was successfully created.'
+  end
+
+  def create_market_failed
     flash[:notice] = "Something went wrong."
     render action: 'new'
   end
@@ -81,6 +96,11 @@ class MarketsController < ApplicationController
   end
 
   private
+
+    def domain
+      @domain ||= MarketsDomain.new self, Market, User
+    end
+
     def market_params
       params.require(:market).permit(
         :name, 

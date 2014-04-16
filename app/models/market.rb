@@ -35,6 +35,11 @@ class Market
     self.state != "published"
   end
 
+  def archive
+    self.state = "archive"
+    self.save
+  end
+
   def publish
     self.state = "published"
     self.save

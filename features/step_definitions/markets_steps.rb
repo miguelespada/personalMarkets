@@ -261,3 +261,18 @@ Then(/^I cannot publish it again$/) do
     expect(page).to_not have_link "Publish"
   end
 end
+
+When(/^I archive the market$/) do
+  click_on "Archive"
+end
+
+When(/^I visit a published market$/) do
+  market = create(
+    :market, 
+    :user => create(:user), 
+    :name => "market 1", 
+    :description => "market 1 desc",
+    :state => "published"
+    )
+  visit market_path market
+end
