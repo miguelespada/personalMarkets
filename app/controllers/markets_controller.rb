@@ -1,7 +1,7 @@
 class MarketsController < ApplicationController
 
   before_filter :load_user
-  before_filter :load_market, only: [:show ,:edit, :update, :destroy]
+  before_filter :load_market, only: [:show ,:edit, :destroy]
 
   def archive
     domain.archive_market params[:market_id]
@@ -72,12 +72,18 @@ class MarketsController < ApplicationController
   end
 
   def update
-    authorize! :update, @market
-    load_hidden_tags
-    @market.update!(market_params)
-    redirect_to @market, notice: "Market successfully updated."
+    authorize! :update, domain.get_market(params[:id])
+    domain.update_market params[:id], market_params
   rescue CanCan::AccessDenied
     render :status => 401, :text => "Unauthorized action"
+  end
+
+  def update_suceeded market
+    redirect_to market, notice: "Market successfully updated."
+  end
+
+  def update_failed market
+    redirect_to market, notice: "Market update failed."
   end
 
   def destroy

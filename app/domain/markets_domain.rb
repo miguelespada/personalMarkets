@@ -11,6 +11,18 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
     listener.create_market_failed
   end
 
+  def update_market market_id, market_params
+    market = markets_repo.find market_id
+    market.update! market_params
+    listener.update_suceeded market
+  rescue MarketsDomainException
+    listener.update_failed market
+  end
+
+  def get_market market_id
+    markets_repo.find market_id
+  end
+
   def archive_market market_id
     my_market = markets_repo.find market_id
     my_market.archive
