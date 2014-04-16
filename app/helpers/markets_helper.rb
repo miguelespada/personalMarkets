@@ -1,7 +1,7 @@
 module MarketsHelper
   def full_description(market)
     div_for market, class: "market-full-description" do
-      render market.decorate, :image_size => "500"
+      render market.decorate, :image_size => "800"
     end
   end
 

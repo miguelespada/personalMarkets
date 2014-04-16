@@ -1,12 +1,72 @@
 From: <%= @week[:from] %>
 To: <%= @week[:to] %>
 
+<div class ="row">
+	<div class="day-grid">
+    MON <span class="badge"><%= @monmarkets.count %></span>
+    <div id="date-mon"><%= @week[:from] %></div>
+    <% @monmarkets.each do |market| %>
+      <span> <%= link_to(market.name, market_path(market)) %> </span> <br>
+    <% end %>
+	</div>
+
+  <div class="day-grid">
+    TUE <span class="badge"><%= @tuemarkets.count %></span>
+    <p><%= @week[:tue] %></p>
+    <% @tuemarkets.each do |market| %>
+      <span> <%= link_to(market.name, market_path(market)) %> </span> <br>
+    <% end %>
+  </div>
+
+  <div class="day-grid">
+    WED <span class="badge"><%= @wedmarkets.count %></span>
+    <p><%= @week[:wed] %></p>
+    <% @wedmarkets.each do |market| %>
+      <span> <%= link_to(market.name, market_path(market)) %> </span> <br>
+    <% end %>
+  </div>
+
+  <div class="day-grid">
+    THU <span class="badge"><%= @thumarkets.count %></span>
+    <p><%= @week[:thu] %></p>
+    <% @thumarkets.each do |market| %>
+      <span> <%= link_to(market.name, market_path(market)) %> </span> <br>
+    <% end %>
+  </div>
+
+  <div class="day-grid">
+    FRI <span class="badge"><%= @frimarkets.count %></span>
+    <p><%= @week[:fri] %></p>
+    <% @frimarkets.each do |market| %>
+      <span> <%= link_to(market.name, market_path(market)) %> </span> <br>
+    <% end %>
+  </div>
+
+  <div class="day-grid">
+    SAT <span class="badge"><%= @satmarkets.count %></span>
+    <p><%= @week[:sat] %></p>
+    <% @satmarkets.each do |market| %>
+      <span> <%= link_to(market.name, market_path(market)) %> </span> <br>
+    <% end %>
+  </div>
+
+  <div class="day-grid">
+    SUN <span class="badge"><%= @sunmarkets.count %></span>
+    <p><%= @week[:to] %></p>
+    <% @sunmarkets.each do |market| %>
+      <span> <%= link_to(market.name, market_path(market)) %> </span> <br>
+    <% end %>
+  </div>
+</div>
+
+<!--
 <ul class="calendar">
   <% @markets.each do |market| %>
     <li> <span> <%= market.name %> </span>  
     <span> <%= market.date %> </span> </li>
   <% end %>
 </ul>
+//-->
 
 <%= link_to "Previous week", calendar_path(:week => params[:week].to_i - 1)  %>
 <%= link_to "Next week", calendar_path(:week => params[:week].to_i + 1) %>
