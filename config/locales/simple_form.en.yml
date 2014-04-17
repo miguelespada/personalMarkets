@@ -8,6 +8,11 @@ en:
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
+    placeholders:
+      user:
+        email: 'Email address'
+        password: 'Password'
+        password_confirmation: 'Password confirmation'
     error_notification:
       default_message: "Please review the problems below:"
     # Labels and hints examples

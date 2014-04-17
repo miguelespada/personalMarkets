@@ -1,3 +1,4 @@
+@session
 Feature: User session
   I order to have manage my wall
   I want to create and account and acess my accout

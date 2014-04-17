@@ -3,12 +3,13 @@ Given(/^I sign up$/) do
   within(:css, ".user-session-menu") do
     click_on "Sign up"
   end
-  fill_in "Email",  with: "dummy@gmail.com"
-  fill_in "Password",  with: "password", :match => :prefer_exact
-  fill_in "Password confirmation",  with: "password"
-  within(:css, ".new_user") do
+  within(:css, ".user-session") do
+    fill_in "Email",  with: "dummy@gmail.com"
+    fill_in "Password",  with: "password", :match => :prefer_exact
+    fill_in "Password confirmation",  with: "password"  
     click_on "Sign up"
   end
+ 
 end
 
 Given(/^I am a registered user$/) do
@@ -25,9 +26,7 @@ Given(/^I am logged in$/) do
 end
 
 When(/^I sign out$/) do
-  within(:css, ".user-session-menu") do
-    click_on "Sign out"
-  end
+  click_on "Sign out"
 end
 
 Given(/^I log in as the first user$/) do
