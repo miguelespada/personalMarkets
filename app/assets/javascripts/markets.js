@@ -5,6 +5,8 @@
 //= require attachinary
 //= require twitter/typeahead
 //= require map-small
+//= require date
+//= require jquery.dp_calendar
 
 var substringMatcher = function(strs) {
   return function findMatches(q, cb) {
@@ -18,6 +20,15 @@ var substringMatcher = function(strs) {
     });
     cb(matches);
   };
+};
+
+var getEventDate = function() {
+  var eventDate, eventDay, eventMonth, eventYear;
+  eventDate = $(".market-date").text().split("/");
+  eventDay = parseInt(eventDate[0]);
+  eventMonth = parseInt(eventDate[1]) - 1;
+  eventYear = parseInt(eventDate[2]);
+  setDefaultDate(eventDay, eventMonth, eventYear);
 };
 
 $( document ).ready(function() {
@@ -40,5 +51,8 @@ $( document ).ready(function() {
         source: substringMatcher(data)
       });
   });
+
+  getEventDate();
+  $("#calendar-widget").dp_calendar();
 });
 

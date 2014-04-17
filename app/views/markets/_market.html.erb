@@ -34,7 +34,9 @@
   </div>
   
   <div class="market-widgets">
-    <div class="market-calendar"> Set Calendar for: <%= market.name %> on <%= market.date %> </div  >
+    <div class="market-calendar">
+      <%= render "markets/shared/calendar" %>
+      Set Calendar for: <%= market.name %> on <%= market.date %> </div>
     <div class="market-qr-link"> <%= market.qr_code_link %> </div>
   
     <div class="market-comment-form">

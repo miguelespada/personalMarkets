@@ -2,14 +2,16 @@
 <html lang="en">
 
     <head>
-
         <%= render "layouts/shared/header" %>
         <%= stylesheet_link_tag "style.min.css" %>  
-        <%= stylesheet_link_tag "maps" %>  
+        <%= stylesheet_link_tag "maps" %>
+        <%= stylesheet_link_tag "dp_calendar" %>  
+        <%= stylesheet_link_tag "jquery.ui.all" %>
         <%= javascript_include_tag "signals.min" %>
         <%= javascript_include_tag "crossroads.min" %>
         <%= javascript_include_tag "hasher.min" %>
         <%= javascript_include_tag "theme" %>
+        <%= javascript_include_tag "homepage_calendar.js" %>
     </head>
 
 <body>
@@ -60,6 +62,7 @@
 
 
     <section id ="calendar" class="box">
+      <%= render "markets/shared/calendar" %>
     </section>
 
     <!-- ligthbox -->
