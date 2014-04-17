@@ -1,5 +1,4 @@
 class MarketsController < ApplicationController
-
   before_filter :load_user
   before_filter :load_market, only: [:show ,:edit, :destroy]
 
@@ -21,27 +20,19 @@ class MarketsController < ApplicationController
 
   def published
     @markets = Market.where(state: :published)
-    respond_to do |format|
-        format.html 
-        format.json {render json: gallery(@markets)}
-    end
+    render 'index' 
   end
 
 
   def index
     @markets ||= Market.find_all(@user)
-    respond_to do |format|
-        format.html 
-        format.json {render json: @markets}
-        format.xml {render xml: @markets}
-    end
   end
 
   def search
     @category_query = load_category
     @markets = Market.search(params[:query], @category_query, 
                             params[:from], params[:to])
-    render 'index' 
+    render 'index', :layout => false
   end
 
   def new
@@ -155,8 +146,4 @@ class MarketsController < ApplicationController
     rescue => e
         ""
     end 
-    
-    def gallery(markets)
-      markets.collect{|market| view_context.gallery_item(market)} if markets.count > 0
-    end
 end

@@ -1,1 +1,24 @@
 <%= search_box %>
+
+<div id="gallery-items">
+</ul>
+
+<script>
+  // Search form.
+  $('#search_market').submit(function () {
+   
+    $.get(this.action, $(this).serialize(), function(data) {
+      $( "#gallery-items" ).html( data );
+    });
+    return false;
+  });
+
+
+  $( "#category_category_id" ).change(function() {
+      $('#search_market').submit();
+  });
+
+    $( "#query" ).change(function() {
+      $('#search_market').submit();
+  });
+</script>

@@ -46,18 +46,12 @@
 
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
-                <li><span class="badge"><span class="glyphicon glyphicon-user"></span> You are logged as: <%= current_user.email %></span></li>
-              <% end %>
-                <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">User account<b class="caret"></b></a>
-            <ul class="dropdown-menu user-session-menu" role="menu">
-              <% if user_signed_in? %>
-                <li><%= link_to "Sign out", destroy_user_session_path %></li>
+                <li><%=link_to "Sign out " + current_user.email, destroy_user_session_path %></li>
               <% else %>
-                <li><%= link_to "Sign in", new_user_session_path %></li>
-                <li><%= link_to "Sign up", new_user_registration_path %></li>
+                <%= render "layouts/shared/signin" %>
               <% end %>
-            </ul>
+            
+
         </div>
     </div>
 </nav>

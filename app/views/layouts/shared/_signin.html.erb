@@ -1,0 +1,32 @@
+
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">Log in<b class="caret"></b></a>
+
+<ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+  <li>
+     <div class="row">
+        <div class="col-md-12 user-session-menu">
+           <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+            <div class="form-inputs">
+              <%= f.input :email, :required => true, :autofocus => true %>
+              <%= f.input :password, :required => true %>
+              <%= f.input :remember_me, as: :boolean, inline_label: 'Remember me', label: false if devise_mapping.rememberable? %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Sign in" %>
+            </div>
+          <% end %>
+
+          <%= render "devise/shared/links" %>
+
+
+        </div>
+     </div>
+  </li>
+  <li class="divider"></li>
+  <li class="omniauth-sign-up">
+      <li> <%= button_to "Login with Google", user_omniauth_authorize_path(:google_oauth2), :class=>  "btn btn-primary btn-block"  %> </li>
+      <li> <%= button_to "Login with Facebook", user_omniauth_authorize_path(:facebook), :class=>  "btn btn-primary btn-block" %></li>
+  </li>
+</ul>
