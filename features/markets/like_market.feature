@@ -1,3 +1,4 @@
+@like
 Feature: Like a market
   As a registered user
   I want to like other users markets

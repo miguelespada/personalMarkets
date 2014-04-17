@@ -1,3 +1,4 @@
+@unlike
 Feature: Unlike a market
   As a registered user
   I want to unlike already liked markets
