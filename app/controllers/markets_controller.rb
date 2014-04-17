@@ -1,5 +1,4 @@
 class MarketsController < ApplicationController
-
   before_filter :load_user
   before_filter :load_market, only: [:show ,:edit, :destroy]
 
@@ -21,7 +20,7 @@ class MarketsController < ApplicationController
 
   def published
     @markets = Market.where(state: :published)
-    render "index"
+    render 'index' 
   end
 
 
@@ -33,7 +32,7 @@ class MarketsController < ApplicationController
     @category_query = load_category
     @markets = Market.search(params[:query], @category_query, 
                             params[:from], params[:to])
-    render 'index' 
+    render 'index', :layout => false
   end
 
   def new

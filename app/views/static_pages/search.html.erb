@@ -6,11 +6,19 @@
 <script>
   // Search form.
   $('#search_market').submit(function () {
-    var f = function(data) {
+   
+    $.get(this.action, $(this).serialize(), function(data) {
       $( "#gallery-items" ).html( data );
-    };
-
-    $.get(this.action, $(this).serialize(), f);
+    });
     return false;
+  });
+
+
+  $( "#category_category_id" ).change(function() {
+      $('#search_market').submit();
+  });
+
+    $( "#query" ).change(function() {
+      $('#search_market').submit();
   });
 </script>
