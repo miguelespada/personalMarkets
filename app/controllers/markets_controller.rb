@@ -26,6 +26,10 @@ class MarketsController < ApplicationController
 
   def index
     @markets ||= Market.find_all(@user)
+    respond_to do |format|
+        format.json {render json: @markets}
+        format.html
+    end
   end
 
   def search
