@@ -48,9 +48,5 @@ PM.getCurrentPosition = function(position){
 $( document ).ready(function() {
     $('#edit_link').click(PM.editClick);
 
-    $.get( "/markets/published.json", 
-        function( data ) {
-        $( "#gallery-items" ).html( data );
-    });
 });
 
