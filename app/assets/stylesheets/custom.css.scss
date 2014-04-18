@@ -6,8 +6,6 @@
 	margin-bottom: 15px;
 	background-color: #5bc0de;
 }
-body { padding-top: 50px; }
-
 #search_img{
  width:80%;   
 }
@@ -23,4 +21,18 @@ body { padding-top: 50px; }
 }
 .simple_form .control-label {
   display: none;
+}
+
+
+
+body {
+  padding-top: 50px
+}
+
+.caption {
+  height: 80px;
+}
+
+footer {
+  margin: 50px 0;
 }

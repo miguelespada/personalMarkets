@@ -1,64 +1,28 @@
 <%= form_tag search_markets_path, method: "get", id: "search_market" do %>
-  <div "form-inputs">
-    <div class="query">
-    <p>Query:</p>
-     <%= text_field_tag :query, params[:query] %>
+    <div class="form-group">
+      <%= text_field_tag :query, params[:query], placeholder: "Query...", class: "query form-control"  %>
     </div>
 
-    <div class="category">
-    <p>Category:</p>
-    <%= collection_select(:category, :category_id, Category.all, :name, :name, 
-                        {:selected => @category_query, :include_blank => ""}) %>
+    <div class="form-group">
+      <%= collection_select(:category, :category_id, Category.all, :name, :name, 
+                          {:selected => @category_query, :include_blank => ""}, class: "category form-control" ) %>
     </div>
 
-  <div class="date-range">
-      <p>From:</p> <%= text_field_tag :from, params[:from], data: {:behaviour => 'datepicker'} %>  
-      <p>To:</p> <%= text_field_tag :to, params[:to], data: {:behaviour => 'datepicker'} %>  
+
+    <div class="form-group">
+        <%= select_tag(:range, options_for_select([['Today', 'today'], 
+                                              ['This week', 'thisWeek'], 
+                                              ['This month', 'thisMonth'], 
+                                              ['Next week', 'nextWeek'], 
+                                              ['All', 'all'] ]), class: "form-control" ) %>      
+
+     </div>
+
+    <div class="date-range invisible">
+      <%= text_field_tag :from, params[:from]%>  
+      <%= text_field_tag :to, params[:to]%>  
     </div>
-  </div>
 
-  <%= select_tag(:range, options_for_select([['Today', 1], ['This week', 2], ['This month', 3], ['Next week', 4], ['All', 5] ]) ) %>
+    <%= submit_tag "Search", name: nil, class: "invisible" %>
 
-  <div "form-actions">
-    <%= submit_tag "Search", name: nil %>
-  </div>
 <% end %>
-
-<%= javascript_include_tag "moment" %>
-
-<script>
-$(document).ready(function(){
-  var fromString, toString, fromDate, toDate;
-  var range = $("#range").val();
-  makeDateString(range);
-
-  $('#range').on('change', function() {
-    range = $(this).val();
-    makeDateString(range);
-  });  
-});
-
-var makeDateString = function(range){
-  fromDate = moment();
-  
-  if (range == 1)
-    toDate = moment();
-  else if (range == 2)
-    toDate = moment().weekday(7);
-  else if (range == 3)
-    toDate = moment().endOf("month");
-  else if (range == 4){
-    fromDate = moment().day(7).weekday(1);
-    toDate = moment().day(7).weekday(8);
-  }
-
-  fromString = moment(fromDate).format("DD/MM/YYYY");
-  toString = moment(toDate).format("DD/MM/YYYY");
-
-  if (range == 5)
-    toString = "";
-
-  $("#from").val(fromString);
-  $("#to").val(toString);
-};
-</script>

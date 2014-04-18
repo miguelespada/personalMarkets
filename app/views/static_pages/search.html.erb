@@ -1,24 +1,7 @@
-<%= search_box %>
+<h2>Search</h2>
 
-<div id="gallery-items">
-</ul>
+<div class="col-md-4">
+  <%= search_box %>
+</div>
 
-<script>
-  // Search form.
-  $('#search_market').submit(function () {
-   
-    $.get(this.action, $(this).serialize(), function(data) {
-      $( "#gallery-items" ).html( data );
-    });
-    return false;
-  });
-
-
-  $( "#category_category_id" ).change(function() {
-      $('#search_market').submit();
-  });
-
-    $( "#query" ).change(function() {
-      $('#search_market').submit();
-  });
-</script>
+<div id="gallery-items" class="row"></div>
