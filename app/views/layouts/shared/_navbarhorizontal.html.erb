@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <%= link_to "Personal Markets", "/", :class => "navbar-brand"   %>
+            <%= link_to "Personal Markets", "", :class => "navbar-brand"   %>
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -46,11 +46,11 @@
 
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
-                <li><%=link_to "Sign out " + current_user.email, destroy_user_session_path %></li>
+                <%= render "layouts/shared/signout" %>
               <% else %>
                 <%= render "layouts/shared/signin" %>
               <% end %>
-            
+            </ul>
 
         </div>
     </div>

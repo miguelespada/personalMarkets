@@ -11,11 +11,13 @@
                         {:selected => @category_query, :include_blank => ""}) %>
     </div>
 
-    <div class="date-range">
+  <div class="date-range">
       <p>From:</p> <%= text_field_tag :from, params[:from], data: {:behaviour => 'datepicker'} %>  
       <p>To:</p> <%= text_field_tag :to, params[:to], data: {:behaviour => 'datepicker'} %>  
     </div>
   </div>
+
+  <%= select_tag(:range, options_for_select([['Today', 1], ['This week', 2], ['This month', 3], ['All', 4]]) ) %>
 
   <div "form-actions">
     <%= submit_tag "Search", name: nil %>
