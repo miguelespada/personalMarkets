@@ -27,7 +27,10 @@ var getEventDate = function() {
   eventDay = parseInt(eventDate[0]);
   eventMonth = parseInt(eventDate[1]) - 1;
   eventYear = parseInt(eventDate[2]);
-  setDefaultDate(eventDay, eventMonth, eventYear);
+  try{
+    setDefaultDate(eventDay, eventMonth, eventYear);
+  }
+  catch(err){}
 };
 
 $( document ).ready(function() {
