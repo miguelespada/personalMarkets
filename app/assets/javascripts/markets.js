@@ -4,7 +4,6 @@
 //= require jquery.fileupload
 //= require attachinary
 //= require twitter/typeahead
-//= require map-small
 //= require date
 //= require jquery.dp_calendar
 

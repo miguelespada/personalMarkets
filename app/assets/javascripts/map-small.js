@@ -11,16 +11,14 @@ PM.initializeSmallMap = function() {
   PM.map.scrollWheelZoom.disable();
   PM.mapTiles = L.mapbox.tileLayer('jameshedaweng.hf5b366j');
   PM.map.addLayer(PM.mapTiles);
-
-  PM.checkIfLocationExist();
 };
 
-PM.checkIfLocationExist = function(){
+PM.checkIfLocationSet = function(){
   var originLat = $("#market_latitude").val();
   var originLng = $("#market_longitude").val();
 
   if (PM._coordinatesSet(originLat, originLng)){
-    PM.addMarker([parseFloat(originLat), parseFloat(originLng)]);
+    PM.addMarker([parseFloat(originLat), parseFloat(originLng)], true);
     PM.map.setView([parseFloat(originLat), parseFloat(originLng)], 14);
   }
   else {
@@ -29,23 +27,32 @@ PM.checkIfLocationExist = function(){
   }
 };
 
+PM.setMarker = function(){
+  var marketLat = $(".market-latitude").html();
+  var marketLng = $(".market-longitude").html();
+  PM.addMarker([parseFloat(marketLat), parseFloat(marketLng)], false);
+  PM.map.setView([parseFloat(marketLat), parseFloat(marketLng)], 14);
+}
+
 PM._coordinatesSet = function(latitude, longitude) {
   return latitude !== "" && longitude !== "";
 };
 
-PM.addMarker = function (latlng){
+PM.addMarker = function (latlng, canbechanged){
   PM.marker = L.marker(latlng,{
     icon: L.mapbox.marker.icon(
       {'marker-color': '#48a',
        'marker-symbol' : 'circle',
        'marker-size' : 'medium'}),
-    draggable: true
+    draggable: canbechanged
   });
 
   PM.marker.addTo(PM.map);
-  PM.updateLocation();
-  PM.dragToUpdateMarker();
-  PM.clickToUpdateMarker();
+  if (canbechanged){
+    PM.updateLocation();
+    PM.dragToUpdateMarker();
+    PM.clickToUpdateMarker();
+  }
 };
 
 PM.clickToUpdateMarker = function(){
@@ -54,7 +61,7 @@ PM.clickToUpdateMarker = function(){
       PM.map.removeLayer(PM.marker);
     }
 
-    PM.addMarker(event.latlng);
+    PM.addMarker(event.latlng, true);
   });
 };
 
@@ -97,7 +104,10 @@ PM._validAddress = function(data) {
 };
 
 $(document).ready(function(){
-  if ($('#map-small').length){
+  if ($('#map-small').is(':visible'))
     PM.initializeSmallMap();
-  }
+  if ($('#form-market-location').is(':visible'))
+    PM.checkIfLocationSet();
+  if ($('.market-location').is(':visible'))
+    PM.setMarker();
 });
