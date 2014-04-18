@@ -6,26 +6,21 @@
 	margin-bottom: 15px;
 	background-color: #5bc0de;
 }
+body { padding-top: 50px; }
 
 #search_img{
  width:80%;   
 }
 
 #gallery{
- margin-top:5%;   
 }
+
 .container-fluid{
-  margin-top: 50px;
 }
 
 .button_to{
   padding: 3px;
 }
-
-
 .simple_form .control-label {
   display: none;
-}
-.simple_form .control-group {
-  padding:6px;
 }

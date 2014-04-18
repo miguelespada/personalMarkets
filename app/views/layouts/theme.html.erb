@@ -15,17 +15,9 @@
     </head>
 
 <body>
-
-  <% if flash[:notice] %>
-      <div id="notice"><%= flash[:notice] %></div>
-  <% end %>
-
-  <% if flash[:error] %>
-      <div id="error"><%= flash[:error] %></div>
-  <% end %>
-  
-
   <%= render "layouts/shared/navbarhorizontal" %>
+  
+  <%= render "layouts/shared/flash" %>
 
     <!-- home -->
     <section id="home" class="box">
@@ -62,7 +54,7 @@
 
 
     <section id ="calendar" class="box">
-      <%= render "markets/shared/calendar" %>
+      <div id="calendar-widget"></div>
     </section>
 
     <!-- ligthbox -->

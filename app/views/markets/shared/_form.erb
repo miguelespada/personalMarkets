@@ -1,5 +1,6 @@
+<h2>Add market</h2>
 <%= simple_form_for [user, market], 
-  :html => {"data-tags" => "#{raw_tags(market)}" }  do |f| %>
+  :html => {"data-tags" => "#{raw_tags(market)}", role: "form"}  do |f| %>
   <%= f.input :name, input_html: { class: 'market-name' }%>
   <%= f.input :description, label_html: { class: 'market-description' } %>
   <%= f.association :category, :include_blank => false %>
