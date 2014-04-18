@@ -52,11 +52,11 @@ PM.setDataRange =  function() {
 };
 
 PM.searchCallBacks = function(){
-    var ajaxSearch = function (placeholder) {
+    var ajaxSearch = function () {
     $.get(this.action, $(this).serialize(), function(data) {
         $( "#gallery-items" ).html( data );
     });
-    return false;
+        return false;
     };
 
     $('#range').change(PM.setDataRange).change();

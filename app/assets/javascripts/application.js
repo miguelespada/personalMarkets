@@ -20,5 +20,5 @@
 //= require jquery.flexslider-min
 //= require vegas
 //= require moment
-//= require domain
+//= require app
  

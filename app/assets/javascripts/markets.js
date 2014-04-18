@@ -30,7 +30,9 @@ var getEventDate = function() {
     try{
       setDefaultDate(eventDay, eventMonth, eventYear);
     }
-    catch(err){}
+    catch(err){
+      $(".market-calendar").hide();
+    }
 };
 
 $( document ).ready(function() {
