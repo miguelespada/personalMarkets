@@ -19,10 +19,14 @@ PM.checkIfLocationExist = function(){
   var originLat = $("#market_latitude").val();
   var originLng = $("#market_longitude").val();
 
-  if (PM._coordinatesSet(originLat, originLng))
+  if (PM._coordinatesSet(originLat, originLng)){
     PM.addMarker([parseFloat(originLat), parseFloat(originLng)]);
-  else
+    PM.map.setView([parseFloat(originLat), parseFloat(originLng)], 14);
+  }
+  else {
     PM.clickToUpdateMarker();
+    PM.setViewWithUserLocation();
+  }
 };
 
 PM._coordinatesSet = function(latitude, longitude) {
@@ -95,6 +99,5 @@ PM._validAddress = function(data) {
 $(document).ready(function(){
   if ($('#map-small').length){
     PM.initializeSmallMap();
-    PM.setViewWithUserLocation();
   }
 });
