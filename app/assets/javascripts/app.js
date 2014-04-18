@@ -45,8 +45,29 @@ PM.getCurrentPosition = function(position){
   PM.map.setView([PM.newLatitude, PM.newLongitude], 14);
 };
 
+PM.setDataRange =  function() {
+    var v = H.makeDateString($(this).val());
+    $("#from").val(v.from);
+    $("#to").val(v.to);
+};
+
+PM.searchCallBacks = function(){
+    var ajaxSearch = function (placeholder) {
+    $.get(this.action, $(this).serialize(), function(data) {
+        $( "#gallery-items" ).html( data );
+    });
+    return false;
+    };
+
+    $('#range').change(PM.setDataRange).change();
+    $('#search_market').change(ajaxSearch);
+}
+
+
 $( document ).ready(function() {
     $('#edit_link').click(PM.editClick);
-
+    PM.searchCallBacks();
 });
+
+
 

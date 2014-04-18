@@ -19,4 +19,5 @@
 //= require helper.js
 //= require jquery.flexslider-min
 //= require vegas
+//= require moment
  

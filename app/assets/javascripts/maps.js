@@ -65,6 +65,4 @@ $(document).ready(function(){
     $('#theme-light').on('click', function () {
       PM.changeTile('jameshedaweng.hig7dplk');
     });
-
-
 });
