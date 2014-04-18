@@ -7,6 +7,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
+
 <div class="market-name"> <%= market.name %> </div>
 <div class="market-thumbnail">
   <div class="market-featured-photo">
@@ -75,3 +76,4 @@
 </div>
 
 <div class="fb-comments" data-href=<%=market_url(market.to_param)%> data-numposts="5" data-colorscheme="light"></div>
+<div class="fb-like" data-href=<%=market_url(market.to_param)%> data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
