@@ -23,14 +23,14 @@ var substringMatcher = function(strs) {
 
 var getEventDate = function() {
   var eventDate, eventDay, eventMonth, eventYear;
-  eventDate = $(".market-date").text().split("/");
-  eventDay = parseInt(eventDate[0]);
-  eventMonth = parseInt(eventDate[1]) - 1;
-  eventYear = parseInt(eventDate[2]);
-  try{
-    setDefaultDate(eventDay, eventMonth, eventYear);
-  }
-  catch(err){}
+    eventDate = $(".market-date").text().split("/");
+    eventDay = parseInt(eventDate[0]);
+    eventMonth = parseInt(eventDate[1]) - 1;
+    eventYear = parseInt(eventDate[2]);
+    try{
+      setDefaultDate(eventDay, eventMonth, eventYear);
+    }
+    catch(err){}
 };
 
 $( document ).ready(function() {

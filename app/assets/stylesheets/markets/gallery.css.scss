@@ -3,29 +3,19 @@
 
 .market-gallery{
   @extend .row;
+  margin-top:20px;
 }
 
 .market-gallery-item {
-  @extend .col-md-4;
+  @extend .col-md-2;
 
   .market-thumbnail{
     @extend .thumbnail;
-    text-align:center;
+  border-width: 0px;
   }
 
-  .market-name {
-    @extend h2;
-  }
-
-  .market-description {
+  .market-caption {
     @extend .caption;
-  }
-
-  .market-meta { display : none }
-  .market-widgets { display : none }
-  .market-stats { display : none }
-  .market-info { display : none }
-  
-  .market-action {
+    text-align:center;
   }
 }

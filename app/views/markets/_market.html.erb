@@ -1,5 +1,8 @@
 
-<%= market.featured_photo(image_size) %>
-<%= market.delete_photo_link %>
-<%= market.name %> 
-<%= market.description %> 
+<div class="market-thumbnail">
+  <%= link_to market.featured_photo(image_size), market_path(market) %>
+  <div class="market-caption">
+    <h3> <%= market.name %> </h3>
+    <p> <%= market.description %> <p>
+  </div> 
+</div>
