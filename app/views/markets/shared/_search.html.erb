@@ -17,9 +17,48 @@
     </div>
   </div>
 
-  <%= select_tag(:range, options_for_select([['Today', 1], ['This week', 2], ['This month', 3], ['All', 4]]) ) %>
+  <%= select_tag(:range, options_for_select([['Today', 1], ['This week', 2], ['This month', 3], ['Next week', 4], ['All', 5] ]) ) %>
 
   <div "form-actions">
     <%= submit_tag "Search", name: nil %>
   </div>
 <% end %>
+
+<%= javascript_include_tag "moment" %>
+
+<script>
+$(document).ready(function(){
+  var fromString, toString, fromDate, toDate;
+  var range = $("#range").val();
+  makeDateString(range);
+
+  $('#range').on('change', function() {
+    range = $(this).val();
+    makeDateString(range);
+  });  
+});
+
+var makeDateString = function(range){
+  fromDate = moment();
+  
+  if (range == 1)
+    toDate = moment();
+  else if (range == 2)
+    toDate = moment().weekday(7);
+  else if (range == 3)
+    toDate = moment().endOf("month");
+  else if (range == 4){
+    fromDate = moment().day(7).weekday(1);
+    toDate = moment().day(7).weekday(8);
+  }
+
+  fromString = moment(fromDate).format("DD/MM/YYYY");
+  toString = moment(toDate).format("DD/MM/YYYY");
+
+  if (range == 5)
+    toString = "";
+
+  $("#from").val(fromString);
+  $("#to").val(toString);
+};
+</script>

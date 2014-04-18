@@ -142,6 +142,8 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.5.2)
     minitest (4.7.5)
+    momentjs-rails (2.5.1)
+      railties (>= 3.1)
     mongoid (4.0.0.beta1)
       activemodel (>= 4.0.0)
       moped (~> 2.0.beta6)
@@ -322,6 +324,7 @@ DEPENDENCIES
   jquery-ui-rails
   launchy
   mapbox-rails
+  momentjs-rails
   mongoid (>= 2.0.0.beta.19)
   mongoid-rspec
   mongoid_slug
