@@ -23,9 +23,7 @@
   display: none;
 }
 
-.date-range{
-  display: none;
-}
+
 
 body {
   padding-top: 70px
@@ -37,4 +35,12 @@ body {
 
 footer {
   margin: 50px 0;
+}
+
+.date-range{
+  display: none;
+}
+
+#search-button{
+  display: none;
 }
