@@ -53,8 +53,21 @@ end
 
 When(/^I do a search$/) do
   fill_in "query",  with: "market"
-  fill_in "from",  with: "21/03/2014"
-  fill_in "to",  with: "23/03/2014"
+  fill_in "from",  with: "21/04/2015"
+  fill_in "to",  with: "23/04/2015"
   click_button "Search"
 end
 
+
+When(/^I select range$/) do
+  select "All", :from => "range"
+end
+
+When(/^I select incorrect range$/) do
+  select "Today", :from => "range"
+end
+
+Then(/^I should not see the markets$/) do
+  page.should_not have_content @market_0.name
+  page.should_not have_content @market_0.description
+end

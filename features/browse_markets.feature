@@ -34,8 +34,20 @@ Feature: Browse markets
     When I go to Calendar
     Then I should see the markets in the calendar
 
-  @seach
+  @search
   Scenario: Search markets
     When I go to Search
     And I do a search
     Then I see the markets matching my query
+
+  @ajaxSearch @javascript
+  Scenario: Search markets with ajax
+    When I go to Search
+    And I select range
+    Then I see the markets matching my query
+
+  @ajaxSearch @javascript
+  Scenario: Search markets with ajax wrong range
+    When I go to Search
+    And I select incorrect range
+    Then I should not see the markets
