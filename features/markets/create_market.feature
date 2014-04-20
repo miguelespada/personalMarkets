@@ -6,6 +6,7 @@ Feature: Create market
   Background:
     Given I am logged in
 
+  @create_market
   Scenario: Add Market
     When I create a market
     Then I should see the market page

@@ -13,6 +13,8 @@ class Market
 
   field :name, type: String
   field :description, type: String
+  field :distrit, type: String
+  field :city, type: String
   field :address, type: String
   field :longitude, type: Float
   field :latitude, type: Float
@@ -27,7 +29,7 @@ class Market
 
   slug :name, history: false, scope: :user
 
-  has_attachment  :featured, accept: [:jpg, :png, :gif]
+  has_attachment :featured, accept: [:jpg, :png, :gif]
 
   validates_presence_of :name, :description, :user, :category
   
