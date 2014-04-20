@@ -30,7 +30,7 @@ class Market
   has_attachment  :featured, accept: [:jpg, :png, :gif]
 
   validates_presence_of :name, :description, :user, :category
-
+  
   def can_be_published
     self.state != "published"
   end

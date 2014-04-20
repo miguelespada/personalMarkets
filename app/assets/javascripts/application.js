@@ -19,4 +19,7 @@
 //= require helper.js
 //= require jquery.flexslider-min
 //= require vegas
+//= require moment
+//= require app
 //= require jquery.steps.min
+//= require bootstrap-datepicker

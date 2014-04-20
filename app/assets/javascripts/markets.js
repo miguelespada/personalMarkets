@@ -4,7 +4,6 @@
 //= require jquery.fileupload
 //= require attachinary
 //= require twitter/typeahead
-//= require map-small
 //= require date
 //= require jquery.dp_calendar
 
@@ -24,11 +23,16 @@ var substringMatcher = function(strs) {
 
 var getEventDate = function() {
   var eventDate, eventDay, eventMonth, eventYear;
-  eventDate = $(".market-date").text().split("/");
-  eventDay = parseInt(eventDate[0]);
-  eventMonth = parseInt(eventDate[1]) - 1;
-  eventYear = parseInt(eventDate[2]);
-  setDefaultDate(eventDay, eventMonth, eventYear);
+    eventDate = $(".market-date").text().split("/");
+    eventDay = parseInt(eventDate[0]);
+    eventMonth = parseInt(eventDate[1]) - 1;
+    eventYear = parseInt(eventDate[2]);
+    try{
+      setDefaultDate(eventDay, eventMonth, eventYear);
+    }
+    catch(err){
+      $(".market-calendar").hide();
+    }
 };
 
 $( document ).ready(function() {

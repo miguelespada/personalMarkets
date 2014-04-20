@@ -165,10 +165,10 @@ readyState(function()
     {
         delay: 10000,
         backgrounds: [
-            { src: 'images/1.png', fade: 1000 },
-            { src: 'images/2.png', fade: 1000 },
-            { src: 'images/3.png', fade: 1000 },
-            { src: 'images/4.png', fade: 1000 },
+            { src: 'http://res.cloudinary.com/espadaysantacruz/image/asset/v1397747834/4-790bde19111ee67334edb8e0e9d8171a.png', fade: 1000 },
+            { src: 'http://res.cloudinary.com/espadaysantacruz/image/asset/v1397747830/3-cef97c2481c2d7e8a2ff681313e97522.png', fade: 1000 },
+            { src: 'http://res.cloudinary.com/espadaysantacruz/image/asset/v1397747825/2-4bb6c076041e84d7a00a4762b4c89798.png', fade: 1000 },
+            { src: 'http://res.cloudinary.com/espadaysantacruz/image/asset/v1397747821/1-332d8245e5269a80b613c4e31a0b86f5.png', fade: 1000 },
         ]
     })('overlay');
 

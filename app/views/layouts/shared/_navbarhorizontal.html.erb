@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
 
-                <li><a data-nav="scroll" href="/#/home">Search</a></li>
+                <li><%= link_to "Search", search_path %></li>
                 <li><a data-nav="scroll" href="/#/map-container">Map</a></li>
                 <li><a data-nav="scroll" href="/#/gallery">Markets</a></li>
                 <li><a data-nav="scroll" href="/#/calendar">Calendar</a></li>
@@ -46,11 +46,11 @@
 
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
-                <li><%=link_to "Sign out " + current_user.email, destroy_user_session_path %></li>
+                <%= render "layouts/shared/signout" %>
               <% else %>
                 <%= render "layouts/shared/signin" %>
               <% end %>
-            
+            </ul>
 
         </div>
     </div>

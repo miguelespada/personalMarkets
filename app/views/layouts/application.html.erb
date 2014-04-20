@@ -4,14 +4,9 @@
   <%= render "layouts/shared/header" %>
 
 <body>
-  <% if flash[:notice] %>
-      <div id="notice"><%= flash[:notice] %></div>
-  <% end %>
-
-  <% if flash[:error] %>
-      <div id="error"><%= flash[:error] %></div>
-  <% end %>
   
+  <%= render "layouts/shared/flash" %>
+
   <%= render "layouts/shared/navbarhorizontal" %>
 
   <div class="container-fluid">

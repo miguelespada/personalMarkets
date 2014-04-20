@@ -1,23 +1,28 @@
 <%= form_tag search_markets_path, method: "get", id: "search_market" do %>
-  <div "form-inputs">
-    <div class="query">
-    <p>Query:</p>
-     <%= text_field_tag :query, params[:query] %>
+    <div class="form-group">
+      <%= text_field_tag :query, params[:query], placeholder: "Query...", class: "query form-control"  %>
     </div>
 
-    <div class="category">
-    <p>Category:</p>
-    <%= collection_select(:category, :category_id, Category.all, :name, :name, 
-                        {:selected => @category_query, :include_blank => ""}) %>
+    <div class="form-group">
+      <%= collection_select(:category, :category_id, Category.all, :name, :name, 
+                          {:selected => @category_query, :include_blank => ""}, class: "category form-control" ) %>
     </div>
 
-    <div class="date-range">
-      <p>From:</p> <%= text_field_tag :from, params[:from], data: {:behaviour => 'datepicker'} %>  
-      <p>To:</p> <%= text_field_tag :to, params[:to], data: {:behaviour => 'datepicker'} %>  
-    </div>
-  </div>
 
-  <div "form-actions">
-    <%= submit_tag "Search", name: nil %>
-  </div>
+    <div class="form-group">
+        <%= select_tag(:range, options_for_select([['Today', 'today'], 
+                                              ['This week', 'thisWeek'], 
+                                              ['This month', 'thisMonth'], 
+                                              ['Next week', 'nextWeek'], 
+                                              ['All', 'all'] ]), class: "form-control" ) %>      
+
+     </div>
+
+    <div class="date-range invisible">
+      <%= text_field_tag :from, params[:from]%>  
+      <%= text_field_tag :to, params[:to]%>  
+    </div>
+
+    <%= submit_tag "Search", name: nil, class: "invisible" %>
+
 <% end %>

@@ -697,3 +697,13 @@
 	};
 
 })(jQuery);
+
+
+function dateFormatException(){}
+
+var setDefaultDate = function(day, month, year) {
+	if (day || month || year)
+		$.fn.dp_calendar.defaults.date_selected = new Date(year, month, day);
+	else
+		throw new dateFormatException();
+};

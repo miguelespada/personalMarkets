@@ -127,8 +127,6 @@ GEM
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jquery-steps-rails (1.0.4.1)
-      jquery-rails
     jquery-ui-rails (4.2.0)
       railties (>= 3.2.16)
     json (1.8.1)
@@ -144,6 +142,8 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.5.2)
     minitest (4.7.5)
+    momentjs-rails (2.5.1)
+      railties (>= 3.1)
     mongoid (4.0.0.beta1)
       activemodel (>= 4.0.0)
       moped (~> 2.0.beta6)
@@ -321,10 +321,10 @@ DEPENDENCIES
   jasmine
   jbuilder (~> 1.2)
   jquery-rails
-  jquery-steps-rails
   jquery-ui-rails
   launchy
   mapbox-rails
+  momentjs-rails
   mongoid (>= 2.0.0.beta.19)
   mongoid-rspec
   mongoid_slug

@@ -1,29 +1,70 @@
-
-
-<div id="wizard">
-    <h1>First Step</h1>
-    <div>First Content</div>
- 
-    <h1>Second Step</h1>
-    <div>Second Content</div>
-</div>
-
 <%= simple_form_for [user, market], 
-  :html => {"data-tags" => "#{raw_tags(market)}" }  do |f| %>
-  <%= f.input :name, input_html: { class: 'market-name' }%>
-  <%= f.input :description, label_html: { class: 'market-description' } %>
-  <%= f.association :category, :include_blank => false %>
-  <%= f.input :featured, as: :attachinary %>
-  <%= f.input :address %>
-  <%= f.input :longitude %>
-  <%= f.input :latitude %>  
-  <%= f.input :date, input_html: { "data-behaviour" => 'datepicker' } %>  
-  <%= f.input :tags, input_html: { class: 'tm-input typeahead', placeholder: "Tags" } %>
-  <%= f.button :submit %>
+    :html => {"data-tags" => "#{raw_tags(market)}", role: "form"}  do |f| %>
+    <div id="wizard">
+    
+        <h3>Name and description</h3>
+        <section>  
+        <%= f.input :name, input_html: { class: 'market-name' }%>
+        <%= f.input :description, :as => :text, label_html: { class: 'market-description' } %>
+        </section>
+        
+        <h3>Featured photo</h3>
+        <section>
+        <%= f.input :featured, as: :attachinary %>
+        </section>
+
+
+        <h3>Category and tags</h3>
+        <section>
+        <%= f.association :category, :include_blank => false %>
+        <%= f.input :tags, input_html: { class: 'tm-input typeahead', placeholder: "Tags" } %>
+        </section>
+
+
+        <h3>Date</h3>
+        <section>
+        <%= f.input :date %> 
+        <div id="datepicker"><div></div>
+        </div>
+
+        </section>
+
+        <h3>Location</h3>
+        <section id = "form-market-location"> 
+          <%= f.input :address %>
+          <%= f.input :longitude %>
+          <%= f.input :latitude %>
+        </section>
+    </div>
+        <%= f.button :submit, class: 'btn'%>
 <% end %>
+<section>
+<%= render "markets/shared/mapsmall" %>
+</section>
+<script>
 
-<div id="map-small">
-  <%= stylesheet_link_tag 'map-small'%>
-</div>
+$( document ).ready(function() {
+ $("#wizard").steps({
+            headerTag: "h3",
+            bodyTag: "section",
+            transitionEffect: "slideLeft",
+            stepsOrientation: 1,
+            enableFinishButton: false,
+            enablePagination: false,
+            enableAllSteps: true
 
+        });
 
+$('#datepicker div').datepicker({
+    weekStart: 1,
+    startDate: "today",
+    endDate: "+1m",
+    language: "es",
+    multidate: true,
+    todayHighlight: true
+}).on('changeDate', function(e){
+    console.log(e.dates);
+    });
+
+});
+</script>

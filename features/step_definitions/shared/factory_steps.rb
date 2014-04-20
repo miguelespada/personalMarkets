@@ -10,7 +10,7 @@ Given(/^There are some published markets$/) do
       :longitude=> "-3.7",
       :tags => "one",
       :category => @category,
-      :date=>"22/03/2014",
+      :date=>"22/04/2015",
       :state => :published)
   Market.reindex
 end
