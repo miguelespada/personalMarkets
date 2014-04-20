@@ -74,7 +74,10 @@ class Market
   end
 
   def format_date
-     Date.strptime(date, "%d/%m/%Y").strftime("%Y%m%d") if date.present?
+    if date.present?
+      dates = date.split(/,/)
+      dates.collect{|d| Date.strptime(d, "%d/%m/%Y").strftime("%Y%m%d")}
+    end
   end
 
   def self.search(query, category, from = "",  to = "" )

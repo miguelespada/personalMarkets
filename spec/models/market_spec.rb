@@ -30,7 +30,7 @@ describe Market do
                          :name => "Specific market", 
                          :tags => "tag_one, tag_two, tag_three",
                          :category => @category,
-                         :date => "08/01/2014")
+                         :date => "04/01/2014,06/01/2014,08/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 1",
                                   :date => "10/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 2",
@@ -78,6 +78,28 @@ describe Market do
         expect(result.count).to eq 1
       end
 
+      describe "a market has different dates" do
+        it "filters by date range when multiple dates match 1" do
+          result = Market.search("market", "", "04/01/2014", "04/01/2014" )
+          expect(result.count).to eq 1
+        end
+
+        it "filters by date range when multiple dates  match 2" do
+          result = Market.search("market", "", "06/01/2014", "06/01/2014" )
+          expect(result.count).to eq 1
+        end
+
+        it "filters by date range when multiple dates  match 3" do
+          result = Market.search("market", "", "08/01/2014", "08/01/2014" )
+          expect(result.count).to eq 1
+        end
+
+        it "filters by date range when multiple dates match 4" do
+          result = Market.search("market", "", "03/01/2014", "08/01/2014" )
+          expect(result.count).to eq 1
+        end
+      end
+
       it "filters by date and category" do
         result = Market.search("market", @category.name, "08/01/2014", "20/01/2014" )
         expect(result.count).to eq 1
@@ -92,6 +114,11 @@ describe Market do
         result = Market.search("market", "", "xxx")
         expect(result.count).to eq Market.all.count
       end
+
+      it "splits the date" do
+        expect(@market.format_date.count).to eq 3 
+      end
+
 
       it "filters out short queries"
   end
