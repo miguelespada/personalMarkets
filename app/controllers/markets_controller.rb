@@ -1,6 +1,7 @@
 class MarketsController < ApplicationController
   before_filter :load_user
   before_filter :load_market, only: [:show ,:edit, :destroy]
+  before_filter :load_hidden_tags, only: [:create, :edit, :update]
 
   def archive
     domain.archive_market params[:market_id]
@@ -131,7 +132,7 @@ class MarketsController < ApplicationController
     
     def load_hidden_tags
       if params["hidden-market"].present?
-        params[:market][:tags] += "," + params["hidden-market"][:tags]
+        params[:market][:tags] = params["hidden-market"][:tags]
       end
     end 
     

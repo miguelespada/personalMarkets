@@ -14,12 +14,14 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require cloudinary/jquery.cloudinary
-//= require bootstrap.js
-//= require templates.js
-//= require helper.js
+//= require bootstrap
+//= require templates
+//= require helper
 //= require jquery.flexslider-min
 //= require vegas
 //= require moment
 //= require app
 //= require jquery.steps.min
 //= require bootstrap-datepicker
+//= require tagmanager
+//= require twitter/typeahead.min
