@@ -46,27 +46,27 @@
 <script>
 
 $( document ).ready(function() {
-        $("#wizard").steps({
-            headerTag: "h3",
-            bodyTag: "section",
-            transitionEffect: "slideLeft",
-            stepsOrientation: 1,
-            enableFinishButton: false,
-            enablePagination: false,
-            enableAllSteps: true
+      $("#wizard").steps({
+          headerTag: "h3",
+          bodyTag: "section",
+          transitionEffect: "slideLeft",
+          stepsOrientation: 1,
+          enableFinishButton: false,
+          enablePagination: false,
+          enableAllSteps: true
 
-        });
+      });
 
-        $('#datepicker div').datepicker({
-            weekStart: 1,
-            startDate: "today",
-            endDate: "+1m",
-            language: "es",
-            multidate: true,
-            todayHighlight: true
-        }).on('changeDate', function(e){
-            console.log(e.dates);
-        });
+      $('#datepicker div').datepicker({
+          weekStart: 1,
+          startDate: "today",
+          endDate: "+1m",
+          language: "es",
+          multidate: true,
+          todayHighlight: true
+      }).on('changeDate', function(e){
+          console.log(e.dates);
+      });
 
    $('.attachinary-input').attachinary();
 
