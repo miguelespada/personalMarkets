@@ -29,16 +29,16 @@ module Elasticsearch
 
     def create_index
        Tire.index 'markets' do
-          delete
-          create mappings: {
-            market: {
-              properties: {
-                  category: { type: 'string', analyzer: 'keyword' }
+          create :mappings => {
+            :market => {
+              :properties => {
+                  :lat_lon => { type: 'geo_point' }
               }
             }
           }
-        end
     end
+  end
+
 
     def index_all
       unless Tire.index('markets').exists?
@@ -49,7 +49,6 @@ module Elasticsearch
         end
       end
     end
-
   end
 
 end

@@ -27,10 +27,13 @@ describe Market do
       Market.delete_all
       @category =  FactoryGirl.create(:category, :name => "category") 
       @market = FactoryGirl.create(:market, 
-                         :name => "Specific market", 
+                         :name => "Specific", 
+                         :description => "Specific market", 
                          :tags => "tag_one, tag_two, tag_three",
                          :city => "Madrid",
                          :category => @category,
+                         :latitude => 40.001,
+                         :longitude => -70.02,
                          :date => "04/01/2014,06/01/2014,08/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 1", 
                                   :city => 'Barcelona',
@@ -45,19 +48,19 @@ describe Market do
 
     describe "search with blank query" do
       it "returns all the markets" do
-        result = Market.search("", "")
+        result = Market.search("")
         expect(result.count).to eq Market.all.count
       end
     end
 
     describe "full query"
       it "searches with specific name" do
-        result = Market.search("Specific", "")
+        result = Market.search("Specific")
         expect(result.count).to eq 1
       end
       
       it "searches with generic name" do
-        result = Market.search("Generic", "")
+        result = Market.search("Generic")
         expect(result.count).to eq Market.all.count - 1
       end
 
@@ -135,7 +138,23 @@ describe Market do
         expect(@market.format_date.count).to eq 3 
       end
 
+    it "filters out short queries"
+    
+    describe "filtering by location distance" do
+        it "filters by location distance" do
+          result = Market.search("market", "", "", "", "", 40, -70)
+          expect(result.count).to eq 1
+        end
+        
+        it "combines two filters" do
+          result = Market.search("market", "Dummy", "", "", "", 40, -70)
+          expect(result.count).to eq 0
+        end
 
-      it "filters out short queries"
+        it "filters out by location distance" do
+          result = Market.search("market", "", "", "", "", 100, 100)
+          expect(result.count).to eq 0
+        end
+    end
   end
 end

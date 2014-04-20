@@ -31,7 +31,7 @@ class Market
   has_attachment :featured, accept: [:jpg, :png, :gif]
 
   validates_presence_of :name, :description, :user, :category
-  
+
   def can_be_published
     self.state != "published"
   end
@@ -71,19 +71,32 @@ class Market
           category: category.name,
           city: city,
           tags: tags,
-          date: format_date
+          date: format_date,
+          lat_lon: lat_lon
         }.to_json
+  end
+
+  def lat_lon
+    if latitude.nil? or longitude.nil?
+      "0,0"
+    else
+      [latitude, longitude].join(',')
+    end
   end
 
   def format_date
     if date.present?
       dates = date.split(/,/)
       dates.collect{|d| Date.strptime(d, "%d/%m/%Y").strftime("%Y%m%d")}
+    else
+      ""
     end
+
   end
 
-  def self.search(query, category, from = "",  to = "", city = "", lat = nil, lon = nil)
+  def self.search(query, category = "", from = "",  to = "", city = "", lat = nil, lon = nil)
       index_all
+
       return [] if Market.count == 0 
 
       query = query.blank? ? '*' : query
@@ -91,7 +104,7 @@ class Market
 
       the_query = lambda do |boolean|
          boolean.must {string query}
-         boolean.must {string "city:#{city}"} if !city.blank?
+         boolean.must {string "city:#{city}" } if !city.blank?
          boolean.must {string "date:[#{range}]" } if !range.blank?
       end
 
@@ -101,6 +114,9 @@ class Market
           filtered do
             unless category.blank?
               filter :terms, category: [category]
+            end
+            unless lat.nil? or lon.nil?
+              filter :geo_distance, lat_lon: [lat, lon].join(','), distance: '10km'
             end
           end
         end
