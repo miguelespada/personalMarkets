@@ -70,6 +70,7 @@ class Market
           name: name,
           description: description,
           category: category.name,
+          city: city,
           tags: tags,
           date: format_date
         }.to_json
@@ -82,7 +83,7 @@ class Market
     end
   end
 
-  def self.search(query, category, from = "",  to = "" )
+  def self.search(query, category, from = "",  to = "", city = "", distrit = "" )
       index_all
       return [] if Market.count == 0 
 
@@ -91,11 +92,11 @@ class Market
 
       the_query = lambda do |boolean|
          boolean.must {string query}
+         boolean.must {string "city:#{city}"} if !city.blank?
+         boolean.should {string "distrit:#{distrit}" } if !distrit.blank?
          boolean.must {string "date:[#{range}]" } if !range.blank?
       end
 
-      puts category
-      
       search = Tire.search 'markets' do
         query do
           boolean &the_query
@@ -106,6 +107,7 @@ class Market
           end
         end
       end
+
       values = search.results.collect{|result| find(result.to_hash[:id])}
   end
   

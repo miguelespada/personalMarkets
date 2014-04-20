@@ -29,11 +29,12 @@ describe Market do
       @market = FactoryGirl.create(:market, 
                          :name => "Specific market", 
                          :tags => "tag_one, tag_two, tag_three",
+                         :city => "Madrid",
                          :category => @category,
                          :date => "04/01/2014,06/01/2014,08/01/2014")
-      FactoryGirl.create(:market, :name => "Generic market 1",
+      FactoryGirl.create(:market, :name => "Generic market 1", :city => 'Barcelona',
                                   :date => "10/01/2014")
-      FactoryGirl.create(:market, :name => "Generic market 2",
+      FactoryGirl.create(:market, :name => "Generic market 2", :city => 'Madrid',
                                   :date => "15/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 3",
                                   :date => "19/01/2014")
@@ -66,6 +67,16 @@ describe Market do
       it "filters by category" do
         result = Market.search("market", @category.name)
         expect(result.count).to eq 1
+      end
+
+      it "filters by city" do
+        result = Market.search("market", "", "", "", "Madrid")
+        expect(result.count).to eq 2
+      end
+
+      it "filters by city with no city" do
+        result = Market.search("market", "", "", "", "")
+        expect(result.count).to eq 4
       end
 
       it "filters by date range, with only 'to'" do
