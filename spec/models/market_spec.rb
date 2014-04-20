@@ -37,7 +37,7 @@ describe Market do
                          :date => "04/01/2014,06/01/2014,08/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 1", 
                                   :city => 'Barcelona',
-                                  :description => "Specific market is awesome", 
+                                  :description => "The awesome ultraspecif", 
                                   :date => "10/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 2", 
                                   :city => 'Madrid',
