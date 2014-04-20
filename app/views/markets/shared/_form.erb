@@ -1,3 +1,13 @@
+
+
+<div id="wizard">
+    <h1>First Step</h1>
+    <div>First Content</div>
+ 
+    <h1>Second Step</h1>
+    <div>Second Content</div>
+</div>
+
 <%= simple_form_for [user, market], 
   :html => {"data-tags" => "#{raw_tags(market)}" }  do |f| %>
   <%= f.input :name, input_html: { class: 'market-name' }%>
@@ -15,3 +25,5 @@
 <div id="map-small">
   <%= stylesheet_link_tag 'map-small'%>
 </div>
+
+

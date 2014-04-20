@@ -19,4 +19,4 @@
 //= require helper.js
 //= require jquery.flexslider-min
 //= require vegas
- 
+//= require jquery.steps.min
