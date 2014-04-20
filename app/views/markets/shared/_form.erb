@@ -34,7 +34,6 @@
         <h3>Location</h3>
         <section id = "form-market-location" > 
           <%= f.input :address %>
-          <%= f.input :distrit, { id: 'distrits', placeholder: "Barrio" } %>
           <%= f.input :city, { class: 'cities', placeholder: "Ciudad" } %>
           <div class= "hidden">
           <%= f.input :longitude %>
@@ -96,34 +95,6 @@ $( document ).ready(function() {
     highlight: true,
     minLength: 1,
     source: tags.ttAdapter(),
-  });
-
-
-  var theDistrits = ['Malasaña', 'Lavapiés', 'La latina', 'Salamanca'];
- 
-
-  // constructs the suggestion engine
-  var distrits = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    // `states` is an array of state names defined in "The Basics"
-    local: $.map(theDistrits, function(distrit) { return { value: distrit }; })
-  });
-   
-  // kicks off the loading/processing of `local` and `prefetch`
-  distrits.initialize();
-
-  $('#market_distrit').typeahead({
-    hint: true,
-    highlight: true,
-    minLength: 1
-  },
-  {
-    name: 'distrits',
-    displayKey: 'value',
-    // `ttAdapter` wraps the suggestion engine in an adapter that
-    // is compatible with the typeahead jQuery plugin
-    source: distrits.ttAdapter()
   });
 
   var theCities = ['Madrid', 'Barcelona', 'Bilbao', 'Valencia'];

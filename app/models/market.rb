@@ -13,7 +13,6 @@ class Market
 
   field :name, type: String
   field :description, type: String
-  field :distrit, type: String
   field :city, type: String
   field :address, type: String
   field :longitude, type: Float
@@ -83,7 +82,7 @@ class Market
     end
   end
 
-  def self.search(query, category, from = "",  to = "", city = "", distrit = "" )
+  def self.search(query, category, from = "",  to = "", city = "", lat = nil, lon = nil)
       index_all
       return [] if Market.count == 0 
 
@@ -93,7 +92,6 @@ class Market
       the_query = lambda do |boolean|
          boolean.must {string query}
          boolean.must {string "city:#{city}"} if !city.blank?
-         boolean.should {string "distrit:#{distrit}" } if !distrit.blank?
          boolean.must {string "date:[#{range}]" } if !range.blank?
       end
 

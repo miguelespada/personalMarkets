@@ -126,7 +126,6 @@ class MarketsController < ApplicationController
         :query, 
         :category,
         :city,
-        :distrit,
         :user_id,
         :category_id,
         )
