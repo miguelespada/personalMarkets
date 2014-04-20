@@ -70,7 +70,7 @@ class Market
           description: description,
           category: category.name,
           city: city,
-          tags: tags,
+          tags: tags.split(/,/),
           date: format_date,
           lat_lon: lat_lon
         }.to_json

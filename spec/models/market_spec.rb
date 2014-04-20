@@ -37,6 +37,7 @@ describe Market do
                          :date => "04/01/2014,06/01/2014,08/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 1", 
                                   :city => 'Barcelona',
+                                  :description => "Specific market is awesome", 
                                   :date => "10/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 2", 
                                   :city => 'Madrid',
@@ -125,7 +126,17 @@ describe Market do
       end
 
       it "search by tag" do
-        result = Market.search("tag_one", "" )
+        result = Market.search("tag_one")
+        expect(result.count).to eq 1
+      end
+
+      it "search by tag" do
+        result = Market.search("tag_three")
+        expect(result.count).to eq 1
+      end
+
+      it "search in description" do
+        result = Market.search("awesome" )
         expect(result.count).to eq 1
       end
 
@@ -145,7 +156,7 @@ describe Market do
           result = Market.search("market", "", "", "", "", 40, -70)
           expect(result.count).to eq 1
         end
-        
+
         it "combines two filters" do
           result = Market.search("market", "Dummy", "", "", "", 40, -70)
           expect(result.count).to eq 0
