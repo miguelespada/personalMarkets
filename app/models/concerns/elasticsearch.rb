@@ -32,6 +32,7 @@ module Elasticsearch
           create :mappings => {
             :market => {
               :properties => {
+                  :category => { type: 'string', analyzer: 'keyword' },
                   :lat_lon => { type: 'geo_point' }
               }
             }
