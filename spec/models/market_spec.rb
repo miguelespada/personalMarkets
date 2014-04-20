@@ -150,6 +150,7 @@ describe Market do
       end
 
     it "filters out short queries"
+    it "boots matches on the name"
     
     describe "filtering by location distance" do
         it "filters by location distance" do
