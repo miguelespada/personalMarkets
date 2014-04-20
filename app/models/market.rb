@@ -88,10 +88,7 @@ class Market
     if date.present?
       dates = date.split(/,/)
       dates.collect{|d| Date.strptime(d, "%d/%m/%Y").strftime("%Y%m%d")}
-    else
-      ""
     end
-
   end
 
   def self.search(query, category = "", from = "",  to = "", city = "", lat = nil, lon = nil)
