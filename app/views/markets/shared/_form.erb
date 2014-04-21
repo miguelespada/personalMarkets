@@ -35,7 +35,7 @@
         <section id = "form-market-location" > 
           <%= f.input :address %>
           <%= f.input :city, { class: 'cities', placeholder: "Ciudad" } %>
-          <div >
+          <div class = "hidden">
           <%= f.input :longitude %>
           <%= f.input :latitude %>
           </div>
@@ -47,7 +47,7 @@
 <script>
 
 $( document ).ready(function() {
-      /*$("#wizard").steps({
+      $("#wizard").steps({
           headerTag: "h3",
           bodyTag: "section",
           transitionEffect: "slideLeft",
@@ -127,7 +127,7 @@ $( document ).ready(function() {
     // `ttAdapter` wraps the suggestion engine in an adapter that
     // is compatible with the typeahead jQuery plugin
     source: cities.ttAdapter()
-  });*/
+  });
   $('#market_address').blur(function () {
     updateLocationData();
   });
@@ -137,7 +137,7 @@ $( document ).ready(function() {
   });
 });
 
-/*var areDatesSelected = function(datesString){
+var areDatesSelected = function(datesString){
   return datesString != "";
 };
 var stringToDate = function(data){
@@ -159,7 +159,7 @@ var fillInputWithDates = function(data){
     })(i);
   }
   $('#market_date').val(dateString);
-};*/
+};
 
 var updateLocationData = function(){
   if (addressAndCityAreFilled())
