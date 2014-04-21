@@ -39,5 +39,11 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
     listener.publish_failed market_id
   end
 
+  def delete_image market_id
+    market = markets_repo.find market_id
+    market.delete_featured_image
+    listener.delete_image_succeeded market
+  end
+
 end
 
