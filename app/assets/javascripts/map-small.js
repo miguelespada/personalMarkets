@@ -106,8 +106,8 @@ PM._validAddress = function(data) {
 $(document).ready(function(){
   if ($('#map-small').is(':visible'))
     PM.initializeSmallMap();
-  if ($('#form-market-location').is(':visible'))
-    PM.checkIfLocationSet();
+  /*if ($('#form-market-location').is(':visible'))
+    PM.checkIfLocationSet();*/
   if ($('.market-location').is(':visible'))
     PM.setMarker();
 });
