@@ -133,19 +133,34 @@ describe MarketsController do
   end
 
   describe "Permissions" do
+
+    context "archive market" do
+      before :each do
+        @market = create(:market, :state => "published")
+      end
+
+      it "allowed for admin" do
+        admin = create(:user, :admin)
+        sign_in :user, admin
+
+        post :archive, { market_id: @market.id }, valid_session
+        expect(response.response_code).to eq 302
+      end
+
+      it "not allowed for regular user" do
+        user = create(:user)
+        sign_in :user, user
+
+        post :archive, { market_id: @market.id }, valid_session
+        expect(response.response_code).to eq 401
+      end
+    end
     
     context "delete picture" do
 
       before :each do
         @market = create(:market)
         @market.featured = photo_json
-      end
-
-      it "allowed for moderator" do
-        moderator = create(:user, :moderator)
-        sign_in :user, moderator
-
-        post :delete_image, { market_id: @market.id }, valid_session
       end
 
       it "not allowed for regular user" do

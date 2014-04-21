@@ -4,7 +4,10 @@ class MarketsController < ApplicationController
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
 
   def archive
+    authorize! :archive, domain.get_market(params[:market_id])
     domain.archive_market params[:market_id]
+  rescue CanCan::AccessDenied => e
+    render status: 401, text: "Unauthorized action"
   end
 
   def archive_succeeded market
