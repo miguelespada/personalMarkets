@@ -35,10 +35,11 @@
         <section id = "form-market-location" > 
           <%= f.input :address %>
           <%= f.input :city, { class: 'cities', placeholder: "Ciudad" } %>
-          <div class= "hidden">
+          <div >
           <%= f.input :longitude %>
           <%= f.input :latitude %>
           </div>
+          <%= render "markets/shared/mapsmall" %>
         </section>
     </div>
         <%= f.button :submit, class: 'btn'%>
@@ -46,7 +47,7 @@
 <script>
 
 $( document ).ready(function() {
-      $("#wizard").steps({
+      /*$("#wizard").steps({
           headerTag: "h3",
           bodyTag: "section",
           transitionEffect: "slideLeft",
@@ -126,10 +127,17 @@ $( document ).ready(function() {
     // `ttAdapter` wraps the suggestion engine in an adapter that
     // is compatible with the typeahead jQuery plugin
     source: cities.ttAdapter()
+  });*/
+  $('#market_address').blur(function () {
+    updateLocationData();
+  });
+
+  $('#market_city').blur(function () {
+    updateLocationData();
   });
 });
 
-var areDatesSelected = function(datesString){
+/*var areDatesSelected = function(datesString){
   return datesString != "";
 };
 var stringToDate = function(data){
@@ -151,6 +159,34 @@ var fillInputWithDates = function(data){
     })(i);
   }
   $('#market_date').val(dateString);
+};*/
+
+var updateLocationData = function(){
+  if (addressAndCityAreFilled())
+    getLocationFromAddress(encodeAddressToUrl());
+};
+
+var addressAndCityAreFilled = function(){
+  return $('#market_address').val() && $('#market_city').val();
+};
+
+var encodeAddressToUrl = function(){
+  var encodedAddress = encodeURIComponent($('#market_address').val());
+  var encodedCity = encodeURIComponent($('#market_city').val());
+  var addressUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + encodedAddress + "%20" + encodedCity + "&sensor=false&key=AIzaSyBkhXw8kMql7c4tc1LwaMGbm9024z03AKU";
+  return addressUrl;
+};
+
+var getLocationFromAddress = function(url){
+  var lat, lng;
+  $.getJSON(url, function(data){
+    lat = data.results[0].geometry.location.lat;
+    lng = data.results[0].geometry.location.lng;
+    $("#market_latitude").val(lat);
+    $("#market_longitude").val(lng);
+    PM.addMarker([lat, lng], false);
+    PM.map.setView([lat, lng], 14);
+  });
 };
 
 </script>
