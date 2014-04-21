@@ -5,7 +5,7 @@
 
     <div class="form-group">
       <%= collection_select(:category, :category_id, Category.all, :name, :name, 
-                          {:selected => @category_query, :include_blank => ""}, class: "category form-control" ) %>
+                          {:selected => @category_query, :include_blank => "All"}, class: "category form-control" ) %>
     </div>
 
 
@@ -17,6 +17,8 @@
                                               ['All', 'all'] ]), class: "form-control" ) %>      
 
      </div>
+
+
 
     <div class="date-range invisible">
       <%= text_field_tag :from, params[:from]%>  

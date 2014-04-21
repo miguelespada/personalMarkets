@@ -17,7 +17,7 @@ Feature: Browse markets
     And I select one tag
     Then I see the markets matching my query
 
-  @browse_category
+  @browse_category  
   Scenario: Browse by category
     When I go to Category list
     And I select one category

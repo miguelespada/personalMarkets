@@ -14,8 +14,8 @@ PM.initializeSmallMap = function() {
 };
 
 PM.checkIfLocationSet = function(){
-  var originLat = $("#market_latitude").val();
-  var originLng = $("#market_longitude").val();
+  var originLat = $("#special_location_latitude").val();
+  var originLng = $("#special_location_longitude").val();
 
   if (PM._coordinatesSet(originLat, originLng)){
     PM.addMarker([parseFloat(originLat), parseFloat(originLng)], true);
@@ -72,8 +72,8 @@ PM.dragToUpdateMarker = function() {
 };
 
 PM.updateLocation = function(){
-  $("#market_latitude").val(PM.marker.getLatLng().lat);
-  $("#market_longitude").val(PM.marker.getLatLng().lng);
+  $("#special_location_latitude").val(PM.marker.getLatLng().lat);
+  $("#special_location_longitude").val(PM.marker.getLatLng().lng);
   PM.getAddress(PM.marker.getLatLng().lng, PM.marker.getLatLng().lat);
 };
 
@@ -106,8 +106,12 @@ PM._validAddress = function(data) {
 $(document).ready(function(){
   if ($('#map-small').is(':visible'))
     PM.initializeSmallMap();
-  if ($('#form-market-location').is(':visible'))
-    PM.checkIfLocationSet();
+  /*if ($('#form-market-location').is(':visible'))
+    PM.checkIfLocationSet();*/
   if ($('.market-location').is(':visible'))
     PM.setMarker();
+  if ($('.new_special_location').is(':visible'))
+    PM.clickToUpdateMarker();
+  if ($('.edit_special_location').is(':visible'))
+    PM.checkIfLocationSet();
 });
