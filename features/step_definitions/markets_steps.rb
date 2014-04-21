@@ -278,3 +278,15 @@ When(/^I visit a published market$/) do
     )
   visit market_path market
 end
+
+When(/^I delete the image$/) do
+  within(:css, '.market-featured-photo') do
+    click_on "Delete"
+  end
+end
+
+Then(/^I cannot see it in the market page$/) do
+  within(:css, '.market-featured-photo') do
+    page.should have_css('img[alt="Default image"]') 
+  end
+end

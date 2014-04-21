@@ -1,4 +1,3 @@
-@wip
 Feature: Publish market
 
 Background:

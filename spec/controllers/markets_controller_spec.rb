@@ -163,6 +163,14 @@ describe MarketsController do
         @market.featured = photo_json
       end
 
+      it "allowed for admin" do
+        admin = create(:user, :admin)
+        sign_in :user, admin
+
+        post :delete_image, { market_id: @market.id }, valid_session
+        expect(response.response_code).to eq 302
+      end
+
       it "not allowed for regular user" do
         user = create(:user)
         sign_in :user, user

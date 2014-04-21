@@ -32,6 +32,11 @@ class Market
 
   validates_presence_of :name, :description, :user, :category
 
+  def delete_featured_image
+    self.featured = nil
+    self.save!
+  end
+
   def can_be_published
     self.state != "published"
   end

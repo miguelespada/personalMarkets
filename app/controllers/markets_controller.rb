@@ -3,28 +3,23 @@ class MarketsController < ApplicationController
   before_filter :load_market, only: [:show ,:edit, :destroy]
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
 
-  def archive
-    authorize! :archive, domain.get_market(params[:market_id])
-    domain.archive_market params[:market_id]
-  rescue CanCan::AccessDenied => e
+  def destroy
+    @market.destroy
+    respond_to do |format|
+      format.html { redirect_to  user_markets_path(@user), 
+                      notice: "Market successfully deleted."}
+    end
+  end
+
+  def delete_image
+    authorize! :delete_image, domain.get_market(params[:market_id])
+    domain.delete_image params[:market_id]
+  rescue CanCan::AccessDenied
     render status: 401, text: "Unauthorized action"
   end
 
-  def archive_succeeded market
-    redirect_to market, notice: "Market successfully archived."
-  end
-
-  def publish
-    domain.publish_market params[:market_id]
-  end
-
-  def publish_succeeded market
-    redirect_to market, notice: "Market successfully published."
-  end
-
-  def published
-    @markets = Market.where(state: :published)
-    render 'index' 
+  def delete_image_succeeded market
+    redirect_to market, notice: "Image deleted successfully"
   end
 
   def index
@@ -75,6 +70,30 @@ class MarketsController < ApplicationController
     render action: 'new'
   end
 
+  def archive
+    authorize! :archive, domain.get_market(params[:market_id])
+    domain.archive_market params[:market_id]
+  rescue CanCan::AccessDenied => e
+    render status: 401, text: "Unauthorized action"
+  end
+
+  def archive_succeeded market
+    redirect_to market, notice: "Market successfully archived."
+  end
+
+  def publish
+    domain.publish_market params[:market_id]
+  end
+
+  def publish_succeeded market
+    redirect_to market, notice: "Market successfully published."
+  end
+
+  def published
+    @markets = Market.where(state: :published)
+    render 'index' 
+  end
+
   def update
     authorize! :update, domain.get_market(params[:id])
     domain.update_market params[:id], market_params
@@ -88,26 +107,6 @@ class MarketsController < ApplicationController
 
   def update_failed market
     redirect_to market, notice: "Market update failed."
-  end
-
-  def destroy
-    @market.destroy
-    respond_to do |format|
-      format.html { redirect_to  user_markets_path(@user), 
-                      notice: "Market successfully deleted."}
-    end
-  end
-
-  def delete_image
-    @market = Market.find(params[:market_id])
-    authorize! :delete_image, @market
-    @market.featured = nil
-    @market.save!
-    respond_to do |format|
-      format.html { redirect_to @market, notice: "Market picture deleted."}
-    end
-  rescue CanCan::AccessDenied
-    render status: 401, text: "Unauthorized action"
   end
 
   private
