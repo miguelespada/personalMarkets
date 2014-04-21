@@ -24,11 +24,11 @@
 
      </div>
 
-    <div class="date-range">
+    <div class="date-range hidden">
       <%= text_field_tag :from, params[:from]%>  
       <%= text_field_tag :to, params[:to]%>  
     </div>
 
-    <%= submit_tag "Search", name: nil, class: "invisible" %>
+    <%= submit_tag "Search", name: nil, class: "hidden" %>
 
 <% end %>
