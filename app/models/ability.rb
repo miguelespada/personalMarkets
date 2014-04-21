@@ -40,6 +40,7 @@ class Ability
 
   def admin_abilities
     if @user.has_role? :admin
+      can :archive, Market
       can [:edit, :update], Comment
       can :destroy, Comment
       can [:edit, :update], Market

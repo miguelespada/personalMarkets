@@ -37,7 +37,7 @@ class Market
   end
 
   def archive
-    self.state = "archive"
+    self.state = "archived"
     self.save
   end
 
