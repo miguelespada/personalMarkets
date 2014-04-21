@@ -1,6 +1,8 @@
 PopUpStores::Application.routes.draw do
 
 
+  resources :special_locations
+
   get "tags/index"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
@@ -16,6 +18,8 @@ PopUpStores::Application.routes.draw do
   end
 
   resources :coupons, :only => [:show, :index]
+
+
   post "/coupons/:id", to: "coupons#buy", as: "buy_coupon"
   get "/coupons/:user_id/in_transactions", to: "coupons#in_transactions", as: "user_in_transactions"
   get "/coupons/:user_id/out_transactions", to: "coupons#out_transactions", as: "user_out_transactions"

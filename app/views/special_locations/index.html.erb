@@ -1,0 +1,31 @@
+<h1>Listing special_locations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @special_locations.each do |special_location| %>
+      <tr>
+        <td><%= special_location.name %></td>
+        <td><%= special_location.latitude %></td>
+        <td><%= special_location.longitude %></td>
+        <td><%= link_to 'Show', special_location %></td>
+        <td><%= link_to 'Edit', edit_special_location_path(special_location) %></td>
+        <td><%= link_to 'Destroy', special_location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Special location', new_special_location_path %>
