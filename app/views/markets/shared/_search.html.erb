@@ -18,9 +18,13 @@
 
      </div>
 
+     <div class="form-group">
+      <%= collection_select(:location, :location_id, SpecialLocation.all, :name, :name, 
+                          {:include_blank => "Any location"}, class: "form-control" ) %>
 
+     </div>
 
-    <div class="date-range invisible">
+    <div class="date-range">
       <%= text_field_tag :from, params[:from]%>  
       <%= text_field_tag :to, params[:to]%>  
     </div>
