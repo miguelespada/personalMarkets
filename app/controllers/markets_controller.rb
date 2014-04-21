@@ -24,7 +24,6 @@ class MarketsController < ApplicationController
     render 'index' 
   end
 
-
   def index
     @markets ||= Market.find_all(@user)
     respond_to do |format|
