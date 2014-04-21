@@ -54,8 +54,9 @@ $( document ).ready(function() {
           enableFinishButton: false,
           enablePagination: false,
           enableAllSteps: true
-
       });
+
+      getDatesSelected($('#market_date').val());
 
       $('#datepicker div').datepicker({
           weekStart: 1,
@@ -65,8 +66,11 @@ $( document ).ready(function() {
           multidate: true,
           todayHighlight: true
       }).on('changeDate', function(e){
-          console.log(e.dates);
+          fillInputWithDates(e);
       });
+
+      if (areDatesSelected($('#market_date').val()))
+        $('#datepicker div').datepicker('setDates', getDatesSelected($('#market_date').val()));
 
    $('.attachinary-input').attachinary();
 
@@ -124,4 +128,29 @@ $( document ).ready(function() {
     source: cities.ttAdapter()
   });
 });
+
+var areDatesSelected = function(datesString){
+  return datesString != "";
+};
+var stringToDate = function(data){
+  return moment(data, 'DD/MM/YYYY').toDate();
+};
+var getDatesSelected = function(datesString){
+  var datesSelected = datesString.split(","); 
+  var dates  = new Array(); 
+  for(i = 0; i < datesSelected.length; i++)
+    dates.push(stringToDate(datesSelected[i]));
+  return dates;
+};
+
+var fillInputWithDates = function(data){
+  dateString = moment(data.dates[0]).format('DD/MM/YYYY');
+  for (i = 1; i < data.dates.length; i++){
+    (function(i){
+      dateString += "," + moment(data.dates[i]).format('DD/MM/YYYY');
+    })(i);
+  }
+  $('#market_date').val(dateString);
+};
+
 </script>
