@@ -1,6 +1,6 @@
 class MarketsController < ApplicationController
   before_filter :load_user
-  before_filter :load_market, only: [:show ,:edit, :destroy]
+  before_filter :load_market, only: [:destroy]
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
 
   def destroy
@@ -29,6 +29,11 @@ class MarketsController < ApplicationController
   end
 
   def show
+    domain.show_market params[:id]
+  end
+
+  def show_succeeded market
+    @market = market
     respond_to do |format|
         format.html   
         format.svg  { render :qrcode => request.url, :level => :l, :unit => 10 }
@@ -36,6 +41,7 @@ class MarketsController < ApplicationController
   end
   
   def edit
+    @market = domain.get_market params[:id]
   end
 
   def index

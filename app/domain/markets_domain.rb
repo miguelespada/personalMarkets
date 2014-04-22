@@ -54,5 +54,10 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
     listener.user_markets_succeeded markets
   end
 
+  def show_market market_id
+    market = get_market market_id
+    listener.show_succeeded market
+  end
+
 end
 

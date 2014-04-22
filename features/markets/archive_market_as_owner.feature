@@ -1,4 +1,3 @@
-@wip
 Feature: Archive market as owner
   As an owner
   I want to archive my market
