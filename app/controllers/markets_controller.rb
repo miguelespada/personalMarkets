@@ -1,6 +1,5 @@
 class MarketsController < ApplicationController
   before_filter :load_user
-  before_filter :load_market, only: [:destroy]
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
 
   def search
@@ -164,10 +163,6 @@ class MarketsController < ApplicationController
       end 
     end
 
-    def load_market
-      @market = Market.find(params[:id])
-    end
-    
     def load_category
         params[:category][:category_id]
     rescue => e
