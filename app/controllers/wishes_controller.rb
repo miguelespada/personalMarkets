@@ -18,6 +18,9 @@ class WishesController < ApplicationController
   end
 
   def edit
+    authorize! :edit, @wish
+    rescue CanCan::AccessDenied
+      render :status => 401, :text => "Unauthorized action"
   end
 
   def create
@@ -34,6 +37,7 @@ class WishesController < ApplicationController
   end
 
   def update
+    authorize! :edit, @wish
     respond_to do |format|
       if @wish.update(wish_params)
         format.html { redirect_to user_wish_path(@user, @wish), notice: 'Wish was successfully updated.' }
@@ -41,13 +45,19 @@ class WishesController < ApplicationController
         format.html { render action: 'edit' }
       end
     end
+
+    rescue CanCan::AccessDenied
+      render :status => 401, :text => "Unauthorized action"
   end
 
   def destroy
+    authorize! :edit, @wish
     @wish.destroy
     respond_to do |format|
       format.html { redirect_to user_wishes_url(@user) }
     end
+    rescue CanCan::AccessDenied
+      render :status => 401, :text => "Unauthorized action"
   end
 
   private

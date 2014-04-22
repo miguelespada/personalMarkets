@@ -54,8 +54,8 @@ class User
     self.markets.new market_params
   end
 
-  def owns market
-    market.user_id == self.id
+  def owns object
+    object.user_id == self.id
   end
 
   def like(market)

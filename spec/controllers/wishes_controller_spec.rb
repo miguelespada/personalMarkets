@@ -81,10 +81,25 @@ describe WishesController do
 
   describe "GET edit" do
     it "assigns the requested wish as @wish" do
+      sign_in :user, user
       wish = Wish.create! valid_attributes
       get :edit, {:id => wish.to_param, :user_id => user.to_param}, valid_session
       assigns(:wish).should eq(wish)
     end
+
+    it "can edit as wish owner" do
+      sign_in :user, user
+      wish = Wish.create! valid_attributes
+      get :edit, {:id => wish.to_param, :user_id => user.to_param}, valid_session
+      expect(response.response_code).to eq 200
+    end
+
+    it "cannot edit as guest" do
+      wish = Wish.create! valid_attributes
+      get :edit, {:id => wish.to_param, :user_id => user.to_param}, valid_session
+      expect(response.response_code).to eq 401
+    end
+
   end
 
   describe "POST create" do
@@ -133,6 +148,7 @@ describe WishesController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested wish" do
+        sign_in :user, user
         wish = Wish.create! valid_attributes
         # Assuming there are no other wishes in the database, this
         # specifies that the Wish created on the previous line
@@ -143,12 +159,14 @@ describe WishesController do
       end
 
       it "assigns the requested wish as @wish" do
+        sign_in :user, user
         wish = Wish.create! valid_attributes
         put :update, {:user_id => user.to_param, :id => wish.to_param, :wish => valid_attributes}, valid_session
         assigns(:wish).should eq(wish)
       end
 
       it "redirects to the wish" do
+       sign_in :user, user
         wish = Wish.create! valid_attributes
         put :update, {:user_id => user.to_param, :id => wish.to_param, :wish => valid_attributes}, valid_session
         response.should redirect_to user_wish_path(user, wish)
@@ -157,6 +175,7 @@ describe WishesController do
 
     describe "with invalid params" do
       it "assigns the wish as @wish" do
+        sign_in :user, user
         wish = Wish.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Wish.any_instance.stub(:save).and_return(false)
@@ -165,6 +184,7 @@ describe WishesController do
       end
 
       it "re-renders the 'edit' template" do
+        sign_in :user, user
         wish = Wish.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Wish.any_instance.stub(:save).and_return(false)
@@ -176,6 +196,7 @@ describe WishesController do
 
   describe "DELETE destroy" do
     it "destroys the requested wish" do
+      sign_in :user, user
       wish = Wish.create! valid_attributes
       expect {
         delete :destroy, {:user_id => user.to_param, :id => wish.to_param}, valid_session
@@ -183,6 +204,7 @@ describe WishesController do
     end
 
     it "redirects to the wishes list" do
+      sign_in :user, user
       wish = Wish.create! valid_attributes
       delete :destroy, {:user_id => user.to_param, :id => wish.to_param}, valid_session
       response.should redirect_to user_wishes_path(user)
