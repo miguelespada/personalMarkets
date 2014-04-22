@@ -210,5 +210,4 @@ describe WishesController do
       response.should redirect_to user_wishes_path(user)
     end
   end
-
 end

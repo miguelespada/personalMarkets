@@ -66,7 +66,7 @@ class WishesController < ApplicationController
     end
 
     def wish_params
-      params.require(:wish).permit(:description, :user_id)
+      params.require(:wish).permit(:description, :user_id, :wish_photo)
     end
 
     def load_user

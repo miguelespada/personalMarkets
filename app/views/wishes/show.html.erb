@@ -3,7 +3,8 @@
 <p>
   <strong>Description:</strong>
   <%= @wish.description %>
+  <%= cl_image_tag(@wish.wish_photo.path, { size: "200x200", crop: :fill })  %>
 </p>
 
-<%= link_to 'Edit', user_edit_wish_path(@wish, current_user) %> |
+<%= link_to 'Edit', edit_user_wish_path(@wish, current_user) %> |
 <%= link_to 'Back', user_wishes_path(current_user) %>
