@@ -126,9 +126,39 @@ describe MarketsController do
       get :search, {}, valid_session
       expect(response).to render_template("index")
     end
-    it "remembers category after search" do
-      get :search, {}, valid_session
-      expect(assigns(:category_query)).not_to be_nil
+  
+    it "returns success with valid empty params" do
+      params = {:query =>"", :category =>{:category_id =>""}, 
+                    :range=>"today", :location=>{:location_id=>""}, 
+                    :from => "", :to=>""}
+      get :search, params, valid_session
+      expect(response.response_code).to eq 200
+    end
+
+    it "returns success with valid half search params" do
+      params = {:query =>"", :category =>{:category_id =>""}, 
+                    :range=>"today", :location=>{:location_id=>""}, 
+                    :from => "01/01/2014", :to=>""}
+      get :search, params, valid_session
+      expect(response.response_code).to eq 200
+    end
+
+    it "returns success with valid range params" do
+      params = {:query =>"", :category =>{:category_id =>""}, 
+                    :range=>"today", :location=>{:location_id=>""}, 
+                    :from => "01/01/2014", :to=>"12/01/2014"}
+      get :search, params, valid_session
+      expect(response.response_code).to eq 200
+    end
+    it "returns success with valid full params" do
+      SpecialLocation.create(name: "Malasaña", latitude: 40, longitude: -3)
+      Category.create(name: "dummy")
+      params = {:query =>"my search", :category =>{:category_id =>"dummy"}, 
+                    :range=>"today", :location=>{:location_id=>"Malasaña"}, 
+                    :from => "01/01/2014", :to=>"12/01/2014"}
+      SpecialLocation.count.should eq 1
+      get :search, params, valid_session
+      expect(response.response_code).to eq 200
     end
   end
 

@@ -21,16 +21,14 @@ class MarketsController < ApplicationController
 
   def search
     @category_query = load_category
-    # @location_query = SpecialLocation.find_by(name: load_location) if !load_location.blank?
-    # @location_query.latitude ||= ""
-    # @location_query.longitude ||= ""
-
-    # puts "*-*" * 20
-    # puts @category_query
-    # puts @location_query.latitude, @location_query.longitude
-    # puts "*-*" * 20
+    
+    @location_query = SpecialLocation.find_by(name: load_location) if !load_location.blank?
+    latitude = @location_query.latitude if !@location_query.nil?
+    latitude ||= ""
+    longitude = @location_query.longitude if !@location_query.nil?
+    longitude ||= ""
     @markets = Market.search(params[:query], @category_query, 
-                             params[:from], params[:to])
+                             params[:from], params[:to], latitude, longitude)
     render 'index', :layout => false
   end
 
