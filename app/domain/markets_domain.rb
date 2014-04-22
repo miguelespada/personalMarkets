@@ -2,6 +2,10 @@ require 'markets_domain_exception'
 
 class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
 
+  def initialize_market
+    markets_repo.initialize_market
+  end
+
   def create_market user_id, market_params
     user = users_repo.find user_id
     market = user.add_market market_params
@@ -64,6 +68,6 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
     market.destroy
     listener.delete_succeeded
   end
-  
+
 end
 

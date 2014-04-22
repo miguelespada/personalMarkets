@@ -1,5 +1,9 @@
 class MarketsRepo
 
+  def self.initialize_market
+    Market.new
+  end
+
   def self.find params
     Market.find params
   end

@@ -28,7 +28,7 @@ class MarketsController < ApplicationController
   end
 
   def new
-    @market = Market.new
+    @market = domain.initialize_market
   end
 
   def show
