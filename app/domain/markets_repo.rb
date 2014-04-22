@@ -12,4 +12,8 @@ class MarketsRepo
     Market.find_all user
   end
 
+  def self.published_markets
+    Market.where(state: :published)
+  end
+
 end

@@ -102,7 +102,11 @@ class MarketsController < ApplicationController
   end
 
   def published
-    @markets = Market.where(state: :published)
+    domain.published_markets
+  end
+
+  def published_succeeded markets
+    @markets = markets
     render 'index' 
   end
 
