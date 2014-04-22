@@ -74,13 +74,13 @@ describe MarketsController do
       user_id: @market.user.id, 
       market: @market.attributes } } 
 
-    it "deletes the market" do
+    xit "deletes the market" do
       expect {
         delete :destroy, market_params , valid_session
         }.to change(Market, :count).by(-1)
     end
 
-    it "redirects to the index template" do
+    xit "redirects to the index template" do
       delete :destroy, market_params, valid_session
       response.should redirect_to user_markets_path(@market.user)
     end

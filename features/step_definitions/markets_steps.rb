@@ -290,3 +290,8 @@ Then(/^I cannot see it in the market page$/) do
     page.should have_css('img[alt="Default image"]') 
   end
 end
+
+When(/^I archive it$/) do
+  visit market_path @market
+  click_on "Archive"
+end

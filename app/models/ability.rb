@@ -12,7 +12,7 @@ class Ability
 
     can [:edit, :update], Comment, :author => @user.email
     can [:edit, :update], Market, :user_id => @user.id
-    can :delete, Market, :user_id => @user.id
+    # can :delete, Market, :user_id => @user.id
   end
 
 
@@ -20,6 +20,7 @@ class Ability
 
   def logged_in_abilities
     if @user
+        can :archive, Market, :user_id => @user.id
         can :comment, Market
         can :buy_coupon, Market
         can :see_location, Market

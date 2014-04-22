@@ -1,4 +1,3 @@
-@wip
 Feature: Delete market featured image
   As an admin
   I want to delete market's featured image
