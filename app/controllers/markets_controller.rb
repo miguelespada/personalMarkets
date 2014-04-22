@@ -3,14 +3,6 @@ class MarketsController < ApplicationController
   before_filter :load_market, only: [:destroy]
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
 
-  def destroy
-    @market.destroy
-    respond_to do |format|
-      format.html { redirect_to  user_markets_path(@user), 
-                      notice: "Market successfully deleted."}
-    end
-  end
-
   def search
     @category_query = load_category
     
@@ -22,6 +14,17 @@ class MarketsController < ApplicationController
     @markets = Market.search(params[:query], @category_query, 
                              params[:from], params[:to], latitude, longitude)
     render 'index', :layout => false
+  end
+
+  def destroy
+    domain.delete_market params[:id]
+  end
+
+  def delete_succeeded
+    respond_to do |format|
+      format.html { redirect_to  user_markets_path(@user), 
+                      notice: "Market successfully deleted."}
+    end
   end
 
   def new

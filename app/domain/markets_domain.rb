@@ -59,5 +59,11 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
     listener.show_succeeded market
   end
 
+  def delete_market market_id
+    market = get_market market_id
+    market.destroy
+    listener.delete_succeeded
+  end
+  
 end
 
