@@ -45,5 +45,14 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
     listener.delete_image_succeeded market
   end
 
+  def user_markets user_id
+    markets = []
+    if !user_id.nil?
+      user = users_repo.find user_id
+      markets = markets_repo.user_markets user
+    end
+    listener.user_markets_succeeded markets
+  end
+
 end
 
