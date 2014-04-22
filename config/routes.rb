@@ -1,9 +1,9 @@
 PopUpStores::Application.routes.draw do
 
-
   resources :special_locations
 
   get "tags/index"
+  get "wishes/index"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :markets, :only => [:index, :show , :delete_image] do
@@ -30,6 +30,7 @@ PopUpStores::Application.routes.draw do
 
   resources :users do
     resources :markets, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :wishes
   end
 
   post "/markets/:market_id/comments/:id/report", to: "comments#report", as: 'report_comment'
