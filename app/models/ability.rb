@@ -41,7 +41,6 @@ class Ability
         can :manage, Wish, Wish do |wish|
             @user.owns(wish)
         end
-
     end
   end
 
@@ -54,7 +53,8 @@ class Ability
       can [:edit, :update], Market
       can [:list], Coupon
       can :see_transactions, User
-      can [:edit], Wish
+      can [:manage], Wish
+      can [:manage], SpecialLocation
     end
   end
 

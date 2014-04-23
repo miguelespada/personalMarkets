@@ -1,12 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="col-xs-6 col-md-3">
+  <div class="thumbnail">
+   
+    <%= cl_image_tag(@wish.wish_photo.path, { size: "200x200", crop: :fill }) if !@wish.wish_photo.nil? %>
 
-<p>
-  <strong>Description:</strong>
+    <div class="caption">
+      <%= @wish.description if !@wish.description.nil? %>
+    </div>
 
-  <%= @wish.description if !@wish.description.nil? %>
-  <%= cl_image_tag(@wish.wish_photo.path, { size: "200x200", crop: :fill }) if !@wish.wish_photo.nil? %>
-</p>
+    <p>
+    <%= link_to 'Edit', edit_wish_path(@wish), class: "btn btn-primary" %> 
+    <%= link_to 'Destroy', @wish, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary"%> 
+    <%= link_to 'Back', user_wishes_path(current_user), class: "btn btn-primary" %>
+    </p>
+  </div>
 
-<%= link_to 'Edit', edit_wish_path(@wish) %> |
-<%= link_to 'Destroy', @wish, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', user_wishes_path(current_user) %>
+</div>

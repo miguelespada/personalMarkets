@@ -1,5 +1,6 @@
 class SpecialLocationsController < ApplicationController
-  before_action :set_special_location, only: [:show, :edit, :update, :destroy]
+  load_resource :only => [:show, :edit, :destroy, :update]
+  authorize_resource :except => [:index]
 
   def index
     @special_locations = SpecialLocation.all
@@ -41,16 +42,11 @@ class SpecialLocationsController < ApplicationController
     @special_location.destroy
     respond_to do |format|
       format.html { redirect_to special_locations_url }
-      format.json { head :no_content }
     end
   end
 
   private
-    def set_special_location
-      @special_location = SpecialLocation.find(params[:id])
-    end
-
     def special_location_params
-      params.require(:special_location).permit(:name, :latitude, :longitude)
+      params.require(:special_location).permit(:name, :latitude, :longitude, :photo)
     end
 end
