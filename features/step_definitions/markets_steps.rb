@@ -132,9 +132,9 @@ Then(/^I see an edit button$/) do
   end
 end
 
-Then(/^I see a delete button$/) do
+Then(/^I see a archive button$/) do
   all('.market-gallery-item').each do |item|
-    expect(item).to have_link "Delete"
+    expect(item).to have_link "Archive"
   end
 end
 
