@@ -3,7 +3,7 @@ PopUpStores::Application.routes.draw do
   resources :special_locations
 
   get "tags/index"
-  get "wishes/index"
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :markets, :only => [:index, :show , :delete_image] do
@@ -30,8 +30,10 @@ PopUpStores::Application.routes.draw do
 
   resources :users do
     resources :markets, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :wishes
   end
+
+  resources :wishes
+  get "/users/:user_id/wishes", to: "wishes#list_user_wishes", as: "user_wishes"
 
   post "/markets/:market_id/comments/:id/report", to: "comments#report", as: 'report_comment'
   post "/markets/:market_id/delete_image", to: "markets#delete_image", as: 'delete_image'

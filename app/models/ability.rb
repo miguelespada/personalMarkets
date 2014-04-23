@@ -35,12 +35,13 @@ class Ability
             @user.owns(market) && market.can_be_published
         end
 
-        can :edit, Wish, Wish do |wish|
+        can :destroy, Comment, :author => @user.email
+        can :see_transactions, @user
+
+        can :manage, Wish, Wish do |wish|
             @user.owns(wish)
         end
 
-        can :destroy, Comment, :author => @user.email
-        can :see_transactions, @user
     end
   end
 
@@ -53,6 +54,7 @@ class Ability
       can [:edit, :update], Market
       can [:list], Coupon
       can :see_transactions, User
+      can [:edit], Wish
     end
   end
 

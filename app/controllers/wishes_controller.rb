@@ -1,13 +1,14 @@
 class WishesController < ApplicationController
-  before_action :load_wish, only: [:show, :edit, :update, :destroy]
-  before_filter :load_user
+  load_resource :only => [:show, :edit, :destroy, :update]
+  authorize_resource :except => [:show, :index, :list_user_wishes]
 
   def index
-    if @user
-      @wishes = @user.wishes.all
-    else
-      @wishes = Wish.all
-    end
+    @wishes = Wish.all
+  end
+
+  def list_user_wishes
+    @wishes = load_user.wishes.all
+    render "index"
   end
 
   def show
@@ -18,18 +19,15 @@ class WishesController < ApplicationController
   end
 
   def edit
-    authorize! :edit, @wish
-    rescue CanCan::AccessDenied
-      render :status => 401, :text => "Unauthorized action"
   end
 
   def create
     @wish = Wish.new(wish_params)
-    @wish.user = @user
-    @user.wishes << @wish
+    @wish.user = current_user
+    current_user.wishes << @wish
     respond_to do |format|
       if @wish.save
-        format.html { redirect_to user_wishes_path(@user, @wish), notice: 'Wish was successfully created.' }
+        format.html { redirect_to @wish, notice: 'Wish was successfully created.' }
       else
         format.html { render action: 'new' }
       end
@@ -37,41 +35,29 @@ class WishesController < ApplicationController
   end
 
   def update
-    authorize! :edit, @wish
     respond_to do |format|
       if @wish.update(wish_params)
-        format.html { redirect_to user_wish_path(@user, @wish), notice: 'Wish was successfully updated.' }
+        format.html { redirect_to @wish, notice: 'Wish was successfully updated.' }
       else
         format.html { render action: 'edit' }
       end
     end
-
-    rescue CanCan::AccessDenied
-      render :status => 401, :text => "Unauthorized action"
   end
 
   def destroy
-    authorize! :edit, @wish
     @wish.destroy
     respond_to do |format|
-      format.html { redirect_to user_wishes_url(@user) }
+      format.html { redirect_to user_wishes_url(current_user) }
     end
-    rescue CanCan::AccessDenied
-      render :status => 401, :text => "Unauthorized action"
   end
 
   private
-    def load_wish
-      @wish = Wish.find(params[:id])
-    end
-
     def wish_params
-      params.require(:wish).permit(:description, :user_id, :wish_photo)
+      params.require(:wish).permit(:description, :wish_photo)
     end
 
     def load_user
-      if params[:user_id].present?
-        @user = User.find(params[:user_id])
-      end 
+      User.find(params[:user_id])
     end
+
 end
