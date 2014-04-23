@@ -52,13 +52,12 @@ RSpec.configure do |config|
   require 'database_cleaner'
 
   config.before(:suite) do
+    Market.delete_index
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.orm = "mongoid"
-    Market.delete_index 
   end
 
   config.before(:each) do
-    Market.delete_index
     Market.create_index
     DatabaseCleaner.clean
     DatabaseCleaner.start

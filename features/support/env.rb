@@ -71,12 +71,11 @@ Capybara.javascript_driver = :webkit
 # Elastic Search cleaning
 
 Market.delete_index #remove at the beginning
+Market.create_index #remove at the beginning
 
 at_exit do
   Market.delete_index 
 end
-
-
 
 module Login
   def log_in_as user

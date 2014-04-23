@@ -68,7 +68,6 @@ When(/^I select incorrect range$/) do
 end
 
 Then(/^I should not see the markets$/) do
-  save_and_open_page
   page.should_not have_content @market_0.name
   page.should_not have_content @market_0.description
 end
