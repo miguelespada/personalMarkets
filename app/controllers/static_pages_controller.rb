@@ -10,10 +10,8 @@ class StaticPagesController < ApplicationController
   def calendar
     from = beginning_of(number_of_weeks_from_now)
     to = end_of(number_of_weeks_from_now)
-
     @week = {:from => from, :to => to}
-    
-    @markets = Market.search("", "", from, to)
+    @markets = Market.search(@week)
   end
 
   def map
