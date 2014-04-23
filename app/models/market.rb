@@ -96,49 +96,48 @@ class Market
     end
   end
 
-  def self.search(query, category = "", from = "",  to = "", city = "", lat = nil, lon = nil)
-      index_all
+  def self.search(params)
+    index_all
+    return [] if Market.count == 0 
 
-      return [] if Market.count == 0 
+    query = params[:query].blank? ? '*' : params[:query]
+    range = format_range_query(params[:from], params[:to])
+    city = params[:city] 
+    category = params[:category]
+    location = format_location(params[:latitude], params[:longitude])
 
-      query = query.blank? ? '*' : query
-      range = format_range_query(from, to)
+    elasticQuery = lambda do |boolean|
+      boolean.must {string query}
+      boolean.must {string "city:#{city}" } if !city.blank?
+      boolean.must {string "date:[#{range}]" } if !range.blank?
+    end
 
-      the_query = lambda do |boolean|
-         boolean.must {string query}
-         boolean.must {string "city:#{city}" } if !city.blank?
-         boolean.must {string "date:[#{range}]" } if !range.blank?
-      end
-
-      search = Tire.search 'markets' do
-        query do
-          boolean &the_query
-          filtered do
-            unless category.blank?
-              filter :terms, category: [category]
-            end
-            unless lat.nil? or lon.nil?
-              filter :geo_distance, lat_lon: [lat, lon].join(','), distance: '10km'
-            end
-          end
+    search = Tire.search 'markets' do
+      query do
+        boolean &elasticQuery
+        filtered do
+          filter :terms, category: [category] if !category.blank?
+          filter :geo_distance, lat_lon: location, distance: '5km' if !location.blank?
         end
       end
-
-      values = search.results.collect{|result| find(result.to_hash[:id])}
+    end
+    values = search.results.collect{|result| find(result.to_hash[:id])}
   end
-  
+
+  def self.format_location(lat, lon)
+    [lat, lon].join(',') if !lat.blank? 
+  end 
+
   def self.format_range_query(from, to)
       # Default elasticsearch format yyyymmdd
-     begin
-      range = Date.strptime(from, "%d/%m/%Y").strftime("%Y%m%d")
-      range += " TO "
-      begin
-        range += Date.strptime(to, "%d/%m/%Y").strftime("%Y%m%d")
-      rescue
-        range += "99991231"
-      end
+    range = Date.strptime(from, "%d/%m/%Y").strftime("%Y%m%d")
+    range += " TO "
+    begin
+      range += Date.strptime(to, "%d/%m/%Y").strftime("%Y%m%d")
     rescue
+      range += "99991231"
     end
+    rescue
       range ||= ""
   end
 

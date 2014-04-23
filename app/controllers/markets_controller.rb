@@ -20,15 +20,7 @@ class MarketsController < ApplicationController
   end
 
   def search
-    @category_query = load_category
-    
-    @location_query = SpecialLocation.find_by(name: load_location) if !load_location.blank?
-    latitude = @location_query.latitude if !@location_query.nil?
-    latitude ||= ""
-    longitude = @location_query.longitude if !@location_query.nil?
-    longitude ||= ""
-    @markets = Market.search(params[:query], @category_query, 
-                             params[:from], params[:to], latitude, longitude)
+    @markets = Market.search(search_params)
     render 'index', :layout => false
   end
 
@@ -161,9 +153,51 @@ class MarketsController < ApplicationController
         ""
     end
 
-    def load_location
-        params[:location][:location_id]
+    def load_latitude
+      SpecialLocation.find_by(name: params[:location][:location_id]).latitude
     rescue => e
         ""
+    end 
+
+    def load_longitude
+      SpecialLocation.find_by(name: params[:location][:location_id]).longitude
+    rescue => e
+        ""
+    end
+
+    def load_city
+        params[:city]
+    rescue => e
+        ""
+    end
+
+    def load_from
+        params[:from]
+    rescue => e
+        ""
+    end
+
+    def load_to
+        params[:to]
+    rescue => e
+        ""
+    end
+
+    def load_query
+        params[:query]
+    rescue => e
+        ""
+    end
+
+    def search_params
+      {
+        :query => load_query,
+        :form => load_to,
+        :to => load_from,
+        :latitude => load_latitude,
+        :longitude => load_longitude,
+        :category => load_category,
+        :city => load_city
+      }
     end 
 end

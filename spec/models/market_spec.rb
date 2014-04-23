@@ -8,7 +8,7 @@ describe Market do
   describe "Search with no index" do
     it "creates an new index" do
       Market.delete_index
-      expect{Market.search("", "")}.to change{Market.exists_index?}.from(false).to(true)
+      expect{Market.search({})}.to change{Market.exists_index?}.from(false).to(true)
     end
   end 
 
@@ -16,13 +16,12 @@ describe Market do
     describe "search" do
       it "returns an empty array" do
         Market.destroy_all
-        expect(Market.search("", "")).to eq []
+        expect(Market.search({})).to eq []
       end
     end
   end
   
-  context "With markets" do
-    
+  context "With markets" do 
     before :each do
       Market.delete_all
       @category =  FactoryGirl.create(:category, :name => "category") 
@@ -49,124 +48,177 @@ describe Market do
 
     describe "search with blank query" do
       it "returns all the markets" do
-        result = Market.search("")
+        params = {}
+        result = Market.search(params)
         expect(result.count).to eq Market.all.count
       end
     end
 
-    describe "full query"
+    describe "query" do
       it "searches with specific name" do
-        result = Market.search("Specific")
+        params = {:query  => "specific"}
+        result = Market.search(params)
         expect(result.count).to eq 1
       end
       
       it "searches with generic name" do
-        result = Market.search("Generic")
+        params = {:query  => "generic"}
+        result = Market.search(params)
         expect(result.count).to eq Market.all.count - 1
       end
 
       it "searches with more generic name" do
-        result = Market.search("market", "")
+        params = {:query  => "market"}
+        result = Market.search(params)
         expect(result.count).to eq Market.all.count
       end
-
-      it "filters by category" do
-        result = Market.search("market", @category.name)
+        it "search by tag" do
+        params = {:query  => "tag_one"}
+        result = Market.search(params)
         expect(result.count).to eq 1
       end
 
-
-      describe "filter by city" do 
-        it "filters by city" do
-          result = Market.search("market", "", "", "", "Madrid")
-          expect(result.count).to eq 2
-        end
-
-        it "filters by city with no city" do
-          result = Market.search("market", "", "", "", "")
-          expect(result.count).to eq 4
-        end
-      end 
-
-      it "filters by date range, with only 'to'" do
-        result = Market.search("market", "", "10/01/2014")
-        expect(result.count).to eq 3
-      end
-
-      it "filters by date range" do
-        result = Market.search("market", "", "11/01/2014", "16/01/2014" )
-        expect(result.count).to eq 1
-      end
-
-      describe "a market has different dates" do
-        it "filters by date range when multiple dates match 1" do
-          result = Market.search("market", "", "04/01/2014", "04/01/2014" )
-          expect(result.count).to eq 1
-        end
-
-        it "filters by date range when multiple dates  match 2" do
-          result = Market.search("market", "", "06/01/2014", "06/01/2014" )
-          expect(result.count).to eq 1
-        end
-
-        it "filters by date range when multiple dates  match 3" do
-          result = Market.search("market", "", "08/01/2014", "08/01/2014" )
-          expect(result.count).to eq 1
-        end
-
-        it "filters by date range when multiple dates match 4" do
-          result = Market.search("market", "", "03/01/2014", "08/01/2014" )
-          expect(result.count).to eq 1
-        end
-      end
-
-      it "filters by date and category" do
-        result = Market.search("market", @category.name, "08/01/2014", "20/01/2014" )
-        expect(result.count).to eq 1
-      end
-
-      it "search by tag" do
-        result = Market.search("tag_one")
-        expect(result.count).to eq 1
-      end
-
-      it "search by tag" do
-        result = Market.search("tag_three")
+      it "search by other tag" do
+        params = {:query  => "tag_three"}
+        result = Market.search(params)
         expect(result.count).to eq 1
       end
 
       it "search in description" do
-        result = Market.search("awesome" )
+        params = {:query  => "awesome"}
+        result = Market.search(params)
         expect(result.count).to eq 1
       end
 
-      it "filters out wrong formatted dates" do
-        result = Market.search("market", "", "xxx")
-        expect(result.count).to eq Market.all.count
+    end 
+
+    describe "filter" do
+      it "by category" do
+        params = { :category => @category.name}
+        result = Market.search(params)
+        expect(result.count).to eq 1
+      end
+      it "by city" do
+        params = {
+          :query => "market",
+          :city => "Madrid"
+        }
+        result = Market.search(params)
+        expect(result.count).to eq 2
       end
 
+      it "filters by date range" do
+        params = {
+          :from => "11/01/2014",
+          :to => "16/01/2014"
+        }
+        result = Market.search(params)
+        expect(result.count).to eq 1
+      end
+
+      it "filters by date range, with only 'from'" do
+        params = {
+          :query => "market",
+          :from => "10/01/2014"
+        }
+        result = Market.search(params)
+        expect(result.count).to eq 3
+      end
+    end 
+
+    describe "filters by location" do
+      it "by location distance" do
+        params = {
+          :query => "market",
+          :latitude => "40",
+          :longitude => "-70"
+        }
+        result = Market.search(params)
+        expect(result.count).to eq 1
+      end
+
+      it "combines location with category" do
+        params = {
+          :query => "market",
+          :latitude => "40",
+          :longitude => "-70",
+          :category => "dummy"
+        }
+        result = Market.search(params)
+        expect(result.count).to eq 0
+      end
+
+      it "filters out by location distance" do
+        params = {
+          :latitude => "100",
+          :longitude => "100"
+        }
+        result = Market.search(params)
+        expect(result.count).to eq 0
+      end
+    end
+
+    describe "Markets with different dates" do
       it "splits the date" do
         expect(@market.format_date.count).to eq 3 
       end
 
+      it "filters by date range when multiple dates match 1" do
+        params = {
+          :from => "04/01/2014",
+          :to => "04/01/2014"
+        }
+        result = Market.search(params)
+        expect(result.count).to eq 1
+      end
+
+      it "filters by date range when multiple dates  match 2" do
+        params = {
+          :from => "6/01/2014",
+          :to => "06/01/2014"
+        }
+        result = Market.search(params)
+        expect(result.count).to eq 1
+      end
+
+      it "filters by date range when multiple dates  match 3" do
+        params = {
+          :from => "08/01/2014",
+          :to => "08/01/2014"
+        }
+        result = Market.search(params)
+        expect(result.count).to eq 1
+      end
+
+      it "filters by date range when multiple dates match 4" do
+        params = {
+          :from => "03/01/2014",
+          :to => "08/01/2014"
+        }
+        result = Market.search(params)
+        expect(result.count).to eq 1
+      end
+      it "filters by date and category" do
+        params = {
+          :from => "08/01/2014",
+          :to => "20/01/2014",
+          :category => @category.name
+        }
+        result = Market.search(params)
+        expect(result.count).to eq 1
+      end
+      it "filters out wrong formatted dates" do
+        params = {
+          :from => "08/01/20s4"
+        }
+        result = Market.search(params)
+        expect(result.count).to eq Market.all.count
+      end
+    end
+
+
     it "filters out short queries"
     it "boots matches on the name"
-    
-    describe "filtering by location distance" do
-        it "filters by location distance" do
-          result = Market.search("market", "", "", "", "", 40, -70)
-          expect(result.count).to eq 1
-        end
 
-        it "combines two filters" do
-          result = Market.search("market", "Dummy", "", "", "", 40, -70)
-          expect(result.count).to eq 0
-        end
-
-        it "filters out by location distance" do
-          result = Market.search("market", "", "", "", "", 100, 100)
-          expect(result.count).to eq 0
-        end
-    end
   end
 end
