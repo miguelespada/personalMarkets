@@ -1,84 +1,11 @@
 
-<div class="market-name"> <%= market.name %> </div>
 <div class="market-thumbnail">
   <div class="market-featured-photo">
     <%= market.featured_photo(image_size) %>
-    <%= market.delete_photo_link %>
   </div>
-  
-  <div class="market-description"> <%=  market.description %> </div>
 
-  <div class="market-actions">
-    <div class="market-show-link"><%= market.show_link %></div>
-    <%= market.edit_link %>
-    <%= market.delete_link %>
-    <%= market.like_link %>
-    <%= market.publish_link %>
-    <%= market.archive_link %>
+  <div class="caption">
+    <div class="market-name"> <%= market.name %> </div>
+    <div class="market-description"> <%=  market.description %> </div>
   </div>
 </div>
-
-<div class="market-details">
-  <div class="market-meta">
-    <div class="market-category"> <%= market.category.name %> </div>
-    <div class="market-tags"> <%= market.tags %> </div> 
-  </div>
-  
-  <div class="market-info">
-    <div class="market-user-email"> <%= market.user.email %> </div>
-    <%= market.location %> 
-    <div class="market-date"><%= market.date %></div>
-  </div>
-  
-  <div class="market-stats">
-    <div class="market-likes-number"> Number of likes: <%= market.favorited.count %> </div>
-    <div class="market-likes"> Liked by <%= likes(market) %> </div>
-  </div>
-  
-  <div class="market-widgets">
-    
-    <div class="market-calendar">
-      <div id="calendar-widget"></div>
-      Set Calendar for: <%= market.name %> on <%= market.date %> </div>
-    <div class="market-qr-link"> <%= market.qr_code_link %> </div>
-  
-    <div class="market-comment-form">
-      <%= market.comment_form %>
-    </div>
-  
-    <div class="market-comments">
-      <ul>
-        <% market.comments.each do |comment| %>
-          <li>
-            <span><%= comment.body %></span>
-            <%= market.delete_comment_link(comment) %>
-            <%= market.edit_comment_link(comment) %>
-            <%= market.report_comment_link(comment) %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-
-  <div class="market-coupons">
-    <%= market.create_coupon_link %>
-    <%= market.buy_coupon_link %>
-    <%= market.coupon_transactions_link %>
-  </div>
-</div>
-
-
-<div class="social"> 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-<div class="fb-comments" data-href=<%=market_url(market.to_param)%> data-numposts="5" data-colorscheme="light"></div>
-<div class="fb-like" data-href=<%=market_url(market.to_param)%> data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-<div>
