@@ -22,6 +22,13 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def cities
+    cities = Market.all.collect{|market| market.city if !market.city.blank?}.compact.uniq
+    respond_to do |format|
+      format.json {render json: cities}
+    end
+  end
+
   private 
   def markers(markets)
     markets.collect{|market| market.to_marker(view_context.tooltip(market))} if markets.count > 0

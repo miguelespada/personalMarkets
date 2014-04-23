@@ -32,7 +32,8 @@ PopUpStores::Application.routes.draw do
     resources :markets, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
-  resources :wishes
+  resources :wishes, except: [:index]
+  get "/wishes/index", path: "wishes"
   get "/users/:user_id/wishes", to: "wishes#list_user_wishes", as: "user_wishes"
 
   post "/markets/:market_id/comments/:id/report", to: "comments#report", as: 'report_comment'
@@ -42,6 +43,7 @@ PopUpStores::Application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
 
   get "static_pages/search", path: "/search", as: 'search'
+  get "static_pages/cities", path: "/cities", as: 'cities'
   get "static_pages/calendar", path: "/calendar", as: 'calendar'
   get "static_pages/map", path: "/map", as: 'map'
   get "/users/:user_id/like/:market_id",  to: 'users#like', as: 'like'
