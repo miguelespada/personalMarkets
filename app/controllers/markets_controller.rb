@@ -124,7 +124,7 @@ class MarketsController < ApplicationController
         :_id,
         :query, 
         :category,
-        :city,
+        :city_name,
         :user_id,
         :category_id,
         :location_id
@@ -166,7 +166,7 @@ class MarketsController < ApplicationController
     end
 
     def load_city
-        params[:city]
+        params[:city][:city_name]
     rescue => e
         ""
     end
