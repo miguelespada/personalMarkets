@@ -11,7 +11,8 @@ Feature: My markets
   Scenario: Markets info
     Then I see their names and descriptions
 
+  @markets_buttons
   Scenario: Markets actions
     Then I see an edit button
-    And I see a delete button
+    And I see a archive button
     And I see a show button
