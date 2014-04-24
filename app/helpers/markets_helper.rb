@@ -5,14 +5,6 @@ module MarketsHelper
     end
   end
 
-  def gallery_item(market)
-    div_for market, class: "market-gallery-item" do
-      render :partial => 'markets/market',
-             :formats => [:html], 
-             :locals => {:market => market.decorate, :image_size => "180"}
-    end
-  end
-
   def tooltip(market)
     div_for market, class: "market-tooltip" do
       render :partial => 'markets/market',
@@ -22,7 +14,11 @@ module MarketsHelper
   end
 
   def market_list(markets, layout) 
-      render partial: "markets/shared/slugs", locals: {markets: markets } if layout == "slugs"
+    if layout == "gallery"
+      render partial: "markets/shared/gallery", locals: {markets: markets } 
+    else
+      render partial: "markets/shared/slugs", locals: {markets: markets }
+    end
   end
 
   def market_form(user, market)

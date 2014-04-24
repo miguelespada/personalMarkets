@@ -105,8 +105,9 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
-  def featured_photo(image_size)
-    size = "#{image_size}x#{image_size}"
+  def featured_photo(width, height = nil)
+    heihgt ||= width
+    size = "#{width}x#{height}"
     image_options = { size: size, crop: :fill }
     if market.featured?
       cl_image_tag(market.featured.path, image_options) 
