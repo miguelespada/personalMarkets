@@ -3,6 +3,28 @@
   <% if user_signed_in? %>
       <%= button_to "Add Market", new_user_market_path(current_user), class:"btn btn-info", :method => :get %>
   <% else %>
-    <%= button_to "Add Market", "#", class:"btn btn-info", :method => :get %>
+    <%= button_to "Add Market", "javascript:shakeButton();", class:"add_market_button btn btn-info", :method => :get %>
   <% end %>
 </li>
+
+<script>
+	var shakeButton = function(){
+		$(".button_to").effect("shake", {times: 2, distance: 10}, 300);
+		$(".add_market_button").addClass("btn-warning");
+		$(".add_market_button").tooltip({
+			placement: "bottom",
+			title: "Login first!"
+		});
+	};
+</script>
+
+<style>
+	.button_to .tooltip.bottom .tooltip-inner{
+		font-size:14px;
+		font-weight: 200;
+		background-color: #FF0000;
+	}
+	.button_to .tooltip.bottom .tooltip-arrow{
+  		border-bottom-color: #FF0000;
+	}
+</style>
