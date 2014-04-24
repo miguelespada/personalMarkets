@@ -15,7 +15,6 @@ class Ability
     # can :delete, Market, :user_id => @user.id
   end
 
-
   private
 
   def logged_in_abilities
