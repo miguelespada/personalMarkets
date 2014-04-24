@@ -1,4 +1,4 @@
-@wip
+@users_management
 Feature: Activate user
   I order allow user to login
   As admin

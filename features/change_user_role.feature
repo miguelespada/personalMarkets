@@ -1,3 +1,4 @@
+@user_management
 Feature: Change User Role
 
   Scenario: Change User Role to admin

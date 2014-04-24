@@ -5,15 +5,15 @@ FactoryGirl.define do
     password_confirmation  "password"
 
     trait :normal do
-        after(:create) { |user| user.add_role(:normal)}
+        after(:create) { |user| user.update_role(:normal)}
     end
 
     trait :moderator do
-        after(:create) { |user| user.add_role(:moderator)}
+        after(:create) { |user| user.update_role(:moderator)}
     end
 
     trait :admin do
-        after(:create) { |user| user.add_role(:admin)}
+        after(:create) { |user| user.update_role(:admin)}
     end
 
   end

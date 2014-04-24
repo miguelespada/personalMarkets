@@ -52,6 +52,10 @@ end
 
 Given(/^A admin user$/) do
   @user = create(:user, :admin)
+  visit users_path
+  within(:css, "#user_#{@user.id}") do
+    expect(page).to have_content "Admin"
+  end
 end
 
 When(/^I make it normal$/) do
@@ -98,6 +102,6 @@ end
 Then(/^It should have active state$/) do
   step "I go to Users"
   within(:css, "#user_#{@user.id}") do
-    expect(page).to have_content "active"
+    expect(page).to have_content "Active"
   end
 end
