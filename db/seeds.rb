@@ -6,16 +6,17 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-def create_moderator_user
-  moderator = User.new(email: "moderator@pm.com", password: "12345678")
-  moderator.add_role :moderator
-  moderator.save!
+def create_some_users
+  (1..5).each do |index|
+    user = User.new(email: "user#{index}@pm.com", password: "12345678")
+    user.save!
+  end
 end
 
 def create_admin_user
   admin = User.new(email: "admin@pm.com", password: "12345678")
-  admin.add_role :admin
   admin.save!
+  admin.update_role :admin
 end
 
 def create_markets
@@ -40,6 +41,6 @@ def create_markets
   end
 end
 
-create_moderator_user
+create_some_users
 create_admin_user
 create_markets

@@ -7,7 +7,8 @@ class UsersDomain
   end
 
   def self.update_role user_id, new_role
-    User.find(user_id).update_role(new_role)
+    user = User.find(user_id)
+    user.update_role new_role
   end
 
 end

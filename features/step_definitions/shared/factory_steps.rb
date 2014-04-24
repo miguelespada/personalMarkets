@@ -28,6 +28,7 @@ end
 Given(/^there are some users$/) do
   @user_0 = create(:user)
   @user_1 = create(:user)
+  @users = [@user_0, @user_1]
 end
 
 Given(/^There is a comment in a market$/) do

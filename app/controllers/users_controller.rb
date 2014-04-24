@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :load_user, only: [:like, :unlike, :profile]
 
   def index
-    @users = User.all
+    @users = UsersPresenter.for User.all
   end
   
   def show

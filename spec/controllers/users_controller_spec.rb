@@ -10,9 +10,22 @@ describe UsersController do
 
 
   describe "GET 'index'" do
+
+    let(:presenter) { double }
+    let(:presenter_factory) { double(for: presenter) }
+
+    before do
+      stub_const("UsersPresenter", presenter_factory)
+    end
+
     it "renders the index template" do
       get :index, valid_session
       expect(response).to render_template(:index)
+    end
+
+    it "wraps users in a presenter" do
+      get :index, valid_session
+      expect(assigns(:users)).to be(presenter)
     end
   end
 

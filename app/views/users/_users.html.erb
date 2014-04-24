@@ -1,14 +1,18 @@
-<table class="table">
-  <tr>
-  <th>Email</th>
-  <th>Role</th>
-  <th>Status</th>
-  <th>Market Count</th>
-  <th>Number of likes</th>
-  <th>Actions</th>
-  </tr>
+<section>
+  <h2><%= role.titleize %></h2>
+  <table class="table <%= role %>">
+    <tr>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Status</th>
+    <th>Market Count</th>
+    <th>Number of likes</th>
+    <th>Actions</th>
+    </tr>
 
-  <% users.each do |user| %>
-      <%= render user %>
-  <% end %>
-</table>
+    <% users.each do |user| %>
+        <%= render user %>
+    <% end %>
+  </table>
+</section>
+

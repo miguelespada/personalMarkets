@@ -3,6 +3,8 @@ class User
   include Mongoid::Slug
   include Mongoid::Attributes::Dynamic
 
+  after_create :set_default_role
+
   rolify
 
   has_many :markets, class_name: "Market", dependent: :delete, inverse_of: :user
@@ -53,7 +55,7 @@ class User
   # field :locked_at,       :type => Time
 
   def available_roles
-    ["admin", "normal"] - [self.role]
+    Roles.all - [self.role]
   end
 
   def active_for_authentication?
@@ -69,19 +71,13 @@ class User
   end
 
   def update_role new_role
-    remove_roles
-    self.add_role new_role
-  end
-
-  def remove_roles
-    role_names.each do |role|
-      self.remove_role role
-    end
+    self.remove_role self.role
+    self.add_role new_role.to_sym
   end
 
   def role
-    return "normal" if self.roles.empty?
-    role_names.join(", ")
+    return "" if self.roles.empty?
+    self.role_names.join(", ")
   end
 
   def role_names
@@ -170,6 +166,10 @@ class User
     user.email = email
     user.save!
     user
+  end
+
+  def set_default_role
+    add_role :normal if self.roles.blank?
   end
 
 end

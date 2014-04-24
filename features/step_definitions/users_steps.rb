@@ -3,6 +3,14 @@ Then(/^I should see the list of users$/) do
   expect(page).to have_content @user_1.email
 end
 
+Then(/^I should see the list of users grouped by role$/) do
+  @users.each do |user|
+    within(".#{user.role}") do
+      page.should have_css(".user", text: user.email)
+    end
+  end
+end
+
 When(/^I delete one user$/) do
   within(:css, "#user_#{@user_1.id}") do
     click_on "Delete"

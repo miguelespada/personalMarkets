@@ -41,10 +41,6 @@ PopUpStores::Application.routes.draw do
     end
   end
   
-  #put "/users/:id/desactivate", to: "users#desactivate", as: "desactivate_user"
-  get "/users/:id/change_role", to: "users#change_role", as: "change_role"
-  put "/users/:id/update_role", to: "users#update_role", as: "update_role"
-
   get "/users/:user_id/profile", to: "users#profile", as: "user_profile"
   get "/users/:user_id/subscription", to: "users#subscription", as: "user_subscription"
 
