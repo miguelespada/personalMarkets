@@ -1,6 +1,7 @@
 <div class = "wish_title">Wishlist</div>
 <div class = "wish_gallery">
   <% @wishes.each do |wish| %>
+    <% if !wish.wish_photo.nil? %>
     <div class = "wish_item">
       <div class = "wish_featured_photo">
         <%= cl_image_tag(wish.wish_photo.path, :size => '400x200', :crop => :fill) %>
@@ -9,6 +10,7 @@
         <div class = "wish_destroy wish_actions"><%= link_to 'Destroy', wish, method: :delete, data: { confirm: 'Are you sure?' } %></div>
       </div>
     </div>
+    <% end %>
   <% end %>
 </div>
 <div class = "wish_new"><%= link_to 'New Wish', new_wish_path %></div>
