@@ -1,0 +1,7 @@
+<%= content_tag_for(:tr, market) do %>
+    <td> <%= market.name %> </td>
+    <td> <%= market.description %></td>
+    <td> <%= user.favorites.count %></td>
+    <td> <%= link_to "Show", user_path(user), :method => :get %>
+         <%= link_to "Delete", user_path(user), :method => :delete %></td>
+<% end %>
