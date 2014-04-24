@@ -32,7 +32,7 @@ Given(/^A normal user$/) do
 end
 
 When(/^I make it admin$/) do
-  visit change_role_path @user
+  visit change_user_role_path @user
   click_on "Make admin"
 end
 
@@ -47,7 +47,7 @@ Given(/^A admin user$/) do
 end
 
 When(/^I make it normal$/) do
-  visit change_role_path @user
+  visit change_user_role_path @user
   click_on "Make normal"
 end
 

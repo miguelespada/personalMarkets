@@ -108,32 +108,4 @@ describe UsersController do
     end
   end
 
-  describe "GET /change_role" do
-    it "assigns the user" do
-      user = double
-      User.stub(:find).with("user_id") { user }
-
-      get :change_role, id: "user_id"
-      expect(assigns(:user)).to be(user)
-    end
-  end
-
-  describe "PUT /update_role" do
-
-    before do
-      UsersDomain.stub(:update_role)
-    end
-
-    it "redirects to users" do
-      put :update_role, id: "user_id"
-      expect(response).to redirect_to users_path
-    end
-
-    it "updates user role to admin" do
-      UsersDomain.should_receive(:update_role).with(user.to_param, "admin")
-
-      put :update_role, id: user.to_param, new_role: "admin"
-    end
-  end
-
 end

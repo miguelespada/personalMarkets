@@ -36,15 +36,6 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
-  def change_role
-    @user = User.find user_id
-  end
-
-  def update_role
-    UsersDomain.update_role user_id, params[:new_role]
-    redirect_to users_path
-  end
-
   private 
 
   def user_id
