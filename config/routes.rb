@@ -37,6 +37,9 @@ PopUpStores::Application.routes.draw do
   end
   put "/users/:id/desactivate", to: "users#desactivate", as: "desactivate_user"
 
+  get "/users/:user_id/profile", to: "users#profile", as: "user_profile"
+  get "/users/:user_id/subscription", to: "users#subscription", as: "user_subscription"
+
   resources :wishes, except: [:index]
   get "/wishes/index", path: "wishes"
   get "/users/:user_id/wishes", to: "wishes#list_user_wishes", as: "user_wishes"

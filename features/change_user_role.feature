@@ -5,7 +5,6 @@ Feature: Change User Role
     When I make it admin
     Then It should have admin role
 
-  @wip
   Scenario: Change User Role to normal
     Given  A admin user
     When I make it normal
