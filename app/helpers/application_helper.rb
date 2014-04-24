@@ -19,3 +19,4 @@ module ApplicationHelper
     @resource ||= User.new
   end
 end
+
