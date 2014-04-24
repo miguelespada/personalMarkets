@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :load_user, only: [:like, :unlike]
+  before_filter :load_user, only: [:like, :unlike, :profile]
 
   def index
     @users = User.all
@@ -43,6 +43,14 @@ class UsersController < ApplicationController
   def update_role
     UsersDomain.update_role user_id, params[:new_role]
     redirect_to users_path
+  end
+
+  def profile
+
+  end
+
+  def subscription
+    
   end
 
   private 
