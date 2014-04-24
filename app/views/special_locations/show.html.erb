@@ -1,19 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="col-xs-6 col-md-3">
+  <div class="thumbnail">
 
-<p>
-  <strong>Name:</strong>
-  <%= @special_location.name %>
-</p>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @special_location.latitude %>
-</p>
+  <%= cl_image_tag(@special_location.photo.path, { size: "200x200", crop: :fill }) if !@special_location.photo.nil? %>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @special_location.longitude %>
-</p>
+  <div class="caption"> 
+    <%= @special_location.name %>
+  </div>
+  <p>
+    <strong>Latitude:</strong>
+    <%= @special_location.latitude %>
+  </p>
 
-<%= link_to 'Edit', edit_special_location_path(@special_location) %> |
-<%= link_to 'Back', special_locations_path %>
+  <p>
+    <strong>Longitude:</strong>
+    <%= @special_location.longitude %>
+  </p>
+
+  <%= link_to 'Edit', edit_special_location_path(@special_location), class: "btn btn-primary"  %>
+  <%= link_to 'Back', special_locations_path, class: "btn btn-primary"  %>
+
+  </div>
+</div>

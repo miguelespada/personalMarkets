@@ -9,16 +9,9 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require custom
- *= require devise/sessions
- *= require vegas
  *= require font-awesome
- *= require flexslider
- *= require jquery.steps
  *= require bootstrap
- *= require bootstrap-datepicker
- *= require tagmanager
- *= require jquery.ui.all
+ *= require custom
  */
 
 

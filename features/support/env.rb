@@ -46,6 +46,7 @@ end
 
 After do |scenario|
   DatabaseCleaner.clean
+  Market.delete_index 
 end
 
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
@@ -68,15 +69,16 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 Capybara.javascript_driver = :webkit
-# Elastic Search cleaning
 
-Market.delete_index #remove at the beginning
+# Elastic Search cleaning
+DatabaseCleaner.clean
+DatabaseCleaner.start
+Market.delete_index 
 
 at_exit do
   Market.delete_index 
+  DatabaseCleaner.clean
 end
-
-
 
 module Login
   def log_in_as user

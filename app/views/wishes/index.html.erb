@@ -1,6 +1,6 @@
 <h1>Listing wishes</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Description</th>
@@ -14,9 +14,8 @@
     <% @wishes.each do |wish| %>
       <tr>
         <td><%= wish.description %></td>
-        <td><%= link_to 'Show', user_wish_path(wish.user, wish) %></td>
-        <td><%= link_to 'Edit', edit_user_wish_path(wish.user, wish) %></td>
-        <td><%= link_to 'Destroy', [wish.user, wish], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', wish %></td>
+        <td><%= link_to 'Destroy', wish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +23,4 @@
 
 <br>
 
-<%= link_to 'New Wish', new_user_wish_path(current_user) %>
+<%= link_to 'New Wish', new_wish_path %>

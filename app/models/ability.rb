@@ -15,7 +15,6 @@ class Ability
     can :delete, Market, :user_id => @user.id
   end
 
-
   private
 
   def logged_in_abilities
@@ -35,12 +34,12 @@ class Ability
             @user.owns(market) && market.can_be_published
         end
 
-        can :edit, Wish, Wish do |wish|
-            @user.owns(wish)
-        end
-
         can :destroy, Comment, :author => @user.email
         can :see_transactions, @user
+
+        can :manage, Wish, Wish do |wish|
+            @user.owns(wish)
+        end
     end
   end
 
@@ -53,6 +52,8 @@ class Ability
       can [:edit, :update], Market
       can [:list], Coupon
       can :see_transactions, User
+      can [:manage], Wish
+      can [:manage], SpecialLocation
     end
   end
 

@@ -10,10 +10,8 @@ class StaticPagesController < ApplicationController
   def calendar
     from = beginning_of(number_of_weeks_from_now)
     to = end_of(number_of_weeks_from_now)
-
     @week = {:from => from, :to => to}
-    
-    @markets = Market.search("", "", from, to)
+    @markets = Market.search(@week)
   end
 
   def map
@@ -21,6 +19,13 @@ class StaticPagesController < ApplicationController
     respond_to do |format|
       format.html 
       format.json {render json: @geojson}
+    end
+  end
+
+  def cities
+    cities = Market.all.collect{|market| market.city if !market.city.blank?}.compact.uniq
+    respond_to do |format|
+      format.json {render json: cities}
     end
   end
 

@@ -150,12 +150,13 @@ describe MarketsController do
       get :search, params, valid_session
       expect(response.response_code).to eq 200
     end
+    
     it "returns success with valid full params" do
       SpecialLocation.create(name: "Malasaña", latitude: 40, longitude: -3)
       Category.create(name: "dummy")
       params = {:query =>"my search", :category =>{:category_id =>"dummy"}, 
                     :range=>"today", :location=>{:location_id=>"Malasaña"}, 
-                    :from => "01/01/2014", :to=>"12/01/2014"}
+                    :from => "01/01/2014", :to=>"12/01/2014", :city=>"Madrid"}
       SpecialLocation.count.should eq 1
       get :search, params, valid_session
       expect(response.response_code).to eq 200

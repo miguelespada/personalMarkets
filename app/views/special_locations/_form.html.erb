@@ -3,8 +3,9 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :latitude %>
-    <%= f.input :longitude %>
+    <%= f.input :latitude, input_html: { class: 'hidden' } %>
+    <%= f.input :longitude, input_html: { class: 'hidden' }  %>
+    <%= f.input :photo, as: :attachinary %>
   </div>
 
   <div class="form-actions">
@@ -13,3 +14,10 @@
 
   <%= render "markets/shared/mapsmall" %>
 <% end %>
+
+
+<script>
+$( document ).ready(function() {
+  $('.attachinary-input').attachinary();
+});
+</script>

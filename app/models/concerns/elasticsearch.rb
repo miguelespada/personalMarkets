@@ -29,6 +29,7 @@ module Elasticsearch
 
     def create_index
        Tire.index 'markets' do
+          delete
           create :mappings => {
             :market => {
               :properties => {

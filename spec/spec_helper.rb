@@ -16,6 +16,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 Capybara.run_server = true
 Capybara.javascript_driver = :webkit
 
+
 RSpec.configure do |config|
   # ## Mock Framework
   #
@@ -52,16 +53,15 @@ RSpec.configure do |config|
   require 'database_cleaner'
 
   config.before(:suite) do
+    Market.delete_index
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.orm = "mongoid"
-    Market.delete_index 
   end
 
   config.before(:each) do
-    DatabaseCleaner.clean
-    Market.delete_index
-    DatabaseCleaner.start
     Market.create_index
+    DatabaseCleaner.clean
+    DatabaseCleaner.start
   end
 
   config.after(:each) do

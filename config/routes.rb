@@ -3,7 +3,7 @@ PopUpStores::Application.routes.draw do
   resources :special_locations
 
   get "tags/index"
-  get "wishes/index"
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :markets, :only => [:index, :show , :delete_image] do
@@ -30,11 +30,14 @@ PopUpStores::Application.routes.draw do
 
   resources :users do
     resources :markets, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :wishes
   end
   put "/users/:id/desactivate", to: "users#desactivate", as: "desactivate_user"
   get "/users/:id/change_role", to: "users#change_role", as: "change_role"
   put "/users/:id/update_role", to: "users#update_role", as: "update_role"
+
+  resources :wishes, except: [:index]
+  get "/wishes/index", path: "wishes"
+  get "/users/:user_id/wishes", to: "wishes#list_user_wishes", as: "user_wishes"
 
   post "/markets/:market_id/comments/:id/report", to: "comments#report", as: 'report_comment'
   post "/markets/:market_id/delete_image", to: "markets#delete_image", as: 'delete_image'
@@ -43,6 +46,7 @@ PopUpStores::Application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
 
   get "static_pages/search", path: "/search", as: 'search'
+  get "static_pages/cities", path: "/cities", as: 'cities'
   get "static_pages/calendar", path: "/calendar", as: 'calendar'
   get "static_pages/map", path: "/map", as: 'map'
   get "/users/:user_id/like/:market_id",  to: 'users#like', as: 'like'
