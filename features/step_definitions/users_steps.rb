@@ -76,3 +76,20 @@ Then(/^he needs to introduce his credit card data$/) do
     fill_in "CVC", with: 212
   end
 end
+
+Given(/^an inactive user$/) do
+  @user = create(:user, :status => "inactive")
+end
+
+When(/^I activate it$/) do
+  within(:css, "#user_#{@user.id}") do
+    click_on "Activate"
+  end
+end
+
+Then(/^It should have active state$/) do
+  step "I go to Users"
+  within(:css, "#user_#{@user.id}") do
+    expect(page).to have_content "active"
+  end
+end

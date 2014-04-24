@@ -35,7 +35,7 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
 
-  field :status, :type => String
+  field :status, :type => String, :default => "active"
 
   has_many :authorizations
   slug :email, history: false
@@ -85,8 +85,11 @@ class User
   end
 
   def desactivate
-    self.status = "inactive"
-    self.save!
+    update_status_to "inactive"
+  end
+
+  def activate
+    update_status_to "active"
   end
 
   def add_market market_params
@@ -151,6 +154,11 @@ class User
   end
 
   private
+
+  def update_status_to status
+    self.status = status
+    self.save!
+  end
 
   def self.create_with email
     user = User.new

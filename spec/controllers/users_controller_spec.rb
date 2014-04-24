@@ -108,4 +108,22 @@ describe UsersController do
     end
   end
 
+  describe "PUT /activate" do
+
+    before do
+      UsersDomain.stub(:activate)
+    end
+
+    it "redirects back to the users list" do
+      put :activate, {id: user.to_param}, valid_session
+      expect(response).to redirect_to(users_path)
+    end
+
+    it "updates the users status to inactive" do
+      UsersDomain.should_receive(:activate).with(user.to_param)
+      
+      put :activate, {id: user.to_param}, valid_session
+    end
+  end
+
 end

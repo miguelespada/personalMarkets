@@ -32,6 +32,7 @@ PopUpStores::Application.routes.draw do
     resources :markets, only: [:index, :new, :create, :edit, :update, :destroy]
 
     put :desactivate, :on => :member
+    put :activate, :on => :member
 
     resource :role, controller: "role", :only => [:update] do
       get :change, :on => :member
