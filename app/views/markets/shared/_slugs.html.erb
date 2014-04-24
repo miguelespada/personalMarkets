@@ -8,17 +8,19 @@
   <th>Category</th>
   <th>Tags</th>
   <th>Owner</th>
+  <th>State</th>
   <th>Actions</th>
   </tr>
   <% markets.each do |market| %>
     <% market = market.decorate %>
     <%= content_tag_for(:tr, market) do %>
-      <td> <%= market.featured_photo(50) %></td>
+      <td> <%= market.featured_photo(50,50) %></td>
       <td> <%= market.link(market.name)%> </td>
       <td> <%= market.description %></td>
       <td> <%= market.category_name %> </td>
       <td> <%= market.tags %> </td>
       <td> <%= market.owner %> </td>
+      <td> <%= market.state %> </td>
       <td> <%= market.actions %> </td>
     <% end %>
   <% end %>
