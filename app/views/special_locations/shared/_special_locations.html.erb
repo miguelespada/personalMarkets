@@ -1,5 +1,6 @@
 <div class = "special_location_gallery">
   <% @special_locations.each do |special_location| %>
+  <% if !special_location.photo.nil? %>
     <div class = "special_location_item">
       <div class = "special_location_featured_photo">
         <%= cl_image_tag(special_location.photo.path, :size => '400x200', :crop => :fill) %>
@@ -17,5 +18,6 @@
         </div>
       </div>
     </div>
+  <% end %>
   <% end %>
 </div>
