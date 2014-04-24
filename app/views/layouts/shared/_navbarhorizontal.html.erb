@@ -13,22 +13,16 @@
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-              <li id="search_bar"> 
               <%= render "layouts/shared/search_bar" %>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navegar<b class="caret"></b></a>
-
-                <ul class="dropdown-menu">
-                  <%= render "layouts/shared/guest_tasks" %>
-               </ul>
-              </li>
+              <%= render "layouts/shared/guest_menu" %>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+              <%= render "layouts/shared/add_market" %>
+
               <% if user_signed_in? %>
+                <%= render "layouts/shared/user_menu"  %>
                 <%= render "layouts/shared/admin_menu" if current_user.has_role? :admin %>
-                <%= render "layouts/shared/user_menu" %>
                 <%= render "layouts/shared/signout" %>
               <% else %>
                 <%= render "layouts/shared/signin" %>

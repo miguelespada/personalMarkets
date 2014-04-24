@@ -2,6 +2,27 @@ class MarketsController < ApplicationController
   before_filter :load_user
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
 
+  # def destroy
+  #   @market.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to  user_markets_path(@user), 
+  #                     notice: "Market successfully deleted."}
+  #   end
+  # end
+
+  def index
+    @markets = Market.all
+    render 'index', :locals =>  {:layout => "slugs"}
+  end
+
+  def list_user_markets
+    @markets = Market.find_all(@user)
+    respond_to do |format|
+        format.json {render json: @markets}
+        format.html
+    end
+  end
+
   def search
     @markets = Market.search(search_params)
     render 'index', :layout => false
