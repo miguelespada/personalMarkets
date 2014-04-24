@@ -10,16 +10,6 @@ describe "UsersDomain" do
     user_repo.stub(find: user)
   end
 
-  it ".desactivate" do
-    user.should_receive(:desactivate)
-    UsersDomain.desactivate("user_id")
-  end
-
-  it ".activate" do
-    user.should_receive(:activate)
-    UsersDomain.activate("user_id")
-  end
-
   it ".update_role" do
     user.should_receive(:update_role).with("admin")
     UsersDomain.update_role("user_id", "admin")

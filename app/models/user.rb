@@ -93,14 +93,6 @@ class User
     self.roles.map(&:name)
   end
 
-  def desactivate
-    update_status_to "inactive"
-  end
-
-  def activate
-    update_status_to "active"
-  end
-
   def add_market market_params
     self.markets.new market_params
   end
@@ -163,11 +155,6 @@ class User
   end
 
   private
-
-  def update_status_to status
-    self.status = status
-    self.save!
-  end
 
   def self.create_with email
     user = User.new

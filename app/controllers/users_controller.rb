@@ -31,16 +31,6 @@ class UsersController < ApplicationController
     redirect_to action: 'index'
   end
 
-  def desactivate
-    UsersDomain.desactivate user_id
-    redirect_to users_path
-  end
-
-  def activate
-    UsersDomain.activate user_id
-    redirect_to users_path
-  end
-
   def profile
 
   end
