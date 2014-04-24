@@ -1,3 +1,68 @@
-// Place all the styles related to the SpecialLocations controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+@import "bootstrap/theme";
+
+.special_location_title{
+	@extend h1;
+	font-weight: 100;
+	text-align: center;
+}
+
+.special_location_gallery{
+	@extend .row;
+}
+
+.special_location_item{
+	@extend .col-lg-4;
+	padding: 15px 0px 15px 0px;
+}
+
+.special_location_featured_photo{
+	position:relative;
+	width:400px;
+	margin:auto;
+}
+
+.special_location_featured_photo:hover .special_location_actions{
+	display:block;
+}
+
+.special_location_name{
+	position:absolute;
+	display:inline;
+	top:100%;
+	left:12px;
+	margin-top:-48px;
+	font-weight:200;
+	font-size:24px;
+	line-height: 48px;
+	color:#FFFFFF;
+	text-shadow: 2px 2px 5px #222222;
+}
+
+.special_location_actions{
+	@extend .btn-xs;
+	@extend .btn-default;
+	text-align:center;
+	position:absolute;
+	left:12px;
+	width:80px;
+	opacity:0.8;
+	display:none;
+}
+
+.special_location_show{
+	top:12px;
+}
+
+.special_location_edit{
+	top:36px;
+}
+
+.special_location_destroy{
+	top:60px;
+}
+
+.special_location_new{
+	text-align: center;
+}
+
