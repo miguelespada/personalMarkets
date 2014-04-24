@@ -52,6 +52,18 @@ class User
   # field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
   # field :locked_at,       :type => Time
 
+  def active_for_authentication?
+    super && self.active?
+  end
+
+  def inactive_message
+    self.active? ? super : :inactive
+  end
+
+  def active?
+    self.status != "inactive"
+  end
+
   def update_role new_role
     remove_roles
     self.add_role new_role
