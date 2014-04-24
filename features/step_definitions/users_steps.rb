@@ -23,7 +23,7 @@ end
 Then(/^It should have inactive state$/) do
   step "I go to Users"
   within(:css, "#user_#{@user_1.id}") do
-    expect(page).to have_content "inactive"
+    expect(page).to have_content "Inactive"
   end
 end
 
@@ -38,7 +38,7 @@ end
 
 Then(/^It should have admin role$/) do
   within(:css, "#user_#{@user.id}") do
-    expect(page).to have_content "admin"
+    expect(page).to have_content "Admin"
   end
 end
 
@@ -53,7 +53,7 @@ end
 
 Then(/^It should have normal role$/) do
   within(:css, "#user_#{@user.id}") do
-    expect(page).to have_content "normal"
+    expect(page).to have_content "Normal"
   end
 end
 
