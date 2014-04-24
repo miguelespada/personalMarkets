@@ -26,13 +26,10 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-              <% if user_signed_in? %>
+                <%= render "layouts/shared/user_menu" if user_signed_in? %>
                 <%= render "layouts/shared/admin_menu" if current_user.has_role? :admin %>
-                <%= render "layouts/shared/user_menu" %>
-                <%= render "layouts/shared/signout" %>
-              <% else %>
-                <%= render "layouts/shared/signin" %>
-              <% end %>
+                <%= render "layouts/shared/signout" if user_signed_in? %>
+                <%= render "layouts/shared/signin" unless user_signed_in? %>
             </ul>
 
         </div>
