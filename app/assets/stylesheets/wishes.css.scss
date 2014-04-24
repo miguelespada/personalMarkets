@@ -1,3 +1,64 @@
-// Place all the styles related to the wishes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+@import "bootstrap/theme";
+
+.wish_title{
+	@extend h1;
+	font-weight: 100;
+	text-align: center;
+}
+
+.wish_gallery{
+	@extend .row;
+}
+
+.wish_item{
+	@extend .col-lg-4;
+	padding: 15px 0px 15px 0px;
+}
+
+.wish_featured_photo{
+	position:relative;
+	width:400px;
+	margin:auto;
+}
+
+.wish_featured_photo:hover .wish_actions{
+	display:block;
+}
+
+.wish_description_name{
+	position:absolute;
+	display:inline;
+	top:100%;
+	left:12px;
+	margin-top:-48px;
+	font-weight:200;
+	font-size:24px;
+	line-height: 48px;
+	color:#FFFFFF;
+	text-shadow: 2px 2px 5px #222222;
+}
+
+.wish_actions{
+	@extend .btn-xs;
+	@extend .btn-default;
+	text-align:center;
+	position:absolute;
+	left:12px;
+	width:80px;
+	opacity:0.8;
+	display:none;
+}
+
+.wish_show{
+	top:12px;
+}
+
+.wish_destroy{
+	top:36px;
+}
+
+.wish_new{
+	text-align: center;
+}
+
