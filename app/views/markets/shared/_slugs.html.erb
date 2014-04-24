@@ -3,15 +3,19 @@
   <th>Featured photo</th>
   <th>Name</th>
   <th>Description</th>
-  <th>Actions</th>
+  <th>Category</th>
+  <th>Tags</th>
+  <th>Owner</th>
   </tr>
-
   <% markets.each do |market| %>
     <% market = market.decorate %>
     <%= content_tag_for(:tr, market) do %>
       <td> <%= market.featured_photo(30) %></td>
       <td> <%= market.name %> </td>
       <td> <%= market.description %></td>
+      <td> <%= market.category_name %> </td>
+      <td> <%= market.tags %> </td>
+      <td> <%= market.owner %> </td>
     <% end %>
   <% end %>
 </table>

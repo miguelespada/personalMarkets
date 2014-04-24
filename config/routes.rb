@@ -17,6 +17,8 @@ PopUpStores::Application.routes.draw do
     resources :coupons, :only => [:create, :new]
   end
 
+  get "/users/:user_id/markets", to: "markets#list_user_markets", as: "user_markets"
+  
   resources :coupons, :only => [:show, :index]
 
 
@@ -31,6 +33,7 @@ PopUpStores::Application.routes.draw do
   resources :users do
     resources :markets, only: [:index, :new, :create, :edit, :update, :destroy]
   end
+  
   put "/users/:id/desactivate", to: "users#desactivate", as: "desactivate_user"
   get "/users/:id/change_role", to: "users#change_role", as: "change_role"
   put "/users/:id/update_role", to: "users#update_role", as: "update_role"
