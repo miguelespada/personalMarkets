@@ -32,6 +32,9 @@ PopUpStores::Application.routes.draw do
     resources :markets, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :wishes
   end
+  put "/users/:id/desactivate", to: "users#desactivate", as: "desactivate_user"
+  get "/users/:id/change_role", to: "users#change_role", as: "change_role"
+  put "/users/:id/update_role", to: "users#update_role", as: "update_role"
 
   post "/markets/:market_id/comments/:id/report", to: "comments#report", as: 'report_comment'
   post "/markets/:market_id/delete_image", to: "markets#delete_image", as: 'delete_image'

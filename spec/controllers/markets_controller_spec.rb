@@ -162,6 +162,21 @@ describe MarketsController do
     end
   end
 
+  describe "other permissions" do
+
+      before :each do
+        @market = create(:market, :state => "published")
+      end
+
+    [:archive, :delete_image].each do |post_action|
+      it "forbidden #{post_action}" do
+        post post_action, { market_id: @market.id }, valid_session
+        expect(response.response_code).to eq 401
+      end
+    end
+    
+  end
+
   describe "Permissions" do
 
     context "archive market" do
