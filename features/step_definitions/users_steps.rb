@@ -24,7 +24,7 @@ end
 
 When(/^I desactivate one user$/) do
   within(:css, "#user_#{@user_1.id}") do
-    click_on "Desactivate"
+    click_on "Switch to Inactive"
   end
 end
 
@@ -91,7 +91,7 @@ end
 
 When(/^I activate it$/) do
   within(:css, "#user_#{@user.id}") do
-    click_on "Activate"
+    click_on "Switch to Active"
   end
 end
 

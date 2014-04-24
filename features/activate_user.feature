@@ -1,4 +1,4 @@
-@users_management
+@user_management
 Feature: Activate user
   I order allow user to login
   As admin

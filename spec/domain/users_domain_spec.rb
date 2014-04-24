@@ -24,4 +24,9 @@ describe "UsersDomain" do
     user.should_receive(:update_role).with("admin")
     UsersDomain.update_role("user_id", "admin")
   end
+
+  it ".update_status" do
+    user.should_receive(:update_status).with("inactive")
+    UsersDomain.update_status("user_id", "inactive")
+  end
 end

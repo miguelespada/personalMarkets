@@ -39,6 +39,9 @@ PopUpStores::Application.routes.draw do
     resource :role, controller: "role", :only => [:update] do
       get :change, :on => :member
     end
+
+    resource :status, controller: "status", :only => [:update]
+
   end
   
   get "/users/:user_id/profile", to: "users#profile", as: "user_profile"

@@ -8,4 +8,12 @@ describe "Activate a user" do
     user.reload
     expect(user.status).to eq("active")
   end
+
+  it "updates the status to active" do
+    user = create(:user, :status => "inactive")
+
+    user.update_status "active"
+    user.reload
+    expect(user.status).to eq("active")
+  end
 end
