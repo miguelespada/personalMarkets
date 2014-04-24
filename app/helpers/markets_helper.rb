@@ -13,12 +13,6 @@ module MarketsHelper
     end
   end
 
-    # def slug_item(market)
-    #   div_for market, class: "market-slug" do
-    #     render market.decorate, :image_size => "50"
-    #   end
-    # end
-
   def tooltip(market)
     div_for market, class: "market-tooltip" do
       render :partial => 'markets/market',
@@ -27,14 +21,8 @@ module MarketsHelper
     end
   end
 
-  def market_list(markets, layout, &block) 
-      if layout == "slugs"
-        render partial: "markets/shared/slugs", locals: {markets: markets }
-      end
-      # else
-      #   markets.collect{|market| concat(gallery_item(market))}
-      # end
-      # yield if block_given?
+  def market_list(markets, layout) 
+      render partial: "markets/shared/slugs", locals: {markets: markets } if layout == "slugs"
   end
 
   def market_form(user, market)

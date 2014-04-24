@@ -32,7 +32,7 @@ Given(/^A normal user$/) do
 end
 
 When(/^I make it admin$/) do
-  visit change_role_path @user
+  visit change_user_role_path @user
   click_on "Make admin"
 end
 
@@ -47,12 +47,32 @@ Given(/^A admin user$/) do
 end
 
 When(/^I make it normal$/) do
-  visit change_role_path @user
+  visit change_user_role_path @user
   click_on "Make normal"
 end
 
 Then(/^It should have normal role$/) do
   within(:css, "#user_#{@user.id}") do
     expect(page).to have_content "normal"
+  end
+end
+
+Given(/^a user is in its profile page$/) do
+  step "I am a registered user"
+  step "I sign in"
+  click_on "My profile"
+end
+
+When(/^he wants to become premium$/) do
+  click_on "Become premium"
+end
+
+Then(/^he needs to introduce his credit card data$/) do
+  within(:css, ".payment-form") do  
+    fill_in "Card name", with: "Dan North"
+    fill_in "Card number", with: 4111111111111111
+    fill_in "Expiration month", with: 12
+    fill_in "Expiration year", with: 20
+    fill_in "CVC", with: 212
   end
 end

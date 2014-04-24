@@ -5,7 +5,7 @@
     <td> <%= user.markets.count %></td>
     <td> <%= user.favorites.count %></td>
     <td> <%= link_to "Show", user_path(user), :method => :get %>
-         <%= link_to "Change role", change_role_path(user), :method => :get %>
+         <%= link_to "Change role", change_user_role_path(user), :method => :get %>
          <%= link_to "Desactivate", desactivate_user_path(user), :method => :put %>
          <%= link_to "Delete", user_path(user), :method => :delete %></td>
 <% end %>
