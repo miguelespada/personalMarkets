@@ -12,7 +12,7 @@ class Ability
 
     can [:edit, :update], Comment, :author => @user.email
     can [:edit, :update], Market, :user_id => @user.id
-    # can :delete, Market, :user_id => @user.id
+    can :delete, Market, :user_id => @user.id
   end
 
   private

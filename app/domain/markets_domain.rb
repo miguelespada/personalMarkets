@@ -2,6 +2,10 @@ require 'markets_domain_exception'
 
 class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
 
+  def initialize_market
+    markets_repo.initialize_market
+  end
+
   def create_market user_id, market_params
     user = users_repo.find user_id
     market = user.add_market market_params
@@ -43,6 +47,31 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
     market = markets_repo.find market_id
     market.delete_featured_image
     listener.delete_image_succeeded market
+  end
+
+  def user_markets user_id
+    markets = []
+    if !user_id.nil?
+      user = users_repo.find user_id
+      markets = markets_repo.user_markets user
+    end
+    listener.user_markets_succeeded markets
+  end
+
+  def show_market market_id
+    market = get_market market_id
+    listener.show_succeeded market
+  end
+
+  def delete_market market_id
+    market = get_market market_id
+    market.destroy
+    listener.delete_succeeded
+  end
+
+  def published_markets
+    markets = markets_repo.published_markets
+    listener.published_succeeded markets
   end
 
 end

@@ -13,3 +13,8 @@ Feature: Users management
   Scenario: Delete User 
     When I delete one user
     Then I should not see the user
+
+  Scenario: Desactivate User
+    When I desactivate one user
+    Then It should have inactive state
+

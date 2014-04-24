@@ -102,7 +102,7 @@ When(/^I edit my comment$/) do
 end
 
 Then(/^It is updated in the list$/) do
-  step 'I visit the other market page'
+  visit market_path @other_market
   expect(page).to have_content "updated comment"
 end
 

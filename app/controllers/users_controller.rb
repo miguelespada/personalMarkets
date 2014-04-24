@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user ||=  User.find(params[:id])
+    @user ||=  User.find(user_id)
   rescue Exception => each 
     redirect_to action: 'index'
   end
@@ -26,13 +26,32 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    @user = User.find(user_id)
     @user.destroy
     redirect_to action: 'index'
   end
 
+  def desactivate
+    UsersDomain.desactivate user_id
+    redirect_to users_path
+  end
+
+  def change_role
+    @user = User.find user_id
+  end
+
+  def update_role
+    UsersDomain.update_role user_id, params[:new_role]
+    redirect_to users_path
+  end
+
   private 
-    def load_user
-      @user = User.find(params[:user_id])
-    end
+
+  def user_id
+    params[:id]
+  end
+
+  def load_user
+    @user = User.find(params[:user_id])
+  end
 end
