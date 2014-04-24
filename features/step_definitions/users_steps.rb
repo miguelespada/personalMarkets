@@ -45,8 +45,8 @@ When(/^I make it admin$/) do
 end
 
 Then(/^It should have admin role$/) do
-  within(:css, "#user_#{@user.id}") do
-    expect(page).to have_content "Admin"
+  within(:css, ".admin") do
+    expect(page).to have_content @user.email
   end
 end
 
@@ -60,8 +60,8 @@ When(/^I make it normal$/) do
 end
 
 Then(/^It should have normal role$/) do
-  within(:css, "#user_#{@user.id}") do
-    expect(page).to have_content "Normal"
+  within(:css, ".normal") do
+    expect(page).to have_content @user.email
   end
 end
 
