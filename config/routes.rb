@@ -31,11 +31,12 @@ PopUpStores::Application.routes.draw do
   resources :users do
     resources :markets, only: [:index, :new, :create, :edit, :update, :destroy]
 
+    put :desactivate, :on => :member
+
     resource :role, controller: "role", :only => [:update] do
       get :change, :on => :member
     end
   end
-  put "/users/:id/desactivate", to: "users#desactivate", as: "desactivate_user"
 
   get "/users/:user_id/profile", to: "users#profile", as: "user_profile"
   get "/users/:user_id/subscription", to: "users#subscription", as: "user_subscription"
