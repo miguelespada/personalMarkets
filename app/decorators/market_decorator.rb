@@ -3,6 +3,12 @@ class MarketDecorator < Draper::Decorator
 
   delegate_all
 
+   def slug
+    div_for market, class: "market-slug" do
+      market.name
+    end
+  end
+
   def archive_link
     if can? :archive, market
       link_to "Archive", market_archive_path(market), { method: :post }

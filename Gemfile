@@ -47,7 +47,6 @@ gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
 gem 'country-select'
 
-
 #tags
 gem 'mongoid_taggable'
 gem "tagmanager-rails", "~> 3.0.1.0"

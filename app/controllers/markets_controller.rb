@@ -12,7 +12,12 @@ class MarketsController < ApplicationController
   # end
 
   def index
-    @markets ||= Market.find_all(@user)
+    @markets = Market.all
+    render 'index', :locals =>  {:layout => "slugs"}
+  end
+
+  def list_user_markets
+    @markets = Market.find_all(@user)
     respond_to do |format|
         format.json {render json: @markets}
         format.html
