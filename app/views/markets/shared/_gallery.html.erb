@@ -1,0 +1,6 @@
+<% markets.each do |market| %>
+  <% market = market.decorate %>
+  <%= content_tag_for(:tr, market) do %>
+   <%= market.featured_photo(400, 200) %>
+  <% end %>
+<% end %>
