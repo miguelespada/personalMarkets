@@ -1,17 +1,25 @@
-<table class="table">
+<h3> <%= "There are currently " + pluralize(markets.count, "market") %> </h3>
+
+<table class="table table-striped table-bordered table-hover">
   <tr>
   <th>Featured photo</th>
   <th>Name</th>
   <th>Description</th>
+  <th>Category</th>
+  <th>Tags</th>
+  <th>Owner</th>
   <th>Actions</th>
   </tr>
-
   <% markets.each do |market| %>
     <% market = market.decorate %>
     <%= content_tag_for(:tr, market) do %>
-      <td> <%= market.featured_photo(30) %></td>
-      <td> <%= market.name %> </td>
+      <td> <%= market.featured_photo(50) %></td>
+      <td> <%= market.link(market.name)%> </td>
       <td> <%= market.description %></td>
+      <td> <%= market.category_name %> </td>
+      <td> <%= market.tags %> </td>
+      <td> <%= market.owner %> </td>
+      <td> <%= market.actions %> </td>
     <% end %>
   <% end %>
 </table>
