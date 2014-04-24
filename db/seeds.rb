@@ -39,6 +39,24 @@ def create_markets
       )
 
   end
+  10.times do |n|
+    name = Faker::Company.name
+    description = Faker::Commerce.product_name
+    category = Category.where(name: "category#{n}").first
+    longitude = Faker::Address.longitude
+    latitude = Faker::Address.latitude
+
+    Market.create!(
+      name: name,
+      description: description,
+      user: user,
+      category: category,
+      longitude: longitude,
+      latitude: latitude,
+      state: "published"
+      )
+
+  end
 end
 
 create_some_users
