@@ -1,6 +1,5 @@
 class MarketsController < ApplicationController
   before_filter :load_user
-  before_filter :load_market, only: [:show ,:edit, :destroy]
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
 
   # def destroy
@@ -12,7 +11,12 @@ class MarketsController < ApplicationController
   # end
 
   def index
-    @markets ||= Market.find_all(@user)
+    @markets = Market.all
+    render 'index', :locals =>  {:layout => "slugs"}
+  end
+
+  def list_user_markets
+    @markets = Market.find_all(@user)
     respond_to do |format|
         format.json {render json: @markets}
         format.html
@@ -24,11 +28,27 @@ class MarketsController < ApplicationController
     render 'index', :layout => false
   end
 
+  def destroy
+    domain.delete_market params[:id]
+  end
+
+  def delete_succeeded
+    respond_to do |format|
+      format.html { redirect_to  user_markets_path(@user), 
+                      notice: "Market successfully deleted."}
+    end
+  end
+
   def new
-    @market = Market.new
+    @market = domain.initialize_market
   end
 
   def show
+    domain.show_market params[:id]
+  end
+
+  def show_succeeded market
+    @market = market
     respond_to do |format|
         format.html   
         format.svg  { render :qrcode => request.url, :level => :l, :unit => 10 }
@@ -36,6 +56,19 @@ class MarketsController < ApplicationController
   end
   
   def edit
+    @market = domain.get_market params[:id]
+  end
+
+  def index
+    domain.user_markets params[:user_id]
+  end
+
+  def user_markets_succeeded markets
+    @markets = markets
+    respond_to do |format|
+        format.json {render json: markets}
+        format.html
+    end
   end
 
   def delete_image
@@ -82,7 +115,11 @@ class MarketsController < ApplicationController
   end
 
   def published
-    @markets = Market.where(state: :published)
+    domain.published_markets
+  end
+
+  def published_succeeded markets
+    @markets = markets
     render 'index' 
   end
 
@@ -104,7 +141,7 @@ class MarketsController < ApplicationController
   private
 
     def domain
-      @domain ||= MarketsDomain.new self, Market, User
+      @domain ||= MarketsDomain.new self, MarketsRepo, User
     end
 
     def market_params
@@ -143,10 +180,6 @@ class MarketsController < ApplicationController
       end 
     end
 
-    def load_market
-      @market = Market.find(params[:id])
-    end
-    
     def load_category
         params[:category][:category_id]
     rescue => e

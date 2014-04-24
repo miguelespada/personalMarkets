@@ -13,11 +13,11 @@ module MarketsHelper
     end
   end
 
-  def slug_item(market)
-    div_for market, class: "market-slug" do
-      render market.decorate, :image_size => "50"
-    end
-  end
+    # def slug_item(market)
+    #   div_for market, class: "market-slug" do
+    #     render market.decorate, :image_size => "50"
+    #   end
+    # end
 
   def tooltip(market)
     div_for market, class: "market-tooltip" do
@@ -29,11 +29,12 @@ module MarketsHelper
 
   def market_list(markets, layout, &block) 
       if layout == "slugs"
-        markets.collect{|market| concat(slug_item(market))}
-      else
-        markets.collect{|market| concat(gallery_item(market))}
+        render partial: "markets/shared/slugs", locals: {markets: markets }
       end
-      yield if block_given?
+      # else
+      #   markets.collect{|market| concat(gallery_item(market))}
+      # end
+      # yield if block_given?
   end
 
   def market_form(user, market)

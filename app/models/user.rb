@@ -35,6 +35,8 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
 
+  field :status, :type => String
+
   has_many :authorizations
   slug :email, history: false
 
@@ -49,6 +51,31 @@ class User
   # field :failed_attempts, :type => Integer, :default => 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
   # field :locked_at,       :type => Time
+
+  def update_role new_role
+    remove_roles
+    self.add_role new_role
+  end
+
+  def remove_roles
+    role_names.each do |role|
+      self.remove_role role
+    end
+  end
+
+  def role
+    return "normal" if self.roles.empty?
+    role_names.join(", ")
+  end
+
+  def role_names
+    self.roles.map(&:name)
+  end
+
+  def desactivate
+    self.status = "inactive"
+    self.save!
+  end
 
   def add_market market_params
     self.markets.new market_params

@@ -1,0 +1,17 @@
+<table class="table">
+  <tr>
+  <th>Featured photo</th>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Actions</th>
+  </tr>
+
+  <% markets.each do |market| %>
+    <% market = market.decorate %>
+    <%= content_tag_for(:tr, market) do %>
+      <td> <%= market.featured_photo(30) %></td>
+      <td> <%= market.name %> </td>
+      <td> <%= market.description %></td>
+    <% end %>
+  <% end %>
+</table>

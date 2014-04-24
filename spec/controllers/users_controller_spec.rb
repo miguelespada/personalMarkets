@@ -90,4 +90,50 @@ describe UsersController do
     end
   end
 
+  describe "PUT /desactivate" do
+
+    before do
+      UsersDomain.stub(:desactivate)
+    end
+
+    it "redirects back to the users list" do
+      put :desactivate, {id: user.to_param}, valid_session
+      expect(response).to redirect_to(users_path)
+    end
+
+    it "updates the users status to inactive" do
+      UsersDomain.should_receive(:desactivate).with(user.to_param)
+      
+      put :desactivate, {id: user.to_param}, valid_session
+    end
+  end
+
+  describe "GET /change_role" do
+    it "assigns the user" do
+      user = double
+      User.stub(:find).with("user_id") { user }
+
+      get :change_role, id: "user_id"
+      expect(assigns(:user)).to be(user)
+    end
+  end
+
+  describe "PUT /update_role" do
+
+    before do
+      UsersDomain.stub(:update_role)
+    end
+
+    it "redirects to users" do
+      put :update_role, id: "user_id"
+      expect(response).to redirect_to users_path
+    end
+
+    it "updates user role to admin" do
+      UsersDomain.should_receive(:update_role).with(user.to_param, "admin")
+
+      put :update_role, id: user.to_param, new_role: "admin"
+    end
+  end
+
 end
