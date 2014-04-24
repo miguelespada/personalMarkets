@@ -1,0 +1,8 @@
+
+<li class="registered-user-action ">
+  <% if user_signed_in? %>
+      <%= button_to "Add Market", new_user_market_path(current_user), class:"btn btn-info", :method => :get %>
+  <% else %>
+    <%= button_to "Add Market", "#", class:"btn btn-info", :method => :get %>
+  <% end %>
+</li>
