@@ -2,6 +2,14 @@ class MarketDecorator < Draper::Decorator
   include Draper::LazyHelpers
 
   delegate_all 
+  
+  def link(text)
+    link_to(text, market_path(market), :class => "show market-action")
+  end 
+
+  def owner
+    user.email
+  end
 
   def owner
     user.email
@@ -10,6 +18,10 @@ class MarketDecorator < Draper::Decorator
   def category_name
     category.name
   end 
+
+  def actions
+      render partial: 'markets/shared/actions', locals: { market: self }
+  end
 
   def archive_link
     if can? :archive, market
@@ -104,8 +116,7 @@ class MarketDecorator < Draper::Decorator
   end 
 
   def show_link
-    link_to("Show", market_path(market), 
-      :class => "show market-action")
+    link("Show")
   end
   
   def edit_link
