@@ -23,7 +23,15 @@
   display: none;
 }
 
+#search_bar{
+  padding-top:13px;
+  padding-left:10px;
+  width: 200px;
+}
 
+#search_bar .form-control{
+  height: 25px;
+}
 
 body {
   padding-top: 50px
