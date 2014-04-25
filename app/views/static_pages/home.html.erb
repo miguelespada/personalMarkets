@@ -15,9 +15,6 @@
 </div>
 </section>
 
-<section id="markets">
-</section>
-
 <section id="special_locations">
 </section>
 
@@ -37,6 +34,10 @@
 	}
 	.search-field{
 		text-decoration: underline;
+	}
+
+	#wishes{
+		margin-bottom:80px;
 	}
 </style>
 
@@ -112,6 +113,7 @@
   	setInterval(function(){
 			rand = Math.floor(Math.random() * array.length);
 			 $(span).html(array[rand]);
+			 centerSearchDiv();
   	}, 3000);
   }
 
