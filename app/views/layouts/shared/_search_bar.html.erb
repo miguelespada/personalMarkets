@@ -1,8 +1,10 @@
 <li id="search_bar"> 
-  <%= form_tag search_markets_path, method: "get" do %>
   <div class="form-group"> 
     <%= text_field_tag :query, params[:query], placeholder: "Buscar markets...", class: "query form-control" %>
   </div>
-    <%= submit_tag "Search", name: nil, class: "hidden" %>
-  <% end %>
 <li>
+<li>
+  <%= link_to search_path(:query => "cosas") do %>
+    <i class="fa fa-search"></i>
+  <% end %>
+</li>
