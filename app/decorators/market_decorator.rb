@@ -1,12 +1,26 @@
 class MarketDecorator < Draper::Decorator
   include Draper::LazyHelpers
 
-  delegate_all
+  delegate_all 
+  
+  def link(text)
+    link_to(text, market_path(market), :class => "show market-action")
+  end 
 
-   def slug
-    div_for market, class: "market-slug" do
-      market.name
-    end
+  def owner
+    user.email
+  end
+
+  def owner
+    user.email
+  end
+
+  def category_name
+    category.name
+  end 
+
+  def actions
+      render partial: 'markets/shared/actions', locals: { market: self }
   end
 
   def archive_link
@@ -91,8 +105,9 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
-  def featured_photo(image_size)
-    size = "#{image_size}x#{image_size}"
+  def featured_photo(width, height = nil)
+    heihgt ||= width
+    size = "#{width}x#{height}"
     image_options = { size: size, crop: :fill }
     if market.featured?
       cl_image_tag(market.featured.path, image_options) 
@@ -102,8 +117,7 @@ class MarketDecorator < Draper::Decorator
   end 
 
   def show_link
-    link_to("Show", market_path(market), 
-      :class => "show market-action")
+    link("Show")
   end
   
   def edit_link

@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
+  authorize_resource :only => [:index, :show, :destroy]
   before_filter :load_user, only: [:like, :unlike, :profile]
 
   def index
-    @users = User.all
+    @users = UsersPresenter.for User.all
   end
   
   def show
@@ -31,20 +32,6 @@ class UsersController < ApplicationController
     redirect_to action: 'index'
   end
 
-  def desactivate
-    UsersDomain.desactivate user_id
-    redirect_to users_path
-  end
-
-  def change_role
-    @user = User.find user_id
-  end
-
-  def update_role
-    UsersDomain.update_role user_id, params[:new_role]
-    redirect_to users_path
-  end
-  
   def subscription
     
   end

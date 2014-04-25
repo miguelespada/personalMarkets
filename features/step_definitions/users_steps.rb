@@ -1,6 +1,18 @@
+Given(/^I have access to users management$/) do
+  step "I am logged in as an admin"
+end
+
 Then(/^I should see the list of users$/) do
   expect(page).to have_content @user_0.email
   expect(page).to have_content @user_1.email
+end
+
+Then(/^I should see the list of users grouped by role$/) do
+  @users.each do |user|
+    within(".#{user.role}") do
+      page.should have_css(".user", text: user.email)
+    end
+  end
 end
 
 When(/^I delete one user$/) do
@@ -16,14 +28,14 @@ end
 
 When(/^I desactivate one user$/) do
   within(:css, "#user_#{@user_1.id}") do
-    click_on "Desactivate"
+    click_on "Switch to Inactive"
   end
 end
 
 Then(/^It should have inactive state$/) do
   step "I go to Users"
   within(:css, "#user_#{@user_1.id}") do
-    expect(page).to have_content "inactive"
+    expect(page).to have_content "Inactive"
   end
 end
 
@@ -32,13 +44,13 @@ Given(/^A normal user$/) do
 end
 
 When(/^I make it admin$/) do
-  visit change_role_path @user
+  visit change_user_role_path @user
   click_on "Make admin"
 end
 
 Then(/^It should have admin role$/) do
-  within(:css, "#user_#{@user.id}") do
-    expect(page).to have_content "admin"
+  within(:css, ".admin") do
+    expect(page).to have_content @user.email
   end
 end
 
@@ -47,13 +59,13 @@ Given(/^A admin user$/) do
 end
 
 When(/^I make it normal$/) do
-  visit change_role_path @user
+  visit change_user_role_path @user
   click_on "Make normal"
 end
 
 Then(/^It should have normal role$/) do
-  within(:css, "#user_#{@user.id}") do
-    expect(page).to have_content "normal"
+  within(:css, ".normal") do
+    expect(page).to have_content @user.email
   end
 end
 
@@ -88,3 +100,21 @@ Then(/^he is notified for a successful subscription$/) do
   # pending
   # expect(page).to have_content "Premium user"
 end
+
+Given(/^an inactive user$/) do
+  @user = create(:user, :status => "inactive")
+end
+
+When(/^I activate it$/) do
+  within(:css, "#user_#{@user.id}") do
+    click_on "Switch to Active"
+  end
+end
+
+Then(/^It should have active state$/) do
+  step "I go to Users"
+  within(:css, "#user_#{@user.id}") do
+    expect(page).to have_content "Active"
+  end
+end
+

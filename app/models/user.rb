@@ -3,6 +3,8 @@ class User
   include Mongoid::Slug
   include Mongoid::Attributes::Dynamic
 
+  after_create :set_default_role
+
   rolify
 
   has_many :markets, class_name: "Market", dependent: :delete, inverse_of: :user
@@ -35,7 +37,7 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
 
-  field :status, :type => String
+  field :status, :type => String, :default => "active"
 
   has_many :authorizations
   slug :email, history: false
@@ -52,29 +54,43 @@ class User
   # field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
   # field :locked_at,       :type => Time
 
-  def update_role new_role
-    remove_roles
-    self.add_role new_role
+  def available_statuses
+    ["active", "inactive"] - [self.status]
   end
 
-  def remove_roles
-    role_names.each do |role|
-      self.remove_role role
-    end
+  def available_roles
+    Roles.all - [self.role]
+  end
+
+  def active_for_authentication?
+    super && self.active?
+  end
+
+  def inactive_message
+    self.active? ? super : :inactive
+  end
+
+  def active?
+    self.status != "inactive"
+  end
+
+  def update_status new_status
+    self.status = new_status
+    self.save!
+  end
+
+  def update_role new_role
+    self.remove_role self.role
+    self.add_role new_role.to_sym
   end
 
   def role
-    return "normal" if self.roles.empty?
-    role_names.join(", ")
+    return "" if self.roles.empty?
+    self.role_names.join(", ")
   end
 
   def role_names
     self.roles.map(&:name)
-  end
-
-  def desactivate
-    self.status = "inactive"
-    self.save!
   end
 
   def add_market market_params
@@ -146,6 +162,10 @@ class User
     user.email = email
     user.save!
     user
+  end
+
+  def set_default_role
+    add_role :normal if self.roles.blank?
   end
 
 end

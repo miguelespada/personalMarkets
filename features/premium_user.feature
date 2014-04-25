@@ -1,4 +1,3 @@
-@wip
 Feature: Premium user
   As a registered user
   I want to be able to pay for a premium account

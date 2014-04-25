@@ -45,6 +45,9 @@ class Ability
 
   def admin_abilities
     if @user.has_role? :admin
+      can [:update], Status
+      can [:show, :index, :destroy], User
+      can [:change, :update], Role
       can :archive, Market
       can :delete_image, Market
       can [:edit, :update], Comment

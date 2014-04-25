@@ -6,11 +6,53 @@
     </head>
 
 <body>
-
-
   <%= render "layouts/shared/flash" %>
-
   <%= render "layouts/shared/navbarhorizontal" %>
+
+  <section id="slideshow">
+  	<%= javascript_include_tag "jquery.slides" %>
+
+    <div id="slides">
+      <img src="images/11.png">
+      <img src="images/22.png">
+      <img src="images/33.png">
+      <img src="images/44.png">
+    </div>
+
+    <script>
+      $(document).ready(function(){
+        $("#slides").slidesjs({
+          width: 1000,
+          height: 500,
+          navigation: {
+            active: false,
+            effect: "fade"
+          },
+          play: {
+            active: false,
+            effect: "fade",
+            interval: 2000,
+            auto: true,
+            swap: false,
+            pauseOnHover: false,
+            restartDelay: 1000
+          },
+          effect: {
+            fade: {
+              speed: 1000,
+              crossfade: true
+            }
+          },
+          pagination: {
+            active: false
+          }
+        });
+      });
+    </script>
+  </section>
+
+  <section id="wishlist">
+  </section>
 
 
 </body>

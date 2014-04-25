@@ -1,3 +1,4 @@
+<div class="row">
 <%= simple_form_for [user, market], 
     :html => {"data-tags" => "#{raw_tags(market)}", role: "form"}  do |f| %>
     <div id="wizard">
@@ -39,11 +40,24 @@
           <%= f.input :longitude %>
           <%= f.input :latitude %>
           </div>
-          <%= render "markets/shared/mapsmall" %>
+        </section>
+
+        <h3>Add coupon</h3>
+        <section id = "form-market-coupon" > 
+         
+        </section>
+
+        <h3>Save and publish</h3>
+        <section id = "form-submit" > 
+            <%= f.button :submit, class: 'btn'%>
         </section>
     </div>
-        <%= f.button :submit, class: 'btn'%>
 <% end %>
+<div>
+<%= render "markets/shared/mapsmall" %>
+</div>
+</div>
+
 <script>
 
 $( document ).ready(function() {

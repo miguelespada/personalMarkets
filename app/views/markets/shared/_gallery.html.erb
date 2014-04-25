@@ -1,0 +1,18 @@
+<div class = "market_gallery">
+	<% markets.each do |market| %>
+    <% market = market.decorate %>
+    <%= content_tag_for(:tr, market) do %>
+      <div class = "market_item">
+        <div class = "market_featured_photo">
+          <%= market.featured_photo(400, 200) %>
+          <div class = "market_name_label">
+            <%= market.name %>
+          </div>
+          <div class = "market_description_label">
+            <%= market.description %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

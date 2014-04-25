@@ -1,1 +1,3 @@
-<%= render "users", :users => @users %>
+<% @users.grouped_by_role do |role, grouped_users| %>
+  <%= render "users", :users => grouped_users, :role => role %>
+<% end %>

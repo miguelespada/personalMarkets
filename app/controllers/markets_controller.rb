@@ -17,10 +17,7 @@ class MarketsController < ApplicationController
 
   def list_user_markets
     @markets = Market.find_all(@user)
-    respond_to do |format|
-        format.json {render json: @markets}
-        format.html
-    end
+    render 'index', :locals =>  {:layout => "slugs"}
   end
 
   def search
@@ -59,9 +56,9 @@ class MarketsController < ApplicationController
     @market = domain.get_market params[:id]
   end
 
-  def index
-    domain.user_markets params[:user_id]
-  end
+  # def index
+  #   domain.user_markets params[:user_id]
+  # end
 
   def user_markets_succeeded markets
     @markets = markets
@@ -120,7 +117,7 @@ class MarketsController < ApplicationController
 
   def published_succeeded markets
     @markets = markets
-    render 'index' 
+    render 'index', :locals =>  {:layout => "gallery"}
   end
 
   def update
