@@ -117,4 +117,3 @@ Then(/^It should have active state$/) do
     expect(page).to have_content "Active"
   end
 end
-
