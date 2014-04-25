@@ -1,5 +1,50 @@
-<div class="jumbotron hero-spacer">
-  <h1>Welcome to Personal Markets!</h1>
-  <p>Here the amazing personal shooping platform.</p>
-  <%= link_to "Go!", map_path, class: "btn btn-primary btn-large" %>
-</div>
+
+
+  <section id="slideshow">
+    <%= javascript_include_tag "jquery.slides" %>
+
+    <div id="slides">
+      <img src="images/11.png">
+      <img src="images/22.png">
+      <img src="images/33.png">
+      <img src="images/44.png">
+    </div>
+
+  </section>
+
+  <section id="wishlist">
+  </section>
+
+<style>
+</style>
+
+    <script>
+      $(document).ready(function(){
+        $("#slides").slidesjs({
+          width: 1000,
+          height: 500,
+          navigation: {
+            active: false,
+            effect: "fade"
+          },
+          play: {
+            active: false,
+            effect: "fade",
+            interval: 2000,
+            auto: true,
+            swap: false,
+            pauseOnHover: false,
+            restartDelay: 1000
+          },
+          effect: {
+            fade: {
+              speed: 1000,
+              crossfade: true
+            }
+          },
+          pagination: {
+            active: false
+          }
+        });
+      });
+    </script>

@@ -1,3 +1,8 @@
-<div class = "special_location_title">Special Locations</div>
-<%= render "special_locations/shared/special_locations" %>
+<div class = "special_location_title">Hot spots</div>
+
+<% if can? :manage, SpecialLocation %>
 <div class = "special_location_new"><%= link_to 'New Special location', new_special_location_path %></div>
+<% end %>
+
+<%= render "special_locations/shared/special_locations" %>
+

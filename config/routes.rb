@@ -1,6 +1,5 @@
 PopUpStores::Application.routes.draw do
 
-  resources :special_locations
 
   get "tags/index"
 
@@ -62,6 +61,9 @@ PopUpStores::Application.routes.draw do
   get "static_pages/map", path: "/map", as: 'map'
   get "/users/:user_id/like/:market_id",  to: 'users#like', as: 'like'
   get "/users/:user_id/unlike/:market_id",  to: 'users#unlike', as: 'unlike'
+
+
+  resources :special_locations
 
   root "static_pages#home"
 
