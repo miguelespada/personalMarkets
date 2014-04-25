@@ -9,10 +9,9 @@
       <img src="images/44.png">
     </div>
   <div id="search-sample" onclick="goToSearchQuery();">
-  	<span id="search_time" class="search-field">Este finde</span> quiero ir de markets por 
-  	<span id="search_place" class="search-field">Madrid</span> en busca de 
-  	<span id="search_item1" class="search-field">vinilos</span> y 
-  	<span id="search_item2" class="search-field">videojuegos</span>.
+  	<span id="search_time" class="search-field">Today</span> I would like to look for a market in  
+  	<span id="search_place" class="search-field">Madrid</span> for 
+  	<span id="search_item" class="search-field">mobile phones</span>.
   </div>
   </section>
   
@@ -66,17 +65,15 @@
     $( "#wishes" ).html( data );
   });
 
-	var searchTimeArray = ["Este finde", "Mañana", "La semana que viene", "Este mes", "Este viernes"];
+	var searchTimeArray = ["Today", "This week", "This month", "Next week"];
   var searchPlaceArray = ["Madrid", "Barcelona", "Sevilla", "Valencia", "Bilbao", "malasaña", "lavapiés", "el born", "poblenou"];
-  var searchItem1Array = ["bici", "libros", "flores", "CD", "vinilos"];
-  var searchItem2Array = ["alcohol", "pinturas", "moto", "moviles", "videojuegos"];
+  var searchItemArray = ["bicycle", "books", "flowers", "CD", "mobile phones", "drinks", "video games"];
 	
 
   $(document).ready(function(){
   	changeSearchItems("#search_time",searchTimeArray);
   	changeSearchItems("#search_place",searchPlaceArray);
-  	changeSearchItems("#search_item1",searchItem1Array);
-  	changeSearchItems("#search_item2",searchItem2Array);
+  	changeSearchItems("#search_item",searchItemArray);
   	
     $("#slides").slidesjs({
       width: 1000,
@@ -130,7 +127,7 @@
   }
 
   var goToSearchQuery = function(){
-  	var URL = "/search?query=" + $("#search_item1").html();
+  	var URL = "/search?query=" + $("#search_item").html();
   	window.location.href = URL;
   };
 
