@@ -33,15 +33,21 @@ describe Market do
                          :category => @category,
                          :latitude => 40.001,
                          :longitude => -70.02,
+                         :state => 'published',
                          :date => "04/01/2014,06/01/2014,08/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 1", 
                                   :city => 'Barcelona',
-                                  :description => "The awesome ultraspecif", 
+                                  :description => "The awesome ultraspefic",
+                                  :state => 'published',
                                   :date => "10/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 2", 
                                   :city => 'Madrid',
+                                  :state => 'published',
                                   :date => "15/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 3",
+                                  :state => 'published',
+                                  :date => "19/01/2014")
+      FactoryGirl.create(:market, :name => "market unpublished",
                                   :date => "19/01/2014")
       Market.refresh_index
     end   
@@ -50,7 +56,7 @@ describe Market do
       it "returns all the markets" do
         params = {}
         result = Market.search(params)
-        expect(result.count).to eq Market.all.count
+        expect(result.count).to eq Market.where(state: "published").count
       end
     end
 
@@ -64,13 +70,13 @@ describe Market do
       it "searches with generic name" do
         params = {:query  => "generic"}
         result = Market.search(params)
-        expect(result.count).to eq Market.all.count - 1
+        expect(result.count).to eq Market.where(state: "published").count - 1
       end
 
       it "searches with more generic name" do
         params = {:query  => "market"}
         result = Market.search(params)
-        expect(result.count).to eq Market.all.count
+        expect(result.count).to eq Market.where(state: "published").count
       end
         it "search by tag" do
         params = {:query  => "tag_one"}
@@ -212,7 +218,7 @@ describe Market do
           :from => "08/01/20s4"
         }
         result = Market.search(params)
-        expect(result.count).to eq Market.all.count
+        expect(result.count).to eq Market.where(state: "published").count
       end
     end
 

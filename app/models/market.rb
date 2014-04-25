@@ -77,6 +77,7 @@ class Market
           city: city,
           tags: tags.split(/,/),
           date: format_date,
+          state: state,
           lat_lon: lat_lon
         }.to_json
   end
@@ -118,6 +119,7 @@ class Market
         filtered do
           filter :terms, category: [category] if !category.blank?
           filter :geo_distance, lat_lon: location, distance: '5km' if !location.blank?
+          filter :terms, state: ["published"] 
         end
       end
     end
