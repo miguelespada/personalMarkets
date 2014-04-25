@@ -21,7 +21,8 @@
 //= require moment
 //= require app
 //= require jquery.steps.min
-//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.es
 //= require tagmanager
 //= require twitter/typeahead.min
 //= require jquery.ui.widget
