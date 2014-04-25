@@ -1,25 +1,28 @@
-<section id="slideshow">
-  <%= javascript_include_tag "jquery.slides" %>
-
-  <div id="slides">
-    <img src="images/11.png">
-    <img src="images/22.png">
-    <img src="images/33.png">
-    <img src="images/44.png">
+<div id="home-container">
+  <section id="slideshow">
+    <%= javascript_include_tag "jquery.slides" %>
+  
+    <div id="slides">
+      <img src="images/11.png">
+      <img src="images/22.png">
+      <img src="images/33.png">
+      <img src="images/44.png">
+    </div>
+  <div id="search-sample" onclick="goToSearchQuery();">
+  	<span id="search_time" class="search-field">Este finde</span> quiero ir de markets por 
+  	<span id="search_place" class="search-field">Madrid</span> en busca de 
+  	<span id="search_item1" class="search-field">vinilos</span> y 
+  	<span id="search_item2" class="search-field">videojuegos</span>.
   </div>
-<div id="search-sample" onclick="goToSearchQuery();">
-	<span id="search_time" class="search-field">Este finde</span> quiero ir de markets por 
-	<span id="search_place" class="search-field">Madrid</span> en busca de 
-	<span id="search_item1" class="search-field">vinilos</span> y 
-	<span id="search_item2" class="search-field">videojuegos</span>.
+  </section>
+  
+  <section id="special_locations">
+  </section>
+  
+  <section id="wishes">
+  </section>
+
 </div>
-</section>
-
-<section id="special_locations">
-</section>
-
-<section id="wishes">
-</section>
 
 <style>
 	#search-sample{
@@ -36,7 +39,7 @@
 		text-decoration: underline;
 	}
 
-	#wishes{
+	#home-container{
 		margin-bottom:80px;
 	}
 </style>
