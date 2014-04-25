@@ -22,9 +22,9 @@
 	margin:auto;
 }
 
-.special_location_featured_photo:hover .special_location_actions{
-	display:block;
-}
+// .special_location_featured_photo:hover .special_location_actions{
+// 	display:block;
+// }
 
 .special_location_label{
 	position:absolute;
@@ -64,5 +64,6 @@
 
 .special_location_new{
 	text-align: center;
+	display:none;
 }
 

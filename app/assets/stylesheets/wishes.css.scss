@@ -22,9 +22,9 @@
 	margin:auto;
 }
 
-.wish_featured_photo:hover .wish_actions{
-	display:block;
-}
+// .wish_featured_photo:hover .wish_actions{
+// 	display:block;
+// }
 
 .wish_description_name{
 	position:absolute;
@@ -60,5 +60,6 @@
 
 .wish_new{
 	text-align: center;
+	display:none;
 }
 
