@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  authorize_resource :only => [:index, :show, :destroy]
   before_filter :load_user, only: [:like, :unlike, :profile]
 
   def index

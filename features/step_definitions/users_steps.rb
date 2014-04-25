@@ -1,3 +1,7 @@
+Given(/^I have access to users management$/) do
+  step "I am logged in as an admin"
+end
+
 Then(/^I should see the list of users$/) do
   expect(page).to have_content @user_0.email
   expect(page).to have_content @user_1.email

@@ -5,7 +5,8 @@ Feature: Activate user
   I want to activate a user
 
   Scenario: Activate user
-    Given an inactive user
+    Given I have access to users management
+    And an inactive user
     And I go to Users
     When I activate it
     Then It should have active state

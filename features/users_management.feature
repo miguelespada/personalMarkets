@@ -5,7 +5,8 @@ Feature: Users management
   I want to edit users
 
   Background: 
-    Given there are some users
+    Given I have access to users management
+    And there are some users
     And I go to Users
 
   Scenario: See User List

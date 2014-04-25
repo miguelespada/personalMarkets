@@ -16,6 +16,10 @@ describe UsersController do
 
     before do
       stub_const("UsersPresenter", presenter_factory)
+      @ability = Object.new
+      @ability.extend(CanCan::Ability)
+      @controller.stub(:current_ability) { @ability }
+      @ability.can :index, User
     end
 
     it "renders the index template" do
