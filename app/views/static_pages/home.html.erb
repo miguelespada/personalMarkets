@@ -17,9 +17,11 @@
   </section>
   
   <section id="special_locations">
+    <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
   </section>
   
   <section id="wishes">
+    <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
   </section>
 
 </div>
@@ -42,12 +44,19 @@
 	#home-container{
 		margin-bottom:80px;
 	}
+
+  .anim-container{
+    width:100%;
+    text-align: center;
+  }
+
+  .fa-spin{
+    margin: 100px;
+    color:#777777;
+  }
 </style>
 
 <script>
-  $.get( "markets/published", function( data ) {
-    $( "#markets" ).html( data );
-  });
 
   $.get( "special_locations", function( data ) {
     $( "#special_locations" ).html( data );
