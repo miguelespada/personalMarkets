@@ -213,18 +213,41 @@ describe Market do
         result = Market.search(params)
         expect(result.count).to eq 1
       end
+
       it "filters out wrong formatted dates" do
         params = {
-          :from => "08/01/20s4"
+          :from => "08/01/20x4"
         }
         result = Market.search(params)
         expect(result.count).to eq Market.where(state: "published").count
       end
     end
 
-
+  
     it "filters out short queries"
     it "boots matches on the name"
 
+  end
+  describe "sort results" do
+    before :each do
+      Market.delete_all
+      FactoryGirl.create(:market,:name => "Market 3", 
+                                  :state => 'published',
+                                  :date => "15/01/2014")
+      FactoryGirl.create(:market, :name => "Market 1", 
+                                  :state => 'published',
+                                  :date => "10/01/2014")
+      FactoryGirl.create(:market, :name => "Market 2", 
+                                  :state => 'published',
+                                  :date => "12/01/2014")
+      Market.refresh_index
+    end   
+    
+    it "sorts queries" do
+      result = Market.search({})
+      expect(result.count).to eq 3
+      expect(result.first.name).to eq "Market 1"
+      expect(result.last.name).to eq "Market 3"
+    end
   end
 end
