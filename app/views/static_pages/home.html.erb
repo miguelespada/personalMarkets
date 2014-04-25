@@ -7,10 +7,10 @@
     <img src="images/33.png">
     <img src="images/44.png">
   </div>
-<div id="search-sample">
+<div id="search-sample" onclick="goToSearchQuery();">
 	<span id="search_time" class="search-field">Este finde</span> quiero ir de markets por 
 	<span id="search_place" class="search-field">Madrid</span> en busca de 
-	<span id="search_item1" class="search-field">vinillos</span> y 
+	<span id="search_item1" class="search-field">vinilos</span> y 
 	<span id="search_item2" class="search-field">videojuegos</span>.
 </div>
 </section>
@@ -33,6 +33,7 @@
 		font-size:24px;
 		color:#FFFFFF;
 		text-shadow: 2px 2px 5px #222222;
+		cursor:pointer;
 	}
 	.search-field{
 		text-decoration: underline;
@@ -53,8 +54,8 @@
   });
 
 	var searchTimeArray = ["Este finde", "Mañana", "La semana que viene", "Este mes", "Este viernes"];
-  var searchPlaceArray = ["Madrid", "Barcelona", "Sevilla", "Valencia", "Bilbao"];
-  var searchItem1Array = ["bici", "libros", "flores", "CD", "vinillos"];
+  var searchPlaceArray = ["Madrid", "Barcelona", "Sevilla", "Valencia", "Bilbao", "malasaña", "lavapiés", "el born", "poblenou"];
+  var searchItem1Array = ["bici", "libros", "flores", "CD", "vinilos"];
   var searchItem2Array = ["alcohol", "pinturas", "moto", "moviles", "videojuegos"];
 	
 
@@ -66,7 +67,7 @@
   	
     $("#slides").slidesjs({
       width: 1000,
-      height: 500,
+      height: 300,
       navigation: {
         active: false,
         effect: "fade"
@@ -109,9 +110,14 @@
 
   var changeSearchItems = function(span, array){
   	setInterval(function(){
-			rand = Math.floor(Math.random() * 5);
+			rand = Math.floor(Math.random() * array.length);
 			 $(span).html(array[rand]);
   	}, 3000);
   }
+
+  var goToSearchQuery = function(){
+  	var URL = "/search?query=" + $("#search_item1").html();
+  	window.location.href = URL;
+  };
 
 </script>
