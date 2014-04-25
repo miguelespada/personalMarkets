@@ -1,85 +1,100 @@
+<section id="slideshow">
+  <%= javascript_include_tag "jquery.slides" %>
 
+  <div id="slides">
+    <img src="images/11.png">
+    <img src="images/22.png">
+    <img src="images/33.png">
+    <img src="images/44.png">
+  </div>
+<div id="search-sample">
+	<span id="search_time" class="search-field">Este finde</span> quiero ir de markets por 
+	<span id="search_place" class="search-field">Madrid</span> en busca de 
+	<span id="search_item1" class="search-field">vinillos</span> y 
+	<span id="search_item2" class="search-field">videojuegos</span>.
+</div>
+</section>
 
-  <section id="slideshow">
-    <%= javascript_include_tag "jquery.slides" %>
-
-    <div id="slides">
-      <img src="images/11.png">
-      <img src="images/22.png">
-      <img src="images/33.png">
-      <img src="images/44.png">
-    </div>
-	<div id="search-sample">
-		<span>Este finde</span> quiero ir de markets por 
-		<span>Madrid</span> en busca de 
-		<span>vinillos</span> y 
-		<span>videojuegos</span>.
-	</div>
-  </section>
-
-  <section id="wishlist">
-  </section>
+<section id="wishlist">
+</section>
 
 <style>
-#slideshow{
-	/* Firefox */
-    display:-moz-box;
-    -moz-box-pack:center;
-    -moz-box-align:center;
-
-    /* Safari and Chrome */
-    display:-webkit-box;
-    -webkit-box-pack:center;
-    -webkit-box-align:center;
-
-    /* W3C */
-    display:box;
-    box-pack:center;
-    box-align:center;
-}
-
-#search-sample{
-	position:absolute;
-	z-index:10;
-	display:inline;
-	top:100%;
-	left:12px;
-	margin-top:-48px;
-	font-weight:200;
-	font-size:30px;
-	line-height: 60px;
-	color:#FFFFFF;
-	text-shadow: 2px 2px 5px #222222;
-}
+	#search-sample{
+		position:absolute;
+		z-index:10;
+		max-width: 80%;
+		font-weight:200;
+		font-size:24px;
+		color:#FFFFFF;
+		text-shadow: 2px 2px 5px #222222;
+	}
+	.search-field{
+		text-decoration: underline;
+	}
 </style>
 
-    <script>
-      $(document).ready(function(){
-        $("#slides").slidesjs({
-          width: 1000,
-          height: 500,
-          navigation: {
-            active: false,
-            effect: "fade"
-          },
-          play: {
-            active: false,
-            effect: "fade",
-            interval: 2000,
-            auto: true,
-            swap: false,
-            pauseOnHover: false,
-            restartDelay: 1000
-          },
-          effect: {
-            fade: {
-              speed: 1000,
-              crossfade: true
-            }
-          },
-          pagination: {
-            active: false
-          }
-        });
-      });
-    </script>
+<script>
+
+	var searchTimeArray = ["Este finde", "Mañana", "La semana que viene", "Este mes", "Este viernes"];
+  var searchPlaceArray = ["Madrid", "Barcelona", "Sevilla", "Valencia", "Bilbao"];
+  var searchItem1Array = ["bici", "libros", "flores", "CD", "vinillos"];
+  var searchItem2Array = ["alcohol", "pinturas", "moto", "moviles", "videojuegos"];
+	
+
+  $(document).ready(function(){
+  	changeSearchItems("#search_time",searchTimeArray);
+  	changeSearchItems("#search_place",searchPlaceArray);
+  	changeSearchItems("#search_item1",searchItem1Array);
+  	changeSearchItems("#search_item2",searchItem2Array);
+  	
+    $("#slides").slidesjs({
+      width: 1000,
+      height: 500,
+      navigation: {
+        active: false,
+        effect: "fade"
+      },
+      play: {
+        active: false,
+        effect: "fade",
+        interval: 4000,
+        auto: true,
+        swap: false,
+        pauseOnHover: false,
+        restartDelay: 1000
+      },
+      effect: {
+        fade: {
+          speed: 1000,
+          crossfade: true
+        }
+      },
+      pagination: {
+        active: false
+      }
+    });
+
+    centerSearchDiv();
+  	window.onresize = function(){
+			centerSearchDiv();
+  	};
+  });
+
+  
+
+  var centerSearchDiv = function(){
+  	$( "#search-sample" ).position({
+  		my: "center center",
+  		at: "center center",
+  		of: "#slides"
+		});
+  };
+
+  var changeSearchItems = function(span, array){
+  	setInterval(function(){
+			rand = Math.floor(Math.random() * 5);
+			 $(span).html(array[rand]);
+  	}, 3000);
+  }
+
+</script>
