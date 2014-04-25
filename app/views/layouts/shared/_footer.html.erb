@@ -17,9 +17,13 @@
 	$(document).ready(function(){
     $(".contact-us a").popover({
     	html: true,
-      title:  '<div class="input-group"><input type="text" class="form-control input-title" placeholder="Say something..."></div>',
+      title:'<input type="text" class="form-control input-title input-group" placeholder="Say something...">',
       placement: 'top',
-      content:'<div class="input-group"><input type="text" class="form-control input-content"></div>'
+      content:'<textarea type="text" rows="10" class="form-control input-content">'
+    });
+
+    $('.contact-us a').on('click', function() {
+      $(this).parent().toggleClass('active');
     });
 	});
 </script>
@@ -32,7 +36,7 @@
 		width:100%;
 	}
 	.input-content{
-		height:240px;
+    text-align: left;
 	}
 </style>
 <!-- Footer STOP -->
