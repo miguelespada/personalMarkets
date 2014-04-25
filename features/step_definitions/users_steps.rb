@@ -76,3 +76,15 @@ Then(/^he needs to introduce his credit card data$/) do
     fill_in "CVC", with: 212
   end
 end
+
+Given(/^a user submits for subscription with valid data$/) do
+  user = create(:user)
+  visit user_subscription_path user
+  step "he needs to introduce his credit card data"
+  click_on "Subscribe"
+end
+
+Then(/^he is notified for a successful subscription$/) do
+  # pending
+  # expect(page).to have_content "Premium user"
+end
