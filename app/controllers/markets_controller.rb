@@ -117,7 +117,7 @@ class MarketsController < ApplicationController
 
   def published_succeeded markets
     @markets = markets
-    render 'index', :locals =>  {:layout => "gallery"}
+    render 'index', :locals =>  {:layout => false}
   end
 
   def update

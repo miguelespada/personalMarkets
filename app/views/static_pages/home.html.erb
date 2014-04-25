@@ -15,7 +15,13 @@
 </div>
 </section>
 
-<section id="wishlist">
+<section id="markets">
+</section>
+
+<section id="special_locations">
+</section>
+
+<section id="wishes">
 </section>
 
 <style>
@@ -34,6 +40,17 @@
 </style>
 
 <script>
+  $.get( "markets/published", function( data ) {
+    $( "#markets" ).html( data );
+  });
+
+  $.get( "special_locations", function( data ) {
+    $( "#special_locations" ).html( data );
+  });
+
+  $.get( "wishes", function( data ) {
+    $( "#wishes" ).html( data );
+  });
 
 	var searchTimeArray = ["Este finde", "Mañana", "La semana que viene", "Este mes", "Este viernes"];
   var searchPlaceArray = ["Madrid", "Barcelona", "Sevilla", "Valencia", "Bilbao"];
