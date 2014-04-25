@@ -143,7 +143,6 @@ class MarketsController < ApplicationController
     end
 
     def market_params
-      puts params
       params.require(:market).permit(
         :name, 
         :description,
