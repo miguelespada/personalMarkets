@@ -3,7 +3,7 @@
   <% if !special_location.photo.nil? %>
     <div class = "special_location_item">
       <div class = "special_location_featured_photo">
-        <%= cl_image_tag(special_location.photo.path, :size => '400x200', :crop => :fill) %>
+        <%= cl_image_tag(special_location.photo.path, :size => '300x150', :crop => :fill) %>
         <div class = "special_location_label">
           <%= special_location.name %>
         </div>
