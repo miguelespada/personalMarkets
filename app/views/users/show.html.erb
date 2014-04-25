@@ -1,2 +1,4 @@
 User role <%= @user.role %> 
-<%= link_to "Become premium", user_subscription_path(@user) %>
+<% if @user.has_role? "normal" %>
+  <%= link_to "Become premium", user_subscription_path(@user) %>
+<% end %>

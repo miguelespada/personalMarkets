@@ -33,7 +33,6 @@ class UsersController < ApplicationController
   end
 
   def subscription
-    
   end
 
   private 

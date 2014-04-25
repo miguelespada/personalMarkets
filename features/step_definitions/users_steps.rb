@@ -72,7 +72,7 @@ end
 Given(/^a user is in its profile page$/) do
   step "I am a registered user"
   step "I sign in"
-  click_on "My profile"
+  visit user_path(@user)
 end
 
 When(/^he wants to become premium$/) do
@@ -84,21 +84,19 @@ Then(/^he needs to introduce his credit card data$/) do
     fill_in "Card name", with: "Dan North"
     fill_in "Card number", with: 4111111111111111
     fill_in "Expiration month", with: 12
-    fill_in "Expiration year", with: 20
+    fill_in "Expiration year", with: 2022
     fill_in "CVC", with: 212
   end
 end
 
 Given(/^a user submits for subscription with valid data$/) do
-  user = create(:user)
-  visit user_subscription_path user
+  visit user_subscription_path @user
   step "he needs to introduce his credit card data"
   click_on "Subscribe"
 end
 
 Then(/^he is notified for a successful subscription$/) do
-  # pending
-  # expect(page).to have_content "Premium user"
+  expect(page).to have_content "You have become premium successfully."
 end
 
 Given(/^an inactive user$/) do
@@ -116,4 +114,8 @@ Then(/^It should have active state$/) do
   within(:css, "#user_#{@user.id}") do
     expect(page).to have_content "Active"
   end
+end
+
+Then(/^he is premium$/) do
+  expect(page).to have_css '.premium-star'
 end

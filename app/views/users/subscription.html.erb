@@ -1,37 +1,93 @@
+<script type="text/javascript">
+  var PAYMILL_PUBLIC_KEY = "758157067538c48cb45513991681ca78";
+</script>
+
 <section id="subscription-payment">
   <h2>Profile page</h2>
   <p class="payment-errors"></p>
 
   <section class="payment-form">
 
-    <fieldset>
-      <label>Card name</label>
-      <input class="card-holdername" name="Card name" type="text" size="20" value="Max Mustermann" />
-    </fieldset>
+    <%= simple_form_for Subscription.new do |f| %>
+      <%= f.input :id, as: :hidden %>
+      <%= f.input :paymill_card_token, as: :hidden %>
 
-    <fieldset>
-      <label>Card number</label>
-      <input class="card-number" name="Card number" type="text", size="20" value="4111111111111111" />
-    </fieldset>
+      <%= f.input :name, placeholder: "Card name" %>
+      <%= f.input :card_number, placeholder: "Card number" %>
+      <%= f.input :expiration_month, placeholder: "Expiration month" %>
+      <%= f.input :expiration_year, placeholder: "Expiration year" %>
+      <%= f.input :cvc, placeholder: "CVC" %>
+    <% end %>
 
-    <div class="exp-and-cvc">
-
-      <fieldset>
-        <label>Expiration date</label>
-        <input class="card-expiry-month" name="Expiration month" placeholder="MM" type="text" size="2" value="12" maxlength="2" />
-        <input class="card-expiry-year" name="Expiration year" placeholder='YYYY' type="text" size="4" value="2015" maxlength="4"/>
-      </fieldset>
-
-      <fieldset>
-        <label>CVC</label>
-        <input class="card-cvc" name="CVC" type="text" maxlength="4" size="4" value="123"/>
-      </fieldset>
-
-    </div>
-
-    <fieldset>
-      <input type="submit" value="Subscribe" />
-    </fieldset>
+    <button class="get-token btn btn-primary">Subscribe</button>
 
   </section>
 </section>
+
+<script type="text/javascript" src="https://bridge.paymill.com/"></script>
+<script type="text/javascript">
+      jQuery(document).ready(function ($) {
+
+          var displayError = function(whatHappened){
+            $('#messages').html("");
+            $('#messages').append('<div id="error" class="alert alert-danger flash">' + whatHappened + '</div>');
+          };
+
+          function PaymillResponseHandler(error, result) {
+              if (error) {
+                displayError(error.apierror);
+              } else {
+                  $(".payment-errors").css("display","none");
+                  $(".payment-errors").text("");
+
+                  var token = result.token;
+                  $('#subscription_paymill_card_token').val(token);
+                  $('#new_subscription').submit();
+              }
+              $('.get-token').on('click', submitData);
+          }
+
+          var submitData = function (event) {
+
+              $('#messages').html("");
+              $('.get-token').off('click');
+
+              if (false == paymill.validateCardNumber($('#subscription_card_number').val())) {
+                displayError('Invalid card number');
+                  $(".get-token").removeAttr("disabled");
+                  $('.get-token').on('click', submitData);
+                  return false;
+              }
+              if (false == paymill.validateExpiry($('#subscription_expiration_month').val(), $('#subscription_expiration_year').val())) {
+                displayError('Invalid expiry date');
+                  $('.get-token').on('click', submitData);
+                  return false;
+              }
+
+              if ($('#subscription_name').val() == '') {
+                displayError('Invalid card holder name');
+                  $('.get-token').on('click', submitData);
+                  return false;
+              }
+              var params = {
+                  amount_int:     Math.round(10 * 100),  // E.g. "15" for 0.15 Eur
+                  currency:       'EUR',    // ISO 4217 e.g. "EUR"
+                  number:         $('#subscription_card_number').val(),
+                  exp_month:      $('#subscription_expiration_month').val(),
+                  exp_year:       $('#subscription_expiration_year').val(),
+                  cvc:            $('#subscription_cvc').val(),
+                  cardholder:     $('#subscription_name').val()
+              };
+
+              paymill.createToken(params, PaymillResponseHandler);
+              return false;
+          };
+          $(".get-token").on('click', submitData);
+          // $(".cancel").on('click', function() {
+          //   $.post('/revoke_user_access')
+          //     .done(function() {
+          //       window.location.href = '/'
+          //     });
+          // });
+      });
+</script>

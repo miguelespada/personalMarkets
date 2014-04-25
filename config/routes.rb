@@ -42,6 +42,8 @@ PopUpStores::Application.routes.draw do
     resource :status, controller: "status", :only => [:update]
 
   end
+
+  resources :subscriptions, :only => [:create]
   
   get "/users/:user_id/subscription", to: "users#subscription", as: "user_subscription"
 

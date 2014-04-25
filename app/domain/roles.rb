@@ -1,5 +1,5 @@
 module Roles
   def self.all
-    ["admin", "normal"]
+    ["admin", "normal", "premium"]
   end
 end

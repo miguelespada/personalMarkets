@@ -95,6 +95,7 @@ group :test do
   gem "launchy"
   gem "factory_girl_rails"
   gem 'pry'
+  gem 'fake_paymill', require: false
 end
 
 group :test, :development do
