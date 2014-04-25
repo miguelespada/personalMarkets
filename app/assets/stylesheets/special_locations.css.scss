@@ -12,19 +12,19 @@
 }
 
 .special_location_item{
-	@extend .col-lg-4;
+	@extend .col-md-4;
 	padding: 15px 0px 15px 0px;
 }
 
 .special_location_featured_photo{
 	position:relative;
-	width:400px;
+	width:300px;
 	margin:auto;
 }
 
-.special_location_featured_photo:hover .special_location_actions{
-	display:block;
-}
+// .special_location_featured_photo:hover .special_location_actions{
+// 	display:block;
+// }
 
 .special_location_label{
 	position:absolute;
@@ -64,5 +64,6 @@
 
 .special_location_new{
 	text-align: center;
+	display:none;
 }
 

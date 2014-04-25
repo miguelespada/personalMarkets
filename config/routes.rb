@@ -13,7 +13,6 @@ PopUpStores::Application.routes.draw do
     post :publish
     post :archive
     resources :comments, :only => [:create, :destroy, :update]
-    resources :coupons, :only => [:create, :new]
   end
 
   get "/users/:user_id/markets", to: "markets#list_user_markets", as: "user_markets"

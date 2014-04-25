@@ -18,6 +18,8 @@
  *= require tagmanager
  *= require jquery.ui.all
  *= require custom
+ *= require special_locations
+ *= require wishes
  */
 
 

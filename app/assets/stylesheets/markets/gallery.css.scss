@@ -6,13 +6,13 @@
 }
 
 .market_item{
-  @extend .col-lg-4;
+  @extend .col-md-4;
   padding: 15px 0px 15px 0px;
 }
 
 .market_featured_photo{
   position:relative;
-  width:400px;
+  width:300px;
   margin:auto;
 }
 

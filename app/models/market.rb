@@ -25,6 +25,7 @@ class Market
   has_and_belongs_to_many :favorited, class_name: "User", inverse_of: :favorites
   has_many :comments, class_name: "Comment", inverse_of: :market
   has_one :coupon, class_name: "Coupon", inverse_of: :market
+  accepts_nested_attributes_for :coupon
 
   slug :name, history: false, scope: :user
 
@@ -77,6 +78,7 @@ class Market
           city: city,
           tags: tags.split(/,/),
           date: format_date,
+          state: state,
           lat_lon: lat_lon
         }.to_json
   end
@@ -115,13 +117,13 @@ class Market
     search = Tire.search 'markets' do
       query do
         boolean &elasticQuery
-        filtered do
-          filter :terms, category: [category] if !category.blank?
-          filter :geo_distance, lat_lon: location, distance: '5km' if !location.blank?
-        end
       end
+      sort { by :date, 'asc' }
+      filter :terms, category: [category] if !category.blank?
+      filter :geo_distance, lat_lon: location, distance: '5km' if !location.blank?
+      filter :terms, state: ["published"] 
     end
-    values = search.results.collect{|result| find(result.to_hash[:id])}
+    search.results.collect{|result| find(result.to_hash[:id])}
   end
 
   def self.format_location(lat, lon)

@@ -4,6 +4,7 @@ class SpecialLocationsController < ApplicationController
 
   def index
     @special_locations = SpecialLocation.all
+    render layout: false
   end
 
   def show

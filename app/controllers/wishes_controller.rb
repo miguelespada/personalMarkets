@@ -4,6 +4,7 @@ class WishesController < ApplicationController
 
   def index
     @wishes = Wish.all
+    render layout: false
   end
 
   def list_user_wishes

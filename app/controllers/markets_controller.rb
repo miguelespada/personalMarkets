@@ -38,6 +38,7 @@ class MarketsController < ApplicationController
 
   def new
     @market = domain.initialize_market
+    @market.coupon = Coupon.new
   end
 
   def show
@@ -117,7 +118,7 @@ class MarketsController < ApplicationController
 
   def published_succeeded markets
     @markets = markets
-    render 'index', :locals =>  {:layout => "gallery"}
+    render 'index', :locals =>  {:layout => false}
   end
 
   def update
@@ -142,6 +143,7 @@ class MarketsController < ApplicationController
     end
 
     def market_params
+      puts params
       params.require(:market).permit(
         :name, 
         :description,

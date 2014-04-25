@@ -12,19 +12,19 @@
 }
 
 .wish_item{
-	@extend .col-lg-4;
+	@extend .col-md-4;
 	padding: 15px 0px 15px 0px;
 }
 
 .wish_featured_photo{
 	position:relative;
-	width:400px;
+	width:300px;
 	margin:auto;
 }
 
-.wish_featured_photo:hover .wish_actions{
-	display:block;
-}
+// .wish_featured_photo:hover .wish_actions{
+// 	display:block;
+// }
 
 .wish_description_name{
 	position:absolute;
@@ -60,5 +60,6 @@
 
 .wish_new{
 	text-align: center;
+	display:none;
 }
 

@@ -3,18 +3,18 @@
     :html => {"data-tags" => "#{raw_tags(market)}", role: "form"}  do |f| %>
     <div id="wizard">
     
+      
         <h3>Name and description</h3>
-        <section>  
-        <%= f.input :name, input_html: { class: 'market-name' }%>
-        <%= f.input :description, :as => :text, label_html: { class: 'market-description' } %>
+         <section>  
+         <%= f.input :name, input_html: { class: 'market-name' }%>
+         <%= f.input :description, :as => :text, label_html: { class: 'market-description' } %>
+         </section>
+         
+         <h3>Featured photo</h3>
+         <section>
+         <%= f.input :featured, as: :attachinary %>
         </section>
-        
-        <h3>Featured photo</h3>
-        <section>
-        <%= f.input :featured, as: :attachinary %>
-        </section>
-
-
+ 
         <h3>Category and tags</h3>
         <section>
         <%= f.association :category, :include_blank => false %>
@@ -26,7 +26,7 @@
 
         <h3>Date</h3>
         <section>
-        <%= f.input :date %> 
+        <%= f.input :date, input_html: { class: 'hidden' }  %> 
         <div id="datepicker"><div></div>
         </div>
 
@@ -42,9 +42,13 @@
           </div>
         </section>
 
-        <h3>Add coupon</h3>
+        <h3>Cupon</h3>
         <section id = "form-market-coupon" > 
-         
+           <%= f.simple_fields_for :coupon do |c| %>
+            <%= c.input :description %>
+            <%= c.input :price %>
+            <%= c.input :available %>
+          <% end %>
         </section>
 
         <h3>Save and publish</h3>
@@ -89,6 +93,8 @@ $( document ).ready(function() {
 
    $('.attachinary-input').attachinary();
 
+
+
    var tagApi = jQuery(".tm-input").tagsManager({
       prefilled: $( "form" ).data( "tags"),
       delimiters: [13, 44],
@@ -99,9 +105,12 @@ $( document ).ready(function() {
   var tags = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    limit: 15, 
+    limit: 3, 
     prefetch: {
-      url: '/tags/index.json',
+      url: '/tags.json',
+      filter: function(list) {
+        return $.map(list, function(tag) { return { name: tag }; });
+      }
     }
   });
  

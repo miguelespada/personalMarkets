@@ -7,3 +7,15 @@
     <div id="error" class="alert alert-danger flash"><%= flash[:error] %></div>
   <% end %>
 </section>
+
+<script>
+	setTimeout(function(){
+		$(".alert").slideUp(800);
+	}, 1200);
+</script>
+
+<style>
+	.alert{
+		margin-bottom:0px;
+	}
+</style>

@@ -1,50 +1,134 @@
-
-
+<div id="home-container">
   <section id="slideshow">
     <%= javascript_include_tag "jquery.slides" %>
-
+  
     <div id="slides">
       <img src="images/11.png">
       <img src="images/22.png">
       <img src="images/33.png">
       <img src="images/44.png">
     </div>
-
+  <div id="search-sample" onclick="goToSearchQuery();">
+  	<span id="search_time" class="search-field">Today</span> I would like to look for a market in  
+  	<span id="search_place" class="search-field">Madrid</span> for 
+  	<span id="search_item" class="search-field">mobile phones</span>.
+  </div>
+  </section>
+  
+  <section id="special_locations">
+    <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
+  </section>
+  
+  <section id="wishes">
+    <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
   </section>
 
-  <section id="wishlist">
-  </section>
+</div>
 
 <style>
+	#search-sample{
+		position:absolute;
+		z-index:10;
+		max-width: 80%;
+		font-weight:200;
+		font-size:24px;
+		color:#FFFFFF;
+		text-shadow: 2px 2px 5px #222222;
+		cursor:pointer;
+	}
+	.search-field{
+		text-decoration: underline;
+	}
+
+	#home-container{
+		margin-bottom:80px;
+	}
+
+  .anim-container{
+    width:100%;
+    text-align: center;
+  }
+
+  .fa-spin{
+    margin: 100px;
+    color:#777777;
+  }
 </style>
 
-    <script>
-      $(document).ready(function(){
-        $("#slides").slidesjs({
-          width: 1000,
-          height: 500,
-          navigation: {
-            active: false,
-            effect: "fade"
-          },
-          play: {
-            active: false,
-            effect: "fade",
-            interval: 2000,
-            auto: true,
-            swap: false,
-            pauseOnHover: false,
-            restartDelay: 1000
-          },
-          effect: {
-            fade: {
-              speed: 1000,
-              crossfade: true
-            }
-          },
-          pagination: {
-            active: false
-          }
-        });
-      });
-    </script>
+<script>
+
+  $.get( "special_locations", function( data ) {
+    $( "#special_locations" ).html( data );
+  });
+
+  $.get( "wishes", function( data ) {
+    $( "#wishes" ).html( data );
+  });
+
+	var searchTimeArray = ["Today", "This week", "This month", "Next week"];
+  var searchPlaceArray = ["Madrid", "Barcelona", "Sevilla", "Valencia", "Bilbao", "malasaña", "lavapiés", "el born", "poblenou"];
+  var searchItemArray = ["bicycle", "books", "flowers", "CD", "mobile phones", "drinks", "video games"];
+	
+
+  $(document).ready(function(){
+  	changeSearchItems("#search_time",searchTimeArray);
+  	changeSearchItems("#search_place",searchPlaceArray);
+  	changeSearchItems("#search_item",searchItemArray);
+  	
+    $("#slides").slidesjs({
+      width: 1000,
+      height: 300,
+      navigation: {
+        active: false,
+        effect: "fade"
+      },
+      play: {
+        active: false,
+        effect: "fade",
+        interval: 4000,
+        auto: true,
+        swap: false,
+        pauseOnHover: false,
+        restartDelay: 1000
+      },
+      effect: {
+        fade: {
+          speed: 1000,
+          crossfade: true
+        }
+      },
+      pagination: {
+        active: false
+      }
+    });
+
+    centerSearchDiv();
+  	window.onresize = function(){
+			centerSearchDiv();
+  	};
+  });
+
+  
+
+  var centerSearchDiv = function(){
+  	$( "#search-sample" ).position({
+  		my: "center center",
+  		at: "center center",
+  		of: "#slides"
+		});
+  };
+
+  var changeSearchItems = function(span, array){
+  	setInterval(function(){
+			rand = Math.floor(Math.random() * array.length);
+			 $(span).html(array[rand]);
+			 centerSearchDiv();
+  	}, 3000);
+  }
+
+  var goToSearchQuery = function(){
+  	var URL = "/search?query=" + $("#search_item").html();
+  	window.location.href = URL;
+  };
+
+</script>

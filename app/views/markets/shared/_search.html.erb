@@ -1,6 +1,5 @@
-<form class="form-inline" role="form">
 
-  <%= form_tag search_markets_path, method: "get", id: "search_market" do %>
+  <%= form_tag search_markets_path, method: "get", id: "search_market", class:"form-inline" do %>
     <li class="form-group">
       <%= text_field_tag :query, params[:query], placeholder: "Query...", class: "query form-control"  %>
     </li>
@@ -42,7 +41,6 @@
 
   <% end %>
 
-</form>
 
 <script>
   $.getJSON('cities.json', function(data){

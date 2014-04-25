@@ -1,7 +1,42 @@
 <!-- Footer START -->
 <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
   <div class="container">
-    <p>Copyright &copy; Personal Markets 2014 -  <a href="#">Privacy</a></p>
-      </div>
+    <p class="navbar-text">Copyright &copy; Personal Markets 2014 -  <a href="#">Privacy</a></p>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="contact-us">
+        <a>
+        	<i class="fa fa-envelope"></i>&nbsp;
+        	<span>Contact us</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>
+
+<script>
+	$(document).ready(function(){
+    $(".contact-us a").popover({
+    	html: true,
+      title:'<input type="text" class="form-control input-title input-group" placeholder="Say something...">',
+      placement: 'top',
+      content:'<textarea type="text" rows="10" class="form-control input-content">'
+    });
+
+    $('.contact-us a').on('click', function() {
+      $(this).parent().toggleClass('active');
+    });
+	});
+</script>
+
+<style>
+	.popover{
+		width:300px;
+	}
+	.input-group{
+		width:100%;
+	}
+	.input-content{
+    text-align: left;
+	}
+</style>
 <!-- Footer STOP -->
