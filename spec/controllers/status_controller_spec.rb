@@ -2,6 +2,13 @@ require 'spec_helper'
 
 describe StatusController do
 
+  before do
+    @ability = Object.new
+    @ability.extend(CanCan::Ability)
+    @controller.stub(:current_ability) { @ability }
+    @ability.can [:update], Status
+  end
+
   describe "PUT /update" do
 
     let(:user_id) { "user_id" }

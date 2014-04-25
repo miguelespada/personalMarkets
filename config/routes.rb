@@ -43,7 +43,6 @@ PopUpStores::Application.routes.draw do
 
   end
   
-  get "/users/:user_id/profile", to: "users#profile", as: "user_profile"
   get "/users/:user_id/subscription", to: "users#subscription", as: "user_subscription"
 
   resources :wishes, except: [:index]

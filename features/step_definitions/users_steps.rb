@@ -1,3 +1,7 @@
+Given(/^I have access to users management$/) do
+  step "I am logged in as an admin"
+end
+
 Then(/^I should see the list of users$/) do
   expect(page).to have_content @user_0.email
   expect(page).to have_content @user_1.email
@@ -85,6 +89,18 @@ Then(/^he needs to introduce his credit card data$/) do
   end
 end
 
+Given(/^a user submits for subscription with valid data$/) do
+  user = create(:user)
+  visit user_subscription_path user
+  step "he needs to introduce his credit card data"
+  click_on "Subscribe"
+end
+
+Then(/^he is notified for a successful subscription$/) do
+  # pending
+  # expect(page).to have_content "Premium user"
+end
+
 Given(/^an inactive user$/) do
   @user = create(:user, :status => "inactive")
 end
@@ -101,3 +117,4 @@ Then(/^It should have active state$/) do
     expect(page).to have_content "Active"
   end
 end
+

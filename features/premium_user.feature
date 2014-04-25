@@ -8,3 +8,7 @@ Feature: Premium user
     Given a user is in its profile page
     When he wants to become premium
     Then he needs to introduce his credit card data
+
+  Scenario: A user can become premium in its profile page
+    Given a user submits for subscription with valid data
+    Then he is notified for a successful subscription

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  authorize_resource :only => [:index, :show, :destroy]
   before_filter :load_user, only: [:like, :unlike, :profile]
 
   def index
@@ -29,10 +30,6 @@ class UsersController < ApplicationController
     @user = User.find(user_id)
     @user.destroy
     redirect_to action: 'index'
-  end
-
-  def profile
-
   end
 
   def subscription

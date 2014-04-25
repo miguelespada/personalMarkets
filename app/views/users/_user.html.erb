@@ -3,11 +3,11 @@
     <td class="<%= user.status %>"> <%= user.status.titleize %> </td>
     <td> <%= user.markets.count %></td>
     <td> <%= user.favorites.count %></td>
-    <td> <%= link_to "Show", user_path(user), :method => :get, :class => 'btn btn-primary' %>
-         <%= link_to "Change role", change_user_role_path(user), :method => :get, :class => 'btn btn-primary' %>
+    <td> <%= link_to "Show", user_path(user), :method => :get, :class => '' %> |
+         <%= link_to "Change role", change_user_role_path(user), :method => :get, :class => '' %> |
 
          <% user.available_statuses.each do |status| %>
-            <%= link_to "Switch to " + status.titleize, user_status_path(user, :new_status => status), :method => :put, :class => "btn btn-#{status}" %>
+            <%= link_to "Switch to " + status.titleize, user_status_path(user, :new_status => status), :method => :put, :class => "lnk-#{status}" %> |
          <% end %>
-         <%= link_to "Delete", user_path(user), :method => :delete, :class => 'btn btn-danger' %></td>
+         <%= link_to "Delete", user_path(user), :method => :delete, :class => 'lnk-danger' %></td>
 <% end %>

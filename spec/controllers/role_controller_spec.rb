@@ -2,6 +2,13 @@ require 'spec_helper'
 
 describe RoleController do
 
+    before do
+      @ability = Object.new
+      @ability.extend(CanCan::Ability)
+      @controller.stub(:current_ability) { @ability }
+      @ability.can [:change, :update], Role
+    end
+
   describe "GET /change" do
     it "assigns the user" do
       user = double

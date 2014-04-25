@@ -1,5 +1,7 @@
 class RoleController < ApplicationController
 
+  authorize_resource
+
   def change
     @user = User.find user_id
   end
