@@ -1,42 +1,42 @@
 <form class="form-inline" role="form">
 
   <%= form_tag search_markets_path, method: "get", id: "search_market" do %>
-    <div class="form-group">
+    <li class="form-group">
       <%= text_field_tag :query, params[:query], placeholder: "Query...", class: "query form-control"  %>
-    </div>
+    </li>
 
-    <div class="form-group">
+    <li class="form-group">
       <%= collection_select(:category, :category_id, Category.all, :name, :name, 
-                          {:selected => @category_query, :include_blank => "All"}, class: "category form-control" ) %>
-    </div>
+                          {:selected => @category_query, :include_blank => "All categories"}, class: "category form-control" ) %>
+    </li>
 
 
-    <div class="form-group">
+    <li class="form-group">
         <%= select_tag(:range, options_for_select([['Today', 'today'], 
                                               ['This week', 'thisWeek'], 
                                               ['This month', 'thisMonth'], 
                                               ['Next week', 'nextWeek'], 
                                               ['All', 'all'] ]), class: "form-control" ) %>      
 
-     </div>
+     </li>
 
-     <div class="form-group">
+     <li class="form-group">
       <%= collection_select(:location, :location_id, SpecialLocation.all, :name, :name, 
                           {:include_blank => "Any location"}, class: "form-control" ) %>
 
      
-     </div>
+     </li>
 
-     <div class="form-group">
+     <li class="form-group">
       <%= collection_select(:city, :city_name, [], :name, :name, 
                           {:include_blank => "Any city"}, class: "form-control" ) %>
 
-     </div>
+     </li>
 
-    <div class="date-range hidden">
+    <li class="date-range hidden">
       <%= text_field_tag :from, params[:from]%>  
       <%= text_field_tag :to, params[:to]%>  
-    </div>
+    </li>
 
     <%= submit_tag "Search", name: nil, class: "hidden" %>
 
