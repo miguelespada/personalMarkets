@@ -5,3 +5,15 @@
 <% if flash[:error] %>
   <div id="error" class="alert alert-danger flash">><%= flash[:error] %></div>
 <% end %>
+
+<script>
+	setTimeout(function(){
+	$(".alert").fadeOut(150);
+	}, 2000);
+</script>
+
+<style>
+	.alert{
+		margin-bottom:0px;
+	}
+</style>
