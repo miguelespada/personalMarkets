@@ -10,23 +10,18 @@
 <div id="search-sample" onclick="goToSearchQuery();">
 	<span id="search_time" class="search-field">Este finde</span> quiero ir de markets por 
 	<span id="search_place" class="search-field">Madrid</span> en busca de 
-	<span id="search_item1" class="search-field">vinillos</span> y 
+	<span id="search_item1" class="search-field">vinilos</span> y 
 	<span id="search_item2" class="search-field">videojuegos</span>.
 </div>
 </section>
 
-<section id="wishlist">
-	Wishlist <br>
-	<%= render "wishes/shared/wishes" %>
+<section id="markets">
 </section>
 
-<section id="latest_market">
-	Latest markets <br>
+<section id="special_locations">
 </section>
 
-<section id="hotspot">
-	Hotspots <br>
-	
+<section id="wishes">
 </section>
 
 <style>
@@ -46,6 +41,17 @@
 </style>
 
 <script>
+  $.get( "markets/published", function( data ) {
+    $( "#markets" ).html( data );
+  });
+
+  $.get( "special_locations", function( data ) {
+    $( "#special_locations" ).html( data );
+  });
+
+  $.get( "wishes", function( data ) {
+    $( "#wishes" ).html( data );
+  });
 
 	var searchTimeArray = ["Este finde", "Mañana", "La semana que viene", "Este mes", "Este viernes"];
   var searchPlaceArray = ["Madrid", "Barcelona", "Sevilla", "Valencia", "Bilbao", "malasaña", "lavapiés", "el born", "poblenou"];
@@ -61,7 +67,7 @@
   	
     $("#slides").slidesjs({
       width: 1000,
-      height: 500,
+      height: 300,
       navigation: {
         active: false,
         effect: "fade"
