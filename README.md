@@ -16,6 +16,14 @@ cd into project directory and run <code>bundle install</code>
 
 run <code>rails s</code> to start the application
 
+##Load Database example
+
+<code>mongorestore db/example_data.json/</code>
+
+##Dump Database example
+
+<code>mongodump -d pop_up_stores_development -o db/example_data.json</code>
+
 ##Database seeds
 To seed the database with example data:
 
