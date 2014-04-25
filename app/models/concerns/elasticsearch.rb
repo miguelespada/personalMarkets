@@ -36,6 +36,7 @@ module Elasticsearch
                   :name => {type: :string, :analyzer => :snowball, :boost => 50},
                   :tags => {type: :string, :analyzer => :snowball, :boost => 30},
                   :category => { type: 'string', analyzer: 'keyword' },
+                  :date => { type: 'string', analyzer: 'keyword' },
                   :lat_lon => { type: 'geo_point' }
               }
             }

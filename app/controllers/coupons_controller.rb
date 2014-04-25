@@ -11,27 +11,9 @@ class CouponsController < ApplicationController
       render :status => :unauthorized, :text => "Unauthorized action." 
   end
 
-  def new
-    authorize! :edit, @market
-      @coupon = Coupon.new
-    rescue CanCan::AccessDenied
-      render :status => :unauthorized, :text => "Unauthorized action." 
-  end
-
   def show
   end
 
-  def create
-    authorize! :edit, @market
-    
-    @market.create_coupon!(coupon_params)
-
-    redirect_to coupon_path(@market.coupon), notice: 'Coupon was successfully created.'
-    rescue CanCan::AccessDenied
-      render :status => :unauthorized, :text => "Unauthorized action." 
-    rescue
-      render :status => :unauthorized, :text => "Error creating coupon." 
-  end
 
   def buy
     authorize! :buy_coupon, @coupon.market

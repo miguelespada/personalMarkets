@@ -19,7 +19,6 @@
 //= require jquery.flexslider-min
 //= require vegas
 //= require moment
-//= require app
 //= require jquery.steps.min
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es
@@ -30,3 +29,4 @@
 //= require jquery.fileupload
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
+//= require app
