@@ -40,6 +40,8 @@ class Ability
         can :manage, Wish, Wish do |wish|
             @user.owns(wish)
         end
+
+        can :show, User, :user_id => @user.id
     end
   end
 
