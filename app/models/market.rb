@@ -116,14 +116,13 @@ class Market
     search = Tire.search 'markets' do
       query do
         boolean &elasticQuery
-        filtered do
-          filter :terms, category: [category] if !category.blank?
-          filter :geo_distance, lat_lon: location, distance: '5km' if !location.blank?
-          filter :terms, state: ["published"] 
-        end
       end
+      sort { by :date, 'asc' }
+      filter :terms, category: [category] if !category.blank?
+      filter :geo_distance, lat_lon: location, distance: '5km' if !location.blank?
+      filter :terms, state: ["published"] 
     end
-    values = search.results.collect{|result| find(result.to_hash[:id])}
+    search.results.collect{|result| find(result.to_hash[:id])}
   end
 
   def self.format_location(lat, lon)
