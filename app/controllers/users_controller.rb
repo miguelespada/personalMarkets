@@ -44,11 +44,7 @@ class UsersController < ApplicationController
     UsersDomain.update_role user_id, params[:new_role]
     redirect_to users_path
   end
-
-  def profile
-
-  end
-
+  
   def subscription
     
   end
