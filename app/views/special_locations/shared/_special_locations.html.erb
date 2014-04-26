@@ -1,23 +1,36 @@
 <div class = "special_location_gallery">
   <% @special_locations.each do |special_location| %>
-  <% if !special_location.photo.nil? %>
-    <div class = "special_location_item">
-      <div class = "special_location_featured_photo">
-        <%= cl_image_tag(special_location.photo.path, :size => '300x150', :crop => :fill) %>
-        <div class = "special_location_label">
-          <%= special_location.name %>
-        </div>
-        <div class = "special_location_show special_location_actions">
-          <%= link_to 'Show', special_location %>
-        </div>
-        <div class = "special_location_edit special_location_actions">
-          <%= link_to 'Edit', edit_special_location_path(special_location) %>
-        </div>
-        <div class = "special_location_destroy special_location_actions">
-          <%= link_to 'Destroy', special_location, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if !special_location.photo.nil? %>
+      <div class = "special_location_item">
+        <div class = "special_location_featured_photo" data-name = "<%= special_location.name %>">
+          <%= cl_image_tag(special_location.photo.path, :size => '300x150', :crop => :fill) %>
+          <div class = "special_location_label">
+            <%= special_location.name %>
+          </div>
+          
+          <div class = "special_location_show special_location_actions">
+            <%= link_to 'Show', special_location %>
+          </div>
+          <div class = "special_location_edit special_location_actions">
+            <%= link_to 'Edit', edit_special_location_path(special_location) %>
+          </div>
+          <div class = "special_location_destroy special_location_actions">
+            <%= link_to 'Destroy', special_location, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
   <% end %>
 </div>
+
+
+<script>
+$( document ).ready(function() {
+  $('.special_location_featured_photo').css('cursor', 'pointer');
+
+  $(".special_location_featured_photo").click(function(){
+    $("#location_location_id").val($(this).data("name"));
+    $("#search_market").submit();
+  });
+});
+</script>

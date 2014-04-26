@@ -12,8 +12,17 @@
 
 <script>
 $( document ).ready(function() {
+
+  $('#search_button').css('cursor', 'pointer');
+  
   $( "#search_bar_query" ).keyup(function() {
     $("#query").val($( "#search_bar_query" ).val());
+  });
+
+  $( "#search_bar_query").keypress(function(e) {
+    if(e.which == 13) {
+      $("#search_market").submit();
+    }
   });
   $("#query").ready(function(){
     $("#search_bar_query").val($( "#query" ).val());

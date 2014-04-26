@@ -22,9 +22,6 @@ class MarketsController < ApplicationController
   end
 
   def search
-    puts "*-*"*30
-    puts params[:city]
-    puts "*-*"*30
     @markets = Market.search(search_params)
     render :layout => !request.xhr?
   end
