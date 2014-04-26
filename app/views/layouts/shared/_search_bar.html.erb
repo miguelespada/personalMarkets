@@ -1,11 +1,12 @@
 <li id="search_bar"> 
   <div class="form-group"> 
-    <%= text_field_tag :query, params["query"], placeholder: "Buscar markets...", class: "query form-control", id: "search_bar_query" %>
+    <%= text_field_tag :query, params["query"], 
+    placeholder: "Buscar markets...", class: "query form-control", 
+    id: "search_bar_query" %>
   </div>
 <li>
-<li>
-<a>
-    <i  id="search_button" class="fa fa-search"></i>
+<a> 
+  <i  id="search_button" class="fa fa-search"></i>
 </a>
 </li>
 
@@ -14,7 +15,7 @@
 $( document ).ready(function() {
 
   $('#search_button').css('cursor', 'pointer');
-  
+
   $( "#search_bar_query" ).keyup(function() {
     $("#query").val($( "#search_bar_query" ).val());
   });
@@ -24,9 +25,11 @@ $( document ).ready(function() {
       $("#search_market").submit();
     }
   });
+
   $("#query").ready(function(){
     $("#search_bar_query").val($( "#query" ).val());
   })
+
   $("#search_button").click(function(){
     $("#search_market").submit();
   });

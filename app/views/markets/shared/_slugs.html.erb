@@ -5,11 +5,20 @@
   <th>Featured photo</th>
   <th>Name</th>
   <th>Description</th>
+  <th>Owner</th>
   <th>Category</th>
   <th>Tags</th>
   <th>Owner</th>
   <th>State</th>
   <th>Actions</th>
+  <th>Address</th>
+  <th>City</th>
+  <th>Latitude</th>
+  <th>Longitude</th>
+  <th>Date</th>
+  <th>Coupon</th>
+  <th>Coupon available</th>
+  <th>Coupon price</th>
   </tr>
   <% markets.each do |market| %>
     <% market = market.decorate %>
@@ -17,11 +26,20 @@
       <td> <%= market.featured_photo(50,50) %></td>
       <td> <%= market.link(market.name)%> </td>
       <td> <%= market.description %></td>
+      <td> <%= market.owner %></td>
       <td> <%= market.category_name %> </td>
       <td> <%= market.tags %> </td>
       <td> <%= market.owner %> </td>
       <td> <%= market.state %> </td>
       <td> <%= market.actions %> </td>
+      <td> <%= market.address %> </td>
+      <td> <%= market.latitude %> </td>
+      <td> <%= market.longitude %> </td>
+      <td> <%= market.city %> </td>
+      <td> <%= market.date %> </td>
+      <td> <%= market.coupon.description if market.coupon? %> </td>
+      <td> <%= market.coupon.available if market.coupon? %> </td>
+      <td> <%= market.coupon.price if market.coupon? %> </td>
     <% end %>
   <% end %>
 </table>
