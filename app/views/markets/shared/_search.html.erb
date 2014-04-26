@@ -1,6 +1,6 @@
 
   <%= form_tag search_markets_path, method: "get", id: "search_market", class:"form-inline" do %>
-    <li class="form-group">
+    <li class="form-group hidden">
       <%= text_field_tag :query, params[:query], placeholder: "Query...", class: "query form-control"  %>
     </li>
 

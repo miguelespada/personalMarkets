@@ -121,7 +121,7 @@ class Market
       end
       sort { by :date, 'asc' }
       filter :terms, category: [category] if !category.blank?
-      filter :geo_distance, lat_lon: location, distance: '5km' if !location.blank?
+      filter :geo_distance, lat_lon: location, distance: '1km' if !location.blank?
       filter :terms, state: ["published"] 
     end
     search.results.collect{|result| find(result.to_hash[:id])}

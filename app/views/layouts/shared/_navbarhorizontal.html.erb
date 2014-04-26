@@ -27,25 +27,6 @@
               <% else %>
                 <%= render "layouts/shared/signin" %>
               <% end %>
-
-            <!--   <li class="languages">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="current-language">EN</span>
-                  <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu language-select">
-                  <li><a href="#" name="EN">English (EN)</a></li>
-                  <li><a href="#" name="ES">Español (ES)</a></li>
-                </ul>
-              </li>
- -->
-              <script>
-              $(".language-select li a").click(function(){
-                var languageSelected = $(this).attr("name");
-                $('.current-language').html(languageSelected);
-              });
-              </script>
-              
             </ul>
         </div>
     </div>

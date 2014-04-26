@@ -39,6 +39,7 @@ class MarketsController < ApplicationController
   def new
     @market = domain.initialize_market
     @market.coupon = Coupon.new
+    @market.date = Date.today.strftime("%d/%m/%Y")
   end
 
   def show

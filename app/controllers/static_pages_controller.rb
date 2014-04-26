@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  layout "theme", only: [:home]
+  layout "theme", only: [:home, :search]
   
   def home
   end

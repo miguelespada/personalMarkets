@@ -15,8 +15,13 @@ module ApplicationHelper
   def resource_class
     devise_mapping.to
   end
+  
   def resource
     @resource ||= User.new
+  end
+  
+  def cp(path)
+    "hidden" if !current_page?(path)
   end
 end
 

@@ -1,6 +1,6 @@
 <li id="search_bar"> 
   <div class="form-group"> 
-    <%= text_field_tag :query, params[:query], placeholder: "Buscar markets...", class: "query form-control" %>
+    <%= text_field_tag :query, params[""], placeholder: "Buscar markets...", class: "query form-control", id: "search_bar_query" %>
   </div>
 <li>
 <li>
@@ -9,3 +9,12 @@
   <% end %>
 </li>
 
+
+<script>
+$( document ).ready(function() {
+  $( "#search_bar_query" ).keyup(function() {
+    $("#query").val($( "#search_bar_query" ).val());
+  });
+
+});
+</script>
