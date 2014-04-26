@@ -1,6 +1,7 @@
 class MarketsController < ApplicationController
   before_filter :load_user
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
+  layout "theme", only: [:home, :search]
 
   # def destroy
   #   @market.destroy
@@ -21,8 +22,11 @@ class MarketsController < ApplicationController
   end
 
   def search
+    puts "*-*"*30
+    puts params[:city]
+    puts "*-*"*30
     @markets = Market.search(search_params)
-    render 'index', :layout => false
+    render :layout => !request.xhr?
   end
 
   def destroy

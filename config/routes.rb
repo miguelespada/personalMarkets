@@ -7,7 +7,7 @@ PopUpStores::Application.routes.draw do
 
   resources :markets, :only => [:index, :show , :delete_image] do
     collection do
-      get :search, action: "search", as: 'search'
+      post :search, action: "search", as: 'search'
       get :published
     end
     post :publish
@@ -56,7 +56,6 @@ PopUpStores::Application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   mount Attachinary::Engine => "/attachinary"
 
-  get "static_pages/search", path: "/search", as: 'search'
   get "static_pages/cities", path: "/cities", as: 'cities'
   get "static_pages/calendar", path: "/calendar", as: 'calendar'
   get "static_pages/map", path: "/map", as: 'map'

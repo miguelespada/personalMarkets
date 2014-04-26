@@ -4,9 +4,6 @@ class StaticPagesController < ApplicationController
   def home
   end
   
-  def search
-  end
-  
   def calendar
     from = beginning_of(number_of_weeks_from_now)
     to = end_of(number_of_weeks_from_now)

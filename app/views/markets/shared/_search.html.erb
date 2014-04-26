@@ -1,27 +1,32 @@
 
-  <%= form_tag search_markets_path, method: "get", id: "search_market", class:"form-inline" do %>
-    <li class="form-group hidden">
+  <%= form_tag search_markets_path, id: "search_market", class:"form-inline" do %>
+    <li class="form-group">
       <%= text_field_tag :query, params[:query], placeholder: "Query...", class: "query form-control"  %>
     </li>
 
     <li class="form-group">
+      <% selection = params[:category][:category_id] if params[:category].present? %>
+      <% selection ||= "" %>
       <%= collection_select(:category, :category_id, Category.all, :name, :name, 
-                          {:selected => @category_query, :include_blank => "All categories"}, class: "category form-control" ) %>
+                          {:include_blank => "All categories", :selected => selection}, class: "category form-control" ) %>
     </li>
 
 
     <li class="form-group">
-        <%= select_tag(:range, options_for_select([['Today', 'today'], 
-                                              ['This week', 'thisWeek'], 
-                                              ['This month', 'thisMonth'], 
-                                              ['Next week', 'nextWeek'], 
-                                              ['All', 'all'] ]), class: "form-control" ) %>      
+        <%= select_tag(:range, options_for_select(['Today', 
+                                              'This week', 
+                                              'This month', 
+                                              'Next week', 
+                                              'All'],  :selected => params[:range]), class: "form-control" ) %>      
 
      </li>
 
      <li class="form-group">
-      <%= collection_select(:location, :location_id, SpecialLocation.all, :name, :name, 
-                          {:include_blank => "Any location"}, class: "form-control" ) %>
+
+      <% selection =  params[:location][:location_id] if params[:location].present? %>
+      <% selection ||= "" %>
+
+      <%= collection_select(:location, :location_id, SpecialLocation.all, :name, :name, {:selected => selection, :include_blank => "Any location"}, class: "form-control" ) %>
 
      
      </li>
@@ -37,18 +42,25 @@
       <%= text_field_tag :to, params[:to]%>  
     </li>
 
-    <%= submit_tag "Search", name: nil, class: "hidden" %>
+    <%= submit_tag "Search", name: nil %>
 
   <% end %>
 
 
 <script>
-  $.getJSON('cities.json', function(data){
+
+  $.getJSON('/cities.json', function(data){
       var html = '';
       var len = data.length;
       for (var i = 0; i< len; i++) {
           html += '<option value="' + data[i] + '">' + data[i] + '</option>';
       }
       $('#city_city_name').append(html);
+
+      <% selection =  params[:city][:city_name] if params[:city].present? %>
+      <% selection ||= "" %>
+
+      $('#city_city_name').val("<%= selection %>");
+
   });
 </script>

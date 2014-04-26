@@ -53,7 +53,7 @@ PM.setDataRange =  function() {
 
 PM.searchCallBacks = function(){
     var ajaxSearch = function () {
-    $.get(this.action, $(this).serialize(), function(data) {
+    $.post(this.action, $(this).serialize(), function(data) {
         $( "#gallery-items" ).html( data );
     });
         return false;

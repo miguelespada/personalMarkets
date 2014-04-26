@@ -10,5 +10,7 @@
 <% markets ||= @markets %> 
 
 <%= content_tag :div, class: "market-#{layout}" do %>
-  <%= market_list(markets, layout) %>
+  <div id="gallery-items"></div>
+    <%= market_list(markets, layout) %>
+  </div>
 <% end %>
