@@ -1,4 +1,4 @@
-@coupons @create_coupon
+@coupons
 Feature: Market coupons
   In order to have sell extra services for my market
   As market owner
@@ -8,13 +8,13 @@ Feature: Market coupons
     Given I am logged in
     And I have one market
 
+  @create_coupon
   Scenario: Create a coupon
-    When I visit the market page
+    When I visit the edit market page
     And I create a coupon
-    Then I should be notified that the coupon has been created
-    And I should see the coupon status page
+    And I should see the coupon in the market page
 
-  Scenario: Create a coupon
+  Scenario: Buy no availablae a coupon
     When I visit the market page
     And I create a coupon with no available items
     And I try to buy the coupon

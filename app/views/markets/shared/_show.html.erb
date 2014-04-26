@@ -1,0 +1,33 @@
+<div class="row">
+
+  <div class="col-md-3">
+    <h1 class="market-name"> <%= market.name %> </h1>
+    <h4 class="market-description"> <%=  market.description %> </h4>
+    <h5 class="market-category"> <%= market.category.name %> </h5>
+    <h6 class="market-tags"> <%= market.tags %> </h6> 
+  </div>
+  <div class="col-md-4 market-featured-photo">
+    <%= market.featured_photo(300, 300) %>
+  </div>
+
+  <div class="col-md-3 market-coupon">
+    <h3> Coupon </h1>
+    <%= render partial: "coupons/coupon", locals: {coupon: market.coupon } %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-4 market-actions">
+    <%= market.show_link %>
+    <%= market.edit_link %>
+    <%= market.delete_link %>
+    <%= market.like_link %>
+    <%= market.publish_link %>
+    <%= market.archive_link %>
+  </div>
+
+  <div class="col-md-8">
+   <%= market.location %> 
+  </div>
+</div>

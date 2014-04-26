@@ -7,7 +7,6 @@ class Coupon
   field :price, type: Integer
   field :available, type: Integer
 
-  validates_presence_of :price, :description, :available
 
   def buy!(user, number)
     raise "Incorrect number of coupons" unless number > 0 && number <= available

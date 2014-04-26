@@ -3,10 +3,6 @@ Given(/^It has comments$/) do
   @market.comments << @comment
 end
 
-When(/^I visit the market page$/) do
-  visit market_path @market
-end
-
 Then(/^I should see the market comments$/) do
   expect(page).to have_content @comment.body
 end

@@ -55,6 +55,7 @@ class MarketsController < ApplicationController
   
   def edit
     @market = domain.get_market params[:id]
+    @market.coupon ||= Coupon.new
   end
 
   # def index
@@ -150,6 +151,7 @@ class MarketsController < ApplicationController
         :address,
         :latitude,
         :longitude,
+        :city,
         :tags,
         :date,
         :from,
@@ -162,7 +164,8 @@ class MarketsController < ApplicationController
         :city_name,
         :user_id,
         :category_id,
-        :location_id
+        :location_id,
+        :coupon_attributes => [:id, :description, :price, :available]
         )
     end
     

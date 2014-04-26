@@ -1,8 +1,6 @@
 module MarketsHelper
   def full_description(market)
-    div_for market, class: "market-full-description" do
-      render market.decorate, :image_size => "800"
-    end
+    render partial: "markets/shared/show", locals: {market: market.decorate }
   end
 
   def tooltip(market)

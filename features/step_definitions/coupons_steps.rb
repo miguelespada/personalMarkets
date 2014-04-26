@@ -5,12 +5,14 @@ When(/^I buy some coupons$/) do
   click_on "Buy"
 end
 
-Then(/^I should see the coupon status page$/) do
+When(/^I should see the coupon in the market page$/) do
+  step "I visit the market page"
   expect(page).to have_content @market.name
   expect(page).to have_content "My dummy coupon"
   expect(page).to have_content "10"
   expect(page).to have_content "20"
 end
+
 
 Then(/^I should see the coupons in My Coupons$/) do
   within(:css, ".user-links") do
@@ -46,11 +48,12 @@ Given(/^there are some coupons$/) do
 end
 
 When(/^I create a coupon$/) do
-  click_on "Create Coupon"
-  fill_in "Description",  with: "My dummy coupon"
-  fill_in "Price",  with: "10"
-  fill_in "Available",  with: "20"
-  click_on "Create Coupon"
+  within(:css, "#form-market-coupon") do
+    fill_in "Description",  with: "My dummy coupon"
+    fill_in "Price",  with: "10"
+    fill_in "Available",  with: "20"
+  end 
+  click_on "Update Market"
 end
 
 Given(/^I go to Coupons$/) do

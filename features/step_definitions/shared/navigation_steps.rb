@@ -25,3 +25,11 @@ end
 When(/^I go to Calendar$/) do
   visit calendar_path
 end
+
+When(/^I visit the edit market page$/) do
+  visit edit_user_market_path(@user, @market)
+end
+
+When(/^I visit the market page$/) do
+  visit market_path @market
+end

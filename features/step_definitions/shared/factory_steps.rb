@@ -16,7 +16,7 @@ Given(/^There are some published markets$/) do
 end
 
 Given(/^I have one market$/) do
-  @market = create(:market, :user => @user)
+  @market = create(:market, :user => @user, :coupon => Coupon.new)
   @user.markets << @market
 end
 
