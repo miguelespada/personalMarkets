@@ -61,6 +61,7 @@ PM.searchCallBacks = function(){
 
     $('#range').change(PM.setDataRange).change();
     $('#search_market').change(ajaxSearch);
+    $('#search_bar_query').change(ajaxSearch);
 }
 
 

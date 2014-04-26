@@ -1,6 +1,6 @@
 
   <%= form_tag search_markets_path, id: "search_market", class:"form-inline" do %>
-    <li class="form-group">
+    <li class="form-group hidden">
       <%= text_field_tag :query, params[:query], placeholder: "Query...", class: "query form-control"  %>
     </li>
 
@@ -22,7 +22,6 @@
      </li>
 
      <li class="form-group">
-
       <% selection =  params[:location][:location_id] if params[:location].present? %>
       <% selection ||= "" %>
 
@@ -42,7 +41,7 @@
       <%= text_field_tag :to, params[:to]%>  
     </li>
 
-    <%= submit_tag "Search", name: nil %>
+    <%= submit_tag "Search", name: nil, class: "hidden" %>
 
   <% end %>
 

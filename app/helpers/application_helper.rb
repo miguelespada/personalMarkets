@@ -20,8 +20,8 @@ module ApplicationHelper
     @resource ||= User.new
   end
   
-  def cp(path)
-    "hidden" if !current_page?(path)
+  def hidden_bar
+    "hidden" unless params[:controller] == "markets" && params[:action] == "search"
   end
 end
 
