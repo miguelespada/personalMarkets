@@ -21,7 +21,6 @@ class Ability
     if @user
         can :archive, Market, :user_id => @user.id
         can :comment, Market
-        can :buy_coupon, Market
         can :see_location, Market
         can :report, Comment
         can :like, Market, Market do |market|
@@ -35,11 +34,14 @@ class Ability
         end
 
         can :destroy, Comment, :author => @user.email
-        can :see_transactions, @user
+        
 
         can :manage, Wish, Wish do |wish|
             @user.owns(wish)
         end
+
+        can :buy, Coupon
+        can :list_transactions, Coupon
 
         can :show, User, :user_id => @user.id
     end
@@ -59,6 +61,9 @@ class Ability
       can :see_transactions, User
       can [:manage], Wish
       can [:manage], SpecialLocation
+
+      can :buy, Coupon
+      can :list_transactions, Coupon
     end
   end
 

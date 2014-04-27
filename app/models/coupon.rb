@@ -9,7 +9,7 @@ class Coupon
 
 
   def buy!(user, number)
-    raise "Incorrect number of coupons" unless number > 0 && number <= available
+    raise ArgumentError, "Incorrect number of coupons" unless number > 0 && number <= available
     transaction = CouponTransaction.new
     transaction.user = user
     transaction.coupon = self
