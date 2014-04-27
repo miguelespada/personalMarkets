@@ -31,8 +31,8 @@ describe Market do
                          :tags => "tag_one, tag_two, tag_three",
                          :city => "Madrid",
                          :category => @category,
-                         :latitude => 40.001,
-                         :longitude => -70.02,
+                         :latitude => 40.0001,
+                         :longitude => -70.002,
                          :state => 'published',
                          :date => "04/01/2014,06/01/2014,08/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 1", 

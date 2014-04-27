@@ -103,16 +103,15 @@ class Market
     index_all
     return [] if Market.count == 0 
 
-    query = params[:query].gsub(/[^0-9A-Za-z]/, '')
-    query = params[:query].blank? ? '*' : query
-
+    query = params[:query].blank? ? '*' : params[:query].gsub(/[^0-9A-Za-z_]/, '')
+    
     range = format_range_query(params[:from], params[:to])
     city = params[:city] 
     category = params[:category]
     location = format_location(params[:latitude], params[:longitude])
 
     elasticQuery = lambda do |boolean|
-      boolean.must {string query}
+      boolean.must {string query, default_operator: "AND"}
       boolean.must {string "city:#{city}" } if !city.blank?
       boolean.must {string "date:[#{range}]" } if !range.blank?
     end
