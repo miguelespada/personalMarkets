@@ -1,5 +1,6 @@
 require 'markets_domain'
 require 'markets_domain_exception'
+require 'spec_helper'
 
 
 describe MarketsDomain do
@@ -8,6 +9,7 @@ describe MarketsDomain do
   let(:user_id) { "an_id" }
   let(:listener) { double :listener }
   let(:market) { double :market }
+  let(:coupon) { double :coupon }
   let(:markets_repo) { double :markets_repo }
   let(:users_repo) { double :users_repo }
   let(:user) { double :user }

@@ -72,6 +72,8 @@ describe CouponsController do
 
    describe "List transactions" do
       before(:each) do
+        user_market.coupon = first_coupon
+        market.coupon = second_coupon
         create(:couponTransaction, user: user, coupon: first_coupon) 
         create(:couponTransaction, user: market_owner, coupon: second_coupon)
       end

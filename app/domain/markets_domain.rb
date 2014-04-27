@@ -9,7 +9,7 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
   def create_market user_id, market_params
     user = users_repo.find user_id
     market = user.add_market market_params
-    market.coupon = Coupon.new(market_params[:coupon_attributes])
+    market.coupon = Coupon.new(market_params[:coupon_attributes]) if !market_params[:coupon_attributes].nil?
     market.save!
     listener.create_market_succeeded market
   rescue MarketsDomainException
