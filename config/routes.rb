@@ -9,7 +9,6 @@ PopUpStores::Application.routes.draw do
     collection do
       post :search, action: "search", as: 'search'
       get :search, action: "search"
-      get :published
     end
     post :publish
     post :archive
@@ -17,6 +16,8 @@ PopUpStores::Application.routes.draw do
   end
 
   get "/users/:user_id/markets", to: "markets#list_user_markets", as: "user_markets"
+  get "/published", to: "markets#list_published_markets", as: "published_markets"
+
   get "/category/:category_id/markets", to: "markets#list_category_markets", as: "category_markets"
   get "/tags/:tag/markets", to: "markets#list_tag_markets", as: "tag_markets"
 

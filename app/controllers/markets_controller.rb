@@ -12,6 +12,11 @@ class MarketsController < ApplicationController
     render 'index'
   end
 
+  def list_published_markets
+    @markets = Market.where(state: "published")
+    render 'index'
+  end
+  
   def list_tag_markets
     @markets = Market.tagged_with(params[:tag])
     render 'index'

@@ -292,10 +292,6 @@ end
 
 
 Then(/^I see it in the published markets$/) do
-  # visit published_markets_path
-  # within(:css, '.market-gallery') do
-  #   expect(page).to have_content @market.name
-  # end
-    pending # express the regexp above with the code you wish you had
-
+  visit published_markets_path
+  expect(page).to have_content @market.name
 end
