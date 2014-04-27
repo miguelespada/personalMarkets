@@ -1,3 +1,5 @@
+@create_market
+
 Feature: Create market
   As a registered user
   I want to create a market
@@ -6,7 +8,6 @@ Feature: Create market
   Background:
     Given I am logged in
 
-  @create_market
   Scenario: Add Market
     When I create a market
     Then I should see the market page
@@ -15,10 +16,6 @@ Feature: Create market
   Scenario: It appears in my markets
     When I create a market
     Then I should see it in my markets
-
-  Scenario: Not visible in general markets list
-    When I create a market
-    Then It is not visible in guest markets
 
   Scenario: One per month
     And I have a market 

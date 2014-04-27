@@ -3,14 +3,6 @@ class MarketsController < ApplicationController
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
   layout "theme", only: [:home, :search]
 
-  # def destroy
-  #   @market.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to  user_markets_path(@user), 
-  #                     notice: "Market successfully deleted."}
-  #   end
-  # end
-
   def index
     @markets = Market.all
     render 'index', :locals =>  {:layout => "slugs"}
@@ -75,8 +67,6 @@ class MarketsController < ApplicationController
   def delete_image
     authorize! :delete_image, domain.get_market(params[:market_id])
     domain.delete_image params[:market_id]
-  rescue CanCan::AccessDenied
-    render status: 401, text: "Unauthorized action"
   end
 
   def delete_image_succeeded market
@@ -99,8 +89,6 @@ class MarketsController < ApplicationController
   def archive
     authorize! :archive, domain.get_market(params[:market_id])
     domain.archive_market params[:market_id]
-  rescue CanCan::AccessDenied => e
-    render status: 401, text: "Unauthorized action"
   end
 
   def archive_succeeded market
@@ -125,10 +113,7 @@ class MarketsController < ApplicationController
   end
 
   def update
-    authorize! :update, domain.get_market(params[:id])
     domain.update_market params[:id], market_params
-  rescue CanCan::AccessDenied
-    render :status => 401, :text => "Unauthorized action"
   end
 
   def update_suceeded market

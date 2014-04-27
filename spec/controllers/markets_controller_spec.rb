@@ -172,7 +172,7 @@ describe MarketsController do
     [:archive, :delete_image].each do |post_action|
       it "forbidden #{post_action}" do
         post post_action, { market_id: @market.id }, valid_session
-        expect(response.response_code).to eq 401
+        expect(response.response_code).to eq 403
       end
     end
     
@@ -198,7 +198,7 @@ describe MarketsController do
         sign_in :user, user
 
         post :archive, { market_id: @market.id }, valid_session
-        expect(response.response_code).to eq 401
+        expect(response.response_code).to eq 403
       end
     end
     
@@ -222,7 +222,7 @@ describe MarketsController do
         sign_in :user, user
 
         post :delete_image, { market_id: @market.id }, valid_session
-        expect(response.response_code).to eq 401
+        expect(response.response_code).to eq 403
       end
     end
 
@@ -259,7 +259,7 @@ describe MarketsController do
         @market.attributes["name"] = "New dummy name"
 
         put :update, market_update_params, valid_session
-        expect(response.response_code).to eq 401
+        expect(response.response_code).to eq 403
       end
     end
   end

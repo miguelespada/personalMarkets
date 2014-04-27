@@ -1,23 +1,18 @@
 When(/^I create a market$/) do
-  click_on "User"
-  click_on "Add market"
+  click_on "Add Market"
 
   within(:css, "#new_market") do
     fill_in "Name",  with: "Dummy Market"
-    fill_in "Description",  with: "Dummy description"
     fill_in "City",  with: "Madrid"
     click_on "Create Market"
   end
 end
 
 Then(/^I should see the market page$/) do
-  within(:css, ".market-full-description") do
     expect(page).to have_content "Dummy Market"
-    expect(page).to have_content "Dummy description"
     expect(page).to have_content @user.email
     expect(page).to have_content "Uncategorized"
     expect(page).to have_content "Madrid"
-  end 
 end
 
 Then(/^I can edit the market$/) do
@@ -72,7 +67,6 @@ Then(/^I should see the market in my markets list$/) do
 end
 
 Then(/^I should see it in my markets$/) do
-  click_on "User"
   click_on "My markets"
 
   expect(page).to have_content "Dummy Market"
@@ -216,12 +210,6 @@ Then(/^I should see the full description of the market except the address$/) do
   expect(page).to_not have_css '.market-location'
 end
 
-Then(/^It is not visible in guest markets$/) do
-  visit published_markets_path
-  within(:css, '.market-gallery') do
-    expect(page).to_not have_css '.market-gallery-item'
-  end
-end
 
 Then(/^I have a draft market$/) do
   @market = create(
