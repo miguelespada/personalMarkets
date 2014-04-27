@@ -1,7 +1,6 @@
 class MarketsController < ApplicationController
   before_filter :load_user
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
-  layout "theme", only: [:home, :search]
 
   def index
     @markets = Market.all

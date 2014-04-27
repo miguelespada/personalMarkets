@@ -33,3 +33,7 @@ end
 When(/^I visit the market page$/) do
   visit market_path @market
 end
+
+Given(/^I go to Coupons$/) do
+  visit coupons_path 
+end

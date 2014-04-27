@@ -54,3 +54,9 @@ end
 When(/^I should see that the coupon sold out$/) do
   expect(page).to have_content "Sold out"
 end
+
+Then(/^I should see all the coupons that are emitted$/) do
+  expect(page).to have_content @market.name
+  expect(page).to have_content @market.user.email
+  expect(page).to have_content @coupon.description
+end
