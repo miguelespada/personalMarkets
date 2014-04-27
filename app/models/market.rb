@@ -103,7 +103,7 @@ class Market
     index_all
     return [] if Market.count == 0 
 
-    query = params[:query].blank? ? '*' : params[:query].gsub(/[^0-9A-Za-z_]/, '')
+    query = params[:query].blank? ? '*' : params[:query].gsub(/[\!]/, '')
     
     range = format_range_query(params[:from], params[:to])
     city = params[:city] 

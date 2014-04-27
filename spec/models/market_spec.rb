@@ -28,7 +28,7 @@ describe Market do
       @market = FactoryGirl.create(:market, 
                          :name => "Specific", 
                          :description => "Specific market", 
-                         :tags => "tag_one, tag_two, tag_three",
+                         :tags => "tag one, tag two, tag three",
                          :city => "Madrid",
                          :category => @category,
                          :latitude => 40.0001,
@@ -66,6 +66,18 @@ describe Market do
         result = Market.search(params)
         expect(result.count).to eq 1
       end
+
+      it "queries are additive AND" do
+        params = {:query  => "specific market"}
+        result = Market.search(params)
+        expect(result.count).to eq 1
+      end
+
+      it "queries do not allow all symbols" do
+        params = {:query  => "specific market!!!"}
+        result = Market.search(params)
+        expect(result.count).to eq 1
+      end
       
       it "searches with generic name" do
         params = {:query  => "generic"}
@@ -79,13 +91,13 @@ describe Market do
         expect(result.count).to eq Market.where(state: "published").count
       end
         it "search by tag" do
-        params = {:query  => "tag_one"}
+        params = {:query  => "tag one"}
         result = Market.search(params)
         expect(result.count).to eq 1
       end
 
       it "search by other tag" do
-        params = {:query  => "tag_three"}
+        params = {:query  => "tag three"}
         result = Market.search(params)
         expect(result.count).to eq 1
       end
@@ -222,9 +234,7 @@ describe Market do
         expect(result.count).to eq Market.where(state: "published").count
       end
     end
-
-  
-    it "filters out short queries"
+    
     it "boots matches on the name"
 
   end
