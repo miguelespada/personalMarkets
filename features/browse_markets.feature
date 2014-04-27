@@ -11,7 +11,7 @@ Feature: Browse markets
     And I click the details link of a market
     Then I should see the full description of a market
 
-  @browse
+  @browse_tag
   Scenario: Browse by tag
     And I go to Tag list
     And I select one tag

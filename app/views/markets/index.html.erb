@@ -3,14 +3,12 @@
   - "gallery" is de default layout
   - check makers_helper to see details  
 -->
-<div class = "special_location_title">Markets</div>
+<div class="title">Markets</div>
 
-
-<% layout ||= params[:layout] || "gallery" %>
 <% markets ||= @markets %> 
 
-<%= content_tag :div, class: "market-#{layout}" do %>
+<%= content_tag :div, class: "market-slugs" do %>
   <div id="gallery-items"></div>
-    <%= market_list(markets, layout) %>
+    <%= market_list(markets, 'slugs') %>
   </div>
 <% end %>

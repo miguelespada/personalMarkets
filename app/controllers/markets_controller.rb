@@ -5,12 +5,22 @@ class MarketsController < ApplicationController
 
   def index
     @markets = Market.all
-    render 'index', :locals =>  {:layout => "slugs"}
+  end
+
+  def list_category_markets
+    category = Category.find(params[:category_id])
+    @markets = Market.where(category: category)
+    render 'index'
+  end
+
+  def list_tag_markets
+    @markets = Market.tagged_with(params[:tag])
+    render 'index'
   end
 
   def list_user_markets
     @markets = Market.find_all(@user)
-    render 'index', :locals =>  {:layout => "slugs"}
+    render 'index'
   end
 
   def search
@@ -140,6 +150,7 @@ class MarketsController < ApplicationController
         :longitude,
         :city,
         :tags,
+        :tag,
         :date,
         :from,
         :to,

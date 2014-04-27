@@ -12,8 +12,9 @@
       <td> 
         <span> <%= link_to "Delete", category_path(category), :method => :delete %> 
               </span> 
-        <span> <%= link_to "Show", 
-              search_markets_path({ "category" => { category_id: category.name} } ) %> 
+        <span> 
+        <%= link_to "Show", 
+          category_markets_path(category) %> 
         </span> 
       </td>
     <% end %>

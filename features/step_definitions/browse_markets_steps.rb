@@ -16,10 +16,8 @@ Given(/^I select one tag$/) do
 end
 
 Then(/^I see the markets matching my query$/) do
-  within(:css, ".market-gallery") do
-    page.should have_content @market_0.name
-    page.should have_content @market_0.description
-  end
+  page.should have_content @market_0.name
+  page.should have_content @market_0.description
 end
 
 When(/^I select one category$/) do  

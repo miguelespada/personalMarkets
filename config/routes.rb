@@ -16,7 +16,9 @@ PopUpStores::Application.routes.draw do
   end
 
   get "/users/:user_id/markets", to: "markets#list_user_markets", as: "user_markets"
-  
+  get "/category/:category_id/markets", to: "markets#list_category_markets", as: "category_markets"
+  get "/tags/:tag/markets", to: "markets#list_tag_markets", as: "tag_markets"
+
   resources :coupons, :only => [:show, :index]
 
 
