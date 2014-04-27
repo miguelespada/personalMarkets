@@ -1,6 +1,7 @@
 require 'markets_domain'
 require 'markets_domain_exception'
 
+
 describe MarketsDomain do
 
   let(:market_id) { "an_id" }
@@ -32,7 +33,7 @@ describe MarketsDomain do
 
   describe "create market" do
       after do
-        @it.create_market(user_id, { :name => "my market", :description => "my market description" })
+        @it.create_market(user_id, { :name => "my market", :description => "my market description"})
       end
 
       it "registers success callback if market created successfully" do

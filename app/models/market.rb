@@ -62,7 +62,7 @@ class Market
   end
 
   def has_coupon?
-    coupon != nil
+    coupon != nil && coupon.description!= nil && coupon.available != nil && coupon.price != nil
   end
 
   def create_coupon!(params)

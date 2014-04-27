@@ -20,7 +20,6 @@ class Ability
   def logged_in_abilities
     if @user
         can :archive, Market, :user_id => @user.id
-        can :comment, Market
         can :see_location, Market
         can :report, Comment
         can :like, Market, Market do |market|
