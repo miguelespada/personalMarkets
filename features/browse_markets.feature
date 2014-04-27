@@ -43,12 +43,6 @@ Feature: Browse markets
 
   @ajaxSearch @javascript
   Scenario: Search markets with ajax
-    When I go to Search
-    And I select range
-    Then I see the markets matching my query
 
   @ajaxSearch @javascript
-  Scenario: Search markets with ajax wrong range
-    When I go to Search
-    And I select incorrect range
-    Then I should not see the markets
+  Scenario: Search markets with ajax (not matching)
