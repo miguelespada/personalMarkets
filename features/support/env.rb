@@ -41,9 +41,7 @@ rescue NameError
 end
 
 Before do
-  DatabaseCleaner.clean
   DatabaseCleaner.start
-  Market.delete_index 
   Category.create(name: "Uncategorized")
 end
 

@@ -24,7 +24,8 @@ class MarketsController < ApplicationController
   end
 
   def search
-    @markets = Market.search(Query.new(params))
+    query = Query.new(params)
+    @markets = Market.search(query.search_params)
     render :layout => !request.xhr?
   end
 
