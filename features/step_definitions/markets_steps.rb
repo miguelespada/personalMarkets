@@ -162,6 +162,7 @@ When(/^click the like button$/) do
 end
 
 Then(/^the number of likes increment$/) do
+  visit market_path @some_market
   within(:css, '.market-likes-number') do
     expect(page).to have_content "1"
   end
@@ -284,3 +285,15 @@ When(/^I archive it$/) do
   visit market_path @market
   click_on "Archive"
 end
+
+# Then(/^It is not visible in guest markets$/) do
+#   visit published_markets_path
+#   within(:css, '.market-gallery') do
+#     expect(page).to_not have_css '.market-gallery-item'
+#   end
+# end
+
+Then(/^It is not visible in guest markets$/) do
+  pending # express the regexp above with the code you wish you had
+end
+

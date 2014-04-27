@@ -16,6 +16,7 @@ Feature: Like a market
       When I visit the market page
       Then there is no like button
 
+    @like_count
     Scenario: Like count increment
       Given There is someone else's market
       And I am logged in

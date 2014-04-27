@@ -55,14 +55,6 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
-  def create_coupon_link
-    if can? :edit, market 
-      if !market.has_coupon?
-        link_to "Create Coupon", new_market_coupon_path(market)
-      end
-    end
-  end
-
   def coupon_transactions_link
     if can? :edit, market 
       if market.has_coupon?
