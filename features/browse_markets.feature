@@ -1,3 +1,4 @@
+@browse
 Feature: Browse markets
   As a user
   I want to browse markets
@@ -5,7 +6,6 @@ Feature: Browse markets
   Background:
   Given There are some published markets
 
-  @browse
   Scenario: See the full description of a market
     When I go to Markets
     And I click the details link of a market

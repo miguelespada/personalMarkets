@@ -22,7 +22,7 @@ class MarketsController < ApplicationController
   end
 
   def search
-    @markets = Market.search(search_params)
+    @markets = Market.search(Query.new(params))
     render :layout => !request.xhr?
   end
 
@@ -115,9 +115,9 @@ class MarketsController < ApplicationController
     redirect_to market, notice: "Market successfully published."
   end
 
-  def published
-    domain.published_markets
-  end
+  # def published
+  #   domain.published_markets
+  # end
 
   def published_succeeded markets
     @markets = markets
@@ -170,12 +170,7 @@ class MarketsController < ApplicationController
         :coupon_attributes => [:id, :description, :price, :available]
         )
     end
-    
-    def load_hidden_tags
-      if params["hidden-market"].present?
-        params[:market][:tags] = params["hidden-market"][:tags]
-      end
-    end 
+
     
     def load_user
       if params[:user_id].present?
@@ -183,57 +178,10 @@ class MarketsController < ApplicationController
       end 
     end
 
-    def load_category
-        params[:category][:category_id]
-    rescue => e
-        ""
+    def load_hidden_tags
+      if params["hidden-market"].present?
+        params[:market][:tags] = params["hidden-market"][:tags]
+      end
     end
 
-    def load_latitude
-      SpecialLocation.find_by(name: params[:location][:location_id]).latitude
-    rescue => e
-        ""
-    end 
-
-    def load_longitude
-      SpecialLocation.find_by(name: params[:location][:location_id]).longitude
-    rescue => e
-        ""
-    end
-
-    def load_city
-        params[:city][:city_name]
-    rescue => e
-        ""
-    end
-
-    def load_from
-        params[:from]
-    rescue => e
-        ""
-    end
-
-    def load_to
-        params[:to]
-    rescue => e
-        ""
-    end
-
-    def load_query
-        params[:query]
-    rescue => e
-        ""
-    end
-
-    def search_params
-      {
-        :query => load_query,
-        :form => load_to,
-        :to => load_from,
-        :latitude => load_latitude,
-        :longitude => load_longitude,
-        :category => load_category,
-        :city => load_city
-      }
-    end 
 end

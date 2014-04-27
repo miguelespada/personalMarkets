@@ -124,7 +124,7 @@ describe MarketsController do
   describe "search" do
     it "renders the index template" do
       get :search, {}, valid_session
-      expect(response).to render_template("index")
+      expect(response).to render_template("search")
     end
   
     it "returns success with valid empty params" do
