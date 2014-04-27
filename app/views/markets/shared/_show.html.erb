@@ -13,7 +13,14 @@
   <div class="col-md-3 market-coupon">
     <h3> Coupon </h1>
     <%= render partial: "coupons/coupon", locals: {coupon: market.coupon } %>
+    
+    <div class="market-coupons">
+      <%= market.create_coupon_link %>
+      <%= market.buy_coupon_link %>
+      <%= market.coupon_transactions_link %>
+    </div>
   </div>
+
 </div>
 
 
@@ -25,9 +32,14 @@
     <%= market.like_link %>
     <%= market.publish_link %>
     <%= market.archive_link %>
+
+    <h3>Date</h3>
+    <%= market.date %>
+
   </div>
 
   <div class="col-md-8">
    <%= market.location %> 
   </div>
 </div>
+

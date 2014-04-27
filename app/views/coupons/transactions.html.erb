@@ -1,1 +1,9 @@
-<%= render "coupons/transactions", :transactions => @transactions %>
+<h2> Bought coupons </h2>
+<div class="out_coupons">
+<%= render "coupons/transactions", :transactions => @out_transactions %>
+</div>
+
+<h2> Sold coupons </h2>
+<div class="in_coupons">
+<%= render "coupons/transactions", :transactions => @in_transactions %>
+</div>
