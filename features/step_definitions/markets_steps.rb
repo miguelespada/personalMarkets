@@ -31,20 +31,21 @@ When(/^I edit my market$/) do
 end
 
 When(/^I change market info$/) do
+
   within(:css, ".market-actions") do
     click_on "Edit"
   end
   fill_in "Name",  with: "New dummy Market"
-  fill_in "Description",  with: "New dummy description"
+  within(:css, ".market_description") do
+    fill_in "Description",  with: "New dummy description"
+  end
   click_on "Update Market"
 end
 
 
 Then(/^I see the market page with the new data$/) do
-  within(:css, ".market-full-description") do
-    expect(page).to have_content "New dummy Market"
-    expect(page).to have_content "New dummy description"
-  end 
+  expect(page).to have_content "New dummy Market"
+  expect(page).to have_content "New dummy description"
 end
 
 When(/^I delete my market$/) do
