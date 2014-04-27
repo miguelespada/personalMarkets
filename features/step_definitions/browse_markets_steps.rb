@@ -5,10 +5,8 @@ When(/^I click the details link of a market$/) do
 end
 
 Then(/^I should see the full description of a market$/) do
-  within(:css, ".market-full-description") do
-    expect(page).to have_content @market_0.name
-    expect(page).to have_content @market_0.description
-  end
+  expect(page).to have_content @market_0.name
+  expect(page).to have_content @market_0.description
 end
 
 Given(/^I select one tag$/) do

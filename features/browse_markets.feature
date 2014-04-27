@@ -6,6 +6,7 @@ Feature: Browse markets
   Background:
   Given There are some published markets
 
+  @browse_market
   Scenario: See the full description of a market
     When I go to Markets
     And I click the details link of a market
