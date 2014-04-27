@@ -7,7 +7,7 @@ Given(/^I go to Tag list$/) do
 end
 
 Given(/^I go to Search$/) do
-  visit markets_search_path
+  visit "/markets/search"
 end
 
 Given(/^I go to Users$/) do

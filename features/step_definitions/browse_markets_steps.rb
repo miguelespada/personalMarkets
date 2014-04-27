@@ -50,9 +50,9 @@ Then(/^I should see all the markets$/) do
 end
 
 When(/^I do a search$/) do
-  fill_in "query",  with: "market"
-  fill_in "from",  with: "21/04/2015"
-  fill_in "to",  with: "23/04/2015"
+  within(:css, "#search_market") do
+    fill_in "query",  with: "market"
+  end
   click_button "Search"
 end
 

@@ -8,6 +8,7 @@ PopUpStores::Application.routes.draw do
   resources :markets, :only => [:index, :show , :delete_image] do
     collection do
       post :search, action: "search", as: 'search'
+      get :search, action: "search"
       get :published
     end
     post :publish
