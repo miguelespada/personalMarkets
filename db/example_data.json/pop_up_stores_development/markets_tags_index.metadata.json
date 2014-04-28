@@ -1,1 +1,0 @@
-{ "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "ns" : "pop_up_stores_development.markets_tags_index", "name" : "_id_" } ] }
