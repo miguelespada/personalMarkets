@@ -20,6 +20,6 @@ H.makeDateString = function(range){
   var from = moment(fromDate).format("DD/MM/YYYY");
   var to = moment(toDate).format("DD/MM/YYYY");
   
-  if (range == 'all') to = "";
+  if (range == 'All') to = "";
   return {from: from, to: to};
 };
