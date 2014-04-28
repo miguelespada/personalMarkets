@@ -105,7 +105,13 @@ class Market
 
     query = params[:query].blank? ? '*' : params[:query].gsub(/[\!]/, '')
     
+    puts "*-*" * 20
+    puts params
+    puts "*-*" * 20
     range = format_range_query(params[:from], params[:to])
+    puts "*-*" * 20
+    puts range
+    puts "*-*" * 20
     city = params[:city] 
     category = params[:category]
     location = format_location(params[:latitude], params[:longitude])
