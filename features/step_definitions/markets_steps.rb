@@ -287,7 +287,8 @@ end
 # end
 
 Then(/^It is not visible in guest markets$/) do
-  pending # express the regexp above with the code you wish you had
+    visit published_markets_path
+    expect(page).to_not have_content "market 1"
 end
 
 
