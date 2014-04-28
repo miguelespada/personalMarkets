@@ -24,12 +24,6 @@ Feature: Browse markets
     And I select one category
     Then I see the markets matching my query
 
-  @browse_map @javascript
-  Scenario: Browse map
-    When I go to Map
-    Then I should see a marker on the map
-    And The market has tooltip
-
   @browse_calendar
   Scenario: Browse maps
     When I go to Calendar
@@ -40,9 +34,3 @@ Feature: Browse markets
     When I go to Search
     And I do a search
     Then I see the markets matching my query
-
-  @ajaxSearch @javascript
-  Scenario: Search markets with ajax
-
-  @ajaxSearch @javascript
-  Scenario: Search markets with ajax (not matching)
