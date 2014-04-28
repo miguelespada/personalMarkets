@@ -1,3 +1,5 @@
 <div class = "wish_title">Wishlist</div>
+<% if can? :create, Wish %>
+<%= link_to 'New Wish', new_wish_path %>
+<% end %>
 <%= render "wishes/shared/wishes" %>
-<div class = "wish_new"><%= link_to 'New Wish', new_wish_path %></div>
