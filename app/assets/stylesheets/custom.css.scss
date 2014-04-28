@@ -12,6 +12,11 @@
 
 #gallery{
 }
+.title{
+  @extend h1;
+  font-weight: 100;
+  text-align: center;
+}
 
 .container-fluid{
 }

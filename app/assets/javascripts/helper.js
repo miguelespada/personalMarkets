@@ -11,7 +11,7 @@ H.makeDateString = function(range){
   fromDate = moment();
   if (range == 'Today') toDate = moment();
   if (range == 'This week') toDate = moment().weekday(7);
-  if (range == 'This month') toDate = moment().endOf("month");
+  if (range == 'This month') toDate = moment().add('weeks', 4);
   if (range == 'Next week'){
     fromDate = moment().day(7).weekday(1);
     toDate = moment().day(7).weekday(8);
