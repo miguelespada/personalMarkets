@@ -1,4 +1,60 @@
-User role <%= @user.role %> 
 <% if @user.has_role? "normal" %>
-  <%= link_to "Become premium", user_subscription_path(@user) %>
+  <div class = "wish_title">Actual plan: <%= @user.role %></div>
+
+<div class="container">
+	<div class="row">
+		<div class="pricing-table">
+
+			<div class="plan col-sm-6">
+				<div class="plan-name-basic">
+					<h2><%= @user.role %></h2>
+					<span>Free</span>
+				</div>
+				<ul>
+				<li class="plan-feature">1 mercado / mes</li>
+				</ul>
+			</div>
+
+			<div style="z-index:100;" class="plan col-sm-6">
+				<div class="plan-name-premium">
+					<h2>Premium Plan</h2>
+					<span>5.99€ / Month</span>
+				</div>
+				<ul>
+				<li class="plan-feature"><span class="glyphicon glyphicon-ok green"> Mercados ilimitados</li>
+	            <li class="plan-feature">Propio espacio</li>
+	            <li class="plan-feature">Estadisticas a tiempo real</li>
+	            <li class="plan-feature">20% menos en comisión / cupón</li>
+				<%= link_to "Become premium", user_subscription_path(@user), class:"btn btn-info" %>
+				</ul>
+			</div>
+	    </div>
+    </div>
+</div>
+
+<% else %>
+
+  <div class = "wish_title">Actual plan: <%= @user.role %></div>
+
+<div class="container">
+	<div class="row">
+		<div class="pricing-table">
+
+			<div style="z-index:100;" class="plan col-sm-12">
+	          <div class="plan-name-premium">
+	             <h2><%= @user.role %></h2>
+	            <span>5.99€ / Month</span>
+	          </div>
+	          <ul>
+	            <li class="plan-feature">Mercados ilimitados</li>
+	            <li class="plan-feature">Propio espacio</li>
+	            <li class="plan-feature">Estadisticas a tiempo real</li>
+	            <li class="plan-feature">20% menos en comisión por cupón</li>
+	          </ul>
+	        </div>
+
+ 		</div>
+    </div>
+</div>
+
 <% end %>
