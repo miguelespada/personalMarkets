@@ -96,7 +96,7 @@ Given(/^a user submits for subscription with valid data$/) do
 end
 
 Then(/^he is notified for a successful subscription$/) do
-  expect(page).to have_content "You have become premium successfully."
+  expect(find('#notice')).to have_content "You have become premium successfully."
 end
 
 Given(/^an inactive user$/) do
