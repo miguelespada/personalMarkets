@@ -65,7 +65,7 @@
   function getCityName(url){
     $.getJSON(url, function(data){
       city = data.results[0].address_components[2].long_name;
-      $("#user-city-text").html(city);
+      $("#user-city-text").html("<i class='fa fa-crosshairs'></i>&nbsp;&nbsp;" + city);
     });
   };
 
@@ -84,6 +84,10 @@
 
   .fa-exclamation-triangle{
     color: #FFB834;
+  }
+
+  .fa-crosshairs{
+    color: #1981CF;
   }
 
   .user_city{
