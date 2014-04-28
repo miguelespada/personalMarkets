@@ -20,6 +20,8 @@
  *= require custom
  *= require special_locations
  *= require wishes
+ *= require markets/full-description
+ *= require markets/gallery
  */
 
 

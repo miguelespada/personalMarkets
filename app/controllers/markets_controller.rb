@@ -22,6 +22,11 @@ class MarketsController < ApplicationController
     render 'index'
   end
 
+  def list_last_markets
+    @markets = Market.where(state: "published").order_by(:created_at.desc).limit(6)
+    render 'search', :layout => !request.xhr?
+  end
+
   def list_user_markets
     @markets = Market.find_all(@user)
     render 'index'

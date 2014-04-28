@@ -14,7 +14,13 @@
   	<span id="search_item" class="search-field">mobile phones</span>.
   </div>
   </section>
-  
+
+  <div class = "title">Last Markets</div>
+
+  <section id="last_markets">
+    <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
+  </section>
+
   <section id="special_locations">
     <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
   </section>
@@ -56,6 +62,9 @@
 </style>
 
 <script>
+  $.get( "last_markets", function( data ) {
+    $( "#last_markets" ).html( data );
+  });
 
   $.get( "special_locations", function( data ) {
     $( "#special_locations" ).html( data );

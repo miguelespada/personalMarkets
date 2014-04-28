@@ -17,6 +17,7 @@ PopUpStores::Application.routes.draw do
 
   get "/users/:user_id/markets", to: "markets#list_user_markets", as: "user_markets"
   get "/published", to: "markets#list_published_markets", as: "published_markets"
+  get "/last_markets", to: "markets#list_last_markets", as: "last_markets"
 
   get "/category/:category_id/markets", to: "markets#list_category_markets", as: "category_markets"
   get "/tags/:tag/markets", to: "markets#list_tag_markets", as: "tag_markets"
