@@ -1,14 +1,13 @@
-From: <%= @week[:from] %>
-To: <%= @week[:to] %>
-
-
-<ul class="calendar">
-  <% @markets.each do |market| %>
-    <li> <span> <%= market.name %> </span>  
-    <span> <%= market.date %> </span> </li>
-  <% end %>
-</ul>
-
+<p>
 <%= link_to "Previous week", calendar_path(:week => params[:week].to_i - 1)  %>
 <%= link_to "Next week", calendar_path(:week => params[:week].to_i + 1) %>
+</p>
 
+<p>
+From: <%= @week[:from] %>
+To: <%= @week[:to] %>
+</p>
+
+<div class="calendar" id="gallery-items">
+  <%= market_list(@markets, "gallery") %>
+</div>
