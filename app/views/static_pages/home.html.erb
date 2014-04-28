@@ -10,7 +10,7 @@
     </div>
   <div id="search-sample" onclick="goToSearchQuery();">
   	<span id="search_time" class="search-field">Today</span> I would like to look for a market in  
-  	<span id="search_place" class="search-field">Madrid</span> for 
+  	<span id="search_place" class="search-field">Malasaña</span> for 
   	<span id="search_item" class="search-field">mobile phones</span>.
   </div>
   </section>
@@ -66,11 +66,14 @@
   });
 
 	var searchTimeArray = ["Today", "This week", "This month", "Next week"];
-  var searchPlaceArray = ["Madrid", "Barcelona", "Sevilla", "Valencia", "Bilbao", "malasaña", "lavapiés", "el born", "poblenou"];
   var searchItemArray = ["bicycle", "books", "flowers", "CD", "mobile phones", "drinks", "video games"];
 	
 
   $(document).ready(function(){
+    var searchPlaceArray = $.map($('#location_location_id option'), function(e) { return e.value; });
+    searchPlaceArray.join(',');
+    searchPlaceArray.shift();
+
   	changeSearchItems("#search_time",searchTimeArray);
   	changeSearchItems("#search_place",searchPlaceArray);
   	changeSearchItems("#search_item",searchItemArray);
@@ -108,8 +111,6 @@
   	};
   });
 
-  
-
   var centerSearchDiv = function(){
   	$( "#search-sample" ).position({
   		my: "center center",
@@ -127,8 +128,10 @@
   }
 
   var goToSearchQuery = function(){
-  	var URL = "/search?query=" + $("#search_item").html();
-  	window.location.href = URL;
+  	$("#range").val($("#search_time").html());
+    $("#query").val($("#search_item").html());
+    $("#location_location_id").val($("#search_place").html());
+    $("#search_market").submit();
   };
 
 </script>
