@@ -3,22 +3,23 @@
   <div class="container">
     <p class="navbar-text">Copyright &copy; Personal Markets 2014 -  <a href="#">Privacy</a></p>
     <ul class="nav navbar-nav navbar-right">
-               <li class="languages">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="current-language">EN</span>
-                  <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu language-select">
-                  <li><a href="#" name="EN">English (EN)</a></li>
-                  <li><a href="#" name="ES">Español (ES)</a></li>
-                </ul>
-              </li>
-              <script>
-              $(".language-select li a").click(function(){
-                var languageSelected = $(this).attr("name");
-                $('.current-language').html(languageSelected);
-              });
-              </script>
+      <li class="user_city"><span class="navbar-text" id="user-city-text"></span></li>
+      <li class="languages dropup">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <span class="current-language">EN</span>
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu language-select">
+          <li><a href="#" name="EN">English (EN)</a></li>
+          <li><a href="#" name="ES">Español (ES)</a></li>
+        </ul>
+      </li>
+      <script>
+      $(".language-select li a").click(function(){
+        var languageSelected = $(this).attr("name");
+        $('.current-language').html(languageSelected);
+      });
+      </script>
               
       <li class="contact-us">
         <a>
@@ -31,8 +32,6 @@
 </nav>
 
 <script>
-
-
 	$(document).ready(function(){
     $(".contact-us a").popover({
     	html: true,
@@ -44,7 +43,32 @@
     $('.contact-us a').on('click', function() {
       $(this).parent().toggleClass('active');
     });
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos_success, pos_error);
+    }
+    else {
+      $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i>  Enable browser location for better experience");
+    }
 	});
+
+  function pos_success(pos){
+    var crd = pos.coords;
+    var addressUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + crd.latitude + "," + crd.longitude + "&sensor=false&key=AIzaSyBkhXw8kMql7c4tc1LwaMGbm9024z03AKU";
+    getCityName(addressUrl);
+  };
+
+  function pos_error(){
+    $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i>  Enable browser location for better experience");
+  };
+
+  function getCityName(url){
+    $.getJSON(url, function(data){
+      city = data.results[0].address_components[2].long_name;
+      $("#user-city-text").html(city);
+    });
+  };
+
 </script>
 
 <style>
@@ -57,5 +81,13 @@
 	.input-content{
     text-align: left;
 	}
+
+  .fa-exclamation-triangle{
+    color: #FFB834;
+  }
+
+  .user_city{
+    padding-left:15px;
+  }
 </style>
 <!-- Footer STOP -->
