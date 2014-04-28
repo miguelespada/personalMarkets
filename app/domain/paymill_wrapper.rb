@@ -4,10 +4,11 @@ class PaymillWrapper
     client = PaymillClientFactory.find_or_create_client email
     payment = Paymill::Payment.create token: token, client: client.client_id
     transaction = Paymill::Transaction.create amount: quantity, currency: "EUR", client: client.client_id, payment: payment.id, description: "transaction for #{email}"
+    transaction
   end
 
-  def self.paymill_subscribe email, subscription_params
-    client = PaymillClientFactory.find_or_create_client email
+  def self.create_subscription email, subscription_params
+    client = PaymillClientFactory.find_or_create_client email, subscription_params["name"]
     client_id = client.client_id
     payment = Paymill::Payment.create token: subscription_params["paymill_card_token"], client: client_id
     subscription = Paymill::Subscription.create(offer: SubscriptionOffer.offer, client: client_id, payment: payment.id)

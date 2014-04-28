@@ -10,7 +10,7 @@ class CouponsController < ApplicationController
   end
 
   def buy
-    CouponDomain.buy(@coupon, current_user, number)
+    CouponDomain.buy @coupon, current_user, number, params["paymill_card_token"]
     redirect_to market_path(@coupon.market), notice: 'You has successfully bought the coupon.'
     rescue ArgumentError
       render :status => :unauthorized, :text => "Incorrect number of coupons." 

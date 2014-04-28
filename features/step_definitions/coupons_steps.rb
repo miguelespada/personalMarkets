@@ -15,7 +15,6 @@ When(/^I should see the coupon in the market page$/) do
   expect(page).to have_content "20"
 end
 
-
 Given(/^I buy some coupons$/) do
   step "I visit the market page"
   click_on "Buy Coupon"

@@ -6,14 +6,19 @@ class Coupon
   field :description, type: String
   field :price, type: Integer
   field :available, type: Integer
+  field :paymill_transaction_id, type: String
 
+  def check_buy number
+    raise ArgumentError, "Incorrect number of coupons" unless number > 0 && number <= available
+  end
 
-  def buy!(user, number)
+  def buy! user, number, paymill_transaction_id
     raise ArgumentError, "Incorrect number of coupons" unless number > 0 && number <= available
     transaction = CouponTransaction.new
     transaction.user = user
     transaction.coupon = self
     transaction.number = number
+    transaction.paymill_transaction_id = paymill_transaction_id
     transaction.save
     self.available -= number
     self.update
