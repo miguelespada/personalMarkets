@@ -189,6 +189,17 @@ footer {
   font-size: 18px;
 }
 
-.green {
-  color: #4cae4c;
+.green-check {
+color: #5cb85c;
+border-color: #4cae4c;
 }
+
+.red-cross {
+color: #d9534f;
+border-color: #d43f3a;
+}
+
+.off { text-decoration: line-through; }
+
+
+
