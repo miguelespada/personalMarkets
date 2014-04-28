@@ -7,8 +7,8 @@ class Query
   def search_params
     {
       :query => load_query,
-      :form => load_to,
-      :to => load_from,
+      :from => load_from,
+      :to => load_to,
       :latitude => load_latitude,
       :longitude => load_longitude,
       :category => load_category,

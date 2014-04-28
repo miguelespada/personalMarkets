@@ -1,0 +1,19 @@
+  @ajaxSearch @javascript
+  Scenario: Search markets with ajax
+
+  @ajaxSearch @javascript
+  Scenario: Search markets with ajax (not matching)
+
+
+  @browse_map @javascript
+  Scenario: Browse map
+    When I go to Map
+    Then I should see a marker on the map
+    And The market has tooltip
+
+    # Then(/^It is not visible in guest markets$/) do
+#   visit published_markets_path
+#   within(:css, '.market-gallery') do
+#     expect(page).to_not have_css '.market-gallery-item'
+#   end
+# end

@@ -16,8 +16,3 @@ Feature: Create market
   Scenario: It appears in my markets
     When I create a market
     Then I should see it in my markets
-
-  Scenario: One per month
-    And I have a market 
-    When I try to create another market
-    Then I can see an error message
