@@ -33,5 +33,16 @@ $( document ).ready(function() {
   $("#search_button").click(function(){
     $("#search_market").submit();
   });
+
+  $("#location_location_id").on("change", function(){
+    if($("#location_location_id").val() != "")
+      $("#city_city_name option").prop("selected", false);
+  });
+
+  $("#city_city_name").on("change", function(){
+    if($("#city_city_name").val() != "")
+      $("#location_location_id option").prop("selected", false);
+  });
+
 });
 </script>
