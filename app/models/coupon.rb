@@ -14,7 +14,7 @@ class Coupon
     transaction.user = user
     transaction.coupon = self
     transaction.number = number
-    transaction.save 
+    transaction.save
     self.available -= number
     self.update
   end

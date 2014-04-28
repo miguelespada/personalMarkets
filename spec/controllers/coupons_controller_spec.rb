@@ -17,8 +17,12 @@ describe CouponsController do
       controller.stub(:current_user).and_return(user)
     end
 
+    describe "Create coupon" do
+      
+    end
+
     describe "Buy 'coupon'" do
-      it "creaes a transacrion" do
+      it "creates a transaction" do
         CouponTransaction.count.should eq 0
         post "buy", {id: coupon.to_param, number: 1}, valid_session
         CouponTransaction.count.should eq 1

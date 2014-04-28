@@ -1,7 +1,5 @@
 require 'markets_domain'
 require 'markets_domain_exception'
-require 'spec_helper'
-
 
 describe MarketsDomain do
 
@@ -34,8 +32,12 @@ describe MarketsDomain do
   end
 
   describe "create market" do
+
+    let(:market_params) { { name: "my market", description: "my market description" } } 
+
+    context "without coupon params" do
       after do
-        @it.create_market(user_id, { :name => "my market", :description => "my market description"})
+        @it.create_market(user_id, market_params)
       end
 
       it "registers success callback if market created successfully" do
@@ -51,6 +53,7 @@ describe MarketsDomain do
         market.stub(:save!).and_raise(MarketsDomainException)
         listener.should_receive(:create_market_failed)
       end
+    end
   end
 
   describe "market actions" do
