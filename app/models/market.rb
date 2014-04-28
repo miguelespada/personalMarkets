@@ -2,7 +2,6 @@ class Market
   
   include Mongoid::Document
   include Mongoid::Taggable
-  include Mongoid::Slug
   include Mongoid::Timestamps::Created
 
   include Tire::Model::Search
@@ -27,8 +26,6 @@ class Market
   has_one :coupon, class_name: "Coupon", inverse_of: :market
   
   accepts_nested_attributes_for :coupon
-
-  slug :name, history: false, scope: :user
 
   has_attachment :featured, accept: [:jpg, :png, :gif]
 
