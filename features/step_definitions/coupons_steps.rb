@@ -1,11 +1,3 @@
-When(/^I should see the coupon in the market page$/) do
-  step "I visit the market page"
-  expect(page).to have_content @market.name
-  expect(page).to have_content "My dummy coupon"
-  expect(page).to have_content "10"
-  expect(page).to have_content "20"
-end
-
 When(/^I create a coupon$/) do
   within(:css, "#form-market-coupon") do
     fill_in "Description",  with: "My dummy coupon"
@@ -14,6 +6,15 @@ When(/^I create a coupon$/) do
   end 
   click_on "Update Market"
 end
+
+When(/^I should see the coupon in the market page$/) do
+  step "I visit the market page"
+  expect(page).to have_content @market.name
+  expect(page).to have_content "My dummy coupon"
+  expect(page).to have_content "10"
+  expect(page).to have_content "20"
+end
+
 
 Given(/^I buy some coupons$/) do
   step "I visit the market page"
