@@ -91,7 +91,6 @@ group :test do
   gem "mongoid-rspec"
   gem "cucumber-rails", require: false
   gem "capybara"
-  gem "capybara-webkit"
   gem "launchy"
   gem "factory_girl_rails"
   gem 'pry'
@@ -107,6 +106,7 @@ end
 gem "font-awesome-rails"
 gem 'flexslider'
 gem "pcs_vegas", "~> 0.0.1.alpha"
+gem 'font-awesome-less'
 
 # dateformat
 gem 'momentjs-rails'

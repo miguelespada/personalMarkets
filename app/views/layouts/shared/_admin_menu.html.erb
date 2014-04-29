@@ -1,7 +1,6 @@
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-    <%= fa_icon "cog" %></a>
-  <ul class="dropdown-menu">
-   <%= render "layouts/shared/admin_tasks" %>
-  </ul>
+
+    <%= link_to admin_path do %>
+  		<i class="fa fa-cog"></i>
+  	<% end %>
 </li>

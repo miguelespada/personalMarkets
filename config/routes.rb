@@ -15,6 +15,8 @@ PopUpStores::Application.routes.draw do
     resources :comments, :only => [:create, :destroy, :update]
   end
 
+  get "/users/:user_id/dashboard", to: "users#dashboard", as: "user_dashboard"
+  get "/users/admin", to: "users#admin", as: "admin"
   get "/users/:user_id/markets", to: "markets#list_user_markets", as: "user_markets"
   get "/published", to: "markets#list_published_markets", as: "published_markets"
   get "/last_markets", to: "markets#list_last_markets", as: "last_markets"
