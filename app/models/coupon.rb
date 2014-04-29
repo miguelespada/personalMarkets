@@ -12,7 +12,7 @@ class Coupon
   end
 
   def buy! user, number, paymill_transaction_id
-    raise ArgumentError, "Incorrect number of coupons" unless number > 0 && number <= available
+    check_buy number
     transaction = CouponTransaction.new
     transaction.user = user
     transaction.coupon = self

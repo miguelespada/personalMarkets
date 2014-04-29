@@ -21,7 +21,9 @@ PopUpStores::Application.routes.draw do
   get "/category/:category_id/markets", to: "markets#list_category_markets", as: "category_markets"
   get "/tags/:tag/markets", to: "markets#list_tag_markets", as: "tag_markets"
 
-  resources :coupons, :only => [:show, :index]
+  resources :coupons, :only => [:show, :index] do
+    post :coupon_payment, :on => :member
+  end
 
 
   post "/coupons/:id", to: "coupons#buy", as: "buy_coupon"

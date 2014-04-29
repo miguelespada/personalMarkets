@@ -20,6 +20,7 @@ Given(/^I buy some coupons$/) do
   click_on "Buy Coupon"
   select "2"
   click_on "Buy"
+  step "he needs to introduce his credit card data"
 end
 
 Then(/^I should see the coupon transactions in my out transactions$/) do

@@ -1,5 +1,5 @@
 class CouponsController < ApplicationController
-  load_resource :only => [:show, :buy]
+  load_resource :only => [:show, :buy, :coupon_payment]
   authorize_resource :except => [:show, :index]
   
   def index
@@ -9,11 +9,18 @@ class CouponsController < ApplicationController
   def show
   end
 
+  CouponPayment = Struct.new(:coupon, :total_price, :quantity)
+
+  def coupon_payment
+    total_price = number * @coupon.price * 100
+    @coupon_payment = CouponPayment.new @coupon, total_price, number
+  end
+
   def buy
-    CouponDomain.buy @coupon, current_user, number, params["paymill_card_token"]
+    CouponDomain.buy @coupon, current_user, quantity, buy_params
     redirect_to market_path(@coupon.market), notice: 'You has successfully bought the coupon.'
-    rescue ArgumentError
-      render :status => :unauthorized, :text => "Incorrect number of coupons." 
+    rescue CouponDomainException => e
+      render :status => :unauthorized, :text => "Incorrect number of coupons #{e.message}." 
   end
   
   def list_transactions
@@ -24,6 +31,14 @@ class CouponsController < ApplicationController
   end
 
   private
+
+  def buy_params
+    buy_params = {
+      :name => params[:name],
+      :token => params[:paymill_card_token]
+    }
+  end
+
   def coupon_params
     params.require(:coupon)
   end
@@ -31,5 +46,9 @@ class CouponsController < ApplicationController
   def number
     params[:number].to_i 
   end 
+
+  def quantity
+    params[:quantity].to_i
+  end
 end
 
