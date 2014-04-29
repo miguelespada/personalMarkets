@@ -64,16 +64,7 @@ $( document ).ready(function() {
       $(".add_market_button").addClass("btn-success");
       $(".add_market_button").removeClass("btn-info");
       $(".add_market_button").val("Save Market");
-      $(".add_market_button").tooltip({
-        placement: "bottom",
-        title: "Save your market here!",
-        trigger: 'manual'
-      })
-      .tooltip('show');
       $(".button_to").effect("bounce", {times: 10, distance: 10}, 4000);
-      setTimeout(function(){
-        $(".add_market_button").tooltip('destroy');
-      }, 4000);
       $(".add_market_button").click(function(){
         $("#market-save-button").click(); 
         return false;
