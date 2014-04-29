@@ -6,7 +6,6 @@ class Coupon
   field :description, type: String
   field :price, type: Integer
   field :available, type: Integer
-  field :paymill_transaction_id, type: String
 
   def check_buy number
     raise ArgumentError, "Incorrect number of coupons" unless number > 0 && number <= available
