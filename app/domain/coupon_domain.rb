@@ -6,7 +6,6 @@ class CouponDomain
     transaction = PaymillWrapper.create_transaction user.email, paymill_price, buy_params
     coupon.buy! user, quantity, transaction.id
   rescue Exception => e
-    p e.backtrace
     raise CouponDomainException.new e.message
   end
 

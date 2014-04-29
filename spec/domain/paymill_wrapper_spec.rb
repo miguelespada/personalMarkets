@@ -49,6 +49,8 @@ describe PaymillWrapper do
     let(:email) { "dummy@gmail.com" }
     let(:amount) { 20 }
     let(:token) { "a_token" } 
+    let(:name) { "Alejandro Bayo" }
+    let(:buy_params) { { name: name, token: token } } 
 
     before do
       stub_const("Paymill::Payment", paymill_payment)
@@ -58,17 +60,17 @@ describe PaymillWrapper do
 
     it "searchs a paymill client by the email" do
       paymill_transaction.should_receive(:create)
-      PaymillWrapper.create_transaction email, amount, token
+      PaymillWrapper.create_transaction email, amount, buy_params
     end
 
     it "creates a Paymill payment" do
       paymill_transaction.should_receive(:create)
-      PaymillWrapper.create_transaction email, amount ,token
+      PaymillWrapper.create_transaction email, amount ,buy_params
     end
 
     it "creates a Paymill transaction" do
       paymill_transaction.should_receive(:create).with(amount: amount, currency: "EUR", client: "client_id", payment: "payment_id", description: "transaction for dummy@gmail.com")
-      PaymillWrapper.create_transaction email, amount, token
+      PaymillWrapper.create_transaction email, amount, buy_params
     end
   end
   
