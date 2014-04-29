@@ -49,11 +49,7 @@
             <%= c.input :available %>
           <% end %>
         </section>
-
-        <h3>Save and publish</h3>
-        <section id = "form-submit" > 
-            <%= f.button :submit, class: 'btn'%>
-        </section>
+        <%= f.button :submit, class: 'btn hidden', id: 'market-save-button' %>
     </div>
 <% end %>
 <div>
@@ -64,6 +60,25 @@
 <script>
 
 $( document ).ready(function() {
+  
+      $(".add_market_button").addClass("btn-success");
+      $(".add_market_button").removeClass("btn-info");
+      $(".add_market_button").val("Save Market");
+      $(".add_market_button").tooltip({
+        placement: "bottom",
+        title: "Save your market here!",
+        trigger: 'manual'
+      })
+      .tooltip('show');
+      $(".button_to").effect("bounce", {times: 10, distance: 10}, 4000);
+      setTimeout(function(){
+        $(".add_market_button").tooltip('destroy');
+      }, 4000);
+      $(".add_market_button").click(function(){
+        $("#market-save-button").click(); 
+        return false;
+      });
+
       $("#wizard").steps({
           headerTag: "h3",
           bodyTag: "section",
