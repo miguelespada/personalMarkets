@@ -106,7 +106,6 @@ end
 gem "font-awesome-rails"
 gem 'flexslider'
 gem "pcs_vegas", "~> 0.0.1.alpha"
-gem 'font-awesome-less'
 
 # dateformat
 gem 'momentjs-rails'
