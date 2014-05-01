@@ -1,1 +1,27 @@
-Gallery!!!
+<div class = "home_gallery wish_gallery">
+  <% @wishes.each do |wish| %>
+    <% if !wish.wish_photo.nil? %>
+      <div class = "home_gallery_item wish_item">
+        <div class = "home_gallery_featured_photo wish_featured_photo" data-name="<%= wish.description %>">
+          <%= cl_image_tag(wish.wish_photo.path, :size => '300x150', :crop => :fill) %>
+          <div class = "home_gallery_label wish_label">
+            <%= wish.description %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+
+<script>
+$( document ).ready(function() {
+  $('.wish_featured_photo').css('cursor', 'pointer');
+
+  $(".wish_featured_photo").click(function(){
+    $("#query").val($(this).data("name"));
+    $("#search_market").submit();
+  });
+});
+</script>
+

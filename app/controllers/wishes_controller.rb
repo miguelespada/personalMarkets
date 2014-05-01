@@ -4,7 +4,15 @@ class WishesController < ApplicationController
 
   def index
     @wishes = Wish.all
-    render :layout => !request.xhr?
+    respond_to do |format|
+        format.html
+        format.json {render json: @wishes}
+    end
+  end
+
+  def gallery
+    @wishes = Wish.all
+    render layout: false
   end
 
   def list_user_wishes
