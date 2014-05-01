@@ -55,6 +55,7 @@ PopUpStores::Application.routes.draw do
   
   get "/users/:user_id/subscription", to: "users#subscription", as: "user_subscription"
 
+  get "/wishes/gallery", as: "wishes_gallery"
   resources :wishes, except: [:index]
   get "/wishes/index", path: "wishes"
   get "/users/:user_id/wishes", to: "wishes#list_user_wishes", as: "user_wishes"

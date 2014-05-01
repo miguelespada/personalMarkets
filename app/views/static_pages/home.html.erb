@@ -30,6 +30,7 @@
     <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
   </section>
   
+  <div class = "home_gallery_title">Wishlist</div>
   <section id="wishes">
     <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
   </section>
@@ -82,7 +83,7 @@
     $( "#special_locations" ).html( data );
   });
 
-  $.get( "wishes", function( data ) {
+  $.get( "<%= wishes_gallery_path %>", function( data ) {
     $( "#wishes" ).html( data );
   });
 
