@@ -1,4 +1,7 @@
 class CategoriesController < ApplicationController
+  load_resource :only => [:show, :edit, :destroy, :update]
+  authorize_resource :except => [:index, :show]
+
   def index
     @categories = Category.all
     respond_to do |format|
@@ -7,8 +10,15 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def show
+    redirect_to category_markets_path(@category.id)
+  end
+
   def new
     @category = Category.new
+  end
+
+  def edit
   end
 
   def create
@@ -20,6 +30,16 @@ class CategoriesController < ApplicationController
       else
         format.html { render action: 'new' }
       end 
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @category.update(category_params)
+        format.html { redirect_to categories_path, notice: 'Category was successfully updated.' }
+      else
+        format.html { render action: 'edit' }
+      end
     end
   end
 

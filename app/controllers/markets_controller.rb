@@ -7,13 +7,12 @@ class MarketsController < ApplicationController
   end
 
   def list_category_markets
-    category = Category.find(params[:category_id])
-    @markets = Market.where(category: category)
+    @markets = Market.with_category(load_category)
     render 'index'
   end
 
   def list_published_markets
-    @markets = Market.where(state: "published")
+    @markets = Market.published
     render 'index'
   end
   
@@ -23,7 +22,7 @@ class MarketsController < ApplicationController
   end
 
   def list_last_markets
-    @markets = Market.where(state: "published").order_by(:created_at.desc).limit(6)
+    @markets = Market.last_published
     render 'search', :layout => !request.xhr?
   end
 
@@ -71,10 +70,6 @@ class MarketsController < ApplicationController
     @market = domain.get_market params[:id]
     @market.coupon ||= Coupon.new
   end
-
-  # def index
-  #   domain.user_markets params[:user_id]
-  # end
 
   def user_markets_succeeded markets
     @markets = markets
@@ -189,6 +184,10 @@ class MarketsController < ApplicationController
       if params["hidden-market"].present?
         params[:market][:tags] = params["hidden-market"][:tags]
       end
+    end
+
+    def load_category
+      Category.find(params[:category_id])
     end
 
 end

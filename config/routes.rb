@@ -30,7 +30,7 @@ PopUpStores::Application.routes.draw do
   post "/coupons/:id", to: "coupons#buy", as: "buy_coupon"
   get "/coupons/:user_id/list_transactions", to: "coupons#list_transactions", as: "list_transactions"
 
-  resources :categories, :only => [:index, :new, :destroy, :create]
+  resources :categories
   resources :users, :only => [:index, :show]
   resources :tags, :only => [:index]
 

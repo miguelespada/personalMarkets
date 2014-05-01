@@ -42,7 +42,6 @@ end
 
 Before do
   DatabaseCleaner.start
-  Category.create(name: "Uncategorized")
 end
 
 After do |scenario|

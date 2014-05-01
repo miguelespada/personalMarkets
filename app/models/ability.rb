@@ -60,6 +60,7 @@ class Ability
       can :see_transactions, User
       can [:manage], Wish
       can [:manage], SpecialLocation
+      can [:manage], Category
 
       can :buy, Coupon
       can :list_transactions, Coupon

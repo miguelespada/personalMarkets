@@ -29,7 +29,11 @@ class Market
 
   has_attachment :featured, accept: [:jpg, :png, :gif]
 
-  validates_presence_of :name, :user, :category
+  validates_presence_of :name, :user
+
+  scope :last_published, lambda { where(state: "published").order_by(:created_at.desc).limit(6) }
+  scope :published, lambda {where(state: "published")}
+  scope :with_category, lambda {|category| where(category: category)}
 
   def delete_featured_image
     self.featured = nil
