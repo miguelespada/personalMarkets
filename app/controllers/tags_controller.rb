@@ -7,7 +7,7 @@ class TagsController < ApplicationController
     @tags = Market.tags
     respond_to do |format|
         format.html 
-        format.json {render json: @suggested}
+        format.json {render json: @suggested.collect{|tag| tag.name}}
     end
   end
 
