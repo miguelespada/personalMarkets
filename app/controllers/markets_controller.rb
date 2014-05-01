@@ -118,10 +118,6 @@ class MarketsController < ApplicationController
     redirect_to market, notice: "Market successfully published."
   end
 
-  # def published
-  #   domain.published_markets
-  # end
-
   def published_succeeded markets
     @markets = markets
     render 'index', :locals =>  {:layout => false}

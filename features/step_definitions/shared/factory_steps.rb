@@ -50,3 +50,15 @@ Given(/^There is a market with available coupons$/) do
   @coupon.market = @market
   @coupon.save
 end
+
+Given(/^There are some tags/) do
+  @tag = create(:tag,
+              :name => "Dummy Tag")
+end
+
+When(/^There is a market with a specific tag$/) do
+  step "There are some tags"
+  @market = create(:market, :tags => @tag.name)
+end
+
+

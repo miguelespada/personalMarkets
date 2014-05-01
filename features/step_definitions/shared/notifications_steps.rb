@@ -50,3 +50,15 @@ end
 Then(/^I should be notified that I the category has been updated$/) do
   expect(page).to have_content 'Category was successfully updated.'
 end
+
+Then(/^I should be notified that the tag has been added$/) do
+  expect(page).to have_content "Tag was successfully created."
+end
+
+Then(/^I should be notified that the tag has been deleted$/) do
+  expect(page).to have_content "Tag successfully deleted."
+end
+
+Then(/^I should be notified that I the tag has been updated$/) do
+  expect(page).to have_content 'Tag was successfully updated.'
+end

@@ -3,4 +3,7 @@ module TagsHelper
     raw market.tags.split(/,/)
   end
 
+  def market_counter(tag)
+  	Market.tagged_with(tag).count
+  end
 end

@@ -13,7 +13,7 @@
     <%= content_tag_for(:tr, tag) do %> 
       <td> <%= cl_image_tag(tag.photo.path, :size => '120x60', :crop => :fill) if !tag.photo.nil? %> 
       <td> <%= link_to(tag.name, tag_markets_path(tag.name)) %> </td> 
-      <td> 0 </td>
+      <td class="market-counter"> <%= market_counter(tag.name) %>  </td>
       <td> 
         <span> <%= link_to "Delete", tag_path(tag), :method => :delete %> </span>
         <span> <%= link_to "Edit", edit_tag_path(tag)  %> </span>  
@@ -35,7 +35,7 @@
     <tr>
       <td>---</td>
       <td> <%= link_to(name, tag_markets_path(name)) %> </td> 
-      <td> 0 </td>
+      <td class="market-counter"> <%= market_counter(name) %>  </td>
       <td>---</td>
      </tr>
   <% end %>
