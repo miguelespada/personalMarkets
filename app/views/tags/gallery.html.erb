@@ -1,1 +1,25 @@
-Gallery!!!
+<div class = "home_gallery tag_gallery">
+  <% @suggested.each do |tag| %>
+    <% if !tag.photo. nil? %>
+      <div class = "home_gallery_item tag_gallery_item">
+        <div class = "home_gallery_featured_photo tag_gallery_featured_photo" data-name="<%= tag.name %>">
+          <%= cl_image_tag(tag.photo.path, :size => '300x150', :crop => :fill) %>
+          <div class = "home_gallery_label tag_gallery_label">
+            <%= tag.name %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<script>
+$( document ).ready(function() {
+  $('.tag_gallery_featured_photo').css('cursor', 'pointer');
+
+  $(".tag_gallery_featured_photo").click(function(){
+    $("#query").val($(this).data("name"));
+    $("#search_market").submit();
+  });
+});
+</script>
