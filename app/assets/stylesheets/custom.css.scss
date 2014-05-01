@@ -323,3 +323,8 @@ border-color: #d43f3a;
   float:right;
 }
 
+.table-latlng{
+  max-width:80%;
+  float:left;
+  text-overflow: ellipsis;
+}
