@@ -12,9 +12,9 @@
   
     <% @wishes.each do |wish| %>
       <%= content_tag_for(:tr, wish) do %> 
-        <td class="col-md-3"> <%= cl_image_tag(wish.wish_photo.path, :size => '120x60', :crop => :fill) if !wish.wish_photo.nil? %> </td>
-        <td class="col-md-3"> <%= link_to wish.description, wish %> </td> 
-        <td class="col-md-3"> 
+        <td class="col-md-4"> <%= cl_image_tag(wish.wish_photo.path, :size => '120x60', :crop => :fill) if !wish.wish_photo.nil? %> </td>
+        <td class="col-md-4"> <%= link_to wish.description, wish %> </td> 
+        <td class="col-md-4"> 
           <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), wish, :method => :delete, class: "delete btn btn-danger table-button table-button-delete" %> </span>
           <span> <%= link_to content_tag(:i, "", class: "fa fa-pencil"), edit_wish_path(wish), class: "edit btn btn-info table-button table-button-edit" %></span> 
         </td>
