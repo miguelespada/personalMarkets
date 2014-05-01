@@ -1,5 +1,46 @@
-<div class = "wish_title">Wishlist</div>
-<% if can? :create, Wish %>
-<%= link_to 'New Wish', new_wish_path %>
-<% end %>
-<%= render "wishes/shared/wishes" %>
+<div class="panel panel-default panel-table panel-table-last">
+  <div class="panel-heading table-title">
+    Wishlist <%= link_to content_tag(:i, "", class: "fa fa-plus"), new_wish_path, 
+      class: "btn btn-info table-button table-button-new new"%>
+  </div>
+  <table class="table table-striped">
+    <tr>
+      <th>Photo</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  
+    <% @wishes.each do |wish| %>
+      <%= content_tag_for(:tr, wish) do %> 
+        <td class="col-md-3"> <%= cl_image_tag(wish.wish_photo.path, :size => '120x60', :crop => :fill) if !wish.wish_photo.nil? %> </td>
+        <td class="col-md-3"> <%= link_to wish.description, wish %> </td> 
+        <td class="col-md-3"> 
+          <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), wish, :method => :delete, class: "delete btn btn-danger table-button table-button-delete" %> </span>
+          <span> <%= link_to content_tag(:i, "", class: "fa fa-pencil"), edit_wish_path(wish), class: "edit btn btn-info table-button table-button-edit" %></span> 
+        </td>
+      <% end %>
+    <% end %>
+  </table>
+</div>
+
+<script>
+  $(document).ready(function(){
+    buttonHover(".table-button-new", "fa-plus", "New Wish", 100);
+    buttonHover(".table-button-delete", "fa-trash-o", "Delete", 85);
+    buttonHover(".table-button-edit", "fa-pencil", "Edit", 70);
+  });
+  
+  var buttonHover = function(button, icon, text, width){
+    $(button).hover(function(){
+      $(this).html("<i class='fa " + icon + "'></i>&nbsp;&nbsp;" + text);
+      $(this).animate({
+        width: width
+      }, 100);
+    }, function(){
+      $(this).html("<i class='fa " + icon + "'></i>");
+      $(this).animate({
+        width: "40"
+      }, 100);
+    });
+  };
+</script>
