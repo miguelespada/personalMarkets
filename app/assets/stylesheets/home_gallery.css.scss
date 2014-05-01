@@ -1,0 +1,36 @@
+@import "bootstrap";
+@import "bootstrap/theme";
+
+.home_gallery_title{
+	@extend h1;
+	font-weight: 100;
+	text-align: center;
+}
+
+.home_gallery{
+	@extend .row;
+}
+
+.home_gallery_item{
+	@extend .col-md-4;
+	padding: 15px 0px 15px 0px;
+}
+
+.home_gallery_featured_photo{
+	position:relative;
+	width:300px;
+	margin:auto;
+}
+
+.home_gallery_label{
+	position:absolute;
+	display:inline;
+	top:100%;
+	left:12px;
+	margin-top:-48px;
+	font-weight:200;
+	font-size:24px;
+	line-height: 48px;
+	color:#FFFFFF;
+	text-shadow: 2px 2px 5px #222222;
+}

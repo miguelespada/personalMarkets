@@ -1,23 +1,63 @@
-<table class="table">
-  <tr>
-  <th>Photo</th>
-  <th>Name</th>
-  <th>Market Count</th>
-  <th>Actions</th>
-  </tr>
-
-  <% @categories.each do |category| %>
-    <%= content_tag_for(:tr, category) do %> 
-      <td> <%= cl_image_tag(category.photo.path, :size => '120x60', :crop => :fill) if !category.photo.nil? %> 
-      <td> <%= category.name %> </td> 
-      <td> <%= category.markets.count %> </td>
-      <td> 
-        <span> <%= link_to "Delete", category_path(category), :method => :delete %> </span>
-        <span> <%= link_to "Edit", edit_category_path(category)  %> </span>  
-        <span> <%= link_to "Show", category_markets_path(category) %> </span> 
-      </td>
+<div class="panel panel-default">
+  <div class="panel-heading table-title">
+    Categories <%= link_to content_tag(:i, "", class: "fa fa-plus"), new_category_path, class: "btn btn-info table-button table-button-new"%>
+  </div>
+  <table class="table table-striped">
+    <tr>
+      <th>Photo</th>
+      <th>Name</th>
+      <th>Market Count</th>
+      <th>Actions</th>
+    </tr>
+  
+    <% @categories.each do |category| %>
+      <%= content_tag_for(:tr, category) do %> 
+        <td class="col-md-3"> <%= cl_image_tag(category.photo.path, :size => '120x60', :crop => :fill) if !category.photo. nil? %> 
+        <td class="col-md-3"> <%= category.name %> </td> 
+        <td class="col-md-3"> <%= category.markets.count %> </td>
+        <td class="col-md-3"> 
+          <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), {:method => :delete}, class: "btn btn-danger table-button table-button-delete" %> </span>
+          <span> <%= link_to content_tag(:i, "", class: "fa fa-pencil"), edit_category_path(category), class: "btn btn-info table-button table-button-edit" %></span>  
+          <span> <%= link_to content_tag(:i, "", class: "fa fa-share"), category_markets_path(category), class: "btn btn-success table-button table-button-show"  %> </span> 
+        </td>
+      <% end %>
     <% end %>
-  <% end %>
-</table>
+  </table>
+</div>
 
-<%= link_to "New", new_category_path %>
+<style>
+  .table-title{
+    font-size: 24px;
+    font-weight: 100;
+    text-align: left;
+  }
+  .table-button{
+    width:40px;
+  }
+  .table-button-new{
+    float:right;
+  }
+</style>
+
+<script>
+  $(document).ready(function(){
+    buttonHover(".table-button-new", "fa-plus", "New Category", 140);
+    buttonHover(".table-button-delete", "fa-trash-o", "Delete", 85);
+    buttonHover(".table-button-edit", "fa-pencil", "Edit", 70);
+    buttonHover(".table-button-show", "fa-share", "Show", 85);
+  });
+  
+  var buttonHover = function(button, icon, text, width){
+    $(button).hover(function(){
+      $(this).html("<i class='fa " + icon + "'></i>&nbsp;&nbsp;" + text);
+      $(this).animate({
+        width: width
+      }, 100);
+    }, function(){
+      $(this).html("<i class='fa " + icon + "'></i>");
+      $(this).animate({
+        width: "40"
+      }, 100);
+    });
+  };
+</script>

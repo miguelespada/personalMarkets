@@ -1,1 +1,26 @@
-Gallery!!!
+<div class = "home_gallery category_gallery">
+  <% @categories.each do |category| %>
+    <% if !category.photo. nil? %>
+      <div class = "home_gallery_item category_gallery_item">
+        <div class = "home_gallery_featured_photo category_gallery_featured_photo" data-name="<%= category.name %>">
+          <%= cl_image_tag(category.photo.path, :size => '300x150', :crop => :fill) %>
+          <div class = "home_gallery_label category_gallery_label">
+            <%= category.name %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+
+<script>
+$( document ).ready(function() {
+  $('.home_gallery_featured_photo').css('cursor', 'pointer');
+
+  $(".home_gallery_featured_photo").click(function(){
+    $("#category_category_id").val($(this).data("name"));
+    $("#search_market").submit();
+  });
+});
+</script>
