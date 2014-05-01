@@ -1,3 +1,5 @@
+
+  @special_locations
 Feature: Manage special locations
   I order to have hotspots
   I want manage special locations
@@ -21,9 +23,3 @@ Feature: Manage special locations
     And I edit a special_location
     Then I should be notified that I the special_location has been updated
     And I should see the special_location with the new name in the special_location list
-
-  @special_locations
-  Scenario: Browse markets by special_location
-    When There is a market near a special_location
-    And I browse the special_location
-    Then I should see the markets special_location near the speacial location
