@@ -20,13 +20,12 @@
     <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
   </section>
 
-
-  <div class = "home_gallery_title">Latest Markets</div>
-
-  <section id="last_markets">
+  <div class = "home_gallery_title">Tags</div>
+  <section id="tags">
     <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
   </section>
 
+  <div class = "home_gallery_title">Hot Spots</div>
   <section id="special_locations">
     <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
   </section>
@@ -36,6 +35,10 @@
   </section>
 
 
+  <div class = "home_gallery_title">Latest Markets</div>
+  <section id="last_markets">
+    <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
+  </section>
 
 </div>
 
@@ -75,7 +78,7 @@
     $( "#last_markets" ).html( data );
   });
 
-  $.get( "special_locations", function( data ) {
+  $.get( "<%= special_locations_gallery_path %>", function( data ) {
     $( "#special_locations" ).html( data );
   });
 
@@ -85,6 +88,10 @@
 
   $.get( "<%= category_gallery_path %>", function( data ) {
     $( "#categories" ).html( data );
+  });
+
+  $.get( "<%= tags_gallery_path %>", function( data ) {
+    $( "#tags" ).html( data );
   });
 
 	var searchTimeArray = ["Today", "This week", "This month", "Next week"];

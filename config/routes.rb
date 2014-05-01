@@ -71,7 +71,7 @@ PopUpStores::Application.routes.draw do
   get "/users/:user_id/like/:market_id",  to: 'users#like', as: 'like'
   get "/users/:user_id/unlike/:market_id",  to: 'users#unlike', as: 'unlike'
 
-
+  get "/special_locations/gallery", as: "special_locations_gallery"
   resources :special_locations
 
   root "static_pages#home"

@@ -16,9 +16,9 @@
 
 <script>
 $( document ).ready(function() {
-  $('.home_gallery_featured_photo').css('cursor', 'pointer');
+  $('.category_gallery_featured_photo').css('cursor', 'pointer');
 
-  $(".home_gallery_featured_photo").click(function(){
+  $(".category_gallery_featured_photo").click(function(){
     $("#category_category_id").val($(this).data("name"));
     $("#search_market").submit();
   });

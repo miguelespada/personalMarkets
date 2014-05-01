@@ -4,6 +4,14 @@ class SpecialLocationsController < ApplicationController
 
   def index
     @special_locations = SpecialLocation.all
+    respond_to do |format|
+        format.html
+        format.json {render json: @special_locations}
+    end
+  end
+
+  def gallery
+    @special_locations = SpecialLocation.all
     render layout: false
   end
 
