@@ -1,6 +1,6 @@
 When(/^I add a category$/) do
   step "I go to Category list"
-  click_on "New"
+  find('.new').click  
   fill_in "Name",  with: "Dummy Category"
   click_on "Create Category"
 end
@@ -13,7 +13,7 @@ end
 Given(/^I delete a category$/) do
   step "I go to Category list"
   within(:css, "#category_#{@category.id}") do
-    click_on "Delete"
+    find('.delete').click
   end
 end
 
@@ -25,7 +25,7 @@ end
 When(/^I edit a category$/) do
   step "I go to Category list"
   within(:css, "#category_#{@category.id}") do
-    click_on "Edit"
+    find('.edit').click  
   end
 
   fill_in "Name",  with: "New Dummy Category"
