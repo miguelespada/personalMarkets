@@ -59,6 +59,7 @@ PopUpStores::Application.routes.draw do
   resources :wishes, except: [:index]
   get "/wishes/index", path: "wishes"
   get "/users/:user_id/wishes", to: "wishes#list_user_wishes", as: "user_wishes"
+  get "/likes/:user_id", to: "markets#list_liked_markets", as: "user_likes"
 
   post "/markets/:market_id/comments/:id/report", to: "comments#report", as: 'report_comment'
   post "/markets/:market_id/delete_image", to: "markets#delete_image", as: 'delete_image'

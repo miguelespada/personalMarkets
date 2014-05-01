@@ -31,6 +31,11 @@ class MarketsController < ApplicationController
     render 'index'
   end
 
+  def list_liked_markets
+    @markets = @user.favorites
+    render 'search', :layout => !request.xhr?
+  end
+
   def search
     query = Query.new(params)
     @markets = Market.search(query.search_params)

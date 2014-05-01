@@ -66,15 +66,5 @@ When(/^There are some special_locations$/) do
               :name => "Dummy Location")
 end
 
-When(/^There is a market near a special_location$/) do
-  step "There are some special_locations"
-  @market = create(:market, 
-      :latitude => @location.latitude + 0.2, 
-      :longitude=> @location.longitude - 0.2
-  )
-  Market.reindex
-end
-
-
 
 
