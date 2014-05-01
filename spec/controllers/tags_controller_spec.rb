@@ -14,9 +14,15 @@ describe TagsController do
       get 'index'
       response.should be_success
       assigns(:suggested).should eq([tag])
+      assigns(:tags).should eq([])
     end
 
     it "returns http success assigns market tags" do
+      create(:market, :tags => "dummy")      
+      get 'index'
+      response.should be_success
+      assigns(:tags).should eq(["dummy"])
+      assigns(:suggested).should eq([])
     end
   end
 
@@ -33,7 +39,7 @@ describe TagsController do
     it "redirects to the list of markets belonging to the tag" do
       tag = Tag.create! valid_attributes
       get :show, {:id => tag.to_param}, valid_session
-      response.should redirect_to tag_markets_path(tag.to_param)
+      response.should redirect_to tag_markets_path(tag.name)
     end
   end
 
