@@ -24,7 +24,7 @@
   </table>
 </div>
 
-<div class="panel panel-default panel-table">
+<div class="panel panel-default panel-table panel-table-last">
   <div class="panel-heading table-title">User Tags</div>
   <table class="table table-striped">
     <tr>
@@ -33,39 +33,35 @@
       <th>Market Count</th>
       <th>Actions</th>
     </tr>
-  
-    <% @suggested.each do |tag| %>
-      <%= content_tag_for(:tr, tag) do %> 
-        <td class="col-md-3"> <%= cl_image_tag(tag.photo.path, :size => '120x60', :crop => :fill) if !tag.photo.nil? %> 
-        <td class="col-md-3"> <%= link_to(tag.name, tag_markets_path(tag.name)) %> </td> 
-        <td class="col-md-3 market-counter"> <%= market_counter(tag.name) %> </td>
-        <td class="col-md-3"> 
-          <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), tag_path(tag), :method => :delete, class: "btn btn-danger table-button table-button-delete" %> </span>
-          <span> <%= link_to content_tag(:i, "", class: "fa fa-pencil"), edit_tag_path(tag), class: "btn btn-info table-button table-button-edit" %></span>
-        </td>
-      <% end %>
-    <% end %>
+    <% @tags.each do |name| %>   
+    <tr>
+      <td class="col-md-3">---</td>
+      <td class="col-md-3"> <%= link_to(name, tag_markets_path(name)) %> </td> 
+      <td class="col-md-3 market-counter"> <%= market_counter(name) %>  </td>
+      <td class="col-md-3">---</td>
+     </tr>
+  <% end %>
   </table>
 </div>
 
-
-<h4>User Tags</h4>
-<table class="table">
-  <tr>
-  <th>Photo</th>
-  <th>Name</th>
-  <th>Market Count</th>
-  <th>Actions</th>
-  </tr>
-
-  <% @tags.each do |name| %>   
-    <tr>
-      <td>---</td>
-      <td> <%= link_to(name, tag_markets_path(name)) %> </td> 
-      <td class="market-counter"> <%= market_counter(name) %>  </td>
-      <td>---</td>
-     </tr>
-  <% end %>
-</table>
-
-
+<script>
+  $(document).ready(function(){
+    buttonHover(".table-button-new", "fa-plus", "New Tag", 105);
+    buttonHover(".table-button-delete", "fa-trash-o", "Delete", 85);
+    buttonHover(".table-button-edit", "fa-pencil", "Edit", 70);
+  });
+  
+  var buttonHover = function(button, icon, text, width){
+    $(button).hover(function(){
+      $(this).html("<i class='fa " + icon + "'></i>&nbsp;&nbsp;" + text);
+      $(this).animate({
+        width: width
+      }, 100);
+    }, function(){
+      $(this).html("<i class='fa " + icon + "'></i>");
+      $(this).animate({
+        width: "40"
+      }, 100);
+    });
+  };
+</script>

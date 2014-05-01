@@ -1,4 +1,4 @@
-<div class="panel panel-default panel-table">
+<div class="panel panel-default panel-table panel-table-last">
   <div class="panel-heading table-title">
     Categories <%= link_to content_tag(:i, "", class: "fa fa-plus"), new_category_path, 
       class: "btn btn-info table-button table-button-new new"%>
@@ -26,26 +26,6 @@
     <% end %>
   </table>
 </div>
-
-<style>
-  .panel-table{
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-bottom:80px;
-  }
-
-  .table-title{
-    font-size: 24px;
-    font-weight: 100;
-    text-align: left;
-  }
-  .table-button{
-    width:40px;
-  }
-  .table-button-new{
-    float:right;
-  }
-</style>
 
 <script>
   $(document).ready(function(){
