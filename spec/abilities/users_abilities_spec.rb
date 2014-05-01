@@ -17,6 +17,7 @@ describe "User" do
     context "unauthorized" do
       let(:user){ create(:user)}
       it{ should_not be_able_to(:manage, Wish.new(:user => other_user)) }
+      it{ should_not be_able_to(:manage, Category) }
     end
 
     context "admin" do
@@ -24,6 +25,7 @@ describe "User" do
       it{ should be_able_to(:manage, Wish) }
       it{ should be_able_to(:buy, Coupon.new) }
       it{ should be_able_to(:list_transactions, Coupon.new) }
+      it{ should be_able_to(:manage, Category) }
     end
   end
 end
