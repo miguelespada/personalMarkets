@@ -1,8 +1,16 @@
 class SpecialLocationsController < ApplicationController
   load_resource :only => [:show, :edit, :destroy, :update]
-  authorize_resource :except => [:index, :show]
+  authorize_resource :except => [:index, :show, :gallery]
 
   def index
+    @special_locations = SpecialLocation.all
+    respond_to do |format|
+        format.html
+        format.json {render json: @special_locations}
+    end
+  end
+
+  def gallery
     @special_locations = SpecialLocation.all
     render layout: false
   end
