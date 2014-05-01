@@ -16,28 +16,28 @@
   </section>
 
   <div class = "home_gallery_title">Categories</div>
-  <section id="categories">
+  <section id="categories" class="gallery-section">
     <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
   </section>
 
   <div class = "home_gallery_title">Tags</div>
-  <section id="tags">
+  <section id="tags" class="gallery-section">
     <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
   </section>
 
   <div class = "home_gallery_title">Hot Spots</div>
-  <section id="special_locations">
+  <section id="special_locations" class="gallery-section">
     <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
   </section>
   
   <div class = "home_gallery_title">Wishlist</div>
-  <section id="wishes">
+  <section id="wishes" class="gallery-section">
     <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
   </section>
 
 
   <div class = "home_gallery_title">Latest Markets</div>
-  <section id="last_markets">
+  <section id="latest_markets" class="gallery-section">
     <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
   </section>
 
@@ -72,11 +72,18 @@
     color:#777777;
   }
 
+  .gallery-section{
+    margin-left: 30px;
+    margin-right:30px;
+    padding-bottom:30px;
+    border-bottom: 1px solid #CCCCCC;
+  }
+
 </style>
 
 <script>
   $.get( "last_markets", function( data ) {
-    $( "#last_markets" ).html( data );
+    $( "#latest_markets" ).html( data );
   });
 
   $.get( "<%= special_locations_gallery_path %>", function( data ) {

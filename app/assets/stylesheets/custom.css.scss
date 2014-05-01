@@ -270,6 +270,7 @@ border-color: #d43f3a;
   @extend h1;
   font-weight: 100;
   text-align: center;
+  padding-top: 20px;
 }
 
 .home_gallery{
@@ -321,10 +322,4 @@ border-color: #d43f3a;
 }
 .table-button-new{
   float:right;
-}
-
-.table-latlng{
-  max-width:80%;
-  float:left;
-  text-overflow: ellipsis;
 }
