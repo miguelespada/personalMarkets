@@ -1,0 +1,12 @@
+<%= simple_form_for @tag do |f| %>
+  <%= f.input :name, input_html: { class: 'tag-name' }%>
+  <%= f.input :photo, as: :attachinary %>
+  <%= f.button :submit %>
+<% end %>
+
+
+<script>
+$( document ).ready(function() {
+  $('.attachinary-input').attachinary();
+});
+</script>

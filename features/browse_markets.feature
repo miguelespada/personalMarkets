@@ -12,18 +12,6 @@ Feature: Browse markets
     And I click the details link of a market
     Then I should see the full description of a market
 
-  @browse_tag
-  Scenario: Browse by tag
-    And I go to Tag list
-    And I select one tag
-    Then I see the markets matching my query
-
-  @browse_category  
-  Scenario: Browse by category
-    When I go to Category list
-    And I select one category
-    Then I see the markets matching my query
-
   @browse_calendar
   Scenario: Browse maps
     When I go to Calendar
