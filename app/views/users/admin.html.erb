@@ -1,0 +1,38 @@
+<%-# ICONS LINKS ARE NOT DEFINED -%>
+
+<div class = "wish_title"><i class="fa fa-cog fa-5x"></i> <br/>Admin Panel</div>
+
+<div class="container">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-6 col-md-6">
+                <%= link_to admin_path, class:"btn btn-danger btn-lg" do %>
+					  <i class="fa fa-shopping-cart fa-5x"></i> <br/> Markets
+			    <% end %>
+			    <%= link_to admin_path, class:"btn btn-warning btn-lg" do %>
+					  <i class="fa fa-bars fa-5x"></i> <br/> Categories
+			    <% end %>
+			    <%= link_to admin_path, class:"btn btn-success btn-lg" do %>
+					  <i class="fa fa-map-marker fa-5x"></i> <br/> Locations
+			    <% end %>
+			    <%= link_to admin_path, class:"btn btn-info btn-lg" do %>
+					  <i class="fa fa-tags fa-5x"></i> <br/> Tags
+			    <% end %>
+            </div>
+            <div class="col-xs-6 col-md-6">
+                <%= link_to admin_path, class:"btn btn-primary btn-lg" do %>
+					  <i class="fa fa-users fa-5x"></i> <br/> Users
+			    <% end %>
+			    <%= link_to admin_path, class:"btn btn-primary btn-lg" do %>
+					  <i class="fa fa-tasks fa-5x"></i> <br/> Statistics
+			    <% end %>
+			    <%= link_to admin_path, class:"btn btn-primary btn-lg" do %>
+					  <i class="fa fa-envelope-o fa-5x"></i> <br/> Messages
+			    <% end %>
+			    <%= link_to admin_path, class:"btn btn-primary btn-lg" do %>
+					  <i class="fa fa-cogs fa-5x"></i> <br/> Setting
+			    <% end %>
+            </div>
+        </div>
+    </div>
+</div>

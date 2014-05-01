@@ -1,0 +1,38 @@
+<%-# ICONS LINKS ARE NOT DEFINED -%>
+
+<div class = "wish_title"><i class="fa fa-dashboard fa-5x"></i> <br/>Dashboard</div>
+
+<div class="container">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-6 col-md-6">
+                <%= link_to user_dashboard_path(current_user), class:"btn btn-danger btn-lg" do %>
+					  <i class="fa fa-shopping-cart fa-5x"></i> <br/> Markets
+			    <% end %>
+			    <%= link_to user_dashboard_path(current_user), class:"btn btn-warning btn-lg" do %>
+					  <i class="fa fa-heart-o fa-5x"></i> <br/> Whislist
+			    <% end %>
+			    <%= link_to user_dashboard_path(current_user), class:"btn btn-success btn-lg" do %>
+					  <i class="fa fa-ticket fa-5x"></i> <br/> Coupons
+			    <% end %>
+			    <%= link_to user_dashboard_path(current_user), class:"btn btn-info btn-lg" do %>
+					  <i class="fa fa-tags fa-5x"></i> <br/> Tags
+			    <% end %>
+            </div>
+            <div class="col-xs-6 col-md-6">
+                <%= link_to user_dashboard_path(current_user), class:"btn btn-primary btn-lg" do %>
+					  <i class="fa fa-user fa-5x"></i> <br/> Profile
+			    <% end %>
+			    <%= link_to user_dashboard_path(current_user), class:"btn btn-primary btn-lg" do %>
+					  <i class="fa fa-tasks fa-5x"></i> <br/> Statistics
+			    <% end %>
+			    <%= link_to user_dashboard_path(current_user), class:"btn btn-primary btn-lg" do %>
+					  <i class="fa fa-envelope-o fa-5x"></i> <br/> Messages
+			    <% end %>
+			    <%= link_to user_dashboard_path(current_user), class:"btn btn-primary btn-lg" do %>
+					  <i class="fa fa-cogs fa-5x"></i> <br/> Setting
+			    <% end %>
+            </div>
+        </div>
+    </div>
+</div>
