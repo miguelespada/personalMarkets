@@ -1,6 +1,6 @@
 <div class="panel panel-default panel-table">
   <div class="panel-heading table-title">
-    Suggested Tags <%= link_to content_tag(:i, "", class: "fa fa-plus"), new_tag_path, class: "btn btn-info table-button table-button-new"%>
+    Suggested Tags <%= link_to content_tag(:i, "", class: "fa fa-plus"), new_tag_path, class: "new btn btn-info table-button table-button-new"%>
   </div>
   <table class="table table-striped">
     <tr>
@@ -16,8 +16,8 @@
         <td class="col-md-3"> <%= link_to(tag.name, tag_markets_path(tag.name)) %> </td> 
         <td class="col-md-3 market-counter"> <%= market_counter(tag.name) %> </td>
         <td class="col-md-3"> 
-          <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), tag_path(tag), :method => :delete, class: "btn btn-danger table-button table-button-delete" %> </span>
-          <span> <%= link_to content_tag(:i, "", class: "fa fa-pencil"), edit_tag_path(tag), class: "btn btn-info table-button table-button-edit" %></span>
+          <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), tag_path(tag), :method => :delete, class: "delete btn btn-danger table-button table-button-delete" %> </span>
+          <span> <%= link_to content_tag(:i, "", class: "fa fa-pencil"), edit_tag_path(tag), class: "edit btn btn-info table-button table-button-edit" %></span>
         </td>
       <% end %>
     <% end %>
