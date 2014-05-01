@@ -61,4 +61,10 @@ When(/^There is a market with a specific tag$/) do
   @market = create(:market, :tags => @tag.name)
 end
 
+When(/^There are some special_locations$/) do
+  @location = create(:special_location,
+              :name => "Dummy Location")
+end
+
+
 
