@@ -48,9 +48,14 @@ class SpecialLocationsController < ApplicationController
   end
 
   def destroy
-    @special_location.destroy
     respond_to do |format|
-      format.html { redirect_to special_locations_url }
+      if @special_location.destroy
+        format.html { redirect_to special_locations_path, 
+                      notice: "Special location successfully deleted." }
+      else
+        format.html { redirect_to special_locations_path, 
+                      flash: { error: "Cannot delete special location." }}
+      end
     end
   end
 

@@ -61,4 +61,20 @@ When(/^There is a market with a specific tag$/) do
   @market = create(:market, :tags => @tag.name)
 end
 
+When(/^There are some special_locations$/) do
+  @location = create(:special_location,
+              :name => "Dummy Location")
+end
+
+When(/^There is a market near a special_location$/) do
+  step "There are some special_locations"
+  @market = create(:market, 
+      :latitude => @location.latitude + 0.2, 
+      :longitude=> @location.longitude - 0.2
+  )
+  Market.reindex
+end
+
+
+
 

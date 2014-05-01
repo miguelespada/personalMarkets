@@ -110,3 +110,4 @@ gem "pcs_vegas", "~> 0.0.1.alpha"
 # dateformat
 gem 'momentjs-rails'
 
+gem 'selenium-webdriver'
