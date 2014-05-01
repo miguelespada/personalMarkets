@@ -1,5 +1,39 @@
-<h4>User Tags</h4>
-<%= tag_list(@tags) %>
-
 <h4>Suggested Tags</h4>
-<%= tag_list(@starred) %>
+<%= link_to "New", new_tag_path %>
+
+<table class="table">
+  <tr>
+  <th>Photo</th>
+  <th>Name</th>
+  <th>Market Count</th>
+  <th>Actions</th>
+  </tr>
+
+  <% @suggested.each do |tag| %>
+    <%= content_tag_for(:tr, tag) do %> 
+      <td> <%= cl_image_tag(tag.photo.path, :size => '120x60', :crop => :fill) if !tag.photo.nil? %> 
+      <td> <%= tag_link(tag) %> </td> 
+      <td> 0 </td>
+      <td> 
+        <span> <%= link_to "Delete", tag_path(tag), :method => :delete %> </span>
+        <span> <%= link_to "Edit", edit_tag_path(tag)  %> </span>  
+      </td>
+    <% end %>
+  <% end %>
+</table>
+
+<h4>User Tags</h4>
+<table class="table">
+  <tr>
+  <th>Name</th>
+  <th>Market Count</th>
+  </tr>
+    <% @tags.each do |tag| %>   
+      <tr>
+        <td> <%= tag %> </td> 
+        <td> 0 </td>
+       </tr>
+    <% end %>
+</table>
+
+

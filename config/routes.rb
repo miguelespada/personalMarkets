@@ -1,8 +1,6 @@
 PopUpStores::Application.routes.draw do
 
 
-  get "tags/index"
-
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :markets, :only => [:index, :show , :delete_image] do
@@ -21,7 +19,6 @@ PopUpStores::Application.routes.draw do
   get "/published", to: "markets#list_published_markets", as: "published_markets"
   get "/last_markets", to: "markets#list_last_markets", as: "last_markets"
 
-  get "/tags/:tag/markets", to: "markets#list_tag_markets", as: "tag_markets"
 
   resources :coupons, :only => [:show, :index]
 
@@ -34,7 +31,11 @@ PopUpStores::Application.routes.draw do
   get "/category/:category_id/markets", to: "markets#list_category_markets", as: "category_markets"
 
   resources :users, :only => [:index, :show]
-  resources :tags, :only => [:index]
+  
+  
+  get "/tags/gallery", as: "tags_gallery"
+  get "/tags/:tag/markets", to: "markets#list_tag_markets", as: "tag_markets"
+  resources :tags
 
   resources :users do
     resources :markets, only: [:index, :new, :create, :edit, :update, :destroy]
