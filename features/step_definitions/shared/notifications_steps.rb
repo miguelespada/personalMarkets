@@ -66,3 +66,13 @@ end
 Then(/^I should be notified that the special_location has been added$/) do
   expect(page).to have_content "Special location was successfully created."
 end
+
+
+Then(/^I should be notified that the special_location has been deleted$/) do
+  expect(page).to have_content "Special location successfully deleted."
+end
+
+Then(/^I should be notified that I the special_location has been updated$/) do
+  expect(page).to have_content "Special location was successfully updated."
+end
+

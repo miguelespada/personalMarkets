@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-<div class = "special_location_title">Hot spots</div>
 
-<% if can? :create, SpecialLocation %>
-<%= link_to 'New', new_special_location_path, class:"new" %>
-<% end %>
-
-<%= render "special_locations/shared/special_locations" %>
-=======
 <div class="panel panel-default panel-table panel-table-last">
   <div class="panel-heading table-title">
     Hot Spots <%= link_to content_tag(:i, "", class: "fa fa-plus"), new_special_location_path, 
@@ -31,7 +23,6 @@
     <% end %>
   </table>
 </div>
->>>>>>> 58047a9a396cfdd51d29b7a7b169fc3c9a4e4daf
 
 <script>
   $(document).ready(function(){
