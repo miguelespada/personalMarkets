@@ -1,27 +1,4 @@
 <div class = "market_gallery">
-	<% markets.each do |market| %>
-    <% market = market.decorate %>
-    <%= link_to market do %>
-      
-    <%= content_tag_for(:tr, market) do %>
-      <div class = "market_item">
-        <div class = "market_featured_photo">
-          <%= market.featured_photo(300, 150) %>
-          <div class = "market_name_label">
-            <%= market.name %>
-          </div>
-          <div class = "market_description_label">
-            <%= market.description %>
-          </div>
-        </div>
-
-      </div>
-    <% end %>
-    <% end %>
-  <% end %>
-</div>
-
-<div class = "market_gallery">
   <% markets.each do |market| %>
     <% market = market.decorate %>
     <%= link_to market do %>
@@ -30,8 +7,7 @@
       <div class = "market_item">
       
         <div class = "market_featured_photo">
-        <div class="badger-left badger-info" data-badger="Like">
-         <div class="badger-right badger-danger" data-badger="New">
+          <div class="badger-right badger-warning" data-badger="New"></div>
           <%= market.featured_photo(300, 150) %>
           <div class = "market_name_label">
             <%= market.name %>
@@ -39,10 +15,8 @@
           <div class = "market_description_label">
             <%= market.description %>
           </div>
-        </div>
-        </div>
-        </div>  
-
+          <div class="market-like-button"><i class="fa fa-heart"></i></div>
+        </div> 
       </div>
     <% end %>
     <% end %>

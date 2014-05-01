@@ -33,6 +33,11 @@
     buttonHover(".table-button-new", "fa-plus", "New Hot Spot", 140);
     buttonHover(".table-button-delete", "fa-trash-o", "Delete", 85);
     buttonHover(".table-button-edit", "fa-pencil", "Edit", 70);
+    
+    $(".table-latlng").each(function(){
+      var $this = $(this);
+      $this.html($this.html().substring(0,8));
+    });
   });
   
   var buttonHover = function(button, icon, text, width){
