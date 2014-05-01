@@ -58,13 +58,14 @@ class Ability
       can [:edit, :update], Market
       can [:list], Coupon
       can :see_transactions, User
+      can :buy, Coupon
+      can :list_transactions, Coupon
+
       can [:manage], Wish
       can [:manage], SpecialLocation
       can [:manage], Category
       can [:manage], Tag
 
-      can :buy, Coupon
-      can :list_transactions, Coupon
     end
   end
 

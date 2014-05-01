@@ -62,3 +62,7 @@ end
 Then(/^I should be notified that I the tag has been updated$/) do
   expect(page).to have_content 'Tag was successfully updated.'
 end
+
+Then(/^I should be notified that the special_location has been added$/) do
+  expect(page).to have_content "Special location was successfully created."
+end

@@ -37,3 +37,9 @@ end
 Given(/^I go to Coupons$/) do
   visit coupons_path 
 end
+
+
+When(/^I go to SpecialLocations list$/) do
+  visit special_locations_path 
+end
+
