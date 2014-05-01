@@ -15,7 +15,13 @@
   </div>
   </section>
 
-  <div class = "title">Last Markets</div>
+  <div class = "title">Categories</div>
+  <section id="categories">
+    <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
+  </section>
+
+
+  <div class = "title">Latest Markets</div>
 
   <section id="last_markets">
     <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
@@ -28,6 +34,8 @@
   <section id="wishes">
     <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
   </section>
+
+
 
 </div>
 
@@ -73,6 +81,10 @@
 
   $.get( "wishes", function( data ) {
     $( "#wishes" ).html( data );
+  });
+
+  $.get( "<%= category_gallery_path %>", function( data ) {
+    $( "#categories" ).html( data );
   });
 
 	var searchTimeArray = ["Today", "This week", "This month", "Next week"];

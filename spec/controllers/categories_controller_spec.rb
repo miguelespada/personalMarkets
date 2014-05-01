@@ -8,9 +8,21 @@ describe CategoriesController do
   let(:user) { create(:user) } 
 
   describe "GET 'index'" do
+
     it "returns http success" do
+      category = Category.create! valid_attributes
       get 'index'
       response.should be_success
+      assigns(:categories).should eq([category])
+    end
+  end
+
+  describe "GET 'gallery'" do
+    it "returns http success" do
+      category = Category.create! valid_attributes
+      get 'gallery'
+      response.should be_success
+      assigns(:categories).should eq([category])
     end
   end
 

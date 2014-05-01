@@ -1,21 +1,20 @@
 <table class="table">
   <tr>
+  <th>Photo</th>
   <th>Name</th>
   <th>Market Count</th>
   <th>Actions</th>
   </tr>
 
   <% @categories.each do |category| %>
-    <%= content_tag_for(:tr, category) do %>  
+    <%= content_tag_for(:tr, category) do %> 
+      <td> <%= cl_image_tag(category.photo.path, :size => '120x60', :crop => :fill) if !category.photo.nil? %> 
       <td> <%= category.name %> </td> 
-      <td class = "market-counter"> <%= category.markets.count %> </td>
+      <td> <%= category.markets.count %> </td>
       <td> 
-        <span> <%= link_to "Delete", category_path(category), :method => :delete %> 
-              </span> 
-        <span> 
-        <%= link_to "Show", 
-          category_markets_path(category) %> 
-        </span> 
+        <span> <%= link_to "Delete", category_path(category), :method => :delete %> </span>
+        <span> <%= link_to "Edit", edit_category_path(category)  %> </span>  
+        <span> <%= link_to "Show", category_markets_path(category) %> </span> 
       </td>
     <% end %>
   <% end %>

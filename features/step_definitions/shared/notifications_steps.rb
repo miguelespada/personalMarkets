@@ -42,3 +42,11 @@ Then(/^I should be notified that the coupons has been bought$/) do
   expect(page).to have_content "You has successfully bought the coupon."
 end
 
+
+Then(/^I should be notified that I cannot delete the category$/) do
+  expect(page).to have_content "Cannot delete category."
+end
+
+Then(/^I should be notified that I the category has been updated$/) do
+  expect(page).to have_content 'Category was successfully updated.'
+end

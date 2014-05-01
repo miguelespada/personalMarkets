@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   load_resource :only => [:show, :edit, :destroy, :update]
-  authorize_resource :except => [:index, :show]
+  authorize_resource :except => [:index, :show, :gallery]
 
   def index
     @categories = Category.all
@@ -8,6 +8,11 @@ class CategoriesController < ApplicationController
         format.html
         format.json {render json: @categories}
     end
+  end
+
+  def gallery
+    @categories = Category.all
+    render layout: false
   end
 
   def show
@@ -58,6 +63,6 @@ class CategoriesController < ApplicationController
 
   private
     def category_params
-      params.require(:category).permit(:name)
+      params.require(:category).permit(:name, :photo)
     end
 end

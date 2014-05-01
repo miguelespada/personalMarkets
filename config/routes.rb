@@ -21,7 +21,6 @@ PopUpStores::Application.routes.draw do
   get "/published", to: "markets#list_published_markets", as: "published_markets"
   get "/last_markets", to: "markets#list_last_markets", as: "last_markets"
 
-  get "/category/:category_id/markets", to: "markets#list_category_markets", as: "category_markets"
   get "/tags/:tag/markets", to: "markets#list_tag_markets", as: "tag_markets"
 
   resources :coupons, :only => [:show, :index]
@@ -30,7 +29,10 @@ PopUpStores::Application.routes.draw do
   post "/coupons/:id", to: "coupons#buy", as: "buy_coupon"
   get "/coupons/:user_id/list_transactions", to: "coupons#list_transactions", as: "list_transactions"
 
+  get "/categories/gallery", as: "category_gallery"
   resources :categories
+  get "/category/:category_id/markets", to: "markets#list_category_markets", as: "category_markets"
+
   resources :users, :only => [:index, :show]
   resources :tags, :only => [:index]
 

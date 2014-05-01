@@ -3,6 +3,10 @@ Given(/^There are some categories$/) do
               :name => "Dummy Category")
 end
 
+When(/^There is a category with markets$/) do
+  step "There are some published markets"
+end
+
 Given(/^There are some published markets$/) do
   step "There are some categories"
   @market_0 = create(:market, 

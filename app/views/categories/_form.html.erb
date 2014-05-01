@@ -1,4 +1,12 @@
 <%= simple_form_for @category do |f| %>
   <%= f.input :name, input_html: { class: 'category-name' }%>
+  <%= f.input :photo, as: :attachinary %>
   <%= f.button :submit %>
 <% end %>
+
+
+<script>
+$( document ).ready(function() {
+  $('.attachinary-input').attachinary();
+});
+</script>
