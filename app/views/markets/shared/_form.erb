@@ -1,6 +1,7 @@
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
 <div class="row">
 <%= simple_form_for [user, market], 
-    :html => {"data-tags" => "#{raw_tags(market)}", role: "form"}  do |f| %>
+    :html => {"data-tags" => "#{raw_tags(market)}", role: "form", novalidate: true}  do |f| %>
     <div id="wizard">
     
         <h3>Name and description</h3>
@@ -53,13 +54,16 @@
     </div>
 <% end %>
 <div>
+<div><input id="autocomplete" placeholder="Enter a city" type="text" /></div>
 <%= render "markets/shared/mapsmall" %>
+
 </div>
 </div>
 
 <script>
 
 $( document ).ready(function() {
+      initialize();
   
       $(".add_market_button").addClass("btn-success");
       $(".add_market_button").removeClass("btn-info");
@@ -164,6 +168,14 @@ $( document ).ready(function() {
     updateLocationData();
   });
 });
+
+var initialize = function() {
+  autocomplete = new google.maps.places.Autocomplete(
+    (document.getElementById('autocomplete')),
+    {
+      types: ['(cities)']
+    });
+};
 
 var areDatesSelected = function(datesString){
   return datesString != "";
