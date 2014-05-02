@@ -35,6 +35,10 @@
     <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
   </section>
 
+  <div class = "home_gallery_title">Bargains</div>
+  <section id="bargains" class="gallery-section">
+    <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
+  </section>
 
   <div class = "home_gallery_title">Latest Markets</div>
   <section id="latest_markets" class="gallery-section">
@@ -92,6 +96,10 @@
 
   $.get( "<%= wishes_gallery_path %>", function( data ) {
     $( "#wishes" ).html( data );
+  });
+
+  $.get( "<%= bargains_gallery_path %>", function( data ) {
+    $( "#bargains" ).html( data );
   });
 
   $.get( "<%= category_gallery_path %>", function( data ) {
