@@ -31,13 +31,6 @@ Given(/^there are some users$/) do
   @users = [@user_0, @user_1]
 end
 
-Given(/^There is a comment in a market$/) do
-  @other_user = create(:user)
-  @market = create(:market, :user => @other_user)
-  @other_user.markets << @market
-  @comment = create(:comment, :market => @market)
-  @market.comments << @comment
-end
 
 Given(/^There is a market with available coupons$/) do
   @market_owner = create(:user)
