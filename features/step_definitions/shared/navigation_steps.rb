@@ -45,7 +45,16 @@ end
 When(/^I go to my wishlist$/) do
   visit user_wishes_path(@user)
 end
+
 Then(/^I go to wishlist$/) do
   visit wishes_path
+end
+
+When(/^I go to my bargain list$/) do
+  visit user_bargains_path(@user)
+end
+
+Then(/^I go to bargain list$/) do
+  visit bargains_path
 end
 

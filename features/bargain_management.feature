@@ -9,4 +9,17 @@ Feature: Manage bargains
   Scenario: Add bargain
     When I add a bargain
     Then I should be notified that the bargain has been added
-    And I should see the bargain in the bargain list
+    And I should see the bargain in my bargain list
+    And I should see the bargain in the general bargain
+
+  Scenario: Delete bargain
+    When There are some bargains
+    And I delete a bargain
+    Then I should be notified that the bargain has been deleted
+    And I should not see the bargain in my bargain list
+
+  Scenario: Update bargain
+    When There are some bargains
+    And I edit a bargain
+    Then I should be notified that the bargain has been updated
+    And I should see the bargain with the new description in the bargain list

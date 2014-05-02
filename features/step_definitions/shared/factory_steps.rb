@@ -71,6 +71,10 @@ When(/^There are some wishes$/) do
               :description => "Dummy Wish", :user => @user)
 end
 
+When(/^There are some bargains$/) do
+  @bargain = create(:bargain,
+              :description => "Dummy Bargain", :user => @user)
+end
 
 
 

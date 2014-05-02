@@ -88,5 +88,15 @@ Then(/^I should be notified that the wish has been updated$/) do
   expect(page).to have_content "Wish was successfully updated."
 end
 
+Then(/^I should be notified that the bargain has been added$/) do
+  expect(page).to have_content "Bargain was successfully created."
+end
 
+Then(/^I should be notified that the bargain has been deleted$/) do
+  expect(page).to have_content "Bargain successfully deleted."
+end
+
+Then(/^I should be notified that the bargain has been updated$/) do
+  expect(page).to have_content "Bargain was successfully updated."
+end
 
