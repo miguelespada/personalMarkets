@@ -76,3 +76,8 @@ Then(/^I should be notified that I the special_location has been updated$/) do
   expect(page).to have_content "Special location was successfully updated."
 end
 
+Then(/^I should be notified that the wish has been added$/) do
+  expect(page).to have_content "Wish was successfully created."
+end
+
+

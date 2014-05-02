@@ -4,6 +4,9 @@
   <div class="form-inputs">
     <%= f.input :description %>
     <%= f.input :photo, as: :attachinary %>
+
+    <%= f.input :tags, input_html: { class: 'tm-input', placeholder: "Tags" } %>
+    <p id="tags-container"></p>
   </div>
 
   <div class="form-actions">
@@ -13,7 +16,13 @@
 
 
 <script>
-$( document ).ready(function() {
-  $('.attachinary-input').attachinary();
-});
+  $( document ).ready(function() {
+    $('.attachinary-input').attachinary();
+    var tagApi = jQuery(".tm-input").tagsManager({
+      prefilled: $( "#wish_tags" ).val(),
+      delimiters: [13, 44],
+      tagClass: "tm-tag",
+      tagsContainer: '#tags-container'
+    });
+  });
 </script>

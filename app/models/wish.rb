@@ -1,5 +1,6 @@
 class Wish
   include Mongoid::Document
+  include Mongoid::Taggable
   field :description, type: String
   has_attachment :photo, accept: [:jpg, :png, :gif]
 

@@ -38,8 +38,14 @@ Given(/^I go to Coupons$/) do
   visit coupons_path 
 end
 
-
 When(/^I go to SpecialLocations list$/) do
   visit special_locations_path 
+end
+
+When(/^I go to my wishlist$/) do
+  visit user_wishes_path(@user)
+end
+Then(/^I go to wishlist$/) do
+  visit wishes_path
 end
 

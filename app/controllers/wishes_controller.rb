@@ -1,6 +1,7 @@
 class WishesController < ApplicationController
   load_resource :only => [:show, :edit, :destroy, :update]
   authorize_resource :except => [:show, :index, :list_user_wishes]
+  before_filter :load_hidden_tags, only: [:create, :edit, :update]
 
   def index
     @wishes = Wish.all
@@ -20,9 +21,6 @@ class WishesController < ApplicationController
     render "index"
   end
 
-  def show
-  end
-
   def new
     @wish = Wish.new
   end
@@ -36,7 +34,7 @@ class WishesController < ApplicationController
     current_user.wishes << @wish
     respond_to do |format|
       if @wish.save
-        format.html { redirect_to @wish, notice: 'Wish was successfully created.' }
+        format.html { redirect_to user_wishes_path(current_user), notice: 'Wish was successfully created.' }
       else
         format.html { render action: 'new' }
       end
@@ -46,7 +44,7 @@ class WishesController < ApplicationController
   def update
     respond_to do |format|
       if @wish.update(wish_params)
-        format.html { redirect_to @wish, notice: 'Wish was successfully updated.' }
+        format.html { redirect_to user_wishes_path(current_user), notice: 'Wish was successfully updated.' }
       else
         format.html { render action: 'edit' }
       end
@@ -62,11 +60,17 @@ class WishesController < ApplicationController
 
   private
     def wish_params
-      params.require(:wish).permit(:description, :photo)
+      params.require(:wish).permit(:description, :photo, :tags, "hidden-wish")
     end
 
     def load_user
       User.find(params[:user_id])
+    end
+    
+    def load_hidden_tags
+      if params["hidden-wish"].present?
+        params[:wish][:tags] = params["hidden-wish"][:tags]
+      end
     end
 
 end
