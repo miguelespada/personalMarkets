@@ -17,6 +17,7 @@
   <th>Coupon</th>
   <th>Coupon available</th>
   <th>Coupon price</th>
+  <th>Like counter</th>
   </tr>
   <% markets.each do |market| %>
     <% market = market.decorate %>
@@ -38,6 +39,7 @@
       <td> <%= market.coupon.description if market.coupon? %> </td>
       <td> <%= market.coupon.available if market.coupon? %> </td>
       <td> <%= market.coupon.price if market.coupon? %> </td>
+      <td class="like-counter"> <%= market.favorited.count %> </td>
     <% end %>
   <% end %>
 </table>

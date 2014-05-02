@@ -120,12 +120,10 @@ class MarketDecorator < Draper::Decorator
 
   def like_link
     if can? :like, market
-      link = link_to("Like", like_path(current_user, market), 
-        class: "like market-action")
+      link = link_to("Like", like_path(current_user, market), class: "like market-action")
     end
     if can? :unlike, market
-      link = link_to("Unlike", unlike_path(current_user, market), 
-        class: "like market-action")
+      link = link_to("Unlike", unlike_path(current_user, market), class: "unlike market-action")
     end
     link
   end

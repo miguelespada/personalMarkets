@@ -5,16 +5,11 @@ Feature: Unlike a market
   So that I can unfollow them
 
   Background:
-    Given I liked a market
+    When I am logged in
+    Given There are some published markets
+    And I like the market
 
-  Scenario: Unlike market button
-    When I am in the market page
-    Then there is an unlike button
-
-  Scenario: Like count decrement
-    When I click the unlike button
-    Then the number of likes decrement
-
-  Scenario: Able to like the market again
-    When I click the unlike button
-    Then there is a like button
+  Scenario: Unlike market
+    When I unlike the market
+    Then The number of likes decrement
+    Then I cannot unlike that market again

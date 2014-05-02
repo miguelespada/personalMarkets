@@ -37,7 +37,7 @@ describe UsersController do
     describe "User likes a market" do
       it "render index" do
         get :like, { user_id: user.to_param, market_id: market.to_param}, valid_session
-        expect(response.response_code).to eq 302
+        expect(response.response_code).to eq 302  
       end
 
       it "adds the market to user 'likes'" do
