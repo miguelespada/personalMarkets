@@ -1,7 +1,7 @@
 <div class="col-xs-6 col-md-3">
   <div class="thumbnail">
    
-    <%= cl_image_tag(@wish.wish_photo.path, { size: "200x200", crop: :fill }) if !@wish.wish_photo.nil? %>
+    <%= cl_image_tag(@wish.photo.path, { size: "200x200", crop: :fill }) if !@wish.photo.nil? %>
 
     <div class="caption">
       <%= @wish.description if !@wish.description.nil? %>

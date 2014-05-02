@@ -1,5 +1,4 @@
 @categories
-
 Feature: Manage categories
   I order to classify markets
   I want manage categories

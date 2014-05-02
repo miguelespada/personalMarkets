@@ -1,5 +1,4 @@
-
-  @special_locations
+@special_locations
 Feature: Manage special locations
   I order to have hotspots
   I want manage special locations

@@ -11,6 +11,7 @@ class User
   has_and_belongs_to_many :favorites, class_name: "Market", inverse_of: :favorited
   has_many :coupon_transactions, class_name: "CouponTransaction", dependent: :delete, inverse_of: :user
   has_many :wishes, class_name: "Wish", dependent: :delete, inverse_of: :user
+  has_many :bargains, class_name: "Bargain", dependent: :delete, inverse_of: :user
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

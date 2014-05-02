@@ -1,4 +1,4 @@
-class Wish
+class Bargain
   include Mongoid::Document
   field :description, type: String
   has_attachment :photo, accept: [:jpg, :png, :gif]

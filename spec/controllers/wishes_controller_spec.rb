@@ -97,6 +97,7 @@ describe WishesController do
         it "increments user wishes count" do
           user.wishes.count.should eq 0
           post :create, wish_params, valid_session
+          user.reload
           user.wishes.count.should eq 1 
         end
 
@@ -183,6 +184,38 @@ describe WishesController do
       @ability.cannot :manage, Wish
       controller.stub(:current_user).and_return(user)
     end
+    it "cannot edit" do
+      wish = Wish.create! valid_attributes
+      get :edit, {:id => wish.to_param}, valid_session
+      expect(response.response_code).to eq 403
+    end
+
+    it "cannot create" do
+      post :create, wish_params, valid_session
+      expect(response.response_code).to eq 403
+    end
+
+    it "cannot update" do
+      wish = Wish.create! valid_attributes
+      put :update, {:id => wish.to_param, :wish => valid_attributes}, valid_session
+      expect(response.response_code).to eq 403
+    end
+
+    it "cannot delete" do
+      wish = Wish.create! valid_attributes
+      delete :destroy, {:id => wish.to_param}, valid_session
+      expect(response.response_code).to eq 403
+    end
+  end 
+
+  context "guest user" do 
+    before(:each) do
+      @ability = Object.new
+      @ability.extend(CanCan::Ability)
+      controller.stub(:current_ability) { @ability }
+      @ability.cannot :manage, Wish
+    end
+    
     it "cannot edit" do
       wish = Wish.create! valid_attributes
       get :edit, {:id => wish.to_param}, valid_session

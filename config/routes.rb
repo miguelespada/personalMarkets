@@ -26,16 +26,8 @@ PopUpStores::Application.routes.draw do
   post "/coupons/:id", to: "coupons#buy", as: "buy_coupon"
   get "/coupons/:user_id/list_transactions", to: "coupons#list_transactions", as: "list_transactions"
 
-  get "/categories/gallery", as: "category_gallery"
-  resources :categories
-  get "/category/:category_id/markets", to: "markets#list_category_markets", as: "category_markets"
-
+ 
   resources :users, :only => [:index, :show]
-  
-  
-  get "/tags/gallery", as: "tags_gallery"
-  get "/tags/:tag/markets", to: "markets#list_tag_markets", as: "tag_markets"
-  resources :tags
 
   resources :users do
     resources :markets, only: [:index, :new, :create, :edit, :update, :destroy]
@@ -55,10 +47,37 @@ PopUpStores::Application.routes.draw do
   
   get "/users/:user_id/subscription", to: "users#subscription", as: "user_subscription"
 
-  get "/wishes/gallery", as: "wishes_gallery"
-  resources :wishes, except: [:index]
+  ### Wishes
   get "/wishes/index", path: "wishes"
+  get "/wishes/gallery", as: "wishes_gallery"
   get "/users/:user_id/wishes", to: "wishes#list_user_wishes", as: "user_wishes"
+  resources :wishes, except: [:index]
+  ####
+
+  ### Bargains
+  get "/bargains/index", path: "bargains"
+  get "/bargains/gallery", as: "bargains_gallery"
+  get "/users/:user_id/bargains", to: "bargains#list_user_bargains", as: "user_bargains"
+  resources :bargains, except: [:index]
+  ####
+
+  ### SpecialLocations
+  get "/special_locations/gallery", as: "special_locations_gallery"
+  resources :special_locations
+  ####
+
+  ### Tags
+  get "/tags/gallery", as: "tags_gallery"
+  get "/tags/:tag/markets", to: "markets#list_tag_markets", as: "tag_markets"
+  resources :tags
+  ####
+ 
+  ### Categories
+  get "/categories/gallery", as: "category_gallery"
+  get "/category/:category_id/markets", to: "markets#list_category_markets", as: "category_markets"
+  resources :categories
+  ####
+
   get "/likes/:user_id", to: "markets#list_liked_markets", as: "user_likes"
 
   post "/markets/:market_id/comments/:id/report", to: "comments#report", as: 'report_comment'
@@ -73,8 +92,6 @@ PopUpStores::Application.routes.draw do
   get "/users/:user_id/like/:market_id",  to: 'users#like', as: 'like'
   get "/users/:user_id/unlike/:market_id",  to: 'users#unlike', as: 'unlike'
 
-  get "/special_locations/gallery", as: "special_locations_gallery"
-  resources :special_locations
 
   root "static_pages#home"
 
