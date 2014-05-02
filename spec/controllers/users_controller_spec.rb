@@ -33,6 +33,17 @@ describe UsersController do
         expect(assigns(:users)).to be(presenter)
       end
     end
+  end
+
+  context "authorized user" do 
+    before(:each) do
+      @ability = Object.new
+      @ability.extend(CanCan::Ability)
+      controller.stub(:current_ability) { @ability }
+      @ability.can :like, Market
+      @ability.can :unlike, Market
+      controller.stub(:current_user).and_return(user)
+    end
 
     describe "User likes a market" do
       it "render index" do
