@@ -201,13 +201,6 @@ describe BargainsController do
   end 
 
   context "guest user" do 
-    before(:each) do
-      @ability = Object.new
-      @ability.extend(CanCan::Ability)
-      controller.stub(:current_ability) { @ability }
-      @ability.cannot :manage, Bargain
-    end
-    
     it "cannot edit" do
       bargain = Bargain.create! valid_attributes
       get :edit, {:id => bargain.to_param}, valid_session

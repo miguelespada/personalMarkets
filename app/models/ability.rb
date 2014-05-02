@@ -22,12 +22,7 @@ class Ability
         can :archive, Market, :user_id => @user.id
         can :see_location, Market
         can :report, Comment
-        can :like, Market, Market do |market|
-            @user.can_like market
-        end
-        can :unlike, Market, Market do |market|
-            @user.can_unlike market
-        end
+
         can :publish, Market, Market do |market|
             @user.owns(market) && market.can_be_published
         end
@@ -37,7 +32,6 @@ class Ability
         can :manage, Wish, Wish do |wish|
             @user.owns(wish)
         end
-
         can :manage, Bargain, Bargain do |bargain|
             @user.owns(bargain)
         end
@@ -46,6 +40,9 @@ class Ability
         can :list_transactions, Coupon
 
         can :show, User, :user_id => @user.id
+        
+        can :like, Market
+        can :unlike, Market
     end
   end
 
@@ -69,6 +66,7 @@ class Ability
       can [:manage], SpecialLocation
       can [:manage], Category
       can [:manage], Tag
+      can [:manage], User
 
     end
   end

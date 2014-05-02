@@ -201,13 +201,6 @@ describe WishesController do
   end 
 
   context "guest user" do 
-    before(:each) do
-      @ability = Object.new
-      @ability.extend(CanCan::Ability)
-      controller.stub(:current_ability) { @ability }
-      @ability.cannot :manage, Wish
-    end
-    
     it "cannot edit" do
       wish = Wish.create! valid_attributes
       get :edit, {:id => wish.to_param}, valid_session

@@ -16,7 +16,7 @@ end
 
 Then(/^I should see the bargain in the general bargain$/) do
   step "I go to bargain list"
-  step "I see the wish"
+  step "I see the bargain"
 end
 
 When(/^I delete a bargain$/) do

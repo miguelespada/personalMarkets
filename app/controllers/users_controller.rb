@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   authorize_resource :only => [:index, :show, :destroy, :likes, :like, :unlike]  
   load_resource :only => [:profile]
 
-
   def index
     @users = UsersPresenter.for User.all
   end
@@ -17,14 +16,14 @@ class UsersController < ApplicationController
     market = Market.find(params[:market_id])
     current_user.like(market)
     market.like(current_user)
-    render market
+    redirect_to user_likes_path(current_user)
   end
 
   def unlike
     market = Market.find(params[:market_id])
     current_user.unlike(market)
     market.unlike(current_user)
-    render market
+    redirect_to user_likes_path(current_user)
   end
 
   def destroy
