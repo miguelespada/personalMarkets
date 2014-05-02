@@ -18,7 +18,7 @@ describe CouponDomain do
 
     it "creates a paymill transaction" do
       coupon.should_receive(:buy!)
-      CouponDomain.buy coupon, uwser, amount, token
+      CouponDomain.buy coupon, user, amount, token
     end
 
     it "calls buy on coupon with the paymill transaction" do

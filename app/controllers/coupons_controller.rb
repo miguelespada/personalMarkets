@@ -20,6 +20,7 @@ class CouponsController < ApplicationController
     CouponDomain.buy @coupon, current_user, quantity, buy_params
     redirect_to market_path(@coupon.market), notice: 'You has successfully bought the coupon.'
     rescue CouponDomainException => e
+      p e.message
       render :status => :unauthorized, :text => "Incorrect number of coupons #{e.message}." 
   end
   

@@ -9,6 +9,8 @@ describe CouponsController do
   let(:admin) { create(:user, :admin) } 
   let(:paymill_wrapper) { double }
   let(:token) { "card_token" }
+  let(:name) { "Alejandro Bayo" }
+  let(:buy_params) { { name: name, token: token } } 
 
   context "authorized user" do 
     before(:each) do
@@ -33,18 +35,22 @@ describe CouponsController do
         
         it "creates a transaction" do
           CouponTransaction.count.should eq 0
-          post "buy", {id: coupon.to_param, paymill_card_token: token, number: 1}, valid_session
+          post "buy", {id: coupon.to_param, buy_params: buy_params, quantity: 1}, valid_session
           CouponTransaction.count.should eq 1
         end
 
         it "decreases the number of available coupons" do
-          post "buy", {id: coupon.to_param, paymill_card_token: token, number: 2}, valid_session
+          post "buy", {id: coupon.to_param, buy_params: buy_params, quantity: 2}, valid_session
           assigns(:coupon).available.should eq 3
           CouponTransaction.count.should eq 1
         end
 
         it "creates a correct transaction" do
-          post "buy", {id: coupon.to_param, paymill_card_token: token, number: 2}, valid_session
+          post "buy", {
+            id: coupon.to_param, 
+            buy_params: buy_params, 
+            quantity: 2
+            }, valid_session
           CouponTransaction.first().number.should eq 2
           CouponTransaction.first().user.should eq user
           CouponTransaction.first().coupon.should eq coupon

@@ -1,7 +1,6 @@
 class PaymillWrapper
 
   def self.create_transaction email, paymill_price, buy_params
-    p buy_params
     client = PaymillClientFactory.find_or_create_client email, buy_params[:name]
     payment = Paymill::Payment.create token: buy_params[:token], client: client.client_id
     transaction = Paymill::Transaction.create amount: paymill_price, currency: "EUR", client: client.client_id, payment: payment.id, description: "transaction for #{email}"
