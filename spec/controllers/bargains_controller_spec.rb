@@ -39,14 +39,6 @@ describe BargainsController do
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested bargain as @bargain" do
-      bargain = Bargain.create! valid_attributes
-      get :show, {:id => bargain.to_param}, valid_session
-      assigns(:bargain).should eq(bargain)
-    end
-  end
-
   describe "GET list_user_bargains" do
     it "assigns the requested bargain as @bargain" do
       bargain = Bargain.create!(description: "dummy bargain", user: user)
@@ -103,7 +95,7 @@ describe BargainsController do
 
         it "success" do
           post :create, bargain_params, valid_session
-          expect(response).to redirect_to Bargain.last
+          response.should redirect_to user_bargains_path(user)
         end
       end
 
@@ -139,7 +131,7 @@ describe BargainsController do
         it "redirects to the bargain" do
           bargain = Bargain.create! valid_attributes
           put :update, {:id => bargain.to_param, :bargain => valid_attributes}, valid_session
-          response.should redirect_to bargain
+          response.should redirect_to user_bargains_path(user)
         end
       end
 

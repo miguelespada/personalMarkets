@@ -34,9 +34,12 @@ class Ability
 
         can :destroy, Comment, :author => @user.email
         
-
         can :manage, Wish, Wish do |wish|
             @user.owns(wish)
+        end
+
+        can :manage, Bargain, Bargain do |bargain|
+            @user.owns(bargain)
         end
 
         can :buy, Coupon
@@ -62,6 +65,7 @@ class Ability
       can :list_transactions, Coupon
 
       can [:manage], Wish
+      can [:manage], Bargain
       can [:manage], SpecialLocation
       can [:manage], Category
       can [:manage], Tag

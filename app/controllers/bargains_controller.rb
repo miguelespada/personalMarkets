@@ -20,9 +20,6 @@ class BargainsController < ApplicationController
     render "index"
   end
 
-  def show
-  end
-
   def new
     @bargain = Bargain.new
   end
@@ -36,7 +33,7 @@ class BargainsController < ApplicationController
     current_user.bargains << @bargain
     respond_to do |format|
       if @bargain.save
-        format.html { redirect_to @bargain, notice: 'Bargain was successfully created.' }
+        format.html { redirect_to user_bargains_path(current_user), notice: 'Bargain was successfully created.' }
       else
         format.html { render action: 'new' }
       end
@@ -46,7 +43,7 @@ class BargainsController < ApplicationController
   def update
     respond_to do |format|
       if @bargain.update(bargain_params)
-        format.html { redirect_to @bargain, notice: 'Bargain was successfully updated.' }
+        format.html { redirect_to user_bargains_path(current_user), notice: 'Bargain was successfully updated.' }
       else
         format.html { render action: 'edit' }
       end
@@ -54,9 +51,14 @@ class BargainsController < ApplicationController
   end
 
   def destroy
-    @bargain.destroy
     respond_to do |format|
-      format.html { redirect_to user_bargains_url(current_user) }
+      if @bargain.destroy
+        format.html { redirect_to user_bargains_path(current_user),
+                      notice: "Bargain successfully deleted." }
+      else
+        format.html { redirect_to user_bargains_path(current_user),
+                      flash: { error: "Cannot delete bargain." }}
+      end
     end
   end
 
