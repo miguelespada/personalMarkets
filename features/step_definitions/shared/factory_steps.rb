@@ -66,5 +66,12 @@ When(/^There are some special_locations$/) do
               :name => "Dummy Location")
 end
 
+When(/^There are some wishes$/) do
+  @wish = create(:wish,
+              :description => "Dummy Wish", :user => @user)
+end
+
+
+
 
 

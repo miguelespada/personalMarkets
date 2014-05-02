@@ -52,9 +52,14 @@ class WishesController < ApplicationController
   end
 
   def destroy
-    @wish.destroy
     respond_to do |format|
-      format.html { redirect_to user_wishes_url(current_user) }
+      if @wish.destroy
+        format.html { redirect_to user_wishes_url(current_user),
+                      notice: "Wish successfully deleted." }
+      else
+        format.html { redirect_to user_wishes_url(current_user),
+                      flash: { error: "Cannot delete wish." }}
+      end
     end
   end
 
