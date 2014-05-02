@@ -7,7 +7,7 @@ describe CouponDomain do
     let(:email) { "dummy@gmail.com" }  
     let(:user) { double(email: email) } 
     let(:amount) { 2 } 
-    let(:coupon) { double(check_buy: true) } 
+    let(:coupon) { double(check_buy: true, price: 20) } 
     let(:paymill_transaction) { double(id: "a_transaction_id") }
     let(:token) { "paymill_card_token" }
 
@@ -18,7 +18,7 @@ describe CouponDomain do
 
     it "creates a paymill transaction" do
       coupon.should_receive(:buy!)
-      CouponDomain.buy coupon, user, amount, token
+      CouponDomain.buy coupon, uwser, amount, token
     end
 
     it "calls buy on coupon with the paymill transaction" do
