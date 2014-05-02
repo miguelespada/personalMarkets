@@ -110,24 +110,8 @@ class User
     favorites.delete(market)
   end
 
-  def can_like market
-    does_not_own(market) && does_not_have_as_favorite(market)
-  end
-
-  def can_unlike market
-    has_as_favorite market
-  end
-
   def does_not_own(market)
     self != market.user
-  end
-
-  def does_not_have_as_favorite(market)
-    !has_as_favorite(market)
-  end
-
-  def has_as_favorite market
-    favorites.include?(market)
   end
 
   def self.from_omniauth(auth, current_user)

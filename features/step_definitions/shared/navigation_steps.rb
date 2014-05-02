@@ -57,4 +57,7 @@ end
 Then(/^I go to bargain list$/) do
   visit bargains_path
 end
+When(/^I visit the markets page$/) do
+  visit markets_path # express the regexp above with the code you wish you had
+end
 

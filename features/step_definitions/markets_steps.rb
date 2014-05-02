@@ -138,70 +138,53 @@ Then(/^I see a show button$/) do
   end
 end
 
-When(/^I am in the market page$/) do
-  visit market_path @some_market
-end
-
-Then(/^there is a like button$/) do
-  within(:css, '.market-actions') do
-    expect(page).to have_link 'Like'
-  end
-end
-
-Then(/^there is no like button$/) do
-  within(:css, '.market-actions') do
-    expect(page).to_not have_link 'Like'
-  end
-end
-
-When(/^click the like button$/) do
-  within(:css, '.market-actions') do
+When(/^I like the market$/) do
+  visit published_markets_path
+  within(:css, "#market_#{@market_0.id}") do
     click_on "Like"
   end
 end
 
-Then(/^the number of likes increment$/) do
-  visit market_path @some_market
-  within(:css, '.market-likes-number') do
+Then(/^The number of likes increment$/) do
+  visit published_markets_path
+  within(:css, "#market_#{@market_0.id} .like-counter") do
     expect(page).to have_content "1"
   end
 end
 
 Then(/^I cannot like that market again$/) do
-  visit market_path @some_market
-  step "there is no like button"
-end
-
-Given(/^I liked a market$/) do
-  step "There is someone else's market"
-  step "I am logged in"
-  step "I am in the market page"
-  step "click the like button"
-  step "I am in the market page"
-end
-
-Then(/^there is an unlike button$/) do
-  within(:css, '.market-actions') do
+  visit published_markets_path
+  within(:css, "#market_#{@market_0.id}") do
     expect(page).to have_link 'Unlike'
+    expect(page).not_to have_link 'Like'
   end
 end
 
-When(/^I click the unlike button$/) do
-  within(:css, '.market-actions') do
+Then(/^I cannot unlike that market again$/) do
+  visit published_markets_path
+  within(:css, "#market_#{@market_0.id}") do
+    expect(page).not_to have_link 'Unlike'
+    expect(page).to have_link 'Like'
+  end
+end
+
+When(/^I unlike the market$/) do
+  visit published_markets_path
+  within(:css, "#market_#{@market_0.id}") do
     click_on "Unlike"
   end
-  visit market_path @some_market
 end
 
-Then(/^the number of likes decrement$/) do
-  within(:css, '.market-likes-number') do
+Then(/^The number of likes decrement$/) do
+  visit published_markets_path
+  within(:css, "#market_#{@market_0.id} .like-counter") do
     expect(page).to have_content "0"
   end
 end
 
-Given(/^I am not logged in$/) do
+# Given(/^I am not logged in$/) do
 
-end
+# end
 
 When(/^I visit a market page$/) do
   visit market_path @some_market

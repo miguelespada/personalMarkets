@@ -78,7 +78,11 @@ PopUpStores::Application.routes.draw do
   resources :categories
   ####
 
+  ### Likes
   get "/likes/:user_id", to: "markets#list_liked_markets", as: "user_likes"
+  get "/users/:user_id/like/:market_id",  to: 'users#like', as: 'like'
+  get "/users/:user_id/unlike/:market_id",  to: 'users#unlike', as: 'unlike'
+  ####
 
   post "/markets/:market_id/comments/:id/report", to: "comments#report", as: 'report_comment'
   post "/markets/:market_id/delete_image", to: "markets#delete_image", as: 'delete_image'
@@ -89,8 +93,6 @@ PopUpStores::Application.routes.draw do
   get "static_pages/cities", path: "/cities", as: 'cities'
   get "static_pages/calendar", path: "/calendar", as: 'calendar'
   get "static_pages/map", path: "/map", as: 'map'
-  get "/users/:user_id/like/:market_id",  to: 'users#like', as: 'like'
-  get "/users/:user_id/unlike/:market_id",  to: 'users#unlike', as: 'unlike'
 
 
   root "static_pages#home"
