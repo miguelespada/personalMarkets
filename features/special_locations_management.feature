@@ -20,5 +20,5 @@ Feature: Manage special locations
   Scenario: Update special_location
     When There are some special_locations
     And I edit a special_location
-    Then I should be notified that I the special_location has been updated
+    Then I should be notified that the special_location has been updated
     And I should see the special_location with the new name in the special_location list

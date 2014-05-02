@@ -72,7 +72,7 @@ Then(/^I should be notified that the special_location has been deleted$/) do
   expect(page).to have_content "Special location successfully deleted."
 end
 
-Then(/^I should be notified that I the special_location has been updated$/) do
+Then(/^I should be notified that the special_location has been updated$/) do
   expect(page).to have_content "Special location was successfully updated."
 end
 
@@ -83,5 +83,10 @@ end
 Then(/^I should be notified that the wish has been deleted$/) do
   expect(page).to have_content "Wish successfully deleted."
 end
+
+Then(/^I should be notified that the wish has been updated$/) do
+  expect(page).to have_content "Wish was successfully updated."
+end
+
 
 

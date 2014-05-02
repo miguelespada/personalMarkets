@@ -39,14 +39,6 @@ describe WishesController do
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested wish as @wish" do
-      wish = Wish.create! valid_attributes
-      get :show, {:id => wish.to_param}, valid_session
-      assigns(:wish).should eq(wish)
-    end
-  end
-
   describe "GET list_user_wishes" do
     it "assigns the requested wish as @wish" do
       wish = Wish.create!(description: "dummy wish", user: user)
@@ -103,7 +95,7 @@ describe WishesController do
 
         it "success" do
           post :create, wish_params, valid_session
-          expect(response).to redirect_to Wish.last
+          response.should redirect_to user_wishes_path(user)
         end
       end
 
@@ -139,7 +131,7 @@ describe WishesController do
         it "redirects to the wish" do
           wish = Wish.create! valid_attributes
           put :update, {:id => wish.to_param, :wish => valid_attributes}, valid_session
-          response.should redirect_to wish
+          response.should redirect_to user_wishes_path(user)
         end
       end
 

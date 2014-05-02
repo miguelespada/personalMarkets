@@ -12,9 +12,14 @@ Feature: Manage wishes
     And I should see the wish in my wishlist
     And I should see the wish in the general wishlist
   
-  @wishes
   Scenario: Delete Wish
     When There are some wishes
     And I delete a wish
     Then I should be notified that the wish has been deleted
     And I should not see the wish in my wishlist
+
+  Scenario: Update wish
+    When There are some wishes
+    And I edit a wish
+    Then I should be notified that the wish has been updated
+    And I should see the wish with the new description in the wish list
