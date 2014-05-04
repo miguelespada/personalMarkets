@@ -162,7 +162,6 @@ class MarketsController < ApplicationController
         :from,
         :to,
         "hidden-market",
-        [:signature, :created_at, :tags, :bytes, :type, :etag, :url, :secure_url],
         :_id,
         :query, 
         :category,
