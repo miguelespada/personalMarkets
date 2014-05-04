@@ -15,9 +15,6 @@ class SpecialLocationsController < ApplicationController
     render layout: false
   end
 
-  def show
-  end
-
   def new
     @special_location = SpecialLocation.new
   end
@@ -30,7 +27,7 @@ class SpecialLocationsController < ApplicationController
 
     respond_to do |format|
       if @special_location.save
-        format.html { redirect_to @special_location, notice: 'Special location was successfully created.' }
+        format.html { redirect_to special_locations_path, notice: 'Special location was successfully created.' }
       else
         format.html { render action: 'new' }
       end
@@ -40,7 +37,7 @@ class SpecialLocationsController < ApplicationController
   def update
     respond_to do |format|
       if @special_location.update(special_location_params)
-        format.html { redirect_to @special_location, notice: 'Special location was successfully updated.' }
+        format.html { redirect_to special_locations_path, notice: 'Special location was successfully updated.' }
       else
         format.html { render action: 'edit' }
       end

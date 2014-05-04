@@ -44,7 +44,6 @@ When(/^I browse the special_location$/) do
   within(:css, "#special_location_#{@location.id}") do
     click_on @location.name
   end
-  
 end
 
 Then(/^I should see the markets special_location near the speacial location$/) do

@@ -24,14 +24,6 @@ describe SpecialLocationsController do
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested special_location as @special_location" do
-      special_location = SpecialLocation.create! valid_attributes
-      get :show, {:id => special_location.to_param}, valid_session
-      assigns(:special_location).should eq(special_location)
-    end
-  end
-
   context "authorized user" do 
     before(:each) do
       @ability = Object.new
@@ -72,7 +64,7 @@ describe SpecialLocationsController do
 
         it "redirects to the created special_location" do
           post :create, {:special_location => valid_attributes}, valid_session
-          response.should redirect_to(SpecialLocation.last)
+          response.should redirect_to(special_locations_path)
         end
       end
 
@@ -108,7 +100,7 @@ describe SpecialLocationsController do
         it "redirects to the special_location" do
           special_location = SpecialLocation.create! valid_attributes
           put :update, {:id => special_location.to_param, :special_location => valid_attributes}, valid_session
-          response.should redirect_to(special_location)
+          response.should redirect_to(special_locations_path)
         end
       end
 
