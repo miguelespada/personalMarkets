@@ -17,6 +17,7 @@
   <th>Coupon</th>
   <th>Coupon available</th>
   <th>Coupon price</th>
+  <th>Coupon photo</th>
   <th>Like counter</th>
   </tr>
   <% markets.each do |market| %>
@@ -24,7 +25,7 @@
     <%= content_tag_for(:tr, market) do %>
       <td> <%= market.actions %> </td>
       <td> <%= market.state %> </td>
-      <td> <%= market.featured_photo(50,50) %></td>
+      <td> <%= photo(market.featured, 100, 50) %></td>
       <td> <%= market.link(market.name)%> </td>
       <td> <%= market.description %></td>
       <td> <%= market.owner %></td>
@@ -39,6 +40,7 @@
       <td> <%= market.coupon.description if market.coupon? %> </td>
       <td> <%= market.coupon.available if market.coupon? %> </td>
       <td> <%= market.coupon.price if market.coupon? %> </td>
+      <td> <%= photo(market.coupon.photo, 100, 50)  if market.coupon? %> </td>
       <td class="like-counter"> <%= market.favorited.count %> </td>
     <% end %>
   <% end %>

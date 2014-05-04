@@ -1,6 +1,7 @@
 <%= div_for coupon do %>
   <ul>
   <li> <span> Coupon owner: </span> <span> <%= coupon.market.user.email %> </span> </li>
+  <li>  <%= photo(coupon.photo, 200, 100) %> </li>
   <li> <span> Market: </span> <span> <%= coupon.market.name %> </span> </li>
   <li> <span> Coupon Description: </span>  <span> <%= coupon.description %> </span> </li>
   <li> <span> Coupon Price </span>  <span> <%= coupon.price %> </span> </li>

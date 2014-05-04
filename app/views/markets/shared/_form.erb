@@ -48,6 +48,7 @@
             <%= c.input :description %>
             <%= c.input :price %>
             <%= c.input :available %>
+            <%= c.input :photo, as: :attachinary %>
           <% end %>
         </section>
         <%= f.button :submit, class: 'btn hidden', id: 'market-save-button' %>

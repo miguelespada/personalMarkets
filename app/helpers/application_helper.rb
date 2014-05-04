@@ -23,5 +23,16 @@ module ApplicationHelper
   def hidden_bar
     "hidden" unless params[:controller] == "markets" && params[:action] == "search"
   end
+
+  def photo(photo, width, height = nil)
+    heihgt ||= width
+    size = "#{width}x#{height}"
+    image_options = { size: size, crop: :fill }
+    if !photo.nil?
+      cl_image_tag(photo.path, image_options) 
+    else
+      image_tag "default-image.png", image_options
+    end
+  end 
 end
 

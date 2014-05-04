@@ -170,7 +170,7 @@ class MarketsController < ApplicationController
         :user_id,
         :category_id,
         :location_id,
-        :coupon_attributes => [:id, :description, :price, :available]
+        :coupon_attributes => [:id, :description, :price, :available, :photo]
         )
     end
 

@@ -6,6 +6,7 @@ class Coupon
   field :description, type: String
   field :price, type: Integer
   field :available, type: Integer
+  has_attachment :photo, accept: [:jpg, :png, :gif]
 
 
   def buy!(user, number)
