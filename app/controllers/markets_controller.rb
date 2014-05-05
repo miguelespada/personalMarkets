@@ -82,15 +82,6 @@ class MarketsController < ApplicationController
     end
   end
 
-  def delete_image
-    authorize! :delete_image, domain.get_market(params[:market_id])
-    domain.delete_image params[:market_id]
-  end
-
-  def delete_image_succeeded market
-    redirect_to market, notice: "Image deleted successfully"
-  end
-
   def create
     domain.create_market params[:user_id], market_params
   end
@@ -167,6 +158,7 @@ class MarketsController < ApplicationController
         :user_id,
         :category_id,
         :location_id,
+        :signature, :created_at, :tags, :bytes, :type, :etag, :url, :secure_url,
         :coupon_attributes => [:id, :description, :price, :available, :photo],
         :featured => [],
         :photos => []
