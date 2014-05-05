@@ -1,44 +1,10 @@
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
-<<<<<<< HEAD
-<div class="row">
-<%= simple_form_for [user, market], 
-    :html => {"data-tags" => "#{raw_tags(market)}", role: "form", novalidate: true}  do |f| %>
-    <div id="wizard">
-    
-        <h3>Name and description</h3>
-         <section>  
-         <%= f.input :name, input_html: { class: 'market-name' }%>
-         <%= f.input :description, :as => :text, label_html: { class: 'market-description' } %>
-         </section>
-         
-         <h3>Featured photo</h3>
-         <section>
-         <%= f.input :featured, as: :attachinary %>
-        </section>
 
-        <h3>Photo gallery</h3>
-         <section>
-         <%= f.input :photos, as: :attachinary %>
-        </section>
- 
-        <h3>Category and tags</h3>
-        <section>
-        <%= f.association :category, :include_blank => false %>
-
-        <%= f.input :tags, input_html: { class: 'tm-input', placeholder: "Tags" } %>
-        <p id="tags-container"></p>
-        </section>
-
-
-        <h3>Date</h3>
-        <section>
-        <%= f.input :date, input_html: { class: 'hidden' }  %> 
-        <div id="datepicker"><div></div>
-=======
 <div id="wizard" class="row">
   <ul class="col-md-3">
     <li><a href="#form-market-name-description" data-toggle="tab">Name and description</a></li>
     <li><a href="#form-market-photo" data-toggle="tab">Featured photo</a></li>
+    <li><a href="#form-market-photos" data-toggle="tab">Photo Gallery</a></li>
     <li><a href="#form-market-category-tag" data-toggle="tab">Category and tags</a></li>
     <li><a href="#form-market-date" data-toggle="tab">Date</a></li>
     <li><a href="#form-market-location" data-toggle="tab">Location</a></li>
@@ -56,7 +22,11 @@
       <div class="tab-pane" id="form-market-photo">
       <%= f.input :featured, as: :attachinary %>
       </div>
-  
+    
+      <div class="tab-pane" id="form-market-photos">
+         <%= f.input :photos, as: :attachinary %>
+      </div>
+
       <div class="tab-pane" id="form-market-category-tag">
       <%= f.association :category, :include_blank => false %>
       <%= f.input :tags, input_html: { class: 'tm-input', placeholder: "Tags" } %>
