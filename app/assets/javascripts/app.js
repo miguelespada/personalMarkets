@@ -59,7 +59,7 @@ PM.searchCallBacks = function(){
         return false;
     };
 
-    $('#range').change(PM.setDataRange).change();
+    $('#range').change(PM.setDataRange);
     $('#search_market').change(ajaxSearch);
     $('#search_bar_query').change(ajaxSearch);
 }

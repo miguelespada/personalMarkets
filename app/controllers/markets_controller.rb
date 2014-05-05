@@ -55,8 +55,6 @@ class MarketsController < ApplicationController
 
   def new
     @market = domain.initialize_market
-    @market.coupon = Coupon.new
-    @market.date = Date.today.strftime("%d/%m/%Y")
   end
 
   def show
@@ -130,7 +128,6 @@ class MarketsController < ApplicationController
 
   def update
     authorize! :update, Market.find(params[:id])
-    puts params
     domain.update_market params[:id], market_params
   end
 
