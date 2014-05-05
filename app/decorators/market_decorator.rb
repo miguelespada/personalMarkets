@@ -35,14 +35,6 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
-  def delete_photo_link
-    if can? :delete_image, market
-      content_tag :div, class: "market-featured-photo-actions" do
-        link_to "Delete", delete_image_path(market), { method: :post }
-      end
-    end
-  end
-
   def location
     if can? :see_location, Market
       render partial: 'markets/shared/location', locals: { market: market }
