@@ -145,10 +145,6 @@ $( document ).ready(function() {
   $('#market_address').blur(function () {
     updateLocationData();
   });
-
-  $('#market_city').blur(function () {
-    updateLocationData();
-  });
 });
 
 var locationTabActive = function(){
@@ -167,6 +163,10 @@ var initializeAutocomplete = function() {
     {
       types: ['(cities)']
     });
+  
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    updateLocationData();
+  });
 };
 
 var areDatesSelected = function(datesString){
@@ -216,6 +216,9 @@ var getLocationFromAddress = function(url){
     lng = data.results[0].geometry.location.lng;
     $("#market_latitude").val(lat);
     $("#market_longitude").val(lng);
+    if (PM.marker) {
+      PM.map.removeLayer(PM.marker);
+    }
     PM.addMarker([lat, lng], false);
     PM.map.setView([lat, lng], 14);
   });
