@@ -1,14 +1,18 @@
 class UsersController < ApplicationController
-  authorize_resource :only => [:index, :show, :destroy]  
+  load_resource :only => [:show, :list_coupons, :destroy]
+  authorize_resource :only => [:index, :show, :destroy, :list_coupons]  
  
   def index
     @users = UsersPresenter.for User.all
   end
   
   def show
-    @user ||=  User.find(user_id)
     rescue Exception => each 
       redirect_to action: 'index'
+  end
+
+  def list_coupons
+    @coupons = @user.markets.collect{|market| market.coupon if market.coupon.present?}
   end
 
   def like
@@ -28,9 +32,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(user_id)
-    @user.destroy
-    redirect_to action: 'index'
+    if @user.destroy
+      redirect_to users_path, notice: "User successfully deleted."
+    else
+      redirect_to users_path, error: "Cannot delete user."
+    end
   end
 
   def subscription

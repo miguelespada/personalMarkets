@@ -1,6 +1,6 @@
 class CouponsController < ApplicationController
-  load_resource :only => [:show, :buy]
-  authorize_resource :except => [:show, :index]
+  load_resource :only => [:show, :buy, :transactions]
+  authorize_resource :except => [:show, :index, :transactions]
   
   def index
     @coupons = Coupon.all
@@ -21,6 +21,11 @@ class CouponsController < ApplicationController
     markets ||= Market.where(user: current_user)
     @in_transactions = CouponTransaction.transactions(markets)
     render "transactions"
+  end
+
+  def transactions
+    @out_transactions = @coupon.transactions
+    @in_transactions = CouponTransaction.where(coupon: @coupon, user: current_user)  
   end
 
   private

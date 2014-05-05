@@ -121,4 +121,8 @@ describe CouponsController do
       expect(response.response_code).to eq 403
     end
   end
+
+
+  describe "transactions"
+    xit "list the coupon transactions"
 end

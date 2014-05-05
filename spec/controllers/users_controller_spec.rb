@@ -35,6 +35,9 @@ describe UsersController do
     end
   end
 
+  describe "list_coupons"
+    xit "list the user coupons"
+  
   context "authorized user" do 
     before(:each) do
       @ability = Object.new
