@@ -128,7 +128,6 @@ class MarketsController < ApplicationController
 
   def update
     authorize! :update, Market.find(params[:id])
-    puts params
     domain.update_market params[:id], market_params
   end
 
