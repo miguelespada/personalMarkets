@@ -4,7 +4,7 @@
   <ul class="col-md-3">
     <li><a href="#form-market-name-description" data-toggle="tab">Name and description</a></li>
     <li><a href="#form-market-photo" data-toggle="tab">Featured photo</a></li>
-    <li><a href="#form-market-photos" data-toggle="tab">Photo Gallery</a></li>
+    <li><a href="#form-market-photos" data-toggle="tab">Photo gallery</a></li>
     <li><a href="#form-market-category-tag" data-toggle="tab">Category and tags</a></li>
     <li><a href="#form-market-date" data-toggle="tab">Date</a></li>
     <li><a href="#form-market-location" data-toggle="tab">Location</a></li>
@@ -15,27 +15,27 @@
 
     <div class="tab-content col-md-9">
       <div class="tab-pane" id="form-market-name-description"> 
-      <%= f.input :name, input_html: { class: 'market-name', placeholder: "Name" }%>
-      <%= f.input :description, :as => :text, label_html: { class: 'market-description', placeholder: "Description" } %>
+        <%= f.input :name, input_html: { class: 'market-name', placeholder: "Name" }%>
+        <%= f.input :description, :as => :text, label_html: { class: 'market-description', placeholder: "Description" } %>
       </div>
       
       <div class="tab-pane" id="form-market-photo">
-      <%= f.input :featured, as: :attachinary %>
+        <%= f.input :featured, as: :attachinary %>
       </div>
     
       <div class="tab-pane" id="form-market-photos">
-         <%= f.input :photos, as: :attachinary %>
+        <%= f.input :photos, as: :attachinary %>
       </div>
 
       <div class="tab-pane" id="form-market-category-tag">
-      <%= f.association :category, :include_blank => false %>
-      <%= f.input :tags, input_html: { class: 'tm-input', placeholder: "Tags" } %>
-      <p id="tags-container"></p>
+        <%= f.association :category, :include_blank => false %>
+        <%= f.input :tags, input_html: { class: 'tm-input', placeholder: "Tags" } %>
+        <p id="tags-container"></p>
       </div>
   
       <div class="tab-pane" id="form-market-date">
-      <%= f.input :date, input_html: { class: 'hidden' }  %> 
-      <div id="datepicker"></div>
+        <%= f.input :date, input_html: { class: 'hidden' }  %> 
+        <div id="datepicker"></div>
       </div>
   
       <div class="tab-pane" id = "form-market-location" > 
