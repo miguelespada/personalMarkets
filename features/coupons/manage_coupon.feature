@@ -1,4 +1,4 @@
-@create_coupon
+@create_coupon @coupons
 Feature: Market coupons
   In order to have sell extra services for my market
   As market owner

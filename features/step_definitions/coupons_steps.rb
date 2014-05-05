@@ -16,27 +16,28 @@ When(/^I should see the coupon in the market page$/) do
 end
 
 Given(/^I buy some coupons$/) do
-  step "I visit the market page"
-  click_on "Buy Coupon"
+  visit buy_coupon_path @coupon
   select "2"
   click_on "Buy"
   step "he needs to introduce his credit card data"
+  click_on "Pay"
 end
 
 Then(/^I should see the coupon transactions in my out transactions$/) do
-  click_on "Coupon transactions"
+  visit list_transactions_path @user
   within(:css, ".out_coupons") do
     expect(page).to have_content "Dummy coupon"
   end 
 end
 
 Then(/^I sign in as the market owner$/) do  
+  click_on @user.email
   step "I sign out"
   log_in_as @market_owner
 end
 
 Then(/^I should see the coupon transactions in my in transactions$/) do
-  click_on "Coupon transactions"
+  visit list_transactions_path @market_owner
   within(:css, ".in_coupons") do
     expect(page).to have_content "Dummy coupon"
   end 
