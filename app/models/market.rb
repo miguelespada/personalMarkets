@@ -25,11 +25,13 @@ class Market
   has_many :comments, class_name: "Comment", inverse_of: :market
   has_one :coupon, class_name: "Coupon", inverse_of: :market
   
-  accepts_nested_attributes_for :coupon
 
   has_attachment :featured, accept: [:jpg, :png, :gif]
+  has_attachments :photos, accept: [:jpg, :png, :gif], maximum: 3
 
   validates_presence_of :name, :user
+  
+  accepts_nested_attributes_for :coupon, :photos, :featured
 
   scope :last_published, lambda { where(state: "published").order_by(:created_at.desc).limit(6) }
   scope :published, lambda {where(state: "published")}
