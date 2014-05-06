@@ -10,6 +10,8 @@ PopUpStores::Application.routes.draw do
     end
     post :publish
     post :archive
+    get :make_pro_payment
+    post :make_pro
     resources :comments, :only => [:create, :destroy, :update]
   end
 

@@ -135,6 +135,17 @@ class MarketsController < ApplicationController
     redirect_to market, notice: "Market update failed."
   end
 
+  ProPayment = Struct.new(:market, :total_price)
+
+  def make_pro_payment
+    @pro_payment = ProPayment.new Market.find(params[:market_id]), 295
+  end
+
+  def make_pro
+    market = domain.make_pro params[:id], buy_params
+    redirect_to market, notice: "Your market is now PRO."
+  end
+
   private
 
     def domain
@@ -187,4 +198,11 @@ class MarketsController < ApplicationController
       Category.find(params[:category_id])
     end
 
+    def buy_params
+      buy_params = {
+        :name => params[:name],
+        :token => params[:paymill_card_token],
+        :price => params[:total_price]
+      }
+    end
 end

@@ -134,6 +134,34 @@ describe MarketsDomain do
       end
 
     end
+
+    describe "make pro" do
+
+      let(:paymill_wrapper) { double }
+      let(:email) { "dummy@gmail.com" }  
+      let(:user) { double(email: email) } 
+      let(:amount) { 2 } 
+      let(:regular_market) { double(user: user) }
+      let(:paymill_transaction) { double(id: "a_transaction_id") }
+      let(:price) { 295 }
+      let(:buy_params) { {token: "paymill_card_token", name: "pepito grillo", price: price} }
+
+      before do
+        markets_repo.stub(:find) { regular_market }
+        stub_const("PaymillWrapper", paymill_wrapper)
+        paymill_wrapper.should_receive(:create_transaction).with(email, price, buy_params).and_return(paymill_transaction)
+        regular_market.should_receive(:go_pro)
+      end
+
+      it "creates a paymill transaction" do
+        @it.make_pro market_id, buy_params
+      end
+
+      it "calls buy on coupon with the paymill transaction" do
+        @it.make_pro market_id, buy_params
+      end
+
+    end
   end
 
 end

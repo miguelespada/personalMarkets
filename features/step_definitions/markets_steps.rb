@@ -292,7 +292,17 @@ Given(/^I have a draft market with a coupon$/) do
   @user.markets << @market
 end
 
-Then(/^I should be redirected to make it pro page$/) do
-  expect(page).to have_content "In order to publish a market with a coupon you should make it PRO or become PREMIUM. Otherwise the coupon won't be available."
+Given(/^I have a regular market with a coupon$/) do
+  @market = create(:market, :state => "published", :user => @user, :coupon => create(:coupon))
 end
 
+When(/^I make it PRO$/) do
+  visit market_path @market
+  click_on "Go PRO"
+  step "he needs to introduce his credit card data"
+  click_on "Pay"
+end
+
+Then(/^Its coupon is visible$/) do
+  expect(page).to have_css ".market-coupon"
+end

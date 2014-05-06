@@ -119,6 +119,10 @@ class MarketDecorator < Draper::Decorator
     link_to("QR", user_market_path(market.user, market, :svg))
   end
 
+  def pro_link
+    link_to "Go PRO", market_make_pro_payment_path(market), class: "pro market-action" unless market.pro?
+  end
+
   private 
 
     def market_belongs_to_user?

@@ -54,6 +54,11 @@ class Market
     return self.pro
   end
 
+  def go_pro
+    self.pro = true
+    self.save!
+  end
+
   def delete_featured_image
     self.featured = nil
     self.save!

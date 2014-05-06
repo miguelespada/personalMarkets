@@ -1,0 +1,88 @@
+<script type="text/javascript">
+  var PAYMILL_PUBLIC_KEY = "758157067538c48cb45513991681ca78";
+</script>
+
+<section id="coupon-payment">
+  <h2>Market PRO payment</h2>
+  <p class="payment-errors"></p>
+
+  <section class="payment-form">
+
+    <%= form_tag({controller: "markets", action: "make_pro"}, method: "post", id: "new_payment") do %>
+    <%= hidden_field_tag "paymill_card_token" %>
+    <%= hidden_field_tag "id", "#{@pro_payment.market.id}" %>
+    <%= hidden_field_tag "total_price", "#{@pro_payment.total_price}" %>
+
+    <%= text_field_tag "name", nil, placeholder: "Card name"  %>
+    <%= text_field_tag "card_number", nil, placeholder: "Card number" %>
+    <%= text_field_tag "expiration_month", nil, placeholder: "Expiration month" %>
+    <%= text_field_tag "expiration_year", nil, placeholder: "Expiration year" %>
+    <%= text_field_tag "cvc", nil, placeholder: "CVC" %>
+    <% end %>
+
+    <button class="get-token btn btn-primary">Pay</button>
+
+  </section>
+</section>
+
+<script type="text/javascript" src="https://bridge.paymill.com/"></script>
+<script type="text/javascript">
+      jQuery(document).ready(function ($) {
+
+          var displayError = function(whatHappened){
+            $('#messages').html("");
+            $('#messages').append('<div id="error" class="alert alert-danger flash">' + whatHappened + '</div>');
+          };
+
+          function PaymillResponseHandler(error, result) {
+              if (error) {
+                displayError(error.apierror);
+              } else {
+                  $(".payment-errors").css("display","none");
+                  $(".payment-errors").text("");
+
+                  var token = result.token;
+                  $('#paymill_card_token').val(token);
+                  $('#new_payment').submit();
+              }
+              $('.get-token').on('click', submitData);
+          }
+
+          var submitData = function (event) {
+
+              $('#messages').html("");
+              $('.get-token').off('click');
+
+              if (false == paymill.validateCardNumber($('#card_number').val())) {
+                displayError('Invalid card number');
+                  $(".get-token").removeAttr("disabled");
+                  $('.get-token').on('click', submitData);
+                  return false;
+              }
+              if (false == paymill.validateExpiry($('#expiration_month').val(), $('#expiration_year').val())) {
+                displayError('Invalid expiry date');
+                  $('.get-token').on('click', submitData);
+                  return false;
+              }
+
+              if ($('#name').val() == '') {
+                displayError('Invalid card holder name');
+                  $('.get-token').on('click', submitData);
+                  return false;
+              }
+              var params = {
+                  amount_int:     Math.round(<%= @pro_payment.total_price %>),  // E.g. "15" for 0.15 Eur
+                  currency:       'EUR',    // ISO 4217 e.g. "EUR"
+                  number:         $('#card_number').val(),
+                  exp_month:      $('#expiration_month').val(),
+                  exp_year:       $('#expiration_year').val(),
+                  cvc:            $('#cvc').val(),
+                  cardholder:     $('#name').val()
+              };
+
+              paymill.createToken(params, PaymillResponseHandler);
+              return false;
+          };
+          $(".get-token").on('click', submitData);
+      });
+</script>
