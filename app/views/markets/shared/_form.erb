@@ -67,14 +67,10 @@
   </div>
 <% end %>
 
-<div>
-
-</div>
-
 <script>
 
 $( document ).ready(function() {
-      initializeAutocomplete();
+      initializeAutocomplete('market_city');
 
       $('#wizard').bootstrapWizard({
         tabClass: 'nav nav-pills nav-stacked',
@@ -86,10 +82,13 @@ $( document ).ready(function() {
       $(".add_market_button").addClass("btn-success");
       $(".add_market_button").removeClass("btn-info");
       $(".add_market_button").val("Save Market");
-      $(".button_to").effect("bounce", {times: 10, distance: 10}, 4000);
       $(".add_market_button").click(function(){
         $("#market-save-button").click(); 
         return false;
+      });
+
+      $("input").change(function(){
+        formChanged();
       });
 
       getDatesSelected($('#market_date').val());
@@ -103,6 +102,7 @@ $( document ).ready(function() {
           todayHighlight: true
       }).on('changeDate', function(e){
           fillInputWithDates(e);
+          formChanged();
       });
 
       if (areDatesSelected($('#market_date').val()))
@@ -157,9 +157,9 @@ var locationTabActive = function(){
   
 };
 
-var initializeAutocomplete = function() {
+var initializeAutocomplete = function(input_id) {
   autocomplete = new google.maps.places.Autocomplete(
-    (document.getElementById('market_city')),
+    (document.getElementById(input_id)),
     {
       types: ['(cities)']
     });
@@ -222,6 +222,20 @@ var getLocationFromAddress = function(url){
     PM.addMarker([lat, lng], false);
     PM.map.setView([lat, lng], 14);
   });
+};
+
+var formChanged = function(){
+  $(".add_market_button").addClass("btn-warning");
+  $(".add_market_button").removeClass("btn-success");
+  $(".button_to").exBounce();
+};
+
+$.fn.exBounce = function(){
+  var self = this;
+  (function runEffect(){
+      self.effect("bounce", { times:3, distance: 5 }, 1000, runEffect);
+  })();
+  return this;
 };
 
 </script>
