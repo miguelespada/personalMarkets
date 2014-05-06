@@ -1,5 +1,8 @@
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
-
+<div class="panel panel-default panel-table panel-table-last">
+  <div class="panel-heading table-title">
+    Market
+  </div>
 <div id="wizard" class="row">
   <ul class="col-md-3">
     <li><a href="#form-market-name-description" data-toggle="tab">Name and description</a></li>
@@ -56,16 +59,11 @@
         <% end %>
       </div>
       <div id="small-map-container"><%= render "markets/shared/mapsmall" %></div>
-      <ul class="pager wizard">
-        <li class="previous first" style="display:none;"><a href="#">First</a></li>
-        <li class="previous"><a href="#">Previous</a></li>
-        <li class="next last" style="display:none;"><a href="#">Last</a></li>
-        <li class="next"><a href="#">Next</a></li>
-      </ul>
     </div>
     <%= f.button :submit, class: 'btn hidden', id: 'market-save-button' %>
   </div>
 <% end %>
+</div>
 
 <script>
 
