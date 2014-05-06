@@ -3,6 +3,7 @@ class CouponTransaction
   belongs_to :user, class_name: "User", inverse_of: :coupon_transactions
   belongs_to :coupon, class_name: "Coupon", inverse_of: :transactions
   field :number, type: Integer
+  field :paymill_transaction_id, type: String
 
   def self.transactions(markets)
     transactions = []

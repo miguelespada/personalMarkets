@@ -1,11 +1,3 @@
-When(/^I should see the coupon in the market page$/) do
-  step "I visit the market page"
-  expect(page).to have_content @market.name
-  expect(page).to have_content "My dummy coupon"
-  expect(page).to have_content "10"
-  expect(page).to have_content "20"
-end
-
 When(/^I create a coupon$/) do
   within(:css, "#form-market-coupon") do
     fill_in "Description",  with: "My dummy coupon"
@@ -15,27 +7,37 @@ When(/^I create a coupon$/) do
   click_on "Update Market"
 end
 
-Given(/^I buy some coupons$/) do
+When(/^I should see the coupon in the market page$/) do
   step "I visit the market page"
-  click_on "Buy Coupon"
+  expect(page).to have_content @market.name
+  expect(page).to have_content "My dummy coupon"
+  expect(page).to have_content "10"
+  expect(page).to have_content "20"
+end
+
+Given(/^I buy some coupons$/) do
+  visit buy_coupon_path @coupon
   select "2"
   click_on "Buy"
+  step "he needs to introduce his credit card data"
+  click_on "Pay"
 end
 
 Then(/^I should see the coupon transactions in my out transactions$/) do
-  click_on "Coupon transactions"
+  visit list_transactions_path @user
   within(:css, ".out_coupons") do
     expect(page).to have_content "Dummy coupon"
   end 
 end
 
 Then(/^I sign in as the market owner$/) do  
+  click_on @user.email
   step "I sign out"
   log_in_as @market_owner
 end
 
 Then(/^I should see the coupon transactions in my in transactions$/) do
-  click_on "Coupon transactions"
+  visit list_transactions_path @market_owner
   within(:css, ".in_coupons") do
     expect(page).to have_content "Dummy coupon"
   end 

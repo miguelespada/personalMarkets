@@ -68,7 +68,7 @@ Then(/^I should see the market in my markets list$/) do
 end
 
 Then(/^I should see it in my markets$/) do
-  click_on "My markets"
+  visit user_markets_path @user
 
   expect(page).to have_content "Dummy Market"
 end

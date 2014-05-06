@@ -28,7 +28,7 @@ describe SubscriptionsController do
   end
 
   it "calls domain with user email and subscription params" do
-    domain.should_receive(:subscribe).with(user.email, subscription_attrs)
+    domain.should_receive(:subscribe).with(user, subscription_attrs)
 
     post :create, subscription_params, {}
   end

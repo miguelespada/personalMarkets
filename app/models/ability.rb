@@ -37,6 +37,7 @@ class Ability
         end
 
         can :buy, Coupon
+        can :coupon_payment, Coupon
         can :list_transactions, Coupon
 
         can :show, User, :user_id => @user.id
