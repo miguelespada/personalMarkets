@@ -74,7 +74,7 @@
 <script>
 
 $( document ).ready(function() {
-      initializeAutocomplete();
+      initializeAutocomplete('market_city');
 
       $('#wizard').bootstrapWizard({
         tabClass: 'nav nav-pills nav-stacked',
@@ -157,9 +157,9 @@ var locationTabActive = function(){
   
 };
 
-var initializeAutocomplete = function() {
+var initializeAutocomplete = function(input_id) {
   autocomplete = new google.maps.places.Autocomplete(
-    (document.getElementById('market_city')),
+    (document.getElementById(input_id)),
     {
       types: ['(cities)']
     });
