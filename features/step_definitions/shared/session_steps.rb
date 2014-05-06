@@ -25,6 +25,15 @@ Given(/^I am logged in$/) do
   step "I sign in"
 end
 
+Given(/^I am logged in as premium$/) do
+  step "I am a premium user"
+  step "I sign in"
+end
+
+Given(/^I am a premium user$/) do
+  @user = create(:user, :premium, :email => "dummy@gmail.com")
+end
+
 When(/^I sign out$/) do
   click_on "Sign out"
 end

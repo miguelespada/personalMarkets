@@ -205,6 +205,17 @@ Then(/^I have a draft market$/) do
   @user.markets << @market
 end
 
+Given(/^I have a draft pro market$/) do
+  @market = create(
+    :market, 
+    :user => @user, 
+    :name => "market 1", 
+    :description => "market 1 desc",
+    :pro => true
+    )
+  @user.markets << @market
+end
+
 When(/^I go the market page$/) do
   visit market_path @market
 end
@@ -225,6 +236,7 @@ end
 
 
 Then(/^I cannot publish it again$/) do
+  visit market_path @market
   within(:css, '.market-actions') do
     expect(page).to_not have_link "Publish"
   end
@@ -262,13 +274,6 @@ When(/^I archive it$/) do
   click_on "Archive"
 end
 
-# Then(/^It is not visible in guest markets$/) do
-#   visit published_markets_path
-#   within(:css, '.market-gallery') do
-#     expect(page).to_not have_css '.market-gallery-item'
-#   end
-# end
-
 Then(/^It is not visible in guest markets$/) do
     visit published_markets_path
     expect(page).to_not have_content "market 1"
@@ -279,3 +284,19 @@ Then(/^I see it in the published markets$/) do
   visit published_markets_path
   expect(page).to have_content @market.name
 end
+
+Given(/^I have a draft market with a coupon$/) do
+  @market = create(
+    :market, 
+    :user => @user, 
+    :name => "market 1", 
+    :description => "market 1 desc",
+    :coupon => create(:coupon)
+    )
+  @user.markets << @market
+end
+
+Then(/^I should be redirected to make it pro page$/) do
+  expect(page).to have_content "In order to publish a market with a coupon you should make it PRO or become PREMIUM. Otherwise the coupon won't be available."
+end
+

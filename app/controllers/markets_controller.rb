@@ -108,6 +108,10 @@ class MarketsController < ApplicationController
     domain.publish_market params[:market_id]
   end
 
+  def publish_not_available market
+    redirect_to market, notice: "In order to publish a market with a coupon you should make it PRO or become PREMIUM. Otherwise the coupon won't be available."
+  end
+
   def publish_succeeded market
     redirect_to market, notice: "Market successfully published."
   end
