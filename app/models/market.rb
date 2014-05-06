@@ -38,6 +38,10 @@ class Market
   scope :published, lambda {where(state: "published")}
   scope :with_category, lambda {|category| where(category: category)}
 
+  def coupon_available?
+    publish_available?
+  end
+
   def publish_available?
     !self.has_coupon? || self.pro? || self.belongs_to_premium_user?
   end

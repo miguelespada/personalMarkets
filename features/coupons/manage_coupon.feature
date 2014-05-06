@@ -6,7 +6,7 @@ Feature: Market coupons
 
   Background:
     Given I am logged in
-    And I have one market
+    And I have one pro market
 
   Scenario: Create a coupon
     When I visit the edit market page

@@ -47,6 +47,12 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
+  def coupon_section
+    if market.coupon_available?
+      render partial: "market_coupon", locals: { market: self }
+    end
+  end
+
   def buy_coupon_link
     if market.has_coupon?
       if can? :buy, market.coupon 

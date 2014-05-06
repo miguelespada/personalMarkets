@@ -109,7 +109,8 @@ class MarketsController < ApplicationController
   end
 
   def publish_not_available market
-    redirect_to market, notice: "In order to publish a market with a coupon you should make it PRO or become PREMIUM. Otherwise the coupon won't be available."
+    flash[:error] = "In order to publish a market with a coupon you should make it PRO or become PREMIUM. Otherwise the coupon won't be available."
+    redirect_to market
   end
 
   def publish_succeeded market

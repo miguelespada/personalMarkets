@@ -30,6 +30,10 @@ Given(/^I am logged in as premium$/) do
   step "I sign in"
 end
 
+Given(/^I am not logged in$/) do
+
+end
+
 Given(/^I am a premium user$/) do
   @user = create(:user, :premium, :email => "dummy@gmail.com")
 end

@@ -62,3 +62,48 @@ Then(/^I should see all the coupons that are emitted$/) do
   expect(page).to have_content @market.user.email
   expect(page).to have_content @coupon.description
 end
+
+Given(/^a premium user's market with a coupon$/) do
+  @user = create(:user, :premium)
+  @market = create(
+    :market, 
+    :user => @user, 
+    :name => "market 1", 
+    :description => "market 1 desc",
+    :state => :published,
+    :coupon => create(:coupon)
+    )
+end
+
+Then(/^I can see the coupon$/) do
+  expect(page).to have_css ".market-coupon"
+end
+
+Given(/^a regular user's non pro market with a coupon$/) do
+  @user = create(:user)
+  @market = create(
+    :market, 
+    :user => @user, 
+    :name => "market 1", 
+    :description => "market 1 desc",
+    :state => :published,
+    :coupon => create(:coupon)
+    )
+end
+
+Then(/^I cannot see the coupon$/) do
+  expect(page).to_not have_css ".market-coupon"
+end
+
+Given(/^a regular user's pro market with a coupon$/) do
+  @user = create(:user)
+  @market = create(
+    :market, 
+    :user => @user, 
+    :name => "market 1", 
+    :description => "market 1 desc",
+    :state => :published,
+    :coupon => create(:coupon),
+    :pro => true
+    )
+end

@@ -22,14 +22,7 @@
       <%= market.archive_link %>
     </div>
   </div>
-  <div class="col-md-3 market-coupon">
-    <h3> Coupon </h3>
-    <%= render partial: "coupons/coupon", locals: {coupon: market.coupon } %>
-    
-    <div class="market-coupons">
-      <%= market.buy_coupon_link %>
-    </div>
-  </div>
+  <%= market.coupon_section %>
 
   <div class="market-stats">
     <div class="market-likes-number"> Number of likes: <%= market.favorited.count %> </div>

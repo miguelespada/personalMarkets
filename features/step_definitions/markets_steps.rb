@@ -182,10 +182,6 @@ Then(/^The number of likes decrement$/) do
   end
 end
 
-# Given(/^I am not logged in$/) do
-
-# end
-
 When(/^I visit a market page$/) do
   visit market_path @some_market
 end
