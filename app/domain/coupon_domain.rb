@@ -5,7 +5,7 @@ class CouponDomain
     paymill_price = quantity * coupon.price * 100
     transaction = PaymillWrapper.create_transaction user.email, paymill_price, buy_params
     coupon.buy! user, quantity, transaction.id
-  rescue Exception => e
+  rescue  => e
     raise CouponDomainException.new e.message
   end
 
