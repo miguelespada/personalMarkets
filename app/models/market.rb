@@ -18,6 +18,7 @@ class Market
   field :latitude, type: Float
   field :date, type: String
   field :state, type: String
+  field :pro, type: Boolean
 
   belongs_to :category
   belongs_to :user, class_name: "User", inverse_of: :markets
@@ -36,6 +37,18 @@ class Market
   scope :last_published, lambda { where(state: "published").order_by(:created_at.desc).limit(6) }
   scope :published, lambda {where(state: "published")}
   scope :with_category, lambda {|category| where(category: category)}
+
+  def publish_available?
+    !self.has_coupon? || self.pro? || self.belongs_to_premium_user?
+  end
+
+  def belongs_to_premium_user?
+    self.user.is_premium?
+  end
+
+  def pro?
+    return self.pro
+  end
 
   def delete_featured_image
     self.featured = nil

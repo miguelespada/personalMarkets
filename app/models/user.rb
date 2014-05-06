@@ -90,6 +90,10 @@ class User
     self.role_names.join(", ")
   end
 
+  def is_premium?
+    role.include? "premium"
+  end
+
   def role_names
     self.roles.map(&:name)
   end

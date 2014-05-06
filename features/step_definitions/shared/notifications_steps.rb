@@ -40,7 +40,6 @@ end
 
 Then(/^I should be notified that the coupons has been bought$/) do
   expect(find("#notice")).to have_content "You has successfully bought the coupon."
-  # expect(page).to have_content "You has successfully bought the coupon."
 end
 
 

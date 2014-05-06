@@ -6,7 +6,8 @@ describe MarketsDomain do
   let(:market_id) { "an_id" }
   let(:user_id) { "an_id" }
   let(:listener) { double :listener }
-  let(:market) { double :market }
+  let(:market) { double(pro?: false, belongs_to_premium_user?: false) }
+  let(:market_pro) { double(pro?: true) }
   let(:coupon) { double :coupon }
   let(:markets_repo) { double :markets_repo }
   let(:users_repo) { double :users_repo }
@@ -78,21 +79,60 @@ describe MarketsDomain do
 
     describe "publish market" do
 
+      before do
+        market.stub(:has_coupon?) { true }
+      end
+
       after do
         @it.publish_market "an_id"
       end
 
-      it "registers success callback if market published successfully" do
-        markets_repo.stub(:find) { market }
-        market.stub(:publish) { :true }
-        listener.should_receive(:publish_succeeded).with(market)
+      context 'market with coupon' do
+        it "registers publishing not possible because market has coupon and is not pro" do
+          markets_repo.stub(:find) { market }
+          listener.should_receive(:publish_not_available).with(market)
+        end
+
+        it "registers publishing not possible because market has coupon and owner is not premium" do
+          markets_repo.stub(:find) { market }
+          listener.should_receive(:publish_not_available).with(market)
+        end
+
+        it "registers success callback if market belongs to premium user" do
+          market.stub(:belongs_to_premium_user?) { true }
+          markets_repo.stub(:find) { market }
+          market.stub(:publish) { true }
+          listener.should_receive(:publish_succeeded).with(market)
+        end
+
+        it "registers success callback if market is pro" do
+          market.stub(:pro?) { true }
+          markets_repo.stub(:find) { market }
+          market.stub(:publish) { true }
+          listener.should_receive(:publish_succeeded).with(market)
+        end
+
       end
 
-      it "registers fail callback if market not published successfully" do
-        markets_repo.stub(:find) { market }
-        market.stub(:publish).and_raise(MarketsDomainException)
-        listener.should_receive(:publish_failed).with(market_id)
+      context 'market without coupon' do
+
+        before do
+          market.stub(:has_coupon?) { false }
+        end
+
+        it "registers success callback if market published successfully" do
+          markets_repo.stub(:find) { market }
+          market.stub(:publish) { true }
+          listener.should_receive(:publish_succeeded).with(market)
+        end
+
+        it "registers fail callback if market not published successfully" do
+          markets_repo.stub(:find) { market }
+          market.stub(:publish).and_raise(MarketsDomainException)
+          listener.should_receive(:publish_failed).with(market_id)
+        end
       end
+
     end
   end
 
