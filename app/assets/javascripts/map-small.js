@@ -41,9 +41,13 @@ $(document).ready(function(){
   if ($('.edit_market').is(':visible'))
     PM.setMarker($(".market_latitude > .controls > input").val(), 
                  $(".market_longitude > .controls > input").val());
+  if ($('.new_market').is(':visible'))
+    PM.setViewWithUserLocation();
   if ($('.market-location').is(':visible'))
     PM.setMarker($(".market-latitude").html(), $(".market-longitude").html());
   if ($('.edit_special_location').is(':visible'))
     PM.setMarker($(".special_location_latitude > .controls > input").val(), 
                  $(".special_location_longitude > .controls > input").val());
+  if ($('.new_special_location').is(':visible'))
+    PM.setViewWithUserLocation();
 });
