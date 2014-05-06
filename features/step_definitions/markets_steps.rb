@@ -110,7 +110,7 @@ Given(/^I have some published markets$/) do
 end
 
 When(/^I go to my markets list$/) do
-  click_on "My markets"
+  visit user_markets_path @user
 end
 
 Then(/^I see their names and descriptions$/) do
