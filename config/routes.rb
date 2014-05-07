@@ -20,6 +20,7 @@ PopUpStores::Application.routes.draw do
   get "/users/:user_id/markets", to: "markets#list_user_markets", as: "user_markets"
   get "/published", to: "markets#list_published_markets", as: "published_markets"
   get "/last_markets", to: "markets#list_last_markets", as: "last_markets"
+  get "/explore_slideshows", to: "markets#explore_slideshows", as: "explore_slideshows_markets"
 
 
   resources :coupons, :only => [:show, :index] do
@@ -70,17 +71,20 @@ PopUpStores::Application.routes.draw do
   ####
 
   ### SpecialLocations
+  get "/explore_hotspots", to: "special_locations#explore_hotspots", as: "explore_hotspots"
   get "/special_locations/gallery", as: "special_locations_gallery"
   resources :special_locations
   ####
 
   ### Tags
+  get "/explore_tags", to: "tags#explore_tags", as: "explore_tags"
   get "/tags/gallery", as: "tags_gallery"
   get "/tags/:tag/markets", to: "markets#list_tag_markets", as: "tag_markets"
   resources :tags
   ####
  
   ### Categories
+  get "/explore_categories", to: "categories#explore_categories", as: "explore_categories"
   get "/categories/gallery", as: "category_gallery"
   get "/category/:category_id/markets", to: "markets#list_category_markets", as: "category_markets"
   resources :categories

@@ -25,7 +25,7 @@ module ApplicationHelper
   end
 
   def photo(photo, width, height = nil)
-    heihgt ||= width
+    height ||= width
     size = "#{width}x#{height}"
     image_options = { size: size, crop: :fill }
     if !photo.nil?

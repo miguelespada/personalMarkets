@@ -10,6 +10,11 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def explore_categories
+    @categories = Category.all
+    render layout: false
+  end
+
   def gallery
     @categories = Category.all
     render layout: false

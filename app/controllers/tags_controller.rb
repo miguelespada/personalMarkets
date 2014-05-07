@@ -11,6 +11,11 @@ class TagsController < ApplicationController
     end
   end
 
+  def explore_tags
+    @suggested = Tag.all
+    render layout: false
+  end
+
   def gallery
     @suggested = Tag.all
     render layout: false

@@ -6,6 +6,11 @@ class MarketsController < ApplicationController
     @markets = Market.all
   end
 
+  def explore_slideshows
+    @markets = Market.last_published
+    render layout: false
+  end
+
   def list_category_markets
     @markets = Market.with_category(load_category)
     render 'index'

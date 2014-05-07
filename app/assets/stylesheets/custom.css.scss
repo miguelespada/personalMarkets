@@ -263,9 +263,6 @@ border-color: #d43f3a;
 
 //*############################ HOME GALLERY CSS #############################*//
 
-@import "bootstrap";
-@import "bootstrap/theme";
-
 .home_gallery_title{
   @extend h1;
   font-weight: 100;
@@ -515,5 +512,18 @@ border-color: #d43f3a;
 }
 .mega-dropdown-menu .form-group {
     margin-bottom: 3px;
+}
+
+.item-title{
+  @extend .table-title;
+  color:#248DCF;
+}
+
+.explore-arrow{
+  margin-top:3px;
+}
+
+.explore_section{
+  margin-bottom:20px !important;
 }
 

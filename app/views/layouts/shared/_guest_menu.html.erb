@@ -1,92 +1,76 @@
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navegar (Original)<b class="caret"></b></a>
-  <ul class="dropdown-menu">
-    <%= render "layouts/shared/guest_tasks" %>
- </ul>
+<li class="dropdown mega-dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Explore<b class="caret"></b></a>
+	
+	<ul class="dropdown-menu mega-dropdown-menu row">
+		<li class="col-md-3">
+			<ul class="explore_section">
+				<li class="item-title">What's new</li>
+				<li class="divider"></li>
+        <li class="registered-user-action">
+					<%= link_to published_markets_path do %>
+						All Markets<i class="fa fa-angle-right pull-right explore-arrow"></i>
+    			<% end %>
+    		</li>
+				<li class="divider"></li>                           
+        	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+						<div class="carousel-inner"></div>
+        	</div>
+			</ul>
+		</li>
+		<li class="col-md-3">
+			<ul id="explore_categories" class="explore_section">
+				<li class="item-title">Categories</li>
+				<li class="divider"></li>
+				
+			</ul>
+		</li>
+		<li class="col-md-2">
+			<ul id="explore_tags" class="explore_section">
+				<li class="item-title">Tags</li>  
+				<li class="divider"></li>
+			</ul>
+		</li>
+		<li class="col-md-2">
+			<ul id="explore_hotspots" class="explore_section">
+				<li class="item-title">Hot spots</li>
+				<li class="divider"></li>
+			</ul>
+		</li>
+		<li class="col-md-2">
+			<ul class="explore_section">
+				<li class="item-title">Wishlist</li>
+				<li class="divider"></li>
+				<li class="registered-user-action">
+					<%= link_to user_wishes_path(current_user) do %>
+						All wishes<i class="fa fa-angle-right pull-right explore-arrow"></i>
+					<% end %>
+				</li>
+			</ul>
+			<ul class="explore_section">
+				<li class="item-title">Bargains</li>
+				<li class="divider"></li>
+				<li class="registered-user-action">
+					<%= link_to user_bargains_path(current_user) do %>
+						All bargains<i class="fa fa-angle-right pull-right explore-arrow"></i>
+					<% end %>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	
 </li>
 
-<li class="dropdown mega-dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation Bar<b class="caret"></b></a>
-				
-				<ul class="dropdown-menu mega-dropdown-menu row">
-					<li class="col-sm-3">
-						<ul>
-							<li class="dropdown-header">New in Personal Markets</li>                            
-                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                              <div class="carousel-inner">
-                                <div class="item active">
-                                    <a href="#"><img src="http://placehold.it/254x150/3498db/f5f5f5/&text=New+Collection" class="img-responsive" width="355" alt="product 1"></a>
-                                    <h4><small>Summer dress floral prints</small></h4>                                        
-                                    <button class="btn btn-primary" type="button">Show Market</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>       
-                                </div><!-- End Item -->
-                                <div class="item">
-                                    <a href="#"><img src="http://placehold.it/254x150/ef5e55/f5f5f5/&text=New+Collection" class="img-responsive" width="355" alt="product 2"></a>
-                                    <h4><small>Gold sandals with shiny touch</small></h4>                                        
-                                    <button class="btn btn-primary" type="button">Show Market</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>        
-                                </div><!-- End Item -->
-                                <div class="item">
-                                    <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=New+Collection" class="img-responsive" width="355" alt="product 3"></a>
-                                    <h4><small>Denin jacket stamped</small></h4>                                        
-                                    <button class="btn btn-primary" type="button">Show Market</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>      
-                                </div><!-- End Item -->                                
-                              </div><!-- End Carousel Inner -->
-                            </div><!-- /.carousel -->
-                            
-                            <li class="divider"></li>
-                            <li class="registered-user-action"><%= link_to published_markets_path do %>
-							View all Markets<span class="glyphicon glyphicon-chevron-right pull-right">
-			    			<% end %></li>
-						</ul>
-					</li>
-					<li class="col-sm-3">
-						<ul>
-							<li class="dropdown-header">Categories</li>
-							<li class="divider"></li>
-							<li class="registered-user-action"><%= link_to published_markets_path do %>
-							View all Categories<span class="glyphicon glyphicon-chevron-right pull-right">
-			    			<% end %></li>
-							
-						</ul>
-					</li>
-					<li class="col-sm-2">
-						<ul>
-							<li class="dropdown-header">Tags</li>
-							  
-							<li class="divider"></li>
-							<li class="registered-user-action"><%= link_to published_markets_path do %>
-							View all Tags<span class="glyphicon glyphicon-chevron-right pull-right">
-			    			<% end %></li>
-							
-						</ul>
-					</li>
-					<li class="col-sm-2">
-						<ul>
-							<li class="dropdown-header">Hot Spots</li>
-							  
-							<li class="divider"></li>
-							<li class="registered-user-action"><%= link_to published_markets_path do %>
-							View all Hot Spots<span class="glyphicon glyphicon-chevron-right pull-right">
-			    			<% end %></li>
-							
-						</ul>
-					</li>
-					<li class="col-sm-2">
-						<ul>
-							<li class="dropdown-header">Wishes</li>
-							  
-							<li class="divider"></li>
-							<li class="registered-user-action"><%= link_to wishes_path do %>
-							View all Wishes<span class="glyphicon glyphicon-chevron-right pull-right">
-			    			<% end %></li>
-							<li class="divider"></li>
-							<li class="dropdown-header">Bargains</li>
-							  
-							<li class="divider"></li>
-							<li class="registered-user-action"><%= link_to published_markets_path do %>
-							View all Bargains<span class="glyphicon glyphicon-chevron-right pull-right">
-			    			<% end %></li>
-						</ul>
-					</li>
-				</ul>
-				
-			</li>
+<script>
+	$.get( "/explore_slideshows", function( data ) {
+    	$( ".carousel-inner" ).html( data );
+  	});
+  	$.get( "/explore_categories", function( data ) {
+    	$( "#explore_categories" ).append( data );
+  	});
+  	$.get( "/explore_hotspots", function( data ) {
+    	$( "#explore_hotspots" ).append( data );
+  	});
+  	$.get( "/explore_tags", function( data ) {
+    	$( "#explore_tags" ).append( data );
+  	});
+</script>
