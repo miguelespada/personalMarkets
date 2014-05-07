@@ -1,3 +1,48 @@
-<% coupons.each do |coupon| %>
-    <%= render "coupons/coupon", :coupon => coupon %>
-<% end %>
+<div class="panel panel-default panel-table panel-table-last">
+  <div class="panel-heading table-title">Coupons</div>
+  <table class="table table-striped">
+	<tr>
+	  <th>Owner</th>
+	  <th>Photo</th>
+	  <th>Market</th>
+	  <th>Description</th>
+	  <th>Price</th>
+	  <th>Available</th>
+	  <th>Actions</th>
+	</tr>
+  
+	<% @coupons.each do |coupon| %>
+	  <%= content_tag_for(:tr, coupon) do %> 
+		<td class="col-md-2"> <%= coupon.market.user.email %> </td>
+		<td class="col-md-2"> <%= photo(coupon.photo, 120, 60) %> </td> 
+		<td class="col-md-2"> <%= link_to coupon.market.name, market_path(coupon.market) %> </td> 
+		<td class="col-md-2"> <%= coupon.description %> </td> 
+		<td class="col-md-1"> <%= coupon.price %> </td>
+		<td class="col-md-1"> <%= coupon.available %> </td> 
+		<td class="col-md-2"> 
+		  <span> <%= link_to content_tag(:i, "", class: "fa fa-refresh"), coupon_transactions_path(coupon), class: "delete btn btn-info table-button table-button-transactions" %> </span>
+		</td>
+	  <% end %>
+	<% end %>
+  </table>
+</div>
+
+<script>
+  $(document).ready(function(){
+	buttonHover(".table-button-transactions", "fa-refresh", "Transactions", 130);
+  });
+  
+  var buttonHover = function(button, icon, text, width){
+	$(button).hover(function(){
+	  $(this).html("<i class='fa " + icon + "'></i>&nbsp;&nbsp;" + text);
+	  $(this).animate({
+		width: width
+	  }, 100);
+	}, function(){
+	  $(this).html("<i class='fa " + icon + "'></i>");
+	  $(this).animate({
+		width: "40"
+	  }, 100);
+	});
+  };
+</script>
