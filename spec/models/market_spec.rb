@@ -260,4 +260,36 @@ describe Market do
       expect(result.last.name).to eq "Market 3"
     end
   end
+
+  describe "#coupon available" do
+
+    context 'without coupon' do
+
+      it "is not available" do
+        market = create(:market)
+        expect(market.coupon_available?).to be_false
+      end
+
+    end
+
+    context 'with coupon' do
+
+      it "is not available if regular user and market not pro" do
+        market = create(:market, :user => create(:user), :coupon => create(:coupon))
+        expect(market.coupon_available?).to be_false
+      end
+      
+      it "is available if regular user and market pro" do
+        market = create(:market, :user => create(:user), :coupon => create(:coupon), :pro => true)
+        expect(market.coupon_available?).to be_true
+      end
+      
+      it "is available if premium user" do
+        market = create(:market, :user => create(:user, :premium), :coupon => create(:coupon), :pro => false)
+        expect(market.coupon_available?).to be_true
+      end
+      
+    end
+
+  end
 end
