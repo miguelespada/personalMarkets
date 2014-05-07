@@ -7,7 +7,9 @@
       <div class = "market_item">
       
         <div class = "market_featured_photo">
-          <div class="badger-right badger-warning" data-badger="New"></div>
+           <div class="wrapper-ribbon-badge"><div class="ribbon-badge ribbon-badge-news">NEWS</div></div>
+           <!-- <div class="wrapper-ribbon-badge"><div class="ribbon-badge ribbon-badge-premium">PREMIUM</div></div>
+           <div class="wrapper-ribbon-badge"><div class="ribbon-badge ribbon-badge-pro">PRO</div></div> -->
           <%= photo(market.featured, 300, 150) %>
           <div class = "market_name_label">
             <%= market.name %>
@@ -15,7 +17,7 @@
           <div class = "market_description_label">
             <%= market.description %>
           </div>
-          <div class="market-like-button"><i class="fa fa-heart"></i></div>
+          <span class="like-badge"><i class="fa fa-heart"></i></span>
         </div> 
       </div>
     <% end %>
