@@ -37,6 +37,7 @@
 			</ul>
 		</li>
 		<li class="col-md-2">
+			<% if user_signed_in? %>
 			<ul class="explore_section">
 				<li class="item-title">Wishlist</li>
 				<li class="divider"></li>
@@ -52,6 +53,7 @@
 						All bargains<i class="fa fa-angle-right pull-right explore-arrow"></i>
 				</li>
 			</ul>
+			<% end %>
 		</li>
 	</ul>
 	
