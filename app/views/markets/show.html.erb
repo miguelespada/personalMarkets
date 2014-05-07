@@ -1,1 +1,66 @@
-<%= full_description(@market) %>
+<% market = @market.decorate %>
+
+<div class="row">
+  <div class="col-md-4 market-featured-photo">
+    <%= photo(market.featured, 300, 300) %>
+  </div>
+
+  <div class="market-data col-md-3">
+    <h1 class="market-name"> <%= market.name %> </h1>
+    <h4 class="market-description"> <%=  market.description %> </h4>
+    <h5 class="market-category"> <%= market.category.name %> </h5>
+    <h6 class="market-tags"> <%= market.tags %> </h6> 
+    <h6 class="market-date">  <%= market.date %> </h6> 
+    <h6 class="market-address"> <%= market.address %> </h6>
+    <h6 class="market-city"> <%= market.city %> </h6>
+    <div class="col-md-4 market-actions">
+      <%= market.show_link %>
+      <%= market.edit_link %>
+      <%= market.delete_link %>
+      <%= market.like_link %>
+      <%= market.publish_link %>
+      <%= market.archive_link %>
+      <%= market.pro_link %>
+    </div>
+  </div>
+  <%= market.coupon_section %>
+
+  <div class="market-stats">
+    <div class="market-likes-number"> Number of likes: <%= market.favorited.count %> </div>
+    <div class="market-likes"> Liked by <%= likes(market) %> </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-4 market-photos">
+    <% market.photos.each do |photo| %>
+        <%= photo(photo, 200, 100) %>
+    <% end %>
+  </div>
+
+  <div class="col-md-8">
+   <%= market.location %> 
+  </div>
+
+
+</div>
+
+
+
+<div class="social"> 
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<div class="fb-comments" data-href=<%=market_url(market.to_param)%> data-numposts="5" data-colorscheme="light"></div>
+<div class="fb-like" data-href=<%=market_url(market.to_param)%> data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+<div>

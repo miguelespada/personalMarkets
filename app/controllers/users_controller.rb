@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    rescue Exception => each 
+    rescue  => each 
       redirect_to action: 'index'
   end
 

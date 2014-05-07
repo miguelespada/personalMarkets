@@ -12,6 +12,10 @@ FactoryGirl.define do
         after(:create) { |user| user.update_role(:moderator)}
     end
 
+    trait :premium do
+        after(:create) { |user| user.update_role(:premium)}
+    end
+
     trait :admin do
         after(:create) { |user| user.update_role(:admin)}
     end

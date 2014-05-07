@@ -53,6 +53,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-webkit (1.1.0)
+      capybara (~> 2.0, >= 2.0.2)
+      json
     childprocess (0.5.3)
       ffi (~> 1.0, >= 1.0.11)
     cloudinary (1.0.68)
@@ -334,6 +337,7 @@ DEPENDENCIES
   bson_ext
   cancan
   capybara
+  capybara-webkit
   cloudinary
   coffee-rails (~> 4.0.0)
   country-select

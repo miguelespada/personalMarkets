@@ -1,7 +1,4 @@
 module MarketsHelper
-  def full_description(market)
-    render partial: "markets/shared/show", locals: {market: market.decorate }
-  end
 
   def tooltip(market)
     div_for market, class: "market-tooltip" do

@@ -1,10 +1,16 @@
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
+
 <%= simple_form_for(@special_location) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :latitude, input_html: { class: 'hidden' } %>
-    <%= f.input :longitude, input_html: { class: 'hidden' }  %>
+    <%= f.input :address, { placeholder: "Address" } %>
+    <%= f.input :city, { placeholder: "City" } %>
+    <div class = "hidden">
+      <%= f.input :latitude %>
+      <%= f.input :longitude %>
+    </div>
     <%= f.input :photo, as: :attachinary %>
   </div>
 
@@ -18,6 +24,53 @@
 
 <script>
 $( document ).ready(function() {
+  initializeAutocomplete("special_location_city");
   $('.attachinary-input').attachinary();
+  $('#hotspot-address').blur(function () {
+    updateLocationData();
+  });
 });
+
+var initializeAutocomplete = function(input_id) {
+  autocomplete = new google.maps.places.Autocomplete(
+    (document.getElementById(input_id)),
+    {
+      types: ['(cities)']
+    });
+  
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    updateLocationData();
+  });
+};
+
+var updateLocationData = function(){
+  if (addressAndCityAreFilled())
+    getLocationFromAddress(encodeAddressToUrl());
+};
+
+var addressAndCityAreFilled = function(){
+  return $('#special_location_address').val() && $('#special_location_city').val();
+};
+
+var encodeAddressToUrl = function(){
+  var encodedAddress = encodeURIComponent($('#special_location_address').val());
+  var encodedCity = encodeURIComponent($('#special_location_city').val());
+  var addressUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + encodedAddress + "%20" + encodedCity + "&sensor=false&key=AIzaSyBkhXw8kMql7c4tc1LwaMGbm9024z03AKU";
+  return addressUrl;
+};
+
+var getLocationFromAddress = function(url){
+  var lat, lng;
+  $.getJSON(url, function(data){
+    lat = data.results[0].geometry.location.lat;
+    lng = data.results[0].geometry.location.lng;
+    $("#special_location_latitude").val(lat);
+    $("#special_location_longitude").val(lng);
+    if (PM.marker) {
+      PM.map.removeLayer(PM.marker);
+    }
+    PM.addMarker([lat, lng], false);
+    PM.map.setView([lat, lng], 14);
+  });
+};
 </script>

@@ -68,7 +68,7 @@ Then(/^I should see the market in my markets list$/) do
 end
 
 Then(/^I should see it in my markets$/) do
-  click_on "My markets"
+  visit user_markets_path @user
 
   expect(page).to have_content "Dummy Market"
 end
@@ -110,7 +110,7 @@ Given(/^I have some published markets$/) do
 end
 
 When(/^I go to my markets list$/) do
-  click_on "My markets"
+  visit user_markets_path @user
 end
 
 Then(/^I see their names and descriptions$/) do
@@ -182,10 +182,6 @@ Then(/^The number of likes decrement$/) do
   end
 end
 
-# Given(/^I am not logged in$/) do
-
-# end
-
 When(/^I visit a market page$/) do
   visit market_path @some_market
 end
@@ -201,6 +197,17 @@ Then(/^I have a draft market$/) do
     :user => @user, 
     :name => "market 1", 
     :description => "market 1 desc"
+    )
+  @user.markets << @market
+end
+
+Given(/^I have a draft pro market$/) do
+  @market = create(
+    :market, 
+    :user => @user, 
+    :name => "market 1", 
+    :description => "market 1 desc",
+    :pro => true
     )
   @user.markets << @market
 end
@@ -225,6 +232,7 @@ end
 
 
 Then(/^I cannot publish it again$/) do
+  visit market_path @market
   within(:css, '.market-actions') do
     expect(page).to_not have_link "Publish"
   end
@@ -262,13 +270,6 @@ When(/^I archive it$/) do
   click_on "Archive"
 end
 
-# Then(/^It is not visible in guest markets$/) do
-#   visit published_markets_path
-#   within(:css, '.market-gallery') do
-#     expect(page).to_not have_css '.market-gallery-item'
-#   end
-# end
-
 Then(/^It is not visible in guest markets$/) do
     visit published_markets_path
     expect(page).to_not have_content "market 1"
@@ -278,4 +279,30 @@ end
 Then(/^I see it in the published markets$/) do
   visit published_markets_path
   expect(page).to have_content @market.name
+end
+
+Given(/^I have a draft market with a coupon$/) do
+  @market = create(
+    :market, 
+    :user => @user, 
+    :name => "market 1", 
+    :description => "market 1 desc",
+    :coupon => create(:coupon)
+    )
+  @user.markets << @market
+end
+
+Given(/^I have a regular market with a coupon$/) do
+  @market = create(:market, :state => "published", :user => @user, :coupon => create(:coupon))
+end
+
+When(/^I make it PRO$/) do
+  visit market_path @market
+  click_on "Go PRO"
+  step "he needs to introduce his credit card data"
+  click_on "Pay"
+end
+
+Then(/^Its coupon is visible$/) do
+  expect(page).to have_css ".market-coupon"
 end

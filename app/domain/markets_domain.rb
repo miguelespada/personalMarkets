@@ -9,7 +9,6 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
   def create_market user_id, market_params
     user = users_repo.find user_id
     market = user.add_market market_params
-    market.coupon = Coupon.new(market_params[:coupon_attributes]) if !market_params[:coupon_attributes].nil?
     market.save!
     listener.create_market_succeeded market
   rescue MarketsDomainException
@@ -18,8 +17,6 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
 
   def update_market market_id, market_params
     market = markets_repo.find market_id
-    market.coupon ||= Coupon.new
-    market.coupon.update! market_params[:coupon_attributes]
     market.update! market_params
     listener.update_suceeded market
   rescue MarketsDomainException
@@ -40,16 +37,25 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
 
   def publish_market market_id
     my_market = markets_repo.find market_id
-    my_market.publish
-    listener.publish_succeeded my_market
+    if publish_available my_market
+      my_market.publish
+      listener.publish_succeeded my_market
+    else
+      listener.publish_not_available my_market
+    end
   rescue MarketsDomainException
     listener.publish_failed market_id
   end
 
-  def delete_image market_id
+  def publish_available market
+    !market.has_coupon? || market.pro? || market.belongs_to_premium_user?
+  end
+
+  def make_pro market_id, buy_params
     market = markets_repo.find market_id
-    market.delete_featured_image
-    listener.delete_image_succeeded market
+    PaymillWrapper.create_transaction market.user.email, buy_params[:price], buy_params
+    market.go_pro
+    market
   end
 
   def user_markets user_id

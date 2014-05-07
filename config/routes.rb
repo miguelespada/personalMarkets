@@ -10,6 +10,8 @@ PopUpStores::Application.routes.draw do
     end
     post :publish
     post :archive
+    get :make_pro_payment
+    post :make_pro
     resources :comments, :only => [:create, :destroy, :update]
   end
 
@@ -19,6 +21,10 @@ PopUpStores::Application.routes.draw do
   get "/published", to: "markets#list_published_markets", as: "published_markets"
   get "/last_markets", to: "markets#list_last_markets", as: "last_markets"
 
+
+  resources :coupons, :only => [:show, :index] do
+    post :coupon_payment, :on => :member
+  end
 
   resources :users, :only => [:index, :show]
 

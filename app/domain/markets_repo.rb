@@ -1,7 +1,7 @@
 class MarketsRepo
 
   def self.initialize_market
-    Market.new
+    Market.new(coupon: Coupon.new)
   end
 
   def self.find params
@@ -10,10 +10,6 @@ class MarketsRepo
 
   def self.user_markets user
     Market.find_all user
-  end
-
-  def self.published_markets
-    Market.where(state: :published)
   end
 
 end

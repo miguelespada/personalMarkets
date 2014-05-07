@@ -1,93 +1,97 @@
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
-<div class="row">
-<%= simple_form_for [user, market], 
-    :html => {"data-tags" => "#{raw_tags(market)}", role: "form", novalidate: true}  do |f| %>
-    <div id="wizard">
-    
-        <h3>Name and description</h3>
-         <section>  
-         <%= f.input :name, input_html: { class: 'market-name' }%>
-         <%= f.input :description, :as => :text, label_html: { class: 'market-description' } %>
-         </section>
-         
-         <h3>Featured photo</h3>
-         <section>
-         <%= f.input :featured, as: :attachinary %>
-        </section>
- 
-        <h3>Category and tags</h3>
-        <section>
-        <%= f.association :category, :include_blank => false %>
+<div class="panel panel-default panel-table panel-table-last">
+  <div class="panel-heading table-title">
+    Market
+  </div>
+<div id="wizard" class="row">
+  <ul class="col-md-3">
+    <li><a href="#form-market-name-description" data-toggle="tab">Name and description</a></li>
+    <li><a href="#form-market-photo" data-toggle="tab">Featured photo</a></li>
+    <li><a href="#form-market-photos" data-toggle="tab">Photo gallery</a></li>
+    <li><a href="#form-market-category-tag" data-toggle="tab">Category and tags</a></li>
+    <li><a href="#form-market-date" data-toggle="tab">Date</a></li>
+    <li><a href="#form-market-location" data-toggle="tab">Location</a></li>
+    <li><a href="#form-market-coupon" data-toggle="tab">Coupon</a></li>
+  </ul>
+  <%= simple_form_for [user, market], 
+      :html => {"data-tags" => "#{raw_tags(market)}", role: "form", novalidate: true}  do |f| %>
 
+    <div class="tab-content col-md-9">
+      <div class="tab-pane" id="form-market-name-description"> 
+        <%= f.input :name, input_html: { class: 'market-name', placeholder: "Name" }%>
+        <%= f.input :description, :as => :text, label_html: { class: 'market-description', placeholder: "Description" } %>
+      </div>
+      
+      <div class="tab-pane" id="form-market-photo">
+        <%= f.input :featured, as: :attachinary %>
+      </div>
+    
+      <div class="tab-pane" id="form-market-photos">
+        <%= f.input :photos, as: :attachinary %>
+      </div>
+
+      <div class="tab-pane" id="form-market-category-tag">
+        <%= f.association :category, :include_blank => false %>
         <%= f.input :tags, input_html: { class: 'tm-input', placeholder: "Tags" } %>
         <p id="tags-container"></p>
-        </section>
-
-
-        <h3>Date</h3>
-        <section>
+      </div>
+  
+      <div class="tab-pane" id="form-market-date">
         <%= f.input :date, input_html: { class: 'hidden' }  %> 
-        <div id="datepicker"><div></div>
+        <div id="datepicker"></div>
+      </div>
+  
+      <div class="tab-pane" id = "form-market-location" > 
+        <%= f.input :address, { placeholder: "Address" } %>
+        <%= f.input :city, { class: 'cities', placeholder: "City" } %>
+        <div class = "hidden">
+        <%= f.input :longitude %>
+        <%= f.input :latitude %>
         </div>
-
-        </section>
-
-        <h3>Location</h3>
-        <section id = "form-market-location" > 
-          <%= f.input :address %>
-          <%= f.input :city, { class: 'cities', placeholder: "Ciudad" } %>
-          <div class = "hidden">
-          <%= f.input :longitude %>
-          <%= f.input :latitude %>
-          </div>
-        </section>
-
-        <h3>Cupon</h3>
-        <section id = "form-market-coupon" > 
-           <%= f.simple_fields_for :coupon do |c| %>
-            <%= c.input :description %>
-            <%= c.input :price %>
-            <%= c.input :available %>
-            <%= c.input :photo, as: :attachinary %>
-          <% end %>
-        </section>
-        <%= f.button :submit, class: 'btn hidden', id: 'market-save-button' %>
+      </div>
+  
+      <div class="tab-pane" id = "form-market-coupon" > 
+         <%= f.simple_fields_for :coupon do |c| %>
+          <%= c.input :description, { placeholder: "Description" } %>
+          <%= c.input :price, { placeholder: "Price" } %>
+          <%= c.input :available, { placeholder: "Available" } %>
+          <%= c.input :photo, as: :attachinary %>
+        <% end %>
+      </div>
+      <div id="small-map-container"><%= render "markets/shared/mapsmall" %></div>
     </div>
+    <%= f.button :submit, class: 'btn hidden', id: 'market-save-button' %>
+  </div>
 <% end %>
-<div>
-<div><input id="autocomplete" placeholder="Enter a city" type="text" /></div>
-<%= render "markets/shared/mapsmall" %>
-
-</div>
 </div>
 
 <script>
 
 $( document ).ready(function() {
-      initialize();
+      initializeAutocomplete('market_city');
+
+      $('#wizard').bootstrapWizard({
+        tabClass: 'nav nav-pills nav-stacked',
+        onTabChange: function(){
+          locationTabActive();
+        }
+      });
   
       $(".add_market_button").addClass("btn-success");
       $(".add_market_button").removeClass("btn-info");
       $(".add_market_button").val("Save Market");
-      $(".button_to").effect("bounce", {times: 10, distance: 10}, 4000);
       $(".add_market_button").click(function(){
         $("#market-save-button").click(); 
         return false;
       });
 
-      $("#wizard").steps({
-          headerTag: "h3",
-          bodyTag: "section",
-          transitionEffect: "slideLeft",
-          stepsOrientation: 1,
-          enableFinishButton: false,
-          enablePagination: false,
-          enableAllSteps: true
+      $("input").change(function(){
+        formChanged();
       });
 
       getDatesSelected($('#market_date').val());
 
-      $('#datepicker div').datepicker({
+      $('#datepicker').datepicker({
           weekStart: 1,
           startDate: "today",
           endDate: "+1m",
@@ -96,10 +100,11 @@ $( document ).ready(function() {
           todayHighlight: true
       }).on('changeDate', function(e){
           fillInputWithDates(e);
+          formChanged();
       });
 
       if (areDatesSelected($('#market_date').val()))
-        $('#datepicker div').datepicker('setDates', getDatesSelected($('#market_date').val()));
+        $('#datepicker').datepicker('setDates', getDatesSelected($('#market_date').val()));
 
    $('.attachinary-input').attachinary();
 
@@ -135,47 +140,31 @@ $( document ).ready(function() {
     source: tags.ttAdapter(),
   });
 
-  var theCities = ['Madrid', 'Barcelona', 'Bilbao', 'Valencia'];
- 
-
-  // constructs the suggestion engine
-  var cities = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    // `states` is an array of state names defined in "The Basics"
-    local: $.map(theCities, function(city) { return { value: city }; })
-  });
-   
-  // kicks off the loading/processing of `local` and `prefetch`
-  cities.initialize();
-
-  $('#market_city').typeahead({
-    hint: true,
-    highlight: true,
-    minLength: 1
-  },
-  {
-    name: 'cities',
-    displayKey: 'value',
-    // `ttAdapter` wraps the suggestion engine in an adapter that
-    // is compatible with the typeahead jQuery plugin
-    source: cities.ttAdapter()
-  });
   $('#market_address').blur(function () {
-    updateLocationData();
-  });
-
-  $('#market_city').blur(function () {
     updateLocationData();
   });
 });
 
-var initialize = function() {
+var locationTabActive = function(){
+  if ($("#form-market-location").hasClass("active")){
+    $("#small-map-container").show();
+  }
+  else{
+    $("#small-map-container").hide();
+  }
+  
+};
+
+var initializeAutocomplete = function(input_id) {
   autocomplete = new google.maps.places.Autocomplete(
-    (document.getElementById('autocomplete')),
+    (document.getElementById(input_id)),
     {
       types: ['(cities)']
     });
+  
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    updateLocationData();
+  });
 };
 
 var areDatesSelected = function(datesString){
@@ -225,9 +214,26 @@ var getLocationFromAddress = function(url){
     lng = data.results[0].geometry.location.lng;
     $("#market_latitude").val(lat);
     $("#market_longitude").val(lng);
+    if (PM.marker) {
+      PM.map.removeLayer(PM.marker);
+    }
     PM.addMarker([lat, lng], false);
     PM.map.setView([lat, lng], 14);
   });
+};
+
+var formChanged = function(){
+  $(".add_market_button").addClass("btn-warning");
+  $(".add_market_button").removeClass("btn-success");
+  $(".button_to").exBounce();
+};
+
+$.fn.exBounce = function(){
+  var self = this;
+  (function runEffect(){
+      self.effect("bounce", { times:3, distance: 5 }, 1000, runEffect);
+  })();
+  return this;
 };
 
 </script>

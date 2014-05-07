@@ -55,8 +55,6 @@ class MarketsController < ApplicationController
 
   def new
     @market = domain.initialize_market
-    @market.coupon = Coupon.new
-    @market.date = Date.today.strftime("%d/%m/%Y")
   end
 
   def show
@@ -82,15 +80,6 @@ class MarketsController < ApplicationController
         format.json {render json: markets}
         format.html
     end
-  end
-
-  def delete_image
-    authorize! :delete_image, domain.get_market(params[:market_id])
-    domain.delete_image params[:market_id]
-  end
-
-  def delete_image_succeeded market
-    redirect_to market, notice: "Image deleted successfully"
   end
 
   def create
@@ -119,6 +108,11 @@ class MarketsController < ApplicationController
     domain.publish_market params[:market_id]
   end
 
+  def publish_not_available market
+    flash[:error] = "In order to publish a market with a coupon you should make it PRO or become PREMIUM. Otherwise the coupon won't be available."
+    redirect_to market
+  end
+
   def publish_succeeded market
     redirect_to market, notice: "Market successfully published."
   end
@@ -139,6 +133,17 @@ class MarketsController < ApplicationController
 
   def update_failed market
     redirect_to market, notice: "Market update failed."
+  end
+
+  ProPayment = Struct.new(:market, :total_price)
+
+  def make_pro_payment
+    @pro_payment = ProPayment.new Market.find(params[:market_id]), 295
+  end
+
+  def make_pro
+    market = domain.make_pro params[:id], buy_params
+    redirect_to market, notice: "Your market is now PRO."
   end
 
   private
@@ -169,7 +174,10 @@ class MarketsController < ApplicationController
         :user_id,
         :category_id,
         :location_id,
-        :coupon_attributes => [:id, :description, :price, :available, :photo]
+        :signature, :created_at, :tags, :bytes, :type, :etag, :url, :secure_url,
+        :coupon_attributes => [:id, :description, :price, :available, :photo],
+        :featured => [],
+        :photos => []
         )
     end
 
@@ -190,4 +198,11 @@ class MarketsController < ApplicationController
       Category.find(params[:category_id])
     end
 
+    def buy_params
+      buy_params = {
+        :name => params[:name],
+        :token => params[:paymill_card_token],
+        :price => params[:total_price]
+      }
+    end
 end

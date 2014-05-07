@@ -13,24 +13,10 @@ PM.initializeSmallMap = function() {
   PM.map.addLayer(PM.mapTiles);
 };
 
-PM.checkIfLocationSet = function(){
-  var originLat = $("#special_location_latitude").val();
-  var originLng = $("#special_location_longitude").val();
-
-  if (PM._coordinatesSet(originLat, originLng)){
-    PM.addMarker([parseFloat(originLat), parseFloat(originLng)], true);
-    PM.map.setView([parseFloat(originLat), parseFloat(originLng)], 14);
-  }
-  else {
-    PM.clickToUpdateMarker();
-    PM.setViewWithUserLocation();
-  }
-};
-
-PM.setMarker = function(){
-  var marketLat = $(".market-latitude").html();
-  var marketLng = $(".market-longitude").html();
-  PM.addMarker([parseFloat(marketLat), parseFloat(marketLng)], false);
+PM.setMarker = function(lat, lng){
+  var marketLat = lat;
+  var marketLng = lng;
+  PM.addMarker([parseFloat(marketLat), parseFloat(marketLng)]);
   PM.map.setView([parseFloat(marketLat), parseFloat(marketLng)], 14);
 }
 
@@ -38,80 +24,30 @@ PM._coordinatesSet = function(latitude, longitude) {
   return latitude !== "" && longitude !== "";
 };
 
-PM.addMarker = function (latlng, canbechanged){
+PM.addMarker = function (latlng){
   PM.marker = L.marker(latlng,{
     icon: L.mapbox.marker.icon(
       {'marker-color': '#48a',
        'marker-symbol' : 'circle',
        'marker-size' : 'medium'}),
-    draggable: canbechanged
+    draggable: false
   });
-
   PM.marker.addTo(PM.map);
-  if (canbechanged){
-    PM.updateLocation();
-    PM.dragToUpdateMarker();
-    PM.clickToUpdateMarker();
-  }
-};
-
-PM.clickToUpdateMarker = function(){
-  PM.map.on('click', function(event){
-    if (PM.marker) {
-      PM.map.removeLayer(PM.marker);
-    }
-
-    PM.addMarker(event.latlng, true);
-  });
-};
-
-PM.dragToUpdateMarker = function() {
-  PM.marker.on('dragend',function(){
-    PM.updateLocation();
-  });
-};
-
-PM.updateLocation = function(){
-  $("#special_location_latitude").val(PM.marker.getLatLng().lat);
-  $("#special_location_longitude").val(PM.marker.getLatLng().lng);
-  PM.getAddress(PM.marker.getLatLng().lng, PM.marker.getLatLng().lat);
-};
-
-PM.getAddress = function(lng, lat){
-  DOMAIN.getAddressJson(lng, lat, PM.updateAddress);
-};
-
-PM.updateAddress = function(data){
-  PM.address = "Not Available";
-
-  if (PM._validAddress(data)) {
-    PM._setAddress(data);
-  }
-
-  $("#market_address").val(PM.address);
-};
-
-PM._setAddress = function(data) {
-  var street = data.results[0][0].name;
-  var city = data.results[0][1].name;
-  var province = data.results[0][2].name;
-  var country = data.results[0][3].name;
-  PM.address = street + ", " + city + ", " + province + ", " + country;
-};
-
-PM._validAddress = function(data) {
-  return data.results[0].length == 4;
 };
 
 $(document).ready(function(){
   if ($('#map-small').is(':visible'))
     PM.initializeSmallMap();
-  /*if ($('#form-market-location').is(':visible'))
-    PM.checkIfLocationSet();*/
+  if ($('.edit_market').is(':visible'))
+    PM.setMarker($(".market_latitude > .controls > input").val(), 
+                 $(".market_longitude > .controls > input").val());
+  if ($('.new_market').is(':visible'))
+    PM.setViewWithUserLocation();
   if ($('.market-location').is(':visible'))
-    PM.setMarker();
-  if ($('.new_special_location').is(':visible'))
-    PM.clickToUpdateMarker();
+    PM.setMarker($(".market-latitude").html(), $(".market-longitude").html());
   if ($('.edit_special_location').is(':visible'))
-    PM.checkIfLocationSet();
+    PM.setMarker($(".special_location_latitude > .controls > input").val(), 
+                 $(".special_location_longitude > .controls > input").val());
+  if ($('.new_special_location').is(':visible'))
+    PM.setViewWithUserLocation();
 });

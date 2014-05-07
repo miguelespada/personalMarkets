@@ -24,6 +24,10 @@ Given(/^I have one market$/) do
   @user.markets << @market
 end
 
+Given(/^I have one pro market$/) do
+  @market = create(:market, :user => @user, :coupon => Coupon.new, :pro => true)
+  @user.markets << @market
+end
 
 Given(/^there are some users$/) do
   @user_0 = create(:user)
@@ -35,7 +39,7 @@ end
 Given(/^There is a market with available coupons$/) do
   @market_owner = create(:user)
   @coupon = create(:coupon)
-  @market = create(:market, :user => @market_owner, :coupon => @coupon)
+  @market = create(:market, :user => @market_owner, :coupon => @coupon, :pro => true)
   @coupon.market = @market
   @coupon.save
 end

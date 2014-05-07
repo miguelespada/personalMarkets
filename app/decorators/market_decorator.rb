@@ -35,14 +35,6 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
-  def delete_photo_link
-    if can? :delete_image, market
-      content_tag :div, class: "market-featured-photo-actions" do
-        link_to "Delete", delete_image_path(market), { method: :post }
-      end
-    end
-  end
-
   def location
     if can? :see_location, Market
       render partial: 'markets/shared/location', locals: { market: market }
@@ -52,6 +44,12 @@ class MarketDecorator < Draper::Decorator
   def comment_form
     if can? :comment, market
       render partial: 'layouts/shared/comment_form', locals: { market: market }
+    end
+  end
+
+  def coupon_section
+    if market.coupon_available?
+      render partial: "market_coupon", locals: { market: self }
     end
   end
 
@@ -119,6 +117,10 @@ class MarketDecorator < Draper::Decorator
 
   def qr_code_link
     link_to("QR", user_market_path(market.user, market, :svg))
+  end
+
+  def pro_link
+    link_to "Go PRO", market_make_pro_payment_path(market), class: "pro market-action" unless market.pro?
   end
 
   private 

@@ -19,7 +19,7 @@
 //= require jquery.flexslider-min
 //= require vegas
 //= require moment
-//= require jquery.steps.min
+//= require jquery.bootstrap.wizard
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es
 //= require tagmanager

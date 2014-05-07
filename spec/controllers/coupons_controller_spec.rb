@@ -7,6 +7,10 @@ describe CouponsController do
   let(:user) { create(:user) }  
   let(:second_user) { create(:user) } 
   let(:admin) { create(:user, :admin) } 
+  let(:paymill_wrapper) { double }
+  let(:token) { "card_token" }
+  let(:name) { "Alejandro Bayo" }
+  let(:buy_params) { { name: name, token: token } } 
 
   context "authorized user" do 
     before(:each) do
@@ -18,42 +22,64 @@ describe CouponsController do
     end
 
     describe "Buy 'coupon'" do
-      it "creaes a transacrion" do
-        CouponTransaction.count.should eq 0
-        post "buy", {id: coupon.to_param, number: 1}, valid_session
-        CouponTransaction.count.should eq 1
+
+      before do
+        stub_const("PaymillWrapper", paymill_wrapper)
       end
 
-      it "is not allowed to buy zero coupons" do
-        post "buy", {id: coupon.to_param, number: 0}, valid_session
-        expect(response.response_code).to eq 401
-        CouponTransaction.count.should eq 0
+      context 'with right params' do
+
+        before do
+          paymill_wrapper.should_receive(:create_transaction).and_return(double(id: "transaction_id"))
+        end
+        
+        it "creates a transaction" do
+          CouponTransaction.count.should eq 0
+          post "buy", {id: coupon.to_param, buy_params: buy_params, quantity: 1}, valid_session
+          CouponTransaction.count.should eq 1
+        end
+
+        it "decreases the number of available coupons" do
+          post "buy", {id: coupon.to_param, buy_params: buy_params, quantity: 2}, valid_session
+          assigns(:coupon).available.should eq 3
+          CouponTransaction.count.should eq 1
+        end
+
+        it "creates a correct transaction" do
+          post "buy", {
+            id: coupon.to_param, 
+            buy_params: buy_params, 
+            quantity: 2
+            }, valid_session
+          CouponTransaction.first().number.should eq 2
+          CouponTransaction.first().user.should eq user
+          CouponTransaction.first().coupon.should eq coupon
+        end
+
       end
 
-      it "is not allowed to buy negative coupons" do
-        post "buy", {id: coupon.to_param, number: -1}, valid_session
-        expect(response.response_code).to eq 401
-        CouponTransaction.count.should eq 0
+      context 'with wrong params' do
+        
+        it "is not allowed to buy zero coupons" do
+          post "buy", {id: coupon.to_param, paymill_card_token: token, number: 0}, valid_session
+          expect(response.response_code).to eq 401
+          CouponTransaction.count.should eq 0
+        end
+
+        it "is not allowed to buy negative coupons" do
+          post "buy", {id: coupon.to_param, paymill_card_token: token, number: -1}, valid_session
+          expect(response.response_code).to eq 401
+          CouponTransaction.count.should eq 0
+        end
+
+        it "is not allowed to buy more than available" do
+          post "buy", {id: coupon.to_param, paymill_card_token: token, number: 20}, valid_session
+          expect(response.response_code).to eq 401
+          CouponTransaction.count.should eq 0
+        end
+
       end
 
-      it "is not allowed to buy more than available" do
-        post "buy", {id: coupon.to_param, number: 20}, valid_session
-        expect(response.response_code).to eq 401
-        CouponTransaction.count.should eq 0
-      end
-
-      it "decreases the number of available coupons" do
-        post "buy", {id: coupon.to_param, number: 2}, valid_session
-        assigns(:coupon).available.should eq 3
-        CouponTransaction.count.should eq 1
-      end
-
-      it "creates a correct transaction" do
-        post "buy", {id: coupon.to_param, number: 2}, valid_session
-        CouponTransaction.first().number.should eq 2
-        CouponTransaction.first().user.should eq user
-        CouponTransaction.first().coupon.should eq coupon
-      end
     end
   end
 
@@ -112,7 +138,7 @@ describe CouponsController do
       controller.stub(:current_user).and_return(user)
     end
     it "is cannot buy" do
-      post "buy", {id: coupon.to_param, number: 1}, valid_session
+      post "buy", {id: coupon.to_param, paymill_card_token: token, number: 1}, valid_session
       expect(response.response_code).to eq 403
       CouponTransaction.count.should eq 0
     end

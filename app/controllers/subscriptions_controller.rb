@@ -1,8 +1,7 @@
 class SubscriptionsController < ApplicationController
 
   def create
-    SubscriptionDomain.subscribe current_user.email, subscription_params
-    UsersDomain.update_role current_user.id, "premium"
+    SubscriptionDomain.subscribe current_user, subscription_params
     redirect_to user_path(current_user), notice: "You have become premium successfully."
   rescue SubscriptionDomainException => e
     flash[:error] = "Something went wrong while subscribing (#{e.message})."

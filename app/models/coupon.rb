@@ -8,14 +8,18 @@ class Coupon
   field :available, type: Integer
   has_attachment :photo, accept: [:jpg, :png, :gif]
 
-
-  def buy!(user, number)
+  def check_buy number
     raise ArgumentError, "Incorrect number of coupons" unless number > 0 && number <= available
+  end
+
+  def buy! user, number, paymill_transaction_id
+    check_buy number
     transaction = CouponTransaction.new
     transaction.user = user
     transaction.coupon = self
     transaction.number = number
-    transaction.save 
+    transaction.paymill_transaction_id = paymill_transaction_id
+    transaction.save
     self.available -= number
     self.update
   end

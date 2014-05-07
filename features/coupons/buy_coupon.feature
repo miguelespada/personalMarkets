@@ -1,4 +1,5 @@
-@coupons @buy_coupon
+@coupons @buy_coupon 
+@javascript
 Feature: Buy market coupon
   In order to get extra services from a market
   As registered user
@@ -9,12 +10,13 @@ Feature: Buy market coupon
     And There is a market with available coupons
 
   Scenario:
-    And I buy some coupons
+    When I buy some coupons
     Then I should be notified that the coupons has been bought
     And I should see the coupon transactions in my out transactions
 
   Scenario:
     When I buy some coupons
+    Then I should be notified that the coupons has been bought
     Then I sign in as the market owner  
     Then I should see the coupon transactions in my in transactions
 
