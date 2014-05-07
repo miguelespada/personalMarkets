@@ -104,6 +104,14 @@ class MarketsController < ApplicationController
     redirect_to market, notice: "Market successfully archived."
   end
 
+  def unpublish
+    domain.unpublish_market params[:market_id]
+  end
+
+  def unpublish_succeeded market
+    redirect_to market, notice: "Market successfully unpublished."
+  end
+
   def publish
     domain.publish_market params[:market_id]
   end

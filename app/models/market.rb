@@ -19,6 +19,7 @@ class Market
   field :date, type: String
   field :state, type: String
   field :pro, type: Boolean
+  field :publish_date, type: DateTime
 
   belongs_to :category
   belongs_to :user, class_name: "User", inverse_of: :markets
@@ -68,14 +69,24 @@ class Market
     self.state != "published"
   end
 
+  def can_be_unpublished
+    !can_be_published
+  end
+
   def archive
     self.state = "archived"
-    self.save
+    self.save!
   end
 
   def publish
     self.state = "published"
-    self.save
+    self.publish_date ||= Time.now
+    self.save!
+  end
+
+  def unpublish
+    self.state = "draft"
+    self.save!
   end
 
   def like(user)

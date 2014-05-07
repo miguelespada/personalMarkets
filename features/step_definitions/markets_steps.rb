@@ -306,3 +306,18 @@ end
 Then(/^Its coupon is visible$/) do
   expect(page).to have_css ".market-coupon"
 end
+
+Given(/^my published market$/) do
+  step "I am logged in"
+  @market = create(:market, :state => "published", :user => @user, :coupon => create(:coupon))
+end
+
+When(/^I unpublish it$/) do
+  visit market_path @market
+  click_on "Unpublish"
+end
+
+Then(/^It does not appear in navegable markets$/) do
+  visit published_markets_path
+  expect(page).to_not have_content "My market"
+end

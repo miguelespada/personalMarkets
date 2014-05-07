@@ -35,6 +35,14 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
     listener.archive_failed market_id
   end
 
+  def unpublish_market market_id
+    my_market = markets_repo.find market_id
+    my_market.unpublish
+    listener.unpublish_succeeded my_market
+  rescue MarketsDomainException
+    listener.unpublish_failed market_id
+  end
+
   def publish_market market_id
     my_market = markets_repo.find market_id
     if publish_available my_market

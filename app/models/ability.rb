@@ -27,6 +27,10 @@ class Ability
             @user.owns(market) && market.can_be_published
         end
 
+        can :unpublish, Market, Market do |market|
+            @user.owns(market) && market.can_be_unpublished
+        end
+
         can :destroy, Comment, :author => @user.email
         
         can :manage, Wish, Wish do |wish|
