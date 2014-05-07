@@ -9,6 +9,7 @@ PopUpStores::Application.routes.draw do
       get :search, action: "search"
     end
     post :publish
+    post :publish_anyway
     post :archive
     get :make_pro_payment
     post :make_pro

@@ -39,7 +39,7 @@ class Market
   scope :with_category, lambda {|category| where(category: category)}
 
   def coupon_available?
-    publish_available?
+    self.has_coupon? && (self.pro? || self.belongs_to_premium_user?)
   end
 
   def publish_available?

@@ -47,6 +47,14 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
     listener.publish_failed market_id
   end
 
+  def publish_market! market_id
+    my_market = markets_repo.find market_id
+    my_market.publish
+    listener.publish_succeeded my_market
+  rescue MarketsDomainException
+    listener.publish_failed market_id
+  end
+
   def publish_available market
     !market.has_coupon? || market.pro? || market.belongs_to_premium_user?
   end
