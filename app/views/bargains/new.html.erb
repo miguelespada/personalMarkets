@@ -1,5 +1,9 @@
-<h1>New bargain</h1>
+<div class = "home_gallery_title"><i class="fa fa-bullhorn fa-2x"></i> <br/>Bargains</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', user_bargains_path(current_user) %>
+<div class="col-md-offset-9">
+<%= link_to user_bargains_path(current_user) do %>
+	<i class="fa fa-reply fa-3x"></i><br/>Go Back
+<% end %>
+</div>
