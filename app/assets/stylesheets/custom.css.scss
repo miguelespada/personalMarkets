@@ -29,9 +29,9 @@
 }
 
 #search_bar{
-  padding-top:13px;
+  padding-top:10px;
   padding-left:10px;
-  width: 200px;
+  width: 155px;
 }
 
 .search-nav-bar li{
@@ -39,11 +39,8 @@
   padding-left:10px;
 }
 
-#search_bar .form-control{
-  height: 25px;
-}
 .nav .btn{
-  margin-top:7px;
+  margin-top:5px;
 }
 
 body {
@@ -525,5 +522,9 @@ border-color: #d43f3a;
 
 .explore_section{
   margin-bottom:20px !important;
+}
+
+#search_button{
+  margin-top: 0px !important;
 }
 
