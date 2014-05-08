@@ -12,7 +12,7 @@
   
     <% @suggested.each do |tag| %>
       <%= content_tag_for(:tr, tag) do %> 
-        <td class="col-md-3"> <%= cl_image_tag(tag.photo.path, :size => '120x60', :crop => :fill) if !tag.photo.nil? %> </td>
+        <td class="col-md-3"> <%= photo(tag.photo, 120, 60) %> </td>
         <td class="col-md-3"> <%= link_to(tag.name, tag_markets_path(tag.name)) %> </td> 
         <td class="col-md-3 market-counter"> <%= market_counter(tag.name) %> </td>
         <td class="col-md-3"> 

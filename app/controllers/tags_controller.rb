@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   load_resource :only => [:show, :edit, :destroy, :update]
-  authorize_resource :except => [:index, :show, :gallery]
+  authorize_resource :except => [:index, :show, :gallery, :explore_tags]
   
   def index
     @suggested = Tag.all

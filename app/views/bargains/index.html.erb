@@ -12,7 +12,7 @@
   
     <% @bargains.each do |bargain| %>
       <%= content_tag_for(:tr, bargain) do %> 
-        <td class="col-md-4"> <%= cl_image_tag(bargain.photo.path, :size => '120x60', :crop => :fill) if !bargain.photo.nil? %> </td>
+        <td class="col-md-4"> <%= photo(bargain.photo, 120, 60) %> </td>
         <td class="col-md-4"> <%= bargain.description %> </td>
         <td class="col-md-4"> 
           <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), bargain, :method => :delete, class: "delete btn btn-danger table-button table-button-delete" %> </span>
@@ -23,7 +23,6 @@
   </table>
 </div>
 
-<%= render "users/go_back_dashboard" %>
 
 <script>
   $(document).ready(function(){

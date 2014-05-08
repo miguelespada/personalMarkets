@@ -3,7 +3,7 @@
     <% if !wish.photo.nil? %>
       <div class = "home_gallery_item wish_item">
         <div class = "home_gallery_featured_photo wish_featured_photo" data-name="<%= wish.description %>">
-          <%= cl_image_tag(wish.photo.path, :size => '300x150', :crop => :fill) %>
+          <%= photo(wish.photo, 300, 150) %>
           <div class = "home_gallery_label wish_label">
             <%= wish.description %>
           </div>
