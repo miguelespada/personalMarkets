@@ -86,6 +86,8 @@ class Ability
       can [:manage], User
 
       can [:manage], Coupon
+      can [:list_user_transactions], User
+      can [:list_market_transactions], Market
 
     end
   end
