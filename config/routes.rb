@@ -53,7 +53,6 @@ PopUpStores::Application.routes.draw do
   ### Coupons
   resources :coupons, :only => [:show, :index]
   post "/coupons/:id", to: "coupons#buy", as: "buy_coupon"
-  get "/users/:id/coupons", to: "users#list_coupons", as: "list_coupons"
   get "/coupons/:user_id/bought_coupons_by_user", to: "coupons#bought_coupons_by_user", as: "bought_coupons_by_user"
   get "/coupons/:market_id/sold_coupons_by_market", to: "coupons#sold_coupons_by_market", as: "sold_coupons_by_market"
   ###
