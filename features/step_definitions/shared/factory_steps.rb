@@ -44,6 +44,12 @@ Given(/^There is a market with available coupons$/) do
   @coupon.save
 end
 
+Given(/^There is someone else's market$/) do
+  @market = create(:market, 
+      :latitude => "40", 
+      :longitude=> "-3.7")
+end
+
 Given(/^There are some tags/) do
   @tag = create(:tag,
               :name => "Dummy Tag")
