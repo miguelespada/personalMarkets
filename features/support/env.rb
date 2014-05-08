@@ -84,10 +84,10 @@ end
 module Login
   def log_in_as user
     visit "/"
-    click_on "Log in"
+    find(".sign-in-link").click
     fill_in "Email",  with: user.email
     fill_in "Password",  with: "password", :match => :prefer_exact
-    click_on "Sign in"
+    find(".sign-in-button").click
   end
 end
 

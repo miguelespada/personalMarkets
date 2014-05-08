@@ -1,6 +1,6 @@
 Given(/^I sign up$/) do
   visit "/"
-  click_on "Log in"
+  click_on "Sign in"
   within(:css, ".user-session-menu") do
     click_on "Sign up"
   end
