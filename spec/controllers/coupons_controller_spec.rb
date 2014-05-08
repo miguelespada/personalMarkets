@@ -108,10 +108,18 @@ describe CouponsController do
       end
     end
     describe "list of sold transactions" do
+      before(:each) do
+        user_market.coupon = first_coupon
+        market.coupon = second_coupon
+        create(:couponTransaction, user: user, coupon: first_coupon) 
+        create(:couponTransaction, user: market_owner, coupon: second_coupon)
+      end
+
       it "is allowed for market owner" do
         sign_in :user, market_owner
         get :sold_coupons_by_market, {market_id: user_market.id}, valid_session
         expect(response.response_code).to eq 200
+        expect(assigns(:transactions).count).to eq 1
       end
       it "it is not allowed for guest" do
         get :sold_coupons_by_market, {market_id: user_market.id}, valid_session
@@ -130,6 +138,7 @@ describe CouponsController do
         sign_in :user, user
         get :bought_coupons_by_user, {user_id: user.id}, valid_session
         expect(response.response_code).to eq 200
+        expect(assigns(:transactions).count).to eq 1
       end
       it "it is not allowed for guest" do
         get :bought_coupons_by_user, {user_id: user.id}, valid_session
