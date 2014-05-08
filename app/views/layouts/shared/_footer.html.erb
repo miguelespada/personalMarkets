@@ -33,17 +33,6 @@
 
 <script>
 	$(document).ready(function(){
-    $(".contact-us a").popover({
-    	html: true,
-      title:'<input type="text" class="form-control input-title input-group" placeholder="Say something...">',
-      placement: 'top',
-      content:'<textarea type="text" rows="10" class="form-control input-content">'
-    });
-
-    $('.contact-us a').on('click', function() {
-      $(this).parent().toggleClass('active');
-    });
-
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(pos_success, pos_error);
     }
