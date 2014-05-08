@@ -96,28 +96,6 @@ describe CouponsController do
       end
     end
 
-   describe "List transactions" do
-      before(:each) do
-        user_market.coupon = first_coupon
-        market.coupon = second_coupon
-        create(:couponTransaction, user: user, coupon: first_coupon) 
-        create(:couponTransaction, user: market_owner, coupon: second_coupon)
-      end
-      it "shows out transactions 1" do
-        sign_in :user, user
-        get :list_transactions, {user_id: user.to_param}, valid_session
-        expect(assigns(:in_transactions).count).to eq 0
-        expect(assigns(:out_transactions).count).to eq 1
-      end
-      it "shows out transactions 2" do
-        sign_in :user, market_owner
-        get :list_transactions, {user_id: market_owner.to_param}, valid_session
-        expect(assigns(:in_transactions).count).to eq 1
-        expect(assigns(:out_transactions).count).to eq 1
-      end
-    end
-  end
-
   describe "Show 'coupon'" do
     let(:market_owner) { create(:user) }  
     let(:user_market) { create(:market, user: market_owner) } 
@@ -142,13 +120,11 @@ describe CouponsController do
       expect(response.response_code).to eq 403
       CouponTransaction.count.should eq 0
     end
-    it "is cannot list transactions" do
-      get :list_transactions, {user_id: user.to_param}, valid_session
-      expect(response.response_code).to eq 403
-    end
   end
 
 
   describe "transactions"
-    xit "list the coupon transactions"
+    xit ":sold_coupons_by_market_path"
+    xit ":bought_coupons_by_user"
+
 end

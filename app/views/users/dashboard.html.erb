@@ -12,7 +12,7 @@
           <%= link_to user_likes_path(current_user), class:"btn btn-warning btn-lg" do %>
             <i class="fa fa-heart-o fa-5x"></i> <br/> Likes
           <% end %>
-			    <%= link_to list_coupons_path(current_user), class:"btn btn-success btn-lg" do %>
+			    <%= link_to bought_coupons_by_user_path(current_user), class:"btn btn-success btn-lg" do %>
 					  <i class="fa fa-ticket fa-5x"></i> <br/> Coupons
 			    <% end %>
 			    <%= link_to user_dashboard_path(current_user), class:"btn btn-info btn-lg" do %>

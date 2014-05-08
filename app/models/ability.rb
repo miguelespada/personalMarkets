@@ -42,7 +42,6 @@ class Ability
 
         can :buy, Coupon
         can :coupon_payment, Coupon
-        can :list_transactions, Coupon
 
         can :show, User, :user_id => @user.id
         
@@ -67,9 +66,7 @@ class Ability
       can :destroy, Comment
       can [:edit, :update], Market
       can [:list], Coupon
-      can :see_transactions, User
       can :buy, Coupon
-      can :list_transactions, Coupon
 
       can [:manage], Wish
       can [:manage], Bargain
