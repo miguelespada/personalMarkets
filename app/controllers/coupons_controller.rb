@@ -1,7 +1,7 @@
 class CouponsController < ApplicationController
 
-  load_resource :only => [:show, :buy, :coupon_payment, :transactions]
-  authorize_resource :except => [:show, :index, :transactions]
+  load_resource :only => [:show, :buy, :coupon_payment]
+  authorize_resource :except => [:show, :index, :bought_coupons_by_user, :sold_coupons_by_market]
   
   def index
     @coupons = Coupon.all
@@ -25,16 +25,14 @@ class CouponsController < ApplicationController
       render :status => :unauthorized, :text => "Incorrect number of coupons #{e.message}." 
   end
   
-  def list_transactions
-    @out_transactions = CouponTransaction.where(user: current_user)  
-    markets ||= Market.where(user: current_user)
-    @in_transactions = CouponTransaction.transactions(markets)
-    render "transactions"
+  def bought_coupons_by_user
+    user = User.find(params[:user_id])
+    @transactions = CouponTransaction.where(user: user) 
   end
 
-  def transactions
-    @out_transactions = @coupon.transactions
-    @in_transactions = CouponTransaction.where(coupon: @coupon, user: current_user)  
+  def sold_coupons_by_market
+    market = Market.find(params[:market_id])
+    @transactions = market.coupon.transactions
   end
 
   private

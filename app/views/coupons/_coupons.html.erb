@@ -19,9 +19,6 @@
 		<td class="col-md-2"> <%= coupon.description %> </td> 
 		<td class="col-md-1"> <%= coupon.price %> </td>
 		<td class="col-md-1"> <%= coupon.available %> </td> 
-		<td class="col-md-2"> 
-		  <span> <%= link_to content_tag(:i, "", class: "fa fa-refresh"), coupon_transactions_path(coupon), class: "delete btn btn-info table-button table-button-transactions" %> </span>
-		</td>
 	  <% end %>
 	<% end %>
   </table>

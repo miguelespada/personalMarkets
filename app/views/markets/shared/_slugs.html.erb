@@ -43,7 +43,7 @@
       <td> <%= market.latitude %> </td>
       <td> <%= market.longitude %> </td>
       <td> <%= market.date %> </td>
-      <td> <%= market.coupon.description if market.coupon? %> </td>
+      <td> <%= link_to  market.coupon.description, coupon_path(market.coupon) if market.coupon? %> </td>
       <td> <%= market.coupon.available if market.coupon? %> </td>
       <td> <%= market.coupon.price if market.coupon? %> </td>
       <td> <%= photo(market.coupon.photo, 100, 50)  if market.coupon? %> </td>
