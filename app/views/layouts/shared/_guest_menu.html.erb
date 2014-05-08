@@ -36,23 +36,24 @@
 			</ul>
 		</li>
 		<li class="col-sm-2">
-			<% if user_signed_in? %>
 			<ul class="explore_section">
 				<li class="item-title">Wishlist</li>
 				<li class="divider"></li>
 				<li class="registered-user-action">
-				
+				<%= link_to wishes_path do %>
 						All wishes<i class="fa fa-angle-right pull-right explore-arrow"></i>
+          <% end %>
 				</li>
 			</ul>
 			<ul class="explore_section">
 				<li class="item-title">Bargains</li>
 				<li class="divider"></li>
 				<li class="registered-user-action">
+        <%= link_to bargains_path do %>
 						All bargains<i class="fa fa-angle-right pull-right explore-arrow"></i>
+          <% end %>
 				</li>
-			</ul>
-			<% end %>
+			</ul>  
 		</li>
 	</ul>
 	

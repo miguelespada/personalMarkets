@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   load_resource :only => [:show, :edit, :destroy, :update]
-  authorize_resource :except => [:index, :show, :gallery]
+  authorize_resource :except => [:index, :show, :gallery, :explore_categories]
 
   def index
     @categories = Category.all

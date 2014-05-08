@@ -1,6 +1,6 @@
 class SpecialLocationsController < ApplicationController
   load_resource :only => [:show, :edit, :destroy, :update]
-  authorize_resource :except => [:index, :show, :gallery]
+  authorize_resource :except => [:index, :show, :gallery, :explore_hotspots]
 
   def index
     @special_locations = SpecialLocation.all
