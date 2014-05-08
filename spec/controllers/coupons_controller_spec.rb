@@ -134,6 +134,12 @@ describe CouponsController do
 
 
     describe "list of bought coupons" do
+      before(:each) do
+        user_market.coupon = first_coupon
+        market.coupon = second_coupon
+        create(:couponTransaction, user: user, coupon: first_coupon) 
+        create(:couponTransaction, user: market_owner, coupon: second_coupon)
+      end
       it "is allowed for market owner" do
         sign_in :user, user
         get :bought_coupons_by_user, {user_id: user.id}, valid_session
