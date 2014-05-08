@@ -44,7 +44,7 @@ class Ability
         can :coupon_payment, Coupon
         can :list_transactions, Coupon
 
-        can :show, User, :user_id => @user.id
+        can :show, User, :id => @user.id
         
         can :like, Market, Market do |market|
           !@user.owns(market) && !@user.favorites.include?(market)

@@ -31,7 +31,6 @@ Then(/^I should see the coupon transactions in my out transactions$/) do
 end
 
 Then(/^I sign in as the market owner$/) do  
-  click_on @user.email
   step "I sign out"
   log_in_as @market_owner
 end
