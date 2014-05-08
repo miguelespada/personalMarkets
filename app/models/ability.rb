@@ -19,9 +19,9 @@ class Ability
 
   def logged_in_abilities
     if @user
-        can :list_coupon_transacions, User, :id => @user.id
+        can :list_user_transactions, User, :id => @user.id
 
-        can :manage, Market, Market do |market|
+        can :list_market_transactions, Market, Market do |market|
             @user.owns(market)
         end
 
@@ -86,6 +86,8 @@ class Ability
       can [:manage], User
 
       can [:manage], Coupon
+      can [:list_user_transactions], User
+      can [:list_market_transactions], Market
 
     end
   end
