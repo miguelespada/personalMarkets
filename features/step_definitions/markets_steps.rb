@@ -303,10 +303,9 @@ When(/^I make it PRO$/) do
   click_on "Pay"
 end
 
-Then(/^I should be redirected to make it pro page$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^I should see a warning about coupon visibility$/) do
+  expect(page).to have_content "In order to publish a market with a coupon you should make it PRO or become PREMIUM. Otherwise the coupon won't be available."
 end
-
 
 Then(/^Its coupon is visible$/) do
   expect(page).to have_css ".market-coupon"

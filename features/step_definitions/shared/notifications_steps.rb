@@ -39,7 +39,13 @@ Then(/^I should be notified that the coupon has been created$/) do
 end
 
 Then(/^I should be notified that the coupons has been bought$/) do
-  expect(find("#notice")).to have_content "You has successfully bought the coupon."
+  begin
+    whatever = find("#notice")
+  rescue Exception => e
+    p "trying to find it hidden"
+    whatever ||= find("#notice", :visible => false)
+  end
+  expect(whatever).to have_content "You has successfully bought the coupon."
 end
 
 

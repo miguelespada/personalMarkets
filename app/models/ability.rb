@@ -19,6 +19,12 @@ class Ability
 
   def logged_in_abilities
     if @user
+        can :list_user_transactions, User, :id => @user.id
+
+        can :list_market_transactions, Market, Market do |market|
+            @user.owns(market)
+        end
+
         can :archive, Market, :user_id => @user.id
         can :see_location, Market
         can :report, Comment
@@ -42,14 +48,18 @@ class Ability
 
         can :buy, Coupon
         can :coupon_payment, Coupon
-
-        can :show, User, :user_id => @user.id
         
+        can :show, User, :id => @user.id
+ 
         can :like, Market, Market do |market|
           !@user.owns(market) && !@user.favorites.include?(market)
         end
 
         can :unlike, Market, Market do |market|
+          !@user.owns(market) && @user.favorites.include?(market)
+        end
+
+        can :list, Market, Market do |market|
           !@user.owns(market) && @user.favorites.include?(market)
         end
     end
@@ -74,6 +84,10 @@ class Ability
       can [:manage], Category
       can [:manage], Tag
       can [:manage], User
+
+      can [:manage], Coupon
+      can [:list_user_transactions], User
+      can [:list_market_transactions], Market
 
     end
   end
