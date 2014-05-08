@@ -1,38 +1,35 @@
- <!-- Navbar Horizontal START -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <%= link_to "Personal Markets", "/", :class => "navbar-brand"   %>
-        </div>
-
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-              <%= render "layouts/shared/search_bar" %>
-              <%= render "layouts/shared/guest_menu" %>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-              <%= render "layouts/shared/add_market" %>
-
-              <% if user_signed_in? %>
-                <%= render "layouts/shared/user_menu"  %>
-                <%= render "layouts/shared/admin_menu" if current_user.has_role? :admin %>
-                <%= render "layouts/shared/signout" %>
-              <% else %>
-                <%= render "layouts/shared/signin" %>
-              <% end %>
-            </ul>
-        </div>
+  <div class="container">
+    <div class="navbar-header pull-left">
+      <button type="button" class="navbar-toggle pull-left navbar-collapse-button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "Personal Markets", "/", :class => "navbar-brand" %>
     </div>
+
+    <div class="navbar-header pull-right add-market-button-container">
+      <ul class="nav pull-right">
+        <%= render "layouts/shared/add_market" %>
+      </ul>
+    </div>
+
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <%= render "layouts/shared/search_bar" %>
+      </ul>
+       
+      <ul class="nav navbar-nav navbar-right">
+        <%= render "layouts/shared/guest_menu" %>
+        <% if user_signed_in? %>
+          <%= render "layouts/shared/signout" %>
+        <% else %>
+          <%= render "layouts/shared/signin" %>
+        <% end %>
+      </ul>
+    </div>
+    </div>
+  </div>
 </nav>
-
-
-
-
- <!-- Navbar Horizontal  STOP -->

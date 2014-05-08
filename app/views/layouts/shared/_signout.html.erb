@@ -17,10 +17,14 @@
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
 <% if current_user.has_role? "premium" %>
-  <i class="fa fa-star fa-3 premium-star"></i>
+  <i class="fa fa-star premium-star"></i>
+<% else %>
+  <i class="fa fa-user"></i>
 <% end %>
 
-<span id="nav_user_name"> <%=current_user.email%> </span> <b class="caret"></b></a>
+&nbsp;<div id="nav_user_container"><span id="nav_user_name"><%=current_user.email%></span> <b class="caret"></b></div>
+
+</a>
 
 <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
 
@@ -42,19 +46,30 @@
         You are signed in as <span style="color: #5bc0de;"><%=current_user.email%></span>
       </div>
   </div>
-
+  <li class="divider"></li>
+  <%= render "layouts/shared/user_menu"  %>
+  <%= render "layouts/shared/admin_menu" if current_user.has_role? :admin %>
+  <li class="divider"></li>
   <div class="form-actions">
      <%= link_to "Sign out", destroy_user_session_path, :class=>  "btn btn-info btn-block"  %>
   </div>
 </ul>
 
 <style>
-	#nav_user_name{
-		max-width:80%;
-		float:left;
-		overflow:hidden;
-		text-overflow: ellipsis;
-	}
+  #nav_user_container{
+    display:inline-block;
+  }
+
+  @media (min-width:768px) {
+    #nav_user_name{
+      max-width:75px;
+      float:left;
+      overflow:hidden;
+      white-space:nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+  
 	.center{
  		text-align: center;
 	}

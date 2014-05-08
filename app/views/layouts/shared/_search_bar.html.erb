@@ -1,5 +1,5 @@
 <li id="search_bar">
-  <div class="input-group input-group-sm">
+  <div class="input-group input-group">
     <%= text_field_tag :query, params["query"], 
     placeholder: "Search market", class: "query form-control", 
     id: "search_bar_query" %>
@@ -13,8 +13,16 @@
 
 <script>
 $( document ).ready(function() {
-
-  $('#search_button').css('cursor', 'pointer');
+  $( "#search_bar").click(function () {
+    if($(".snavbar").hasClass("snavbar-hidden")){
+      if ( $( ".snavbar" ).is( ":hidden" ) ) {
+        $( ".snavbar" ).slideDown( 400 );
+      }
+      else{
+        $( ".snavbar" ).slideUp( 400 );
+      }
+    }
+  });
 
   $( "#search_bar_query" ).keyup(function() {
     $("#query").val($( "#search_bar_query" ).val());
@@ -46,3 +54,12 @@ $( document ).ready(function() {
 
 });
 </script>
+
+<style>
+  @media (min-width:768px) {
+    #search_bar{
+      margin-top: 8px;
+      width: 220px;
+    }
+  }
+</style>

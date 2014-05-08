@@ -21,7 +21,7 @@ module ApplicationHelper
   end
   
   def hidden_bar
-    "hidden" unless params[:controller] == "markets" && params[:action] == "search"
+    "snavbar-hidden" unless params[:controller] == "markets" && params[:action] == "search"
   end
 
   def photo(photo, width, height = nil)

@@ -29,9 +29,8 @@
 }
 
 #search_bar{
-  padding-top:10px;
-  padding-left:10px;
-  width: 155px;
+  padding-left:15px;
+  padding-right:15px;
 }
 
 .search-nav-bar li{
@@ -526,5 +525,18 @@ border-color: #d43f3a;
 
 #search_button{
   margin-top: 0px !important;
+}
+
+.add-market-button-container{
+  margin-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.navbar-collapse-button{
+  margin-left: 15px !important;
+}
+
+.snavbar-hidden{
+  display:none;
 }
 
