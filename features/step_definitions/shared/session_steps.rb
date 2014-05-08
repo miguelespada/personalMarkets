@@ -1,9 +1,10 @@
 Given(/^I sign up$/) do
   visit "/"
+  click_on "Log in"
   within(:css, ".user-session-menu") do
     click_on "Sign up"
   end
-  within(:css, ".user-session") do
+  within(:css, "#sign-up-form") do
     fill_in "Email",  with: "dummy@gmail.com"
     fill_in "Password",  with: "password", :match => :prefer_exact
     fill_in "Password confirmation",  with: "password"  
@@ -39,6 +40,7 @@ Given(/^I am a premium user$/) do
 end
 
 When(/^I sign out$/) do
+  click_on @user.email
   click_on "Sign out"
 end
 
