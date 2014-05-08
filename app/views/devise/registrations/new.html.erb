@@ -3,7 +3,7 @@
 <%= simple_form_for(resource, html: {:id => "sign-up-form"}, :url => registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
-<div class="container">
+<div class="container user-session">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
@@ -11,7 +11,6 @@
           <h3 class="panel-title">Sign Up</h3>
         </div>
         <div class="panel-body">
-          <form accept-charset="UTF-8" role="form">
             <fieldset>
             <div class="form-group">
               <%= f.input :email, :required => true, :autofocus => true %>
@@ -35,7 +34,6 @@
             </div>
 
             </fieldset>
-          </form>
         </div>
       </div>
     </div>
