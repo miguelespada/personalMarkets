@@ -53,14 +53,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-<<<<<<< HEAD
     capybara-webkit (1.1.0)
       capybara (~> 2.0, >= 2.0.2)
       json
-=======
-    childprocess (0.5.3)
-      ffi (~> 1.0, >= 1.0.11)
->>>>>>> 4dc951b838b0cb8f5652009a4c0f44e08bbfe9be
     cloudinary (1.0.68)
       aws_cf_signer
       rest-client
@@ -332,6 +327,7 @@ DEPENDENCIES
   bson_ext
   cancan
   capybara
+  capybara-webkit
   cloudinary
   coffee-rails (~> 4.0.0)
   country-select
