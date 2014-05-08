@@ -14,11 +14,13 @@
 	});
 
 	function checkIfMobileButton(){
-		if (window.innerWidth >= 768){
-			$(".add_market_button").val("✚ Market");
-		}
-		else{
-			$(".add_market_button").val("✚");
+		if(!$("#wizard").length){
+			if (window.innerWidth >= 768){
+				$(".add_market_button").val("✚ Market");
+			}
+			else{
+				$(".add_market_button").val("✚");
+			}
 		}
 	}
 	var shakeButton = function(){

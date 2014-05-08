@@ -1,5 +1,5 @@
 When(/^I create a market$/) do
-  click_on "Add Market"
+  find(".add_market_button").click
 
   within(:css, "#new_market") do
     fill_in "Name",  with: "Dummy Market"
