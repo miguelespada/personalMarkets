@@ -3,23 +3,25 @@
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Log in<b class="caret"></b></a>
 
 <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+<div class = "center"><i class="fa fa-sign-in fa-3x"></i></div>
   <li>
      <div class="row">
         <div class="col-md-12 user-session-menu">
            <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-            <div class="form-inputs">
+            <div class="form-group">
               <%= f.input :email, :required => true, :autofocus => true %>
             </div>
-            <div class="form-inputs">
+            <div class="form-group">
               <%= f.input :password, :required => true %>
             </div>
-            <div class="form-inputs">
-              <%= f.input :remember_me, as: :boolean, inline_label: 'Remember me', label: false if devise_mapping.rememberable? %>
+            <div class="form-group">
+              <%= f.check_box :remember_me, as: :boolean, inline_label: 'Remember me', label: false if devise_mapping.rememberable? %> Remember me
             </div>
 
             <div class="form-actions">
-              <%= f.button :submit, "Sign in" %>
+              <%= f.button :submit, "Sign in" , :class=>  "btn btn-info btn-block" %>
             </div>
+            <div class="divider"></div>
           <% end %>
 
           <%= render "devise/shared/links" %>
@@ -34,3 +36,9 @@
       <li> <%= button_to "Login with Facebook", user_omniauth_authorize_path(:facebook), :class=>  "btn btn-primary btn-block" %></li>
   </li>
 </ul>
+
+<style>
+  .center{
+    text-align: center;
+  }
+</style>
