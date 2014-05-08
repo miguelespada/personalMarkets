@@ -13,7 +13,7 @@
   
     <% @categories.each do |category| %>
       <%= content_tag_for(:tr, category) do %> 
-        <td class="col-md-3"> <%= cl_image_tag(category.photo.path, :size => '120x60', :crop => :fill) if !category.photo. nil? %> </td>
+        <td class="col-md-3"> <%= photo(category.photo, 120, 60) %> </td>
         <td class="col-md-3"> <%= link_to category.name, category_markets_path(category) %> </td> 
 
         <td class="col-md-3"> <%= category.markets.count %> </td>

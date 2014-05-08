@@ -17,7 +17,7 @@
   
     <% @special_locations.each do |special_location| %>
       <%= content_tag_for(:tr, special_location) do %> 
-        <td class="col-md-2"> <%= cl_image_tag(special_location.photo.path, :size => '120x60', :crop => :fill) if !special_location.photo.nil? %> </td>
+        <td class="col-md-2"> <%= photo(special_location.photo, 120, 60)  %> </td>
         <td class="col-md-2"> <%= special_location.name %> </td>
         <td class="col-md-2"> <%= special_location.address %> </td>
         <td class="col-md-2"> <%= special_location.city %> </td>
