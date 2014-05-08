@@ -24,7 +24,6 @@ PopUpStores::Application.routes.draw do
   get "/last_markets", to: "markets#list_last_markets", as: "last_markets"
   get "/explore_slideshows", to: "markets#explore_slideshows", as: "explore_slideshows_markets"
 
-
   resources :coupons, :only => [:show, :index] do
     post :coupon_payment, :on => :member
   end
@@ -47,8 +46,12 @@ PopUpStores::Application.routes.draw do
 
   resources :subscriptions, :only => [:create]
   
-  get "/users/:user_id/subscription", to: "users#subscription", as: "user_subscription"
+  resource :contact, controller: "contact", :only => [] do
+    get :new, :on => :member
+    post :create, :on => :member
+  end
 
+  get "/users/:user_id/subscription", to: "users#subscription", as: "user_subscription"
 
   ### Coupons
   resources :coupons, :only => [:show, :index]

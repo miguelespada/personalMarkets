@@ -1,0 +1,37 @@
+<div class = "home_gallery_title"><i class="fa fa-envelope-o fa-2x"></i> <br/>Contact us</div>
+
+<%= simple_form_for(@contact, :url => contact_path(@contact)) do |f| %>
+  <%= f.error_notification %>
+
+<div class="container user-session">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Contact form</h3>
+        </div>
+        <div class="panel-body">
+            <fieldset>
+            <div class="form-group">
+              <%= f.input :name, :placeholder => "Name", :required => true, :autofocus => true %>
+              <p id="tags-container"></p>
+            </div>
+            <div class="form-group">
+              <%= f.input :email, :placeholder => "Email", :required => true %>
+            </div>
+            <div class="form-group">
+              <%= f.input :subject, :placeholder => "Subject", :required => true %>
+            </div>
+            <div class="form-group">
+              <%= f.input :description, :placeholder => "Description", :required => true, :as => :text %>
+            </div>
+            <div class="form-group col-md-4 col-md-offset-4">
+              <%= f.button :submit, "Send" %>
+            </div>
+            </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
