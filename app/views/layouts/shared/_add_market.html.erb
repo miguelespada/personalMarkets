@@ -1,13 +1,26 @@
 
 <li class="registered-user-action ">
   <% if user_signed_in? %>
-      <%= button_to "Add Market", new_user_market_path(current_user), class:"add_market_button btn btn-info", :method => :get %>
+      <%= button_to "✚", new_user_market_path(current_user), class:"add_market_button btn btn-info", :method => :get %>
   <% else %>
-    <%= button_to "Add Market", "javascript:shakeButton();", class:"add_market_button btn btn-info", :method => :get %>
+    <%= button_to "✚", "javascript:shakeButton();", class:"add_market_button btn btn-info", :method => :get %>
   <% end %>
 </li>
 
 <script>
+	$(document).ready(function(){
+		checkIfMobileButton();
+		$(window).bind('resize', checkIfMobileButton);
+	});
+
+	function checkIfMobileButton(){
+		if (window.innerWidth >= 768){
+			$(".add_market_button").val("✚ Market");
+		}
+		else{
+			$(".add_market_button").val("✚");
+		}
+	}
 	var shakeButton = function(){
 		$(".button_to").effect("shake", {times: 2, distance: 10}, 300);
 		$(".add_market_button").addClass("btn-warning");
@@ -26,5 +39,10 @@
 	}
 	.button_to .tooltip.bottom .tooltip-arrow{
   		border-bottom-color: #FF0000;
+	}
+	@media (min-width: 768px){
+		.add-market-button-container{
+  		margin-left: 15px !important;
+		}
 	}
 </style>
