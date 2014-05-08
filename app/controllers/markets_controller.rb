@@ -6,6 +6,11 @@ class MarketsController < ApplicationController
     @markets = Market.all
   end
 
+  def explore_slideshows
+    @markets = Market.last_published
+    render layout: false
+  end
+
   def list_category_markets
     @markets = Market.with_category(load_category)
     render 'index'
@@ -104,12 +109,24 @@ class MarketsController < ApplicationController
     redirect_to market, notice: "Market successfully archived."
   end
 
+  def unpublish
+    domain.unpublish_market params[:market_id]
+  end
+
+  def unpublish_succeeded market
+    redirect_to market, notice: "Market successfully unpublished."
+  end
+
   def publish
     domain.publish_market params[:market_id]
   end
 
+  def publish_anyway
+    domain.publish_market! params[:market_id]
+  end
+
   def publish_not_available market
-    flash[:error] = "In order to publish a market with a coupon you should make it PRO or become PREMIUM. Otherwise the coupon won't be available."
+    flash[:error] = "In order to publish a market with a coupon you should make it PRO or become PREMIUM. Otherwise the coupon won't be available. #{view_context.link_to "Publish anyway", market_publish_anyway_path(market), { method: :post }}".html_safe
     redirect_to market
   end
 

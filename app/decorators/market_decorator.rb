@@ -35,6 +35,12 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
+  def unpublish_link
+    if can? :unpublish, market
+      link_to "Unpublish", market_unpublish_path(market), { method: :post }
+    end
+  end
+
   def location
     if can? :see_location, Market
       render partial: 'markets/shared/location', locals: { market: market }

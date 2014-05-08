@@ -1,6 +1,5 @@
 class User
   include Mongoid::Document
-  include Mongoid::Slug
   include Mongoid::Attributes::Dynamic
 
   after_create :set_default_role
@@ -41,8 +40,6 @@ class User
   field :status, :type => String, :default => "active"
 
   has_many :authorizations
-  slug :email, history: false
-
 
   ## Confirmable
   # field :confirmation_token,   :type => String

@@ -10,6 +10,11 @@ class SpecialLocationsController < ApplicationController
     end
   end
 
+  def explore_hotspots
+    @special_locations = SpecialLocation.all
+    render layout: false
+  end
+
   def gallery
     @special_locations = SpecialLocation.all
     render layout: false
