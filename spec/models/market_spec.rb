@@ -234,8 +234,6 @@ describe Market do
         expect(result.count).to eq Market.where(state: "published").count
       end
     end
-    
-    it "boots matches on the name"
 
   end
   describe "sort results" do

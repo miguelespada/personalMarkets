@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   load_resource :only => [:show, :list_coupons, :destroy]
-  authorize_resource :only => [:index, :show, :destroy, :list_coupons]  
+  authorize_resource :only => [:index, :show, :destroy]  
  
   def index
     @users = UsersPresenter.for User.all
@@ -9,10 +9,6 @@ class UsersController < ApplicationController
   def show
     rescue  => each 
       redirect_to action: 'index'
-  end
-
-  def list_coupons
-    @coupons = @user.markets.collect{|market| market.coupon if market.coupon.present?}
   end
 
   def like
