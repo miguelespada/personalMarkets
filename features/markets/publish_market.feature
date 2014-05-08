@@ -12,7 +12,7 @@ Scenario: When the market has coupon and I am regular user
   And I have a draft market with a coupon
   And I go the market page
   When I publish the market
-  Then I should be redirected to make it pro page
+  Then I should see a warning about coupon visibility
 
 Scenario: When the market has coupon and I am premium user
   Given I am logged in as premium
