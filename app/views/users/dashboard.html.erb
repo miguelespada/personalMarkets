@@ -5,13 +5,14 @@
 <div class="container">
     <div class="panel-body">
         <div class="row">
+        
             <div class="col-xs-6 col-md-6">
                 <%= link_to user_markets_path(current_user), class:"btn btn-danger btn-lg" do %>
 					  <i class="fa fa-shopping-cart fa-5x"></i> <br/> Markets
 			    <% end %>
-          <%= link_to user_likes_path(current_user), class:"btn btn-warning btn-lg" do %>
-            <i class="fa fa-heart-o fa-5x"></i> <br/> Likes
-          <% end %>
+                <%= link_to user_likes_path(current_user), class:"btn btn-warning btn-lg" do %>
+                      <i class="fa fa-heart-o fa-5x"></i> <br/> Likes
+                <% end %>
 			    <%= link_to bought_coupons_by_user_path(current_user), class:"btn btn-success btn-lg" do %>
 					  <i class="fa fa-ticket fa-5x"></i> <br/> Coupons
 			    <% end %>
@@ -25,6 +26,7 @@
             		<i class="fa fa-bullhorn fa-5x"></i> <br/> Bargains
           		<% end %>
             </div>
+
             <div class="col-xs-6 col-md-6">
                 <%= link_to user_path(current_user), :method => :get, class:"btn btn-primary btn-lg" do %>
 					  <i class="fa fa-user fa-5x"></i> <br/> Profile
@@ -39,6 +41,7 @@
 					  <i class="fa fa-cogs fa-5x"></i> <br/> Setting
 			    <% end %>
             </div>
+
         </div>
     </div>
 </div>

@@ -34,25 +34,22 @@
               <img class="media-object" src="http://critterapp.pagodabox.com/img/user.jpg">
           </a>
           <div class="media-body">
-                  <%= link_to user_markets_path(current_user), class:"btn btn-xs btn-danger btn-lg" do %>
-                  <i class="fa fa-shopping-cart"></i> Markets
-                  <% end %>
-                  <%= link_to user_likes_path(current_user), class:"btn btn-xs btn-warning btn-lg" do %>
-                  <i class="fa fa-heart-o"></i> Likes
-                  <% end %>
+          <% if current_user.has_role? "admin" %>
+                  <%= render "layouts/shared/admin_menu" %>
+          <% else %>
+                  <%= render "layouts/shared/user_menu"  %>
+          <% end %>
           </div>
       </div>
       <div class="form-actions center">
         You are signed in as <span style="color: #5bc0de;"><%=current_user.email%></span>
       </div>
   </div>
-  <li class="divider"></li>
-  <%= render "layouts/shared/user_menu"  %>
-  <%= render "layouts/shared/admin_menu" if current_user.has_role? :admin %>
-  <li class="divider"></li>
+
   <div class="form-actions">
      <%= link_to "Sign out", destroy_user_session_path, :class=>  "btn btn-info btn-block"  %>
   </div>
+
 </ul>
 
 <style>
@@ -73,4 +70,7 @@
 	.center{
  		text-align: center;
 	}
+  .btn-100{
+    width: 100%;
+  }
 </style>
