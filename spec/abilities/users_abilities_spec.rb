@@ -12,7 +12,6 @@ describe "User" do
       it{ should be_able_to(:manage, Wish.new(:user => user)) }
       it{ should be_able_to(:manage, Bargain.new(:user => user)) }
       it{ should be_able_to(:buy, Coupon.new) }
-      it{ should be_able_to(:list_transactions, Coupon.new) }
     end
 
     context "unauthorized" do
@@ -28,7 +27,6 @@ describe "User" do
       it{ should be_able_to(:manage, Wish) }
       it{ should be_able_to(:manage, Bargain) }
       it{ should be_able_to(:buy, Coupon.new) }
-      it{ should be_able_to(:list_transactions, Coupon.new) }
       it{ should be_able_to(:manage, Category) }
       it{ should be_able_to(:manage, SpecialLocation) }
     end

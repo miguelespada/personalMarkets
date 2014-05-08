@@ -81,9 +81,10 @@ describe CouponsController do
       end
 
     end
+
   end
 
-  context "with coupon transactions" do 
+  context "list coupons and transactions" do 
     let(:market_owner) { create(:user) }  
     let(:user_market) { create(:market, user: market_owner) } 
     let(:first_coupon) { create(:coupon, market: user_market) } 
@@ -96,15 +97,33 @@ describe CouponsController do
       end
     end
 
-  describe "Show 'coupon'" do
-    let(:market_owner) { create(:user) }  
-    let(:user_market) { create(:market, user: market_owner) } 
-    let(:first_coupon) { create(:coupon, market: user_market) } 
+    describe "Show 'coupon'" do
+      let(:market_owner) { create(:user) }  
+      let(:user_market) { create(:market, user: market_owner) } 
+      let(:first_coupon) { create(:coupon, market: user_market) } 
 
-    it "return success" do
-      get :index, {id: first_coupon.to_param}, valid_session        
-      expect(response.response_code).to eq 200
+      it "return success" do
+        get :index, {id: first_coupon.to_param}, valid_session        
+        expect(response.response_code).to eq 200
+      end
     end
+    describe "list of sold transactions" do
+      xit "is allowed for market owner" do
+        sign_in :user, market_owner
+        get :sold_coupons_by_market, {market_id: user_market.id}, valid_session
+        expect(response.response_code).to eq 200
+      end
+      xit "it is not allowed for guest" do
+        get :sold_coupons_by_market, {market_id: user_market.id}, valid_session
+        expect(response.response_code).to eq 403
+      end
+      xit "it is not allowed for other users" do
+        sign_in :user, user
+        get :sold_coupons_by_market, {market_id: user_market.id}, valid_session
+        expect(response.response_code).to eq 403
+      end
+    end
+
   end
 
   context "unauthorized user" do 
@@ -122,9 +141,5 @@ describe CouponsController do
     end
   end
 
-
-  describe "transactions"
-    xit ":sold_coupons_by_market_path"
-    xit ":bought_coupons_by_user"
 
 end
