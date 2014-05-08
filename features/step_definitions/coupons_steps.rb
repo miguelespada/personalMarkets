@@ -23,11 +23,9 @@ Given(/^I buy some coupons$/) do
   click_on "Pay"
 end
 
-Then(/^I should see the coupon transactions in my out transactions$/) do
-  visit list_transactions_path @user
-  within(:css, ".out_coupons") do
-    expect(page).to have_content "Dummy coupon"
-  end 
+Then(/^I should see the coupon transactions in my coupon transactions$/) do
+  visit bought_coupons_by_user_path @user
+  expect(page).to have_content "Dummy coupon"
 end
 
 Then(/^I sign in as the market owner$/) do  
@@ -36,11 +34,10 @@ Then(/^I sign in as the market owner$/) do
   log_in_as @market_owner
 end
 
-Then(/^I should see the coupon transactions in my in transactions$/) do
-  visit list_transactions_path @market_owner
-  within(:css, ".in_coupons") do
-    expect(page).to have_content "Dummy coupon"
-  end 
+Then(/^I should see the coupon transactions in the market transactions$/) do
+  visit sold_coupons_by_market_path @market
+  expect(page).to have_content "Dummy coupon"
+  expect(page).to have_content @user.email
 end
 
 When(/^All the coupons are sold$/) do
