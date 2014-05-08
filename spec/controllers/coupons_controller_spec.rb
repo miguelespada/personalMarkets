@@ -108,18 +108,36 @@ describe CouponsController do
       end
     end
     describe "list of sold transactions" do
-      xit "is allowed for market owner" do
+      it "is allowed for market owner" do
         sign_in :user, market_owner
         get :sold_coupons_by_market, {market_id: user_market.id}, valid_session
         expect(response.response_code).to eq 200
       end
-      xit "it is not allowed for guest" do
+      it "it is not allowed for guest" do
         get :sold_coupons_by_market, {market_id: user_market.id}, valid_session
         expect(response.response_code).to eq 403
       end
-      xit "it is not allowed for other users" do
+      it "it is not allowed for other users" do
         sign_in :user, user
         get :sold_coupons_by_market, {market_id: user_market.id}, valid_session
+        expect(response.response_code).to eq 403
+      end
+    end
+
+
+    describe "list of bought coupons" do
+      it "is allowed for market owner" do
+        sign_in :user, user
+        get :bought_coupons_by_user, {user_id: user.id}, valid_session
+        expect(response.response_code).to eq 200
+      end
+      it "it is not allowed for guest" do
+        get :bought_coupons_by_user, {user_id: user.id}, valid_session
+        expect(response.response_code).to eq 403
+      end
+      it "it is not allowed for other users" do
+        sign_in :user, user
+        get :bought_coupons_by_user, {user_id: market_owner.id}, valid_session
         expect(response.response_code).to eq 403
       end
     end

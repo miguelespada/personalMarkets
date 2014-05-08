@@ -27,11 +27,13 @@ class CouponsController < ApplicationController
   
   def bought_coupons_by_user
     user = User.find(params[:user_id])
+    authorize! :list_coupon_transacions, user
     @transactions = CouponTransaction.where(user: user) 
   end
 
   def sold_coupons_by_market
     market = Market.find(params[:market_id])
+    authorize! :manage, market
     @transactions = market.coupon.transactions
   end
 
