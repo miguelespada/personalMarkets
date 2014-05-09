@@ -20,7 +20,7 @@
         <td class="col-md-2"> 
         <div class="table-photo-container">
           <%= photo(special_location.photo, 120, 60) %>
-          <%= link_to content_tag(:i, "", class: "fa fa-pencil"), edit_special_location_path(special_location), class: "btn btn-info btn-xs table-photo-edit" %>
+          <%= link_to content_tag(:i, "", class: "fa fa-pencil"), edit_photo_path, class: "btn btn-info btn-xs table-photo-edit" %>
         </div>
         </td>
         <td class="col-md-2"> <%= special_location.name %> </td>

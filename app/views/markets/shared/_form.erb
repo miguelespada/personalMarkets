@@ -5,13 +5,25 @@
   </div>
 <div id="wizard" class="row">
   <ul class="col-md-3">
-    <li><a href="#form-market-name-description" data-toggle="tab">Name and description</a></li>
-    <li><a href="#form-market-photo" data-toggle="tab">Featured photo</a></li>
-    <li><a href="#form-market-photos" data-toggle="tab">Photo gallery</a></li>
-    <li><a href="#form-market-category-tag" data-toggle="tab">Category and tags</a></li>
-    <li><a href="#form-market-date" data-toggle="tab">Date</a></li>
-    <li><a href="#form-market-location" data-toggle="tab">Location</a></li>
-    <li><a href="#form-market-coupon" data-toggle="tab">Coupon</a></li>
+    <li id="form-link-name"><a href="#form-market-name-description" data-toggle="tab">Name and description</a></li>
+    <li id="form-link-featured"><a href="#form-market-photo" data-toggle="tab">Featured photo</a></li>
+
+    <% if market.pro? %>
+      <li id="form-link-gallery" class="enabled"><a href="#form-market-photos" data-toggle="tab">Photo gallery (PRO)</a></li>
+    <% else %>
+      <li id="form-link-gallery" class="disabled"><a href="#" data-toggle="">Photo gallery (PRO)</a></li>
+    <% end %>
+    
+    <li id="form-link-category"><a href="#form-market-category-tag" data-toggle="tab">Category and tags</a></li>
+    <li id="form-link-date"><a href="#form-market-date" data-toggle="tab">Date</a></li>
+    <li id="form-link-location"><a href="#form-market-location" data-toggle="tab">Location</a></li>
+
+    <% if market.pro? %>
+      <li id="form-link-coupon" class="enabled"><a href="#form-market-coupon" data-toggle="tab">Coupon (PRO)</a></li>
+    <% else %>
+      <li id="form-link-coupon" class="disabled"><a href="#" data-toggle="">Coupon (PRO)</a></li>
+    <% end %>
+    
   </ul>
   <%= simple_form_for [user, market], 
       :html => {"data-tags" => "#{raw_tags(market)}", role: "form", novalidate: true}  do |f| %>

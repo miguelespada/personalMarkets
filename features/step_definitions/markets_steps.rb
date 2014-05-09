@@ -325,3 +325,38 @@ Then(/^It does not appear in navegable markets$/) do
   visit published_markets_path
   expect(page).to_not have_content "My market"
 end
+
+When(/^I go to the edit market page$/) do
+  visit market_path @market
+  step "I click on edit the market"
+end
+
+Then(/^I should see the link of photo gallery is disabled$/) do
+  page.should have_css('li#form-link-gallery.disabled')
+  step "I click on the link of photo gallery"
+  step "I should not be able to access photo gallery"
+end
+
+Then(/^I click on the link of photo gallery$/) do
+  find('#form-link-gallery').click
+end
+
+Then(/^I should not be able to access photo gallery$/) do
+  page.should_not have_css('div#form-market-photos.active')
+end
+
+Then(/^I click on edit the market$/) do
+  within(:css, ".market-actions") do
+    click_on "Edit"
+  end
+end
+
+Then(/^I should see the link of photo gallery is enabled$/) do
+  page.should have_css('li#form-link-gallery.enabled')
+  step "I click on the link of photo gallery"
+  step "I should be able to access photo gallery"
+end
+
+Then(/^I should be able to access photo gallery$/) do
+  page.should have_css('div#form-market-photos.active')
+end
