@@ -17,3 +17,13 @@
 #     expect(page).to_not have_css '.market-gallery-item'
 #   end
 # end
+
+
+Then(/^The market has tooltip$/) do
+  # within(:css, ".leaflet-marker-pane") do
+  #   find('img').click
+  # end
+  # page.should have_content @market_0.name
+  # page.should have_content @market_0.description
+  pending
+end

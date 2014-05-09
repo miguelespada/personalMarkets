@@ -155,7 +155,7 @@ describe WishesController do
     describe "DELETE destroy" do
       it "destroys the requested wish" do
         wish = Wish.create! valid_attributes
-        @request.env['HTTP_REFERER'] = '/'
+        @request.env['HTTP_REFERER'] = '/'  
         expect {
           delete :destroy, {:id => wish.to_param}, valid_session
         }.to change(Wish, :count).by(-1)

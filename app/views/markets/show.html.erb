@@ -1,5 +1,7 @@
 <% market = @market.decorate %>
 
+<%= link_to "tweet me", "http://twitter.com/home?status=#{market.name} #{market.description} #{market_url(market)}" %>
+
 <div class="row">
   <div class="col-md-4 market-featured-photo">
     <%= photo(market.featured, 300, 300) %>
@@ -62,4 +64,4 @@
 
 <div class="fb-comments" data-href=<%=market_url(market.to_param)%> data-numposts="5" data-colorscheme="light"></div>
 <div class="fb-like" data-href=<%=market_url(market.to_param)%> data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-<div>
+

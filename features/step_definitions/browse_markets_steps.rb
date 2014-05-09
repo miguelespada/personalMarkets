@@ -30,14 +30,6 @@ Then(/^I should see a marker on the map$/) do
   page.should have_css('.leaflet-marker-pane')
 end
 
-Then(/^The market has tooltip$/) do
-  # within(:css, ".leaflet-marker-pane") do
-  #   find('img').click
-  # end
-  # page.should have_content @market_0.name
-  # page.should have_content @market_0.description
-  pending
-end
 
 Then(/^I should see the markets in the calendar$/) do
   page.should have_css(".calendar") 
