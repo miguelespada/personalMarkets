@@ -76,7 +76,6 @@ PopUpStores::Application.routes.draw do
 
   ### SpecialLocations
   get "/explore_hotspots", to: "special_locations#explore_hotspots", as: "explore_hotspots"
-  get "/special_locations/:id/edit_photo", to: "special_locations#edit_photo", as: "edit_photo_special_location"
   get "/special_locations/gallery", as: "special_locations_gallery"
   resources :special_locations
   ####
@@ -110,6 +109,7 @@ PopUpStores::Application.routes.draw do
   get "static_pages/cities", path: "/cities", as: 'cities'
   get "static_pages/calendar", path: "/calendar", as: 'calendar'
   get "static_pages/map", path: "/map", as: 'map'
+  get "static_pages/edit_photo", path: "/edit_photo", as: 'edit_photo'
 
 
   root "static_pages#home"

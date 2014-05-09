@@ -1,0 +1,53 @@
+<div class="panel panel-default panel-table panel-table-last">
+  <div class="panel-heading table-title">
+	Edit Photo
+	<img class="cropper" src="images/11.png">
+  </div>
+  <table class="table table-striped">
+	<tr>
+	  <th>X1</th>
+	  <th>Y1</th>
+	  <th>X2</th>
+	  <th>Y2</th>
+	  <th>Height</th>
+	  <th>Width</th>
+	</tr>
+  
+		<td class="col-md-2"> <span id="dataX1"></span> </td>
+		<td class="col-md-2"> <span id="dataY1"></span> </td>
+		<td class="col-md-2"> <span id="dataX2"></span> </td>
+		<td class="col-md-2"> <span id="dataY2"></span> </td>
+		<td class="col-md-2"> <span id="dataHeight"></span> </td>
+		<td class="col-md-2"> <span id="dataWidth"></span>  </td>
+  </table>
+</div>
+
+<script>
+	var $image = $(".cropper"),
+		$dataX1 = $("#dataX1"),
+		$dataY1 = $("#dataY1"),
+		$dataX2 = $("#dataX2"),
+		$dataY2 = $("#dataY2"),
+		$dataHeight = $("#dataHeight"),
+		$dataWidth = $("#dataWidth");
+	
+	$image.cropper({
+		aspectRatio: 16 / 9,
+		preview: ".extra-preview",
+		done: function(data) {
+			$dataX1.text(data.x1);
+			$dataY1.text(data.y1);
+			$dataX2.text(data.x2);
+			$dataY2.text(data.y2);
+			$dataHeight.text(data.height);
+			$dataWidth.text(data.width);
+		}
+	});
+</script>
+
+<style>
+	.cropper-container{
+		margin-top: -15px;
+		margin-bottom: 30px;
+	}
+</style>
