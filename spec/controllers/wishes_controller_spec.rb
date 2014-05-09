@@ -155,15 +155,17 @@ describe WishesController do
     describe "DELETE destroy" do
       it "destroys the requested wish" do
         wish = Wish.create! valid_attributes
+        @request.env['HTTP_REFERER'] = '/'
         expect {
           delete :destroy, {:id => wish.to_param}, valid_session
         }.to change(Wish, :count).by(-1)
       end
 
-      it "redirects to the wishes list" do
+      it "redirects back" do
         wish = Wish.create! valid_attributes
+        @request.env['HTTP_REFERER'] = '/'
         delete :destroy, {:id => wish.to_param}, valid_session
-        response.should redirect_to user_wishes_path(user)
+        expect(response.response_code).to eq 302
       end
     end
   end
