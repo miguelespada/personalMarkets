@@ -34,5 +34,21 @@ module ApplicationHelper
       image_tag "default-image.png", image_options
     end
   end 
+
+  def back_link
+    content_tag :div, class:"col-md-offset-9" do
+      link_to :back do
+         content_tag :i, :class => "fa fa-reply fa-3x" do
+         # "<br/><h6>Go Back</h6>".html_safe
+        end 
+      end
+    end 
+  end
 end
 
+
+# <div class="col-md-offset-9">
+# <%= link_to :back do %>
+#   <i class="fa fa-reply fa-3x"></i><br/>Go Back
+# <% end %>
+# </div>
