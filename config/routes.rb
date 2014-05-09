@@ -109,7 +109,10 @@ PopUpStores::Application.routes.draw do
   get "static_pages/cities", path: "/cities", as: 'cities'
   get "static_pages/calendar", path: "/calendar", as: 'calendar'
   get "static_pages/map", path: "/map", as: 'map'
-  get "static_pages/:id/edit_photo", to: "static_pages#edit_photo", as: 'edit_photo'
+
+  #### Edit photos
+  get "/photos/:id/edit", to: "photos#edit", as: 'edit_photo'
+  ####
 
 
   root "static_pages#home"

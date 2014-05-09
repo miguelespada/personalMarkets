@@ -24,10 +24,6 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def edit_photo
-    @photo  = Photo.find(params['id']).photo
-  end
-
   private 
   def markers(markets)
     markets.collect{|market| market.to_marker(view_context.tooltip(market))} if markets.count > 0
