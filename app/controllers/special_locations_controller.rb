@@ -15,6 +15,9 @@ class SpecialLocationsController < ApplicationController
     render layout: false
   end
 
+  def edit_photo
+  end
+
   def gallery
     @special_locations = SpecialLocation.all
     render layout: false

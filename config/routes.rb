@@ -76,6 +76,7 @@ PopUpStores::Application.routes.draw do
 
   ### SpecialLocations
   get "/explore_hotspots", to: "special_locations#explore_hotspots", as: "explore_hotspots"
+  get "/special_locations/:id/edit_photo", to: "special_locations#edit_photo", as: "edit_photo_special_location"
   get "/special_locations/gallery", as: "special_locations_gallery"
   resources :special_locations
   ####
