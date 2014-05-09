@@ -19,8 +19,11 @@
       <%= content_tag_for(:tr, special_location) do %>
         <td class="col-md-2"> 
         <div class="table-photo-container">
-          <%= photo(special_location.photo.photo, 120, 60) %>
-          <%= link_to content_tag(:i, "", class: "fa fa-pencil"), edit_photo_path(special_location.photo), class: "btn btn-info btn-xs table-photo-edit" %>
+          <% if !special_location.photo.nil? %>
+           <%= photo(special_location.photo.photo, 120, 60) %>
+            <%= link_to content_tag(:i, "", class: "fa fa-pencil"), edit_photo_path(special_location.photo), class: "btn btn-info btn-xs table-photo-edit" %>
+
+           <% end %>
         </div>
         </td>
         <td class="col-md-2"> <%= special_location.name %> </td>
