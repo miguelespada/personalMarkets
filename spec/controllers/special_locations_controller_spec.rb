@@ -56,6 +56,7 @@ describe SpecialLocationsController do
           }.to change(SpecialLocation, :count).by(1)
         end
 
+
         it "assigns a newly created special_location as @special_location" do
           post :create, {:special_location => valid_attributes}, valid_session
           assigns(:special_location).should be_a(SpecialLocation)
@@ -66,6 +67,13 @@ describe SpecialLocationsController do
           post :create, {:special_location => valid_attributes}, valid_session
           response.should redirect_to(special_locations_path)
         end
+        
+        it "create with image" do
+          all = {"utf8"=>"✓", "authenticity_token"=>"6FM3P0RTHmee1nFsDn0wFIoq/c62Xmz1vb20n0yFtkY=", "special_location"=>{"name"=>"malasaña", "address"=>"malasaña", "city"=>"Madrid, España", "latitude"=>"40.380267", "longitude"=>"-3.621229699999999", "photo_attributes"=>{"photo"=>"[{\"public_id\":\"eofjihx0ofdhymtnqspr\",\"version\":1399647194,\"signature\":\"317e0eb32cf48fe799d0a1449b1452e661e344c2\",\"width\":1000,\"height\":620,\"format\":\"jpg\",\"resource_type\":\"image\",\"created_at\":\"2014-05-09T14:53:14Z\",\"tags\":[\"attachinary_tmp\",\"development_env\"],\"bytes\":100065,\"type\":\"upload\",\"etag\":\"32ca41239ec02186a800426632c2d1b8\",\"url\":\"http://res.cloudinary.com/espadaysantacruz/image/upload/v1399647194/eofjihx0ofdhymtnqspr.jpg\",\"secure_url\":\"https://res.cloudinary.com/espadaysantacruz/image/upload/v1399647194/eofjihx0ofdhymtnqspr.jpg\"}]"}}, "commit"=>"Create Special location"}
+          post :create, all, valid_session
+          assigns(:special_location).photo.should_not be_nil
+          assigns(:special_location).photo.should be_persisted
+        end 
       end
 
       describe "with invalid params" do

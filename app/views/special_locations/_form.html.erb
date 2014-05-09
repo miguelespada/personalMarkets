@@ -11,7 +11,9 @@
       <%= f.input :latitude %>
       <%= f.input :longitude %>
     </div>
-    <%= f.input :photo, as: :attachinary %>
+    <%= f.simple_fields_for :photo do |c| %>
+      <%= c.input :photo, as: :attachinary %>
+    <% end %>
   </div>
 
   <div class="form-actions">

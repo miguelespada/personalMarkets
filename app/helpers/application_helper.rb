@@ -27,7 +27,7 @@ module ApplicationHelper
   def photo(photo, width, height = nil)
     height ||= width
     size = "#{width}x#{height}"
-    image_options = { size: size, crop: :fill,  }
+    image_options = { size: size, crop: :fill}
     if !photo.nil?
       cl_image_tag(photo.path, image_options) 
     else

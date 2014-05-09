@@ -1,7 +1,6 @@
 <div class="panel panel-default panel-table panel-table-last">
   <div class="panel-heading table-title">
-	Edit Photo
-	<img class="cropper" src="images/11.png">
+	<%= cl_image_tag(@photo.path, {:width => 800, :height => 400, :crop => :scale, :class => "cropper"}) %>
   </div>
   <table class="table table-striped">
 	<tr>

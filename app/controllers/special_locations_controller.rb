@@ -21,7 +21,7 @@ class SpecialLocationsController < ApplicationController
   end
 
   def new
-    @special_location = SpecialLocation.new
+    @special_location = SpecialLocation.new(photo: Photo.new)
   end
 
   def edit
@@ -63,6 +63,6 @@ class SpecialLocationsController < ApplicationController
 
   private
     def special_location_params
-      params.require(:special_location).permit(:name, :address, :city, :latitude, :longitude, :photo)
+      params.require(:special_location).permit(:name, :address, :city, :latitude, :longitude, photo_attributes: [:photo])
     end
 end
