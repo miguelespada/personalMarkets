@@ -60,17 +60,15 @@ PopUpStores::Application.routes.draw do
   ###
 
   ### Wishes
-  get "/wishes/index", path: "wishes"
   get "/wishes/gallery", as: "wishes_gallery"
   get "/users/:user_id/wishes", to: "wishes#list_user_wishes", as: "user_wishes"
-  resources :wishes, except: [:index]
+  resources :wishes
   ####
 
   ### Bargains
-  get "/bargains/index", path: "bargains"
   get "/bargains/gallery", as: "bargains_gallery"
   get "/users/:user_id/bargains", to: "bargains#list_user_bargains", as: "user_bargains"
-  resources :bargains, except: [:index]
+  resources :bargains
   ####
 
   ### SpecialLocations

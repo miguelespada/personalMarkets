@@ -20,8 +20,14 @@ describe WishesController do
 
     it "assigns user wishes as @wishes " do
       wish = Wish.create! valid_attributes
+      Wish.create(description: "dummy wish", user: other_user)
       get :list_user_wishes, {user_id: user.to_param}, valid_session
       assigns(:wishes).should eq([wish])
+    end
+
+    it "assigns user wishes as @wishes " do
+      get :show, {}, valid_session 
+      redirect_to wishes_path
     end
 
     it "assigns all wishes as @wishes with 2 user wishes" do
