@@ -1,0 +1,21 @@
+
+<table class="table table-striped">
+  <tr>
+    <th>Photo</th>
+    <th>Description</th>
+    <th>Tags</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @wishes.each do |wish| %>
+    <%= content_tag_for(:tr, wish) do %> 
+      <td class="col-md-3"> <%= photo(wish.photography, 120, 60) %> </td>
+      <td class="col-md-3"> <%= wish.description %> </td> 
+      <td class="col-md-3"> <%= wish.tags %> </td> 
+      <td class="col-md-3"> 
+        <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), wish, :method => :delete, class: "delete btn btn-danger table-button table-button-delete" %> </span>
+        <span> <%= link_to content_tag(:i, "", class: "fa fa-pencil"), edit_wish_path(wish), class: "edit btn btn-info table-button table-button-edit" %></span> 
+      </td>
+    <% end %>
+  <% end %>
+</table>

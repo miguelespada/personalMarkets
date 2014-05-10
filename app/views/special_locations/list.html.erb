@@ -1,0 +1,15 @@
+<% @special_locations.each do |special_location| %>
+  <li class="registered-user-action">
+  	<a class="explore-link-hotspots" href="#" data-name="<%= special_location.name %>">
+      <%= special_location.name %>
+      <i class="fa fa-angle-right pull-right explore-arrow"></i>
+    </a>
+  </li>
+<% end %>
+
+<script>
+	$(".explore-link-hotspots").click(function(){
+    	$("#location_location_id").val($(this).data("name"));
+    	$("#search_market").submit();
+  	});
+</script>
