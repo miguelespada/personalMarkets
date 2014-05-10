@@ -10,7 +10,12 @@ class SpecialLocation
 
   has_one :photography, class_name: "Photo", as: :photographic
   accepts_nested_attributes_for :photography
+  
   def photo
     photography.photo
+  end
+
+  def photo?
+    photography? && photography.photo?
   end
 end

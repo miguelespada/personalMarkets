@@ -35,6 +35,10 @@ module ApplicationHelper
     end
   end 
 
+  def edit_photo_link(photo)
+     link_to content_tag(:i, "", class: "fa fa-pencil"), edit_photo_path(photo), class: "btn btn-info btn-xs table-photo-edit"
+  end
+
   def back_link
     content_tag :div, class:"col-md-offset-9" do
       link_to :back do
@@ -47,8 +51,3 @@ module ApplicationHelper
 end
 
 
-# <div class="col-md-offset-9">
-# <%= link_to :back do %>
-#   <i class="fa fa-reply fa-3x"></i><br/>Go Back
-# <% end %>
-# </div>
