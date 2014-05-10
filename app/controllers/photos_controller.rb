@@ -22,6 +22,18 @@ class PhotosController < ApplicationController
   def edit
   end
 
+  def destroy
+    respond_to do |format|
+      if @photo.destroy
+        format.html { redirect_to :back, 
+                      notice: "Photo successfully deleted." }
+      else
+        format.html { redirect_to :back, 
+                      flash: { error: "Cannot delete special photo." }}
+      end
+    end
+  end
+
   private 
     def load_crop
       {"x" => params[:x], "y" => params[:y], "w" => params[:w], "h" => params[:h]}

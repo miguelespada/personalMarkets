@@ -28,7 +28,7 @@ module ApplicationHelper
     height ||= width
     size = "#{width}x#{height}"
     image_options = { size: size, crop: :fill }
-    if !photo.nil?
+    if !photo.photo.nil?
       crop = photo.crop if !photo.crop.nil?
       image_options = {transformation: { crop: :crop, x: crop["x"], y: crop["y"], width: crop["w"], height: crop["h"]}, size: size} if !crop.nil?
       cl_image_tag(photo.photo.path, image_options) 
@@ -39,7 +39,7 @@ module ApplicationHelper
   end 
 
   def edit_photo_link(photo)
-    if !photo.nil?
+    if !photo.photo.nil?
       link_to content_tag(:i, "", class: "fa fa-pencil"), edit_photo_path(photo), class: "btn btn-info btn-xs table-photo-edit"   
     end
   end
