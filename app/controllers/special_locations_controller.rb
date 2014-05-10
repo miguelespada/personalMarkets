@@ -19,9 +19,13 @@ class SpecialLocationsController < ApplicationController
     @special_locations = SpecialLocation.all
     render layout: false
   end
+  
+  def show
+    redirect_to special_locations_path
+  end 
 
   def new
-    @special_location = SpecialLocation.new(photography: Photo.new)
+    @special_location = SpecialLocation.new
   end
 
   def edit

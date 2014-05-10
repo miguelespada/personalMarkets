@@ -109,7 +109,7 @@ PopUpStores::Application.routes.draw do
   #### Edit photos
   get "/photos/:id/edit", to: "photos#edit", as: 'edit_photo'
   post "/photos/:id/crop", to: "photos#crop", as: 'crop_photo'
-  resources :photos, only: [:show, :index]
+  resources :photos, only: [:show, :index, :delete]
 
   ####
 

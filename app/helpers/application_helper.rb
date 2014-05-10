@@ -25,14 +25,13 @@ module ApplicationHelper
   end
 
   def photo(photo, width, height = nil)
-
     height ||= width
     size = "#{width}x#{height}"
     image_options = { size: size, crop: :fill }
     if !photo.nil?
-      crop = photo._parent.crop if !photo._parent.crop.nil?
+      crop = photo.crop if !photo.crop.nil?
       image_options = {transformation: { crop: :crop, x: crop["x"], y: crop["y"], width: crop["w"], height: crop["h"]}, size: size} if !crop.nil?
-      cl_image_tag(photo.path, image_options) 
+      cl_image_tag(photo.photo.path, image_options) 
     else
       image_tag "default-image.png", image_options
     end
@@ -41,7 +40,7 @@ module ApplicationHelper
 
   def edit_photo_link(photo)
     if !photo.nil?
-      link_to content_tag(:i, "", class: "fa fa-pencil"), edit_photo_path(photo._parent), class: "btn btn-info btn-xs table-photo-edit"   
+      link_to content_tag(:i, "", class: "fa fa-pencil"), edit_photo_path(photo), class: "btn btn-info btn-xs table-photo-edit"   
     end
   end
 
