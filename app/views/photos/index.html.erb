@@ -1,0 +1,21 @@
+<div class="panel panel-default panel-table panel-table-last">
+  <div class="panel-heading table-title">Photos</div>
+  <table class="table table-striped">
+  <tr>
+    <th>Photo</th>
+    <th>Resource</th>
+    <th>Actions</th>
+  </tr>
+  
+  <% @photos.each do |photo| %>
+    <%= content_tag_for(:tr, photo) do %> 
+    <td class="col-md-2"> 
+      <%= photo(photo.photo, 300, 150) %>
+      <%= edit_photo_link(photo.photo) %>
+    </td>
+    <td></td>
+    <td></td>
+    <% end %>
+  <% end %>
+  </table>
+</div>

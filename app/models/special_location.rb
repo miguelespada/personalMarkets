@@ -12,7 +12,7 @@ class SpecialLocation
   accepts_nested_attributes_for :photography
   
   def photo
-    photography.photo
+    photography.photo if photo?
   end
 
   def photo?

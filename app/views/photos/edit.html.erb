@@ -9,7 +9,7 @@
 <% end %>
 
   <div class="panel-heading table-title">
-	<%= cl_image_tag(@photo.photo.path, {:width => 800, :height => 400, :crop => :scale, :class => "cropper"}) %>
+	<%= cl_image_tag(@photo.photo.path, {:class => "cropper"}) %>
   </div>
   <table class="table table-striped">
 	<tr>
@@ -17,16 +17,16 @@
 	  <th>Y1</th>
 	  <th>X2</th>
 	  <th>Y2</th>
-	  <th>Height</th>
 	  <th>Width</th>
+	  <th>Height</th>
 	</tr>
   
 		<td class="col-md-2"> <span id="dataX1"></span> </td>
 		<td class="col-md-2"> <span id="dataY1"></span> </td>
 		<td class="col-md-2"> <span id="dataX2"></span> </td>
 		<td class="col-md-2"> <span id="dataY2"></span> </td>
-		<td class="col-md-2"> <span id="dataHeight"></span> </td>
 		<td class="col-md-2"> <span id="dataWidth"></span>  </td>
+		<td class="col-md-2"> <span id="dataHeight"></span> </td>
   </table>
 </div>
 
@@ -65,5 +65,6 @@
 	.cropper-container{
 		margin-top: -15px;
 		margin-bottom: 30px;
+		height: 400px;
 	}
 </style>
