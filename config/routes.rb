@@ -14,7 +14,6 @@ PopUpStores::Application.routes.draw do
     post :archive
     get :make_pro_payment
     post :make_pro
-    resources :comments, :only => [:create, :destroy, :update]
   end
 
   get "/users/:user_id/dashboard", to: "users#dashboard", as: "user_dashboard"
@@ -100,9 +99,6 @@ PopUpStores::Application.routes.draw do
   get "/users/:user_id/unlike/:market_id",  to: 'users#unlike', as: 'unlike'
   ####
 
-  post "/markets/:market_id/comments/:id/report", to: "comments#report", as: 'report_comment'
-  post "/markets/:market_id/delete_image", to: "markets#delete_image", as: 'delete_image'
-
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   mount Attachinary::Engine => "/attachinary"
 
@@ -112,6 +108,9 @@ PopUpStores::Application.routes.draw do
 
   #### Edit photos
   get "/photos/:id/edit", to: "photos#edit", as: 'edit_photo'
+  post "/photos/:id/crop", to: "photos#crop", as: 'crop_photo'
+  resources :photos, only: [:show]
+
   ####
 
 

@@ -7,11 +7,7 @@ FactoryGirl.define do
     trait :normal do
         after(:create) { |user| user.update_role(:normal)}
     end
-
-    trait :moderator do
-        after(:create) { |user| user.update_role(:moderator)}
-    end
-
+    
     trait :premium do
         after(:create) { |user| user.update_role(:premium)}
     end

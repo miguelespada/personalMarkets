@@ -27,16 +27,19 @@ module ApplicationHelper
   def photo(photo, width, height = nil)
     height ||= width
     size = "#{width}x#{height}"
-    image_options = { size: size, crop: :fill}
+    image_options = { size: size, crop: :fill }
     if !photo.nil?
+      crop = photo._parent.crop if !photo._parent.crop.nil?
+      image_options = {size: size, crop: :crop, x: crop["x"], y: crop["y"], width: crop["w"], height: crop["h"]} if !crop.nil?
       cl_image_tag(photo.path, image_options) 
     else
       image_tag "default-image.png", image_options
     end
+
   end 
 
   def edit_photo_link(photo)
-     link_to content_tag(:i, "", class: "fa fa-pencil"), edit_photo_path(photo), class: "btn btn-info btn-xs table-photo-edit"
+     link_to content_tag(:i, "", class: "fa fa-pencil"), edit_photo_path(photo._parent), class: "btn btn-info btn-xs table-photo-edit"
   end
 
   def back_link

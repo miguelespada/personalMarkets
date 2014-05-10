@@ -1,4 +1,13 @@
 <div class="panel panel-default panel-table panel-table-last">
+  
+<%= form_tag crop_photo_path(@photo), id: "crop_image_form" do %>
+    <%= text_field_tag(:x) %>
+    <%= text_field_tag(:y) %>
+    <%= text_field_tag(:w) %>
+    <%= text_field_tag(:h) %>
+    <%= submit_tag "Save"%>
+<% end %>
+
   <div class="panel-heading table-title">
 	<%= cl_image_tag(@photo.photo.path, {:width => 800, :height => 400, :crop => :scale, :class => "cropper"}) %>
   </div>
@@ -42,6 +51,14 @@
 			$dataWidth.text(data.width);
 		}
 	});
+
+	$("#crop_image_form").submit(function() {
+		$("#x").val($("#dataX1").html());
+		$("#y").val($("#dataY1").html());
+		$("#w").val($("#dataWidth").html());
+		$("#h").val($("#dataHeight").html());
+	});
+
 </script>
 
 <style>

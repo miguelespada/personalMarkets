@@ -10,7 +10,6 @@ class Ability
 
     admin_abilities
 
-    can [:edit, :update], Comment, :author => @user.email
     can [:edit, :update], Market, :user_id => @user.id
     can :delete, Market, :user_id => @user.id
   end
@@ -27,7 +26,6 @@ class Ability
 
         can :archive, Market, :user_id => @user.id
         can :see_location, Market
-        can :report, Comment
 
         can :publish, Market, Market do |market|
             @user.owns(market) && market.can_be_published
@@ -36,8 +34,6 @@ class Ability
         can :unpublish, Market, Market do |market|
             @user.owns(market) && market.can_be_unpublished
         end
-
-        can :destroy, Comment, :author => @user.email
         
         can :manage, Wish, Wish do |wish|
             @user.owns(wish)
@@ -72,8 +68,6 @@ class Ability
       can [:change, :update], Role
       can :archive, Market
       can :delete_image, Market
-      can [:edit, :update], Comment
-      can :destroy, Comment
       can [:edit, :update], Market
       can [:list], Coupon
       can :buy, Coupon
