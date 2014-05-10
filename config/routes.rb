@@ -97,6 +97,14 @@ PopUpStores::Application.routes.draw do
   get "/users/:user_id/unlike/:market_id",  to: 'users#unlike', as: 'unlike'
   ####
 
+  #### Edit photos
+  get "/photos/:id/edit", to: "photos#edit", as: 'edit_photo'
+  post "/photos/:id/crop", to: "photos#crop", as: 'crop_photo'
+  get "/users/:user_id/photos", to: "photos#list_user_photos", as: "user_photos"
+  resources :photos, only: [:show, :index, :destroy]
+  ####
+
+
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   mount Attachinary::Engine => "/attachinary"
 
@@ -104,12 +112,7 @@ PopUpStores::Application.routes.draw do
   get "static_pages/calendar", path: "/calendar", as: 'calendar'
   get "static_pages/map", path: "/map", as: 'map'
 
-  #### Edit photos
-  get "/photos/:id/edit", to: "photos#edit", as: 'edit_photo'
-  post "/photos/:id/crop", to: "photos#crop", as: 'crop_photo'
-  resources :photos, only: [:show, :index, :destroy]
-
-  ####
+  
 
 
   root "static_pages#home"

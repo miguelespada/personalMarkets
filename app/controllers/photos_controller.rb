@@ -5,6 +5,10 @@ class PhotosController < ApplicationController
     @photos = Photo.all
   end
 
+  def list_user_photos
+    @photos = Wish.where(user: load_user).collect{|o| o.photography }
+  end
+
   def show
   end
 
@@ -37,5 +41,9 @@ class PhotosController < ApplicationController
   private 
     def load_crop
       {"x" => params[:x], "y" => params[:y], "w" => params[:w], "h" => params[:h]}
+    end
+
+    def load_user
+      User.find(params[:user_id])
     end
 end
