@@ -1,0 +1,20 @@
+<% @suggested.each do |tag| %>
+  <li class="registered-user-action">
+  	<a class="explore-link-tags" href="#" data-name="<%= tag.name %>">
+    <%= tag.name %><i class="fa fa-angle-right pull-right explore-arrow"></i>
+    </a>
+  </li>
+<% end %>
+<li class="divider"></li>
+<li class="registered-user-action">
+	<%= link_to tags_path do %>
+		All tags<i class="fa fa-angle-right pull-right explore-arrow"></i>
+	<% end %>
+</li>
+
+<script>
+	$(".explore-link-tags").click(function(){
+  	$("#query").val($(this).data("name"));
+  	$("#search_market").submit();
+  });
+</script>
