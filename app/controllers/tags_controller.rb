@@ -1,7 +1,6 @@
 class TagsController < ApplicationController
   load_resource :only => [:show, :edit, :destroy, :update]
-  authorize_resource :except => [:index, :show, :gallery, :explore_tags]
-  
+  authorize_resource :except => [:index, :show, :gallery, :list
   def index
     @suggested = Tag.all
     @tags = Market.tags
@@ -11,14 +10,14 @@ class TagsController < ApplicationController
     end
   end
 
-  def explore_tags
+  def list
     @suggested = Tag.all
-    render layout: false
+    render :layout => !request.xhr?
   end
 
   def gallery
     @suggested = Tag.all
-    render layout: false
+    render :layout => !request.xhr?
   end
 
   def show

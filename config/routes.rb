@@ -78,14 +78,14 @@ PopUpStores::Application.routes.draw do
   ####
 
   ### Tags
-  get "/explore_tags", to: "tags#explore_tags", as: "explore_tags"
+  get "/tags/list", as: "tags_list"
   get "/tags/gallery", as: "tags_gallery"
   get "/tags/:tag/markets", to: "markets#list_tag_markets", as: "tag_markets"
   resources :tags
   ####
  
   ### Categories
-  get "/explore_categories", to: "categories#explore_categories", as: "explore_categories"
+  get "/categories/list", as: "categories_list"
   get "/categories/gallery", as: "category_gallery"
   get "/category/:category_id/markets", to: "markets#list_category_markets", as: "category_markets"
   resources :categories

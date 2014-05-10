@@ -1,6 +1,9 @@
 <%= simple_form_for @category do |f| %>
   <%= f.input :name, input_html: { class: 'category-name' }%>
-  <%= f.input :photo, as: :attachinary %>
+  
+  <%= f.simple_fields_for :photography do |c| %>
+    <%= c.input :photo, as: :attachinary, required: true %>
+  <% end %>
   <%= f.button :submit %>
 <% end %>
 

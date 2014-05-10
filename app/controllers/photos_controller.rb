@@ -7,6 +7,7 @@ class PhotosController < ApplicationController
 
   def list_user_photos
     @photos = Wish.where(user: load_user).collect{|o| o.photography }
+    @photos.concat(Bargain.where(user: load_user).collect{|o| o.photography })
   end
 
   def show
