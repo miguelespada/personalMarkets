@@ -35,12 +35,11 @@
       </div>
       
       <div class="tab-pane" id="form-market-photo">
-        <%= f.input :featured, as: :attachinary %>
+        <%= f.simple_fields_for :featured do |c| %>
+          <%= c.input :photo, as: :attachinary, required: true %>
+        <% end %>
       </div>
     
-      <div class="tab-pane" id="form-market-photos">
-        <%= f.input :photos, as: :attachinary %>
-      </div>
 
       <div class="tab-pane" id="form-market-category-tag">
         <%= f.association :category, :include_blank => false %>
@@ -67,7 +66,10 @@
           <%= c.input :description, { placeholder: "Description" } %>
           <%= c.input :price, { placeholder: "Price" } %>
           <%= c.input :available, { placeholder: "Available" } %>
-          <%= c.input :photo, as: :attachinary %>
+               
+          <%= c.simple_fields_for :photography do |d| %>
+            <%= d.input :photo, as: :attachinary %>
+          <% end %>
         <% end %>
       </div>
       <div id="small-map-container"><%= render "markets/shared/mapsmall" %></div>

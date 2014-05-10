@@ -27,7 +27,9 @@ class Market
   has_one :coupon, class_name: "Coupon", inverse_of: :market
   
 
-  has_attachment :featured, accept: [:jpg, :png, :gif]
+  has_one :featured, class_name: "Photo", as: :photographic, autobuild: true, dependent: :delete
+  accepts_nested_attributes_for :featured
+
   has_attachments :photos, accept: [:jpg, :png, :gif], maximum: 3
 
   validates_presence_of :name, :user

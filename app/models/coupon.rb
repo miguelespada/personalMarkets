@@ -6,7 +6,9 @@ class Coupon
   field :description, type: String
   field :price, type: Integer
   field :available, type: Integer
-  has_attachment :photo, accept: [:jpg, :png, :gif]
+  
+  has_one :photography, class_name: "Photo", as: :photographic, autobuild: true, dependent: :delete
+  accepts_nested_attributes_for :photography
 
   def check_buy number
     raise ArgumentError, "Incorrect number of coupons" unless number > 0 && number <= available

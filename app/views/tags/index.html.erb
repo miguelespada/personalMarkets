@@ -12,7 +12,14 @@
   
     <% @suggested.each do |tag| %>
       <%= content_tag_for(:tr, tag) do %> 
-        <td class="col-md-3"> <%= photo(tag.photo, 120, 60) %> </td>
+        <td class="col-md-3"> 
+
+          <div class="table-photo-container">
+             <%= photo(tag.photography, 120, 60) %>
+             <%= edit_photo_link(tag.photography) %>
+          </div>
+        </td>
+        </td>
         <td class="col-md-3"> <%= link_to(tag.name, tag_markets_path(tag.name)) %> </td> 
         <td class="col-md-3 market-counter"> <%= market_counter(tag.name) %> </td>
         <td class="col-md-3"> 

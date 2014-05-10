@@ -76,7 +76,6 @@ class MarketsController < ApplicationController
   
   def edit
     @market = domain.get_market params[:id]
-    @market.coupon ||= Coupon.new
   end
 
   def user_markets_succeeded markets
@@ -191,9 +190,8 @@ class MarketsController < ApplicationController
         :user_id,
         :category_id,
         :location_id,
-        :signature, :created_at, :tags, :bytes, :type, :etag, :url, :secure_url,
-        :coupon_attributes => [:id, :description, :price, :available, :photo],
-        :featured => [],
+        :coupon_attributes => [:description, :price, :available, :photography_attributes => [:photo]],
+        :featured_attributes => [:photo],
         :photos => []
         )
     end
