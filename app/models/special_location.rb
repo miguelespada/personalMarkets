@@ -8,9 +8,9 @@ class SpecialLocation
   validates_presence_of :name, :latitude, :longitude
   validates :name, uniqueness: { message: "Location name must be unique" }
 
-  has_one :photo, as: :photographic
-  accepts_nested_attributes_for :photo
-  def the_photo
-    photo.photo
+  has_one :photography, class_name: "Photo", as: :photographic
+  accepts_nested_attributes_for :photography
+  def photo
+    photography.photo
   end
 end
