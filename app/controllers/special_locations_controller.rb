@@ -21,7 +21,7 @@ class SpecialLocationsController < ApplicationController
   end
 
   def new
-    @special_location = SpecialLocation.new(photo: Photo.new)
+    @special_location = SpecialLocation.new(photography: Photo.new)
   end
 
   def edit
