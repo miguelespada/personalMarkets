@@ -12,7 +12,7 @@
       <%= f.input :longitude %>
     </div>
     <%= f.simple_fields_for :photography do |c| %>
-      <%= c.input :photo, as: :attachinary %>
+      <%= c.input :photo, as: :attachinary, required: true %>
     <% end %>
   </div>
 
