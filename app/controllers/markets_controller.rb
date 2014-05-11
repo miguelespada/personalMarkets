@@ -1,7 +1,7 @@
 class MarketsController < ApplicationController
   before_filter :load_user
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
-  authorize_resource :only => [:edit, :create, :new, :destroy, :update, :archive, 
+  authorize_resource :only => [:index, :edit, :create, :new, :destroy, :update, :archive, 
                               :publish, :unpublish, :make_pro, :publish_anyway]
 
   def index

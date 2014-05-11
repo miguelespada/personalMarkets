@@ -10,8 +10,6 @@ class Ability
 
     admin_abilities
 
-    can [:edit, :update], Market, :user_id => @user.id
-    can :delete, Market, :user_id => @user.id
   end
 
   private
@@ -24,8 +22,8 @@ class Ability
             @user.owns(market)
         end
 
-        can :archive, Market, :user_id => @user.id
-        can :see_location, Market
+        # can :archive, Market, :user_id => @user.id
+        # can :see_location, Market
 
         can :publish, Market, Market do |market|
             @user.owns(market) && market.can_be_published
@@ -38,9 +36,14 @@ class Ability
         can :manage, Wish, Wish do |wish|
             @user.owns(wish)
         end
+
         can :manage, Bargain, Bargain do |bargain|
             @user.owns(bargain)
         end
+
+        can :manage, Market, Market do |market|
+            @user.owns(market)
+        end 
 
         can :buy, Coupon
         can :coupon_payment, Coupon
@@ -66,19 +69,17 @@ class Ability
       can [:update], Status
       can [:show, :index, :destroy], User
       can [:change, :update], Role
-      can :archive, Market
-      can :delete_image, Market
-      can [:edit, :update], Market
+
       can [:list], Coupon
       can :buy, Coupon
 
+      can [:manage], Market
       can [:manage], Wish
       can [:manage], Bargain
       can [:manage], SpecialLocation
       can [:manage], Category
       can [:manage], Tag
       can [:manage], User
-
       can [:manage], Coupon
       can [:list_user_transactions], User
       can [:list_market_transactions], Market

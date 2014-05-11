@@ -1,0 +1,8 @@
+<div class="carousel-inner">
+	<% @markets.each do |market| %>
+  	<% market = market.decorate %>
+  	<%= render "/markets/shared/slideshow", :market => market%>
+	<% end %>
+</div>
+
+<%= javascript_include_tag "explore_slideshows" %>
