@@ -12,4 +12,6 @@ describe PhotosController do
       assigns(:photo).crop.should_not be_nil
     end
   end
+
+  xit "it needs to define abilities"
 end
