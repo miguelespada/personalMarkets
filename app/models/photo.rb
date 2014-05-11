@@ -5,5 +5,8 @@ class Photo
   field :crop, type: Hash
 
   belongs_to :photographic, polymorphic: true
-  
+
+  def present?
+    !photo.nil?
+  end  
 end
