@@ -80,13 +80,11 @@ When(/^he wants to become premium$/) do
 end
 
 Then(/^he needs to introduce his credit card data$/) do
-  within(:css, ".payment-form") do  
     fill_in "Card name", with: "Dan North"
     fill_in "Card number", with: 4111111111111111
     fill_in "Expiration month", with: 12
     fill_in "Expiration year", with: 2022
     fill_in "CVC", with: 212
-  end
 end
 
 Given(/^a user submits for subscription with valid data$/) do

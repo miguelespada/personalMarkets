@@ -14,7 +14,7 @@
         </div>
         <div class="panel-body">
           <fieldset>
-          <div class="form-group">
+          <div class="form-group payment-form">
           <%= form_tag({controller: "coupons", action: "buy"}, method: "post", id: "new_payment") do %>
           <%= hidden_field_tag "paymill_card_token" %>
           <%= hidden_field_tag "id", "#{coupon_payment.coupon.id}" %>
