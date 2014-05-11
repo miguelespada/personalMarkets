@@ -79,9 +79,6 @@ class MarketsController < ApplicationController
   
   def edit
     @market = domain.get_market params[:id]
-    if @market.gallery.photographies.count == 0
-      3.times {@market.gallery.photographies << Photo.new}
-    end
   end
 
   def user_markets_succeeded markets
