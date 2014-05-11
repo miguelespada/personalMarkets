@@ -102,6 +102,7 @@ PopUpStores::Application.routes.draw do
   post "/photos/:id/crop", to: "photos#crop", as: 'crop_photo'
   get "/users/:user_id/photos", to: "photos#list_user_photos", as: "user_photos"
   resources :photos, only: [:show, :index, :destroy]
+  resources :gallery, only: [:show]
   ####
 
 

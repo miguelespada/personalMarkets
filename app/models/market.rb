@@ -53,8 +53,7 @@ class Market
   end
 
   def pro?
-    #return self.pro
-    true
+    return self.pro
   end
 
   def go_pro
