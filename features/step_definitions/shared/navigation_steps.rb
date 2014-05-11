@@ -61,3 +61,8 @@ When(/^I visit the markets page$/) do
   visit markets_path # express the regexp above with the code you wish you had
 end
 
+When(/^I visit a market$/) do
+  user = create(:user)
+  market = create(:market, user: user)
+  visit market_path market
+end
