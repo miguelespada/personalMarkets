@@ -1,5 +1,5 @@
 When(/^I go to Markets$/) do
-  visit markets_path
+  visit published_markets_path
 end
 
 Given(/^I go to Tag list$/) do
