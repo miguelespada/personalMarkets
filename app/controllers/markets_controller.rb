@@ -1,8 +1,8 @@
 class MarketsController < ApplicationController
   before_filter :load_user
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
-  authorize_resource :only => [:edit, :create, :new, :destroy, :update, :achive, 
-                              :publish, :unpublish, :maker_pro, :publish_anyway]
+  authorize_resource :only => [:edit, :create, :new, :destroy, :update, :archive, 
+                              :publish, :unpublish, :make_pro, :publish_anyway]
 
   def index
     @markets = Market.all
