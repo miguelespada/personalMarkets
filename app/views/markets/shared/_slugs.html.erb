@@ -27,11 +27,6 @@
       <td> <%= market.actions %> </td>
       <td> <%= market.state %> </td>
       <td> <%= photo(market.featured, 100, 50) %></td>
-      <td> <%= market.photos.count %>
-        <% market.photos.each do |photo| %>
-            <%= photo(photo, 100, 50) %>
-        <% end %>
-      </td>
       <td> <%= market.link(market.name)%> </td>
       <td> <%= market.description %></td>
       <td> <%= market.owner %></td>

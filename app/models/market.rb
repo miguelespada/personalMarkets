@@ -31,8 +31,6 @@ class Market
   has_one :featured, class_name: "Photo", as: :photographic, autobuild: true, dependent: :delete
   accepts_nested_attributes_for :featured
 
-  has_attachments :photos, accept: [:jpg, :png, :gif], maximum: 3
-
   validates_presence_of :name, :user
 
   scope :last_published, lambda { where(state: "published").order_by(:created_at.desc).limit(6) }

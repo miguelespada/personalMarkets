@@ -26,20 +26,19 @@
     
   </ul>
   <%= simple_form_for [user, market], 
-      :html => {"data-tags" => "#{raw_tags(market)}", role: "form", novalidate: true}  do |f| %>
+      :html => {"data-tags" => "#{raw_tags(market)}", role: "form"}  do |f| %>
 
     <div class="tab-content col-md-9">
       <div class="tab-pane" id="form-market-name-description"> 
-        <%= f.input :name, input_html: { class: 'market-name', placeholder: "Name" }%>
+        <%= f.input :name, required: true,  input_html: { class: 'market-name', placeholder: "Name" } %>
         <%= f.input :description, :as => :text, label_html: { class: 'market-description', placeholder: "Description" } %>
       </div>
       
       <div class="tab-pane" id="form-market-photo">
         <%= f.simple_fields_for :featured do |c| %>
-          <%= c.input :photo, as: :attachinary, required: true %>
+          <%= c.input :photo, as: :attachinary %>
         <% end %>
       </div>
-    
 
       <div class="tab-pane" id="form-market-category-tag">
         <%= f.association :category, :include_blank => false %>
