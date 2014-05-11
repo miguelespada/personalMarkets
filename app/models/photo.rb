@@ -8,5 +8,11 @@ class Photo
 
   def present?
     !photo.nil?
-  end  
+  end 
+
+  def is_owner?(user)
+    photographic.user == user
+    rescue
+      false
+  end
 end

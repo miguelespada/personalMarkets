@@ -26,4 +26,8 @@ class Coupon
     self.available -= number
     self.update
   end
+
+  def user
+    market.user
+  end
 end

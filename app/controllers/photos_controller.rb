@@ -6,10 +6,7 @@ class PhotosController < ApplicationController
   end
 
   def list_user_photos
-    @photos = Wish.where(user: load_user).collect{|o| o.photography }
-    @photos.concat(Bargain.where(user: load_user).collect{|o| o.photography })
-    @photos.concat(Market.where(user: load_user).collect{|o| o.featured })
-    @photos.concat(Market.where(user: load_user).collect{|o| o.coupon.photography })
+    @photos = Photo.all.collect{|photo| photo if photo.is_owner?(load_user)}
   end
 
   def show
