@@ -39,7 +39,7 @@ describe TagsController do
     it "redirects to the list of markets belonging to the tag" do
       tag = Tag.create! valid_attributes
       get :show, {:id => tag.to_param}, valid_session
-      response.should redirect_to tag_markets_path(tag.name)
+      response.should redirect_to tags_path
     end
   end
 

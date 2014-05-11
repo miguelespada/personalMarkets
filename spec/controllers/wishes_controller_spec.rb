@@ -25,8 +25,9 @@ describe WishesController do
       assigns(:wishes).should eq([wish])
     end
 
-    it "assigns user wishes as @wishes " do
-      get :show, {}, valid_session 
+    it "show redirects to wishes_path " do
+      wish = Wish.create! valid_attributes
+      get :show, {id: wish.to_param}, valid_session 
       redirect_to wishes_path
     end
 
