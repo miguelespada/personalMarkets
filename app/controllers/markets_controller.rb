@@ -1,14 +1,16 @@
 class MarketsController < ApplicationController
   before_filter :load_user
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
+  authorize_resource :only => [:edit, :create, :new, :destroy, :update, :achive, 
+                              :publish, :unpublish, :maker_pro, :publish_anyway]
 
   def index
     @markets = Market.all
   end
 
-  def explore_slideshows
+  def slideshow
     @markets = Market.last_published
-    render layout: false
+    render :layout => !request.xhr?
   end
 
   def list_category_markets
@@ -104,7 +106,6 @@ class MarketsController < ApplicationController
   end
 
   def archive
-    authorize! :archive, domain.get_market(params[:market_id])
     domain.archive_market params[:market_id]
   end
 
@@ -198,10 +199,6 @@ class MarketsController < ApplicationController
         :gallery_attributes => [:id, :photographies_attributes => [:id, :photo]]
         )
     end
-
-    # def market_params
-    #   params.require(:market).permit!
-    # end 
     
     def load_user
       if params[:user_id].present?

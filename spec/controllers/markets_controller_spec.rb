@@ -5,21 +5,6 @@ describe MarketsController do
   let(:valid_session) { {} }
   let(:user) { create(:user) } 
   let(:market) { build(:market) }
-  let(:photo_json) {'[{"public_id":"dummy",
-    "version":1,
-    "signature":"dummy",
-    "width":75,
-    "height":75,
-    "format":"png",
-    "resource_type":"image",
-    "created_at":"dummy_data",
-    "tags":["attachinary_tmp","development_env"],
-    "bytes":0,
-    "type":"upload",
-    "etag":"dummy_etag",
-    "url":"http://dummy.png",
-    "secure_url":"http://dummy.png"}]'
-  }
 
   let(:market_params) { { user_id: user.to_param, 
                   :market => market.attributes } }
@@ -92,18 +77,6 @@ describe MarketsController do
       expect(@market.name).to eq("New dummy name") 
     end
 
-    describe "update photo" do
-      it "allows no photo" do
-        put :update, market_update_params, valid_session
-        expect(@market.featured).to be_nil
-      end
-
-      it "saves a valid featured photo" do
-        @market.stub(:featured).and_return(photo_json)
-        put :update, market_update_params, valid_session
-        expect(@market.featured).not_to be_nil
-      end
-    end
   end
 
   describe "index" do
@@ -163,81 +136,4 @@ describe MarketsController do
     end
   end
 
-  describe "other permissions" do
-
-      before :each do
-        @market = create(:market, :state => "published")
-      end
-
-    [:archive].each do |post_action|
-      it "forbidden #{post_action}" do
-        post post_action, { market_id: @market.id }, valid_session
-        expect(response.response_code).to eq 403
-      end
-    end
-    
-  end
-
-  describe "Permissions" do
-
-    context "archive market" do
-      before :each do
-        @market = create(:market, :state => "published")
-      end
-
-      it "allowed for admin" do
-        admin = create(:user, :admin)
-        sign_in :user, admin
-
-        post :archive, { market_id: @market.id }, valid_session
-        expect(response.response_code).to eq 302
-      end
-
-      it "not allowed for regular user" do
-        user = create(:user)
-        sign_in :user, user
-
-        post :archive, { market_id: @market.id }, valid_session
-        expect(response.response_code).to eq 403
-      end
-    end
-    
-    
-    context "update market" do
-
-      let (:market_update_params) {
-        {
-          id: @market.to_param,
-          user_id: @market.user.id, 
-          market: @market.attributes
-        }
-      }
-
-      before :each do
-        @market = create(:market, :user => user)
-        @market.featured = photo_json
-      end
-
-      it "allowed for admin" do
-        admin = create(:user, :admin)
-        sign_in :user, admin
-
-        @market.attributes["name"] = "New dummy name"
-
-        put :update, market_update_params, valid_session
-        @market.reload
-        expect(@market.name).to eq("New dummy name") 
-      end
-
-      it "not allowed for non owner" do
-        other_user = create(:user)
-        sign_in :user, other_user
-
-        @market.attributes["name"] = "New dummy name"
-
-        put :update, market_update_params, valid_session
-        expect(response.response_code).to eq 403
-      end
-    end
-  end
 end
