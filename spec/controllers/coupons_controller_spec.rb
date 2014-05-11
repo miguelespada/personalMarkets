@@ -87,7 +87,6 @@ describe CouponsController do
   context "list coupons and transactions" do 
     let(:market_owner) { create(:user) }  
     let(:user_market) { create(:market, user: market_owner) } 
-    let(:first_coupon) { create(:coupon, market: user_market) } 
     let(:second_coupon) { create(:coupon, market: market) }
 
     describe "Index" do
@@ -100,19 +99,16 @@ describe CouponsController do
     describe "Show 'coupon'" do
       let(:market_owner) { create(:user) }  
       let(:user_market) { create(:market, user: market_owner) } 
-      let(:first_coupon) { create(:coupon, market: user_market) } 
 
       it "return success" do
-        get :index, {id: first_coupon.to_param}, valid_session        
+        get :index, {id: user_market.coupon.to_param}, valid_session        
         expect(response.response_code).to eq 200
       end
     end
+
     describe "list of sold transactions" do
       before(:each) do
-        user_market.coupon = first_coupon
-        market.coupon = second_coupon
-        create(:couponTransaction, user: user, coupon: first_coupon) 
-        create(:couponTransaction, user: market_owner, coupon: second_coupon)
+        create(:couponTransaction, user: user, coupon: user_market.coupon) 
       end
 
       it "is allowed for market owner" do
@@ -120,6 +116,7 @@ describe CouponsController do
         get :sold_coupons_by_market, {market_id: user_market.id}, valid_session
         expect(response.response_code).to eq 200
         expect(assigns(:transactions).count).to eq 1
+
       end
       it "it is not allowed for guest" do
         get :sold_coupons_by_market, {market_id: user_market.id}, valid_session
@@ -135,9 +132,7 @@ describe CouponsController do
 
     describe "list of bought coupons" do
       before(:each) do
-        user_market.coupon = first_coupon
-        market.coupon = second_coupon
-        create(:couponTransaction, user: user, coupon: first_coupon) 
+        create(:couponTransaction, user: user, coupon:  user_market.coupon.to_param) 
         create(:couponTransaction, user: market_owner, coupon: second_coupon)
       end
       it "is allowed for market owner" do
