@@ -1,14 +1,16 @@
 class MarketsController < ApplicationController
   before_filter :load_user
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
+  authorize_resource :only => [:index, :edit, :create, :new, :destroy, :update, :archive, 
+                              :publish, :unpublish, :make_pro, :publish_anyway]
 
   def index
     @markets = Market.all
   end
 
-  def explore_slideshows
+  def slideshow
     @markets = Market.last_published
-    render layout: false
+    render :layout => !request.xhr?
   end
 
   def list_category_markets
@@ -60,6 +62,7 @@ class MarketsController < ApplicationController
 
   def new
     @market = domain.initialize_market
+    3.times {@market.gallery.photographies << Photo.new}
   end
 
   def show
@@ -76,7 +79,9 @@ class MarketsController < ApplicationController
   
   def edit
     @market = domain.get_market params[:id]
-    @market.coupon ||= Coupon.new
+    if @market.gallery.photographies.count == 0
+      3.times {@market.gallery.photographies << Photo.new}
+    end
   end
 
   def user_markets_succeeded markets
@@ -101,7 +106,6 @@ class MarketsController < ApplicationController
   end
 
   def archive
-    authorize! :archive, domain.get_market(params[:market_id])
     domain.archive_market params[:market_id]
   end
 
@@ -140,7 +144,6 @@ class MarketsController < ApplicationController
   end
 
   def update
-    authorize! :update, Market.find(params[:id])
     domain.update_market params[:id], market_params
   end
 
@@ -191,13 +194,11 @@ class MarketsController < ApplicationController
         :user_id,
         :category_id,
         :location_id,
-        :signature, :created_at, :tags, :bytes, :type, :etag, :url, :secure_url,
-        :coupon_attributes => [:id, :description, :price, :available, :photo],
-        :featured => [],
-        :photos => []
+        :coupon_attributes => [:id, :description, :price, :available, :photography_attributes => [:id, :photo]],
+        :featured_attributes => [:id, :photo],
+        :gallery_attributes => [:id, :photographies_attributes => [:id, :photo]]
         )
     end
-
     
     def load_user
       if params[:user_id].present?

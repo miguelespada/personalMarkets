@@ -3,7 +3,7 @@
     <% if !tag.photo. nil? %>
       <div class = "home_gallery_item tag_gallery_item">
         <div class = "home_gallery_featured_photo tag_gallery_featured_photo" data-name="<%= tag.name %>">
-          <%= photo(tag.photo, 300, 150) %>
+          <%= photo(tag.photography, 300, 150) %>
           <div class = "home_gallery_label tag_gallery_label">
             <%= tag.name %>
           </div>

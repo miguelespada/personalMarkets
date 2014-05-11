@@ -28,7 +28,9 @@
             <%= f.input :longitude %>
           </div>
           <div class="form-group">
-            <%= f.input :photo, as: :attachinary %>
+            <%= f.simple_fields_for :photography do |c| %>
+              <%= c.input :photo, as: :attachinary, required: true %>
+            <% end %>
           </div>
           <div class="form-group">
             <%= render "markets/shared/mapsmall" %>

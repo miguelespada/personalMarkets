@@ -27,10 +27,10 @@ describe CategoriesController do
   end
 
   describe "GET show" do
-    it "redirects to the list of markets belonging to the category" do
+    it "redirects to categories path" do
       category = Category.create! valid_attributes
       get :show, {:id => category.to_param}, valid_session
-      response.should redirect_to category_markets_path(category.to_param)
+      response.should redirect_to categories_path
     end
   end
 

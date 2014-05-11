@@ -27,28 +27,33 @@ module ApplicationHelper
   def photo(photo, width, height = nil)
     height ||= width
     size = "#{width}x#{height}"
-    image_options = { size: size, crop: :fill,  }
-    if !photo.nil?
-      cl_image_tag(photo.path, image_options) 
+    image_options = { size: size, crop: :pad }
+    if !photo.photo.nil?
+      crop = photo.crop if !photo.crop.nil?
+      image_options = {transformation: { crop: :crop, x: crop["x"], y: crop["y"],
+                       width: crop["w"], height: crop["h"]}, size: size, crop: :pad} if !crop.nil?
+      cl_image_tag(photo.photo.path, image_options) 
     else
       image_tag "default-image.png", image_options
     end
+
   end 
+
+  def edit_photo_link(photo)
+    if !photo.photo.nil?
+      link_to content_tag(:i, "", class: "fa fa-pencil"), edit_photo_path(photo), class: "btn btn-info btn-xs table-photo-edit"   
+    end
+  end
 
   def back_link
     content_tag :div, class:"col-md-offset-9" do
       link_to :back do
          content_tag :i, :class => "fa fa-reply fa-3x" do
-         # "<br/><h6>Go Back</h6>".html_safe
         end 
       end
     end 
   end
+
 end
 
 
-# <div class="col-md-offset-9">
-# <%= link_to :back do %>
-#   <i class="fa fa-reply fa-3x"></i><br/>Go Back
-# <% end %>
-# </div>

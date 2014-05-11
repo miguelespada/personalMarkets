@@ -1,3 +1,4 @@
+@edit_as_admin
 Feature: Edit market as admin
   As an admin
   I want to modify my market

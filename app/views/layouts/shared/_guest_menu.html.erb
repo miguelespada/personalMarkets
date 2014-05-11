@@ -40,7 +40,7 @@
 				<li class="item-title">Wishlist</li>
 				<li class="divider"></li>
 				<li class="registered-user-action">
-				<%= link_to wishes_path do %>
+				<%= link_to wishes_gallery_path do %>
 						All wishes<i class="fa fa-angle-right pull-right explore-arrow"></i>
           <% end %>
 				</li>
@@ -49,7 +49,7 @@
 				<li class="item-title">Bargains</li>
 				<li class="divider"></li>
 				<li class="registered-user-action">
-        <%= link_to bargains_path do %>
+        <%= link_to bargains_gallery_path do %>
 						All bargains<i class="fa fa-angle-right pull-right explore-arrow"></i>
           <% end %>
 				</li>
@@ -60,16 +60,16 @@
 </li>
 
 <script>
-	$.get( "/explore_slideshows", function( data ) {
+	$.get( "/slideshow", function( data ) {
     	$( ".carousel-inner" ).html( data );
   	});
-  	$.get( "/explore_categories", function( data ) {
+  	$.get( "/categories/list", function( data ) {
     	$( "#explore_categories" ).append( data );
   	});
-  	$.get( "/explore_hotspots", function( data ) {
+  	$.get( "/special_locations/list", function( data ) {
     	$( "#explore_hotspots" ).append( data );
   	});
-  	$.get( "/explore_tags", function( data ) {
+  	$.get( "/tags/list", function( data ) {
     	$( "#explore_tags" ).append( data );
   	});
 </script>

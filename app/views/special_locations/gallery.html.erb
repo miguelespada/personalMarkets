@@ -1,15 +1,13 @@
 <div class = "home_gallery special_location_gallery">
   <% @special_locations.each do |special_location| %>
-    <% if !special_location.photo.nil? %>
       <div class = "home_gallery_item special_location_item">
         <div class = "home_gallery_featured_photo special_location_featured_photo" data-name="<%= special_location.name %>">
-          <%=  photo(special_location.photo, 300, 150) %>
+          <%=  photo(special_location.photography, 300, 150) %>
           <div class = "home_gallery_label special_location_label">
             <%= special_location.name %>
           </div>
         </div>
       </div>
-    <% end %>
   <% end %>
 </div>
 

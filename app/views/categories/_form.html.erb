@@ -13,7 +13,9 @@
             <%= f.input :name, input_html: { class: 'category-name', placeholder: "Category Name" } %>
           </div>
           <div class="form-group">
-            <%= f.input :photo, as: :attachinary %>
+            <%= f.simple_fields_for :photography do |c| %>
+              <%= c.input :photo, as: :attachinary, required: true %>
+            <% end %>
           </div>
           <div class="form-group col-md-4 col-md-offset-4">
             <%= f.button :submit, class:"btn btn-info" %>

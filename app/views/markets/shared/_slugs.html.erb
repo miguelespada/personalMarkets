@@ -27,11 +27,6 @@
       <td> <%= market.actions %> </td>
       <td> <%= market.state %> </td>
       <td> <%= photo(market.featured, 100, 50) %></td>
-      <td> <%= market.photos.count %>
-        <% market.photos.each do |photo| %>
-            <%= photo(photo, 100, 50) %>
-        <% end %>
-      </td>
       <td> <%= market.link(market.name)%> </td>
       <td> <%= market.description %></td>
       <td> <%= market.owner %></td>
@@ -46,7 +41,7 @@
       <td> <%= link_to  market.coupon.description, coupon_path(market.coupon) if market.coupon? %> </td>
       <td> <%= market.coupon.available if market.coupon? %> </td>
       <td> <%= market.coupon.price if market.coupon? %> </td>
-      <td> <%= photo(market.coupon.photo, 100, 50)  if market.coupon? %> </td>
+      <td> <%= photo(market.coupon.photography, 100, 50)  if market.coupon? %> </td>
       <td class="like-counter"> <%= market.favorited.count %> </td>
     <% end %>
   <% end %>

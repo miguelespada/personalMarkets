@@ -1,7 +1,15 @@
 <div class="panel panel-default panel-table panel-table-last">
+  
+<%= form_tag crop_photo_path(@photo), id: "crop_image_form" do %>
+    <%= text_field_tag(:x) %>
+    <%= text_field_tag(:y) %>
+    <%= text_field_tag(:w) %>
+    <%= text_field_tag(:h) %>
+    <%= submit_tag "Save"%>
+<% end %>
+
   <div class="panel-heading table-title">
-	Edit Photo
-	<img class="cropper" src="images/11.png">
+	<%= cl_image_tag(@photo.photo.path, {:class => "cropper"}) %>
   </div>
   <table class="table table-striped">
 	<tr>
@@ -9,20 +17,21 @@
 	  <th>Y1</th>
 	  <th>X2</th>
 	  <th>Y2</th>
-	  <th>Height</th>
 	  <th>Width</th>
+	  <th>Height</th>
 	</tr>
   
 		<td class="col-md-2"> <span id="dataX1"></span> </td>
 		<td class="col-md-2"> <span id="dataY1"></span> </td>
 		<td class="col-md-2"> <span id="dataX2"></span> </td>
 		<td class="col-md-2"> <span id="dataY2"></span> </td>
-		<td class="col-md-2"> <span id="dataHeight"></span> </td>
 		<td class="col-md-2"> <span id="dataWidth"></span>  </td>
+		<td class="col-md-2"> <span id="dataHeight"></span> </td>
   </table>
 </div>
 
 <script>
+	
 	var $image = $(".cropper"),
 		$dataX1 = $("#dataX1"),
 		$dataY1 = $("#dataY1"),
@@ -31,9 +40,22 @@
 		$dataHeight = $("#dataHeight"),
 		$dataWidth = $("#dataWidth");
 	
+	<% if !@photo.crop.nil? %>
+	_x1 = <%=	 @photo.crop["x"] %>;
+	_y1 = <%=	 @photo.crop["y"] %>;
+	_width = <%= @photo.crop["w"] %>;
+	_heigth = <%=	@photo.crop["h"] %>;
+	<% else %>
+		_x1 = 50;
+		_y1 = 50;
+		_width = 200;
+		_heigth = 200;
+	<% end %>
+
 	$image.cropper({
-		aspectRatio: 16 / 9,
+		aspectRatio: 2 / 1,
 		preview: ".extra-preview",
+		data: {x1: _x1, y1: _y1, width: _width, height: _heigth},
 		done: function(data) {
 			$dataX1.text(data.x1);
 			$dataY1.text(data.y1);
@@ -43,11 +65,22 @@
 			$dataWidth.text(data.width);
 		}
 	});
+
+	
+
+	$("#crop_image_form").submit(function() {
+		$("#x").val($("#dataX1").html());
+		$("#y").val($("#dataY1").html());
+		$("#w").val($("#dataWidth").html());
+		$("#h").val($("#dataHeight").html());
+	});
+
 </script>
 
 <style>
 	.cropper-container{
 		margin-top: -15px;
 		margin-bottom: 30px;
+		height: 400px;
 	}
 </style>

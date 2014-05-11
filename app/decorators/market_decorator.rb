@@ -30,13 +30,13 @@ class MarketDecorator < Draper::Decorator
   end
 
   def publish_link
-    if can? :publish, market
+    if can?(:publish, market) && market.state != "published"
       link_to "Publish", market_publish_path(market), { method: :post }
     end
   end
 
   def unpublish_link
-    if can? :unpublish, market
+    if (can? :unpublish, market) && market.state == "published"
       link_to "Unpublish", market_unpublish_path(market), { method: :post }
     end
   end
@@ -67,31 +67,6 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
-  def delete_comment_link comment
-    if can? :destroy, comment
-      link_options = { class: 'delete-comment-link', method: :delete }
-      link_to "Delete", market_comment_path(market, comment), link_options
-    end
-  end
-
-  def edit_comment_link comment
-    if can? :edit, comment
-      link_options = {
-        id: "edit_link",
-        class: 'edit-comment-link',
-        data_market_id: market[:id],
-        data_comment_id: comment[:id]
-      }
-      link_to "Edit", "", link_options
-    end
-  end
-
-  def report_comment_link comment
-    if can? :report, Comment
-      link_to "Report", report_comment_path(market, comment),
-        { :class => 'report-comment-link', :method => :post }
-    end
-  end
 
   def show_link
     link("Show")
