@@ -24,8 +24,9 @@ class Market
   belongs_to :category
   belongs_to :user, class_name: "User", inverse_of: :markets
   has_and_belongs_to_many :favorited, class_name: "User", inverse_of: :favorites
-  has_one :coupon, class_name: "Coupon", inverse_of: :market
-  
+
+  has_one :coupon, class_name: "Coupon", inverse_of: :market, dependent: :delete
+  accepts_nested_attributes_for :coupon
 
   has_one :featured, class_name: "Photo", as: :photographic, autobuild: true, dependent: :delete
   accepts_nested_attributes_for :featured
@@ -33,8 +34,6 @@ class Market
   has_attachments :photos, accept: [:jpg, :png, :gif], maximum: 3
 
   validates_presence_of :name, :user
-  
-  accepts_nested_attributes_for :coupon, :photos, :featured
 
   scope :last_published, lambda { where(state: "published").order_by(:created_at.desc).limit(6) }
   scope :published, lambda {where(state: "published")}

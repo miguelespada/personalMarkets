@@ -1,11 +1,12 @@
 class Coupon
   include Mongoid::Document
-  belongs_to :market, class_name: "Market", inverse_of: :coupons
-  has_many :transactions, class_name: "CouponTransaction", inverse_of: :coupon
 
   field :description, type: String
   field :price, type: Integer
   field :available, type: Integer
+
+  belongs_to :market, class_name: "Market", inverse_of: :coupon
+  has_many :transactions, class_name: "CouponTransaction", inverse_of: :coupon
   
   has_one :photography, class_name: "Photo", as: :photographic, autobuild: true, dependent: :delete
   accepts_nested_attributes_for :photography

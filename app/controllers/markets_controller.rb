@@ -139,7 +139,6 @@ class MarketsController < ApplicationController
   end
 
   def update
-    authorize! :update, Market.find(params[:id])
     domain.update_market params[:id], market_params
   end
 
@@ -190,8 +189,8 @@ class MarketsController < ApplicationController
         :user_id,
         :category_id,
         :location_id,
-        :coupon_attributes => [:description, :price, :available, :photography_attributes => [:photo]],
-        :featured_attributes => [:photo],
+        :coupon_attributes => [:id, :description, :price, :available, :photography_attributes => [:id, :photo]],
+        :featured_attributes => [:id, :photo],
         :photos => []
         )
     end

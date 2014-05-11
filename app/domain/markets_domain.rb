@@ -18,6 +18,7 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
   def update_market market_id, market_params
     market = markets_repo.find market_id
     market.update! market_params
+    market.coupon.update! market_params[:coupon_attributes]
     listener.update_suceeded market
   rescue MarketsDomainException
     listener.update_failed market
