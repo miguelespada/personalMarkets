@@ -41,7 +41,7 @@ class Ability
             @user.owns(bargain)
         end
 
-        can :manage, Market, Market do |market|
+        can [:manage, :publish, :archive, :unpublish, :make_pro, :publish_anyway], Market, Market do |market|
             @user.owns(market)
         end 
 

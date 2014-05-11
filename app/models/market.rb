@@ -61,18 +61,6 @@ class Market
     self.save!
   end
 
-  def delete_featured_image
-    self.featured = nil
-    self.save!
-  end
-
-  def can_be_published
-    self.state != "published"
-  end
-
-  def can_be_unpublished
-    !can_be_published
-  end
 
   def archive
     self.state = "archived"

@@ -30,13 +30,13 @@ class MarketDecorator < Draper::Decorator
   end
 
   def publish_link
-    if can? :publish, market
+    if can?(:publish, market) && market.state != "published"
       link_to "Publish", market_publish_path(market), { method: :post }
     end
   end
 
   def unpublish_link
-    if can? :unpublish, market
+    if (can? :unpublish, market) && market.state == "published"
       link_to "Unpublish", market_unpublish_path(market), { method: :post }
     end
   end
