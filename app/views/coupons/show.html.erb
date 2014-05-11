@@ -1,4 +1,9 @@
-<%= render "coupon", :coupon => @coupon %>
 
-<%= link_to "transactions", sold_coupons_by_market_path(@coupon.market) %>
-<%= render "buy_coupon_form", :coupon => @coupon %>
+<div class = "home_gallery_title"><i class="fa fa-ticket fa-2x"></i> <br/>Buy Coupon</div>
+
+
+         <%= render "coupon_table", :coupon => @coupon %>
+
+</div>
+
+<%= back_link %>
