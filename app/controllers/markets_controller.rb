@@ -60,6 +60,7 @@ class MarketsController < ApplicationController
 
   def new
     @market = domain.initialize_market
+    3.times {@market.gallery.photographies << Photo.new}
   end
 
   def show
@@ -76,6 +77,9 @@ class MarketsController < ApplicationController
   
   def edit
     @market = domain.get_market params[:id]
+    if @market.gallery.photographies.count == 0
+      3.times {@market.gallery.photographies << Photo.new}
+    end
   end
 
   def user_markets_succeeded markets
@@ -190,10 +194,14 @@ class MarketsController < ApplicationController
         :category_id,
         :location_id,
         :coupon_attributes => [:id, :description, :price, :available, :photography_attributes => [:id, :photo]],
-        :featured_attributes => [:id, :photo]
+        :featured_attributes => [:id, :photo],
+        :gallery_attributes => [:id, :photographies_attributes => [:id, :photo]]
         )
     end
 
+    # def market_params
+    #   params.require(:market).permit!
+    # end 
     
     def load_user
       if params[:user_id].present?

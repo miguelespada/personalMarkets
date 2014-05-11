@@ -27,10 +27,11 @@ module ApplicationHelper
   def photo(photo, width, height = nil)
     height ||= width
     size = "#{width}x#{height}"
-    image_options = { size: size, crop: :fill }
+    image_options = { size: size, crop: :pad }
     if !photo.photo.nil?
       crop = photo.crop if !photo.crop.nil?
-      image_options = {transformation: { crop: :crop, x: crop["x"], y: crop["y"], width: crop["w"], height: crop["h"]}, size: size} if !crop.nil?
+      image_options = {transformation: { crop: :crop, x: crop["x"], y: crop["y"],
+                       width: crop["w"], height: crop["h"]}, size: size, crop: :pad} if !crop.nil?
       cl_image_tag(photo.photo.path, image_options) 
     else
       image_tag "default-image.png", image_options

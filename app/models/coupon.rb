@@ -8,7 +8,7 @@ class Coupon
   belongs_to :market, class_name: "Market", inverse_of: :coupon
   has_many :transactions, class_name: "CouponTransaction", inverse_of: :coupon
   
-  has_one :photography, class_name: "Photo", as: :photographic, autobuild: true, dependent: :delete
+  has_one :photography, class_name: "Photo", as: :photographic, autobuild: true, dependent: :destroy
   accepts_nested_attributes_for :photography
 
   def check_buy number

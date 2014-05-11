@@ -40,6 +40,14 @@
         <% end %>
       </div>
 
+      <div class="tab-pane" id="form-market-photos">
+        <%= f.simple_fields_for :gallery do |g| %>
+            <%= g.simple_fields_for :photographies do |c| %>
+                <%= c.input :photo, as: :attachinary %>
+          <% end %>
+        <% end %>
+      </div>
+
       <div class="tab-pane" id="form-market-category-tag">
         <%= f.association :category, :include_blank => false %>
         <%= f.input :tags, input_html: { class: 'tm-input', placeholder: "Tags" } %>

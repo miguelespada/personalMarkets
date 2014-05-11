@@ -5,6 +5,9 @@
 <div class="row">
   <div class="col-md-4 market-featured-photo">
     <%= photo(market.featured, 300, 300) %>
+    <% market.gallery.photographies.each do |photo| %>
+        <%= photo(photo, 100) %>
+    <% end %>
   </div>
 
   <div class="market-data col-md-3">

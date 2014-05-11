@@ -1,7 +1,7 @@
 class MarketsRepo
 
   def self.initialize_market
-    Market.new(coupon: Coupon.new)
+    market = Market.new(coupon: Coupon.new)
   end
 
   def self.find params

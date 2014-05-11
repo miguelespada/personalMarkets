@@ -25,11 +25,14 @@ class Market
   belongs_to :user, class_name: "User", inverse_of: :markets
   has_and_belongs_to_many :favorited, class_name: "User", inverse_of: :favorites
 
-  has_one :coupon, class_name: "Coupon", inverse_of: :market, dependent: :delete
+  has_one :coupon, class_name: "Coupon", inverse_of: :market, dependent: :destroy
   accepts_nested_attributes_for :coupon
 
-  has_one :featured, class_name: "Photo", as: :photographic, autobuild: true, dependent: :delete
+  has_one :featured, class_name: "Photo", as: :photographic, autobuild: true, dependent: :destroy
   accepts_nested_attributes_for :featured
+ 
+  has_one :gallery, class_name: "Gallery", autobuild: true, dependent: :destroy, inverse_of: :market
+  accepts_nested_attributes_for :gallery
 
   validates_presence_of :name, :user
 
@@ -50,7 +53,8 @@ class Market
   end
 
   def pro?
-    return self.pro
+    #return self.pro
+    true
   end
 
   def go_pro
