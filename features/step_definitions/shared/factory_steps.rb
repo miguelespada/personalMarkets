@@ -76,5 +76,10 @@ When(/^There are some bargains$/) do
 end
 
 
+Given(/^I have a market with photo$/) do
+  step "I am logged in"
+  @market = create(:market, :user => @user, :featured => create(:photo))
+  @user.markets << @market
+end
 
 

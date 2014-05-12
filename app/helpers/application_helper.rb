@@ -41,7 +41,7 @@ module ApplicationHelper
 
   def edit_photo_link(photo)
     if !photo.photo.nil?
-      link_to content_tag(:i, "", class: "fa fa-pencil"), edit_photo_path(photo), class: "btn btn-info btn-xs table-photo-edit"   
+      link_to content_tag(:i, "", class: "fa fa-pencil"), edit_photo_path(photo), class: "btn edit btn-info btn-xs table-photo-edit"   
     end
   end
 

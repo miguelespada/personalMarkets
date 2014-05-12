@@ -8,4 +8,3 @@ Feature: Unpublish market
     Given my published market
     When I unpublish it
     Then It does not appear in navegable markets
-

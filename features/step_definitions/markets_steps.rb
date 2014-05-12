@@ -371,3 +371,21 @@ Then(/^The market is not staff pick$/) do
   visit market_path @market_0
   page.should_not have_css('.staff_pick')
 end
+
+
+When(/^I crop the photo$$/) do
+  visit user_photos_path(@user)
+  within(:css, "#photo_#{@market.featured.id}") do  
+    find(".edit").click
+  end
+  expect(page).to have_content "Edit Photo"
+  fill_in "x", with: 10
+  fill_in "y", with: 10
+  fill_in "h", with: 150
+  fill_in "w", with: 100
+  click_on "Save"
+end
+
+Then(/^I should see the cropped photo$/) do
+  find("img[src*='image/upload/c_crop,h_150,w_100,x_10,y_10']")
+end
