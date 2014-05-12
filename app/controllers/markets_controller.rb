@@ -70,12 +70,6 @@ class MarketsController < ApplicationController
     domain.show_market params[:id]
   end
 
-  def visitor
-    who = "guest"
-    who = current_user.email unless current_user.nil?
-    who
-  end
-
   def show_succeeded market
     @market = market
     respond_to do |format|
@@ -227,4 +221,11 @@ class MarketsController < ApplicationController
         :price => params[:total_price]
       }
     end
+
+  def visitor
+    who = "guest"
+    who = current_user.email unless current_user.nil?
+    who
+  end
+
 end
