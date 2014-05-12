@@ -18,7 +18,7 @@ class Ability
     if @user
         can :list_user_transactions, User, :id => @user.id
 
-        can :list_market_transactions, Market, Market do |market|
+        can [:list_market_transactions, :statistics], Market, Market do |market|
             @user.owns(market)
         end
 

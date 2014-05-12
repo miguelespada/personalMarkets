@@ -105,7 +105,9 @@ class MarketDecorator < Draper::Decorator
   end
 
   def statistics_link
-    link_to "Statistics", show_market_statistic_path(market), class: "pro market-action"
+    if can? :statistics, market
+      link_to "Statistics", show_market_statistic_path(market), class: "pro market-action"
+    end
   end
 
   private 
