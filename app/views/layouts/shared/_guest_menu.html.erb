@@ -13,7 +13,7 @@
     		</li>
 				<li class="divider"></li>                           
         	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-						<div class="carousel-inner"></div>
+						<div class="carousel-inner" id="carousel-latest-markets"></div>
         	</div>
 			</ul>
 		</li>
@@ -61,7 +61,7 @@
 
 <script>
 	$.get( "/slideshow", function( data ) {
-    	$( ".carousel-inner" ).html( data );
+    	$( "#carousel-latest-markets" ).html( data );
   	});
   	$.get( "/categories/list", function( data ) {
     	$( "#explore_categories" ).append( data );
