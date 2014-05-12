@@ -66,7 +66,7 @@ class MarketsController < ApplicationController
   end
 
   def show
-    Keen.publish_async(:market_visit, { :market_id => params[:id], :who => visitor })
+    Tracker.market_visit params[:id], visitor
     domain.show_market params[:id]
   end
 

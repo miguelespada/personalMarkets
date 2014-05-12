@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    Keen.publish_async(:sign_ups, { :username => current_user.email, :at => Time.now })
+    Tracker.sign_in current_user.email
     root_path
   end
 end
