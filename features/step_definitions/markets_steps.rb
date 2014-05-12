@@ -360,3 +360,14 @@ end
 Then(/^I should be able to access photo gallery$/) do
   page.should have_css('div#form-market-photos.active')
 end
+
+Then(/^The market becomes staff pick$/) do
+  visit market_path @market_0
+  page.should have_css('.staff_pick')
+end
+
+
+Then(/^The market is not staff pick$/) do
+  visit market_path @market_0
+  page.should_not have_css('.staff_pick')
+end

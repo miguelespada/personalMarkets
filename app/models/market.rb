@@ -181,4 +181,11 @@ class Market
   def created_one_month_ago?
     self.created_at? && self.created_at <= 1.month.ago
   end
+
+  def staff_pick?
+    favorited.each do |user|
+      return true if user.admin?
+    end
+    false
+  end
 end

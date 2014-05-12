@@ -23,6 +23,10 @@ class MarketDecorator < Draper::Decorator
       render partial: 'markets/shared/actions', locals: { market: self }
   end
 
+  def badges
+    "staff_pick" if staff_pick?
+  end
+
   def archive_link
     if can? :archive, market
       link_to "Archive", market_archive_path(market), { method: :post }
@@ -94,12 +98,13 @@ class MarketDecorator < Draper::Decorator
 
   def like_link
     if can? :like, market
-      link = link_to("Like", like_path(current_user, market), class: "like market-action")
+      if !current_user.favorited?(market)
+        link_to("Like", like_path(market), class: "like market-action")
+      else  
+        link_to("Unlike", unlike_path(market), class: "unlike market-action")
+      end
     end
-    if can? :unlike, market
-      link = link_to("Unlike", unlike_path(current_user, market), class: "unlike market-action")
-    end
-    link
+  rescue
   end
 
   def qr_code_link

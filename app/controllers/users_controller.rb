@@ -12,19 +12,21 @@ class UsersController < ApplicationController
   end
 
   def like
+    @user = current_user
     market = Market.find(params[:market_id])
     authorize! :like, market
-    current_user.like(market)
-    market.like(current_user)
-    redirect_to user_likes_path(current_user)
+    @user.like(market)
+    market.like(@user)
+    redirect_to user_likes_path(@user)
   end
 
   def unlike
+    @user = current_user
     market = Market.find(params[:market_id])
-    authorize! :unlike, market
-    current_user.unlike(market)
-    market.unlike(current_user)
-    redirect_to user_likes_path(current_user)
+    authorize! :like, market
+    @user.unlike(market)
+    market.unlike(@user)
+    redirect_to published_markets_path
   end
 
   def destroy

@@ -51,11 +51,7 @@ class Ability
         can :show, User, :id => @user.id
  
         can :like, Market, Market do |market|
-          !@user.owns(market) && !@user.favorites.include?(market)
-        end
-
-        can :unlike, Market, Market do |market|
-          !@user.owns(market) && @user.favorites.include?(market)
+          !@user.owns(market)
         end
 
         can :list, Market, Market do |market|

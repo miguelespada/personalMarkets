@@ -1,6 +1,6 @@
 <% market = @market.decorate %>
 
-<div class="panel panel-default panel-table panel-table-last">
+<div class="panel panel-default panel-table panel-table-last <%= market.badges %>">
   <div class="panel-heading table-title">
     <div class="market-title-container">
       <div class="market-title col-md-6"><%= market.name %></div>

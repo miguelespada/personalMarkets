@@ -113,6 +113,10 @@ class User
     favorites.delete(market)
   end
 
+  def favorited?(market)
+    favorites.include?(market)
+  end 
+  
   def does_not_own(market)
     self != market.user
   end
@@ -141,6 +145,10 @@ class User
     # market = self.markets.last
     # market.nil? || market.created_one_month_ago? || self.has_role?("admin")
     true
+  end
+
+  def admin?
+    has_role?("admin")
   end
 
   private
