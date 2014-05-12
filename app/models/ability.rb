@@ -82,6 +82,7 @@ class Ability
       can [:manage], User
       can [:manage], Coupon
       can [:manage], Photo
+      can [:manage], Gallery
       can [:list_user_transactions], User
       can [:list_market_transactions], Market
 
