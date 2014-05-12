@@ -385,6 +385,7 @@ DEPENDENCIES
   sdoc
   simple_form
   tagmanager-rails (~> 3.0.1.0)
+  thin
   tire (~> 0.6.2)
   twitter-typeahead-rails
   uglifier (>= 1.3.0)
