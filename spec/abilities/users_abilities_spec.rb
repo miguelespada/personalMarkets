@@ -14,6 +14,7 @@ describe "User" do
       it{ should be_able_to(:buy, Coupon.new) }
       it{ should be_able_to(:list_user_transactions, user) }
       it{ should be_able_to(:list_market_transactions, Market.new(:user => user)) }
+      it{ should be_able_to(:manage, Market.new(:user => user, :featured => Photo.new).featured) }
     end
 
     context "unauthorized" do
@@ -24,6 +25,7 @@ describe "User" do
       it{ should_not be_able_to(:manage, SpecialLocation) }
       it{ should_not be_able_to(:list_user_transactions, other_user) }
       it{ should_not be_able_to(:list_market_transactions, Market.new(:user => other_user)) }
+      it{ should_not be_able_to(:manage, Market.new(:user => other_user, :featured => Photo.new).featured) }
     end
 
     context "admin" do
@@ -35,6 +37,7 @@ describe "User" do
       it{ should be_able_to(:manage, SpecialLocation) }
       it{ should be_able_to(:list_user_transactions, user) }
       it{ should be_able_to(:list_market_transactions, Market.new) }
+      it{ should be_able_to(:manage, Photo.new) }
     end
   end
 end

@@ -37,6 +37,10 @@ class Ability
             @user.owns(wish)
         end
 
+        can :manage, Photo, Photo do |photo|
+            @user.owns(photo)
+        end
+
         can :manage, Bargain, Bargain do |bargain|
             @user.owns(bargain)
         end
@@ -77,6 +81,7 @@ class Ability
       can [:manage], Tag
       can [:manage], User
       can [:manage], Coupon
+      can [:manage], Photo
       can [:list_user_transactions], User
       can [:list_market_transactions], Market
 

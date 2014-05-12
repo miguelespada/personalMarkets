@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   load_resource
+  authorize_resource :except => [:index, :list_user_photos, :show]
   
   def index
     @photos = Photo.all
