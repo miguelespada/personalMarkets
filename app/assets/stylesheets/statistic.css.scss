@@ -21,6 +21,18 @@
 }
 
 .market-statistic .badge {
-  font-size: 50px;
-  padding: 15px;
+  background-color: #C0C0C0;
+}
+
+.market-statistic .badge .visits-value {
+  font-size: 35px;
+  padding: 0 10 0 10px;
+  color: #66CC66;
+}
+
+.market-statistic .badge .visits-label {
+  color: #F8F8F8;
+  font-weight: normal;
+  border-bottom: 1px solid #F8F8F8;
+  font-size: 15px;
 }
