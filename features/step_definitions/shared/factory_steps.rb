@@ -78,7 +78,11 @@ end
 
 Given(/^I have a market with photo$/) do
   step "I am logged in"
-  @market = create(:market, :user => @user, :featured => create(:photo))
+  @photo = create(:photo)
+  @market = create(:market, :user => @user, :featured => @photo)
+  @photo.photographic = @market
+  @photo.save
+
   @user.markets << @market
 end
 

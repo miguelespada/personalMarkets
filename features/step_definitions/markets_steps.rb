@@ -374,7 +374,7 @@ end
 
 
 When(/^I crop the photo$$/) do
-  visit user_photos_path(@user)
+  visit photo_path(@photo)
   within(:css, "#photo_#{@market.featured.id}") do  
     find(".edit").click
   end
