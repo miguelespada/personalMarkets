@@ -378,7 +378,6 @@ When(/^I crop the photo$$/) do
   within(:css, "#photo_#{@market.featured.id}") do  
     find(".edit").click
   end
-  expect(page).to have_content "Edit Photo"
   fill_in "x", with: 10
   fill_in "y", with: 10
   fill_in "h", with: 150
