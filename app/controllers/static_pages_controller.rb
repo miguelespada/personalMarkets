@@ -42,3 +42,4 @@ class StaticPagesController < ApplicationController
   end
 
 end
+

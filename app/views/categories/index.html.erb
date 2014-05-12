@@ -13,8 +13,16 @@
   
     <% @categories.each do |category| %>
       <%= content_tag_for(:tr, category) do %> 
-        <td class="col-md-3"> <%= photo(category.photo, 120, 60) %> </td>
-        <td class="col-md-3"> <%= link_to category.name, category_markets_path(category) %> </td> 
+        <td class="col-md-3"> 
+          <div class="table-photo-container">
+             <%= photo(category.photography, 120, 60) %>
+             <%= edit_photo_link(category.photography) %>
+          </div>
+        </td>
+        <td class="col-md-3"> 
+
+          <%= link_to category.name, category_markets_path(category) %> 
+        </td> 
 
         <td class="col-md-3"> <%= category.markets.count %> </td>
         <td class="col-md-3"> 

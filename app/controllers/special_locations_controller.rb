@@ -1,6 +1,6 @@
 class SpecialLocationsController < ApplicationController
   load_resource :only => [:show, :edit, :destroy, :update]
-  authorize_resource :except => [:index, :show, :gallery, :explore_hotspots]
+  authorize_resource :except => [:index, :show, :gallery, :list]
 
   def index
     @special_locations = SpecialLocation.all
@@ -10,15 +10,19 @@ class SpecialLocationsController < ApplicationController
     end
   end
 
-  def explore_hotspots
+  def list
     @special_locations = SpecialLocation.all
-    render layout: false
+    render :layout => !request.xhr?
   end
 
   def gallery
     @special_locations = SpecialLocation.all
-    render layout: false
+    render :layout => !request.xhr?
   end
+  
+  def show
+    redirect_to special_locations_path
+  end 
 
   def new
     @special_location = SpecialLocation.new
@@ -63,6 +67,6 @@ class SpecialLocationsController < ApplicationController
 
   private
     def special_location_params
-      params.require(:special_location).permit(:name, :address, :city, :latitude, :longitude, :photo)
+      params.require(:special_location).permit(:name, :address, :city, :latitude, :longitude, photography_attributes: [:photo])
     end
 end

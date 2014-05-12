@@ -24,16 +24,17 @@ class Market
   belongs_to :category
   belongs_to :user, class_name: "User", inverse_of: :markets
   has_and_belongs_to_many :favorited, class_name: "User", inverse_of: :favorites
-  has_many :comments, class_name: "Comment", inverse_of: :market
-  has_one :coupon, class_name: "Coupon", inverse_of: :market
-  
 
-  has_attachment :featured, accept: [:jpg, :png, :gif]
-  has_attachments :photos, accept: [:jpg, :png, :gif], maximum: 3
+  has_one :coupon, class_name: "Coupon", inverse_of: :market, dependent: :destroy
+  accepts_nested_attributes_for :coupon
+
+  has_one :featured, class_name: "Photo", as: :photographic, autobuild: true, dependent: :destroy
+  accepts_nested_attributes_for :featured
+ 
+  has_one :gallery, class_name: "Gallery", autobuild: true, dependent: :destroy, inverse_of: :market
+  accepts_nested_attributes_for :gallery
 
   validates_presence_of :name, :user
-  
-  accepts_nested_attributes_for :coupon, :photos, :featured
 
   scope :last_published, lambda { where(state: "published").order_by(:created_at.desc).limit(6) }
   scope :published, lambda {where(state: "published")}
@@ -60,18 +61,6 @@ class Market
     self.save!
   end
 
-  def delete_featured_image
-    self.featured = nil
-    self.save!
-  end
-
-  def can_be_published
-    self.state != "published"
-  end
-
-  def can_be_unpublished
-    !can_be_published
-  end
 
   def archive
     self.state = "archived"

@@ -1,5 +1,6 @@
 <% market = @market.decorate %>
 
+<<<<<<< HEAD
 <div class="panel panel-default panel-table panel-table-last">
   <div class="panel-heading table-title">
     <div class="market-title-container">
@@ -14,6 +15,16 @@
         <%= market.pro_link %>
       </div>
     </div>
+=======
+<%= link_to "tweet me", "http://twitter.com/home?status=#{market.name} #{market.description} #{market_url(market)}" %>
+
+<div class="row">
+  <div class="col-md-4 market-featured-photo">
+    <%= photo(market.featured, 300, 300) %>
+    <% market.gallery.photographies.each do |photo| %>
+        <%= photo(photo, 100) %>
+    <% end %>
+>>>>>>> 6e1e7a64994e4678b4d94e136e94849ba5a0ecba
   </div>
 
   <div class="market-section-title">General Information</div>
@@ -42,10 +53,14 @@
       </div>
   </div>
 
+<<<<<<< HEAD
   <div class="market-section-title">Coupons</div>
   <div class="market-section-container">
     <%= market.coupon_section %>
   </div>
+=======
+<div class="row">
+>>>>>>> 6e1e7a64994e4678b4d94e136e94849ba5a0ecba
 
   <div class="market-section-title">Location</div>
   <div class="market-section-container">

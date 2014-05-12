@@ -12,7 +12,3 @@ Feature: Market coupons
     When I visit the edit market page
     And I create a coupon
     Then I should see the coupon in the market page
-
-  Scenario: Update a coupon
-
-  Scenario: Delete a coupon

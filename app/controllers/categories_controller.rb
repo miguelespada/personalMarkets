@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   load_resource :only => [:show, :edit, :destroy, :update]
-  authorize_resource :except => [:index, :show, :gallery, :explore_categories]
+  authorize_resource :except => [:index, :show, :gallery, :list]
 
   def index
     @categories = Category.all
@@ -10,18 +10,18 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def explore_categories
+  def list
     @categories = Category.all
-    render layout: false
+    render :layout => !request.xhr?
   end
 
   def gallery
     @categories = Category.all
-    render layout: false
+    render :layout => !request.xhr?
   end
 
   def show
-    redirect_to category_markets_path(@category.id)
+    redirect_to categories_path
   end
 
   def new
@@ -68,6 +68,6 @@ class CategoriesController < ApplicationController
 
   private
     def category_params
-      params.require(:category).permit(:name, :photo)
+      params.require(:category).permit(:name, photography_attributes: [:photo])
     end
 end

@@ -3,24 +3,48 @@
 <%= simple_form_for(@special_location) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :address, { placeholder: "Address" } %>
-    <%= f.input :city, { placeholder: "City" } %>
-    <div class = "hidden">
-      <%= f.input :latitude %>
-      <%= f.input :longitude %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">New Location</h3>
+        </div>
+        <div class="panel-body">
+          <fieldset>
+          <div class="form-group">
+            <%= f.input :name, { placeholder: "Name" } %>
+          </div>
+          <div class="form-group">
+            <%= f.input :address, { placeholder: "Address" } %>
+          </div>
+          <div class="form-group">
+            <%= f.input :city, { placeholder: "City" } %>
+          </div>
+          <div class="hidden form-group">
+            <%= f.input :latitude %>
+          </div>
+          <div class="hidden form-group">
+            <%= f.input :longitude %>
+          </div>
+          <div class="form-group">
+            <%= f.simple_fields_for :photography do |c| %>
+              <%= c.input :photo, as: :attachinary, required: true %>
+            <% end %>
+          </div>
+          <div class="form-group">
+            <%= render "markets/shared/mapsmall" %>
+          </div>
+          <div class="form-group col-md-4 col-md-offset-4">
+            <%= f.button :submit, class:"btn btn-info" %>
+          </div>
+          </fieldset>
+        </div>
+      </div>
     </div>
-    <%= f.input :photo, as: :attachinary %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-
-  <%= render "markets/shared/mapsmall" %>
+</div>
 <% end %>
-
 
 <script>
 $( document ).ready(function() {

@@ -47,7 +47,7 @@ class CouponsController < ApplicationController
   end
 
   def coupon_params
-    params.require(:coupon)
+    params.require(:coupon).permit(photography_attributes: [:photo])
   end
 
   def number

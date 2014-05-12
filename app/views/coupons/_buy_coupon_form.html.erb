@@ -2,7 +2,7 @@
   <div id = "buy-coupon-action">
    <%= form_tag({controller: "coupons", action: "coupon_payment"}, method: "post") do %>
    <%= select_tag "number", options_for_select((1..coupon.available))  %>
-   <%= submit_tag "Buy" %>
+   <%= submit_tag "Buy", class:"btn btn-info" %>
    <% end %>
   </diV>
 <% else %>

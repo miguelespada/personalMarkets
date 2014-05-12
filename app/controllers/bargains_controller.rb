@@ -12,16 +12,19 @@ class BargainsController < ApplicationController
 
   def gallery
     @bargains = Bargain.all
-    render layout: false
+    render :layout => !request.xhr?
   end
 
   def list_user_bargains
     @bargains = load_user.bargains.all
-    render "index"
   end
 
   def new
     @bargain = Bargain.new
+  end
+
+  def show
+    redirect_to bargains_path
   end
 
   def edit
@@ -64,7 +67,7 @@ class BargainsController < ApplicationController
 
   private
     def bargain_params
-      params.require(:bargain).permit(:description, :photo)
+      params.require(:bargain).permit(:description, photography_attributes: [:photo])
     end
 
     def load_user

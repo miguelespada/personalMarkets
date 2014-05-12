@@ -1,6 +1,6 @@
 class WishesController < ApplicationController
-  load_resource :only => [:show, :edit, :destroy, :update]
-  authorize_resource :except => [:show, :index, :list_user_wishes, :gallery]
+  load_resource :only => [:edit, :destroy, :update]
+  authorize_resource :except => [:index, :list_user_wishes, :gallery, :show]
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
 
   def index
@@ -13,16 +13,19 @@ class WishesController < ApplicationController
 
   def gallery
     @wishes = Wish.all
-    render layout: false
+    render :layout => !request.xhr?
   end
 
   def list_user_wishes
     @wishes = load_user.wishes.all
-    render "index"
   end
 
   def new
     @wish = Wish.new
+  end
+
+  def show
+    redirect_to wishes_path
   end
 
   def edit
@@ -63,7 +66,7 @@ class WishesController < ApplicationController
 
   private
     def wish_params
-      params.require(:wish).permit(:description, :photo, :tags, "hidden-wish")
+      params.require(:wish).permit(:description, :tags, "hidden-wish",  photography_attributes: [:photo])
     end
 
     def load_user

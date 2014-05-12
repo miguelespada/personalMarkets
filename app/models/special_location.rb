@@ -7,5 +7,8 @@ class SpecialLocation
   field :longitude, type: Float
   validates_presence_of :name, :latitude, :longitude
   validates :name, uniqueness: { message: "Location name must be unique" }
-  has_attachment :photo, accept: [:jpg, :png, :gif]
+
+  has_one :photography, class_name: "Photo", as: :photographic, autobuild: true, dependent: :destroy
+  accepts_nested_attributes_for :photography
+
 end

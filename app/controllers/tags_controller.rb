@@ -1,7 +1,6 @@
 class TagsController < ApplicationController
   load_resource :only => [:show, :edit, :destroy, :update]
-  authorize_resource :except => [:index, :show, :gallery, :explore_tags]
-  
+  authorize_resource :except => [:index, :show, :gallery, :list]
   def index
     @suggested = Tag.all
     @tags = Market.tags
@@ -11,18 +10,18 @@ class TagsController < ApplicationController
     end
   end
 
-  def explore_tags
+  def list
     @suggested = Tag.all
-    render layout: false
+    render :layout => !request.xhr?
   end
 
   def gallery
     @suggested = Tag.all
-    render layout: false
+    render :layout => !request.xhr?
   end
 
   def show
-    redirect_to tag_markets_path(@tag.name)
+    redirect_to tags_path
   end
 
   def new
@@ -69,6 +68,6 @@ class TagsController < ApplicationController
 
   private
     def tag_params
-      params.require(:tag).permit(:name, :photo)
+      params.require(:tag).permit(:name, photography_attributes: [:photo])
     end
 end

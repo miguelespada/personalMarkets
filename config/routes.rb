@@ -3,7 +3,7 @@ PopUpStores::Application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  resources :markets, :only => [:index, :show , :delete_image] do
+  resources :markets, :only => [:index, :show] do
     collection do
       post :search, action: "search", as: 'search'
       get :search, action: "search"
@@ -14,7 +14,6 @@ PopUpStores::Application.routes.draw do
     post :archive
     get :make_pro_payment
     post :make_pro
-    resources :comments, :only => [:create, :destroy, :update]
   end
 
   get "/users/:user_id/dashboard", to: "users#dashboard", as: "user_dashboard"
@@ -22,11 +21,8 @@ PopUpStores::Application.routes.draw do
   get "/users/:user_id/markets", to: "markets#list_user_markets", as: "user_markets"
   get "/published", to: "markets#list_published_markets", as: "published_markets"
   get "/last_markets", to: "markets#list_last_markets", as: "last_markets"
-  get "/explore_slideshows", to: "markets#explore_slideshows", as: "explore_slideshows_markets"
+  get "/slideshow", to: "markets#slideshow", as: "slideshow"
 
-  resources :coupons, :only => [:show, :index] do
-    post :coupon_payment, :on => :member
-  end
 
   resources :users, :only => [:index, :show]
 
@@ -54,41 +50,41 @@ PopUpStores::Application.routes.draw do
   get "/users/:user_id/subscription", to: "users#subscription", as: "user_subscription"
 
   ### Coupons
-  resources :coupons, :only => [:show, :index]
+  resources :coupons, :only => [:show, :index] do
+    post :coupon_payment, :on => :member
+  end
   post "/coupons/:id", to: "coupons#buy", as: "buy_coupon"
   get "/coupons/:user_id/bought_coupons_by_user", to: "coupons#bought_coupons_by_user", as: "bought_coupons_by_user"
   get "/coupons/:market_id/sold_coupons_by_market", to: "coupons#sold_coupons_by_market", as: "sold_coupons_by_market"
   ###
 
   ### Wishes
-  get "/wishes/index", path: "wishes"
   get "/wishes/gallery", as: "wishes_gallery"
   get "/users/:user_id/wishes", to: "wishes#list_user_wishes", as: "user_wishes"
-  resources :wishes, except: [:index]
+  resources :wishes
   ####
 
   ### Bargains
-  get "/bargains/index", path: "bargains"
   get "/bargains/gallery", as: "bargains_gallery"
   get "/users/:user_id/bargains", to: "bargains#list_user_bargains", as: "user_bargains"
-  resources :bargains, except: [:index]
+  resources :bargains
   ####
 
   ### SpecialLocations
-  get "/explore_hotspots", to: "special_locations#explore_hotspots", as: "explore_hotspots"
+  get "/special_locations/list", as: "special_locations_list"
   get "/special_locations/gallery", as: "special_locations_gallery"
   resources :special_locations
   ####
 
   ### Tags
-  get "/explore_tags", to: "tags#explore_tags", as: "explore_tags"
+  get "/tags/list", as: "tags_list"
   get "/tags/gallery", as: "tags_gallery"
   get "/tags/:tag/markets", to: "markets#list_tag_markets", as: "tag_markets"
   resources :tags
   ####
  
   ### Categories
-  get "/explore_categories", to: "categories#explore_categories", as: "explore_categories"
+  get "/categories/list", as: "categories_list"
   get "/categories/gallery", as: "category_gallery"
   get "/category/:category_id/markets", to: "markets#list_category_markets", as: "category_markets"
   resources :categories
@@ -100,8 +96,14 @@ PopUpStores::Application.routes.draw do
   get "/users/:user_id/unlike/:market_id",  to: 'users#unlike', as: 'unlike'
   ####
 
-  post "/markets/:market_id/comments/:id/report", to: "comments#report", as: 'report_comment'
-  post "/markets/:market_id/delete_image", to: "markets#delete_image", as: 'delete_image'
+  #### Edit photos
+  get "/photos/:id/edit", to: "photos#edit", as: 'edit_photo'
+  post "/photos/:id/crop", to: "photos#crop", as: 'crop_photo'
+  get "/users/:user_id/photos", to: "photos#list_user_photos", as: "user_photos"
+  resources :photos, only: [:show, :index, :destroy]
+  resources :gallery, only: [:show]
+  ####
+
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   mount Attachinary::Engine => "/attachinary"
@@ -109,7 +111,8 @@ PopUpStores::Application.routes.draw do
   get "static_pages/cities", path: "/cities", as: 'cities'
   get "static_pages/calendar", path: "/calendar", as: 'calendar'
   get "static_pages/map", path: "/map", as: 'map'
-  get "static_pages/edit_photo", path: "/edit_photo", as: 'edit_photo'
+
+  
 
 
   root "static_pages#home"
