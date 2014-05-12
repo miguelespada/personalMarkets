@@ -550,3 +550,37 @@ border-color: #d43f3a;
   top:5px;
   left:5px;
 }
+
+//*############################ MARKET FULL DESCRIPTION CSS #############################*//
+.market-title-container{
+  @extend .row;
+  margin: 0px !important;
+}
+
+.market-actions{
+  text-align: right;
+}
+
+.market-actions > a{
+  @extend .btn;
+  @extend .btn-default;
+}
+
+.market-section-title{
+  @extend .row;
+  font-size: 18px;
+  line-height: 40px;
+  font-weight: 200;
+  text-align: center;
+  margin: 15px 15px 0px 15px!important;
+  color:#3B99FF;
+  background:#E4F2FF;
+  border-bottom: 1px solid #3B99FF;
+}
+
+.market-section-container{
+  @extend .row;
+  margin: 0px 15px 15px 15px!important;
+  padding: 10px !important;
+  background:#FCFCFF;
+}
