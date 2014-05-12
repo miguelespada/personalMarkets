@@ -561,7 +561,11 @@ border-color: #d43f3a;
   text-align: right;
 }
 
-.market-actions > a{
+.market-actions-links{
+  display:inline;
+}
+
+.market-actions-links > a{
   @extend .btn;
   @extend .btn-default;
 }
@@ -583,4 +587,40 @@ border-color: #d43f3a;
   margin: 0px 15px 15px 15px!important;
   padding: 10px !important;
   background:#FCFCFF;
+}
+
+.market-featured-photo-detail{
+  float: left;
+  padding-left: 0px !important;
+}
+
+.market-description-detail{
+  font-size: 24px;
+  font-weight: 100;
+}
+
+.market-category-detail{
+  font-size: 18px;
+  font-weight: 100;
+  padding-bottom: 10px;
+  width: 100%;
+  border-bottom: 1px solid #CCCCCC;
+  margin-bottom: 15px;
+}
+
+.market-address-detail{
+  font-size: 14px;
+  font-weight: 200;
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #CCCCCC;
+  margin-bottom: 15px;
+}
+
+.social-container{
+  text-align: center;
+}
+
+#fb-root{
+  display: inline-block;
 }
