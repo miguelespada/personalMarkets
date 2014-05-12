@@ -96,7 +96,9 @@ class User
   end
 
   def add_market market_params
-    self.markets.new market_params
+    market = self.markets.new market_params
+    market.pro = self.is_premium?
+    market
   end
 
   def owns object

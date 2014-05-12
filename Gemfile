@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
+gem "thin"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 gem "devise"
@@ -76,6 +78,9 @@ end
 
 gem "pony"
 
+gem "keen"
+
+gem "em-http-request", "~> 1.0"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

@@ -6,7 +6,7 @@
 
 require 'cucumber/rails'
 require 'paymill_client'
-
+require 'cucumber/rspec/doubles'
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
@@ -43,6 +43,7 @@ end
 
 Before do
   DatabaseCleaner.start
+  Keen.stub(:publish_async) { }
 end
 
 After do |scenario|

@@ -59,6 +59,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
+    Keen.stub(:publish_async) { }
     Market.create_index
     DatabaseCleaner.clean
     DatabaseCleaner.start

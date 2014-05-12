@@ -104,6 +104,12 @@ class MarketDecorator < Draper::Decorator
     link_to "Go PRO", market_make_pro_payment_path(market), class: "pro market-action" unless market.pro?
   end
 
+  def statistics_link
+    if can? :statistics, market
+      link_to "Statistics", show_market_statistic_path(market), class: "pro market-action"
+    end
+  end
+
   private 
 
     def market_belongs_to_user?
