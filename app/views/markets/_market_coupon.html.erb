@@ -1,4 +1,6 @@
-  <div class="col-md-3 market-coupon">
+<div class="market-section-title">Coupons</div>
+    <div class="market-section-container">
+      <div class="col-md-3 market-coupon">
     <h3> Coupon </h3>
     <%= render partial: "coupons/coupon", locals: {coupon: market.coupon } %>
     
@@ -6,3 +8,4 @@
       <%= market.buy_coupon_link %>
     </div>
   </div>
+</div>

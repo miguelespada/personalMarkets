@@ -33,21 +33,9 @@
     </div>
   </div>
 
-  <% if market.pro? %>
-    <div class="market-section-title">Gallery</div>
-    <div class="market-section-container">
-      <div class="market-photos">
-        <% market.gallery.photographies.each do |photo| %>
-          <%= photo(photo, 100) %>
-        <% end %>
-      </div>
-    </div>
+  <%= market.photo_gallery_section %>
 
-    <div class="market-section-title">Coupons</div>
-    <div class="market-section-container">
-      <%= market.coupon_section %>
-    </div>
-  <% end %>
+  <%= market.coupon_section %>
 
   <div class="market-section-title">Location</div>
   <div class="market-section-container">

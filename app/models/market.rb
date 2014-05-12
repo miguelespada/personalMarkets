@@ -44,6 +44,10 @@ class Market
     self.has_coupon? && (self.pro? || self.belongs_to_premium_user?)
   end
 
+  def photo_gallery_available?
+    self.has_gallery? && (self.pro? || self.belongs_to_premium_user?)
+  end
+
   def publish_available?
     !self.has_coupon? || self.pro? || self.belongs_to_premium_user?
   end
@@ -88,6 +92,10 @@ class Market
 
   def has_coupon?
     coupon != nil && coupon.description!= nil && coupon.available != nil && coupon.price != nil
+  end
+
+  def has_gallery?
+    gallery != nil
   end
 
   def create_coupon!(params)

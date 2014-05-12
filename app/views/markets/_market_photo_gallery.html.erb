@@ -1,0 +1,8 @@
+<div class="market-section-title">Gallery</div>
+    <div class="market-section-container">
+      <div class="market-photos">
+        <% market.gallery.photographies.each do |photo| %>
+          <%= photo(photo, 100) %>
+        <% end %>
+      </div>
+    </div>
