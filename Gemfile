@@ -76,6 +76,9 @@ end
 
 gem "pony"
 
+gem "keen"
+
+gem "em-http-request", "~> 1.0"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

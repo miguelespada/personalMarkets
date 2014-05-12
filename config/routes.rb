@@ -14,6 +14,11 @@ PopUpStores::Application.routes.draw do
     post :archive
     get :make_pro_payment
     post :make_pro
+
+    resource :statistic, controller: "statistic", :only => [] do
+      get :market, :on => :member, :as => "show"
+    end
+
   end
 
   get "/users/:user_id/dashboard", to: "users#dashboard", as: "user_dashboard"
@@ -45,6 +50,10 @@ PopUpStores::Application.routes.draw do
   resource :contact, controller: "contact", :only => [] do
     get :new, :on => :member
     post :create, :on => :member
+  end
+
+  resource :statistic, controller: "statistic", :only => [] do
+    get :market, :on => :member
   end
 
   get "/users/:user_id/subscription", to: "users#subscription", as: "user_subscription"
