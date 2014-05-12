@@ -37,4 +37,5 @@ module MarketsHelper
     market.favorited.collect{|user| concat(user.email + " ")}
     yield if block_given?
   end
+
 end

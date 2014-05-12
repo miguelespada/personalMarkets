@@ -4,14 +4,53 @@ describe PhotosController do
   let(:photo) { create(:photo) } 
   let(:valid_attributes) { {id: photo.to_param, x: "80", y: "200", w: "300", h: "400"}}
   let(:valid_session) { {} }
+  let(:user) { create(:user) } 
 
-
-  describe "Post /crop" do
-    it "it adds crop metadata" do
-      post :crop,  valid_attributes, valid_session
-      assigns(:photo).crop.should_not be_nil
+  context "authorized user" do 
+    before(:each) do
+      @ability = Object.new
+      @ability.extend(CanCan::Ability)
+      controller.stub(:current_ability) { @ability }
+      @ability.can :manage, Photo
+      controller.stub(:current_user).and_return(user)
+    end
+    describe "Post /crop" do
+      it "it adds crop metadata" do
+        post :crop,  valid_attributes, valid_session
+        assigns(:photo).crop.should_not be_nil
+        expect(response.response_code).to eq 302
+      end
+    end
+    describe "DELETE destroy" do
+      it "destroys the requested photo" do
+        photo = Photo.create!
+        @request.env['HTTP_REFERER'] = '/'
+        expect {
+          delete :destroy, {:id => photo.to_param}, valid_session
+        }.to change(Photo, :count).by(-1)
+      end
     end
   end
 
-  xit "it needs to define abilities"
+  context "unauthorized user" do 
+    before(:each) do
+      @ability = Object.new
+      @ability.extend(CanCan::Ability)
+      controller.stub(:current_ability) { @ability }
+      @ability.cannot :manage, Photo
+      controller.stub(:current_user).and_return(user)
+    end
+    describe "Post /crop" do
+      it "it adds crop metadata" do
+        post :crop,  valid_attributes, valid_session
+        expect(response.response_code).to eq 403
+      end
+
+      it "cannot delete" do
+        delete :destroy, {:id => photo.to_param}, valid_session
+        expect(response.response_code).to eq 403
+      end
+    end
+  end
+
 end

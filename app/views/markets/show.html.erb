@@ -1,6 +1,6 @@
 <% market = @market.decorate %>
 
-<div class="panel panel-default panel-table panel-table-last">
+<div class="panel panel-default panel-table panel-table-last <%= market.badges %>">
   <div class="panel-heading table-title">
     <div class="market-title-container">
       <div class="market-title col-md-6"><%= market.name %></div>
@@ -20,11 +20,11 @@
 
   <div class="market-section-title">General Information</div>
   <div class="market-section-container">
-    <div class="col-md-4 market-featured-photo-detail">
-      <%= photo(market.featured, 300, 300) %>
+    <div class="col-md-6 market-featured-photo-detail">
+      <%= photo(market.featured, 400, 200) %>
     </div>
   
-    <div class="market-data col-md-8">
+    <div class="market-data col-md-6">
       <div class="market-description-detail"> <%=  market.description %> </div>
       <div class="market-category-detail"> <%= market.category.name %> </div>
       <div class="market-tags-detail"> <%= market.tags %> </div> 
@@ -71,4 +71,3 @@
   }
 }
 </style>
-

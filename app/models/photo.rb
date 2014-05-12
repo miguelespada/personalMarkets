@@ -15,4 +15,9 @@ class Photo
     rescue
       false
   end
+
+  def user_id
+    photographic.user.id
+  end
+
 end

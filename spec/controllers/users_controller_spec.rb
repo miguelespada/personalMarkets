@@ -41,25 +41,24 @@ describe UsersController do
       @ability.extend(CanCan::Ability)
       controller.stub(:current_ability) { @ability }
       @ability.can :like, Market
-      @ability.can :unlike, Market
       controller.stub(:current_user).and_return(user)
     end
 
     describe "User likes a market" do
       it "render index" do
-        get :like, { user_id: user.to_param, market_id: market.to_param}, valid_session
+        get :like, {market_id: market.to_param}, valid_session
         expect(response.response_code).to eq 302  
       end
 
       it "adds the market to user 'likes'" do
-        get :like,{ user_id: user.to_param, market_id: market.to_param}, valid_session
+        get :like,{market_id: market.to_param}, valid_session
         user.favorites.count.should eq 1
         user.favorites.include?(market).should eq true
       end
 
       it "adds the user to the market favorited list" do
         market.favorited.count.should eq 0
-        get :like,{ user_id: user.to_param, market_id: market.to_param}, valid_session
+        get :like,{ market_id: market.to_param}, valid_session
         market.reload
         market.favorited.count.should eq 1
         market.favorited.include?(user).should eq true
@@ -68,7 +67,7 @@ describe UsersController do
     describe "User unlikes a market" do
       it "removes the market from user 'likes'" do
         market.favorited.count.should eq 0
-        get :unlike,{ user_id: user.to_param, market_id: market.to_param}, valid_session
+        get :unlike,{ market_id: market.to_param}, valid_session
         market.reload
         market.favorited.count.should eq 0
         market.favorited.include?(user).should eq false
@@ -80,21 +79,21 @@ describe UsersController do
       end
       it "is not possible to a market twice" do
         user.favorites.count.should eq 1
-        get :like,{ user_id: user.to_param, market_id: market.to_param}, valid_session
+        get :like,{market_id: market.to_param}, valid_session
         user.favorites.count.should eq 1
         user.favorites.include?(market).should eq true
       end
 
       it "is possible to unlike the market" do
         user.favorites.count.should eq 1
-        get :unlike,{ user_id: user.to_param, market_id: market.to_param}, valid_session
+        get :unlike,{ market_id: market.to_param}, valid_session
         user.favorites.count.should eq 0
         user.favorites.include?(market).should eq false
       end
 
       it "a market can be unliked" do
         market.favorited.count.should eq 1
-        get :unlike,{ user_id: user.to_param, market_id: market.to_param}, valid_session
+        get :unlike,{ market_id: market.to_param}, valid_session
         market.reload
         market.favorited.count.should eq 0
         market.favorited.include?(user).should eq false
@@ -102,7 +101,7 @@ describe UsersController do
 
       it "is possible to like more markets" do
         user.favorites.count.should eq 1
-        get :like,{ user_id: user.to_param, market_id: second_market.to_param}, valid_session
+        get :like,{market_id: second_market.to_param}, valid_session
         user.favorites.count.should eq 2
         user.favorites.include?(market).should eq true
         user.favorites.include?(second_market).should eq true
@@ -111,7 +110,7 @@ describe UsersController do
       it "a market can get more likes" do
         market.favorited.count.should eq 1
         controller.stub(:current_user).and_return(second_user)
-        get :like,{ user_id:user.to_param, market_id: market.to_param}, valid_session
+        get :like,{market_id: market.to_param}, valid_session
         market.reload
         market.favorited.count.should eq 2
         market.favorited.include?(second_user).should eq true
@@ -122,12 +121,12 @@ describe UsersController do
 
   context "guest user" do 
     it "cannot like" do
-      get :like,{ user_id: user.to_param, market_id: market.to_param}, valid_session
+      get :like,{ market_id: market.to_param}, valid_session
       expect(response.response_code).to eq 403
     end
 
     it "cannot unlike" do
-      get :unlike,{ user_id: user.to_param, market_id: market.to_param}, valid_session
+      get :unlike,{ market_id: market.to_param}, valid_session
       expect(response.response_code).to eq 403
     end
   end 

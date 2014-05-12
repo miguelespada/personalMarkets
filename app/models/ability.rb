@@ -37,6 +37,10 @@ class Ability
             @user.owns(wish)
         end
 
+        can :manage, Photo, Photo do |photo|
+            @user.owns(photo)
+        end
+
         can :manage, Bargain, Bargain do |bargain|
             @user.owns(bargain)
         end
@@ -51,11 +55,7 @@ class Ability
         can :show, User, :id => @user.id
  
         can :like, Market, Market do |market|
-          !@user.owns(market) && !@user.favorites.include?(market)
-        end
-
-        can :unlike, Market, Market do |market|
-          !@user.owns(market) && @user.favorites.include?(market)
+          !@user.owns(market)
         end
 
         can :list, Market, Market do |market|
@@ -81,6 +81,8 @@ class Ability
       can [:manage], Tag
       can [:manage], User
       can [:manage], Coupon
+      can [:manage], Photo
+      can [:manage], Gallery
       can [:list_user_transactions], User
       can [:list_market_transactions], Market
 

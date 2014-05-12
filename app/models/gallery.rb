@@ -8,4 +8,5 @@ class Gallery
   def user
     market.user
   end
+  
 end
