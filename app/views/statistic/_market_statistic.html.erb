@@ -1,0 +1,55 @@
+<div class="panel panel-default market-statistic">
+  <div class="panel-heading"><%= market.name %> <span class="badge pull-right" id="<%= market.id %>_visitsCount"></span></div>
+  <div class="panel-body">
+    <div class="col-md-4">
+      <div id="<%= market.id %>_visitsChart"></div>
+    </div>
+  </div>
+      <script type="text/javascript">
+
+        Keen.onChartsReady(function() {
+            var metric = new Keen.Metric("market_visit", {
+                analysisType: "count"
+            });
+
+            metric.addFilter("market_id", "eq", "<%= market.id %>");
+
+            metric.getResponse(function(response){
+              $("#<%= market.id %>_visitsCount").html(response.result);
+            });
+        });
+
+        Keen.onChartsReady(function() {
+            var series = new Keen.Series("market_visit", {
+                analysisType: "count",
+                timeframe: "this_week",
+                interval: "daily"
+            });
+
+            series.addFilter("market_id", "eq", "<%= market.id %>");
+
+            series.draw(document.getElementById("<%= market.id %>_visitsChart"), {
+                label: "Visits per day this week"
+            });
+        });
+
+      </script>
+</div>
+
+
+<!-- <div class="market-statistic">
+  <div class="market-section-title"><%= market.name %></div>
+  <div class="market-section-container">
+      <div class="row">
+        <div class="col-md-4 col-md-offset-2">
+          <div id="<%= market.id %>_visitsCount" class="statistic"></div>
+        </div>
+        <div class="col-md-4">
+          <div id="<%= market.id %>_visitsChart"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+ -->

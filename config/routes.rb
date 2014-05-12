@@ -43,6 +43,10 @@ PopUpStores::Application.routes.draw do
 
     resource :status, controller: "status", :only => [:update]
 
+    resource :statistic, controller: "statistic", :only => [] do
+      get :user, :on => :member, :as => "show"
+    end
+
   end
 
   resources :subscriptions, :only => [:create]

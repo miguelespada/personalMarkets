@@ -1,3 +1,26 @@
 .statistic {
   text-align: center;
 }
+
+.user-statistics {
+  margin: 20px;
+}
+
+.market-statistic {
+  
+}
+
+.market-statistic .panel-heading {
+  color: #999999;
+  background-color: #FFFFCC;
+  background-image: none;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  font-size: 50px;
+}
+
+.market-statistic .badge {
+  font-size: 50px;
+  padding: 15px;
+}
