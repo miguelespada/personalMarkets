@@ -24,19 +24,16 @@ module ApplicationHelper
     "snavbar-hidden" unless params[:controller] == "markets" && params[:action] == "search"
   end
 
-  def photo(photo, width, height = nil)
+  def photo(photo, width, height = nil, crop_mode = :scale)
     height ||= width
     size = "#{width}x#{height}"
-    image_options = { size: size, crop: :pad }
-    if !photo.photo.nil?
-      crop = photo.crop if !photo.crop.nil?
-      image_options = {transformation: { crop: :crop, x: crop["x"], y: crop["y"],
+    image_options = { size: size, crop: :scale }
+    crop = photo.crop if !photo.crop.nil?
+    image_options = {transformation: { crop: :crop, x: crop["x"], y: crop["y"],
                        width: crop["w"], height: crop["h"]}, size: size, crop: :pad} if !crop.nil?
-      cl_image_tag(photo.photo.path, image_options) 
-    else
+    cl_image_tag(photo.photo.path, image_options) 
+    rescue
       image_tag "default-image.png", image_options
-    end
-
   end 
 
   def edit_photo_link(photo)

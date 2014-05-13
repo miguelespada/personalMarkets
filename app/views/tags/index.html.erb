@@ -13,7 +13,6 @@
     <% @suggested.each do |tag| %>
       <%= content_tag_for(:tr, tag) do %> 
         <td class="col-md-3"> 
-
           <div class="table-photo-container">
              <%= photo(tag.photography, 120, 60) %>
              <%= edit_photo_link(tag.photography) %>
