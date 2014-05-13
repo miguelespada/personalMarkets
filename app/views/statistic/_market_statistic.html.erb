@@ -1,7 +1,7 @@
 <div class="panel panel-default market-statistic">
-  <div class="panel-heading"><%= market.name %> <span class="badge pull-right"><div class="visits-label">Visits</div><div id="<%= market.id %>_visitsCount" class="visits-value"></div></span></div>
+  <div class="panel-heading"><%= market.name %> <span class="badge pull-right"><div class="visits-label">Visits</div><div id="<%= market.public_id %>_visitsCount" class="visits-value"></div></span></div>
   <div class="panel-body">
-      <div id="<%= market.id %>_visitsChart"></div>
+      <div id="<%= market.public_id %>_visitsChart"></div>
   </div>
       <script type="text/javascript">
 
@@ -10,10 +10,10 @@
                 analysisType: "count"
             });
 
-            metric.addFilter("market_id", "eq", "<%= market.id %>");
+            metric.addFilter("market_id", "eq", "<%= market.public_id %>");
 
             metric.getResponse(function(response){
-              $("#<%= market.id %>_visitsCount").html(response.result);
+              $("#<%= market.public_id %>_visitsCount").html(response.result);
             });
         });
 
@@ -24,9 +24,9 @@
                 interval: "daily"
             });
 
-            series.addFilter("market_id", "eq", "<%= market.id %>");
+            series.addFilter("market_id", "eq", "<%= market.public_id %>");
 
-            series.draw(document.getElementById("<%= market.id %>_visitsChart"), {
+            series.draw(document.getElementById("<%= market.public_id %>_visitsChart"), {
                 label: "Visits per day this week"
             });
         });
@@ -40,10 +40,10 @@
   <div class="market-section-container">
       <div class="row">
         <div class="col-md-4 col-md-offset-2">
-          <div id="<%= market.id %>_visitsCount" class="statistic"></div>
+          <div id="<%= market.public_id %>_visitsCount" class="statistic"></div>
         </div>
         <div class="col-md-4">
-          <div id="<%= market.id %>_visitsChart"></div>
+          <div id="<%= market.public_id %>_visitsChart"></div>
         </div>
       </div>
 
