@@ -28,7 +28,7 @@ describe MarketsController do
 
     [:archive, :publish, :publish_anyway, :make_pro, :unpublish].each do |post_action|
       it "forbidden #{post_action}" do
-        post post_action, { market_id: market.id }, valid_session
+        post post_action, { market_id: market.to_param }, valid_session
         expect(response.response_code).to eq 403
       end
     end

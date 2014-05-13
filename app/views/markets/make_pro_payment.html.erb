@@ -16,7 +16,7 @@
           <div class="form-group payment-form">
           <%= form_tag({controller: "markets", action: "make_pro"}, method: "post", id: "new_payment") do %>
           <%= hidden_field_tag "paymill_card_token" %>
-          <%= hidden_field_tag "id", "#{@pro_payment.market.id}" %>
+          <%= hidden_field_tag "id", "#{@pro_payment.market.public_id}" %>
           <%= hidden_field_tag "total_price", "#{@pro_payment.total_price}" %>
 
           <%= text_field_tag "name", nil, placeholder: "Card name"  %>

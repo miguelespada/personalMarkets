@@ -20,6 +20,9 @@ class Market
   field :state, type: String
   field :pro, type: Boolean
   field :publish_date, type: DateTime
+  field :public_id, type: String
+
+  validates_uniqueness_of :public_id
 
   belongs_to :category
   belongs_to :user, class_name: "User", inverse_of: :markets
@@ -39,6 +42,8 @@ class Market
   scope :last_published, lambda { where(state: "published").order_by(:created_at.desc).limit(6) }
   scope :published, lambda {where(state: "published")}
   scope :with_category, lambda {|category| where(category: category)}
+
+  after_create :create_public_id
 
   def coupon_available?
     self.has_coupon? && (self.pro? || self.belongs_to_premium_user?)
@@ -158,7 +163,7 @@ class Market
       filter :geo_distance, lat_lon: location, distance: '1km' if !location.blank?
       filter :terms, state: ["published"] 
     end
-    search.results.collect{|result| find(result.to_hash[:id])}
+    search.results.collect{|result| find_by(id: result.to_hash[:id])}
   end
 
   def self.format_location(lat, lon)
@@ -188,4 +193,20 @@ class Market
     end
     false
   end
+
+  def to_param
+    self.public_id
+  end
+
+  def create_public_id
+    name_ord = self.name.codepoints.inject(:+)
+    creation = self.created_at.to_i
+    self.public_id ||= (creation + name_ord).to_s(32)
+    self.save!
+  end
+
+  def self.find id
+    find_by(public_id: id)
+  end
+
 end
