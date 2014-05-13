@@ -1,3 +1,5 @@
+require "shorturl"
+
 class MarketDecorator < Draper::Decorator
   include Draper::LazyHelpers
 
@@ -119,6 +121,10 @@ class MarketDecorator < Draper::Decorator
     if can? :statistics, market
       link_to "Statistics", show_market_statistic_path(market), class: "pro market-action"
     end
+  end
+
+  def short_url
+    ShortURL.shorten(market_url(market))
   end
 
   private 

@@ -223,8 +223,8 @@ class MarketsController < ApplicationController
       }
     end
 
-  def visitor
-    MarketVisitor.new current_user
-  end
+    def visitor
+      MarketVisitor.new current_user
+    end
 
 end

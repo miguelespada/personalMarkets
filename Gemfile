@@ -82,6 +82,8 @@ gem "keen"
 
 gem "em-http-request", "~> 1.0"
 
+gem "shorturl"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
