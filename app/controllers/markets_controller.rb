@@ -66,7 +66,8 @@ class MarketsController < ApplicationController
   end
 
   def show
-    Tracker.market_visit params[:id], visitor
+    market = Market.find params[:id]
+    Tracker.market_visit params[:id], visitor unless visitor.owns(market)
     domain.show_market params[:id]
   end
 
@@ -223,9 +224,7 @@ class MarketsController < ApplicationController
     end
 
   def visitor
-    who = "guest"
-    who = current_user.email unless current_user.nil?
-    who
+    MarketVisitor.new current_user
   end
 
 end
