@@ -1,11 +1,11 @@
 
   <%= form_tag search_markets_path, id: "search_market", class:"form-inline" do %>
     <li class="form-group hidden">
-      <%= text_field_tag :query, params[:query], placeholder: "Query...", class: "query form-control"  %>
+      <%= text_field_tag :query, session[:query], placeholder: "Query...", class: "query form-control"  %>
     </li>
 
     <li class="form-group">
-      <% selection = params[:category][:category_id] if params[:category].present? %>
+      <% selection = session[:category_id] %>
       <% selection ||= "" %>
       <%= collection_select(:category, :category_id, Category.all, :name, :name, 
                           {:include_blank => "All categories", :selected => selection}, class: "category form-control" ) %>
@@ -17,15 +17,15 @@
                                               'This week', 
                                               'This month', 
                                               'Next week', 
-                                              'All'],  :selected => params[:range]), class: "form-control" ) %>      
+                                              'All'],  :selected => session[:range]), class: "form-control" ) %>      
 
      </li>
 
      <li class="form-group">
-      <% selection =  params[:location][:location_id] if params[:location].present? %>
+      <% selection =  session[:location_id] %>
       <% selection ||= "" %>
 
-      <%= collection_select(:location, :location_id, SpecialLocation.all, :name, :name, {:selected => selection, :include_blank => "Any location"}, class: "form-control" ) %>
+      <%= collection_select(:location, :location_id, SpecialLocation.all, :name, :name, {:selected => selection, :include_blank => "My location"}, class: "form-control" ) %>
 
      
      </li>
@@ -37,10 +37,10 @@
      </li>
 
     <li class="date-range hidden">
-      <%= text_field_tag :from, params[:from]%>  
-      <%= text_field_tag :to, params[:to]%>  
+      <%= text_field_tag :from, session[:from]%>  
+      <%= text_field_tag :to, session[:to]%>  
     </li>
-
+    
     <%= submit_tag "Search", name: nil, class: "hidden" %>
 
   <% end %>
@@ -56,7 +56,7 @@
       }
       $('#city_city_name').append(html);
 
-      <% selection =  params[:city][:city_name] if params[:city].present? %>
+      <% selection =  session[:city_name] %>
       <% selection ||= "" %>
 
       $('#city_city_name').val("<%= selection %>");
