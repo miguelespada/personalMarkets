@@ -62,7 +62,7 @@ describe PhotosController do
       end
 
       it "list photos with attachment" do
-        photo = create(:photo)        
+        photo = create(:photo)
         Photo.new
         Photo.any_instance.stub(:is_owner?).and_return(true)
         get :list_user_photos, {user_id: user.to_param}, valid_session
