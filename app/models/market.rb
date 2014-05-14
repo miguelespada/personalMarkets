@@ -141,7 +141,7 @@ class Market
     end
   end
 
-  def self.search(params)
+  def self.search(params, page = 1, per_page = 6)
     index_all
     return [] if Market.count == 0 
 
@@ -165,8 +165,12 @@ class Market
       sort { by :date, 'asc' }
       filter :terms, category: [category] if !category.blank?
       filter :geo_distance, lat_lon: location, distance: '1km' if !location.blank?
-      filter :terms, state: ["published"] 
+      filter :terms, state: ["published"]
+      search_size = per_page
+      from (page - 1) * search_size
+      size search_size
     end
+    
     search.results.collect{|result| find_by(id: result.to_hash[:id])}
   end
 

@@ -58,6 +58,23 @@ describe Market do
         result = Market.search(params)
         expect(result.count).to eq Market.where(state: "published").count
       end
+      it "paginates" do
+        params = {}
+        result = Market.search(params, 1, 2)
+        expect(result.count).to eq 2
+      end
+
+      it "paginates" do
+        params = {}
+        result = Market.search(params, 2, 2)
+        expect(result.count).to eq 2
+      end
+      
+      it "paginates" do
+        params = {}
+        result = Market.search(params, 2, 3)
+        expect(result.count).to eq 1
+      end
     end
 
     describe "query" do
