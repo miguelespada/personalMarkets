@@ -30,6 +30,24 @@ describe PhotosController do
         }.to change(Photo, :count).by(-1)
       end
     end
+    describe "index" do
+      it "it is allowed" do
+        get :index, {}, valid_session
+        expect(response.response_code).to eq 200
+      end
+
+      it "does not show empty photos" do
+        Photo.new
+        get :index, {}, valid_session
+        assigns(:photos).count.should eq 0
+      end
+      
+      it "list photos with attachment" do
+        create(:photo)
+        get :index, {}, valid_session
+        assigns(:photos).count.should eq 1
+      end
+    end
   end
 
   context "unauthorized user" do 

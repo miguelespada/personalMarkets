@@ -21,9 +21,13 @@ describe MarketsController do
         assigns(:market).should be_a_new(Market)
         assigns(:market).coupon.should be_a_new(Coupon)
         assigns(:market).coupon.photography.should be_a_new(Photo)
+        assigns(:market).coupon.photography.empty?.should be true
         assigns(:market).featured.should be_a_new(Photo)
         assigns(:market).gallery.should be_a_new(Gallery)
         assigns(:market).gallery.photographies.length.should eq 3
+        assigns(:market).gallery.photographies.each do |photo|
+          photo.empty?.should be true
+        end
       end
     end
   end
