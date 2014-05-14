@@ -61,6 +61,10 @@ class Market
     self.user.is_premium?
   end
 
+  def belongs_to_admin?
+    self.user.admin?
+  end
+
   def pro?
     return self.pro
   end

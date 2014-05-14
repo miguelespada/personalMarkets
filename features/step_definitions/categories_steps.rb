@@ -48,7 +48,3 @@ Then(/^I should see the markets of the category$/) do
   expect(page).to have_content "My market"
   expect(page).to have_content "My market description"
 end
-
-
-
-

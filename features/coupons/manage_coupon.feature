@@ -12,3 +12,9 @@ Feature: Market coupons
     When I visit the edit market page
     And I create a coupon
     Then I should see the coupon in the market page
+
+  @edit_coupon
+  Scenario: Edit a coupon
+    When I visit the edit market page
+    And I edit a coupon
+    Then I should see the edited coupon in the market page

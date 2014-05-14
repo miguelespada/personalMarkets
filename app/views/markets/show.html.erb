@@ -1,6 +1,6 @@
 <% market = @market.decorate %>
 
-<div class="panel panel-default panel-table panel-table-last <%= market.badges %>">
+<div class="panel panel-default panel-table panel-table-last">
   <div class="panel-heading table-title">
     <div class="market-title-container">
       <div class="market-title col-md-6"><%= market.name %></div>
@@ -14,11 +14,15 @@
           <%= market.archive_link %>
           <%= market.pro_link %>
           <%= market.statistics_link %>
-        </div>  
+        </div>
       </div>
     </div>
   </div>
-
+  <div class="market-badge">
+    <div class="ribbon-badge <%= market.badges %>">
+      <span id="market-badge-text"></span>
+    </div>
+  </div>
   <div class="market-section-title">General Information</div>
   <div class="market-section-container">
     <div class="col-md-6 market-featured-photo-detail">
@@ -72,3 +76,21 @@
   }
 }
 </style>
+
+<script>
+  if ($(".market-badge>.ribbon-badge").hasClass("staff_pick")){
+    $(".market-badge>.ribbon-badge").addClass("ribbon-badge-staff_pick");
+    $("#market-badge-text").text("STAFF PICK");
+    $(".market-badge").show();
+  }
+  else if ($(".market-badge>.ribbon-badge").hasClass("pro")){
+    $(".market-badge>.ribbon-badge").addClass("ribbon-badge-pro");
+    $("#market-badge-text").text("PRO");
+    $(".market-badge").show();
+  }
+  else if ($(".market-badge>.ribbon-badge").hasClass("sample")){
+    $(".market-badge>.ribbon-badge").addClass("ribbon-badge-sample");
+    $("#market-badge-text").text("SAMPLE");
+    $(".market-badge").show();
+  }
+</script>

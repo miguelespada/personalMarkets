@@ -9,9 +9,6 @@ FactoryGirl.define do
     user
     category
     coupon
-
-    trait :with_featured_image do
-        featured
-    end
+    association :featured, factory: :photo
   end
 end

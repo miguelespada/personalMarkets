@@ -118,11 +118,11 @@ describe CouponsController do
         expect(assigns(:transactions).count).to eq 1
 
       end
-      it "it is not allowed for guest" do
+      it "is not allowed for guest" do
         get :sold_coupons_by_market, {market_id: user_market.to_param}, valid_session
         expect(response.response_code).to eq 403
       end
-      it "it is not allowed for other users" do
+      it "is not allowed for other users" do
         sign_in :user, user
         get :sold_coupons_by_market, {market_id: user_market.to_param}, valid_session
         expect(response.response_code).to eq 403
@@ -141,11 +141,11 @@ describe CouponsController do
         expect(response.response_code).to eq 200
         expect(assigns(:transactions).count).to eq 1
       end
-      it "it is not allowed for guest" do
+      it "is not allowed for guest" do
         get :bought_coupons_by_user, {user_id: user.id}, valid_session
         expect(response.response_code).to eq 403
       end
-      it "it is not allowed for other users" do
+      it "is not allowed for other users" do
         sign_in :user, user
         get :bought_coupons_by_user, {user_id: market_owner.id}, valid_session
         expect(response.response_code).to eq 403
@@ -159,15 +159,23 @@ describe CouponsController do
       @ability = Object.new
       @ability.extend(CanCan::Ability)
       controller.stub(:current_ability) { @ability }
-      @ability.cannot :manage, Wish
+      @ability.cannot :manage, Coupon
       controller.stub(:current_user).and_return(user)
     end
-    it "is cannot buy" do
+    it "cannot buy" do
       post "buy", {id: coupon.to_param, paymill_card_token: token, number: 1}, valid_session
       expect(response.response_code).to eq 403
       CouponTransaction.count.should eq 0
     end
   end
+
+  context "guest user" do
+    it "cannot buy" do
+      post "buy", {id: coupon.to_param, paymill_card_token: token, number: 1}, valid_session
+      expect(response.response_code).to eq 403
+      CouponTransaction.count.should eq 0
+    end
+  end 
 
 
 end
