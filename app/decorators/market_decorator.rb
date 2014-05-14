@@ -26,7 +26,13 @@ class MarketDecorator < Draper::Decorator
   end
 
   def badges
-    "staff_pick" if staff_pick?
+    if staff_pick?
+      "staff_pick"
+    elsif market.belongs_to_admin?
+      "sample"
+    elsif market.pro?
+      "pro"
+    end
   end
 
   def archive_link

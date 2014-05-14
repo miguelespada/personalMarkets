@@ -20,6 +20,7 @@
   <th>Coupon price</th>
   <th>Coupon photo</th>
   <th>Like counter</th>
+  <th>Badges</th>
   </tr>
   <% markets.each do |market| %>
     <% market = market.decorate %>
@@ -27,6 +28,7 @@
       <td> <%= market.actions %> </td>
       <td> <%= market.state %> </td>
       <td> <%= photo(market.featured, 100, 50) %></td>
+      <td> gallery </td>
       <td> <%= market.link(market.name)%> </td>
       <td> <%= market.description %></td>
       <td> <%= market.owner %></td>
@@ -43,6 +45,7 @@
       <td> <%= market.coupon.price if market.coupon? %> </td>
       <td> <%= photo(market.coupon.photography, 100, 50)  if market.coupon? %> </td>
       <td class="like-counter"> <%= market.favorited.count %> </td>
+      <td> <%= market.badges %> </td>
     <% end %>
   <% end %>
 </table>
