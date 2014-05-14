@@ -70,9 +70,9 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
     !market.has_coupon? || market.pro? || market.belongs_to_premium_user?
   end
 
-  def make_pro market_id, buy_params
+  def make_pro market_id, pro_payment
     market = markets_repo.find market_id
-    PaymillWrapper.create_transaction market.user.email, buy_params[:price], buy_params
+    PaymillWrapper.create_transaction market.user.email, pro_payment.payment
     market.go_pro
     market
   end

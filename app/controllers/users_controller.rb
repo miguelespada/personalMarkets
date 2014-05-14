@@ -38,5 +38,7 @@ class UsersController < ApplicationController
   end
 
   def subscription
+    payment = Payment.new 10, 1
+    @subscription_payment = SubscriptionPayment.new payment
   end
 end
