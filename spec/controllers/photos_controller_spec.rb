@@ -41,10 +41,29 @@ describe PhotosController do
         get :index, {}, valid_session
         assigns(:photos).count.should eq 0
       end
-      
+
       it "list photos with attachment" do
         create(:photo)
         get :index, {}, valid_session
+        assigns(:photos).count.should eq 1
+      end
+    end
+    describe "list user photos" do
+
+      it "it is allowed" do
+        get :list_user_photos, {user_id: user.to_param}, valid_session
+        expect(response.response_code).to eq 200
+      end
+
+      it "does not show empty photos" do
+        Photo.new
+        get :list_user_photos, {:user_id: user.to_param}, valid_session
+        assigns(:photos).count.should eq 0
+      end
+
+      it "list photos with attachment" do
+        create(:photo)
+        get :list_user_photos, {user_id: user.to_param}, valid_session
         assigns(:photos).count.should eq 1
       end
     end
