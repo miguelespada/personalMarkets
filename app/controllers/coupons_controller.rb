@@ -10,15 +10,16 @@ class CouponsController < ApplicationController
   def show
   end
 
-  CouponPayment = Struct.new(:coupon, :total_price, :quantity)
-
   def coupon_payment
-    total_price = number * @coupon.price * 100
-    @coupon_payment = CouponPayment.new @coupon, total_price, number
+    payment = Payment.new @coupon.price, number
+    @coupon_payment = CouponPayment.new @coupon, payment
   end
 
   def buy
-    CouponDomain.buy @coupon, current_user, quantity, buy_params
+    payment = Payment.for payment_params
+    coupon_payment = CouponPayment.new @coupon, payment
+
+    CouponDomain.buy current_user, coupon_payment
     redirect_to market_path(@coupon.market), notice: 'You has successfully bought the coupon.'
     rescue CouponDomainException => e
       p e.message
@@ -38,6 +39,15 @@ class CouponsController < ApplicationController
   end
 
   private
+
+  def payment_params
+    {
+      name: params['name'],
+      price: params['price'].to_i,
+      quantity: params[:quantity].to_i,
+      token: params['paymill_card_token']
+    }
+  end
 
   def buy_params
     buy_params = {

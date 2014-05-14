@@ -14,16 +14,7 @@ describe PaymillWrapper do
   describe ".create_subscription" do
 
     let(:email) { "juan@pm.es" }
-    let(:subscription_params) { 
-      {
-        "name" => "juan sanchez",
-        "card_number" => "411111111111",
-        "expiration_month" => "03",
-        "expiration_year" => "22",
-        "cvc" => "222",
-        "paymill_card_token" => "the_paymill_card_token"
-      }
-    }
+    let(:subscription_payment) { double(token: "the_paymill_card_token")}
     let(:payment_creator) { double }
     let(:payment) { double(id: "payment_id") }
 
@@ -33,12 +24,12 @@ describe PaymillWrapper do
     end
 
     it "creates the paymill subscription" do
-      payment_creator.should_receive(:create).with(token: subscription_params["paymill_card_token"], client: "client_id").and_return(payment)
+      payment_creator.should_receive(:create).with(token: subscription_payment.token, client: "client_id").and_return(payment)
 
       subscription_creator = double
       stub_const("Paymill::Subscription", subscription_creator)
       subscription_creator.should_receive(:create).with(offer: "una_offer", client: "client_id", payment: payment.id)
-      PaymillWrapper.create_subscription email, subscription_params
+      PaymillWrapper.create_subscription email, subscription_payment
     end
 
   end
@@ -49,8 +40,7 @@ describe PaymillWrapper do
     let(:email) { "dummy@gmail.com" }
     let(:amount) { 20 }
     let(:token) { "a_token" } 
-    let(:name) { "Alejandro Bayo" }
-    let(:buy_params) { { name: name, token: token } } 
+    let(:payment) { double(token: token, total_price: amount) }
 
     before do
       stub_const("Paymill::Payment", paymill_payment)
@@ -60,17 +50,17 @@ describe PaymillWrapper do
 
     it "searchs a paymill client by the email" do
       paymill_transaction.should_receive(:create)
-      PaymillWrapper.create_transaction email, amount, buy_params
+      PaymillWrapper.create_transaction email, payment
     end
 
     it "creates a Paymill payment" do
       paymill_transaction.should_receive(:create)
-      PaymillWrapper.create_transaction email, amount ,buy_params
+      PaymillWrapper.create_transaction email, payment
     end
 
     it "creates a Paymill transaction" do
       paymill_transaction.should_receive(:create).with(amount: amount, currency: "EUR", client: "client_id", payment: "payment_id", description: "transaction for dummy@gmail.com")
-      PaymillWrapper.create_transaction email, amount, buy_params
+      PaymillWrapper.create_transaction email, payment
     end
   end
   

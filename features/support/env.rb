@@ -44,6 +44,7 @@ end
 Before do
   DatabaseCleaner.start
   Keen.stub(:publish_async) { }
+  ShortURL.stub(:shorten) { "" }
 end
 
 After do |scenario|

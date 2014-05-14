@@ -3,16 +3,13 @@ require 'spec_helper'
 describe SubscriptionsController do
 
   let(:user) { create(:user) }
-  let(:subscription_attrs) { 
-    {
-      "name" => "juan sanchez",
-      "card_number" => "411111111111",
-      "expiration_month" => "03",
-      "expiration_year" => "22",
-      "cvc" => "222"
+  let(:subscription_params) { {
+      "paymill_card_token" => "a_token",
+      "price" => "3",
+      "quantity" => "5",
+      "name" => "juan sanchez"
+      }
     }
-  }
-  let(:subscription_params) { { :subscription => subscription_attrs } }
   let(:domain) { double }
 
   before do
@@ -25,12 +22,6 @@ describe SubscriptionsController do
 
     post :create, subscription_params, {}
     expect(response).to redirect_to(user_path user)
-  end
-
-  it "calls domain with user email and subscription params" do
-    domain.should_receive(:subscribe).with(user, subscription_attrs)
-
-    post :create, subscription_params, {}
   end
 
 end

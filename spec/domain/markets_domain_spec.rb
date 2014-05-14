@@ -142,8 +142,8 @@ describe MarketsDomain do
       let(:email) { "dummy@gmail.com" }  
       let(:user) { double(email: email) } 
       let(:regular_market) { double(user: user, go_pro: nil) }
-      let(:price) { 295 }
-      let(:buy_params) { {token: "paymill_card_token", name: "pepito grillo", price: price} }
+      let(:payment) { double }
+      let(:market_pro_payment) { double(payment: payment) }
 
       before do
         markets_repo.stub(:find) { regular_market }
@@ -152,13 +152,13 @@ describe MarketsDomain do
 
       it "creates a paymill transaction" do
         paymill_wrapper.should_receive(:create_transaction).
-          with(email, buy_params[:price], buy_params)
-        @it.make_pro market_id, buy_params
+          with(email, payment)
+        @it.make_pro market_id, market_pro_payment
       end
 
       it "calls buy on coupon with the paymill transaction" do
         regular_market.should_receive(:go_pro)
-        @it.make_pro market_id, buy_params
+        @it.make_pro market_id, market_pro_payment
       end
 
     end

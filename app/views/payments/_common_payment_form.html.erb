@@ -1,0 +1,15 @@
+<%= hidden_field_tag "paymill_card_token" %>
+<%= hidden_field_tag "total-price", "#{payment.total_price}" %>
+<%= hidden_field_tag "price", "#{payment.price}" %>
+<%= hidden_field_tag "quantity", "#{payment.quantity}" %>
+
+<%= text_field_tag "name", nil, placeholder: "Card name"  %>
+<%= text_field_tag "card_number", nil, placeholder: "Card number" %>
+</div>
+<div class="form-group">
+<%= text_field_tag "expiration_month", nil, placeholder: "Expiration month" %>
+<%= text_field_tag "expiration_year", nil, placeholder: "Expiration year" %>
+<%= text_field_tag "cvc", nil, placeholder: "CVC" %>
+
+<%= javascript_include_tag "https://bridge.paymill.com/" %>
+<%= javascript_include_tag "paymill_bridge_adapter" %>
