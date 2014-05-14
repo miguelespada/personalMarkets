@@ -146,7 +146,7 @@ class Market
     return [] if Market.count == 0 
 
     query = params[:query].blank? ? '*' : params[:query].gsub(/[\!]/, '')
-    
+    page ||= 1
     range = format_range_query(params[:from], params[:to])
     city = params[:city] 
     category = params[:category]
@@ -170,7 +170,7 @@ class Market
       from (page - 1) * search_size
       size search_size
     end
-    
+
     search.results.collect{|result| find_by(id: result.to_hash[:id])}
   end
 
