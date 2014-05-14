@@ -57,14 +57,24 @@ describe PhotosController do
 
       it "does not show empty photos" do
         Photo.new
-        get :list_user_photos, {:user_id: user.to_param}, valid_session
+        get :list_user_photos, {user_id: user.to_param}, valid_session
         assigns(:photos).count.should eq 0
       end
 
       it "list photos with attachment" do
-        create(:photo)
+        photo = create(:photo)        
+        Photo.new
+        Photo.any_instance.stub(:is_owner?).and_return(true)
         get :list_user_photos, {user_id: user.to_param}, valid_session
         assigns(:photos).count.should eq 1
+      end
+
+      it "does not list other user photos" do
+        photo = create(:photo)
+        Photo.new
+        Photo.any_instance.stub(:is_owner?).and_return(false)
+        get :list_user_photos, {user_id: user.to_param}, valid_session
+        assigns(:photos).count.should eq 0
       end
     end
   end

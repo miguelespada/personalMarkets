@@ -22,6 +22,10 @@ class Photo
       false
   end
 
+  def owner
+    photographic.user
+  end
+
   def user_id
     photographic.user.id
   end
