@@ -24,10 +24,18 @@ Feature: Browse markets
     And I select range all
     Then I see all markets
 
-  @ajaxSearch @javascript
+  @javascript
   Scenario: Filter by location
     When I select a special location
     Then I see the markets matching my filters
+
+
+  @ajaxSearch @javascript
+  Scenario: Filter by city
+
+
+  @ajaxSearch @javascript
+  Scenario: Filter by my location
 
   @javascript
   Scenario: Search with ajax
