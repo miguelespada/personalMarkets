@@ -16,9 +16,3 @@ Feature: Browse markets
   Scenario: Browse maps
     When I go to Calendar
     Then I should see the markets in the calendar
-
-  @search
-  Scenario: Search markets
-    When I go to Search
-    And I do a search
-    Then I see the markets matching my query

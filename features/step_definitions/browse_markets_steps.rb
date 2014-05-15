@@ -56,7 +56,21 @@ When(/^I select incorrect range$/) do
   select "Today", :from => "range"
 end
 
+When(/^I select a category filter$/) do
+  select "Filter", :from => "category_category_id"
+end
+
 Then(/^I should not see the markets$/) do
   page.should_not have_content @market_0.name
   page.should_not have_content @market_0.description
 end
+
+Then(/^I see the markets matching my filters$/) do
+  page.should have_content @market_1.name
+  page.should have_content @market_1.description
+  page.should_not have_content @market_0.name
+  page.should_not have_content @market_0.description
+end
+
+
+

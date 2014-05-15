@@ -6,11 +6,6 @@ class Query
   end
 
   def search_params
-
-        puts "*-*" * 20
-        puts @session.to_json
-        puts "*-*" * 20
-
     {
       :query => load_query,
       :from => load_from,

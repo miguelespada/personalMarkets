@@ -1,6 +1,8 @@
 Given(/^There are some categories$/) do
   @category = create(:category,
-              :name => "Dummy Category")
+              :name => "Dummy_Category")
+  @category_1 = create(:category,
+              :name => "Filter")
 end
 
 When(/^There is a category with markets$/) do
@@ -14,6 +16,13 @@ Given(/^There are some published markets$/) do
       :longitude=> "-3.7",
       :tags => "one",
       :category => @category,
+      :date=>"22/04/2015",
+      :state => :published)
+  @market_1 = create(:market, 
+      :latitude => "43", 
+      :longitude=> "-4.7",
+      :tags => "two",
+      :category => @category_1,
       :date=>"22/04/2015",
       :state => :published)
   Market.reindex
