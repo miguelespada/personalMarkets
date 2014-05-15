@@ -17,6 +17,7 @@ Feature: Manage categories
     Then I should be notified that the category has been deleted
     And I should not see the category in the category list
 
+  @delete_category
   Scenario: Cannot delete category with markets
     When There is a category with markets
     And I delete a category
