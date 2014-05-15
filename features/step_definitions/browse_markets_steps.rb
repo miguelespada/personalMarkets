@@ -94,7 +94,10 @@ When(/^I select a city$/) do
   find("#city_city_name").select("madrid")
 end
 
-When(/^I select my location$/) do
+When(/^I allow geolocation$/) do
+end
+
+When(/^I select search by my location$/) do
   find("#location_location_id").select("My location")
 end
 

@@ -25,7 +25,7 @@
       <% selection =  session[:location_id] %>
       <% selection ||= "" %>
 
-      <%= collection_select(:location, :location_id, SpecialLocation.all, :name, :name, {:selected => selection, :include_blank => "My location"}, class: "form-control" ) %>
+      <%= collection_select(:location, :location_id, SpecialLocation.all, :name, :name, {:selected => selection, :include_blank => "Any location"}, class: "form-control" ) %>
 
      
      </li>
@@ -41,6 +41,12 @@
       <%= text_field_tag :to, session[:to]%>  
     </li>
     
+
+    <li class="uer-location hidden">
+      <%= text_field_tag :user_lat %>  
+      <%= text_field_tag :user_lon %>
+    </li>
+
     <%= submit_tag "Search", name: nil, class: "hidden" %>
 
   <% end %>
@@ -62,4 +68,36 @@
       $('#city_city_name').val("<%= selection %>");
 
   });
+
+
+  function pos_success(pos){
+    var crd = pos.coords;
+    var addressUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + crd.latitude + "," + crd.longitude + "&sensor=false&key=AIzaSyBkhXw8kMql7c4tc1LwaMGbm9024z03AKU";
+      getCityName(addressUrl);
+      $("#user_lat").val(crd.latitude);
+      $("#user_lon").val(crd.longitude);
+      $('#location_location_id').append("<option value>My location</option>");
+  };
+
+  function pos_error(){
+    $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i>  Enable browser location for better experience");
+  };
+
+  function getCityName(url){
+    $.getJSON(url, function(data){
+      city = data.results[0].address_components[2].long_name;
+      $("#user-city-text").html("<i class='fa fa-crosshairs'></i>&nbsp;&nbsp;" + city);
+    });
+  };
+
+
+  $(document).ready(function(){
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos_success, pos_error);
+    }
+    else {
+      $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i>  Enable browser location for better experience");
+    }
+  });
+
 </script>

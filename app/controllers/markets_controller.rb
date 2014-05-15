@@ -204,6 +204,8 @@ class MarketsController < ApplicationController
         :user_id,
         :category_id,
         :location_id,
+        :user_lat,
+        :user_lon,
         :coupon_attributes => [:id, :description, :price, :available, :photography_attributes => [:id, :photo]],
         :featured_attributes => [:id, :photo],
         :gallery_attributes => [:id, :photographies_attributes => [:id, :photo]]

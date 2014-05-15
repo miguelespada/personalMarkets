@@ -114,18 +114,23 @@ class Market
   end
 
   def to_indexed_json
-        { id: id,
-          name: name,
-          description: description,
-          category: category.name,
-          city: city,
-          tags: tags.split(/,/),
-          date: format_date,
-          state: state,
-          lat_lon: lat_lon
-        }.to_json
+      { id: id,
+        name: name,
+        description: description,
+        category: category_name,
+        city: city,
+        tags: tags.split(/,/),
+        date: format_date,
+        state: state,
+        lat_lon: lat_lon
+      }.to_json
   end
 
+  def category_name
+    category.name
+  rescue
+    ""
+  end
   def lat_lon
     if latitude.nil? or longitude.nil?
       "0,0"
