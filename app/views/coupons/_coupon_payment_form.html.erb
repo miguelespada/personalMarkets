@@ -10,14 +10,12 @@
         </div>
         <div class="panel-body">
           <fieldset>
-          <div class="form-group payment-form">
           <%= form_tag({controller: "coupons", action: "buy"}, method: "post", id: "new_payment") do %>
           <%= hidden_field_tag "id", "#{coupon_payment.coupon.id}" %>
 
           <%= render "payments/common_payment_form", :payment => coupon_payment.payment %>
 
           <% end %>
-          </div>
           <div class="form-group col-md-4 col-md-offset-4">
             <button class="get-token btn btn-info">Pay</button>
           </div>

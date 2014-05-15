@@ -12,4 +12,16 @@ class CouponPayment < Struct.new(:coupon, :payment)
     coupon.buy! user, quantity, transaction_id
   end
 
+  def description
+    "Coupon payment for #{coupon.id}"
+  end
+
+  def token
+    payment.token
+  end
+
+  def paymill_price
+    payment.paymill_price
+  end
+
 end

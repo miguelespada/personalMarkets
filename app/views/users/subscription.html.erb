@@ -1,20 +1,28 @@
-<section id="subscription-payment">
-  <h2>Profile page</h2>
-  <p class="payment-errors"></p>
+<div class = "home_gallery_title"><i class="fa fa-credit-card fa-2x"></i> <br/>Go Premium</div>
 
-  <section class="payment-form">
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">PREMIUM Payment</h3>
+        </div>
+        <div class="panel-body">
+          <fieldset>
+          <%= form_tag({controller: "subscriptions", action: "create"}, method: "post", id: "new_payment") do %>
 
-    <fieldset>
-    <div class="form-group payment-form">
-    <%= form_tag({controller: "subscriptions", action: "create"}, method: "post", id: "new_payment") do %>
+          <%= render "payments/common_payment_form", :payment => @subscription_payment.payment %>
 
-    <%= render "payments/common_payment_form", :payment => @subscription_payment.payment %>
-
-    <% end %>
+          <% end %>
+          <div class="form-group col-md-4 col-md-offset-4">
+            <button class="get-token btn btn-info">Subscribe</button>
+          </div>
+          </fieldset>
+        </div>
+      </div>
     </div>
-    <div class="form-group col-md-4 col-md-offset-4">
-      <button class="get-token btn btn-info">Subscribe</button>
-    </div>
-    </fieldset>
-  </section>
-</section>
+  </div>
+</div>
+
+<%= back_link %>
+

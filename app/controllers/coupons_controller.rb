@@ -43,7 +43,7 @@ class CouponsController < ApplicationController
   def payment_params
     {
       name: params['name'],
-      price: params['price'].to_i,
+      price: params['price'].to_f,
       quantity: params[:quantity].to_i,
       token: params['paymill_card_token']
     }

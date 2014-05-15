@@ -152,7 +152,7 @@ describe MarketsDomain do
 
       it "creates a paymill transaction" do
         paymill_wrapper.should_receive(:create_transaction).
-          with(email, payment)
+          with(email, market_pro_payment)
         @it.make_pro market_id, market_pro_payment
       end
 

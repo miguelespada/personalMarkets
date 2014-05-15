@@ -72,7 +72,7 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
 
   def make_pro market_id, pro_payment
     market = markets_repo.find market_id
-    PaymillWrapper.create_transaction market.user.email, pro_payment.payment
+    PaymillWrapper.create_transaction market.user.email, pro_payment
     market.go_pro
     market
   end
