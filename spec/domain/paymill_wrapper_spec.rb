@@ -40,7 +40,7 @@ describe PaymillWrapper do
     let(:email) { "dummy@gmail.com" }
     let(:amount) { 20 }
     let(:token) { "a_token" } 
-    let(:payment) { double(token: token, total_price: amount) }
+    let(:payment) { double(token: token, paymill_price: amount) }
 
     before do
       stub_const("Paymill::Payment", paymill_payment)
