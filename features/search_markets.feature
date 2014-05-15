@@ -29,15 +29,16 @@ Feature: Browse markets
     When I select a special location
     Then I see the markets matching my filters
 
-
+  @ajaxSearch 
   @javascript
   Scenario: Filter by city
-
+    When I select a city
+    Then I see the markets matching my filters
 
   @javascript
   Scenario: Filter by my location
 
-  @javascript @ajaxSearch 
+  @javascript
   Scenario: Search with ajax
     And I type a query
     Then I see the markets matching my filters

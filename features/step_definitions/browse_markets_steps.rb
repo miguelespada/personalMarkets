@@ -89,3 +89,8 @@ end
 When(/^I select a special location$/) do
   select "hotspot_1", :from => "location_location_id"
 end
+
+
+When(/^I select a city$/) do
+  find("#city_city_name").select("madrid")
+end

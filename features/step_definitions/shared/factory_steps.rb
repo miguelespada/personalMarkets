@@ -27,6 +27,7 @@ Given(/^There are some published markets$/) do
       :latitude => "40", 
       :longitude=> "-3.7",
       :tags => "tag_one",
+      :city => "barcelona",
       :category => @category,
       :date=> Time.now.next_month.strftime("%d/%m/%Y"),
       :state => :published)
@@ -34,6 +35,7 @@ Given(/^There are some published markets$/) do
       :latitude => "43", 
       :longitude=> "-4.7",
       :tags => "tag_two",
+      :city => "madrid",
       :category => @category_1,
       :date => Time.now.strftime("%d/%m/%Y"),
       :state => :published)
