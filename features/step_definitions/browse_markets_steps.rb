@@ -95,9 +95,13 @@ When(/^I select a city$/) do
 end
 
 When(/^I allow geolocation$/) do
+  page.execute_script('$("#user_lat").val("43");')
+  page.execute_script('$("#user_lon").val("-4.71");')
+  page.execute_script("$('#location_location_id').append(\"<option value='My location'>My location</option>\");")
 end
 
 When(/^I select search by my location$/) do
   find("#location_location_id").select("My location")
+  page.execute_script("$('#query').trigger('change');")
 end
 

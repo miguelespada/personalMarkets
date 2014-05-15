@@ -1,3 +1,5 @@
+@ajaxSearch
+
 Feature: Browse markets
   As a user
   I want to browse markets
@@ -34,15 +36,11 @@ Feature: Browse markets
     When I select a city
     Then I see the markets matching my filters
 
-  @javascript  @ajaxSearch 
+   @javascript
   Scenario: Filter by my location
     When I allow geolocation
     And I select search by my location
     Then I see the markets matching my filters
-
-  Scenario: Do do not allow search by location
-    When I don ot allow geolocation
-    And I cannot search by my location
 
   @javascript
   Scenario: Search with ajax

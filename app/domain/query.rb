@@ -28,15 +28,23 @@ class Query
     end
 
     def load_latitude
-      @session[:location] = @params[:location][:location_id]
-      SpecialLocation.find_by(name: @params[:location][:location_id]).latitude
+      if @params[:location][:location_id] == "My location"
+        @params[:user_lat]
+      else
+        @session[:location] = @params[:location][:location_id]
+        SpecialLocation.find_by(name: @params[:location][:location_id]).latitude
+      end
     rescue 
         ""
     end 
 
     def load_longitude
-      @session[:location_id] = @params[:location][:location_id]
-      SpecialLocation.find_by(name: @params[:location][:location_id]).longitude
+      if @params[:location][:location_id] == "My location"
+        @params[:user_lon]
+      else
+        @session[:location_id] = @params[:location][:location_id]
+        SpecialLocation.find_by(name: @params[:location][:location_id]).longitude
+      end
     rescue 
         ""
     end
