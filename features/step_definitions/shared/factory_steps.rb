@@ -14,16 +14,16 @@ Given(/^There are some published markets$/) do
   @market_0 = create(:market, 
       :latitude => "40", 
       :longitude=> "-3.7",
-      :tags => "one",
+      :tags => "tag_one",
       :category => @category,
-      :date=>"22/04/2015",
+      :date=> Time.now.next_month.strftime("%d/%m/%Y"),
       :state => :published)
   @market_1 = create(:market, 
       :latitude => "43", 
       :longitude=> "-4.7",
-      :tags => "two",
+      :tags => "tag_two",
       :category => @category_1,
-      :date=>"22/04/2015",
+      :date=> Time.now.strftime("%d/%m/%Y"),
       :state => :published)
   Market.reindex
 end

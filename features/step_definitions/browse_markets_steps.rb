@@ -49,16 +49,18 @@ end
 
 
 When(/^I select range$/) do
-  select "All", :from => "range"
-end
-
-When(/^I select incorrect range$/) do
   select "Today", :from => "range"
 end
+
 
 When(/^I select a category filter$/) do
   select "Filter", :from => "category_category_id"
 end
+
+When(/^I type a query$/) do
+    fill_in "query",  with: "tag_two"
+end
+
 
 Then(/^I should not see the markets$/) do
   page.should_not have_content @market_0.name
@@ -72,5 +74,15 @@ Then(/^I see the markets matching my filters$/) do
   page.should_not have_content @market_0.description
 end
 
+Then(/^I select range all$/) do
+  select "All", :from => "range"
+end
+
+Then(/^I see all markets$/) do
+  page.should have_content @market_1.name
+  page.should have_content @market_1.description
+  page.should have_content @market_0.name
+  page.should have_content @market_0.description
+end
 
 
