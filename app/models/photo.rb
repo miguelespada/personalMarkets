@@ -6,9 +6,15 @@ class Photo
 
   belongs_to :photographic, polymorphic: true
 
+  scope :non_empty, lambda { where(:photo.exists => true) }
+
   def present?
     !photo.nil?
-  end 
+  end
+
+  def empty?
+    !present?
+  end
 
   def is_owner?(user)
     photographic.user == user
@@ -16,8 +22,15 @@ class Photo
       false
   end
 
+  def owner
+    photographic.user
+  end
+
   def user_id
     photographic.user.id
   end
 
+  def self.all
+    self.non_empty
+  end
 end

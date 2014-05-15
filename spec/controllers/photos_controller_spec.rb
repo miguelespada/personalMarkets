@@ -30,6 +30,53 @@ describe PhotosController do
         }.to change(Photo, :count).by(-1)
       end
     end
+    describe "index" do
+      it "it is allowed" do
+        get :index, {}, valid_session
+        expect(response.response_code).to eq 200
+      end
+
+      it "does not show empty photos" do
+        Photo.new
+        get :index, {}, valid_session
+        assigns(:photos).count.should eq 0
+      end
+
+      it "list photos with attachment" do
+        create(:photo)
+        get :index, {}, valid_session
+        assigns(:photos).count.should eq 1
+      end
+    end
+    describe "list user photos" do
+
+      it "it is allowed" do
+        get :list_user_photos, {user_id: user.to_param}, valid_session
+        expect(response.response_code).to eq 200
+      end
+
+      it "does not show empty photos" do
+        Photo.new
+        get :list_user_photos, {user_id: user.to_param}, valid_session
+        assigns(:photos).count.should eq 0
+      end
+
+      it "list photos with attachment" do
+        photo = create(:photo)
+        Photo.new
+        Photo.any_instance.stub(:is_owner?).and_return(true)
+        get :list_user_photos, {user_id: user.to_param}, valid_session
+        assigns(:photos).count.should eq 1
+      end
+
+      it "does not list other user photos" do
+        photo = create(:photo)
+        Photo.new
+        Photo.any_instance.stub(:is_owner?).and_return(false)
+        get :list_user_photos, {user_id: user.to_param}, valid_session
+        assigns(:photos).count.should eq 0
+      end
+    end
   end
 
   context "unauthorized user" do 

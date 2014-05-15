@@ -61,6 +61,7 @@ gem 'omniauth-google-oauth2'
 
 # search
 gem "tire", "~> 0.6.2"
+gem 'kaminari'
 
 # Refacoring
 gem 'draper', '~> 1.3'

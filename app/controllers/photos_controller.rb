@@ -3,11 +3,12 @@ class PhotosController < ApplicationController
   authorize_resource :except => [:index, :list_user_photos, :show]
   
   def index
-    @photos = Photo.all
+    @photos = Photo.all.page(params[:page]).per(3)
   end
 
   def list_user_photos
-    @photos = Photo.all.collect{|photo| photo if photo.is_owner?(load_user)}
+    @photos = Photo.non_empty.collect{|photo| photo if photo.is_owner?(load_user)}.compact.uniq
+    @photos = Kaminari.paginate_array(@photos).page(params[:page]).per(3)
   end
 
   def show

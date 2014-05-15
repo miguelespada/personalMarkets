@@ -4,17 +4,17 @@
 </tr>
 
 <% @photos.each do |photo| %>
-  <% if photo.present? %>
     <%= content_tag_for(:tr, photo) do %> 
     <td class="col-md-2"> 
       <div class="table-photo-container">
         <%= photo(photo, 300, 150, :pad) %>
         <%= edit_photo_link(photo) %>
-        <span> <%= link_to content_tag(:i, "", class: "fa fa-file"), photo.photographic, class: "btn btn-info table-button table-button-edit" %></span> 
-        <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), photo, :method => :delete, class: "delete btn btn-danger table-button table-button-delete" %> </span>
+        <span> <%= link_to content_tag(:i, "", class: "glyphicon glyphicon-zoom-in"), photo.photographic, class: "btn btn-default table-button" %> </span>
+
+         <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), photo, :method => :delete, class: "delete btn btn-danger table-button table-button-delete" %> </span>
       </div>
     </td>
   <% end %>
-  <% end %>
 <% end %>
 </table>
+<%= paginate @photos %>
