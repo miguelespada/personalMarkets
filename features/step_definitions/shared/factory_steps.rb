@@ -1,6 +1,6 @@
 Given(/^There are some categories$/) do
   @category = create(:category,
-              :name => "Dummy_Category")
+              :name => "Dummy Category")
   @category_1 = create(:category,
               :name => "Filter")
 end
