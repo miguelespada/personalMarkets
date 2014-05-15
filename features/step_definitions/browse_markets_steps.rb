@@ -58,7 +58,8 @@ When(/^I select a category filter$/) do
 end
 
 When(/^I type a query$/) do
-    fill_in "query",  with: "tag_two"
+  fill_in "query",  with: "tag_two"
+  page.execute_script("$('#query').trigger('change');")
 end
 
 
