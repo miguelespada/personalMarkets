@@ -85,4 +85,6 @@ Then(/^I see all markets$/) do
   page.should have_content @market_0.description
 end
 
-
+When(/^I select a special location$/) do
+  select "hotspot_1", :from => "location_location_id"
+end

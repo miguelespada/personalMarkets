@@ -4,6 +4,7 @@ Feature: Browse markets
 
   Background:
   Given There are some published markets
+  And There are some special locations
   When I go to Search
 
   @search
@@ -22,10 +23,10 @@ Feature: Browse markets
     Then I see the markets matching my filters
     And I select range all
     Then I see all markets
-    
+
   @ajaxSearch @javascript
   Scenario: Filter by location
-    And I select a location filter
+    When I select a special location
     Then I see the markets matching my filters
 
   @javascript

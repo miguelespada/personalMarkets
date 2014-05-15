@@ -5,6 +5,18 @@ Given(/^There are some categories$/) do
               :name => "Filter")
 end
 
+
+When(/^There are some special locations$/) do
+  @location_0 = create(:special_location,
+                    :name => "hotspot_0",
+                    :latitude => "40.1", 
+                    :longitude=> "-3.73")
+  @location_1 = create(:special_location,
+                    :name => "hotspot_1",
+                    :latitude => "43.1", 
+                    :longitude=> "-4.69")
+end
+
 When(/^There is a category with markets$/) do
   step "There are some published markets"
 end
@@ -23,7 +35,7 @@ Given(/^There are some published markets$/) do
       :longitude=> "-4.7",
       :tags => "tag_two",
       :category => @category_1,
-      :date=> Time.now.strftime("%d/%m/%Y"),
+      :date => Time.now.strftime("%d/%m/%Y"),
       :state => :published)
   Market.reindex
 end
