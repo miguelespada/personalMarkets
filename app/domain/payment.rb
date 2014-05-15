@@ -8,4 +8,8 @@ class Payment < Struct.new(:price, :quantity, :name, :token)
     new payment_params[:price], payment_params[:quantity], payment_params[:name], payment_params[:token]
   end
 
+  def paymill_price
+    total_price.to_i
+  end
+
 end

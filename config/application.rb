@@ -43,8 +43,15 @@ module PopUpStores
     config.i18n.enforce_available_locales = false
 
     social_keys = File.join(Rails.root, 'config', 'social_keys.yml')
+
     CONFIG = HashWithIndifferentAccess.new(YAML::load(IO.read(social_keys)))[Rails.env]
     CONFIG.each do |k,v|
+      ENV[k.upcase] ||= v
+    end
+
+    prices = File.join(Rails.root, 'config', 'prices.yml')
+    PRICES_CONFIG = HashWithIndifferentAccess.new(YAML::load(IO.read(prices)))
+    PRICES_CONFIG.each do |k,v|
       ENV[k.upcase] ||= v
     end
   end

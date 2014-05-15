@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def subscription
-    payment = Payment.new 10, 1
+    payment = Payment.new ENV['PREMIUM_PRICE'].to_f, 1
     @subscription_payment = SubscriptionPayment.new payment
   end
 end

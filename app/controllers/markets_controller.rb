@@ -155,7 +155,7 @@ class MarketsController < ApplicationController
   end
 
   def make_pro_payment
-    payment = Payment.new 2.95, 1
+    payment = Payment.new ENV['PRO_PRICE'].to_f, 1
     @pro_payment = MarketProPayment.new Market.find(params[:market_id]), payment
   end
 
@@ -172,7 +172,7 @@ class MarketsController < ApplicationController
   def payment_params
     {
       name: params['name'],
-      price: params['price'].to_i,
+      price: params['price'].to_f,
       quantity: params[:quantity].to_i,
       token: params['paymill_card_token']
     }
