@@ -388,3 +388,19 @@ end
 Then(/^I should see the cropped photo$/) do
   find("img[src*='image/upload/c_crop,h_150,w_100,x_10,y_10']")
 end
+
+Then(/^I should see the badge of PRO$/) do
+  expect(page).to have_css ".pro"
+  find("#market-badge-text").should have_content "PRO"
+end
+
+Then(/^I should see the badge of sample$/) do
+  visit market_path @market
+  expect(page).to have_css ".sample"
+  find("#market-badge-text").should have_content "SAMPLE"
+end
+
+Then(/^I should see the badge of staff pick$/) do
+  step "The market becomes staff pick"
+  find("#market-badge-text").should have_content "STAFF PICK"
+end

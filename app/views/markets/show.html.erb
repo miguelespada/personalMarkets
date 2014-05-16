@@ -3,7 +3,7 @@
 <div class="panel panel-default panel-table panel-table-last">
   <div class="panel-heading table-title">
     <div class="market-title-container">
-      <div class="market-title col-md-6"><%= market.name %></div>
+      <div class="market-title col-md-5"><%= market.name %></div>
       <div class="market-actions col-md-6">
         <%= link_to content_tag(:i, "", class: "fa fa-twitter"), "http://twitter.com/home?status=#{market.name} #{market.description} #{market.short_url}", class: "btn btn-info" %>
         <div class="market-actions-links">
@@ -15,6 +15,8 @@
           <%= market.pro_link %>
           <%= market.statistics_link %>
         </div>
+      </div>
+      <div class="col-md-1">
       </div>
     </div>
   </div>
