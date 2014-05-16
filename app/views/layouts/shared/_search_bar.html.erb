@@ -39,7 +39,11 @@ $( document ).ready(function() {
   })
 
   $("#search_button").click(function(){
-    $("#search_market").submit();
+    <% if controller_name == 'markets' && action_name == 'search' %>
+      $("#search_market").change();
+    <% else %>
+      $("#search_market").submit();
+    <% end %>
   });
 
   $("#location_location_id").on("change", function(){
