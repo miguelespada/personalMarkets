@@ -545,6 +545,7 @@ border-color: #d43f3a;
 
 .market-actions{
   text-align: right;
+  padding-right: 30px !important;
 }
 
 .market-actions-links{
@@ -568,8 +569,26 @@ border-color: #d43f3a;
   border-bottom: 1px solid #3B99FF;
 }
 
+.market-list-section-title{
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 200;
+  text-align: center;
+  margin: 0px 15px 0px 15px!important;
+  color:#3B99FF;
+  background:#E4F2FF;
+  border-bottom: 1px solid #3B99FF;
+}
+
+
 .market-section-container{
   @extend .row;
+  margin: 0px 15px 15px 15px!important;
+  padding: 10px !important;
+  background:#FCFCFF;
+}
+
+.market-list-section-container{
   margin: 0px 15px 15px 15px!important;
   padding: 10px !important;
   background:#FCFCFF;
@@ -621,4 +640,25 @@ border-color: #d43f3a;
   display:none;
   margin-top: 53px;
   margin-right: 33px !important;
+}
+
+.market-list-badge{
+  @extend .wrapper-ribbon-badge;
+  display:none;
+  margin-top: -18px;
+  margin-right: 18px;
+}
+
+.market-list-section-container-inner{
+  @extend .row;
+  margin: 0px !important;
+}
+
+.market-list-bottom{
+  padding-bottom: 80px !important;
+}
+
+.market-list-each-container{
+  @extend .row;
+  position: relative;
 }

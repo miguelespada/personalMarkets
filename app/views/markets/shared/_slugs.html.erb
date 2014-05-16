@@ -1,51 +1,89 @@
-<table class="table table-striped table-bordered table-hover">
-  <tr>
-  <th>Actions</th>
-  <th>State</th>
-  <th>Featured photo</th>
-  <th>Gallery</th>
-  <th>Name</th>
-  <th>Description</th>
-  <th>Owner</th>
-  <th>Category</th>
-  <th>Tags</th>
-  <th>Owner</th>
-  <th>Address</th>
-  <th>City</th>
-  <th>Latitude</th>
-  <th>Longitude</th>
-  <th>Date</th>
-  <th>Coupon</th>
-  <th>Coupon available</th>
-  <th>Coupon price</th>
-  <th>Coupon photo</th>
-  <th>Like counter</th>
-  <th>Badges</th>
-  </tr>
-  <% markets.each do |market| %>
-    <% market = market.decorate %>
-    <%= content_tag_for(:tr, market) do %>
-      <td> <%= market.actions %> </td>
-      <td> <%= market.state %> </td>
-      <td> <%= photo(market.featured, 100, 50) %></td>
-      <td> gallery </td>
-      <td> <%= market.link(market.name)%> </td>
-      <td> <%= market.description %></td>
-      <td> <%= market.owner %></td>
-      <td> <%= market.category_name %> </td>
-      <td> <%= market.tags %> </td>
-      <td> <%= market.owner %> </td>
-      <td> <%= market.address %> </td>
-      <td> <%= market.city %> </td>
-      <td> <%= market.latitude %> </td>
-      <td> <%= market.longitude %> </td>
-      <td> <%= market.date %> </td>
-      <td> <%= link_to  market.coupon.description, coupon_path(market.coupon) if market.coupon? %> </td>
-      <td> <%= market.coupon.available if market.coupon? %> </td>
-      <td> <%= market.coupon.price if market.coupon? %> </td>
-      <td> <%= photo(market.coupon.photography, 100, 50)  if market.coupon? %> </td>
-      <td class="like-counter"> <%= market.favorited.count %> </td>
-      <td> <%= market.badges %> </td>
-    <% end %>
+<% markets.each do |market| %>
+  <% market = market.decorate %>
+  <%= content_tag_for(:tr, market) do %>
+    <div class="panel panel-default panel-table">
+      <div class="panel-heading table-title">
+        <div class="market-title-container">
+          <div class="market-title col-md-6"><%= market.link(market.name)%></div>
+          <div class="market-actions col-md-6">
+            <div class="market-actions-links">
+              <%= market.actions %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="market-list-each-container">
+        <div class = "col-md-8">
+          <div class="market-list-section-title">Information</div>
+          <div class="market-list-section-container">
+            <div class = "market-list-section-container-inner">
+              <div class = "col-md-4">
+                <%= photo(market.featured, 200, 100) %>
+              </div>
+              <div class = "col-md-8">
+                Description: <%= market.description %> <br>
+                State: <%= market.state %> <br>
+                Owner: <%= market.owner %> <br>
+                Category: <%= market.category_name %> <br>
+                Tags: <%= market.tags %> <br>
+                Address: <%= market.address %>, <%= market.city %> <br>
+                <div class="hidden">
+                  <%= market.latitude %>
+                  <%= market.longitude %> 
+                </div>
+                Date: <%= market.date %> <br>
+                <div class="like-counter"> <%= market.favorited.count %> Likes </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class = "col-md-4">
+          <div class="market-list-section-title">Coupon</div>
+          <div class="market-list-section-container">
+            <%= photo(market.coupon.photography, 100, 50) if market.coupon? %>
+            <%= link_to market.coupon.description, coupon_path(market.coupon) if market.coupon? %><br>
+            <%= market.coupon.available if market.coupon? %><br>
+            <%= market.coupon.price if market.coupon? %><br>
+          </div>
+        </div>
+
+        <div class="market-list-badge">
+          <div class="ribbon-badge <%= market.badges %>">
+            <span id="market-badge-text"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
   <% end %>
-</table>
+<% end %>
+<div class="market-list-bottom"></div>
+<script>
+  $(".market-list-badge").each(function(){
+    if ($(".ribbon-badge", this).hasClass("staff_pick")){
+      $(".ribbon-badge", this).addClass("ribbon-badge-staff_pick");
+      $(".ribbon-badge>#market-badge-text", this).text("STAFF PICK");
+      $(this).show();
+    }
+    else if ($(".ribbon-badge", this).hasClass("sample")){
+      $(".ribbon-badge", this).addClass("ribbon-badge-sample");
+      $(".ribbon-badge>#market-badge-text", this).text("SAMPLE");
+      $(this).show();
+    }
+    else if ($(".ribbon-badge", this).hasClass("pro")){
+      $(".ribbon-badge", this).addClass("ribbon-badge-pro");
+      $(".ribbon-badge>#market-badge-text", this).text("PRO");
+      $(this).show();
+    }
+  });
+  
+</script>
+
+<style>
+@media (max-width: 992px){
+  .market-actions{
+    text-align: left;
+  }
+}
+</style>

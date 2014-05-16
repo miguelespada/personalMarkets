@@ -1,34 +1,34 @@
-@import "bootstrap";
-@import "bootstrap/theme";
+// @import "bootstrap";
+// @import "bootstrap/theme";
 
-.market-slugs{
+// .market-slugs{
 
-  .market-slug{
-    @extend .row;
-  }
-  .market-name {
-    @extend .col-md-3;
-  }
+//   .market-slug{
+//     @extend .row;
+//   }
+//   .market-name {
+//     @extend .col-md-3;
+//   }
 
-  .market-featured-photo {
-    @extend .col-md-2;
-  }
+//   .market-featured-photo {
+//     @extend .col-md-2;
+//   }
   
-  .market-description {
-    @extend .col-md-3;
-  }
+//   .market-description {
+//     @extend .col-md-3;
+//   }
 
-  .market-actions{
-    @extend .col-md-4; 
-    .market-action{
-      @extend .btn;
-      @extend .btn-sm;
-    }
-  }
+//   .market-actions{
+//     @extend .col-md-4; 
+//     .market-action{
+//       @extend .btn;
+//       @extend .btn-sm;
+//     }
+//   }
 
-  .market-meta { display : none }
-  .market-widgets { display : none }
-  .market-stats { display : none }
-  .market-info { display : none }
+//   .market-meta { display : none }
+//   .market-widgets { display : none }
+//   .market-stats { display : none }
+//   .market-info { display : none }
 
-}
+// }
