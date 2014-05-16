@@ -545,7 +545,6 @@ border-color: #d43f3a;
 
 .market-actions{
   text-align: right;
-  padding-right: 30px !important;
 }
 
 .market-actions-links{
@@ -638,8 +637,8 @@ border-color: #d43f3a;
 .market-badge{
   @extend .wrapper-ribbon-badge;
   display:none;
-  margin-top: 53px;
-  margin-right: 33px !important;
+  margin-top: -12px;
+  margin-right: 2px !important;
 }
 
 .market-list-badge{
@@ -660,5 +659,9 @@ border-color: #d43f3a;
 
 .market-list-each-container{
   @extend .row;
+  position: relative;
+}
+
+.market-full-description-container{
   position: relative;
 }

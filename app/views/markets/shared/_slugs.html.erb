@@ -74,6 +74,11 @@
       $(".ribbon-badge>#market-badge-text", this).text("PRO");
       $(this).show();
     }
+    else if ($(".ribbon-badge", this).hasClass("new_market")){
+      $(".ribbon-badge", this).addClass("ribbon-badge-new");
+      $(".ribbon-badge>#market-badge-text", this).text("NEW");
+      $(this).show();
+    }
   });
   
 </script>

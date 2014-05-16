@@ -32,6 +32,8 @@ class MarketDecorator < Draper::Decorator
       "sample"
     elsif market.pro?
       "pro"
+    elsif new_market?
+      "new_market"
     end
   end
 

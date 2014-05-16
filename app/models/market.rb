@@ -207,6 +207,10 @@ class Market
     false
   end
 
+  def new_market?
+    self.created_at? && self.created_at >= 1.day.ago
+  end
+
   def to_param
     self.public_id
   end
