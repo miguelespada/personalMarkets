@@ -13,11 +13,12 @@
 
 
     <li class="form-group">
-        <%= select_tag(:range, options_for_select(['Today', 
+        <%= select_tag(:range, options_for_select(['All',
+                                              'Today', 
                                               'This week', 
                                               'This month', 
-                                              'Next week', 
-                                              'All'],  :selected => session[:range]), class: "form-control" ) %>      
+                                              'Next week' 
+                                              ],  :selected => session[:range]), class: "form-control" ) %>      
 
      </li>
 
@@ -49,6 +50,7 @@
 
     <%= submit_tag "Search", name: nil, class: "hidden" %>
 
+    <%= link_to "Reset", "#", :class=>  "btn btn-primary ", :id=>"reset_search" %>
   <% end %>
 
 
@@ -103,6 +105,18 @@
     else {
       $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i>  Enable browser location for better experience");
     }
+ 
+    $("#reset_search").click(function(){
+        $("#range").val("All");
+        $("#query").val("");
+        $("#search_bar_query").val("");
+        $("#location_location_id").val("");
+        $("#city_city_name").val("");
+        $("#category_category_id").val("");
+      return false;
+    });
   });
+
+
 
 </script>
