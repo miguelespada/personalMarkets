@@ -61,6 +61,9 @@ class MarketsController < ApplicationController
   end
 
   def new
+    puts "*-*" * 20
+    puts params
+    puts "*-*" * 20
     @market = domain.initialize_market
     3.times {@market.gallery.photographies << Photo.new}
   end
