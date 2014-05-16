@@ -56,3 +56,12 @@ Given(/^I am logged in as an admin$/) do
   @admin = create(:user, :admin)
   log_in_as @admin
 end
+
+Given(/^I am an admin user$/) do
+  @user = create(:user, :admin, :email => "dummy@gmail.com")
+end
+
+Given(/^I am logged in as admin user$/) do
+  step "I am an admin user"
+  step "I sign in"
+end
