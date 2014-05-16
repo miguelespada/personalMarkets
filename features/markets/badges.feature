@@ -17,7 +17,7 @@ Feature: Market Badges
     Then I should see the badge of sample
 
   @badges @javascript
-  Scenario: Sample market badge
+  Scenario: Staff pick market badge
     Given I am logged in as admin user
     Given There are some published markets
     When I like the market
