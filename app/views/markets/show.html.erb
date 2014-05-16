@@ -21,9 +21,9 @@
 
   <div class="market-full-description-container">
     <div class="market-badge">
-    <div class="ribbon-badge <%= market.badges %>">
-      <span id="market-badge-text"></span>
-    </div>
+      <div class="ribbon-badge <%= market.badges %>">
+        <span id="market-badge-text"></span>
+      </div>
     </div>
     <div class="market-section-title">General Information</div>
     <div class="market-section-container">
@@ -46,8 +46,8 @@
   
     <div class="market-section-title">Location</div>
     <div class="market-section-container">
-    <div class="market-address-detail"> <%= market.address %>, <%= market.city %> </div>
-    <%= market.location %>
+      <div class="market-address-detail"> <%= market.address %>, <%= market.city %> </div>
+      <%= market.location %>
     </div>
   
     <div class="market-section-title">Comment & Share</div>
@@ -67,8 +67,8 @@
         <div class="fb-comments" data-href=<%=market_url(market.to_param)%> data-numposts="5" data-colorscheme="light"></div>
         <br>
         <div class="fb-like" data-href=<%=market_url(market.to_param)%> data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+        </div>
       </div>
-    </div>
     </div>
   </div>
 

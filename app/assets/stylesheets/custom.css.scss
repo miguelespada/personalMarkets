@@ -648,6 +648,13 @@ border-color: #d43f3a;
   margin-right: 18px;
 }
 
+.market-gallery-badge{
+  @extend .wrapper-ribbon-badge;
+  display:none;
+  margin-top: 3px;
+  margin-right: 3px;
+}
+
 .market-list-section-container-inner{
   @extend .row;
   margin: 0px !important;
