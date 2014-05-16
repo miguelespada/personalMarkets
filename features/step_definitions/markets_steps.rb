@@ -346,9 +346,7 @@ Then(/^I should not be able to access photo gallery$/) do
 end
 
 Then(/^I click on edit the market$/) do
-  within(:css, ".market-actions") do
-    click_on "Edit"
-  end
+  find('.edit').click
 end
 
 Then(/^I should see the link of photo gallery is enabled$/) do
