@@ -1,62 +1,60 @@
 <% markets.each do |market| %>
   <% market = market.decorate %>
-  <%= content_tag_for(:tr, market) do %>
-    <div class="panel panel-default panel-table">
-      <div class="panel-heading table-title">
-        <div class="market-title-container">
-          <div class="market-title col-md-6"><%= market.link(market.name)%></div>
-          <div class="market-actions col-md-6">
-            <div class="market-actions-links">
-              <%= market.actions %>
-            </div>
+  <div class="panel panel-default panel-table" id="market_<%= market.id %>">
+    <div class="panel-heading table-title">
+      <div class="market-title-container">
+        <div class="market-title col-md-6"><%= market.link(market.name)%></div>
+        <div class="market-actions col-md-6">
+          <div class="market-actions-links">
+            <%= market.actions %>
           </div>
         </div>
-      </div>
-
-      <div class="market-list-each-container">
-        <div class = "col-md-8">
-          <div class="market-list-section-title">Information</div>
-          <div class="market-list-section-container">
-            <div class = "market-list-section-container-inner">
-              <div class = "col-md-4">
-                <%= photo(market.featured, 200, 100) %>
-              </div>
-              <div class = "col-md-8">
-                Description: <%= market.description %> <br>
-                State: <%= market.state %> <br>
-                Owner: <%= market.owner %> <br>
-                Category: <%= market.category_name %> <br>
-                Tags: <%= market.tags %> <br>
-                Address: <%= market.address %>, <%= market.city %> <br>
-                <div class="hidden">
-                  <%= market.latitude %>
-                  <%= market.longitude %> 
-                </div>
-                Date: <%= market.date %> <br>
-                <div class="like-counter"> <%= market.favorited.count %> Likes </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class = "col-md-4">
-          <div class="market-list-section-title">Coupon</div>
-          <div class="market-list-section-container">
-            <%= photo(market.coupon.photography, 100, 50) if market.coupon? %>
-            <%= link_to market.coupon.description, coupon_path(market.coupon) if market.coupon? %><br>
-            <%= market.coupon.available if market.coupon? %><br>
-            <%= market.coupon.price if market.coupon? %><br>
-          </div>
-        </div>
-
-        <div class="market-list-badge">
-          <div class="ribbon-badge <%= market.badges %>">
-            <span id="market-badge-text"></span>
-          </div>
-        </div>
-
       </div>
     </div>
-  <% end %>
+
+    <div class="market-list-each-container">
+      <div class = "col-md-8">
+        <div class="market-list-section-title">Information</div>
+        <div class="market-list-section-container">
+          <div class = "market-list-section-container-inner">
+            <div class = "col-md-4">
+              <%= photo(market.featured, 200, 100) %>
+            </div>
+            <div class = "col-md-8">
+              Description: <%= market.description %> <br>
+              State: <%= market.state %> <br>
+              Owner: <%= market.owner %> <br>
+              Category: <%= market.category_name %> <br>
+              Tags: <%= market.tags %> <br>
+              Address: <%= market.address %>, <%= market.city %> <br>
+              <div class="hidden">
+                <%= market.latitude %>
+                <%= market.longitude %> 
+              </div>
+              Date: <%= market.date %> <br>
+              <div class="like-counter"> <%= market.favorited.count %> Likes </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class = "col-md-4">
+        <div class="market-list-section-title">Coupon</div>
+        <div class="market-list-section-container">
+          <%= photo(market.coupon.photography, 100, 50) if market.coupon? %>
+          <%= link_to market.coupon.description, coupon_path(market.coupon) if market.coupon? %><br>
+          <%= market.coupon.available if market.coupon? %><br>
+          <%= market.coupon.price if market.coupon? %><br>
+        </div>
+      </div>
+
+      <div class="market-list-badge">
+        <div class="ribbon-badge <%= market.badges %>">
+          <span id="market-badge-text"></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
 <% end %>
 <div class="market-list-bottom"></div>
 <script>

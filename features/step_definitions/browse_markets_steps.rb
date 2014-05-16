@@ -1,6 +1,6 @@
 When(/^I click the details link of a market$/) do
   within(:css, "#market_#{@market_0.id}") do
-    click_on "Show"
+    find(".show").click
   end
 end
 
