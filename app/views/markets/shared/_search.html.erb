@@ -48,7 +48,7 @@
       <%= text_field_tag :user_lon %>
     </li>
 
-    <li class="page">
+    <li class="page hidden" >
       <%= text_field_tag :page, session[:page] || 1 %>  
     </li>
 
@@ -59,7 +59,7 @@
   
   <%= link_to "Prev", "#", :id=>"prev-markets", :class => "hidden" %>
 
-  <%= link_to "Next", "#", :id=>"next-markets" %>
+  <%= link_to "Next", "#", :id=>"next-markets"%>
 <script>
 
   $.getJSON('/cities.json', function(data){

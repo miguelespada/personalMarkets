@@ -38,4 +38,7 @@ module MarketsHelper
     yield if block_given?
   end
 
+  def are_more_markets?(markets)
+    "hidden" if markets == []
+  end
 end
