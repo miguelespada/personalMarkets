@@ -136,20 +136,22 @@ class MarketDecorator < Draper::Decorator
   end
 
   def is_today? 
-    if date.nil? return false
     date.split(',').each do |day|
       return true if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i == 0
     end
     return false
+  rescue
+    false
   end
 
   def is_this_week?
-    if date.nil? return false
     return false if is_today?
     date.split(',').each do |day|
       return true if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i < 7
     end
     return false
+  rescue
+    false
   end
 
 
