@@ -23,7 +23,7 @@
               <%= f.input :subject, :placeholder => "Subject", :required => true %>
             </div>
             <div class="form-group">
-              <%= f.input :description, :placeholder => "Description", :required => true, :as => :text %>
+              <%= f.input :description, :placeholder => "Your message", :required => true, :as => :text, :input_html => { :rows => 5 } %>
             </div>
             <div class="form-group col-md-4 col-md-offset-4">
               <%= f.button :submit, "Send" %>
