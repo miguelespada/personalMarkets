@@ -132,11 +132,9 @@ $( document ).ready(function() {
 
    $('.attachinary-input').attachinary();
 
-
-
    var tagApi = jQuery(".tm-input").tagsManager({
-      prefilled: $( "form" ).data( "tags"),
-      delimiters: [13, 44],
+      prefilled: $("#market_tags").attr("value"),
+      delimiters: [9, 13, 44],
       tagClass: "tm-tag",
       tagsContainer: '#tags-container'
     });
