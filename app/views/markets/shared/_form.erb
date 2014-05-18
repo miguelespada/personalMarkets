@@ -1,3 +1,6 @@
+<div id="error" class="alert alert-danger flash"></div>
+
+
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
 <div class="panel panel-default panel-table panel-table-last">
   <div class="panel-heading table-title">
@@ -26,7 +29,7 @@
     
   </ul>
   <%= simple_form_for [user, market], 
-      :html => {"data-tags" => "#{raw_tags(market)}", role: "form"}  do |f| %>
+      :html => {"data-tags" => "#{raw_tags(market)}",  novalidate: true, role: "form"}  do |f| %>
 
     <div class="tab-content col-md-9">
       <div class="tab-pane" id="form-market-name-description"> 
@@ -256,5 +259,15 @@ $.fn.exBounce = function(){
   })();
   return this;
 };
+
+$(".simple_form").submit(function(){
+   if( $("#market_name").val().length == 0 ) {
+    $("#error").html("Market name cannot be empty");
+      return false;
+    }
+   else{
+    $("#error").html("");
+   }
+});
 
 </script>

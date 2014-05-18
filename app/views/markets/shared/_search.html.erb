@@ -115,6 +115,15 @@
         $("#category_category_id").val("");
       return false;
     });
+
+      $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+          event.preventDefault();
+
+           $('#search_market').change();
+          return false;
+        }
+    });
   });
 
 
