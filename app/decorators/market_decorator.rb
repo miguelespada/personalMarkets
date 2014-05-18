@@ -135,14 +135,21 @@ class MarketDecorator < Draper::Decorator
     ShortURL.shorten(market_url(market))
   end
 
-  def is_today?
-     (Date.strptime(date.split(',').first, "%d/%m/%Y") - Date.today).to_i == 0
+  def is_today? 
+    date.split(',').each do |day|
+      return true if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i == 0
+    end
+    return false
   end
 
   def is_this_week?
-    !is_today? && (Date.strptime(date.split(',').first, "%d/%m/%Y") - Date.today).to_i < 7
+    return false if is_today?
+    date.split(',').each do |day|
+      return true if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i < 7
+    end
+    return false
   end
-  
+
 
   private 
 
