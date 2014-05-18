@@ -58,6 +58,18 @@ module ApplicationHelper
     end 
   end
 
+  def twitter_text(market)
+    "http://twitter.com/home?status=@PersonalMarkets, #{market.short_url}, %23#{market.name.tr(' ', '_').camelize}: #{market.description}"
+  end
+
+  def pinterest_text(market)
+    "http://pinterest.com/pin/create/link/?url=#{market_url}&media=#{cloudinary_url(market.featured.photo.path)}&description=Personal Markets: #{market.name}, #{market.description}"
+  end
+
+  def google_text(market)
+    "https://plus.google.com/share?url=#{market_url}"
+  end
+
 end
 
 

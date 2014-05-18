@@ -5,7 +5,9 @@
     <div class="market-title-container">
       <div class="market-title col-md-6"><%= market.name %></div>
       <div class="market-actions col-md-6">
-        <%= link_to content_tag(:i, "", class: "fa fa-twitter"), "http://twitter.com/home?status=#{market.name} #{market.description} #{market.short_url}", class: "btn btn-info" %>
+        <%= link_to content_tag(:i, "", class: "fa fa-twitter"), twitter_text(market), class: "btn btn-info" %>
+        <%= link_to content_tag(:i, "", class: "fa fa-pinterest"), pinterest_text(market), class: "btn btn-info" %>
+        <%= link_to content_tag(:i, "", class: "fa fa-google-plus"), google_text(market), class: "btn btn-info" %>
         <div class="market-actions-links">
           <%= market.edit_link %>
           <%= market.delete_link %>
@@ -80,6 +82,7 @@
 }
 </style>
 
+<!-- This is ugly as hell -->
 <script>
   if ($(".market-badge>.ribbon-badge").hasClass("staff_pick")){
     $(".market-badge>.ribbon-badge").addClass("ribbon-badge-staff_pick");
@@ -102,3 +105,5 @@
     $(".market-badge").show();
   }
 </script>
+<!--  -->
+
