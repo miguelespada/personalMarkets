@@ -9,7 +9,13 @@
 
   <% @wishes.each do |wish| %>
     <%= content_tag_for(:tr, wish) do %> 
-      <td class="col-md-3"> <%= photo(wish.photography, 120, 60) %> </td>
+      <td class="col-md-3"> 
+
+        <div class="table-photo-container">
+          <%= photo(wish.photography, 120, 60) %> 
+          <%= edit_photo_link(wish.photography) %>
+        </div>
+      </td>
       <td class="col-md-3"> <%= wish.description %> </td> 
       <td class="col-md-3"> <%= wish.tags %> </td> 
       <td class="col-md-3"> 
