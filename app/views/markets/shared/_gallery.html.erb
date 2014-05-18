@@ -22,7 +22,13 @@
             <%= market.description %>
           </div>
           <span class="like-badge"><i class="fa fa-heart"></i></span>
+          
         </div> 
+        <div>
+            <p><%= market.address %>, <%= market.city %></p>
+            </p><%= "Today" if market.is_today? %></p>
+            </p><%= "This week" if market.is_this_week? %></p>
+          </div>
       </div>
     <% end %>
     <% end %>
