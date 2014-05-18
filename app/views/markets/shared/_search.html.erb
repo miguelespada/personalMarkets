@@ -57,9 +57,9 @@
     <%= link_to "Reset", "#", :class=>  "btn btn-primary ", :id=>"reset_search" %>
   <% end %>
   
-  <%= link_to "Next", "#", :id=>"next-markets" %>
-  <%= link_to "Prev", "#", :id=>"prev-markets" %>
+  <%= link_to "Prev", "#", :id=>"prev-markets", :class => "hidden" %>
 
+  <%= link_to "Next", "#", :id=>"next-markets" %>
 <script>
 
   $.getJSON('/cities.json', function(data){
@@ -133,10 +133,23 @@
     });
   
     $("#next-markets").click(function(){
-      var page = parseInt($('#page').val()) + 1;
-      $('#page').val(page);
+      var page = parseInt($('#page').val());
+      $('#page').val(page + 1);
       $('#search_market').change();
+      $("#prev-markets").removeClass( "hidden" );
     });
+
+    $("#prev-markets").click(function(){
+      var page = parseInt($('#page').val());
+      if(page > 1){
+        $('#page').val(page - 1);
+        $('#search_market').change();
+      }
+      else{
+        $("#prev-markets").addClass( "hidden" );
+      }
+    });
+
 
   });
 
