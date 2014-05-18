@@ -152,6 +152,7 @@ class Market
 
     query = params[:query].blank? ? '*' : params[:query].gsub(/[\!]/, '')
     page ||= 1
+    page = 1 if page < 1
     range = format_range_query(params[:from], params[:to])
     city = params[:city] 
     category = params[:category]

@@ -45,7 +45,7 @@ class MarketsController < ApplicationController
 
   def search
     query = Query.new(params, session)
-    @markets = Market.search(query.search_params, params[:page])
+    @markets = Market.search(query.search_params, params[:page].to_i, 2)
     render :layout => !request.xhr?
   end
 
@@ -61,9 +61,6 @@ class MarketsController < ApplicationController
   end
 
   def new
-    puts "*-*" * 20
-    puts params
-    puts "*-*" * 20
     @market = domain.initialize_market
     3.times {@market.gallery.photographies << Photo.new}
   end

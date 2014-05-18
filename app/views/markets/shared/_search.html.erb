@@ -48,11 +48,17 @@
       <%= text_field_tag :user_lon %>
     </li>
 
+    <li class="page">
+      <%= text_field_tag :page, session[:page] || 1 %>  
+    </li>
+
     <%= submit_tag "Search", name: nil, class: "hidden" %>
 
     <%= link_to "Reset", "#", :class=>  "btn btn-primary ", :id=>"reset_search" %>
   <% end %>
-
+  
+  <%= link_to "Next", "#", :id=>"next-markets" %>
+  <%= link_to "Prev", "#", :id=>"prev-markets" %>
 
 <script>
 
@@ -113,6 +119,7 @@
         $("#location_location_id").val("");
         $("#city_city_name").val("");
         $("#category_category_id").val("");
+        $('#page').val(1);
       return false;
     });
 
@@ -124,6 +131,13 @@
           return false;
         }
     });
+  
+    $("#next-markets").click(function(){
+      var page = parseInt($('#page').val()) + 1;
+      $('#page').val(page);
+      $('#search_market').change();
+    });
+
   });
 
 
