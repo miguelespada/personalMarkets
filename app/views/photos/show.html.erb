@@ -1,7 +1,8 @@
 <div class="table-photo-container">
   <%= div_for @photo do %> 
-  <%= photo(@photo, 800, 400, :pad) %>
-  <%= edit_photo_link(@photo) %>
+    <%= photo(@photo, 800, 400, :pad) %>
+    <%= edit_photo_link(@photo) %>
+    <%= photographic_link(@photo) %>
   <% end %>
 </div>
 

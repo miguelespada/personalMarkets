@@ -38,9 +38,16 @@ module ApplicationHelper
 
   def edit_photo_link(photo)
     if !photo.photo.nil?
-      link_to content_tag(:i, "", class: "fa fa-pencil"), edit_photo_path(photo), class: "btn edit btn-info btn-xs table-photo-edit"   
+      link_to content_tag(:i, "", class: "fa fa-crop"), edit_photo_path(photo), class: "btn edit btn-info btn-xs table-photo-edit"   
     end
   end
+
+  def photographic_link(photo)
+    if !photo.photographic.nil?
+      link_to content_tag(:i, "", class: "fa fa-folder-o"), photo.photographic, class: "btn btn-default table-button"
+    end
+  end
+
 
   def back_link
     content_tag :div, class:"col-md-offset-9" do
