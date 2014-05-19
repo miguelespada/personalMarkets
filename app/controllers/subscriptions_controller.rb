@@ -9,6 +9,11 @@ class SubscriptionsController < ApplicationController
     redirect_to user_subscription_path(current_user)
   end
 
+  def unsubscribe
+    SubscriptionDomain.unsubscribe current_user
+    redirect_to user_path current_user
+  end
+
   private
 
   def subscription_params
