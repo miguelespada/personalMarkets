@@ -7,21 +7,24 @@
     <tr>
       <th>Photo</th>
       <th>Name</th>
+      <th>Style</th>
       <th>Market Count</th>
       <th>Actions</th>
     </tr>
   
     <% @categories.each do |category| %>
       <%= content_tag_for(:tr, category) do %> 
-        <td class="col-md-3"> 
+        <td class="col-md-2"> 
           <div class="table-photo-container">
              <%= photo(category.photography, 120, 60) %>
              <%= edit_photo_link(category.photography) %>
           </div>
         </td>
-        <td class="col-md-3"> 
-
-          <%= link_to category.name, category_markets_path(category) %> 
+        <td class="col-md-2"> 
+          <span class="glyphicon <%= category.glyph %>"> <%= link_to category.name, category_markets_path(category) %>  </span>
+        </td> 
+        <td class="col-md-2"> 
+          <%= category.style %> 
         </td> 
 
         <td class="col-md-3"> <%= category.markets.count %> </td>

@@ -60,6 +60,8 @@ Then(/^I should see the correct style in the map$/) do
 end
 
 Then(/^I should see the category with map and glyph in the category list$/) do
-  pending # express the regexp above with the code you wish you had
+  visit categories_path
+  page.should have_css('.category_glyph')
+  expect(page).to have_content "map_style"
 end
 
