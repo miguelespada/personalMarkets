@@ -117,3 +117,12 @@ end
 Then(/^he is premium$/) do
   expect(page).to have_css '.premium-star'
 end
+
+When(/^I cancel my subscription$/) do
+  visit user_path @user
+  click_on "Unsubscribe"
+end
+
+Then(/^I am a regular user$/) do
+  expect(page).to_not have_css '.premium-star'
+end
