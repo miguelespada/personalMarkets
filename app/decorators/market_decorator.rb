@@ -140,6 +140,8 @@ class MarketDecorator < Draper::Decorator
       return true if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i == 0
     end
     return false
+  rescue
+    false
   end
 
   def is_this_week?
@@ -148,6 +150,8 @@ class MarketDecorator < Draper::Decorator
       return true if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i < 7
     end
     return false
+  rescue
+    false
   end
 
 
