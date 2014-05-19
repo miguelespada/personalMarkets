@@ -43,7 +43,7 @@ end
 When(/^I browse one category$/) do
   step "I go to Category list"
   within(:css, "#category_#{@category.id}") do
-    click_on @category.name
+    click_link @category.name
   end
 end
 
