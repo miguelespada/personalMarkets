@@ -4,6 +4,7 @@ When(/^I add a category$/) do
   fill_in "Name",  with: "Dummy Category"
   fill_in "Style",  with: "map_style"
   fill_in "Glyph",  with: "category_glyph"
+  fill_in "Color",  with: "#123456"
   click_on "Create Category"
 end
 
@@ -63,5 +64,6 @@ Then(/^I should see the category with map and glyph in the category list$/) do
   visit categories_path
   page.should have_css('.category_glyph')
   expect(page).to have_content "map_style"
+  expect(page).to have_content "#123456"
 end
 

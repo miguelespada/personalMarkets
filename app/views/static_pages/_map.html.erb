@@ -6,7 +6,7 @@
 
 <div id="map_theme_buttons" class="btn-group-vertical">
   <% Category.each do |category| %>
-   <button type="button" class="theme btn btn-success btn-sm" id="<%= category.style %>" title="<%= category.name %>">
+   <button type="button" class="theme btn btn-sm" style="background-color: <%= category.color %>" id="<%= category.style %>" title="<%= category.name %>">
       <span class="glyphicon <%= category.glyph %>"><p class="hidden"><%= category.name %></p></span>
    </button>
   <% end %>

@@ -24,7 +24,8 @@
           <span class="glyphicon <%= category.glyph %>"> <%= link_to category.name, category_markets_path(category) %>  </span>
         </td> 
         <td class="col-md-2"> 
-          <%= category.style %> 
+          <p> <%= category.style %> </p>
+          <p> <%= category.color %> </p>
         </td> 
 
         <td class="col-md-3"> <%= category.markets.count %> </td>

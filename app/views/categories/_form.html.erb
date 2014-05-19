@@ -19,6 +19,9 @@
             <%= f.input :glyph, input_html: { class: 'category-glyph', placeholder: "Category glyph" } %>
           </div>
           <div class="form-group">
+            <%= f.input :color, input_html: { class: 'category-color', placeholder: "Hex color ex. #673423" } %>
+          </div>
+          <div class="form-group">
             <%= f.simple_fields_for :photography do |c| %>
               <%= c.input :photo, as: :attachinary, required: true %>
             <% end %>
