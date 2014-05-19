@@ -43,6 +43,8 @@ $(document).ready(function(){
     }
     $('.theme').click(function (){
         PM.changeTile($(this).attr('id'));
+        $("#category_category_id").val($(this).attr('title')); 
+        $('form').change();
       }
     );
 });
