@@ -1,3 +1,4 @@
+@categories
 Feature: Manage categories
   I order to classify markets
   I want manage categories
@@ -5,7 +6,6 @@ Feature: Manage categories
   Background:
     Given I am logged in as an admin
 
-  @categories
   Scenario: Add category
     When I add a category
     Then I should be notified that the category has been added

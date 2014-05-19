@@ -10,16 +10,19 @@
         <div class="panel-body">
           <fieldset>
           <div class="form-group">
-            <%= f.input :name, input_html: { class: 'category-name', placeholder: "Category Name" } %>
+            <%= f.input :name, input_html: { class: 'category-name', placeholder: "Category Name", :required => true } %>
           </div>
           <div class="form-group">
-            <%= f.input :style, input_html: { class: 'category-style', placeholder: "Map Style" } %>
+            <%= f.input :style, input_html: { class: 'category-style', placeholder: "Map Style", :required => true } %>
+            <%= link_to "Create map styles", "https://www.mapbox.com", :target => "_blank" %>
           </div>
           <div class="form-group">
-            <%= f.input :glyph, input_html: { class: 'category-glyph', placeholder: "Category glyph" } %>
+            <%= f.input :glyph, input_html: { class: 'category-glyph', placeholder: "Category glyph", :required => true } %>
+            <%= link_to "Get icons", "http://fortawesome.github.io/Font-Awesome/icons/", :target => "_blank" %>
+
           </div>
           <div class="form-group">
-            <%= f.input :color, input_html: { class: 'category-color', placeholder: "Hex color ex. #673423" } %>
+            <%= f.input :color, input_html: { class: 'category-color colorpicker', placeholder: "Hex color ex. #673423", :required => true } %>
           </div>
           <div class="form-group">
             <%= f.simple_fields_for :photography do |c| %>
@@ -39,6 +42,17 @@
 
 <script>
 $( document ).ready(function() {
+
   $('.attachinary-input').attachinary();
+  $('.colorpicker').colorpicker();
+  
+ $('form').submit(function(){
+  console.log($("#category-name").val());
+  if($("#category_name").val().indexOf(' ') > -1){
+    alert("Category name cannot contain spaces");
+    return false;
+  }
+ });
+
 });
 </script>

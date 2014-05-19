@@ -45,10 +45,13 @@ gem 'cloudinary'
 gem 'attachinary', git: 'git://github.com/rochers/attachinary.git', branch: 'rails4'
 gem 'rqrcode-rails3'
 
+
 # forms
 gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-colorpicker-rails'
 gem 'country-select'
+
 
 #tags
 gem 'mongoid_taggable'
