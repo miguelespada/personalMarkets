@@ -45,29 +45,4 @@ $(document).ready(function(){
         PM.changeTile($(this).attr('id'));
       }
     );
-
-    // $('#theme-default').on('click', function () {
-
-    //   PM.changeTile('jameshedaweng.hf5b366j');
-    // });
-
-    // $('#theme-antique').on('click', function () {
-    //   PM.changeTile('jameshedaweng.hig6oabo');
-    // });
-
-    // $('#theme-strawberry').on('click', function () {
-    //   PM.changeTile('jameshedaweng.hig74k34');
-    // });
-
-    // $('#theme-night').on('click', function () {
-    //   PM.changeTile('jameshedaweng.hig785hn');
-    // });
-
-    // $('#theme-sky').on('click', function () {
-    //   PM.changeTile('jameshedaweng.hig7ak0h');
-    // });
-
-    // $('#theme-light').on('click', function () {
-    //   PM.changeTile('jameshedaweng.hig7dplk');
-    // });
 });
