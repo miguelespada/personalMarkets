@@ -1,15 +1,17 @@
-@categories
 Feature: Manage categories
   I order to classify markets
   I want manage categories
 
   Background:
     Given I am logged in as an admin
-    
+
+  @categories
   Scenario: Add category
     When I add a category
     Then I should be notified that the category has been added
     And I should see the category in the category list
+    And I should see the correct style in the map
+    And I should see the category with map and glyph in the category list
  
   Scenario: Delete category
     When There are some categories

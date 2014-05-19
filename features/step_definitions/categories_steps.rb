@@ -2,6 +2,8 @@ When(/^I add a category$/) do
   step "I go to Category list"
   find('.new').click  
   fill_in "Name",  with: "Dummy Category"
+  fill_in "Style",  with: "map_style"
+  fill_in "Glyph",  with: "category_glyph"
   click_on "Create Category"
 end
 
@@ -48,3 +50,16 @@ Then(/^I should see the markets of the category$/) do
   expect(page).to have_content "My market"
   expect(page).to have_content "My market description"
 end
+
+Then(/^I should see the correct style in the map$/) do
+  visit map_path
+  expect(page).to have_content "Dummy Category"
+  page.should have_css('.category_glyph')
+  click_on "map_style"
+
+end
+
+Then(/^I should see the category with map and glyph in the category list$/) do
+  pending # express the regexp above with the code you wish you had
+end
+

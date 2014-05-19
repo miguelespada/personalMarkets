@@ -68,6 +68,6 @@ class CategoriesController < ApplicationController
 
   private
     def category_params
-      params.require(:category).permit(:name, photography_attributes: [:photo])
+      params.require(:category).permit(:name, :style, :glyph, photography_attributes: [:photo])
     end
 end

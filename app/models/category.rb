@@ -2,7 +2,9 @@ class Category
   include Mongoid::Document
 
   validates :name, uniqueness: { message: "Category name must be unique" }
-  field :name, type: String 
+  field :name, type: String
+  field :style, type: String
+  field :glyph, type: String
   
   has_one :photography, class_name: "Photo", as: :photographic, autobuild: true, dependent: :destroy
   accepts_nested_attributes_for :photography

@@ -41,28 +41,33 @@ $(document).ready(function(){
       PM.initializeMap();
       PM.setViewWithUserLocation();
     }
+    $('.theme').click(function (){
+        PM.changeTile($(this).attr('id'));
+      }
+    );
 
-    $('#theme-default').on('click', function () {
-      PM.changeTile('jameshedaweng.hf5b366j');
-    });
+    // $('#theme-default').on('click', function () {
 
-    $('#theme-antique').on('click', function () {
-      PM.changeTile('jameshedaweng.hig6oabo');
-    });
+    //   PM.changeTile('jameshedaweng.hf5b366j');
+    // });
 
-    $('#theme-strawberry').on('click', function () {
-      PM.changeTile('jameshedaweng.hig74k34');
-    });
+    // $('#theme-antique').on('click', function () {
+    //   PM.changeTile('jameshedaweng.hig6oabo');
+    // });
 
-    $('#theme-night').on('click', function () {
-      PM.changeTile('jameshedaweng.hig785hn');
-    });
+    // $('#theme-strawberry').on('click', function () {
+    //   PM.changeTile('jameshedaweng.hig74k34');
+    // });
 
-    $('#theme-sky').on('click', function () {
-      PM.changeTile('jameshedaweng.hig7ak0h');
-    });
+    // $('#theme-night').on('click', function () {
+    //   PM.changeTile('jameshedaweng.hig785hn');
+    // });
 
-    $('#theme-light').on('click', function () {
-      PM.changeTile('jameshedaweng.hig7dplk');
-    });
+    // $('#theme-sky').on('click', function () {
+    //   PM.changeTile('jameshedaweng.hig7ak0h');
+    // });
+
+    // $('#theme-light').on('click', function () {
+    //   PM.changeTile('jameshedaweng.hig7dplk');
+    // });
 });
