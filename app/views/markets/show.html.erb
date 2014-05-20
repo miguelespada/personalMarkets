@@ -3,7 +3,10 @@
 <div class="panel panel-default panel-table panel-table-last market-full-description-panel">
   <div class="panel-heading table-title">
     <div class="market-title-container">
-      <div class="market-title col-md-6"><%= market.name %></div>
+      <div class="market-title col-md-6">
+        <%= market.name %>
+        &nbsp;&nbsp;<input type="checkbox" name="publish-switch" class="publish-switch hidden" >
+      </div>
       <div class="market-actions col-md-6">
         <%= link_to content_tag(:i, "", class: "fa fa-twitter"), twitter_text(market), class: "btn btn-info" %>
         <%= link_to content_tag(:i, "", class: "fa fa-pinterest"), pinterest_text(market), class: "btn btn-danger" if market.featured.present? %>
@@ -111,12 +114,35 @@
   $(document).ready(function(){
     buttonHover(".edit-icon", "fa-pencil", "Edit", 70);
     buttonHover(".delete-icon", "fa-trash-o", "Delete", 85);
-    buttonHover(".publish-icon", "fa-bullhorn", "Publish", 95);
-    buttonHover(".unpublish-icon", "fa-arrow-circle-o-down", "Unpublish", 110);
     buttonHover(".archive-icon", "fa-undo", "Archive", 95);
     buttonHover(".pro-icon", "fa-plus-square", "Go PRO", 100);
     buttonHover(".statistics-icon", "fa-sitemap", "Statistics", 115);
+    
+    if ($(".unpublish").length){
+      switchAction(true);
+    }
+    else if ($(".publish").length){
+      switchAction(false);
+    }
   });
+
+  var switchAction = function(init){
+    $("[name='publish-switch']").bootstrapSwitch({
+      "onText": "&nbsp;&nbsp;Published&nbsp;&nbsp;&nbsp;",
+      "offText": "&nbsp;&nbsp;Hidden&nbsp;&nbsp;"
+    });
+
+    $("input[name='publish-switch']").bootstrapSwitch('state', init, true);
+
+    $("input[name='publish-switch']").on('switchChange.bootstrapSwitch', function(event,state) {
+      if(state.value){
+        $(".publish").click();
+      }
+      else{
+        $(".unpublish").click();
+      }
+    });
+  };
   
   var buttonHover = function(button, icon, text, width){
     $(button).hover(function(){
