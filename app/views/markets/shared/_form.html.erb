@@ -18,7 +18,7 @@
     <% end %>
     
     <li id="form-link-category"><a href="#form-market-category-tag" data-toggle="tab">Category and tags</a></li>
-    <li id="form-link-date"><a href="#form-market-date" data-toggle="tab">Date</a></li>
+    <li id="form-link-date"><a href="#form-market-date" data-toggle="tab">Date and time</a></li>
     
     <% if market.pro? %>
         <li id="form-external-url"><a href="#form-market-external-url" data-toggle="tab">External url (PRO)</a></li>
@@ -41,7 +41,7 @@
     <div class="tab-content col-md-9">
       <div class="tab-pane" id="form-market-name-description"> 
         <%= f.input :name, required: true,  input_html: { class: 'market-name', placeholder: "Name" } %>
-        <%= f.input :description, :as => :text, label_html: { class: 'market-description', placeholder: "Description" } %>
+        <%= f.input :description, :as => :text, input_html: { class: 'market-description', placeholder: "Description" } %>
       </div>
       
       <div class="tab-pane" id="form-market-photo">
@@ -65,7 +65,7 @@
       <div class="tab-pane" id="form-market-date">
         <%= f.input :date, input_html: { class: 'hidden' }  %> 
         <div id="datepicker"></div>
-        <%= f.input :schedule  %> 
+        <%= f.input :schedule,  input_html: { class: 'market-scheduke', placeholder: "Open hours (ex. from 9 to 17...)" }  %> 
       </div>
     
       <div class="tab-pane" id="form-market-external-url">
