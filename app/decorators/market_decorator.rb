@@ -25,6 +25,10 @@ class MarketDecorator < Draper::Decorator
       render partial: 'markets/shared/actions', locals: { market: self }
   end
 
+  def actions_icon
+      render partial: 'markets/shared/actions_icon', locals: { market: self }
+  end
+
   def badges
     if staff_pick?
       "staff_pick"
@@ -152,6 +156,48 @@ class MarketDecorator < Draper::Decorator
     return false
   rescue
     false
+  end
+
+  def edit_link_icon
+    if can? :edit, market
+      link_to(content_tag(:i, "", :class => "fa fa-pencil"), edit_user_market_path(market.user, market), 
+        :class => "edit-icon market-action")
+    end
+  end
+
+  def delete_link_icon
+    if can? :delete, market
+      link_to(content_tag(:i, "", :class => "fa fa-trash-o"), user_market_path(market.user, market), method: :delete, 
+        class: "delete-icon market-action")
+    end
+  end
+
+  def publish_link_icon
+    if can?(:publish, market) && market.state != "published"
+      link_to content_tag(:i, "", :class => "fa fa-bullhorn"), market_publish_path(market), { method: :post, class: "publish-icon market-action" }
+    end
+  end
+
+  def unpublish_link_icon
+    if (can? :unpublish, market) && market.state == "published"
+      link_to content_tag(:i, "", :class => "fa fa-arrow-circle-o-down"), market_unpublish_path(market), { method: :post, class: "unpublish-icon market-action"  }
+    end
+  end
+
+  def archive_link_icon
+    if can? :archive, market
+      link_to content_tag(:i, "", :class => "fa fa-undo"), market_archive_path(market), { method: :post, class: "archive-icon market-action"  }
+    end
+  end
+
+  def pro_link_icon
+    link_to content_tag(:i, "", :class => "fa fa-plus-square"), market_make_pro_payment_path(market), class: "pro-icon market-action" unless market.pro?
+  end
+
+  def statistics_link_icon
+    if can? :statistics, market
+      link_to content_tag(:i, "", :class => "fa fa-sitemap"), show_market_statistic_path(market), class: "statistics-icon market-action"
+    end
   end
 
 

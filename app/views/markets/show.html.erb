@@ -6,16 +6,19 @@
       <div class="market-title col-md-6"><%= market.name %></div>
       <div class="market-actions col-md-6">
         <%= link_to content_tag(:i, "", class: "fa fa-twitter"), twitter_text(market), class: "btn btn-info" %>
-        <%= link_to content_tag(:i, "", class: "fa fa-pinterest"), pinterest_text(market), class: "btn btn-info" if market.featured.present? %>
-        <%= link_to content_tag(:i, "", class: "fa fa-google-plus"), google_text(market), class: "btn btn-info" %>
+        <%= link_to content_tag(:i, "", class: "fa fa-pinterest"), pinterest_text(market), class: "btn btn-danger" if market.featured.present? %>
+        <%= link_to content_tag(:i, "", class: "fa fa-google-plus"), google_text(market), class: "btn btn-primary" %>
         <div class="market-actions-links">
-          <%= market.edit_link %>
-          <%= market.delete_link %>
-          <%= market.publish_link %>
-          <%= market.unpublish_link %>
-          <%= market.archive_link %>
-          <%= market.pro_link %>
-          <%= market.statistics_link %>
+          <%= market.actions_icon %>
+          <div class="hidden">
+            <%= market.edit_link %>
+            <%= market.delete_link %>
+            <%= market.publish_link %>
+            <%= market.unpublish_link %>
+            <%= market.archive_link %>
+            <%= market.pro_link %>
+            <%= market.statistics_link %>
+          </div>
         </div>
       </div>
     </div>
@@ -38,7 +41,7 @@
       <div class="market-category-detail"> <%= market.category.name %> </div>
       <div class="market-tags-detail"> <%= market.tags %> </div> 
       <div class="market-date-detail">  <%= market.date %> </div>
-      <div class="market-likes-number-detail"> Number of likes: <%= market.favorited.count %>&nbsp;&nbsp;<%= market.like_link %></div> 
+      <div class="market-likes-number-detail"> <i class="fa fa-heart-o"></i> <%= market.favorited.count %>&nbsp;&nbsp;<%= market.like_link %></div> 
     </div>
     </div>
   
@@ -104,6 +107,30 @@
     $("#market-badge-text").text("NEW");
     $(".market-badge").show();
   }
+
+  $(document).ready(function(){
+    buttonHover(".edit-icon", "fa-pencil", "Edit", 70);
+    buttonHover(".delete-icon", "fa-trash-o", "Delete", 85);
+    buttonHover(".publish-icon", "fa-bullhorn", "Publish", 95);
+    buttonHover(".unpublish-icon", "fa-arrow-circle-o-down", "Unpublish", 110);
+    buttonHover(".archive-icon", "fa-undo", "Archive", 95);
+    buttonHover(".pro-icon", "fa-plus-square", "Go PRO", 100);
+    buttonHover(".statistics-icon", "fa-sitemap", "Statistics", 115);
+  });
+  
+  var buttonHover = function(button, icon, text, width){
+    $(button).hover(function(){
+      $(this).html("<i class='fa " + icon + "'></i>&nbsp;&nbsp;" + text);
+      $(this).animate({
+        width: width
+      }, 100);
+    }, function(){
+      $(this).html("<i class='fa " + icon + "'></i>");
+      $(this).animate({
+        width: "40"
+      }, 100);
+    });
+  };
 </script>
 <!--  -->
 
