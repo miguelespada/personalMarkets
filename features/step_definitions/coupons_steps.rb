@@ -1,7 +1,6 @@
 When(/^I create a coupon$/) do
   within(:css, "#form-market-coupon") do
     fill_in "Description",  with: "My dummy coupon"
-    fill_in "Price",  with: "10"
     select "10", :from => "Price"
     fill_in "Available",  with: "20"
   end 
@@ -108,7 +107,7 @@ end
 When(/^I edit a coupon$/) do
   within(:css, "#form-market-coupon") do
     fill_in "Description",  with: "My edited dummy coupon"
-    fill_in "Price",  with: "40"
+    select "20", :from => "Price"
     fill_in "Available",  with: "50"
   end 
   click_on "Update Market"
@@ -118,6 +117,6 @@ Then(/^I should see the edited coupon in the market page$/) do
   step "I visit the market page"
   expect(page).to have_content @market.name
   expect(page).to have_content "My edited dummy coupon"
-  expect(page).to have_content "40"
+  expect(page).to have_content "20"
   expect(page).to have_content "50"
 end

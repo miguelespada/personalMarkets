@@ -19,7 +19,13 @@
     
     <li id="form-link-category"><a href="#form-market-category-tag" data-toggle="tab">Category and tags</a></li>
     <li id="form-link-date"><a href="#form-market-date" data-toggle="tab">Date</a></li>
-    <li id="form-external-url"><a href="#form-market-external-url" data-toggle="tab">External url</a></li>
+    
+    <% if market.pro? %>
+        <li id="form-external-url"><a href="#form-market-external-url" data-toggle="tab">External url (PRO)</a></li>
+    <% else %>
+        <li id="form-external-url" class="disabled"><a href="#" data-toggle="">External url (PRO)</a></li>
+    <% end %>
+
     <li id="form-link-location"><a href="#form-market-location" data-toggle="tab">Location</a></li>
 
     <% if market.pro? %>
@@ -61,7 +67,7 @@
         <div id="datepicker"></div>
         <%= f.input :schedule  %> 
       </div>
-  
+    
       <div class="tab-pane" id="form-market-external-url">
         <%= f.input :url  %> 
       </div>
