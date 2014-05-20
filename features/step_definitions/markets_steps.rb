@@ -298,7 +298,7 @@ end
 
 When(/^I make it PRO$/) do
   visit market_path @market
-  click_on "Go PRO"
+  find('.pro-icon').click
   step "he needs to introduce his credit card data"
   click_on "Pay"
 end
@@ -346,7 +346,7 @@ Then(/^I should not be able to access photo gallery$/) do
 end
 
 Then(/^I click on edit the market$/) do
-  find('.edit').click
+  find('.edit-icon').click
 end
 
 Then(/^I should see the link of photo gallery is enabled$/) do
