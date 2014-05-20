@@ -31,3 +31,4 @@
 //= require attachinary
 //= require app
 //= require bootstrap-colorpicker
+//= require bootstrap-switch

@@ -49,13 +49,13 @@ class MarketDecorator < Draper::Decorator
 
   def publish_link
     if can?(:publish, market) && market.state != "published"
-      link_to "Publish", market_publish_path(market), { method: :post }
+      link_to "Publish", market_publish_path(market), { method: :post, class: "publish market-action" }
     end
   end
 
   def unpublish_link
     if (can? :unpublish, market) && market.state == "published"
-      link_to "Unpublish", market_unpublish_path(market), { method: :post }
+      link_to "Unpublish", market_unpublish_path(market), { method: :post, class: "unpublish market-action" }
     end
   end
 
@@ -169,18 +169,6 @@ class MarketDecorator < Draper::Decorator
     if can? :delete, market
       link_to(content_tag(:i, "", :class => "fa fa-trash-o"), user_market_path(market.user, market), method: :delete, 
         class: "delete-icon market-action")
-    end
-  end
-
-  def publish_link_icon
-    if can?(:publish, market) && market.state != "published"
-      link_to content_tag(:i, "", :class => "fa fa-bullhorn"), market_publish_path(market), { method: :post, class: "publish-icon market-action" }
-    end
-  end
-
-  def unpublish_link_icon
-    if (can? :unpublish, market) && market.state == "published"
-      link_to content_tag(:i, "", :class => "fa fa-arrow-circle-o-down"), market_unpublish_path(market), { method: :post, class: "unpublish-icon market-action"  }
     end
   end
 
