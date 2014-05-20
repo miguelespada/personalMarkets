@@ -1,3 +1,5 @@
+require 'paypal-sdk-adaptivepayments'
+
 class MarketsController < ApplicationController
   before_filter :load_user
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
@@ -165,6 +167,42 @@ class MarketsController < ApplicationController
 
     market = domain.make_pro params[:id], pro_payment
     redirect_to market, notice: "Your market is now PRO."
+  end
+
+  def pay
+    PayPal::SDK.configure(
+      :mode      => "sandbox",  # Set "live" for production
+      :app_id    => "APP-80W284485P519543T",
+      :username  => "jb-us-seller_api1.paypal.com",
+      :password  => "WX4WTU3S8MY44S7F",
+      :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy" )
+
+    @api = PayPal::SDK::AdaptivePayments.new
+
+    # Build request object
+    @pay = @api.build_pay({
+      :actionType => "PAY",
+      :cancelUrl => "http://localhost:3000/samples/adaptive_payments/pay",
+      :currencyCode => "USD",
+      :feesPayer => "SENDER",
+      :ipnNotificationUrl => "http://localhost:3000/samples/adaptive_payments/ipn_notify",
+      :receiverList => {
+        :receiver => [{
+          :amount => 1.0,
+          :email => "platfo_1255612361_per@gmail.com" }] },
+      :returnUrl => "http://localhost:3000/samples/adaptive_payments/pay" })
+
+    # Make API call & get response
+    @response = @api.pay(@pay)
+
+    # Access response
+    if @response.success?
+      @response.payKey
+        # Url to complete payment
+      redirect_to @api.payment_url(@response)
+    else
+      @response.error[0].message
+    end
   end
 
   private

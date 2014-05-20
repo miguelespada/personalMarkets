@@ -1,0 +1,24 @@
+<div class = "home_gallery_title"><i class="fa fa-credit-card fa-2x"></i> <br/>Payback</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Payback</h3>
+          <p class="payment-errors"></p>
+        </div>
+        <div class="panel-body">
+          <fieldset>
+          <%= form_tag({controller: "accounting", action: "pay"}, method: "post") do %>
+            <%= hidden_field_tag "user_id", "#{@user_payback.user_id}" %>
+            <%= text_field_tag "amount", nil, placeholder: "Payback amount" %>
+            <%= submit_tag "Pay" %>
+          <% end %>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

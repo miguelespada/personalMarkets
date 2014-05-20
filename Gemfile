@@ -88,6 +88,8 @@ gem "em-http-request", "~> 1.0"
 
 gem "shorturl"
 
+gem 'paypal-sdk-adaptivepayments'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

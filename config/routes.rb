@@ -19,6 +19,8 @@ PopUpStores::Application.routes.draw do
       get :market, :on => :member, :as => "show"
     end
 
+    post :pay
+
   end
 
   get "/users/:user_id/dashboard", to: "users#dashboard", as: "user_dashboard"
@@ -45,6 +47,13 @@ PopUpStores::Application.routes.draw do
 
     resource :statistic, controller: "statistic", :only => [] do
       get :user, :on => :member, :as => "show"
+    end
+
+    resource :payback, controller: "accounting", :only => [:new] do
+      post :pay, :on => :member
+    end
+
+    resource :accounting, controller: "accounting", :only => [:show] do
     end
 
   end

@@ -18,6 +18,7 @@
             <%= market.archive_link %>
             <%= market.pro_link %>
             <%= market.statistics_link %>
+            <%= link_to "Pay", market_pay_path(market), {:method => :post} %>
           </div>
         </div>
       </div>
