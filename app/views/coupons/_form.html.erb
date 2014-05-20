@@ -1,0 +1,6 @@
+<%= f.input :description, { placeholder: "Description" } %>
+<%= f.input :price, { placeholder: "Price" } %>
+<%= f.input :available, { placeholder: "Available" } %>
+<%= f.simple_fields_for :photography do |form_builder| %>
+  <%= render 'photos/form', f: form_builder %>
+<% end %>

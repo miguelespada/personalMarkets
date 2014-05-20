@@ -29,8 +29,8 @@
     <% end %>
     
   </ul>
-  <%= simple_form_for [user, market], 
-      :html => {"data-tags" => "#{raw_tags(market)}",  novalidate: true, role: "form"}  do |f| %>
+  <%= simple_form_for [user, market], :html => {"data-tags" => "#{raw_tags(market)}", 
+        novalidate: true, role: "form"}  do |f| %>
 
     <div class="tab-content col-md-9">
       <div class="tab-pane" id="form-market-name-description"> 
@@ -39,16 +39,14 @@
       </div>
       
       <div class="tab-pane" id="form-market-photo">
-        <%= f.simple_fields_for :featured do |c| %>
-          <%= c.input :photo, as: :attachinary %>
+        <%= f.simple_fields_for :featured do |form_builder| %>
+            <%= render 'photos/form', f: form_builder %>
         <% end %>
       </div>
 
       <div class="tab-pane" id="form-market-photos">
-        <%= f.simple_fields_for :gallery do |g| %>
-            <%= g.simple_fields_for :photographies do |c| %>
-                <%= c.input :photo, as: :attachinary %>
-          <% end %>
+        <%= f.simple_fields_for :gallery do |form_builder| %>
+          <%= render 'photos/gallery_form', f: form_builder %>
         <% end %>
       </div>
 
@@ -78,14 +76,8 @@
       </div>
   
       <div class="tab-pane" id = "form-market-coupon" > 
-         <%= f.simple_fields_for :coupon do |c| %>
-          <%= c.input :description, { placeholder: "Description" } %>
-          <%= c.input :price, { placeholder: "Price" } %>
-          <%= c.input :available, { placeholder: "Available" } %>
-               
-          <%= c.simple_fields_for :photography do |d| %>
-            <%= d.input :photo, as: :attachinary %>
-          <% end %>
+        <%= f.simple_fields_for :coupon do |form_builder| %>
+          <%= render 'coupons/form', f: form_builder %>
         <% end %>
       </div>
       <div id="small-map-container"><%= render "markets/shared/mapsmall" %></div>

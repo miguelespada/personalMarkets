@@ -16,7 +16,7 @@ describe Market do
     describe "search" do
       it "returns an empty array" do
         Market.destroy_all
-        expect(Market.search({})).to eq []
+        expect(Market.search({})[:markets]).to eq []
       end
     end
   end
