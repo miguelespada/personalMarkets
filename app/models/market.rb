@@ -176,8 +176,8 @@ class Market
       from (page - 1) * search_size
       size search_size
     end
-
-    search.results.collect{|result| find_by(id: result.to_hash[:id])}
+    results = search.results
+    {:markets => results.collect{|result| find_by(id: result.to_hash[:id])}, :total => results.total}
   end
 
   def self.format_location(lat, lon)
