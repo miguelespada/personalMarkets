@@ -194,6 +194,8 @@ class MarketsController < ApplicationController
         :tags,
         :tag,
         :date,
+        :schedule,
+        :url,
         :from,
         :to,
         "hidden-market",

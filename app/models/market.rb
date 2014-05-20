@@ -17,10 +17,12 @@ class Market
   field :longitude, type: Float
   field :latitude, type: Float
   field :date, type: String
+  field :schedule, type: String
   field :state, type: String
   field :pro, type: Boolean
   field :publish_date, type: DateTime
   field :public_id, type: String
+  field :url, type: String
 
   validates_uniqueness_of :public_id
 
