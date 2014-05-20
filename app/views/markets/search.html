@@ -1,3 +1,27 @@
+
+
 <div id="gallery-items">
   <%= market_list(@markets, "gallery") %>
+  <%= link_to "Prev", "#", :id=>"prev-markets" if !@first_page %>
+  <%= link_to "Next", "#", :id=>"next-markets" if !@last_page %>
+  <script>
+  $(document).ready(function(){
+  
+
+   $("#prev-markets").click(function(){
+      var page = parseInt($('#page').val());
+      $('#page').val(page - 1);
+      $('#search_market').change();
+    });
+
+    $("#next-markets").click(function(){
+      var page = parseInt($('#page').val());
+      $('#page').val(page + 1);
+      $('#search_market').change();
+    });
+
+   
+
+  });
+</script>
 </div>

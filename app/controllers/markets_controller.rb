@@ -45,9 +45,11 @@ class MarketsController < ApplicationController
 
   def search
     query = Query.new(params, session)
-    result = Market.search(query.search_params, params[:page].to_i, 6)
-    @markets = result[:market]
-    @total = result[:total]
+    per_page = 6
+    result = Market.search(query.search_params, params[:page].to_i, per_page)
+    @markets = result[:markets]
+    @last_page = result[:total]/per_page <= params[:page].to_i 
+    @first_page = params[:page].to_i == 1
     render :layout => !request.xhr?
   end
 
