@@ -2,6 +2,7 @@ When(/^I create a coupon$/) do
   within(:css, "#form-market-coupon") do
     fill_in "Description",  with: "My dummy coupon"
     fill_in "Price",  with: "10"
+    select "10", :from => "Price"
     fill_in "Available",  with: "20"
   end 
   click_on "Update Market"
