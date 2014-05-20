@@ -196,7 +196,11 @@ Then(/^I have a draft market$/) do
     :market, 
     :user => @user, 
     :name => "market 1", 
-    :description => "market 1 desc"
+    :description => "market 1 desc",
+    :latitude => 0.1,
+    :longitude => 0.1,
+    :date => "13/08/2014",
+    :tags_array => ["un_tag"]
     )
   @user.markets << @market
 end
@@ -207,7 +211,11 @@ Given(/^I have a draft pro market$/) do
     :user => @user, 
     :name => "market 1", 
     :description => "market 1 desc",
-    :pro => true
+    :pro => true,
+    :latitude => 0.1,
+    :longitude => 0.1,
+    :date => "13/08/2014",
+    :tags_array => ["un_tag"]
     )
   @user.markets << @market
 end
@@ -287,6 +295,10 @@ Given(/^I have a draft market with a coupon$/) do
     :user => @user, 
     :name => "market 1", 
     :description => "market 1 desc",
+    :latitude => 0.1,
+    :longitude => 0.1,
+    :date => "13/08/2014",
+    :tags_array => ["un_tag"],
     :coupon => create(:coupon)
     )
   @user.markets << @market

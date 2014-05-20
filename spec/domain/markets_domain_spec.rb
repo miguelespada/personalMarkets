@@ -79,8 +79,13 @@ describe MarketsDomain do
 
     describe "publish market" do
 
+      let(:fake_evaluation) { double(valid?: true, could_be_better?: false) }
+      let(:fake_evaluator) { double(check_fields: fake_evaluation) }
+      let(:market_evaluator) { double(new: fake_evaluator) }
+
       before do
         market.stub(:has_coupon?) { true }
+        stub_const("MarketEvaluator", market_evaluator)
       end
 
       after do
@@ -90,12 +95,12 @@ describe MarketsDomain do
       context 'market with coupon' do
         it "registers publishing not possible because market has coupon and is not pro" do
           markets_repo.stub(:find) { market }
-          listener.should_receive(:publish_not_available).with(market)
+          listener.should_receive(:publish_not_available).with(market, fake_evaluation)
         end
 
         it "registers publishing not possible because market has coupon and owner is not premium" do
           markets_repo.stub(:find) { market }
-          listener.should_receive(:publish_not_available).with(market)
+          listener.should_receive(:publish_not_available).with(market, fake_evaluation)
         end
 
         it "registers success callback if market belongs to premium user" do

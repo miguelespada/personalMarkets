@@ -101,6 +101,14 @@ class Market
     favorited.delete(user)
   end
 
+  def has_tags?
+    !(self.tags.nil? || self.tags.empty?)
+  end
+
+  def has_location?
+    self.latitude? && self.longitude?
+  end
+
   def has_coupon?
     coupon != nil && coupon.description!= nil && coupon.available != nil && coupon.price != nil
   end
