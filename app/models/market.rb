@@ -150,7 +150,7 @@ class Market
 
   def self.search(params, page = 1, per_page = 6)
     index_all
-    return [] if Market.count == 0 
+    return {:markets => [], :total => 0} if Market.count == 0 
 
     query = params[:query].blank? ? '*' : params[:query].gsub(/[\!]/, '')
     page ||= 1
