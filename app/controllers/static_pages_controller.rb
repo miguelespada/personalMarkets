@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
     from = beginning_of(number_of_weeks_from_now)
     to = end_of(number_of_weeks_from_now)
     @week = {:from => from, :to => to}
-    @markets = Market.search(@week)
+    @markets = Market.search(@week)[:markets]
   end
 
   def map

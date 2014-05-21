@@ -56,10 +56,8 @@
 
     <%= link_to "Reset", "#", :class=>  "btn btn-primary ", :id=>"reset_search" %>
   <% end %>
-  
-  <%= link_to "Prev", "#", :id=>"prev-markets", :class => "hidden" %>
 
-  <%= link_to "Next", "#", :id=>"next-markets"%>
+  
 <script>
 
   $.getJSON('/cities.json', function(data){
@@ -123,36 +121,16 @@
       return false;
     });
 
-      $(window).keydown(function(event){
-        if(event.keyCode == 13) {
-          event.preventDefault();
-
-           $('#search_market').change();
+    $(window).keydown(function(event){
+      if(event.keyCode == 13) {
+        event.preventDefault();
+        $('#search_market').change();
           return false;
         }
-    });
-  
-    $("#next-markets").click(function(){
-      var page = parseInt($('#page').val());
-      $('#page').val(page + 1);
-      $('#search_market').change();
-      $("#prev-markets").removeClass( "hidden" );
-    });
-
-    $("#prev-markets").click(function(){
-      var page = parseInt($('#page').val());
-      if(page > 1){
-        $('#page').val(page - 1);
-        $('#search_market').change();
-      }
-      else{
-        $("#prev-markets").addClass( "hidden" );
-      }
     });
 
 
   });
-
 
 
 </script>

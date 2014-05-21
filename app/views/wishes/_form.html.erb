@@ -19,8 +19,8 @@
             <p id="tags-container"></p>
           </div>
           <div class="form-group">
-            <%= f.simple_fields_for :photography do |c| %>
-              <%= c.input :photo, as: :attachinary, required: true %>
+            <%= f.simple_fields_for :photography do |form_builder| %>
+              <%= render 'photos/form', f: form_builder, required: true %>
             <% end %>
           </div>
           <div class="form-group col-md-4 col-md-offset-4">

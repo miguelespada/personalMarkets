@@ -17,11 +17,11 @@ class Market
   field :longitude, type: Float
   field :latitude, type: Float
   field :date, type: String
-  field :schedule, type: String
   field :state, type: String
   field :pro, type: Boolean
   field :publish_date, type: DateTime
   field :public_id, type: String
+  field :schedule, type: String
   field :url, type: String
 
   validates_uniqueness_of :public_id
@@ -158,7 +158,7 @@ class Market
 
   def self.search(params, page = 1, per_page = 6)
     index_all
-    return [] if Market.count == 0 
+    return {:markets => [], :total => 0} if Market.count == 0 
 
     query = params[:query].blank? ? '*' : params[:query].gsub(/[\!]/, '')
     page ||= 1
@@ -186,8 +186,8 @@ class Market
       from (page - 1) * search_size
       size search_size
     end
-
-    search.results.collect{|result| find_by(id: result.to_hash[:id])}
+    results = search.results
+    {:markets => results.collect{|result| find_by(id: result.to_hash[:id])}, :total => results.total}
   end
 
   def self.format_location(lat, lon)

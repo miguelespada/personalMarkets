@@ -29,8 +29,8 @@ class MarketsController < ApplicationController
   end
 
   def list_last_markets
-    @markets = Market.last_published
-    render 'search', :layout => !request.xhr?
+    @markets = Market.last_published.limit(3)
+    render :layout => !request.xhr?
   end
 
   def list_user_markets
@@ -40,12 +40,17 @@ class MarketsController < ApplicationController
 
   def list_liked_markets
     @markets = @user.favorites
-    render 'search', :layout => !request.xhr?
+    render :layout => !request.xhr?
   end
 
   def search
     query = Query.new(params, session)
-    @markets = Market.search(query.search_params, params[:page].to_i, 6)
+    per_page = 6 
+    page = params[:page].present? ? params[:page].to_i : 1
+    result = Market.search(query.search_params, 1, per_page)
+    @markets = result[:markets]
+    @last_page = result[:total]/per_page <= page 
+    @first_page = page == 1
     render :layout => !request.xhr?
   end
 

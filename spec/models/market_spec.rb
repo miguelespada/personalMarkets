@@ -16,7 +16,7 @@ describe Market do
     describe "search" do
       it "returns an empty array" do
         Market.destroy_all
-        expect(Market.search({})).to eq []
+        expect(Market.search({})[:markets]).to eq []
       end
     end
   end
@@ -55,73 +55,75 @@ describe Market do
     describe "search with blank query" do
       it "returns all the markets" do
         params = {}
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq Market.where(state: "published").count
       end
       it "paginates" do
         params = {}
-        result = Market.search(params, 1, 2)
+        result = Market.search(params, 1, 2)[:markets]
         expect(result.count).to eq 2
       end
 
       it "paginates" do
         params = {}
-        result = Market.search(params, 2, 2)
+        result = Market.search(params, 2, 2)[:markets]
         expect(result.count).to eq 2
       end
       
       it "paginates" do
         params = {}
-        result = Market.search(params, 2, 3)
+        result = Market.search(params, 2, 3)[:markets]
+        total = Market.search(params, 2, 3)[:total]
         expect(result.count).to eq 1
+        expect(total).to eq 4
       end
     end
 
     describe "query" do
       it "searches with specific name" do
         params = {:query  => "specific"}
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 1
       end
 
       it "queries are additive AND" do
         params = {:query  => "specific market"}
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 1
       end
 
       it "queries do not allow all symbols" do
         params = {:query  => "specific market!!!"}
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 1
       end
       
       it "searches with generic name" do
         params = {:query  => "generic"}
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq Market.where(state: "published").count - 1
       end
 
       it "searches with more generic name" do
         params = {:query  => "market"}
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq Market.where(state: "published").count
       end
         it "search by tag" do
         params = {:query  => "tag one"}
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 1
       end
 
       it "search by other tag" do
         params = {:query  => "tag three"}
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 1
       end
 
       it "search in description" do
         params = {:query  => "awesome"}
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 1
       end
 
@@ -130,7 +132,7 @@ describe Market do
     describe "filter" do
       it "by category" do
         params = { :category => @category.name}
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 1
       end
       it "by city" do
@@ -138,7 +140,7 @@ describe Market do
           :query => "market",
           :city => "Madrid"
         }
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 2
       end
 
@@ -147,7 +149,7 @@ describe Market do
           :from => "11/01/2014",
           :to => "16/01/2014"
         }
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 1
       end
 
@@ -156,7 +158,7 @@ describe Market do
           :query => "market",
           :from => "10/01/2014"
         }
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 3
       end
     end 
@@ -168,7 +170,7 @@ describe Market do
           :latitude => "40",
           :longitude => "-70"
         }
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 1
       end
 
@@ -179,7 +181,7 @@ describe Market do
           :longitude => "-70",
           :category => "dummy"
         }
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 0
       end
 
@@ -188,7 +190,7 @@ describe Market do
           :latitude => "100",
           :longitude => "100"
         }
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 0
       end
     end
@@ -203,7 +205,7 @@ describe Market do
           :from => "04/01/2014",
           :to => "04/01/2014"
         }
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 1
       end
 
@@ -212,7 +214,7 @@ describe Market do
           :from => "6/01/2014",
           :to => "06/01/2014"
         }
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 1
       end
 
@@ -221,7 +223,7 @@ describe Market do
           :from => "08/01/2014",
           :to => "08/01/2014"
         }
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 1
       end
 
@@ -230,7 +232,7 @@ describe Market do
           :from => "03/01/2014",
           :to => "08/01/2014"
         }
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 1
       end
       it "filters by date and category" do
@@ -239,7 +241,7 @@ describe Market do
           :to => "20/01/2014",
           :category => @category.name
         }
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq 1
       end
 
@@ -247,7 +249,7 @@ describe Market do
         params = {
           :from => "08/01/20x4"
         }
-        result = Market.search(params)
+        result = Market.search(params)[:markets]
         expect(result.count).to eq Market.where(state: "published").count
       end
     end
@@ -269,7 +271,7 @@ describe Market do
     end   
     
     it "sorts queries" do
-      result = Market.search({})
+      result = Market.search({})[:markets]
       expect(result.count).to eq 3
       expect(result.first.name).to eq "Market 1"
       expect(result.last.name).to eq "Market 3"
