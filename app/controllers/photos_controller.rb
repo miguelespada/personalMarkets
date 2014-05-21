@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
   authorize_resource :except => [:index, :list_user_photos, :show]
   
   def index
-    @photos = Photo.all.page(params[:page]).per(6)
+    @photos = Photo.all.order_by(:created_at.desc).page(params[:page]).per(6)
   end
 
   def list_user_photos

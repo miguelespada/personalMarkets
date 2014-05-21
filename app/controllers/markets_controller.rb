@@ -5,7 +5,7 @@ class MarketsController < ApplicationController
                               :publish, :unpublish, :make_pro, :publish_anyway]
 
   def index
-    @markets = Market.all
+    @markets = Market.all.page(params[:page]).per(3)
   end
 
   def slideshow
@@ -14,7 +14,7 @@ class MarketsController < ApplicationController
   end
 
   def list_category_markets
-    @markets = Market.with_category(load_category)
+    @markets = Market.with_category(load_category).page(params[:page]).per(3)
     render 'index'
   end
 
@@ -23,7 +23,7 @@ class MarketsController < ApplicationController
   end
   
   def list_tag_markets
-    @markets = Market.tagged_with(params[:tag])
+    @markets = Market.tagged_with(params[:tag]).page(params[:page]).per(3)
     render 'index'
   end
 
@@ -33,8 +33,7 @@ class MarketsController < ApplicationController
   end
 
   def list_user_markets
-    @markets = Market.find_all(@user)
-    render 'index'
+    @markets = Market.find_all(@user).page(params[:page]).per(3)
   end
 
   def list_liked_markets

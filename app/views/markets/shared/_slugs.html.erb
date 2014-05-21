@@ -1,3 +1,7 @@
+<div class="paginate">
+  <%= paginate @markets %>
+</div>
+
 <% markets.each do |market| %>
   <% market = market.decorate %>
   <div class="panel panel-default panel-table" id="market_<%= market.id %>">
