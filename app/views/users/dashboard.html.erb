@@ -13,37 +13,33 @@
                 <%= link_to user_likes_path(current_user), class:"btn btn-warning btn-lg" do %>
                       <i class="fa fa-heart-o fa-5x"></i> <br/> Likes
                 <% end %>
-			    <%= link_to bought_coupons_by_user_path(current_user), class:"btn btn-success btn-lg" do %>
-					  <i class="fa fa-ticket fa-5x"></i> <br/> Coupons
-			    <% end %>
-			    <%= link_to user_dashboard_path(current_user), class:"btn btn-info btn-lg" do %>
-					  <i class="fa fa-tags fa-5x"></i> <br/> Tags
-			    <% end %>
+                   <%= link_to user_bargains_path(current_user), class:"btn btn-primary btn-lg" do %>
+                <i class="fa fa-bullhorn fa-5x"></i> <br/> Bargains
+            <% end %>
 			    <%= link_to user_wishes_path(current_user), class:"btn btn-primary btn-lg" do %>
 					  <i class="fa fa-magic fa-5x"></i> <br/> Wishlist
 			    <% end %>
-                <%= link_to user_bargains_path(current_user), class:"btn btn-primary btn-lg" do %>
-            		<i class="fa fa-bullhorn fa-5x"></i> <br/> Bargains
-          		<% end %>
+              
 
-          <%= link_to user_photos_path(current_user), class:"btn btn-primary btn-lg" do %>
-                  <i class="fa fa-camera fa-5x"></i> <br/> Photos
-          <% end %>
+          
             </div>
 
             <div class="col-xs-6 col-md-6">
+              
+          <%= link_to bought_coupons_by_user_path(current_user), class:"btn btn-success btn-lg" do %>
+            <i class="fa fa-ticket fa-5x"></i> <br/> Coupons
+          <% end %>
+          
                 <%= link_to user_path(current_user), :method => :get, class:"btn btn-primary btn-lg" do %>
 					  <i class="fa fa-user fa-5x"></i> <br/> Profile
 			    <% end %>
 			    <%= link_to show_user_statistic_path(current_user), class:"btn btn-primary btn-lg" do %>
 					  <i class="fa fa-tasks fa-5x"></i> <br/> Statistics
 			    <% end %>
-			    <%= link_to user_dashboard_path(current_user), class:"btn btn-primary btn-lg" do %>
-					  <i class="fa fa-envelope-o fa-5x"></i> <br/> Messages
-			    <% end %>
-			    <%= link_to user_dashboard_path(current_user), class:"btn btn-primary btn-lg" do %>
-					  <i class="fa fa-cogs fa-5x"></i> <br/> Setting
-			    <% end %>
+          <%= link_to user_photos_path(current_user), class:"btn btn-primary btn-lg" do %>
+                  <i class="fa fa-camera fa-5x"></i> <br/> Photos
+          <% end %>
+         
             </div>
 
         </div>
