@@ -1,36 +1,37 @@
-
-
 <div class = "market_gallery">
   <% markets.each do |market| %>
     <% market = market.decorate %>
-    <%= link_to market do %>
-      
     <%= content_tag_for(:tr, market) do %>
       <div class = "market_item">
-      
+      <%= link_to market do %>
         <div class = "market_featured_photo">
+
           <div class="market-gallery-badge">
             <div class="ribbon-badge <%= market.badges %>">
               <span id="market-badge-text"></span>
             </div>
           </div>
+
           <%= photo(market.featured, 300, 150) %>
+
           <div class = "market_name_label">
             <%= market.name %>
           </div>
           <div class = "market_description_label">
             <%= market.description %>
           </div>
+
           <span class="like-badge"><i class="fa fa-heart"></i></span>
           
         </div> 
-        <div>
-            <p><%= market.address %>, <%= market.city %></p>
-            </p><%= "Today" if market.is_today? %></p>
-            </p><%= "This week" if market.is_this_week? %></p>
-          </div>
+      <% end %>
+
+        <div class="market-gallery-extra">
+          <%= market.address %>, <%= market.city %><br>
+          <%= "Today" if market.is_today? %>
+          <%= "This week" if market.is_this_week? %>
+        </div>
       </div>
-    <% end %>
     <% end %>
   <% end %>
 </div>
