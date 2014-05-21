@@ -32,7 +32,9 @@ class MarketDecorator < Draper::Decorator
   end
 
   def badges
-    if staff_pick?
+    if passed?
+      "passed ribbon-badge-passed"
+    elsif staff_pick?
       "staff_pick ribbon-badge-staff_pick"
     elsif market.belongs_to_admin?
       "sample ribbon-badge-sample"
@@ -204,11 +206,30 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
+  def like_link_icon
+    if can? :like, market
+      if !current_user.favorited?(market)
+        link_to(content_tag(:i, "", :class => "fa fa-heart"), like_path(market), class: "like-icon market-action")
+      else  
+        link_to(content_tag(:i, "", :class => "fa fa-heart-o"), unlike_path(market), class: "unlike-icon market-action")
+      end
+    end
+  rescue
+  end
+
   def market_date_highlight
     if is_today?
       content_tag(:i, "", :class => "fa fa-calendar") + "  Today"
     elsif is_this_week?
       content_tag(:i, "", :class => "fa fa-calendar") + "  This Week"
+    end
+  end
+
+  def market_featured_photo_filtered(width, height)
+    if passed?
+      photo(featured, width, height, "grayscale")
+    else
+      photo(featured, width, height)
     end
   end
 

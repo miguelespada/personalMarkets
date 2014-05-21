@@ -14,6 +14,7 @@
         <div class="market-actions-links">
           <%= market.actions_icon %>
           <div class="hidden">
+            <%= market.like_link %>
             <%= market.edit_link %>
             <%= market.delete_link %>
             <%= market.publish_link %>
@@ -36,7 +37,7 @@
     <div class="market-section-title">General Information</div>
     <div class="market-section-container">
     <div class="col-md-6 market-featured-photo-detail">
-      <%= photo(market.featured, 400, 200) %>
+      <%= market.market_featured_photo_filtered(400, 200) %>
     </div>
   
     <div class="market-data col-md-6">
@@ -46,7 +47,7 @@
       <div class="market-tags-detail"> Tags: <%= market.tags %> </div> 
       <div class="market-date-detail">  <%= market.date %> </div>
       <div class="market-date-detail">  <%= market.schedule %> </div>
-      <div class="market-likes-number-detail"> <i class="fa fa-heart-o"></i> <%= market.favorited.count %>&nbsp;&nbsp;<%= market.like_link %></div> 
+      <div class="market-likes-number-detail"> <i class="fa fa-heart-o"></i> <%= market.favorited.count %>&nbsp;&nbsp;</div> 
     </div>
     </div>
   
@@ -96,7 +97,11 @@
 
 <!-- This is ugly as hell -->
 <script>
-  if ($(".market-badge>.ribbon-badge").hasClass("staff_pick")){
+  if ($(".market-badge>.ribbon-badge").hasClass("passed")){
+    $("#market-badge-text").text("PASSED");
+    $(".market-badge").show();
+  }
+  else if ($(".market-badge>.ribbon-badge").hasClass("staff_pick")){
     $("#market-badge-text").text("STAFF PICK");
     $(".market-badge").show();
   }
@@ -114,6 +119,8 @@
   }
 
   $(document).ready(function(){
+    buttonHover(".like-icon", "fa-heart", "Like", 75);
+    buttonHover(".unlike-icon", "fa-heart-o", "Unlike", 85);
     buttonHover(".edit-icon", "fa-pencil", "Edit", 70);
     buttonHover(".delete-icon", "fa-trash-o", "Delete", 85);
     buttonHover(".archive-icon", "fa-undo", "Archive", 95);
