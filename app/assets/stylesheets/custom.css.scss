@@ -551,22 +551,23 @@ border-color: #d43f3a;
 }
 .table-photo-edit{
   position: absolute;
-  top:5px;
-  left:5px;
+  top:5px !important;
+  left:5px !important;
+  width:24px !important;
 }
 
 .table-photo-photographic{
   position: absolute;
-  top:5px;
-  left:30px;
-  width:24px;
+  top:5px !important;
+  left:30px !important;
+  width:24px !important;
 }
 
 .table-photo-delete{
   position: absolute;
-  top:5px;
-  left:56px;
-  width:24px;
+  top:5px !important;
+  left:56px !important;
+  width:24px !important;
 }
 
 //*############################ MARKET FULL DESCRIPTION CSS #############################*//
@@ -715,5 +716,24 @@ border-color: #d43f3a;
 
 .paginate{
   width:100%;
+  text-align: center;
+}
+
+.photo-show{
+  position: relative;
+  width:600px;
+  margin: 0 auto !important;
+}
+
+.photo-actions-links{
+  margin-top: 10px;
+}
+
+.photo-actions-links > a{
+  @extend .btn;
+  @extend .btn-primary;
+}
+
+.photo-show-panel{
   text-align: center;
 }
