@@ -202,6 +202,14 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
+  def market_date_highlight
+    if is_today?
+      content_tag(:i, "", :class => "fa fa-calendar") + "  Today"
+    elsif is_this_week?
+      content_tag(:i, "", :class => "fa fa-calendar") + "  This Week"
+    end
+  end
+
 
   private 
 

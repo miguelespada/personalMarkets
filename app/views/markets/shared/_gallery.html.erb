@@ -28,8 +28,7 @@
 
         <div class="market-gallery-extra">
           <%= market.address %>, <%= market.city %><br>
-          <%= "Today" if market.is_today? %>
-          <%= "This week" if market.is_this_week? %>
+          <%= market.market_date_highlight %>
         </div>
       </div>
     <% end %>
