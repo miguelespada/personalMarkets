@@ -1,4 +1,5 @@
 require 'markets_domain_exception'
+require 'market_required_field_exception'
 
 class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
 
@@ -48,14 +49,17 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
 
   def publish_market market_id
     my_market = markets_repo.find market_id
-    if publish_available my_market
+    market_evaluation = check_fields my_market
+    if !market_evaluation.warn_about_coupon? && !market_evaluation.could_be_better?
       my_market.publish
       listener.publish_succeeded my_market
     else
-      listener.publish_not_available my_market
+      listener.publish_not_available my_market, market_evaluation
     end
   rescue MarketsDomainException
     listener.publish_failed market_id
+  rescue MarketRequiredFieldException => e
+    listener.publish_missing_required my_market, e.message
   end
 
   def publish_market! market_id
@@ -66,8 +70,12 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
     listener.publish_failed market_id
   end
 
-  def publish_available market
-    !market.has_coupon? || market.pro? || market.belongs_to_premium_user?
+  def check_fields market
+    evaluation = MarketEvaluator.new(market).check_fields
+    unless evaluation.valid?
+      raise MarketRequiredFieldException.new evaluation.error_message
+    end
+    evaluation
   end
 
   def make_pro market_id, pro_payment

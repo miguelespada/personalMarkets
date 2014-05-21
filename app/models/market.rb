@@ -71,6 +71,10 @@ class Market
     return self.pro
   end
 
+  def not_pro?
+    return !(self.pro? || self.belongs_to_premium_user?)
+  end
+
   def go_pro
     self.pro = true
     self.save!
@@ -101,12 +105,40 @@ class Market
     favorited.delete(user)
   end
 
+  def has_tags?
+    !(self.tags.nil? || self.tags.empty?)
+  end
+
+  def has_location?
+    self.latitude? && self.longitude?
+  end
+
+  def has_name?
+    self.name?
+  end
+
+  def has_description?
+    self.description?
+  end
+
+  def has_date?
+    self.date?
+  end
+
+  def has_schedule?
+    self.schedule?
+  end
+
   def has_coupon?
     coupon != nil && coupon.description!= nil && coupon.available != nil && coupon.price != nil
   end
 
   def has_gallery?
     gallery != nil
+  end
+
+  def has_photos?
+    has_gallery? && !gallery.empty?
   end
 
   def create_coupon!(params)
