@@ -388,13 +388,13 @@ Then(/^I should see the cropped photo$/) do
 end
 
 Then(/^I should see the badge of PRO$/) do
-  expect(page).to have_css ".pro"
+  page.should have_css ".pro"
   find("#market-badge-text").should have_content "PRO"
 end
 
 Then(/^I should see the badge of sample$/) do
   visit market_path @market
-  expect(page).to have_css ".sample"
+  page.should have_css ".sample"
   find("#market-badge-text").should have_content "SAMPLE"
 end
 
