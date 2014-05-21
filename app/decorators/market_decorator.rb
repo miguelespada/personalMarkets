@@ -18,7 +18,7 @@ class MarketDecorator < Draper::Decorator
   end
 
   def category_name
-    category.name
+    category.name if !category.nil?
   end 
 
   def actions
@@ -126,7 +126,9 @@ class MarketDecorator < Draper::Decorator
   end
 
   def pro_link
-    link_to "Go PRO", market_make_pro_payment_path(market), class: "pro market-action" unless market.pro?
+    if can? :edit, market
+      link_to "Go PRO", market_make_pro_payment_path(market), class: "pro market-action" unless market.pro?
+    end
   end
 
   def statistics_link
@@ -147,6 +149,16 @@ class MarketDecorator < Draper::Decorator
   rescue
     false
   end
+ 
+  def passed? 
+    date.split(',').each do |day|
+      return false if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i >= 0
+    end
+    return true
+  rescue
+    false
+  end
+
 
   def is_this_week?
     return false if is_today?
@@ -179,7 +191,9 @@ class MarketDecorator < Draper::Decorator
   end
 
   def pro_link_icon
-    link_to content_tag(:i, "", :class => "fa fa-plus-square"), market_make_pro_payment_path(market), class: "pro-icon market-action" unless market.pro?
+    if can? :edit, market
+      link_to content_tag(:i, "", :class => "fa fa-plus-square"), market_make_pro_payment_path(market), class: "pro-icon market-action" unless market.pro?
+    end
   end
 
   def statistics_link_icon
