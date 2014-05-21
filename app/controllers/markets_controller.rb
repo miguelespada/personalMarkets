@@ -29,8 +29,8 @@ class MarketsController < ApplicationController
   end
 
   def list_last_markets
-    @markets = Market.last_published
-    render 'search', :layout => !request.xhr?
+    @markets = Market.last_published.limit(3)
+    render :layout => !request.xhr?
   end
 
   def list_user_markets
@@ -40,7 +40,7 @@ class MarketsController < ApplicationController
 
   def list_liked_markets
     @markets = @user.favorites
-    render 'search', :layout => !request.xhr?
+    render :layout => !request.xhr?
   end
 
   def search
@@ -133,8 +133,18 @@ class MarketsController < ApplicationController
     domain.publish_market! params[:market_id]
   end
 
-  def publish_not_available market
-    flash[:error] = "In order to publish a market with a coupon you should make it PRO or become PREMIUM. Otherwise the coupon won't be available. #{view_context.link_to "Publish anyway", market_publish_anyway_path(market), { method: :post }}".html_safe
+  def publish_not_available market, evaluation
+    if evaluation.could_be_better?
+      flash[:warning] = ("Recomended fields " + evaluation.recommendation_message + ". #{view_context.link_to 'Publish anyway', market_publish_anyway_path(market), { method: :post }}").html_safe
+    end
+    if evaluation.warn_about_coupon?
+      flash[:warning] = "In order to publish a market with a coupon you should make it PRO or become PREMIUM. Otherwise the coupon won't be available. #{view_context.link_to "Publish anyway", market_publish_anyway_path(market), { method: :post }}".html_safe
+    end
+    redirect_to market
+  end
+
+  def publish_missing_required market, message
+    flash[:error] = "Missing required fields " + message
     redirect_to market
   end
 

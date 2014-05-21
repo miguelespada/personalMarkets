@@ -1,0 +1,2 @@
+class MarketRequiredFieldException < Exception
+end

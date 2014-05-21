@@ -8,4 +8,9 @@ class Gallery
   def user
     market.user
   end
+
+  def empty?
+    self.photographies.inject(false) {|initial, photo| initial && photo.present? }
+  end
+
 end

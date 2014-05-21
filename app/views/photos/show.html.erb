@@ -1,9 +1,23 @@
-<div class="table-photo-container">
-  <%= div_for @photo do %> 
-    <%= photo(@photo, 800, 400, :pad) %>
-    <%= edit_photo_link(@photo) %>
-    <%= photographic_link(@photo) %>
-  <% end %>
-</div>
+<div class = "home_gallery_title"><i class="fa fa-camera-retro fa-2x"></i> <br/>Photo</div>
 
-<%= link_to "Photos", photos_path%>
+<div class="container user-session">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default panel-table-last edit-photo-panel">
+        <div class="panel-body photo-show-panel">
+        	<%= div_for @photo do %>
+        	<div class="photo-show"> 
+  				  <%= photo(@photo, 600, 300, nil, :pad) %>
+  				  <%= edit_photo_link(@photo) %>
+  				  <%= photographic_link(@photo) %>
+  				</div>
+  				<% end %>
+  				<div class="photo-actions-links">
+						<%= all_photos_link %>
+						<%= user_photos_link(current_user) %>
+					</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

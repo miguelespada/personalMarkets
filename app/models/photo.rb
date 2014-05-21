@@ -28,6 +28,8 @@ class Photo
 
   def user_id
     photographic.user.id
+  rescue
+    nil
   end
 
   def self.all

@@ -18,7 +18,7 @@
         <div class="market-list-section-container">
           <div class = "market-list-section-container-inner">
             <div class = "col-md-4">
-              <%= photo(market.featured, 200, 100) %>
+              <%= market.market_featured_photo_filtered(200, 100) %>
             </div>
             <div class = "col-md-8">
               Description: <%= market.description %> <br>
@@ -41,10 +41,7 @@
       <div class = "col-md-4">
         <div class="market-list-section-title">Coupon</div>
         <div class="market-list-section-container">
-          <%= photo(market.coupon.photography, 100, 50) if market.coupon? %>
-          <%= link_to market.coupon.description, coupon_path(market.coupon) if market.coupon? %><br>
-          <%= market.coupon.available if market.coupon? %><br>
-          <%= market.coupon.price if market.coupon? %><br>
+          <%= render market.coupon %>
         </div>
       </div>
 
@@ -59,28 +56,50 @@
 <% end %>
 <div class="market-list-bottom"></div>
 <script>
+  $(document).ready(function(){
+    buttonHover(".like-icon", "fa-heart", "Like", 75);
+    buttonHover(".unlike-icon", "fa-heart-o", "Unlike", 85);
+    buttonHover(".edit-icon", "fa-pencil", "Edit", 70);
+    buttonHover(".delete-icon", "fa-trash-o", "Delete", 85);
+    buttonHover(".archive-icon", "fa-undo", "Archive", 95);
+  });
+
   $(".market-list-badge").each(function(){
-    if ($(".ribbon-badge", this).hasClass("staff_pick")){
-      $(".ribbon-badge", this).addClass("ribbon-badge-staff_pick");
+    if ($(".ribbon-badge", this).hasClass("passed")){
+      $(".ribbon-badge>#market-badge-text", this).text("PASSED");
+      $(this).show();
+    }
+    else if ($(".ribbon-badge", this).hasClass("staff_pick")){
       $(".ribbon-badge>#market-badge-text", this).text("STAFF PICK");
       $(this).show();
     }
     else if ($(".ribbon-badge", this).hasClass("sample")){
-      $(".ribbon-badge", this).addClass("ribbon-badge-sample");
       $(".ribbon-badge>#market-badge-text", this).text("SAMPLE");
       $(this).show();
     }
     else if ($(".ribbon-badge", this).hasClass("pro")){
-      $(".ribbon-badge", this).addClass("ribbon-badge-pro");
       $(".ribbon-badge>#market-badge-text", this).text("PRO");
       $(this).show();
     }
     else if ($(".ribbon-badge", this).hasClass("new_market")){
-      $(".ribbon-badge", this).addClass("ribbon-badge-new");
       $(".ribbon-badge>#market-badge-text", this).text("NEW");
       $(this).show();
     }
   });
+
+  var buttonHover = function(button, icon, text, width){
+    $(button).hover(function(){
+      $(this).html("<i class='fa " + icon + "'></i>&nbsp;&nbsp;" + text);
+      $(this).animate({
+        width: width
+      }, 100);
+    }, function(){
+      $(this).html("<i class='fa " + icon + "'></i>");
+      $(this).animate({
+        width: "40"
+      }, 100);
+    });
+  };
   
 </script>
 

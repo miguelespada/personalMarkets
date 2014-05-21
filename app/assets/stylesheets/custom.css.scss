@@ -12,6 +12,12 @@
 
 #gallery{
 }
+
+.photo-gallery{
+  width:800;
+  float:center !important;
+}
+
 .title{
   @extend h1;
   font-weight: 100;
@@ -393,6 +399,17 @@ border-color: #d43f3a;
   content: "SAMPLE";
 }
 
+.ribbon-badge-passed {
+  @extend .ribbon-badge-normal;
+  background-color: #aaaaaa;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#aaaaaa), to(#999999)); 
+  background-image: -webkit-linear-gradient(top, #aaaaaa, #999999); 
+  background-image:    -moz-linear-gradient(top, #aaaaaa, #999999); 
+  background-image:     -ms-linear-gradient(top, #aaaaaa, #999999); 
+  background-image:      -o-linear-gradient(top, #aaaaaa, #999999);
+  content: "SAMPLE";
+}
+
 .ribbon-badge:before, .ribbon-badge:after {
   content: "";
   border-top:   3px solid #6e8900;   
@@ -534,8 +551,23 @@ border-color: #d43f3a;
 }
 .table-photo-edit{
   position: absolute;
-  top:5px;
-  left:5px;
+  top:5px !important;
+  left:5px !important;
+  width:24px !important;
+}
+
+.table-photo-photographic{
+  position: absolute;
+  top:5px !important;
+  left:30px !important;
+  width:24px !important;
+}
+
+.table-photo-delete{
+  position: absolute;
+  top:5px !important;
+  left:56px !important;
+  width:24px !important;
 }
 
 //*############################ MARKET FULL DESCRIPTION CSS #############################*//
@@ -678,4 +710,30 @@ border-color: #d43f3a;
 
 .map-button{
   width:100%;
+}
+
+//*############################ PHOTOS CSS #############################*//
+
+.paginate{
+  width:100%;
+  text-align: center;
+}
+
+.photo-show{
+  position: relative;
+  width:600px;
+  margin: 0 auto !important;
+}
+
+.photo-actions-links{
+  margin-top: 10px;
+}
+
+.photo-actions-links > a{
+  @extend .btn;
+  @extend .btn-primary;
+}
+
+.photo-show-panel{
+  text-align: center;
 }

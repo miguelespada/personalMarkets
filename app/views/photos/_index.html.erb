@@ -1,20 +1,18 @@
-<table class="table table-striped">
-<tr>
-  <th>Photo</th>
-</tr>
+<div class="home_gallery">
 
 <% @photos.each do |photo| %>
     <%= content_tag_for(:tr, photo) do %> 
-    <td class="col-md-2"> 
-      <div class="table-photo-container">
-        <%= photo(photo, 300, 150, :pad) %>
+    <div class="home_gallery_item"> 
+      <div class="home_gallery_featured_photo">
+        <%= photo(photo, 300, 150, nil, :pad) %>
         <%= edit_photo_link(photo) %>
-        <span> <%= photographic_link(photo) %></span>
-
-         <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), photo, :method => :delete, class: "delete btn btn-danger table-button table-button-delete", data: { confirm: 'Are you sure?'} %> </span>
+        <%= photographic_link(photo) %>
+         <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), photo, :method => :delete, class: "delete btn btn-danger btn-xs table-photo-delete", data: { confirm: 'Are you sure?' %> </span>
       </div>
-    </td>
+    </div>
   <% end %>
 <% end %>
-</table>
-<%= paginate @photos %>
+</div>
+<div class="paginate">
+  <%= paginate @photos %>
+</div>

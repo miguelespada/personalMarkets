@@ -141,7 +141,7 @@ end
 When(/^I like the market$/) do
   visit published_markets_path
   within(:css, "#market_#{@market_0.id}") do
-    click_on "Like"
+    find('.like-icon').click
   end
 end
 
@@ -155,23 +155,23 @@ end
 Then(/^I cannot like that market again$/) do
   visit published_markets_path
   within(:css, "#market_#{@market_0.id}") do
-    expect(page).to have_link 'Unlike'
-    expect(page).not_to have_link 'Like'
+    expect(page).to have_css '.unlike-icon'
+    expect(page).not_to have_css '.like-icon'
   end
 end
 
 Then(/^I cannot unlike that market again$/) do
   visit published_markets_path
   within(:css, "#market_#{@market_0.id}") do
-    expect(page).not_to have_link 'Unlike'
-    expect(page).to have_link 'Like'
+    expect(page).not_to have_css '.unlike-icon'
+    expect(page).to have_css '.like-icon'
   end
 end
 
 When(/^I unlike the market$/) do
   visit published_markets_path
   within(:css, "#market_#{@market_0.id}") do
-    click_on "Unlike"
+    find('.unlike-icon').click
   end
 end
 
@@ -196,7 +196,12 @@ Then(/^I have a draft market$/) do
     :market, 
     :user => @user, 
     :name => "market 1", 
-    :description => "market 1 desc"
+    :description => "market 1 desc",
+    :latitude => 0.1,
+    :longitude => 0.1,
+    :date => "13/08/2014",
+    :schedule => "de 5 a 7",
+    :tags_array => ["un_tag"]
     )
   @user.markets << @market
 end
@@ -207,7 +212,12 @@ Given(/^I have a draft pro market$/) do
     :user => @user, 
     :name => "market 1", 
     :description => "market 1 desc",
-    :pro => true
+    :pro => true,
+    :latitude => 0.1,
+    :longitude => 0.1,
+    :date => "13/08/2014",
+    :schedule => "de 5 a 7",
+    :tags_array => ["un_tag"]
     )
   @user.markets << @market
 end
@@ -287,6 +297,11 @@ Given(/^I have a draft market with a coupon$/) do
     :user => @user, 
     :name => "market 1", 
     :description => "market 1 desc",
+    :latitude => 0.1,
+    :longitude => 0.1,
+    :date => "13/08/2014",
+    :schedule => "de 5 a 7",
+    :tags_array => ["un_tag"],
     :coupon => create(:coupon)
     )
   @user.markets << @market
@@ -388,17 +403,12 @@ Then(/^I should see the cropped photo$/) do
 end
 
 Then(/^I should see the badge of PRO$/) do
-  expect(page).to have_css ".pro"
+  page.should have_css ".pro"
   find("#market-badge-text").should have_content "PRO"
 end
 
 Then(/^I should see the badge of sample$/) do
   visit market_path @market
-  expect(page).to have_css ".sample"
+  page.should have_css ".sample"
   find("#market-badge-text").should have_content "SAMPLE"
-end
-
-Then(/^I should see the badge of staff pick$/) do
-  step "The market becomes staff pick"
-  find("#market-badge-text").should have_content "STAFF PICK"
 end

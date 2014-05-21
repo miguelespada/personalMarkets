@@ -6,7 +6,7 @@ describe MarketsDomain do
   let(:market_id) { "an_id" }
   let(:user_id) { "an_id" }
   let(:listener) { double :listener }
-  let(:market) { double(pro?: false, belongs_to_premium_user?: false) }
+  let(:market) { double }
   let(:market_pro) { double(pro?: true) }
   let(:coupon) { double :coupon }
   let(:markets_repo) { double :markets_repo }
@@ -79,8 +79,14 @@ describe MarketsDomain do
 
     describe "publish market" do
 
+      let(:fake_evaluation) { double(valid?: true, could_be_better?: false, warn_about_coupon?: false) }
+      let(:fake_evaluator) { double(check_fields: fake_evaluation) }
+      let(:market_evaluator) { double(new: fake_evaluator) }
+
       before do
+        markets_repo.stub(:find) { market }
         market.stub(:has_coupon?) { true }
+        stub_const("MarketEvaluator", market_evaluator)
       end
 
       after do
@@ -88,26 +94,13 @@ describe MarketsDomain do
       end
 
       context 'market with coupon' do
-        it "registers publishing not possible because market has coupon and is not pro" do
-          markets_repo.stub(:find) { market }
-          listener.should_receive(:publish_not_available).with(market)
+
+        it "registers publishing not possible when evaluator says to warn about coupon" do
+          fake_evaluation.stub(:warn_about_coupon?).and_return(true)
+          listener.should_receive(:publish_not_available).with(market, fake_evaluation)
         end
 
-        it "registers publishing not possible because market has coupon and owner is not premium" do
-          markets_repo.stub(:find) { market }
-          listener.should_receive(:publish_not_available).with(market)
-        end
-
-        it "registers success callback if market belongs to premium user" do
-          market.stub(:belongs_to_premium_user?) { true }
-          markets_repo.stub(:find) { market }
-          market.stub(:publish) { true }
-          listener.should_receive(:publish_succeeded).with(market)
-        end
-
-        it "registers success callback if market is pro" do
-          market.stub(:pro?) { true }
-          markets_repo.stub(:find) { market }
+        it "registers success callback when evaluator says that could not be better and has no warn about coupon" do
           market.stub(:publish) { true }
           listener.should_receive(:publish_succeeded).with(market)
         end
@@ -116,18 +109,12 @@ describe MarketsDomain do
 
       context 'market without coupon' do
 
-        before do
-          market.stub(:has_coupon?) { false }
-        end
-
         it "registers success callback if market published successfully" do
-          markets_repo.stub(:find) { market }
           market.stub(:publish) { true }
           listener.should_receive(:publish_succeeded).with(market)
         end
 
         it "registers fail callback if market not published successfully" do
-          markets_repo.stub(:find) { market }
           market.stub(:publish).and_raise(MarketsDomainException)
           listener.should_receive(:publish_failed).with(market_id)
         end
