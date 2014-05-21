@@ -14,6 +14,7 @@
         <div class="market-actions-links">
           <%= market.actions_icon %>
           <div class="hidden">
+            <%= market.like_link %>
             <%= market.edit_link %>
             <%= market.delete_link %>
             <%= market.publish_link %>
@@ -46,7 +47,7 @@
       <div class="market-tags-detail"> <%= market.tags %> </div> 
       <div class="market-date-detail">  <%= market.date %> </div>
       <div class="market-date-detail">  <%= market.schedule %> </div>
-      <div class="market-likes-number-detail"> <i class="fa fa-heart-o"></i> <%= market.favorited.count %>&nbsp;&nbsp;<%= market.like_link %></div> 
+      <div class="market-likes-number-detail"> <i class="fa fa-heart-o"></i> <%= market.favorited.count %>&nbsp;&nbsp;</div> 
     </div>
     </div>
   
