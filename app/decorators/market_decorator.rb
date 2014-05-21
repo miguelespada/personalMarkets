@@ -31,13 +31,13 @@ class MarketDecorator < Draper::Decorator
 
   def badges
     if staff_pick?
-      "staff_pick"
+      "staff_pick ribbon-badge-staff_pick"
     elsif market.belongs_to_admin?
-      "sample"
+      "sample ribbon-badge-sample"
     elsif market.pro?
-      "pro"
+      "pro ribbon-badge-pro"
     elsif new_market?
-      "new_market"
+      "new_market ribbon-badge-new"
     end
   end
 
