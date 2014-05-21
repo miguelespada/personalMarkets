@@ -40,18 +40,22 @@
 <script>
   $(".market-gallery-badge").each(function(){
     if ($(".ribbon-badge", this).hasClass("staff_pick")){
+      $(".ribbon-badge", this).addClass("ribbon-badge-staff_pick");
       $(".ribbon-badge>#market-badge-text", this).text("STAFF PICK");
       $(this).show();
     }
     else if ($(".ribbon-badge", this).hasClass("sample")){
+      $(".ribbon-badge", this).addClass("ribbon-badge-sample");
       $(".ribbon-badge>#market-badge-text", this).text("SAMPLE");
       $(this).show();
     }
     else if ($(".ribbon-badge", this).hasClass("pro")){
+      $(".ribbon-badge", this).addClass("ribbon-badge-pro");
       $(".ribbon-badge>#market-badge-text", this).text("PRO");
       $(this).show();
     }
     else if ($(".ribbon-badge", this).hasClass("new_market")){
+      $(".ribbon-badge", this).addClass("ribbon-badge-new");
       $(".ribbon-badge>#market-badge-text", this).text("NEW");
       $(this).show();
     }

@@ -92,6 +92,26 @@
 
 <!-- This is ugly as hell -->
 <script>
+  if ($(".market-badge>.ribbon-badge").hasClass("staff_pick")){
+    $(".market-badge>.ribbon-badge").addClass("ribbon-badge-staff_pick");
+    $("#market-badge-text").text("STAFF PICK");
+    $(".market-badge").show();
+  }
+  else if ($(".market-badge>.ribbon-badge").hasClass("pro")){
+    $(".market-badge>.ribbon-badge").addClass("ribbon-badge-pro");
+    $("#market-badge-text").text("PRO");
+    $(".market-badge").show();
+  }
+  else if ($(".market-badge>.ribbon-badge").hasClass("sample")){
+    $(".market-badge>.ribbon-badge").addClass("ribbon-badge-sample");
+    $("#market-badge-text").text("SAMPLE");
+    $(".market-badge").show();
+  }
+  else if ($(".market-badge>.ribbon-badge").hasClass("new_market")){
+    $(".market-badge>.ribbon-badge").addClass("ribbon-badge-new");
+    $("#market-badge-text").text("NEW");
+    $(".market-badge").show();
+  }
 
   $(document).ready(function(){
     buttonHover(".edit-icon", "fa-pencil", "Edit", 70);
@@ -99,19 +119,6 @@
     buttonHover(".archive-icon", "fa-undo", "Archive", 95);
     buttonHover(".pro-icon", "fa-plus-square", "Go PRO", 100);
     buttonHover(".statistics-icon", "fa-sitemap", "Statistics", 115);
-
-    if ($(".market-badge>.ribbon-badge").hasClass("staff_pick")){
-      addBadge("STAFF PICK");
-    }
-    else if ($(".market-badge>.ribbon-badge").hasClass("pro")){
-      addBadge("PRO");
-    }
-    else if ($(".market-badge>.ribbon-badge").hasClass("sample")){
-      addBadge("SAMPLE");
-    }
-    else if ($(".market-badge>.ribbon-badge").hasClass("new_market")){
-      addBadge("NEW");
-    }
     
     if ($(".unpublish").length){
       switchAction(true);
@@ -120,11 +127,6 @@
       switchAction(false);
     }
   });
-
-  var addBadge = function(text){
-    $("#market-badge-text").text(text);
-    $(".market-badge").show();
-  }
 
   var switchAction = function(init){
     $("[name='publish-switch']").bootstrapSwitch({
