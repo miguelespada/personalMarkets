@@ -18,7 +18,9 @@ class MarketDecorator < Draper::Decorator
   end
 
   def category_name
-    category.name if !category.nil?
+    category.name
+  rescue
+    "Uncategorized"
   end 
 
   def actions
