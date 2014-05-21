@@ -6,7 +6,6 @@
   <%= link_to "Next", "#", :id=>"next-markets" if !@last_page %>
   <script>
   $(document).ready(function(){
-  
 
    $("#prev-markets").click(function(){
       var page = parseInt($('#page').val());
@@ -19,8 +18,6 @@
       $('#page').val(page + 1);
       $('#search_market').change();
     });
-
-   
 
   });
 </script>

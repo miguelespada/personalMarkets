@@ -29,8 +29,8 @@ class MarketsController < ApplicationController
   end
 
   def list_last_markets
-    @markets = Market.last_published
-    render 'search', :layout => !request.xhr?
+    @markets = Market.last_published.limit(3)
+    render :layout => !request.xhr?
   end
 
   def list_user_markets
@@ -40,7 +40,7 @@ class MarketsController < ApplicationController
 
   def list_liked_markets
     @markets = @user.favorites
-    render 'search', :layout => !request.xhr?
+    render :layout => !request.xhr?
   end
 
   def search
