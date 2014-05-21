@@ -204,6 +204,17 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
+  def like_link_icon
+    if can? :like, market
+      if !current_user.favorited?(market)
+        link_to(content_tag(:i, "", :class => "fa fa-heart"), like_path(market), class: "like-icon market-action")
+      else  
+        link_to(content_tag(:i, "", :class => "fa fa-heart-o"), unlike_path(market), class: "unlike-icon market-action")
+      end
+    end
+  rescue
+  end
+
   def market_date_highlight
     if is_today?
       content_tag(:i, "", :class => "fa fa-calendar") + "  Today"
@@ -214,7 +225,7 @@ class MarketDecorator < Draper::Decorator
 
   def market_featured_photo_filtered(width, height)
     if passed?
-      photo(featured, width, height, true)
+      photo(featured, width, height, "grayscale")
     else
       photo(featured, width, height)
     end
