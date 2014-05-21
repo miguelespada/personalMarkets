@@ -41,10 +41,7 @@
       <div class = "col-md-4">
         <div class="market-list-section-title">Coupon</div>
         <div class="market-list-section-container">
-          <%= photo(market.coupon.photography, 100, 50) if market.coupon? %>
-          <%= link_to market.coupon.description, coupon_path(market.coupon) if market.coupon? %><br>
-          <%= market.coupon.available if market.coupon? %><br>
-          <%= market.coupon.price if market.coupon? %><br>
+          <%= render market.coupon %>
         </div>
       </div>
 

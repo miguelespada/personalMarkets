@@ -7,7 +7,7 @@
     <%= content_tag_for(:tr, photo) do %> 
     <td class="col-md-2"> 
       <div class="table-photo-container">
-        <%= photo(photo, 300, 150, :pad) %>
+        <%= photo(photo, 300, 150, nil, :pad) %>
         <%= edit_photo_link(photo) %>
         <span> <%= photographic_link(photo) %></span>
 

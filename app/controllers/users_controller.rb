@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     authorize! :like, market
     @user.like(market)
     market.like(@user)
-    redirect_to user_likes_path(@user)
+    redirect_to :back
   end
 
   def unlike
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     authorize! :like, market
     @user.unlike(market)
     market.unlike(@user)
-    redirect_to published_markets_path
+    redirect_to :back
   end
 
   def destroy
