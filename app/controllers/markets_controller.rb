@@ -134,8 +134,12 @@ class MarketsController < ApplicationController
   end
 
   def publish_not_available market, evaluation
-    flash[:warning] = "Recomended fields " + evaluation.recomendation_message if evaluation.could_be_better?
-    flash[:error] = "In order to publish a market with a coupon you should make it PRO or become PREMIUM. Otherwise the coupon won't be available. #{view_context.link_to "Publish anyway", market_publish_anyway_path(market), { method: :post }}".html_safe
+    if evaluation.could_be_better?
+      flash[:warning] = ("Recomended fields " + evaluation.recommendation_message + ". #{view_context.link_to 'Publish anyway', market_publish_anyway_path(market), { method: :post }}").html_safe
+    end
+    if evaluation.warn_about_coupon?
+      flash[:warning] = "In order to publish a market with a coupon you should make it PRO or become PREMIUM. Otherwise the coupon won't be available. #{view_context.link_to "Publish anyway", market_publish_anyway_path(market), { method: :post }}".html_safe
+    end
     redirect_to market
   end
 

@@ -50,7 +50,7 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
   def publish_market market_id
     my_market = markets_repo.find market_id
     market_evaluation = check_fields my_market
-    if publish_available(my_market) && !market_evaluation.could_be_better?
+    if !market_evaluation.warn_about_coupon? && !market_evaluation.could_be_better?
       my_market.publish
       listener.publish_succeeded my_market
     else
@@ -76,10 +76,6 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
       raise MarketRequiredFieldException.new evaluation.error_message
     end
     evaluation
-  end
-
-  def publish_available market
-    !market.has_coupon? || market.pro? || market.belongs_to_premium_user?
   end
 
   def make_pro market_id, pro_payment

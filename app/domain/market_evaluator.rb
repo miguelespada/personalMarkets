@@ -1,90 +1,51 @@
 class MarketEvaluator
 
+  REQUIRED = ["name", "description", "featured", "location", "date", "schedule"]
+  RECOMMENDED = ["tags"]
+  PRO_RECOMMENDED = ["coupon", "photos"]
+
   def initialize market
     @market = market
     @evaluation = MarketEvaluation.new market
   end
 
   def check_fields
-    check_name
-    check_description
-    check_featured
-    check_location
-    check_date
-    check_tags
+    check_required
+    check_recommended
+    check_pro_recommended
+    publish_available
     @evaluation
   end
 
-  def check_tags
-    unless @market.has_tags?
-      @evaluation.add_recomendation "tags"
+  def publish_available
+    unless !@market.has_coupon? || @market.pro? || @market.belongs_to_premium_user?
+      @evaluation.warn_about_coupon
     end
   end
 
-  def check_name
-    unless @market.name?
-      @evaluation.add_error "name"
+  def check_required
+    REQUIRED.each do |field|
+      unless @market.send("has_" + field + "?")
+        @evaluation.add_error field
+      end
     end
   end
 
-  def check_description
-    unless @market.description?
-      @evaluation.add_error "description"
+  def check_recommended
+    RECOMMENDED.each do |field|
+      unless @market.send("has_" + field + "?")
+        @evaluation.add_recommendation field
+      end
     end
   end
 
-  def check_featured
-    unless @market.has_featured?
-      @evaluation.add_error "featured"
-    end
-  end
-
-  def check_location
-    unless @market.has_location?
-      @evaluation.add_error "location"
-    end
-  end
-
-  def check_date
-    unless @market.date?
-      @evaluation.add_error "date"
+  def check_pro_recommended
+    PRO_RECOMMENDED.each do |field|
+      unless @market.not_pro? || @market.send("has_" + field + "?")
+        @evaluation.add_recommendation field
+      end
     end
   end
 
 end
 
-class MarketEvaluation
-
-  def initialize market
-    @market = market
-    @valid = true
-  end
-
-  def valid?
-    @valid
-  end
-
-  def could_be_better?
-    !@recomendations.nil? && !@recomendations.empty?
-  end
-
-  def add_error field
-    @valid = false
-    @fields ||= []
-    @fields << field
-  end
-
-  def add_recomendation field
-    @recomendations ||= []
-    @recomendations << field
-  end
-
-  def error_message
-    @fields.join(", ")
-  end
-
-  def recomendation_message
-    @recomendations.join(", ")
-  end
-
-end
