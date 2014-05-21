@@ -388,7 +388,7 @@ Then(/^I should see the cropped photo$/) do
 end
 
 Then(/^I should see the badge of PRO$/) do
-  page.should have_css ".market-badge"
+  page.should have_css ".pro"
   find("#market-badge-text").should have_content "PRO"
 end
 
