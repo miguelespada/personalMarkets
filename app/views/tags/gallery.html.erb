@@ -1,14 +1,22 @@
-<div class = "home_gallery tag_gallery">
-  <% @suggested.each do |tag| %>
-    <div class = "home_gallery_item tag_gallery_item">
-      <div class = "home_gallery_featured_photo tag_gallery_featured_photo" data-name="<%= tag.name %>">
-        <%= photo(tag.photography, 300, 150) %>
-        <div class = "home_gallery_label tag_gallery_label">
-          <%= tag.name %>
+<div class="panel panel-default panel-table panel-table-last">
+
+ <div class="panel-heading table-title">
+    Popular Tags 
+  </div>
+
+
+  <div class = "home_gallery tag_gallery">
+    <% @suggested.each do |tag| %>
+      <div class = "home_gallery_item tag_gallery_item">
+        <div class = "home_gallery_featured_photo tag_gallery_featured_photo" data-name="<%= tag.name %>">
+          <%= photo(tag.photography, 300, 150) %>
+          <div class = "home_gallery_label tag_gallery_label">
+            <%= tag.name %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 <script>
