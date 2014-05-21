@@ -555,6 +555,20 @@ border-color: #d43f3a;
   left:5px;
 }
 
+.table-photo-photographic{
+  position: absolute;
+  top:5px;
+  left:30px;
+  width:24px;
+}
+
+.table-photo-delete{
+  position: absolute;
+  top:5px;
+  left:56px;
+  width:24px;
+}
+
 //*############################ MARKET FULL DESCRIPTION CSS #############################*//
 .market-title-container{
   @extend .row;
@@ -695,4 +709,11 @@ border-color: #d43f3a;
 
 .map-button{
   width:100%;
+}
+
+//*############################ PHOTOS CSS #############################*//
+
+.paginate{
+  width:100%;
+  text-align: center;
 }

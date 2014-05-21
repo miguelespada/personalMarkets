@@ -45,7 +45,7 @@ module ApplicationHelper
 
   def photographic_link(photo)
     if !photo.photographic.nil?
-      link_to content_tag(:i, "", class: "fa fa-folder-o"), photo.photographic, class: "btn btn-default table-button"
+      link_to content_tag(:i, "", class: "fa fa-folder-o"), photo.photographic, class: "btn btn-warning table-button btn-xs table-photo-photographic"
     end
   end
 
