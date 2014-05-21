@@ -20,7 +20,6 @@ class MarketsController < ApplicationController
 
   def list_published_markets
     @markets = Market.published
-    render 'index'
   end
   
   def list_tag_markets
