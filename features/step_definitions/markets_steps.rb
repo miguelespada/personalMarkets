@@ -139,21 +139,21 @@ Then(/^I see a show button$/) do
 end
 
 When(/^I like the market$/) do
-  visit published_markets_path
+  visit markets_path
   within(:css, "#market_#{@market_0.id}") do
     find('.like-icon').click
   end
 end
 
 Then(/^The number of likes increment$/) do
-  visit published_markets_path
+  visit markets_path
   within(:css, "#market_#{@market_0.id} .like-counter") do
     expect(page).to have_content "1"
   end
 end
 
 Then(/^I cannot like that market again$/) do
-  visit published_markets_path
+  visit markets_path
   within(:css, "#market_#{@market_0.id}") do
     expect(page).to have_css '.unlike-icon'
     expect(page).not_to have_css '.like-icon'
@@ -161,7 +161,7 @@ Then(/^I cannot like that market again$/) do
 end
 
 Then(/^I cannot unlike that market again$/) do
-  visit published_markets_path
+  visit markets_path
   within(:css, "#market_#{@market_0.id}") do
     expect(page).not_to have_css '.unlike-icon'
     expect(page).to have_css '.like-icon'
@@ -169,14 +169,14 @@ Then(/^I cannot unlike that market again$/) do
 end
 
 When(/^I unlike the market$/) do
-  visit published_markets_path
+  visit markets_path
   within(:css, "#market_#{@market_0.id}") do
     find('.unlike-icon').click
   end
 end
 
 Then(/^The number of likes decrement$/) do
-  visit published_markets_path
+  visit markets_path
   within(:css, "#market_#{@market_0.id} .like-counter") do
     expect(page).to have_content "0"
   end
