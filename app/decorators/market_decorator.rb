@@ -18,7 +18,7 @@ class MarketDecorator < Draper::Decorator
   end
 
   def category_name
-    category.name
+    category.name if !category.nil?
   end 
 
   def actions
@@ -106,7 +106,7 @@ class MarketDecorator < Draper::Decorator
   def delete_link
     if can? :delete, market
       link_to("Delete", user_market_path(market.user, market), method: :delete, 
-        class: "delete market-action")
+        class: "delete market-action", data: { confirm: 'Are you sure?'})
     end
   end
 

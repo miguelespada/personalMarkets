@@ -22,7 +22,7 @@
         <td class="col-md-3"> <%= link_to(tag.name, tag_markets_path(tag.name)) %> </td> 
         <td class="col-md-3 market-counter"> <%= market_counter(tag.name) %> </td>
         <td class="col-md-3"> 
-          <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), tag_path(tag), :method => :delete, class: "delete btn btn-danger table-button table-button-delete" %> </span>
+          <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), tag_path(tag), :method => :delete, class: "delete btn btn-danger table-button table-button-delete", data: { confirm: 'Are you sure?' } %> </span>
           <span> <%= link_to content_tag(:i, "", class: "fa fa-pencil"), edit_tag_path(tag), class: "edit btn btn-info table-button table-button-edit" %></span>
         </td>
       <% end %>

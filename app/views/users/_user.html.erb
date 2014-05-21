@@ -9,5 +9,5 @@
          <% user.available_statuses.each do |status| %>
             <%= link_to "Switch to " + status.titleize, user_status_path(user, :new_status => status), :method => :put, :class => "lnk-#{status}" %> |
          <% end %>
-         <%= link_to "Delete", user_path(user), :method => :delete, :class => 'lnk-danger' %></td>
+         <%= link_to "Delete", user_path(user), :method => :delete, :class => 'lnk-danger', data: { confirm: 'Are you sure?'} %></td>
 <% end %>

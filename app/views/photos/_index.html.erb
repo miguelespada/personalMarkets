@@ -11,7 +11,7 @@
         <%= edit_photo_link(photo) %>
         <span> <%= photographic_link(photo) %></span>
 
-         <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), photo, :method => :delete, class: "delete btn btn-danger table-button table-button-delete" %> </span>
+         <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), photo, :method => :delete, class: "delete btn btn-danger table-button table-button-delete", data: { confirm: 'Are you sure?'} %> </span>
       </div>
     </td>
   <% end %>

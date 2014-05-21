@@ -28,7 +28,7 @@
         <td class="col-md-1 table-latlng"> <%= special_location.latitude %> </td>
         <td class="col-md-1 table-latlng"> <%= special_location.longitude %> </td>
         <td class="col-md-2"> 
-          <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), special_location, :method => :delete, class: "delete btn btn-danger table-button table-button-delete" %> </span>
+          <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), special_location, :method => :delete, class: "delete btn btn-danger table-button table-button-delete", data: { confirm: 'Are you sure?'} %> </span>
           <span> <%= link_to content_tag(:i, "", class: "fa fa-pencil"), edit_special_location_path(special_location), class: "edit btn btn-info table-button table-button-edit" %></span> 
         </td>
       <% end %>
