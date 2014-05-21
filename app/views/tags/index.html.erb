@@ -32,22 +32,11 @@
 
 <div class="panel panel-default panel-table panel-table-last">
   <div class="panel-heading table-title">User Tags</div>
-  <table class="table table-striped">
-    <tr>
-      <th>Photo</th>
-      <th>Name</th>
-      <th>Market Count</th>
-      <th>Actions</th>
-    </tr>
+ 
     <% @tags.each do |name| %>   
-    <tr>
-      <td class="col-md-3">---</td>
-      <td class="col-md-3"> <%= link_to(name, tag_markets_path(name)) %> </td> 
-      <td class="col-md-3 market-counter"> <%= market_counter(name) %>  </td>
-      <td class="col-md-3">---</td>
-     </tr>
-  <% end %>
-  </table>
+      <div class="col-md-2"> <%= link_to(name, tag_markets_path(name)) %> (<%= market_counter(name) %>) </div>
+
+    <% end %>
 </div>
 
 <script>
