@@ -11,6 +11,7 @@ describe UsersController do
   let(:presenter_factory) { double(for: presenter) }
 
 
+
   context "authorized user" do 
     before(:each) do
       stub_const("UsersPresenter", presenter_factory)
@@ -42,6 +43,8 @@ describe UsersController do
       controller.stub(:current_ability) { @ability }
       @ability.can :like, Market
       controller.stub(:current_user).and_return(user)
+      
+      @request.env['HTTP_REFERER'] = '/'
     end
 
     describe "User likes a market" do
