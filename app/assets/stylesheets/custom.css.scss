@@ -393,6 +393,17 @@ border-color: #d43f3a;
   content: "SAMPLE";
 }
 
+.ribbon-badge-passed {
+  @extend .ribbon-badge-normal;
+  background-color: #CCCCCC;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#CCCCCC), to(#aaaaaa)); 
+  background-image: -webkit-linear-gradient(top, #CCCCCC, #aaaaaa); 
+  background-image:    -moz-linear-gradient(top, #CCCCCC, #aaaaaa); 
+  background-image:     -ms-linear-gradient(top, #CCCCCC, #aaaaaa); 
+  background-image:      -o-linear-gradient(top, #CCCCCC, #aaaaaa);
+  content: "SAMPLE";
+}
+
 .ribbon-badge:before, .ribbon-badge:after {
   content: "";
   border-top:   3px solid #6e8900;   

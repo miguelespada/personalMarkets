@@ -30,7 +30,9 @@ class MarketDecorator < Draper::Decorator
   end
 
   def badges
-    if staff_pick?
+    if passed?
+      "passed ribbon-badge-passed"
+    elsif staff_pick?
       "staff_pick ribbon-badge-staff_pick"
     elsif market.belongs_to_admin?
       "sample ribbon-badge-sample"
@@ -207,6 +209,14 @@ class MarketDecorator < Draper::Decorator
       content_tag(:i, "", :class => "fa fa-calendar") + "  Today"
     elsif is_this_week?
       content_tag(:i, "", :class => "fa fa-calendar") + "  This Week"
+    end
+  end
+
+  def market_featured_photo_filtered(width, height)
+    if passed?
+      photo(featured, width, height, true)
+    else
+      photo(featured, width, height)
     end
   end
 

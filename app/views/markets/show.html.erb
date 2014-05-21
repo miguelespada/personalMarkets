@@ -36,7 +36,7 @@
     <div class="market-section-title">General Information</div>
     <div class="market-section-container">
     <div class="col-md-6 market-featured-photo-detail">
-      <%= photo(market.featured, 400, 200) %>
+      <%= market.market_featured_photo_filtered(400, 200) %>
     </div>
   
     <div class="market-data col-md-6">
@@ -96,7 +96,11 @@
 
 <!-- This is ugly as hell -->
 <script>
-  if ($(".market-badge>.ribbon-badge").hasClass("staff_pick")){
+  if ($(".market-badge>.ribbon-badge").hasClass("passed")){
+    $("#market-badge-text").text("PASSED");
+    $(".market-badge").show();
+  }
+  else if ($(".market-badge>.ribbon-badge").hasClass("staff_pick")){
     $("#market-badge-text").text("STAFF PICK");
     $(".market-badge").show();
   }

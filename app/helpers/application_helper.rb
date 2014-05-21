@@ -25,13 +25,14 @@ module ApplicationHelper
                              params[:action] == "map")
   end
 
-  def photo(photo, width, height = nil, crop_mode = :scale)
+  def photo(photo, width, height = nil, passed = false, crop_mode = :scale)
     height ||= width
     size = "#{width}x#{height}"
     image_options = { size: size, crop: :scale }
     crop = photo.crop if !photo.crop.nil?
     image_options = {transformation: { crop: :crop, x: crop["x"], y: crop["y"],
                        width: crop["w"], height: crop["h"]}, size: size, crop: :pad} if !crop.nil?
+    image_options = { size: size, crop: :scale, effect: :grayscale } if passed
     cl_image_tag(photo.photo.path, image_options) 
     rescue
       image_tag "default-image.png", image_options
