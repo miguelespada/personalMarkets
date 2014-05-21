@@ -14,6 +14,7 @@
         <div class="market-actions-links">
           <%= market.actions_icon %>
           <div class="hidden">
+            <%= market.like_link %>
             <%= market.edit_link %>
             <%= market.delete_link %>
             <%= market.publish_link %>
@@ -36,17 +37,17 @@
     <div class="market-section-title">General Information</div>
     <div class="market-section-container">
     <div class="col-md-6 market-featured-photo-detail">
-      <%= photo(market.featured, 400, 200) %>
+      <%= market.market_featured_photo_filtered(400, 200) %>
     </div>
   
     <div class="market-data col-md-6">
       <div class="market-description-detail"> <%=  market.description %> </div>
       <a href="<%=  market.url %>" target="_blank"><%=  market.url %></a>
-      <div class="market-category-detail"> <%= market.category.name %> </div>
-      <div class="market-tags-detail"> <%= market.tags %> </div> 
+      <div class="market-category-detail"> Category: <%= market.category_name %> </div>
+      <div class="market-tags-detail"> Tags: <%= market.tags %> </div> 
       <div class="market-date-detail">  <%= market.date %> </div>
       <div class="market-date-detail">  <%= market.schedule %> </div>
-      <div class="market-likes-number-detail"> <i class="fa fa-heart-o"></i> <%= market.favorited.count %>&nbsp;&nbsp;<%= market.like_link %></div> 
+      <div class="market-likes-number-detail"> <i class="fa fa-heart-o"></i> <%= market.favorited.count %>&nbsp;&nbsp;</div> 
     </div>
     </div>
   
@@ -79,8 +80,12 @@
         <div class="fb-like" data-href=<%=market_url(market.to_param)%> data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
         </div>
       </div>
+      <div id="market-qr"></div>
     </div>
+
+
   </div>
+
 
 <style>
 @media (max-width: 992px){
@@ -92,28 +97,30 @@
 
 <!-- This is ugly as hell -->
 <script>
-  if ($(".market-badge>.ribbon-badge").hasClass("staff_pick")){
-    $(".market-badge>.ribbon-badge").addClass("ribbon-badge-staff_pick");
+  if ($(".market-badge>.ribbon-badge").hasClass("passed")){
+    $("#market-badge-text").text("PASSED");
+    $(".market-badge").show();
+  }
+  else if ($(".market-badge>.ribbon-badge").hasClass("staff_pick")){
     $("#market-badge-text").text("STAFF PICK");
     $(".market-badge").show();
   }
   else if ($(".market-badge>.ribbon-badge").hasClass("pro")){
-    $(".market-badge>.ribbon-badge").addClass("ribbon-badge-pro");
     $("#market-badge-text").text("PRO");
     $(".market-badge").show();
   }
   else if ($(".market-badge>.ribbon-badge").hasClass("sample")){
-    $(".market-badge>.ribbon-badge").addClass("ribbon-badge-sample");
     $("#market-badge-text").text("SAMPLE");
     $(".market-badge").show();
   }
   else if ($(".market-badge>.ribbon-badge").hasClass("new_market")){
-    $(".market-badge>.ribbon-badge").addClass("ribbon-badge-new");
     $("#market-badge-text").text("NEW");
     $(".market-badge").show();
   }
 
   $(document).ready(function(){
+    buttonHover(".like-icon", "fa-heart", "Like", 75);
+    buttonHover(".unlike-icon", "fa-heart-o", "Unlike", 85);
     buttonHover(".edit-icon", "fa-pencil", "Edit", 70);
     buttonHover(".delete-icon", "fa-trash-o", "Delete", 85);
     buttonHover(".archive-icon", "fa-undo", "Archive", 95);
@@ -126,6 +133,16 @@
     else if ($(".publish").length){
       switchAction(false);
     }
+
+    $.get( "<%= market_path(market, format: :svg) %>", function( data ) {
+      var qr = data.childNodes[0];
+      qr.setAttribute( "width", "200");
+      qr.setAttribute( "height", "200");
+      qr.setAttribute( "viewBox", "0 0 370 370");
+      $( "#market-qr" ).html( qr );
+
+    });
+
   });
 
   var switchAction = function(init){

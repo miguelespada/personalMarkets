@@ -53,6 +53,7 @@ gem 'bootstrap-colorpicker-rails'
 gem 'country-select'
 
 
+
 #tags
 gem 'mongoid_taggable'
 gem "tagmanager-rails", "~> 3.0.1.0"

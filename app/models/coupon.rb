@@ -30,4 +30,8 @@ class Coupon
   def user
     market.user
   end
+
+  def empty?
+    description == ""
+  end 
 end
