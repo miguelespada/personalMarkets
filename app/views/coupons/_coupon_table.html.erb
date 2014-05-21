@@ -1,35 +1,36 @@
-  <%= div_for coupon do %>
-    <div class="container">
-        <div class="pricing-table row">
-            <div class="plan col-md-4 col-md-offset-4">
-              <div class="coupon-style">
-                <h2><%= photo(coupon.photography, 200, 100) %></h2>
-                <span><strong> Coupon Price: </span>  <span> <%= coupon.price %> € </strong></span> 
-              </div>
-              <ul>
+<%= div_for coupon do %>
 
-                <li class="hidden plan-feature"><span> Coupon owner: </span> <span> <%= coupon.market.user.email %> </span></li>
-                <li class="plan-feature"><span> <%= link_to coupon.market.name, market_path(coupon.market) %> </span></li>
-                <li class="plan-feature"><span> <%= coupon.description %> </span></li>
-                <li class="plan-feature"><span> Available</span> <span> <%= coupon.available %> </span></li>
-                <li class="plan-feature">
-                <% if coupon.available > 0 %>
-    			<div id = "buy-coupon-action">
-    			   <%= form_tag({controller: "coupons", action: "coupon_payment"}, method: "post") do %>
-    			   <%= select_tag "number", options_for_select((1..coupon.available))  %>
-    			   <%= submit_tag "Buy", class:"btn btn-info" %>
-    			   <% end %>
-    			</diV>
-    			<% else %>
-    			   Sold out
-    			<% end %>	
-                </li>
-              </ul>
-            </div>
+<div class="container">
+    <div class="pricing-table row">
+        <div class="plan col-md-4 col-md-offset-4">
+          <div class="coupon-style">
+            <h2><%= photo(coupon.photography, 200, 100) %></h2>
+            <span><strong> Coupon Price: </span>  <span> <%= coupon.price %> € </strong></span> 
+          </div>
+          <ul>
+
+            <li class="hidden plan-feature"><span> Coupon owner: </span> <span> <%= coupon.market.user.email %> </span></li>
+            <li class="plan-feature"><span> <%= link_to coupon.market.name, market_path(coupon.market) %> </span></li>
+            <li class="plan-feature"><span> <%= coupon.description %> </span></li>
+            <li class="plan-feature"><span> Available</span> <span> <%= coupon.available %> </span></li>
+            <li class="plan-feature">
+            <% if coupon.available > 0 %>
+			<div id = "buy-coupon-action">
+			   <%= form_tag({controller: "coupons", action: "coupon_payment"}, method: "post") do %>
+			   <%= select_tag "number", options_for_select((1..coupon.available))  %>
+			   <%= submit_tag "Buy", class:"btn btn-info" %>
+			   <% end %>
+			</diV>
+			<% else %>
+			   Sold out
+			<% end %>	
+            </li>
+          </ul>
         </div>
     </div>
-  <% end %>
+</div>
 
+<% end %>
 
 <style>
 

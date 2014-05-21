@@ -1,19 +1,14 @@
+
 <div class="market-section-title">Gallery</div>
 <div class="market-section-container">
-	<div id="carousel-container-market-photo-gallery" class="carousel slide col-md-6" data-ride="carousel">
+	<div id="carousel-container-market-photo-gallery" class="carousel slide photo-gallery" data-ride="carousel">
 		<div class="carousel-inner">
 			<% market.gallery.photographies.each do |photo| %>
 				<div class="item">
-	  			<%= photo(photo, 800, 400) %>
+	  			<%= photo(photo, 800, 400) if photo.present? %>
 	  		</div>
 			<% end %>
 		</div>
-  </div>
-
-  <div class="col-md-6 market-photos">
-  	<% market.gallery.photographies.each do |photo| %>
-	  	<%= photo(photo, 120, 60) %>
-		<% end %>
   </div>
 </div>
 

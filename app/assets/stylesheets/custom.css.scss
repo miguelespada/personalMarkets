@@ -12,6 +12,12 @@
 
 #gallery{
 }
+
+.photo-gallery{
+  width:800;
+  float:center !important;
+}
+
 .title{
   @extend h1;
   font-weight: 100;
