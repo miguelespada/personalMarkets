@@ -79,8 +79,12 @@
         <div class="fb-like" data-href=<%=market_url(market.to_param)%> data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
         </div>
       </div>
+      <div id="market-qr"></div>
     </div>
+
+
   </div>
+
 
 <style>
 @media (max-width: 992px){
@@ -126,6 +130,16 @@
     else if ($(".publish").length){
       switchAction(false);
     }
+
+    $.get( "<%= market_path(market, format: :svg) %>", function( data ) {
+      var qr = data.childNodes[0];
+      qr.setAttribute( "width", "200");
+      qr.setAttribute( "height", "200");
+      qr.setAttribute( "viewBox", "0 0 370 370");
+      $( "#market-qr" ).html( qr );
+
+    });
+
   });
 
   var switchAction = function(init){
