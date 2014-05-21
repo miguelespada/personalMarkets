@@ -141,7 +141,7 @@ end
 When(/^I like the market$/) do
   visit published_markets_path
   within(:css, "#market_#{@market_0.id}") do
-    click_on "Like"
+    find('.like-icon').click
   end
 end
 
@@ -155,23 +155,23 @@ end
 Then(/^I cannot like that market again$/) do
   visit published_markets_path
   within(:css, "#market_#{@market_0.id}") do
-    expect(page).to have_link 'Unlike'
-    expect(page).not_to have_link 'Like'
+    expect(page).to have_css '.unlike-icon'
+    expect(page).not_to have_css '.like-icon'
   end
 end
 
 Then(/^I cannot unlike that market again$/) do
   visit published_markets_path
   within(:css, "#market_#{@market_0.id}") do
-    expect(page).not_to have_link 'Unlike'
-    expect(page).to have_link 'Like'
+    expect(page).not_to have_css '.unlike-icon'
+    expect(page).to have_css '.like-icon'
   end
 end
 
 When(/^I unlike the market$/) do
   visit published_markets_path
   within(:css, "#market_#{@market_0.id}") do
-    click_on "Unlike"
+    find('.unlike-icon').click
   end
 end
 
@@ -396,9 +396,4 @@ Then(/^I should see the badge of sample$/) do
   visit market_path @market
   page.should have_css ".sample"
   find("#market-badge-text").should have_content "SAMPLE"
-end
-
-Then(/^I should see the badge of staff pick$/) do
-  step "The market becomes staff pick"
-  find("#market-badge-text").should have_content "STAFF PICK"
 end

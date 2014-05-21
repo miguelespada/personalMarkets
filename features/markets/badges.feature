@@ -16,9 +16,9 @@ Feature: Market Badges
     And I have one market
     Then I should see the badge of sample
 
-  @badges @javascript
+  @badges
   Scenario: Staff pick market badge
     Given I am logged in as admin user
     Given There are some published markets
     When I like the market
-    Then I should see the badge of staff pick
+    Then The market becomes staff pick
