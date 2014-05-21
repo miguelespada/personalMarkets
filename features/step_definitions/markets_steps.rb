@@ -200,6 +200,7 @@ Then(/^I have a draft market$/) do
     :latitude => 0.1,
     :longitude => 0.1,
     :date => "13/08/2014",
+    :schedule => "de 5 a 7",
     :tags_array => ["un_tag"]
     )
   @user.markets << @market
@@ -215,6 +216,7 @@ Given(/^I have a draft pro market$/) do
     :latitude => 0.1,
     :longitude => 0.1,
     :date => "13/08/2014",
+    :schedule => "de 5 a 7",
     :tags_array => ["un_tag"]
     )
   @user.markets << @market
@@ -298,6 +300,7 @@ Given(/^I have a draft market with a coupon$/) do
     :latitude => 0.1,
     :longitude => 0.1,
     :date => "13/08/2014",
+    :schedule => "de 5 a 7",
     :tags_array => ["un_tag"],
     :coupon => create(:coupon)
     )
