@@ -97,13 +97,14 @@
 
 $( document ).ready(function() {
       initializeAutocomplete('market_city');
-
       $('#wizard').bootstrapWizard({
         tabClass: 'nav nav-pills nav-stacked',
         onTabChange: function(){
           locationTabActive();
         }
       });
+      
+       $('ul.nav a[href="' + window.location.hash + '"]').tab('show');
   
       $(".add_market_button").addClass("btn-success");
       $(".add_market_button").removeClass("btn-info");

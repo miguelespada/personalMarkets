@@ -89,6 +89,15 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
+  def edit_coupon_link
+    if market.has_coupon?
+     if can? :edit, coupon
+      link_to("Edit", edit_user_market_path(market.user, market, :anchor => "form-market-coupon"), 
+        :class => "edit edit-coupon market-action")
+      end
+    end
+  end
+
   def photo_gallery_section
     if market.photo_gallery_available?
       render partial: "market_photo_gallery", locals: { market: self }
