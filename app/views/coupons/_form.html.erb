@@ -1,5 +1,6 @@
+
 <%= f.input :description, { placeholder: "Description" } %>
-<%= f.input :price, priority: [ "10" ], collection: [ "5", "10", "15", "20", "25"] %>
+<%= f.input :price, collection: [ "5", "10", "15", "20", "25"], :include_blank => false %>
 <%= f.input :available, { placeholder: "Available" } %>
 <%= f.simple_fields_for :photography do |form_builder| %>
   <%= render 'photos/form', f: form_builder %>

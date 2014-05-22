@@ -2,7 +2,7 @@ class Coupon
   include Mongoid::Document
 
   field :description, type: String
-  field :price, type: Float
+  field :price, type: Integer
   field :available, type: Integer
 
   belongs_to :market, class_name: "Market", inverse_of: :coupon
