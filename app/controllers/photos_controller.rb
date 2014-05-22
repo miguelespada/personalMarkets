@@ -1,7 +1,8 @@
 class PhotosController < ApplicationController
   load_resource :except => [:index, :list_user_photos]
   authorize_resource :except => [:index, :list_user_photos, :show]
-  
+  after_filter "save_my_previous_url", only: [:new, :edit]
+
   def index
     @photos = Photo.all.order_by(:created_at.desc).page(params[:page]).per(6)
   end
@@ -48,4 +49,8 @@ class PhotosController < ApplicationController
     def load_user
       User.find(params[:user_id])
     end
+    def save_my_previous_url
+      session[:my_previouse_url] = URI(request.referer).path
+    end
+
 end

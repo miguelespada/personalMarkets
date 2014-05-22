@@ -59,6 +59,15 @@ module ApplicationHelper
     end 
   end
 
+   def before_form_link
+    content_tag :div, class:"col-md-offset-9" do
+      link_to  session[:my_previouse_url] do
+         content_tag :i, :class => "fa fa-reply fa-3x" do
+        end 
+      end
+    end 
+  end
+
   def twitter_text(market)
     "http://twitter.com/home?status=@PersonalMarkets, #{market.short_url}, %23#{market.name.tr(' ', '_').camelize}: #{market.description}"
   end
