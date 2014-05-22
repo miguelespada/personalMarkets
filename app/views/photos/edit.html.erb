@@ -23,12 +23,12 @@
     </div>
   </div>
 </div>
-
+<%= back_link %>
 <script>
 	
 	var $image = $(".cropper"),
 		$dataX1 = $("#x"),
-		$dataY1 = $("#y"),
+		$dataX1 = $("#y"),
 		$dataHeight = $("#h"),
 		$dataWidth = $("#w");
 	
@@ -38,10 +38,10 @@
 		_width = <%= @photo.crop["w"] %>;
 		_heigth = <%=	@photo.crop["h"] %>;
 	<% else %>
-		_x1 = 50;
-		_y1 = 50;
-		_width = 200;
-		_heigth = 200;
+		_x1 = $dataX1;
+		_y1 = $dataX1;
+		_width = $dataWidth;
+		_heigth = $dataHeight;
 	<% end %>
 
 	$image.cropper({
