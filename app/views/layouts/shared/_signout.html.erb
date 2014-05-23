@@ -4,9 +4,14 @@
 
 <% if current_user.has_role? "premium" %>
   <i class="fa fa-star premium-star"></i>
+<% end %>
+
+<% if current_user.image? %>
+  <img src="<%= current_user.image %>" class="img img-circle" style="width: 30px; height: 30px;">
 <% else %>
   <i class="fa fa-user"></i>
 <% end %>
+
 
 &nbsp;<div id="nav_user_container"><span id="nav_user_name"><%=current_user.email%></span> <b class="caret"></b></div>
 
@@ -17,7 +22,7 @@
   <div class="well well-sm">
       <div class="media">
           <a class="thumbnail pull-left" href="#">
-              <img class="media-object" src="http://critterapp.pagodabox.com/img/user.jpg">
+              <img class="media-object" src="<%= current_user.image? ? current_user.image : 'http://critterapp.pagodabox.com/img/user.jpg' %>">
           </a>
           <div class="media-body">
           <% if current_user.has_role? "admin" %>
