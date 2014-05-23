@@ -1,0 +1,43 @@
+es:
+  sign_up: "Registrarse"
+  general_information: "Información General"
+  location: "Localización"
+  name_and_description: "Nombre y descripción"
+  category_and_tags: "Categoría y etiquetas"
+  featured_photo: "Foto principal"
+  price_range: "Rango de Precios"
+  photo_gallery_pro: "Galería de Fotos (PRO)"
+  external_url_pro: "Enlace Externo (PRO)"
+  coupon_pro: "Cupón (PRO)"
+  date_and_time: "Fecha y Horario"
+  latest_markets: "Últimos mercados"
+  hot_spots: "Puntos Calientes"
+  categories: "Categorías"
+  explore: "Explora"
+  tags: "Etiquetas"
+  wishlist: "Deseos"
+  maps: "Mapas"
+  all_markets: "Todos los Mercados"
+  all_wishes: "Todos los Deseos"
+  bargains: "Gangas"
+  all_bargains: "Todas las Gangas"
+  whats_new: "Lo nuevo"
+  simple_form:
+    "yes": 'Si'
+    "no": 'No'
+    required:
+      text: 'requerido'
+      mark: '*'
+    placeholders:
+      user:
+        email: 'Dirección de correo'
+        password: 'Contraseña'
+        password_confirmation: 'Confirmación contraseña'
+        submit: "Enviar"
+      market:
+        name: "Nombre"
+        description: "Descripción"
+        schedule: "Horario de apertura (ej. de 5 a 7)"
+        tags: "Etiquetas"
+    error_notification:
+      default_message: "Por favor, revise los problemas abajo:"

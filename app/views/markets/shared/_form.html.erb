@@ -8,31 +8,31 @@
   </div>
 <div id="wizard" class="row">
   <ul class="col-md-3">
-    <li id="form-link-name"><a href="#form-market-name-description" data-toggle="tab">Name and description</a></li>
-    <li id="form-link-featured"><a href="#form-market-photo" data-toggle="tab">Featured photo</a></li>
+    <li id="form-link-name"><a href="#form-market-name-description" data-toggle="tab"><%= t :name_and_description %></a></li>
+    <li id="form-link-featured"><a href="#form-market-photo" data-toggle="tab"><%= t :featured_photo %></a></li>
 
     <% if market.pro? %>
-      <li id="form-link-gallery" class="enabled"><a href="#form-market-photos" data-toggle="tab">Photo gallery (PRO)</a></li>
+      <li id="form-link-gallery" class="enabled"><a href="#form-market-photos" data-toggle="tab"><%= t :photo_gallery_pro %></a></li>
     <% else %>
-      <li id="form-link-gallery" class="disabled"><a href="#" data-toggle="">Photo gallery (PRO)</a></li>
+      <li id="form-link-gallery" class="disabled"><a href="#" data-toggle=""><%= t :photo_gallery_pro %></a></li>
     <% end %>
     
-    <li id="form-link-category"><a href="#form-market-category-tag" data-toggle="tab">Category and tags</a></li>
-    <li id="form-link-date"><a href="#form-market-date" data-toggle="tab">Date and time</a></li>
-    <li id="form-link-prices"><a href="#form-market-prices" data-toggle="tab">Price range</a></li>
+    <li id="form-link-category"><a href="#form-market-category-tag" data-toggle="tab"><%= t :category_and_tags %></a></li>
+    <li id="form-link-date"><a href="#form-market-date" data-toggle="tab"><%= t :date_and_time %></a></li>
+    <li id="form-link-prices"><a href="#form-market-prices" data-toggle="tab"><%= t :price_range %></a></li>
     
     <% if market.pro? %>
-        <li id="form-external-url"><a href="#form-market-external-url" data-toggle="tab">External url (PRO)</a></li>
+        <li id="form-external-url"><a href="#form-market-external-url" data-toggle="tab"><%= t :external_url_pro %></a></li>
     <% else %>
-        <li id="form-external-url" class="disabled"><a href="#" data-toggle="">External url (PRO)</a></li>
+        <li id="form-external-url" class="disabled"><a href="#" data-toggle=""><%= t :external_url_pro %></a></li>
     <% end %>
 
-    <li id="form-link-location"><a href="#form-market-location" data-toggle="tab">Location</a></li>
+    <li id="form-link-location"><a href="#form-market-location" data-toggle="tab"><%= t :location %></a></li>
 
     <% if market.pro? %>
-      <li id="form-link-coupon" class="enabled"><a href="#form-market-coupon" data-toggle="tab">Coupon (PRO)</a></li>
+      <li id="form-link-coupon" class="enabled"><a href="#form-market-coupon" data-toggle="tab"><%= t :coupon_pro %></a></li>
     <% else %>
-      <li id="form-link-coupon" class="disabled"><a href="#" data-toggle="">Coupon (PRO)</a></li>
+      <li id="form-link-coupon" class="disabled"><a href="#" data-toggle=""><%= t :coupon_pro %></a></li>
     <% end %>
     
   </ul>
@@ -41,8 +41,8 @@
 
     <div class="tab-content col-md-9">
       <div class="tab-pane" id="form-market-name-description"> 
-        <%= f.input :name, required: true,  input_html: { class: 'market-name', placeholder: "Name" } %>
-        <%= f.input :description, :as => :text, input_html: { class: 'market-description', placeholder: "Description" } %>
+        <%= f.input :name, required: true,  input_html: { class: 'market-name' } %>
+        <%= f.input :description, :as => :text, input_html: { class: 'market-description' } %>
       </div>
       
       <div class="tab-pane" id="form-market-photo">
@@ -59,14 +59,14 @@
 
       <div class="tab-pane" id="form-market-category-tag">
         <%= f.association :category, :include_blank => false %>
-        <%= f.input :tags, input_html: { class: 'tm-input', placeholder: "Tags" } %>
+        <%= f.input :tags, input_html: { class: 'tm-input' } %>
         <p id="tags-container"></p>
       </div>
   
       <div class="tab-pane" id="form-market-date">
         <%= f.input :date, input_html: { class: 'hidden' }  %> 
         <div id="datepicker"></div>
-        <%= f.input :schedule,  input_html: { class: 'market-scheduke', placeholder: "Open hours (ex. from 9 to 17...)" }  %> 
+        <%= f.input :schedule,  input_html: { class: 'market-scheduke' }  %> 
       </div>
     
       <div class="tab-pane" id="form-market-prices">

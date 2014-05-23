@@ -1,4 +1,27 @@
 en:
+  sign_up: "Sign Up"
+  general_information: "General Information"
+  location: "Location"
+  name_and_description: "Name and Description"
+  category_and_tags: "Category and Tags"
+  featured_photo: "Featured Photo"
+  price_range: "Price Range"
+  photo_gallery_pro: "Photo Gallery (PRO)"
+  external_url_pro: "External Url (PRO)"
+  coupon_pro: "Coupon (PRO)"
+  date_and_time: "Date and Schedule"
+  latest_markets: "Latest Markets"
+  hot_spots: "Hot Spots"
+  categories: "Categories"
+  explore: "Explore"
+  tags: "Tags"
+  wishlist: "Wishlist"
+  maps: "Maps"
+  all_markets: "All Markets"
+  all_wishes: "All Wishes"
+  bargains: "Bargains"
+  all_bargains: "All Bargains"
+  whats_new: "What's new"
   simple_form:
     "yes": 'Yes'
     "no": 'No'
@@ -13,6 +36,11 @@ en:
         email: 'Email address'
         password: 'Password'
         password_confirmation: 'Password confirmation'
+      market:
+        name: "Name"
+        description: "Description"
+        schedule: "Open hours (ex. from 9 to 17...)"
+        tags: "Tags"
     error_notification:
       default_message: "Please review the problems below:"
     # Labels and hints examples

@@ -6,12 +6,12 @@
       <li class="user_city"><span class="navbar-text" id="user-city-text"></span></li>
       <li class="languages dropup">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <span class="current-language">EN</span>
+          <span class="current-language"><%= I18n.locale.to_s.upcase %></span>
           <b class="caret"></b>
         </a>
         <ul class="dropdown-menu language-select">
-          <li><a href="#" name="EN">English (EN)</a></li>
-          <li><a href="#" name="ES">Español (ES)</a></li>
+          <li><%= link_to "English (EN)", :language => :en %></li>
+          <li><%= link_to "Español (ES)", :language => :es %></li>
         </ul>
       </li>
       <script>

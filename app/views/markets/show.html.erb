@@ -34,7 +34,7 @@
         <span id="market-badge-text"></span>
       </div>
     </div>
-    <div class="market-section-title">General Information</div>
+    <div class="market-section-title"><%= t :general_information %></div>
     <div class="market-section-container">
     <div class="col-md-6 market-featured-photo-detail">
       <%= market.market_featured_photo_filtered(400, 200) %>
@@ -45,20 +45,20 @@
       <a href="<%=  market.url %>" target="_blank"><%=  market.url %></a>
       <div class="market-category-detail"> Category: <%= market.category_name %> </div>
       <div class="market-prices-detail"> Prices: <%= market.min_price %> € - <%= market.max_price %> € </div>
-      <div class="market-tags-detail"> Tags: <%= market.tags %> </div> 
+      <div class="market-tags-detail"> <%= t :tags %>: <%= market.tags %> </div> 
       <div class="market-date-detail">  <%= market.date %> </div>
       <div class="market-date-detail">  <%= market.schedule %> </div>
       <div class="market-likes-number-detail"> <i class="fa fa-heart-o"></i> <%= market.favorited.count %>&nbsp;&nbsp;</div>
     </div>
     </div>
   
-      <%= market.market_quality_section %>
+    <%= market.market_quality_section %>
 
     <%= market.photo_gallery_section %>
   
     <%= market.coupon_section %>
   
-    <div class="market-section-title">Location</div>
+    <div class="market-section-title"><%= t :location %></div>
     <div class="market-section-container">
       <div class="market-address-detail"> <%= market.address %>, <%= market.city %> </div>
       <%= market.location %>
