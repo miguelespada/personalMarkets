@@ -23,6 +23,8 @@ class Market
   field :public_id, type: String
   field :schedule, type: String
   field :url, type: String
+  field :min_price, type: Float
+  field :max_price, type: Float
 
   validates_uniqueness_of :public_id
 
@@ -113,6 +115,14 @@ class Market
     self.latitude? && self.longitude?
   end
 
+  def has_prices?
+    (self.min_price? && self.min_price > 0) || (self.max_price? && self.max_price < 1000)
+  end
+
+  def has_url?
+    self.url?
+  end
+
   def has_name?
     self.name?
   end
@@ -139,6 +149,10 @@ class Market
 
   def has_photos?
     has_gallery? && !gallery.empty?
+  end
+
+  def how_many_photos
+    self.gallery.size
   end
 
   def create_coupon!(params)

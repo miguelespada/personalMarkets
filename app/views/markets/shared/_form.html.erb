@@ -19,6 +19,7 @@
     
     <li id="form-link-category"><a href="#form-market-category-tag" data-toggle="tab">Category and tags</a></li>
     <li id="form-link-date"><a href="#form-market-date" data-toggle="tab">Date and time</a></li>
+    <li id="form-link-prices"><a href="#form-market-prices" data-toggle="tab">Price range</a></li>
     
     <% if market.pro? %>
         <li id="form-external-url"><a href="#form-market-external-url" data-toggle="tab">External url (PRO)</a></li>
@@ -66,6 +67,12 @@
         <%= f.input :date, input_html: { class: 'hidden' }  %> 
         <div id="datepicker"></div>
         <%= f.input :schedule,  input_html: { class: 'market-scheduke', placeholder: "Open hours (ex. from 9 to 17...)" }  %> 
+      </div>
+    
+      <div class="tab-pane" id="form-market-prices">
+        <div id="prices-slider"></div>
+        <%= f.input :min_price %>
+        <%= f.input :max_price %>
       </div>
     
       <div class="tab-pane" id="form-market-external-url">

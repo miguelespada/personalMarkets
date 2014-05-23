@@ -243,6 +243,15 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
+  def market_quality_section
+    if can? :quality_section, market
+      render partial: 'market_quality', locals: {market: market.decorate }
+    end
+  end
+
+  def market_quality &block
+    MarketEvaluator.new(market).evaluate_quality &block
+  end
 
   private 
 

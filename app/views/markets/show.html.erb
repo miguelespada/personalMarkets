@@ -44,13 +44,16 @@
       <div class="market-description-detail"> <%=  market.description %> </div>
       <a href="<%=  market.url %>" target="_blank"><%=  market.url %></a>
       <div class="market-category-detail"> Category: <%= market.category_name %> </div>
+      <div class="market-prices-detail"> Prices: <%= market.min_price %> € - <%= market.max_price %> € </div>
       <div class="market-tags-detail"> Tags: <%= market.tags %> </div> 
       <div class="market-date-detail">  <%= market.date %> </div>
       <div class="market-date-detail">  <%= market.schedule %> </div>
-      <div class="market-likes-number-detail"> <i class="fa fa-heart-o"></i> <%= market.favorited.count %>&nbsp;&nbsp;</div> 
+      <div class="market-likes-number-detail"> <i class="fa fa-heart-o"></i> <%= market.favorited.count %>&nbsp;&nbsp;</div>
     </div>
     </div>
   
+      <%= market.market_quality_section %>
+
     <%= market.photo_gallery_section %>
   
     <%= market.coupon_section %>

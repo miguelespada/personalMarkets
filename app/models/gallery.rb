@@ -13,4 +13,8 @@ class Gallery
     self.photographies.inject(false) {|initial, photo| initial && photo.present? }
   end
 
+  def size
+    self.photographies.select{ |photo| photo.present? }.size
+  end
+
 end

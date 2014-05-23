@@ -50,7 +50,7 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
   def publish_market market_id
     my_market = markets_repo.find market_id
     market_evaluation = check_fields my_market
-    if !market_evaluation.warn_about_coupon? && !market_evaluation.could_be_better?
+    if !market_evaluation.warn_about_coupon?
       my_market.publish
       listener.publish_succeeded my_market
     else
