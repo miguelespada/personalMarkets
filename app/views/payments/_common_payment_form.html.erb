@@ -13,23 +13,23 @@
 <div class="row">
 	<div class="col-md-4">
 		Expiration Month:<br>
-		<select class="exp-month-selector form-control">
-			<%= ('01'..'12').to_a .each do |m| %>
+		<select id="month-selector" class="exp-month-selector form-control">
+			<%= ('01'..'12').to_a.each do |m| %>
 				<%= options_for_select([[m, m]]) %>
 			<% end %>
 		</select>
 	</div>
 	<div class="col-md-5">
 		Expiration Year:<br>
-		<select class="exp-year-selector form-control">
-			<%= (Time.now.year..Time.now.year+20).to_a .each do |y| %>
+		<select id="year-selector" class="exp-year-selector form-control">
+			<%= (Time.now.year..Time.now.year+20).to_a.each do |y| %>
 				<%= options_for_select([[y, y]]) %>
 			<% end %>
 		</select>
 	</div>
 	<div class="col-md-3">
 		CVC:<br>
-		<input class="cvc-input form-control" type="password" size="3" maxlength="3"></input>
+		<input id="cvc-field" class="cvc-input form-control" type="password" size="3" maxlength="3"></input>
 	</div>
 </div>
 <div class="hidden">
