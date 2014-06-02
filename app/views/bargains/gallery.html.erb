@@ -3,29 +3,20 @@
  <div class="panel-heading table-title">
     People Bargains
   </div>
-<div class = "home_gallery bargain_gallery">
-  <% @bargains.each do |bargain| %>
-      <div class = "home_gallery_item bargain_item">
-        <div class = "home_gallery_featured_photo bargain_featured_photo" data-name="<%= bargain.description %>">
-          <%= photo(bargain.photography, 300, 150) %>
-          <div class = "home_gallery_label bargain_label">
-            <%= bargain.description %>
+  <div class = "home_gallery bargain_gallery">
+    <% @bargains.each do |bargain| %>
+        <div class = "home_gallery_item bargain_item">
+          <div class = "home_gallery_featured_photo bargain_featured_photo" data-name="<%= bargain.description %>">
+            <%= photo(bargain.photography, 300, 150) %>
+            <div class = "home_gallery_label bargain_label">
+              <%= link_to bargain.description, bargain_path(bargain)  %>
+            </div>
           </div>
         </div>
-      </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
 
 </div>
-<script>
-$( document ).ready(function() {
-  $('.bargain_featured_photo').css('cursor', 'pointer');
 
-  $(".bargain_featured_photo").click(function(){
-    $("#query").val($(this).data("name"));
-    $("#search_market").submit();
-  });
-});
-</script>
 

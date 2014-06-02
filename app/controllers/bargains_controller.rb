@@ -24,7 +24,6 @@ class BargainsController < ApplicationController
   end
 
   def show
-    redirect_to bargains_path
   end
 
   def edit

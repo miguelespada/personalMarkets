@@ -42,3 +42,13 @@ Then(/^I should see the bargain with the new description in the bargain list$/) 
   step "I go to my bargain list"
   expect(page).to have_content "Dummy Bargain"
 end
+
+When(/^I go to a bargain page$/) do
+  visit bargain_path(@bargain)
+end
+
+Then(/^I should be able to comment the bargain$/) do
+  page.has_css?('fb-comments')
+  page.has_css?('fb-like')
+
+end

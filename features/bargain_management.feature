@@ -23,3 +23,9 @@ Feature: Manage bargains
     And I edit a bargain
     Then I should be notified that the bargain has been updated
     And I should see the bargain with the new description in the bargain list
+
+  @comment_bargain
+  Scenario: Comment bargain
+    When There are some bargains
+    And I go to a bargain page
+    Then I should be able to comment the bargain
