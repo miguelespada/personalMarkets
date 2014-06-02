@@ -403,12 +403,10 @@ Then(/^I should see the cropped photo$/) do
 end
 
 Then(/^I should see the badge of PRO$/) do
-  page.should have_css ".pro"
-  find("#market-badge-text").should have_content "PRO"
+  page.should have_css ".ribbon-badge-pro"
 end
 
 Then(/^I should see the badge of sample$/) do
   visit market_path @market
-  page.should have_css ".sample"
-  find("#market-badge-text").should have_content "SAMPLE"
+  page.should have_css ".ribbon-badge-sample"
 end
