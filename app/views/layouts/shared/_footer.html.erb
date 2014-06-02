@@ -2,36 +2,12 @@
 <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
   <div class="container">
     <p class="navbar-text">Copyright &copy; Personal Markets 2014 -  <a href="#">Privacy</a></p>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="user_city"><span class="navbar-text" id="user-city-text"></span></li>
-      <li class="languages dropup">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <span class="current-language"><%= I18n.locale.to_s.upcase %></span>
-          <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu language-select">
-          <li><%= link_to "English (EN)", :language => :en %></li>
-          <li><%= link_to "Español (ES)", :language => :es %></li>
-        </ul>
-      </li>
-      <script>
-      $(".language-select li a").click(function(){
-        var languageSelected = $(this).attr("name");
-        $('.current-language').html(languageSelected);
-      });
-      </script>
-              
-      <li class="contact-us">
-        <a href="/contact">
-        	<i class="fa fa-envelope"></i>&nbsp;
-        	<span>Contact us</span>
-        </a>
-      </li>
+    <ul class="nav navbar-nav navbar-right footer-right">
+      <%= render "layouts/shared/user_city" %>
+      <%= render "layouts/shared/footer_menu" %>
     </ul>
   </div>
 </nav>
-
-
 
 <style>
 	.popover{
@@ -54,6 +30,23 @@
 
   .user_city{
     padding-left:15px;
+  }
+
+  @media (min-width: 767px){
+    .language-toggle{
+      font-weight: normal !important;
+      width:70px !important;
+    }
+  
+    .contact-button{
+      font-weight: normal !important;
+      width:150px !important;
+    }
+  }
+  @media (max-width: 767px){
+    .footer-right{
+      display:none;
+    }
   }
 </style>
 <!-- Footer STOP -->

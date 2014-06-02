@@ -21,15 +21,44 @@
         <%= render "layouts/shared/search_bar" %>
       </ul>
        
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right topbar-right">
         <%= render "layouts/shared/guest_menu" %>
         <% if user_signed_in? %>
           <%= render "layouts/shared/signout" %>
         <% else %>
           <%= render "layouts/shared/signin" %>
         <% end %>
+        <%= render "layouts/shared/footer_menu" %>
       </ul>
     </div>
     </div>
   </div>
 </nav>
+
+<style>
+  @media (min-width: 768px){
+    .topbar-right > .footer-collapse{
+      display:none;
+    }
+  }
+</style>
+
+<script>
+$(document).ready(function(){
+  footerCollapse();
+  window.onresize = footerCollapse();
+});
+
+var toggleDropup = function(widthBoolean){
+  $(".languages").toggleClass("dropup", widthBoolean);
+  $(".languages").toggleClass("dropdown", !widthBoolean);
+}
+
+var footerCollapse = function(){
+  if (window.innerwidth > 768)
+    toggleDropup(true);
+  else
+    toggleDropup(false);
+}
+
+</script>
