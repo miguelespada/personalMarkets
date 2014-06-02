@@ -2,22 +2,18 @@
 @import "bootstrap/theme";
 
 .market-tooltip{
-
   .market-thumbnail{
-    @extend .thumbnail;
-    text-align:center; 
-    border: none;
+    height:40px;
   }
-   .market-name{
-    @extend h3;
+  .market-name{
+    font-weight: 100;
+    font-size: 18px;
   }
   .market-description{
-    @extend .caption;
+    font-size: 12px;
   }
 
-  .market-meta { display : none }
-  .market-widgets { display : none }
-  .market-stats { display : none }
-  .market-info { display : none }
-  .market-actions { display : none  }
+  .market-featured-photo{
+    display : none;
+  }
 }

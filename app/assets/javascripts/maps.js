@@ -21,7 +21,17 @@ PM.fillMapView = function(data) {
 
 PM.addTooltipToMarker = function(layer) {
   var popup = '<div>' + layer.feature.properties.content +'<\/div>';
-    layer.bindPopup(popup,{ maxWidth: 200, minWidth: 200 });
+    layer.bindPopup(popup,{ closeButton: false, maxWidth: 400, minWidth: 120 });
+    layer.on('mouseover', function() {
+      layer.openPopup();
+      console.log(layer);
+    });
+    layer.on('mouseout', function() {
+      layer.closePopup();
+    });
+    layer.on('click', function() {
+      layer.closePopup();
+    });
 };
 
 PM.initializeMap = function() {
