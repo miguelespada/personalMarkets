@@ -363,6 +363,10 @@ border-color: #d43f3a;
   box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
 }
 
+.ribbon-badge-none{
+  display: none;
+}
+
 .ribbon-badge-new {
   @extend .ribbon-badge-normal;
   background-color: #d9534f;
@@ -371,6 +375,10 @@ border-color: #d43f3a;
   background-image:    -moz-linear-gradient(top, #d9534f, #d43f3a); 
   background-image:     -ms-linear-gradient(top, #d9534f, #d43f3a); 
   background-image:      -o-linear-gradient(top, #d9534f, #d43f3a); 
+}
+
+.ribbon-badge-new > #market-badge-text:before{
+  content:"NEW";
 }
 
 .ribbon-badge-staff_pick {
@@ -383,6 +391,10 @@ border-color: #d43f3a;
   background-image:      -o-linear-gradient(top, #C95EA0, #A85292); 
 }
 
+.ribbon-badge-staff_pick > #market-badge-text:before{
+  content:"STAFF PICK";
+}
+
 .ribbon-badge-pro {
   @extend .ribbon-badge-normal;
   background-color: #5bc0de;
@@ -393,6 +405,10 @@ border-color: #d43f3a;
   background-image:      -o-linear-gradient(top, #5bc0de, #28a4c9);
 }
 
+.ribbon-badge-pro > #market-badge-text:before{
+  content:"PRO";
+}
+
 .ribbon-badge-sample {
   @extend .ribbon-badge-normal;
   background-color: #f0ad4e;
@@ -401,7 +417,10 @@ border-color: #d43f3a;
   background-image:    -moz-linear-gradient(top, #f0ad4e, #eea236); 
   background-image:     -ms-linear-gradient(top, #f0ad4e, #eea236); 
   background-image:      -o-linear-gradient(top, #f0ad4e, #eea236);
-  content: "SAMPLE";
+}
+
+.ribbon-badge-sample > #market-badge-text:before{
+  content:"SAMPLE";
 }
 
 .ribbon-badge-passed {
@@ -412,7 +431,10 @@ border-color: #d43f3a;
   background-image:    -moz-linear-gradient(top, #aaaaaa, #999999); 
   background-image:     -ms-linear-gradient(top, #aaaaaa, #999999); 
   background-image:      -o-linear-gradient(top, #aaaaaa, #999999);
-  content: "SAMPLE";
+}
+
+.ribbon-badge-passed > #market-badge-text:before{
+  content:"PASSED";
 }
 
 .ribbon-badge:before, .ribbon-badge:after {
@@ -674,21 +696,18 @@ border-color: #d43f3a;
 
 .market-badge{
   @extend .wrapper-ribbon-badge;
-  display:none;
   margin-top: -12px;
   margin-right: 2px !important;
 }
 
 .market-list-badge{
   @extend .wrapper-ribbon-badge;
-  display:none;
   margin-top: -18px;
   margin-right: 18px;
 }
 
 .market-gallery-badge{
   @extend .wrapper-ribbon-badge;
-  display:none;
   margin-top: 3px;
   margin-right: 3px;
 }

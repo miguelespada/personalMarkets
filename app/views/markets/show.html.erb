@@ -98,28 +98,7 @@
 }
 </style>
 
-<!-- This is ugly as hell -->
 <script>
-  if ($(".market-badge>.ribbon-badge").hasClass("passed")){
-    $("#market-badge-text").text("PASSED");
-    $(".market-badge").show();
-  }
-  else if ($(".market-badge>.ribbon-badge").hasClass("staff_pick")){
-    $("#market-badge-text").text("STAFF PICK");
-    $(".market-badge").show();
-  }
-  else if ($(".market-badge>.ribbon-badge").hasClass("pro")){
-    $("#market-badge-text").text("PRO");
-    $(".market-badge").show();
-  }
-  else if ($(".market-badge>.ribbon-badge").hasClass("sample")){
-    $("#market-badge-text").text("SAMPLE");
-    $(".market-badge").show();
-  }
-  else if ($(".market-badge>.ribbon-badge").hasClass("new_market")){
-    $("#market-badge-text").text("NEW");
-    $(".market-badge").show();
-  }
 
   $(document).ready(function(){
     buttonHover(".like-icon", "fa-heart", "Like", 75);

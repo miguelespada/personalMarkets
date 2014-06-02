@@ -42,6 +42,8 @@ class MarketDecorator < Draper::Decorator
       "pro ribbon-badge-pro"
     elsif new_market?
       "new_market ribbon-badge-new"
+    else
+      "no_badge ribbon-badge-none"
     end
   end
 

@@ -34,30 +34,3 @@
     <% end %>
   <% end %>
 </div>
-
-
-
-<script>
-  $(".market-gallery-badge").each(function(){
-    if ($(".ribbon-badge", this).hasClass("passed")){
-      $(".ribbon-badge>#market-badge-text", this).text("PASSED");
-      $(this).show();
-    }
-    else if ($(".ribbon-badge", this).hasClass("staff_pick")){
-      $(".ribbon-badge>#market-badge-text", this).text("STAFF PICK");
-      $(this).show();
-    }
-    else if ($(".ribbon-badge", this).hasClass("sample")){
-      $(".ribbon-badge>#market-badge-text", this).text("SAMPLE");
-      $(this).show();
-    }
-    else if ($(".ribbon-badge", this).hasClass("pro")){
-      $(".ribbon-badge>#market-badge-text", this).text("PRO");
-      $(this).show();
-    }
-    else if ($(".ribbon-badge", this).hasClass("new_market")){
-      $(".ribbon-badge>#market-badge-text", this).text("NEW");
-      $(this).show();
-    }
-  });
-</script>
