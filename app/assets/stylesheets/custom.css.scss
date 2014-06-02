@@ -754,3 +754,53 @@ border-color: #d43f3a;
 .fa.fa-star.regular {
   color: yellow;
 }
+
+//*############################ BARGAINS CSS #############################*//
+
+.bargain-title-container{
+  width:100%;
+  text-align: center;
+}
+.bargain-full-container{
+  width:100%;
+  text-align: center;
+}
+.bargain-photo-container{
+  width:400px;
+  position: relative;
+  margin: 0 auto;
+  padding: 30px 0px;
+}
+.bargain-photo-container > img{
+  border:10px solid #FFFFFF;
+  box-shadow: 3px 3px 10px #888888;
+}
+
+.bargain-price-icon{
+  position: absolute;
+  top:280px;
+  left:250px;
+}
+
+.bargain-price-container{
+  width:140px;
+  height:140px;
+  position:relative;
+}
+
+.bargain-price-container > img{
+  width:140px;
+  height:140px;
+}
+
+.bargain-price{
+  position: absolute;
+  top:0px;
+  left:0px;
+  width:140px;
+  text-align: center;
+  line-height: 140px;
+  font-size:30px;
+  font-weight: 100;
+  color:#68511E;
+}

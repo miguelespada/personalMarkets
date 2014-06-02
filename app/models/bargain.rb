@@ -1,6 +1,7 @@
 class Bargain
   include Mongoid::Document
   field :description, type: String
+  field :price, type: String
 
   belongs_to :user, class_name: "User", inverse_of: :bargains
 

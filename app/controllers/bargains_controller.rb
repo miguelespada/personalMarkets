@@ -66,7 +66,7 @@ class BargainsController < ApplicationController
 
   private
     def bargain_params
-      params.require(:bargain).permit(:description, photography_attributes: [:photo])
+      params.require(:bargain).permit(:description, :price, photography_attributes: [:photo])
     end
 
     def load_user

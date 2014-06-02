@@ -13,6 +13,15 @@
           <div class="form-group">
             <%= f.input :description, input_html: { placeholder: "Bargain Description" }, required: true %>
           </div>
+          <div class="form-group">
+            <div class="input-group">
+              <input class="bargain-price-input form-control" type="text" class="form-control" placeholder="Bargain Price" required>
+              <span class="input-group-addon">€</span>
+            </div>
+            <div class="hidden">
+              <%= f.input :price, input_html: { placeholder: "Bargain Price" }, required: true %>
+            </div>
+          </div>
           
           <div class="form-group">
             <%= f.simple_fields_for :photography do |form_builder| %>
@@ -35,5 +44,9 @@
 <script>
   $( document ).ready(function() {
     $('.attachinary-input').attachinary();
+    $(".bargain-price-input").val($("#bargain_price").val());
+    $(".bargain-price-input").change(function(){
+      $("#bargain_price").val($(".bargain-price-input").val());
+    });
   });
 </script>
