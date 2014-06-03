@@ -27,7 +27,7 @@
           <div class="market-list-section-title">Recommend Market</div>
             <div class="market-list-section-container">
               <div class = "market-list-section-container-inner">
-                <%= form_tag recommend_market_to_wish_path(@wish), id: "recommend_market", class:"form-inline" do %>
+                <%= form_tag recommend_market_to_wish_path(@wish), id: "recommend_market", class:"form-group" do %>
                   <%= collection_select(:market, :market_id, Market.published, :id, :name ) %>
                   <%= submit_tag("Recommend") %>
                 <% end %>

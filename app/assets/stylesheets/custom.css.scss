@@ -852,3 +852,18 @@ border-color: #d43f3a;
   max-width: 100%;
   height:auto;
 }
+
+#recommend_market{
+  text-align: center;
+  margin-bottom: 0px !important;
+}
+
+#recommend_market > select{
+  @extend .form-control;
+}
+
+#recommend_market > input{
+  @extend .btn;
+  @extend .btn-default;
+  margin-top: 10px;
+}
