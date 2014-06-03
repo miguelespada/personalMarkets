@@ -1,33 +1,23 @@
 <div class="panel panel-default panel-table panel-table-last">
 
  <div class="panel-heading table-title">
-    People Wishes
+    Make people wishes reality, recommend markets. 
   </div>
 
 
-<div class = "home_gallery wish_gallery">
-  <% @wishes.each do |wish| %>
-      <div class = "home_gallery_item wish_item">
-        <div class = "home_gallery_featured_photo wish_featured_photo" data-name="<%= wish.description %>">
-          <%= photo(wish.photography, 300, 150) %>
-          <div class = "home_gallery_label wish_label">
-            <%= wish.description %>
+  <div class = "home_gallery wish_gallery">
+    <% @wishes.each do |wish| %>
+        <div class = "home_gallery_item wish_item">
+          <div class = "home_gallery_featured_photo wish_featured_photo" data-name="<%= wish.description %>">
+            <%= photo(wish.photography, 300, 150) %>
+            <div class = "home_gallery_label wish_label">
+              <%= link_to wish.description, wish_path(wish) %>
+            </div>
           </div>
         </div>
-      </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
 </div>
 
-<script>
-$( document ).ready(function() {
-  $('.wish_featured_photo').css('cursor', 'pointer');
-
-  $(".wish_featured_photo").click(function(){
-    $("#query").val($(this).data("name"));
-    $("#search_market").submit();
-  });
-});
-</script>
 

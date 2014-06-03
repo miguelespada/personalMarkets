@@ -49,3 +49,18 @@ Then(/^I should see the wish with the new description in the wish list$/) do
   expect(page).to have_content "tag1"
   expect(page).to have_content "tag3"
 end
+
+When(/^I got to a wish page$/) do
+  visit wish_path(@wish)
+end
+
+Then(/^I can recommend a market to a wish$/) do
+  select @market_0.name, :from => "market_market_id"
+  click_on "Recommend"
+
+  within(:css, ".recomendations") do
+    expect(page).to have_content @market_0.name
+  end
+end
+
+

@@ -77,6 +77,7 @@ PopUpStores::Application.routes.draw do
     ### Wishes
     get "/wishes/gallery", as: "wishes_gallery"
     get "/users/:user_id/wishes", to: "wishes#list_user_wishes", as: "user_wishes"
+    post "/wishes/:id/recommend/", to: "wishes#recommend", as: "recommend_market_to_wish"
     resources :wishes
     ####
 

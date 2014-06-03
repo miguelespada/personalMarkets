@@ -31,6 +31,7 @@ class Market
   belongs_to :category
   belongs_to :user, class_name: "User", inverse_of: :markets
   has_and_belongs_to_many :favorited, class_name: "User", inverse_of: :favorites
+  has_and_belongs_to_many :recommended, class_name: "Wish", inverse_of: :recommended
 
   has_one :coupon, class_name: "Coupon", inverse_of: :market, dependent: :destroy
   accepts_nested_attributes_for :coupon
