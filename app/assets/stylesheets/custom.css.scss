@@ -469,29 +469,50 @@ border-color: #d43f3a;
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.3);
   text-indent: -1px;
   letter-spacing: -1px;
-  background: #5bc0de;
   border: 1px solid;
-  border-color: #28a4c9;
   border-radius: 21px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -webkit-box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.like-badge-color {
+  background: #FF8685;
+  border-color: #FF6966;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FF8685), to(#FF6966)); 
+  background-image: -webkit-linear-gradient(top, #FF8685, #FF6966); 
+  background-image:    -moz-linear-gradient(top, #FF8685, #FF6966); 
+  background-image:     -ms-linear-gradient(top, #FF8685, #FF6966); 
+  background-image:      -o-linear-gradient(top, #FF8685, #FF6966); 
+}
+
+.unlike-badge-color {
+  background: #5bc0de;
+  border-color: #28a4c9;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#5bc0de), to(#28a4c9)); 
   background-image: -webkit-linear-gradient(top, #5bc0de, #28a4c9); 
   background-image:    -moz-linear-gradient(top, #5bc0de, #28a4c9); 
   background-image:     -ms-linear-gradient(top, #5bc0de, #28a4c9); 
   background-image:      -o-linear-gradient(top, #5bc0de, #28a4c9); 
-  -webkit-box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .like-badge > .like-icon{
   color: #FFFFFF !important;
 }
 
+.like-badge:hover > .like-icon :after{
+  content: " Like";
+}
+
 .like-badge > .unlike-icon{
   color: #FFFFFF !important;
+}
+
+.like-badge:hover > .unlike-icon :after{
+  content: " Unlike";
 }
 
 //*############################ SPECIAL NAVBAR CSS #############################*//

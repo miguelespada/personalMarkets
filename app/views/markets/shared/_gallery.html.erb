@@ -21,7 +21,7 @@
             <%= market.description %>
           </div>
           <% end %>
-          <span class="like-badge"><%= market.like_link_icon %></span>
+          <span class="like-badge <%= market.like_class %>"><%= market.like_link_icon %></span>
         </div> 
 
         <div class="market-gallery-extra">
@@ -37,9 +37,10 @@
 $(document).ready(function(){
   if(<%= !user_signed_in? %>)
     $(".like-badge").hide();
+  $(".like-badge").hover(function(){
+    $(this).width(60);
+  }, function(){
+    $(this).width(30);
+  });
 });
-
-var hideLike = function(){
-
-};
 </script>

@@ -238,6 +238,17 @@ class MarketDecorator < Draper::Decorator
   rescue
   end
 
+  def like_class
+    if can? :like, market
+      if !current_user.favorited?(market)
+        "like-badge-color"
+      else  
+        "unlike-badge-color"
+      end
+    end
+  rescue
+  end
+
   def market_date_highlight
     if is_today?
       content_tag(:i, "", :class => "fa fa-calendar") + "  Today"
