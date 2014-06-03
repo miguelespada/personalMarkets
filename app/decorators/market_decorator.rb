@@ -16,6 +16,15 @@ class MarketDecorator < Draper::Decorator
   def owner
     user.email
   end
+  
+  def hashtags 
+   s = ""
+    market.tags.split(/,/).each do |tag|
+      s += tag.prepend('#')
+      s += " "
+    end
+   s
+  end
 
   def category_name
     category.name

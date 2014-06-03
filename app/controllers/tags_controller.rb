@@ -68,6 +68,6 @@ class TagsController < ApplicationController
 
   private
     def tag_params
-      params.require(:tag).permit(:name, photography_attributes: [:photo])
+      params.require(:tag).permit(:name)
     end
 end

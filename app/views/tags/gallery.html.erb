@@ -4,16 +4,12 @@
     Popular Tags 
   </div>
 
-
   <div class = "home_gallery tag_gallery">
     <% @suggested.each do |tag| %>
-      <div class = "home_gallery_item tag_gallery_item">
-        <div class = "home_gallery_featured_photo tag_gallery_featured_photo" data-name="<%= tag.name %>">
-          <%= photo(tag.photography, 300, 150) %>
-          <div class = "home_gallery_label tag_gallery_label">
-            <%= tag.name %>
+      <div class="home_gallery_item tag_gallery_item">
+          <div class="home_gallery_label tag_gallery_label" data-name="<%= tag.name %>">
+            #<%= tag.name %>
           </div>
-        </div>
       </div>
     <% end %>
   </div>
@@ -21,9 +17,9 @@
 
 <script>
 $( document ).ready(function() {
-  $('.tag_gallery_featured_photo').css('cursor', 'pointer');
+  $('.tag_gallery_label').css('cursor', 'pointer');
 
-  $(".tag_gallery_featured_photo").click(function(){
+  $(".tag_gallery_label").click(function(){
     $("#query").val($(this).data("name"));
     $("#search_market").submit();
   });
