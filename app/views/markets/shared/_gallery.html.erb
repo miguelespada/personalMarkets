@@ -3,7 +3,7 @@
     <% market = market.decorate %>
     <%= content_tag_for(:tr, market) do %>
       <div class = "market_item">
-      <%= link_to market do %>
+      
         <div class = "show market_featured_photo">
 
           <div class="market-gallery-badge">
@@ -11,7 +11,7 @@
               <span id="market-badge-text"></span>
             </div>
           </div>
-
+        <%= link_to market do %>
           <%= market.market_featured_photo_filtered(300, 150) %>
 
           <div class = "market_name_label">
@@ -20,11 +20,9 @@
           <div class = "market_description_label">
             <%= market.description %>
           </div>
-
-          <span class="like-badge"><i class="fa fa-heart"></i></span>
-          
+          <% end %>
+          <span class="like-badge"><%= market.like_link_icon %></span>
         </div> 
-      <% end %>
 
         <div class="market-gallery-extra">
           <%= market.address %>, <%= market.city %><br>
@@ -34,3 +32,14 @@
     <% end %>
   <% end %>
 </div>
+
+<script>
+$(document).ready(function(){
+  if(<%= !user_signed_in? %>)
+    $(".like-badge").hide();
+});
+
+var hideLike = function(){
+
+};
+</script>
