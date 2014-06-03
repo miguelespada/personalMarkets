@@ -1,6 +1,6 @@
 class WishesController < ApplicationController
-  load_resource :only => [:edit, :destroy, :update]
-  authorize_resource :except => [:index, :list_user_wishes, :gallery, :show]
+  load_resource :only => [:show, :edit, :destroy, :update, :recommend]
+  authorize_resource :except => [:index, :list_user_wishes, :gallery, :show, :recommend]
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
 
   def index
@@ -25,8 +25,13 @@ class WishesController < ApplicationController
   end
 
   def show
-    redirect_to wishes_path
   end
+
+  def recommend
+    market = Market.find_by(id: params[:market][:market_id])
+    @wish.recommend(market)
+    render "show"
+  end 
 
   def edit
   end
@@ -66,7 +71,7 @@ class WishesController < ApplicationController
 
   private
     def wish_params
-      params.require(:wish).permit(:description, :tags, "hidden-wish",  photography_attributes: [:photo])
+      params.require(:wish).permit(:description, :tags, "hidden-wish",   photography_attributes: [:photo])
     end
 
     def load_user

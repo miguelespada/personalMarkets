@@ -120,6 +120,18 @@ describe WishesController do
         end
       end
     end
+    describe "POST recommend" do
+
+      describe "with valid market" do
+        it "updates the recommendation list" do
+          wish = Wish.create! valid_attributes
+          market = create(:market)
+          post :recommend, {:id => wish.to_param, :market => {:market_id => market.id}}, valid_session
+          assigns(:wish).recommended.should eq([market])
+          expect(response.response_code).to eq 200
+        end
+      end
+    end 
 
     describe "PUT update" do
       describe "with valid params" do
