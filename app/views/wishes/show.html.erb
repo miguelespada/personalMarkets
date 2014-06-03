@@ -9,21 +9,35 @@
         <div class="wish-photo-container">
             <%= photo(@wish.photography, 600, 300) %> 
          </div>
-         <div class="recomendations">
-          Recommended:
-            <% @wish.recommended.each do |market| %>
-              <%= market.name %>
-            <% end %>
-         </div>
-         <div>
-          Recommend Market:
-            <%= form_tag recommend_market_to_wish_path(@wish), id: "recommend_market", class:"form-inline" do %>
-            <%= collection_select(:market, :market_id, Market.published, :id, :name ) %>
-            <%= submit_tag("Recommend") %>
-          <% end %>
-      </div>
+
+        <div class="recomendations">
+          <div class="market-list-section-title">Recommended</div>
+            <div class="market-list-section-container">
+              <div class = "market-list-section-container-inner">
+                <% @wish.recommended.each do |market| %>
+                  <div class="wish-recommended-item">
+                    <%= photo(market.featured, 160, 80)%><br>
+                    <%= market.name %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="market-list-section-title">Recommend Market</div>
+            <div class="market-list-section-container">
+              <div class = "market-list-section-container-inner">
+                <%= form_tag recommend_market_to_wish_path(@wish), id: "recommend_market", class:"form-inline" do %>
+                  <%= collection_select(:market, :market_id, Market.published, :id, :name ) %>
+                  <%= submit_tag("Recommend") %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-   
+  </div>
 </div>
 

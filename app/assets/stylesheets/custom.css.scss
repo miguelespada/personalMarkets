@@ -837,3 +837,18 @@ border-color: #d43f3a;
   font-weight: 100;
   color:#68511E;
 }
+
+//*############################ WISH RECOMMEND CSS #############################*//
+
+.wish-recommended-item{
+  @extend .col-md-4;
+  padding-top: 15px;
+  text-align: center;
+  font-weight: 200;
+  font-size: 12px;
+}
+
+.wish-recommended-item > img{
+  max-width: 100%;
+  height:auto;
+}
