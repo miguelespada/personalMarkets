@@ -48,7 +48,7 @@
           <% end %>
 				</li>
 			</ul>
-			<ul class="explore_section">
+			<ul class="explore_section bargain_section">
 				<li class="item-title"><%= t :bargains %></li>
 				<li class="divider"></li>
 				<li class="registered-user-action">
@@ -77,3 +77,14 @@
     	$( "#explore_tags" ).append( data );
   	});
 </script>
+
+<style>
+@media (min-width:768px){
+	.mega-dropdown-menu > li > ul > li > a {
+  	max-width:100%;
+  	overflow:hidden;
+  	float:inherit;
+  	white-space:nowrap;
+  	text-overflow: ellipsis;
+	}
+</style>
