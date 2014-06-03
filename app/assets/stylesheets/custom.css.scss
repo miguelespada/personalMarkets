@@ -867,3 +867,19 @@ border-color: #d43f3a;
   @extend .btn-default;
   margin-top: 10px;
 }
+
+//*############################ TAG LIST CSS #############################*//
+
+.tag_gallery_item{
+  text-align: center !important;
+}
+
+.tag_gallery_label{
+  display:inline;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 200;
+  color:#777777;
+  background: #EEEEEE;
+  border: 1px solid #CCCCCC;
+}
