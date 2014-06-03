@@ -69,11 +69,11 @@ module ApplicationHelper
   end
 
   def twitter_text(market)
-    "http://twitter.com/home?status=@PersonalMarkets, #{market.short_url}, %23#{market.name.tr(' ', '_').camelize}: #{market.description}"
+    "http://twitter.com/home?status=@PersonalMarkets, #{market.short_url}, %23#{market.name.tr(' ', '_').camelize}: #{market.description} #{market.hashtags.gsub('#', '%23')}"
   end
 
   def pinterest_text(market)
-    "http://pinterest.com/pin/create/link/?url=#{market_url}&media=#{cloudinary_url(market.featured.photo.path)}&description=Personal Markets: #{market.name}, #{market.description}"
+    "http://pinterest.com/pin/create/link/?url=#{market_url}&media=#{cloudinary_url(market.featured.photo.path)}&description=Personal Markets: #{market.name}, #{market.description} #{market.hashtags.gsub('#', '%23')}"
   end
 
   def google_text(market)
