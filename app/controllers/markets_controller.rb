@@ -52,7 +52,11 @@ class MarketsController < ApplicationController
     @markets = result[:markets]
     @last_page = result[:total]/per_page.to_f <= page 
     @first_page = page == 1
-    render :layout => false
+
+    respond_to do |format|
+      format.html { render :layout => false }
+      format.json {render json: @markets}
+    end
   end
   
 

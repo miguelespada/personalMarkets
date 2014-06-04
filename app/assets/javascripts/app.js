@@ -51,19 +51,22 @@ PM.setDataRange =  function() {
     $("#to").val(v.to);
 };
 
-PM.searchCallBacks = function(){
-    var ajaxSearch = function () {
-        PM.setDataRange();
-        $.get("live_search" , $(this).serialize(), function(data) {
-            $( "#gallery-items" ).html( data );
-            console.log(moment());
-        });
-        return false;
-    };
 
-    $('#search_market').change(ajaxSearch);
-    $('#search_bar_query').change(ajaxSearch);
-}
+var ajaxSearch = function () {
+    PM.setDataRange();
+    $.get("live_search" , $(this).serialize(), function(data) {
+        $( "#gallery-items" ).html( data );
+    });
+    return false;
+};
+
+var jsonSearch = function () {
+    PM.setDataRange();
+    $.get("markets/live_search.json" , $(this).serialize(), function(data) {
+        $( "#gallery-items" ).html( data );
+    });
+    return false;
+};
 
 
 $( document ).ready(function() {

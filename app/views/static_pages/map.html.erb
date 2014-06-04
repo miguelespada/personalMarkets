@@ -14,14 +14,14 @@
 
 <script>
   $(document).ready(function(){
-      PM.searchCallBacks();
 
-      $('form').change();
 
       $('#search_bar_query').focus();
+    $('#search_market').change(jsonSearch);
+    $('#search_bar_query').change(jsonSearch);
+    jsonSearch();
       
       $('#location_location_id').change(function(){
-
         if($(this).val() == "Any location") return;
         else if($(this).val() == "My location" ) PM.setViewWithUserLocation();
         else{

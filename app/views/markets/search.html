@@ -1,15 +1,16 @@
 <div id="gallery-items">
- 
+
 </div>
 
 
 
 <script>
   $(document).ready(function(){
-      PM.searchCallBacks();
-
       $('#search_bar_query').focus();
-      $('#search_market').change();
+
+    $('#search_market').change(ajaxSearch);
+    $('#search_bar_query').change(ajaxSearch);
+    ajaxSearch();
        
   });
 
