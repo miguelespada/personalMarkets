@@ -56,6 +56,7 @@ var ajaxSearch = function () {
     PM.setDataRange();
     $.get("live_search" , $(this).serialize(), function(data) {
         $( "#gallery-items" ).html( data );
+
     });
     return false;
 };
@@ -63,7 +64,8 @@ var ajaxSearch = function () {
 var jsonSearch = function () {
     PM.setDataRange();
     $.get("markets/live_search.json" , $(this).serialize(), function(data) {
-        $( "#gallery-items" ).html( data );
+       PM.fillMapView(data);
+
     });
     return false;
 };

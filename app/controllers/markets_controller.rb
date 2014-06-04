@@ -55,7 +55,10 @@ class MarketsController < ApplicationController
 
     respond_to do |format|
       format.html { render :layout => false }
-      format.json {render json: @markets}
+      format.json { 
+         @geojson = markers(@markets) || ""
+         render json: @geojson
+        }
     end
   end
   
@@ -263,5 +266,9 @@ class MarketsController < ApplicationController
     def visitor
       MarketVisitor.new current_user
     end
+
+  def markers(markets)
+    markets.collect{|market| market.to_marker(view_context.tooltip(market))} if markets.count > 0
+  end
 
 end

@@ -10,11 +10,7 @@ class StaticPagesController < ApplicationController
   end
 
   def map
-    @geojson = markers(Market.with_location) || ""
-    respond_to do |format|
-      format.html 
-      format.json {render json: @geojson}
-    end
+
   end
 
   def cities
@@ -25,9 +21,6 @@ class StaticPagesController < ApplicationController
   end
 
   private 
-  def markers(markets)
-    markets.collect{|market| market.to_marker(view_context.tooltip(market))} if markets.count > 0
-  end
 
   def beginning_of(n)
     n.to_i.week.from_now.at_beginning_of_week.strftime("%d/%m/%Y")

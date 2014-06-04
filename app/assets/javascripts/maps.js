@@ -9,9 +9,6 @@ PM.changeTile = function(mapID) {
   PM.map.addLayer(PM.mapTiles);
 };
 
-PM.addMarkersToMap = function() {
-  DOMAIN.getLocations(PM.fillMapView);
-};
 
 PM.fillMapView = function(data) {
   var markers = PM.map.markerLayer.setGeoJSON(data);
@@ -41,5 +38,4 @@ PM.initializeMap = function() {
   PM.map.scrollWheelZoom.disable();
   PM.mapTiles = L.mapbox.tileLayer('jameshedaweng.hf5b366j');
   PM.map.addLayer(PM.mapTiles);
-  PM.addMarkersToMap();
 };
