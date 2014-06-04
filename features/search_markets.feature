@@ -36,7 +36,7 @@ Feature: Browse markets
     When I select a city
     Then I see the markets matching my filters
 
-   @javascript
+   @javascript @filter_location
   Scenario: Filter by my location
     When I allow geolocation
     And I select search by my location
