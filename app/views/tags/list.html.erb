@@ -1,14 +1,14 @@
 <% @suggested.each do |tag| %>
   <li class="registered-user-action">
   	<a class="explore-link-tags" href="#" data-name="<%= tag.name %>">
-    <%= tag.name %><i class="fa fa-angle-right pull-right explore-arrow"></i>
+    <%= tag.name %><i class="fa fa-angle-right explore-arrow"></i>
     </a>
   </li>
 <% end %>
 <li class="divider"></li>
 <li class="registered-user-action">
 	<%= link_to tags_gallery_path do %>
-		All tags<i class="fa fa-angle-right pull-right explore-arrow"></i>
+		All tags<i class="fa fa-angle-right explore-arrow"></i>
 	<% end %>
 </li>
 

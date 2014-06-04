@@ -599,6 +599,11 @@ border-color: #d43f3a;
   display:none;
 }
 
+.navbar-brand{
+  font-size: 18px;
+  font-weight: 200;
+}
+
 //*############################ PHOTO EDIT CSS #############################*//
 .table-photo-container{
   position: relative;
@@ -765,6 +770,9 @@ border-color: #d43f3a;
   width:100%;
 }
 
+.explore-arrow{
+  float:right;
+}
 //*############################ PHOTOS CSS #############################*//
 
 .paginate{

@@ -8,10 +8,10 @@
 				<li class="divider"></li>
         <li class="registered-user-action">
 					<%= link_to published_markets_path do %>
-						<%= t :all_markets %><i class="fa fa-angle-right pull-right explore-arrow"></i>
+						<%= t :all_markets %><i class="fa fa-angle-right explore-arrow"></i>
     			<% end %>
           <%= link_to map_path do %>
-            <%= t :maps %><i class="fa fa-angle-right pull-right explore-arrow"></i>
+            <%= t :maps %><i class="fa fa-angle-right explore-arrow"></i>
           <% end %>
     		</li>
 				<li class="divider"></li>                           
@@ -44,16 +44,16 @@
 				<li class="divider"></li>
 				<li class="registered-user-action">
 				<%= link_to wishes_gallery_path do %>
-						<%= t :all_wishes %><i class="fa fa-angle-right pull-right explore-arrow"></i>
+						<%= t :all_wishes %><i class="fa fa-angle-right explore-arrow"></i>
           <% end %>
 				</li>
 			</ul>
-			<ul class="explore_section">
+			<ul class="explore_section bargain_section">
 				<li class="item-title"><%= t :bargains %></li>
 				<li class="divider"></li>
 				<li class="registered-user-action">
         <%= link_to bargains_gallery_path do %>
-						<%= t :all_bargains %><i class="fa fa-angle-right pull-right explore-arrow"></i>
+						<%= t :all_bargains %><i class="fa fa-angle-right explore-arrow"></i>
           <% end %>
 				</li>
 			</ul>  
@@ -77,3 +77,13 @@
     	$( "#explore_tags" ).append( data );
   	});
 </script>
+
+<style>
+@media (min-width:768px){
+	.mega-dropdown-menu > li > ul > li > a {
+  	overflow:hidden;
+  	float:inherit;
+  	white-space:nowrap;
+  	text-overflow: ellipsis;
+	}
+</style>
