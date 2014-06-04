@@ -64,8 +64,8 @@ var ajaxSearch = function () {
 var jsonSearch = function () {
     PM.setDataRange();
     $.get("markets/live_search.json" , $(this).serialize(), function(data) {
+        console.log(moment());
        PM.fillMapView(data);
-
     });
     return false;
 };

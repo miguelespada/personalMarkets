@@ -57,7 +57,7 @@ class MarketsController < ApplicationController
     respond_to do |format|
       format.html { render :layout => false }
       format.json { 
-         @geojson = markers(@markets) || ""
+         @geojson = markers(@markets) || []
          render json: @geojson
         }
     end
