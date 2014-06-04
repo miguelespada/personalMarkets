@@ -1,10 +1,44 @@
-<div id="gallery-items">
+<%= stylesheet_link_tag 'maps'%>
+<%= stylesheet_link_tag 'markets/tooltip'%>
+<%= javascript_include_tag 'maps' %>
+
+<div id="map"></div>
+
+<div id="map_theme_buttons" class="btn-group-vertical">
+  <% Category.each do |category| %>
+    <%= formatted_button(category) %>
+    <% end %>
 </div>
-<%= render "static_pages/map" %>
+ 
 
 <script>
   $(document).ready(function(){
-    $('form').change();
-    $('#search_bar_query').focus();
+
+      $('form').change();
+
+      $('#search_bar_query').focus();
+      
+      $('#location_location_id').change(function(){
+
+        if($(this).val() == "Any location") return;
+        if($(this).val() == "My location" ) PM.setViewWithUserLocation();
+        else{
+          $.get( "get_location.json", { name: $(this).val()}, function( data ) {
+            PM.map.setView([data.latitude, data.longitude], 14);
+          });
+        }
+
+        
+      });
+
+      PM.initializeMap();
+      
+      $('.theme').click(function (){
+          PM.changeTile($(this).attr('id'));
+          $("#category_category_id").val($(this).attr('title')); 
+          $('form').change();
+        }
+      );
   });
+
 </script>

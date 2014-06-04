@@ -107,6 +107,7 @@ PopUpStores::Application.routes.draw do
     ### SpecialLocations
     get "/special_locations/list", as: "special_locations_list"
     get "/special_locations/gallery", as: "special_locations_gallery"
+    get "/special_locations/get_location", as: "get_location", path: "get_location"
     resources :special_locations
     ####
 

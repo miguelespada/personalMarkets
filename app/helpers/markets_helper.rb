@@ -2,9 +2,9 @@ module MarketsHelper
 
   def tooltip(market)
     div_for market, class: "market-tooltip" do
-      render :partial => 'markets/market',
+      render :partial => 'markets/tooltip',
              :formats => [:html], 
-             :locals => {:market => market.decorate, :image_size => "180x90"}
+             :locals => {:market => market.decorate}
     end
   end
 

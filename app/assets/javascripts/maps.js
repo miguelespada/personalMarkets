@@ -44,17 +44,3 @@ PM.initializeMap = function() {
   PM.map.addLayer(PM.mapTiles);
   PM.addMarkersToMap();
 };
-
-$(document).ready(function(){
-
-    if ($('#map').length){
-      PM.initializeMap();
-      PM.setViewWithUserLocation();
-    }
-    $('.theme').click(function (){
-        PM.changeTile($(this).attr('id'));
-        $("#category_category_id").val($(this).attr('title')); 
-        $('form').change();
-      }
-    );
-});

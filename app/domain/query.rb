@@ -84,5 +84,4 @@ class Query
         ""
     end
 
-   
 end

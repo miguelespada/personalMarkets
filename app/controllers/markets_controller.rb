@@ -52,6 +52,7 @@ class MarketsController < ApplicationController
     render :layout => !request.xhr?
   end
 
+
   def destroy
     domain.delete_market params[:id]
   end
