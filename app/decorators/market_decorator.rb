@@ -20,7 +20,7 @@ class MarketDecorator < Draper::Decorator
   def hashtags 
    s = ""
     market.tags.split(/,/).each do |tag|
-      s += tag.prepend('#')
+      s += tag.prepend('#').tr(' ', '_').camelize
       s += " "
     end
    s
