@@ -24,7 +24,6 @@ PM.addTooltipToMarker = function(layer) {
     layer.bindPopup(popup,{ closeButton: false, maxWidth: 400, minWidth: 120 });
     layer.on('mouseover', function() {
       layer.openPopup();
-      console.log(layer);
     });
     layer.on('mouseout', function() {
       layer.closePopup();
