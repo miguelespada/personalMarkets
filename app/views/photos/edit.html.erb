@@ -28,7 +28,7 @@
 	
 	var $image = $(".cropper"),
 		$dataX1 = $("#x"),
-		$dataX1 = $("#y"),
+		$dataY1 = $("#y"),
 		$dataHeight = $("#h"),
 		$dataWidth = $("#w");
 	
@@ -39,7 +39,7 @@
 		_heigth = <%=	@photo.crop["h"] %>;
 	<% else %>
 		_x1 = $dataX1;
-		_y1 = $dataX1;
+		_y1 = $dataY1;
 		_width = $dataWidth;
 		_heigth = $dataHeight;
 	<% end %>
