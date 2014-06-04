@@ -2,6 +2,7 @@
 <%= stylesheet_link_tag 'markets/tooltip'%>
 <%= javascript_include_tag 'maps' %>
 
+<div id="gallery-items"> </div>
 <div id="map"></div>
 
 <div id="map_theme_buttons" class="btn-group-vertical">
@@ -13,6 +14,7 @@
 
 <script>
   $(document).ready(function(){
+      PM.searchCallBacks();
 
       $('form').change();
 
@@ -21,7 +23,7 @@
       $('#location_location_id').change(function(){
 
         if($(this).val() == "Any location") return;
-        if($(this).val() == "My location" ) PM.setViewWithUserLocation();
+        else if($(this).val() == "My location" ) PM.setViewWithUserLocation();
         else{
           $.get( "get_location.json", { name: $(this).val()}, function( data ) {
             PM.map.setView([data.latitude, data.longitude], 14);
@@ -31,12 +33,14 @@
 
       $('#city_city_name').change(function(){
          if($(this).val() == "Any city") return;
-         var city = encodeURIComponent($(this).val());
-         var adr = "http://maps.googleapis.com/maps/api/geocode/json?address=" + city + "&sensor=false";
-         $.get( adr, function(data){
-           var coords = data.results[0].geometry.location;
-           PM.map.setView([coords.lat, coords.lng], 14);
-         });
+         else{
+           var city = encodeURIComponent($(this).val());
+           var adr = "http://maps.googleapis.com/maps/api/geocode/json?address=" + city + "&sensor=false";
+           $.get( adr, function(data){
+             var coords = data.results[0].geometry.location;
+             PM.map.setView([coords.lat, coords.lng], 14);
+           });
+        }
       });
 
       PM.initializeMap();

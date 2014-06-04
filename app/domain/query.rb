@@ -60,7 +60,7 @@ class Query
         @session[:from] = @params[:from]
         @params[:from]
     rescue 
-        ""
+        DateTime.now.strftime("%d/%m/%Y")
     end
 
     def load_to

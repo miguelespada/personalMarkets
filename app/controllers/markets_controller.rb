@@ -42,15 +42,19 @@ class MarketsController < ApplicationController
   end
 
   def search
-    query = Query.new(params, session)
-    per_page = 6 
-    page = params[:page].present? ? params[:page].to_i : 1
-    result = Market.search(query.search_params, 1, per_page)
-    @markets = result[:markets]
-    @last_page = result[:total]/per_page <= page 
-    @first_page = page == 1
-    render :layout => !request.xhr?
   end
+
+  def live_search
+    query = Query.new(params, session)
+    per_page = params[:per_age].present? ? params[:per_page].to_i : 3
+    page = params[:page].present? ? params[:page].to_i : 1
+    result = Market.search(query.search_params, page, per_page)
+    @markets = result[:markets]
+    @last_page = result[:total]/per_page.to_f <= page 
+    @first_page = page == 1
+    render :layout => false
+  end
+  
 
 
   def destroy
@@ -221,6 +225,7 @@ class MarketsController < ApplicationController
         :location_id,
         :user_lat,
         :user_lon,
+        :page, :per_page,
         :coupon_attributes => [:id, :description, :price, :available, :photography_attributes => [:id, :photo]],
         :featured_attributes => [:id, :photo],
         :gallery_attributes => [:id, :photographies_attributes => [:id, :photo]]

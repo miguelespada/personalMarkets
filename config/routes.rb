@@ -8,6 +8,7 @@ PopUpStores::Application.routes.draw do
       collection do
         post :search, action: "search", as: 'search'
         get :search, action: "search"
+        get :live_search, action: "live_search", path: "live_search"
       end
       post :publish
       post :publish_anyway

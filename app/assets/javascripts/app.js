@@ -46,28 +46,30 @@ PM.getCurrentPosition = function(position){
 };
 
 PM.setDataRange =  function() {
-    var v = H.makeDateString($(this).val());
+    var v = H.makeDateString($('#range').val());
     $("#from").val(v.from);
     $("#to").val(v.to);
 };
 
 PM.searchCallBacks = function(){
     var ajaxSearch = function () {
-    $.post(this.action, $(this).serialize(), function(data) {
-        $( "#gallery-items" ).html( data );
-    });
+        PM.setDataRange();
+        $.get("live_search" , $(this).serialize(), function(data) {
+            $( "#gallery-items" ).html( data );
+            console.log(moment());
+        });
         return false;
     };
 
-    $('#range').change(PM.setDataRange);
     $('#search_market').change(ajaxSearch);
     $('#search_bar_query').change(ajaxSearch);
 }
 
 
 $( document ).ready(function() {
+
     $('#edit_link').click(PM.editClick);
-    PM.searchCallBacks();
+
     if (window.location.hash && window.location.hash == '#_=_') {
         if (window.history && history.pushState) {
             window.history.pushState("", document.title, window.location.pathname);
