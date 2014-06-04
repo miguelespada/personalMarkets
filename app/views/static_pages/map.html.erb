@@ -27,8 +27,16 @@
             PM.map.setView([data.latitude, data.longitude], 14);
           });
         }
+      });
 
-        
+      $('#city_city_name').change(function(){
+         if($(this).val() == "Any city") return;
+         var city = encodeURIComponent($(this).val());
+         var adr = "http://maps.googleapis.com/maps/api/geocode/json?address=" + city + "&sensor=false";
+         $.get( adr, function(data){
+           var coords = data.results[0].geometry.location;
+           PM.map.setView([coords.lat, coords.lng], 14);
+         });
       });
 
       PM.initializeMap();
