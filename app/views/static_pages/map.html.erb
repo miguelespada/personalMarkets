@@ -6,6 +6,10 @@
 <div id="map"></div>
 
 <div id="map_theme_buttons" class="btn-group-vertical">
+  <button type='button' class='theme btn btn-sm' style='background-color:#FFFFFF' id='jameshedaweng.hf5b366j'  
+      title='All categories'>
+      <i class='fa fa-bars'></i>
+  </button>
   <% Category.each do |category| %>
     <%= formatted_button(category) %>
     <% end %>
@@ -16,7 +20,7 @@
   $(document).ready(function(){
 
 
-      $('#search_bar_query').focus();
+    $('#search_bar_query').focus();
     $('#search_market').change(jsonSearch);
     $('#search_bar_query').change(jsonSearch);
     jsonSearch();
@@ -51,6 +55,17 @@
           $('form').change();
         }
       );
+
+      $('.theme').each(function(){
+        $(this).append($(this).attr('title'));
+      });
+
+      $("#category_category_id").hide();
+
+      $('html, body').css({
+        'overflow': 'hidden'
+      });
+
   });
 
 </script>
