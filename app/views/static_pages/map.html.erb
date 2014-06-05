@@ -6,7 +6,7 @@
 <div id="map"></div>
 
 <div id="map_theme_buttons" class="btn-group-vertical">
-  <button type='button' class='theme btn btn-sm' style='background-color:#FFFFFF' id='jameshedaweng.hf5b366j'  
+  <button type='button' class='theme btn btn-sm btn-all-categories' style='background-color:#FFFFFF' id='jameshedaweng.hf5b366j'  
       title='All categories'>
       <i class='fa fa-bars'></i>
   </button>
@@ -60,7 +60,7 @@
         $(this).append($(this).attr('title'));
       });
 
-      $("#category_category_id").hide();
+      $("#category_category_id").parent().hide();
 
       $('html, body').css({
         'overflow': 'hidden'

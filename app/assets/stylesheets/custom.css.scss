@@ -920,11 +920,50 @@ border-color: #d43f3a;
   text-align: center;
   padding-left: 0px !important;
   padding-right: 0px !important;
-  color:rgba(0, 0, 0, 0.6) !important;
   text-shadow: none;
 }
 
-.theme:hover{
+.category-theme-button:hover{
   color:#FFFFFF !important;
   text-shadow: 1px 1px 5px #777777;
+}
+
+.btn-all-categories:hover{
+  text-shadow: 1px 1px 3px #999999;
+}
+
+#map_theme_buttons{
+  opacity:0.85;
+}
+
+//*############################ FILTER BAR CSS #############################*//
+
+.snavbar{
+  position: fixed;
+  z-index:100;
+  width:100%;
+  background-image: none !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  background-color: rgba(255, 255, 255, 0.6) !important; 
+}
+
+.snavbar > .container-fluid{
+  padding:0px !important;
+}
+
+.search-nav-bar > form > li > select{
+  background-color: rgba(255, 255, 255, 0.7) !important; 
+}
+
+.search-nav-bar > form > li {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+.btn-reset-search{
+  margin-top: 0px !important;
+  margin-left: 10px !important;
+  background-image: none !important;
+  background-color: rgba(255, 255, 255, 0.7) !important; 
 }

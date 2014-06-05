@@ -13,16 +13,6 @@
 
 <script>
 $( document ).ready(function() {
-  $( "#search_bar_query").click(function () {
-    if($(".snavbar").hasClass("snavbar-hidden")){
-      if ( $( ".snavbar" ).is( ":hidden" ) ) {
-        $( ".snavbar" ).slideDown( 400 );
-      }
-      else{
-        $( ".snavbar" ).slideUp( 400 );
-      }
-    }
-  });
 
   $( "#search_bar_query" ).keyup(function() {
     $("#query").val($( "#search_bar_query" ).val());

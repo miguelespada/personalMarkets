@@ -1,5 +1,7 @@
 
   <%= form_tag search_markets_path, id: "search_market", class:"form-inline" do %>
+
+    <%= link_to content_tag(:i, "", :class => "fa fa-refresh"), "#", :class=>  "btn btn-default btn-reset-search", :id=>"reset_search" %>
     <li class="form-group hidden">
       <%= text_field_tag :query, session[:query], placeholder: "Query...", class: "query form-control"  %>
     </li>
@@ -53,8 +55,6 @@
     </li>
 
     <%= submit_tag "Search", name: nil, class: "hidden" %>
-
-    <%= link_to "Reset", "#", :class=>  "btn btn-primary ", :id=>"reset_search" %>
   <% end %>
 
   
