@@ -1,18 +1,37 @@
-<div id="gallery-items">
+<div id="gallery-items" class="search-gallery">
 
+</div>
+
+<div id="search-category-buttons" class="btn-group-vertical">
+  <button type='button' class='theme btn btn-sm btn-all-categories' style='background-color:#FFFFFF' id='jameshedaweng.hf5b366j'  
+      title='All categories'>
+      <i class='fa fa-bars'></i>
+  </button>
+  <% Category.each do |category| %>
+    <%= formatted_button(category) %>
+    <% end %>
 </div>
 
 
 
 <script>
   $(document).ready(function(){
-      $('#search_bar_query').focus();
+    $('#search_bar_query').focus();
 
     $('#search_market').change(ajaxSearch);
     $('#search_bar_query').change(ajaxSearch);
     $('#search_button').click();
+
+    $('.theme').click(function (){
+        $("#category_category_id").val($(this).attr('title')); 
+        $('form').change();
+      }
+    );
+
+    $('.theme').each(function(){
+      $(this).append($(this).attr('title'));
+    });
+
   });
-
-
 
 </script>

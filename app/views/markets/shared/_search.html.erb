@@ -6,7 +6,7 @@
       <%= text_field_tag :query, session[:query], placeholder: "Query...", class: "query form-control"  %>
     </li>
 
-    <li class="form-group">
+    <li class="form-group hidden">
       <% selection = session[:category_id] %>
       <% selection ||= "" %>
       <%= collection_select(:category, :category_id, Category.all, :name, :name, 

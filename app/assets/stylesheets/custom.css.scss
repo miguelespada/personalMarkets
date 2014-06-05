@@ -936,6 +936,23 @@ border-color: #d43f3a;
   opacity:0.85;
 }
 
+#map_theme_buttons{
+  position:absolute;
+  top:0%;
+  left:100%;
+  margin-top: 110px;
+  margin-left: -120px;
+  width:110px;
+  border:1px solid #999999;
+  border-radius:5px;
+}
+
+#map_theme_buttons > button > i{
+  float:left;
+  padding-left: 5px;
+  padding-top: 3px;
+}
+
 //*############################ FILTER BAR CSS #############################*//
 
 .snavbar{
@@ -966,4 +983,39 @@ border-color: #d43f3a;
   margin-left: 10px !important;
   background-image: none !important;
   background-color: rgba(255, 255, 255, 0.7) !important; 
+}
+
+//*############################ SEARCH PAGE CSS #############################*//
+.search-gallery > .market_gallery{
+  margin-top: 60px;
+  width:100% !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  padding-right: 180px !important;
+}
+
+#search-category-buttons{
+  opacity:0.85;
+}
+
+#search-category-buttons{
+  position:fixed;
+  top:0%;
+  left:100%;
+  margin-top: 125px;
+  margin-left: -175px;
+  width:150px;
+  border:1px solid #999999;
+  border-radius:5px;
+}
+
+#search-category-buttons > button{
+  font-weight: 200;
+  font-size: 14px;
+}
+
+#search-category-buttons > button > i{
+  float:left;
+  padding-left: 5px;
+  padding-top: 3px;
 }
