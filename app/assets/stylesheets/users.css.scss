@@ -3,9 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .active{
   color: green;
+  background-color: #D7FFDE !important;
+  text-align: center;
+  font-weight: 300;
 }
+
 .inactive{
   color: orange;
+  background-color: #FFEED3 !important;
+  text-align: center;
+  font-weight: 300;
 }
 .btn-active{
   background-color: green;
@@ -23,4 +30,22 @@
 }
 .lnk-danger{
   color: red;
+}
+
+.user-table-container{
+  margin-bottom: 60px;
+}
+
+.active > .user-status-text{
+  padding:3px 8px;
+  border:2px solid green;
+  display: inline-block;
+  border-radius:5px; 
+}
+
+.inactive > .user-status-text{
+  padding:3px 8px;
+  border:2px solid orange;
+  display: inline-block;
+  border-radius:5px; 
 }

@@ -1,13 +1,48 @@
 <%= content_tag_for(:tr, user) do %>
-    <td> <%= user.email %> </td>
-    <td class="<%= user.status %>"> <%= user.status.titleize %> </td>
-    <td> <%= user.markets.count %></td>
-    <td> <%= user.favorites.count %></td>
-    <td> <%= link_to "Show", user_path(user), :method => :get, :class => '' %> |
-         <%= link_to "Change role", change_user_role_path(user), :method => :get, :class => '' %> |
+  <td class="col-md-3"> <%= user.email %> </td>
+  <td class="col-md-1 <%= user.status %>"> 
+    <div class="user-status-text"><%= user.status.titleize %></div>
+  </td>
+  <td class="col-md-2"> <%= user.markets.count %></td>
+  <td class="col-md-2"> <%= user.favorites.count %></td>
+  <td class="col-md-4"> <%= link_to content_tag(:i, "", class: "fa fa-share"), user_path(user), :method => :get, :class => 'btn btn-primary table-button table-button-show' %>
+    <%= link_to content_tag(:i, "", class: "fa fa-refresh"), change_user_role_path(user), :method => :get, :class => 'btn btn-info table-button table-button-change-role' %>
 
-         <% user.available_statuses.each do |status| %>
-            <%= link_to "Switch to " + status.titleize, user_status_path(user, :new_status => status), :method => :put, :class => "lnk-#{status}" %> |
-         <% end %>
-         <%= link_to "Delete", user_path(user), :method => :delete, :class => 'lnk-danger', data: { confirm: 'Are you sure?'} %></td>
+    <% user.available_statuses.each do |status| %>
+      <% if status == "active" %>
+        <%= link_to content_tag(:i, "", class: "fa fa-times-circle"), user_status_path(user, :new_status => status), :method => :put, :class => "btn btn-success table-button table-button-switch-active" %>
+      <% elsif status == "inactive" %>
+        <%= link_to content_tag(:i, "", class: "fa fa-times-circle"), user_status_path(user, :new_status => status), :method => :put, :class => "btn btn-warning table-button table-button-switch-inactive" %>
+      <% end %>
+    <% end %>
+    <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), user_path(user), :method => :delete, :class => 'btn btn-danger table-button table-button-delete', data: { confirm: 'Are you sure?'} %></td>
 <% end %>
+
+<script>
+  $(document).ready(function(){
+    buttonHover(".table-button-show", "fa-share", "Show", 85);
+    buttonHover(".table-button-change-role", "fa-refresh", "Change Role", 130);
+    buttonHover(".table-button-switch-active", "fa-times-circle", "Switch to active", 150);
+    buttonHover(".table-button-switch-inactive", "fa-times-circle", "Switch to inactive", 160);
+    buttonHover(".table-button-delete", "fa-trash-o", "Delete", 85);
+    
+    $(".table-latlng").each(function(){
+      var $this = $(this);
+      $this.html($this.html().substring(0,8));
+    });
+  });
+  
+  var buttonHover = function(button, icon, text, width){
+    $(button).hover(function(){
+      $(this).html("<i class='fa " + icon + "'></i>&nbsp;&nbsp;" + text);
+      $(this).animate({
+        width: width
+      }, 50);
+    }, function(){
+      $(this).html("<i class='fa " + icon + "'></i>");
+      $(this).animate({
+        width: "40"
+      }, 50);
+    });
+  };
+</script>
