@@ -22,6 +22,12 @@
       </ul>
        
       <ul class="nav navbar-nav navbar-right topbar-right">
+        <li class="map-link">
+          <%= link_to map_path do %>
+            <i class="fa fa-globe"></i>
+            <span id="map-link-text"></span>
+          <% end %>
+        </li>
         <%= render "layouts/shared/guest_menu" %>
         <% if user_signed_in? %>
           <%= render "layouts/shared/signout" %>
@@ -39,6 +45,14 @@
   @media (min-width: 768px){
     .topbar-right > .footer-collapse{
       display:none;
+    }
+  }
+  @media (max-width: 767px){
+    #map-link-text:after{
+      content:"\00a0 Map";
+    }
+    #explore-link-text:after{
+      content:"\00a0 Explore";
     }
   }
 </style>

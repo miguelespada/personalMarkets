@@ -1,5 +1,9 @@
 <li class="dropdown mega-dropdown">
-	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t :explore %><b class="caret"></b></a>
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		<i class="fa fa-bars"></i>
+		<span id="explore-link-text"></span>
+		<b class="caret"></b>
+	</a>
 	
 	<ul class="dropdown-menu mega-dropdown-menu row">
 		<li class="col-sm-3">
@@ -10,9 +14,6 @@
 					<%= link_to published_markets_path do %>
 						<%= t :all_markets %><i class="fa fa-angle-right explore-arrow"></i>
     			<% end %>
-          <%= link_to map_path do %>
-            <%= t :maps %><i class="fa fa-angle-right explore-arrow"></i>
-          <% end %>
     		</li>
 				<li class="divider"></li>                           
         	<div id="myCarousel" class="carousel slide" data-ride="carousel">
