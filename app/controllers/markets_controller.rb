@@ -47,7 +47,7 @@ class MarketsController < ApplicationController
 
   def live_search
     query = Query.new(params, session)
-    per_page = params[:per_age].present? ? params[:per_page].to_i : 3
+    per_page = params[:per_age].present? ? params[:per_page].to_i : 9
     page = params[:page].present? ? params[:page].to_i : 1
     result = Market.search(query.search_params, page, per_page)
     @markets = result[:markets]

@@ -50,11 +50,15 @@
       PM.initializeMap();
       
       $('.theme').click(function (){
-          PM.changeTile($(this).attr('id'));
-          $("#category_category_id").val($(this).attr('title')); 
-          $('form').change();
-        }
-      );
+        PM.changeTile($(this).attr('id'));
+        $("#category_category_id").val($(this).attr('title')); 
+        $('form').change();
+        $('.theme').removeClass("theme-selected");
+      });
+
+      $('.theme:not(".btn-all-categories")').click(function (){
+        $(this).addClass("theme-selected");
+      });
 
       $('.theme').each(function(){
         $(this).append($(this).attr('title'));
