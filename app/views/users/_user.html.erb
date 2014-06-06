@@ -10,7 +10,7 @@
 
     <% user.available_statuses.each do |status| %>
       <% if status == "active" %>
-        <%= link_to content_tag(:i, "", class: "fa fa-times-circle"), user_status_path(user, :new_status => status), :method => :put, :class => "btn btn-success table-button table-button-switch-active" %>
+        <%= link_to content_tag(:i, "", class: "fa fa-check-circle"), user_status_path(user, :new_status => status), :method => :put, :class => "btn btn-success table-button table-button-switch-active" %>
       <% elsif status == "inactive" %>
         <%= link_to content_tag(:i, "", class: "fa fa-times-circle"), user_status_path(user, :new_status => status), :method => :put, :class => "btn btn-warning table-button table-button-switch-inactive" %>
       <% end %>
@@ -22,7 +22,7 @@
   $(document).ready(function(){
     buttonHover(".table-button-show", "fa-share", "Show", 85);
     buttonHover(".table-button-change-role", "fa-refresh", "Change Role", 130);
-    buttonHover(".table-button-switch-active", "fa-times-circle", "Switch to active", 150);
+    buttonHover(".table-button-switch-active", "fa-check-circle", "Switch to active", 150);
     buttonHover(".table-button-switch-inactive", "fa-times-circle", "Switch to inactive", 160);
     buttonHover(".table-button-delete", "fa-trash-o", "Delete", 85);
     
