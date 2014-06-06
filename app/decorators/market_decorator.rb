@@ -254,6 +254,8 @@ class MarketDecorator < Draper::Decorator
       content_tag(:i, "", :class => "fa fa-calendar") + "  Today"
     elsif is_this_week?
       content_tag(:i, "", :class => "fa fa-calendar") + "  This Week"
+    else
+      content_tag(:i, "", :class => "fa fa-calendar") + "  " + market.date.split(",")[0]
     end
   end
 
