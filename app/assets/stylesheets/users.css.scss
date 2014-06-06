@@ -3,14 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .active{
   color: green;
-  background-color: #D7FFDE !important;
+  background-color: rgba(0,0,0,0) !important;
   text-align: center;
   font-weight: 300;
 }
 
 .inactive{
   color: orange;
-  background-color: #FFEED3 !important;
+  background-color: rgba(0,0,0,0) !important;
   text-align: center;
   font-weight: 300;
 }
