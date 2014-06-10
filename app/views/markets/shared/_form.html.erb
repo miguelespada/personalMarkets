@@ -206,7 +206,6 @@ var scheduleAlreadyExist = function(scheduleString){
 };
 
 var showExistSchedule = function(scheduleString){
-  console.log(scheduleString);
   var allSchedules = scheduleString.split(";");
   $.each(allSchedules, function(i, val){
     $('#date-schedule-table > tbody:last').append('<%= render "markets/shared/form_date" %>');
