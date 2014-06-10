@@ -64,9 +64,25 @@
       </div>
   
       <div class="tab-pane" id="form-market-date">
-        <%= f.input :date, input_html: { class: 'hidden' }  %> 
-        <div id="datepicker"></div>
-        <%= f.input :schedule,  input_html: { class: 'market-scheduke' }  %> 
+        <%= f.input :date, input_html: { class: 'market-date hidden' }  %>
+        <%= f.input :schedule,  input_html: { class: 'market-schedule hidden' }  %> 
+
+        <div class="table-container">
+          <table class="table table-striped" id="date-schedule-table">
+            <tr>
+              <th>Date</th>
+              <th>Schedule</th>
+              <th>
+                <button class="btn btn-default pull-right btn-xs" id="button-add-date" type="button">
+                  <i class="fa fa-plus"></i>
+                </button>
+              </th>
+            </tr>
+            <tbody>
+            </tbody>
+          </table>
+
+        </div>
       </div>
     
       <div class="tab-pane" id="form-market-prices">
@@ -111,7 +127,7 @@ $( document ).ready(function() {
         }
       });
       
-       $('ul.nav a[href="' + window.location.hash + '"]').tab('show');
+      $('ul.nav a[href="' + window.location.hash + '"]').tab('show');
   
       $(".add_market_button").addClass("btn-success");
       $(".add_market_button").removeClass("btn-info");
@@ -125,26 +141,32 @@ $( document ).ready(function() {
         formChanged();
       });
 
-      getDatesSelected($('#market_date').val());
+      if (scheduleAlreadyExist($('#market_schedule').val())){
+        showExistSchedule($('#market_schedule').val());
+      }
+      else{
+        $('#date-schedule-table > tbody:last').append('<%= render "markets/shared/form_date" %>');
+      }
 
-      $('#datepicker').datepicker({
-          weekStart: 1,
-          startDate: "today",
-          endDate: "+1m",
-          language: "es",
-          multidate: true,
-          todayHighlight: true
-      }).on('changeDate', function(e){
-          fillInputWithDates(e);
-          formChanged();
+      initializeDatepicker();
+      addDatePickerEvent();
+      initializeSchedule();
+
+      $("#button-add-date").click(function(){
+        $('#date-schedule-table > tbody:last').append('<%= render "markets/shared/form_date" %>');
+        initializeDatepicker();
+        addDatePickerEvent();
+        initializeSchedule();
       });
 
-      if (areDatesSelected($('#market_date').val()))
-        $('#datepicker').datepicker('setDates', getDatesSelected($('#market_date').val()));
+      $( "table" ).on( "click", ".button-delete-line", function() {
+        $(this).closest('tr').remove();
+        getAllDates();
+      });
 
    $('.attachinary-input').attachinary();
 
-   var tagApi = jQuery(".tm-input").tagsManager({
+  var tagApi = jQuery(".tm-input").tagsManager({
       prefilled: $("#market_tags").attr("value"),
       delimiters: [9, 13, 44],
       tagClass: "tm-tag",
@@ -179,6 +201,88 @@ $( document ).ready(function() {
   });
 });
 
+var scheduleAlreadyExist = function(scheduleString){
+  return scheduleString != "";
+};
+
+var showExistSchedule = function(scheduleString){
+  console.log(scheduleString);
+  var allSchedules = scheduleString.split(";");
+  $.each(allSchedules, function(i, val){
+    $('#date-schedule-table > tbody:last').append('<%= render "markets/shared/form_date" %>');
+    initializeDatepicker();
+    $('.input-group.date').last().datepicker('setDates', stringToDate(val.split(",")[0]));
+    $('.schedule-start-input').last().val(val.split(",")[1]);
+    $('.schedule-end-input').last().val(val.split(",")[2]);
+    addDatePickerEvent();
+    initializeSchedule();
+  });
+};
+
+var stringToDate = function(data){
+  return moment(data, 'DD/MM/YYYY').toDate();
+};
+
+var initializeDatepicker = function(){
+  $('.input-group.date').datepicker({
+    weekStart: 1,
+    format: "dd/mm/yyyy",
+    startDate: "today",
+    endDate:"+1m",
+    language: "en",
+    todayHighlight: true
+  });
+};
+
+var addDatePickerEvent = function(){
+  $('.input-group.date').datepicker().on('changeDate',function(){
+    getAllDates();
+    formChanged();
+  });
+};
+
+var initializeSchedule = function(){
+  $('.schedule-start-input').change(function(){
+    getAllSchedules();
+    formChanged();
+  });
+  $('.schedule-end-input').change(function(){
+    getAllSchedules();
+    formChanged();
+  });
+};
+
+var getAllDates = function(){
+  var dates = new Array();
+  $('.input-group.date').each(function() {
+    dates.push($(this).data().datepicker.viewDate);
+  });
+  dates.sort(function(a, b){return a-b}); 
+  formatDates(dates);
+  getAllSchedules();
+};
+
+var formatDates = function(dates){
+  var datesFormatted = new Array();
+  $.each(dates, function(i, val){
+    datesFormatted.push(moment(val).format("DD/MM/YYYY"));
+  });
+  datesFormatted = $.unique(datesFormatted);
+  $('#market_date').val(datesFormatted.join(","));
+};
+
+var getAllSchedules = function(){
+  var scheduleArray = new Array();
+  $('.schedule-line').each(function(){
+    var schedule = new Array();
+    schedule.push(moment($(this).find('.input-group.date').data().datepicker.viewDate).format("DD/MM/YYYY"));
+    schedule.push($(this).find('.schedule-start-input').val());
+    schedule.push($(this).find('.schedule-end-input').val());
+    scheduleArray.push(schedule.join(","));
+  });
+  $('#market_schedule').val(scheduleArray.join(";"));
+};
+
 var locationTabActive = function(){
   if ($("#form-market-location").hasClass("active")){
     $("#small-map-container").show();
@@ -199,30 +303,6 @@ var initializeAutocomplete = function(input_id) {
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
     updateLocationData();
   });
-};
-
-var areDatesSelected = function(datesString){
-  return datesString != "";
-};
-var stringToDate = function(data){
-  return moment(data, 'DD/MM/YYYY').toDate();
-};
-var getDatesSelected = function(datesString){
-  var datesSelected = datesString.split(","); 
-  var dates  = new Array(); 
-  for(i = 0; i < datesSelected.length; i++)
-    dates.push(stringToDate(datesSelected[i]));
-  return dates;
-};
-
-var fillInputWithDates = function(data){
-  dateString = moment(data.dates[0]).format('DD/MM/YYYY');
-  for (i = 1; i < data.dates.length; i++){
-    (function(i){
-      dateString += "," + moment(data.dates[i]).format('DD/MM/YYYY');
-    })(i);
-  }
-  $('#market_date').val(dateString);
 };
 
 var updateLocationData = function(){
