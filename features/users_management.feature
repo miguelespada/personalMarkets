@@ -1,4 +1,4 @@
-@user_management @test
+@user_management
 Feature: Users management
   I order to have manage my users
   As admin
