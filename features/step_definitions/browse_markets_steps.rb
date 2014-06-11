@@ -44,7 +44,7 @@ When(/^I do a search$/) do
   within(:css, "#search_market") do
     fill_in "query",  with: "market"
   end
-  click_button "Search"
+  find("#search_button").click
 end
 
 
@@ -54,7 +54,9 @@ end
 
 
 When(/^I select a category filter$/) do
-  select "Filter", :from => "category_category_id"
+  within(:css, "#search-category-buttons") do
+    click_on "Filter"
+  end
 end
 
 When(/^I type a query$/) do
