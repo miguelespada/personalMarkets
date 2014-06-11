@@ -17,7 +17,7 @@ end
 
 When(/^I delete one user$/) do
   within(:css, "#user_#{@user_1.id}") do
-    click_on "Delete"
+    find(".table-button-delete").click
   end
 end
 
@@ -28,7 +28,7 @@ end
 
 When(/^I desactivate one user$/) do
   within(:css, "#user_#{@user_1.id}") do
-    click_on "Switch to Inactive"
+    find(".table-button-switch-inactive").click
   end
 end
 
@@ -103,7 +103,7 @@ end
 
 When(/^I activate it$/) do
   within(:css, "#user_#{@user.id}") do
-    click_on "Switch to Active"
+    find(".table-button-switch-active").click
   end
 end
 
