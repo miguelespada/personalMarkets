@@ -1,7 +1,8 @@
 
-  <%= form_tag search_markets_path, id: "search_market", class:"form-inline" do %>
-
-    <%= link_to content_tag(:i, "", :class => "fa fa-refresh"), "#", :class=>  "btn btn-default btn-reset-search", :id=>"reset_search" %>
+  <%= form_tag search_markets_path, id: "search_market", class:"search-form" do %>
+    <li class="form-group search-filter-item">
+      <%= link_to content_tag(:i, "", :class => "fa fa-refresh"), "#", :class=>  "btn btn-default btn-reset-search", :id=>"reset_search" %>
+    </li>
     <li class="form-group hidden">
       <%= text_field_tag :query, session[:query], placeholder: "Query...", class: "query form-control"  %>
     </li>
@@ -14,7 +15,7 @@
     </li>
 
 
-    <li class="form-group">
+    <li class="form-group search-filter-item" id="search-range-item">
         <%= select_tag(:range, options_for_select(['All',
                                               'Today', 
                                               'This week', 
@@ -24,16 +25,14 @@
 
      </li>
 
-     <li class="form-group">
+     <li class="form-group search-filter-item" id="search-location-item">
       <% selection =  session[:location_id] %>
       <% selection ||= "" %>
 
       <%= collection_select(:location, :location_id, SpecialLocation.all, :name, :name, {:selected => selection, :include_blank => "Any location"}, class: "form-control" ) %>
-
-     
      </li>
 
-     <li class="form-group">
+     <li class="form-group search-filter-item" id="search-city-item">
       <%= collection_select(:city, :city_name, [], :name, :name, 
                           {:include_blank => "Any city"}, class: "form-control" ) %>
 
