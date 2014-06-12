@@ -1,16 +1,6 @@
-<div class = "home_gallery_title"><i class="fa fa-refresh fa-2x"></i> <br/>Change user role</div>
+<h1>Change User Role</h1>
+<h2><%= @user.email %></h2>
 
-<div class="container user-session">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default panel-table-last change-role-panel">
-        <div class="panel-body">
-        	<p><%= @user.email %></p>
-          <% @user.available_roles.each do |role| %>
-  					<%= link_to "Make " + role, user_role_path(@user, :new_role => role), :method => :pu, :class => "btn btn-info" %><br>
-					<% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<% @user.available_roles.each do |role| %>
+  <%= link_to "Make " + role, user_role_path(@user, :new_role => role), :method => :put %>
+<% end %>
