@@ -212,6 +212,17 @@ border-color: #d43f3a;
 //*############################ DASHBOARD CSS #############################*//
 
 .panel-body .btn:not(.btn-block) { width:120px;margin-bottom:10px; }
+.dashboard-button{
+  text-align: center !important;
+  font-weight: 200 !important;
+  width:120px !important;
+  height:120px !important;
+  padding: 12px !important;
+}
+
+.dashboard-column{
+  text-align: center !important;
+}
 
 //*############################ BADGER CSS #############################*//
 
