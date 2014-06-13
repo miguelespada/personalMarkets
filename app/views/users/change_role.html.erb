@@ -1,4 +1,0 @@
-<h1>Change User Role</h1>
-<h2><%= @user.email %></h2>
-<%= link_to "Make admin", update_role_user_path(@user, :new_role => "admin"), :method => :put %>
-<%= link_to "Make normal", update_role_user_path(@user, :new_role => "normal"), :method => :put %>
