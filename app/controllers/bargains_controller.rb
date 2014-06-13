@@ -11,7 +11,7 @@ class BargainsController < ApplicationController
   end
 
   def gallery
-    @bargains = Bargain.all
+    @bargains = Bargain.all.order_by(:created_at.desc).page(params[:page]).per(1)
     render :layout => !request.xhr?
   end
 

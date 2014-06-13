@@ -837,6 +837,21 @@ border-color: #d43f3a;
   padding: 30px 0px;
 }
 //*############################ BARGAINS CSS #############################*//
+.bargain-gallery{
+  @extend .row;
+  margin-top: 0px !important;
+}
+
+.bargain-gallery > .container > .container-inner{
+  @extend .row;
+  margin-top: 0px !important;
+}
+
+.bargain_gallery_title{
+  @extend .home_gallery_title;
+  margin-bottom:0px !important;
+  padding: 0px !important;
+}
 
 .bargain-title-container{
   width:100%;
@@ -1116,4 +1131,9 @@ border-color: #d43f3a;
   @extend .home_gallery_title;
   margin-bottom:0px !important;
   padding: 0px !important;
+}
+
+.wish-title-container{
+  width:100%;
+  text-align: center;
 }

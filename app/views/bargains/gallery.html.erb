@@ -1,22 +1,13 @@
-<div class="panel panel-default panel-table panel-table-last">
+<div class ="bargain_gallery_title">People Bargains</div>
 
- <div class="panel-heading table-title">
-    People Bargains
-  </div>
-  <div class = "home_gallery bargain_gallery">
-    <% @bargains.each do |bargain| %>
-        <div class = "home_gallery_item bargain_item">
-          <div class = "home_gallery_featured_photo bargain_featured_photo" data-name="<%= bargain.description %>">
-            <%= photo(bargain.photography, 300, 150) %>
-            <div class = "home_gallery_label bargain_label">
-              <%= link_to bargain.description, bargain_path(bargain)  %>
-            </div>
-          </div>
-        </div>
-    <% end %>
-  </div>
+<div class="paginate">
+  <%= paginate @bargains %>
+</div>
 
-
+<div class = "bargain_gallery">
+  <% @bargains.each do |bargain| %>
+    <%= render "bargains/show", :bargain => bargain %>
+  <% end %>
 </div>
 
 
