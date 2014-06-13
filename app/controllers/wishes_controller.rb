@@ -12,7 +12,7 @@ class WishesController < ApplicationController
   end
 
   def gallery
-    @wishes = Wish.all
+    @wishes = Wish.all.order_by(:created_at.desc).page(params[:page]).per(1)
     render :layout => !request.xhr?
   end
 
