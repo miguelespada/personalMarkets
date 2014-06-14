@@ -1,3 +1,5 @@
+
+
 <%= market.transactions_link_icon %>
 <%= market.like_link_icon %>
 <%= market.edit_link_icon %>
@@ -5,3 +7,43 @@
 <%= market.archive_link_icon %>
 <%= market.pro_link_icon %>
 <%= market.statistics_link_icon %>
+
+<%= market.publish_link %>
+<%= market.unpublish_link %>
+
+<!-- <div class="hidden">
+  <%= market.like_link %>
+  <%= market.edit_link %>
+  <%= market.delete_link %>
+  <%= market.archive_link %>
+  <%= market.pro_link %>
+  <%= market.statistics_link %>
+</div> -->
+
+<script>
+
+  $(document).ready(function(){
+    buttonHover(".like-icon", "fa-heart", "Like", 75);
+    buttonHover(".unlike-icon", "fa-heart-o", "Unlike", 85);
+    buttonHover(".edit-icon", "fa-pencil", "Edit", 70);
+    buttonHover(".delete-icon", "fa-trash-o", "Delete", 85);
+    buttonHover(".archive-icon", "fa-undo", "Archive", 95);
+    buttonHover(".pro-icon", "fa-plus-square", "Go PRO", 100);
+    buttonHover(".statistics-icon", "fa-sitemap", "Statistics", 115);
+    buttonHover(".transactions-icon", "fa-ticket", "Transactions", 130);
+  });
+
+  var buttonHover = function(button, icon, text, width){
+    $(button).hover(function(){
+      $(this).html("<i class='fa " + icon + "'></i>&nbsp;&nbsp;" + text);
+      $(this).animate({
+        width: width
+      }, 100);
+    }, function(){
+      $(this).html("<i class='fa " + icon + "'></i>");
+      $(this).animate({
+        width: "40"
+      }, 100);
+    });
+  };
+</script>

@@ -40,6 +40,10 @@ class MarketDecorator < Draper::Decorator
       render partial: 'markets/shared/actions_icon', locals: { market: self }
   end
 
+  def social_icons
+    render partial: 'markets/shared/social_icons', locals: { market: self }
+  end
+
   def badges
     if passed?
       "passed ribbon-badge-passed"
@@ -72,7 +76,7 @@ class MarketDecorator < Draper::Decorator
 
   def unpublish_link
     if (can? :unpublish, market) && market.state == "published"
-      link_to "Unpublish", market_unpublish_path(market), { method: :post, class: "unpublish market-action" }
+      link_to "Unpublish", market_unpublish_path(market), { method: :post, class: "btn btn-danger unpublish market-action" }
     end
   end
 

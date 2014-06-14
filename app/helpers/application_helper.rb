@@ -73,11 +73,11 @@ module ApplicationHelper
   end
 
   def pinterest_text(market)
-    "http://pinterest.com/pin/create/link/?url=#{market_url}&media=#{cloudinary_url(market.featured.photo.path)}&description=Personal Markets: #{market.name}, #{market.description} #{market.hashtags.gsub('#', '%23')}"
+    "http://pinterest.com/pin/create/link/?url=#{market.short_url}&media=#{cloudinary_url(market.featured.photo.path)}&description=Personal Markets: #{market.name}, #{market.description} #{market.hashtags.gsub('#', '%23')}"
   end
 
   def google_text(market)
-    "https://plus.google.com/share?url=#{market_url}"
+    "https://plus.google.com/share?url=#{market.short_url}"
   end
 
 end

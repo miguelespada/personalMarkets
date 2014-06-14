@@ -4,17 +4,10 @@
 
 <% markets.each do |market| %>
   <% market = market.decorate %>
+  
   <div class="panel panel-default panel-table" id="market_<%= market.id %>">
-    <div class="panel-heading table-title">
-      <div class="market-title-container">
-        <div class="market-title col-md-6"><%= market.link(market.name)%></div>
-        <div class="market-actions col-md-6">
-          <div class="market-actions-links">
-            <%= market.actions %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render partial: 'markets/shared/market_title', locals: { market: market } %>
+
 
     <div class="market-list-each-container">
       <div class = "col-md-8">
@@ -59,35 +52,11 @@
   </div>
 <% end %>
 <div class="market-list-bottom"></div>
-<script>
-  $(document).ready(function(){
-    buttonHover(".like-icon", "fa-heart", "Like", 75);
-    buttonHover(".unlike-icon", "fa-heart-o", "Unlike", 85);
-    buttonHover(".edit-icon", "fa-pencil", "Edit", 70);
-    buttonHover(".delete-icon", "fa-trash-o", "Delete", 85);
-    buttonHover(".archive-icon", "fa-undo", "Archive", 95);
-  });
-
-  var buttonHover = function(button, icon, text, width){
-    $(button).hover(function(){
-      $(this).html("<i class='fa " + icon + "'></i>&nbsp;&nbsp;" + text);
-      $(this).animate({
-        width: width
-      }, 100);
-    }, function(){
-      $(this).html("<i class='fa " + icon + "'></i>");
-      $(this).animate({
-        width: "40"
-      }, 100);
-    });
-  };
-  
-</script>
 
 <style>
-@media (max-width: 992px){
-  .market-actions{
-    text-align: left;
+  @media (max-width: 992px){
+    .market-actions{
+      text-align: left;
+    }
   }
-}
 </style>
