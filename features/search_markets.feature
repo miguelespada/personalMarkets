@@ -9,7 +9,7 @@ Feature: Browse markets
   And There are some special locations
   When I go to Search
 
-  @search
+  @post_search @javascript
   Scenario: Search markets
     And I do a search
     Then I see the markets matching my query
