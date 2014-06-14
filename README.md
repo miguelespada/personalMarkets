@@ -1,6 +1,8 @@
 personal-markets
 ================
 
+res
+
 - Ruby 2.0.0
 - mongodb
 - elasticsearch
@@ -20,6 +22,10 @@ run <code>rails s</code> to start the application
 
 <code>mongorestore db/example_data.json/</code>
 
+##Load Database example in Heroku
+
+mongorestore -h oceanic.mongohq.com:10000 -d app21981089  -u user -p password db/example_data.json/pop_up_stores_development/
+
 ##Dump Database example
 
 <code>mongodump -d pop_up_stores_development -o db/example_data.json</code>
@@ -32,3 +38,7 @@ To seed the database with example data:
 To drop the database:
 
 <code>rake db:purge</code>
+
+In heroku
+
+<code>heorku run rake db:purge</code>
