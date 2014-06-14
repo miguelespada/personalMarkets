@@ -49,6 +49,8 @@ class Ability
             @user.owns(market)
         end 
 
+        cannot :index, Market
+
         can :buy, Coupon
         can :coupon_payment, Coupon
         
