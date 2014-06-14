@@ -276,7 +276,7 @@ class MarketDecorator < Draper::Decorator
 
   def market_quality_section
     if can? :quality_section, market
-      render partial: 'markets/shared/utils/market_quality', locals: {market: market.decorate}
+      render partial: 'markets/shared/utils/quality', locals: {market: market.decorate}
     end
   end
 

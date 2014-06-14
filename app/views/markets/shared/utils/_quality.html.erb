@@ -1,0 +1,19 @@
+<%= stylesheet_link_tag 'market-quality'%>
+
+<div class="market-section-title">Market quality</div>
+<div class="market-section-container">
+  <div class="quality-section">
+    <ul class="field-list">
+      <% market.market_quality do |field, quality| %>
+        
+        <li>
+        <figure>
+          <i class="fa fa-star <%= quality %>"></i>
+          <figcaption><%= field.titleize %></figcaption>
+        </figure>
+        </li>
+
+      <% end %>
+    </ul>
+  </div>
+</div>

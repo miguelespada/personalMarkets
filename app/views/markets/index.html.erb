@@ -1,13 +1,1 @@
-<!-- 
-  - params[:layout] allows to render diffente list styles [slugs, gallery,... ] 
-  - "gallery" is de default layout
-  - check makers_helper to see details  
--->
-
-<% markets ||= @markets %> 
-
-<%= content_tag :div, class: "market-slugs" do %>
-  <div id="gallery-items"></div>
-  <%= render partial: "markets/shared/views/slugs", locals: {markets: markets } %>
-  </div>
-<% end %>
+<%= render partial: "markets/shared/views/slugs", locals: {markets: @markets } %>
