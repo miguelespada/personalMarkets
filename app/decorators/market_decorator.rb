@@ -284,6 +284,20 @@ class MarketDecorator < Draper::Decorator
     MarketEvaluator.new(market).evaluate_quality &block
   end
 
+
+  def twitter_text
+    "http://twitter.com/home?status=@PersonalMarkets, #{short_url}, %23#{name.tr(' ', '_').camelize}: #{description} #{hashtags.gsub('#', '%23')}"
+  end
+
+  def pinterest_text
+    "http://pinterest.com/pin/create/link/?url=#{short_url}&media=#{cloudinary_url(featured.photo.path)}&description=Personal Markets: #{name}, #{description} #{hashtags.gsub('#', '%23')}"
+  end
+
+  def google_text
+    "https://plus.google.com/share?url=#{short_url}"
+  end
+
+
   private 
 
     def market_belongs_to_user?

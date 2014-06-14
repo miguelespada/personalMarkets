@@ -1,3 +1,3 @@
-<%= link_to content_tag(:i, "", class: "fa fa-twitter"), twitter_text(market), class: "btn btn-info" %>
-<%= link_to content_tag(:i, "", class: "fa fa-pinterest"), pinterest_text(market), class: "btn btn-danger" if market.featured.present? %>
-<%= link_to content_tag(:i, "", class: "fa fa-google-plus"), google_text(market), class: "btn btn-primary" %>
+<%= link_to content_tag(:i, "", class: "fa fa-twitter"), market.twitter_text, class: "btn btn-info" %>
+<%= link_to content_tag(:i, "", class: "fa fa-pinterest"), market.pinterest_text, class: "btn btn-danger" if market.featured.present? %>
+<%= link_to content_tag(:i, "", class: "fa fa-google-plus"), market.google_text, class: "btn btn-primary" %>
