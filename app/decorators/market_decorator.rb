@@ -54,6 +54,8 @@ class MarketDecorator < Draper::Decorator
     else
       "no_badge ribbon-badge-none"
     end
+  rescue
+    "no_badge ribbon-badge-none"
   end
 
   def archive_link
@@ -108,6 +110,8 @@ class MarketDecorator < Draper::Decorator
       end
     end
   end
+
+
 
   def photo_gallery_section
     if market.photo_gallery_available?
@@ -193,6 +197,15 @@ class MarketDecorator < Draper::Decorator
     return false
   rescue
     false
+  end
+
+  def transactions_link_icon
+    if market.has_coupon?
+     if can? :edit, coupon
+      link_to(content_tag(:i, "", :class => "fa fa-ticket"), sold_coupons_by_market_path(market), 
+        :class => "transactions-icon market-action")
+      end
+    end
   end
 
   def edit_link_icon
