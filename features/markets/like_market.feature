@@ -8,6 +8,7 @@ Feature: Like a market
       When I am logged in
       Given There are some published markets
 
+    @like_market
     Scenario: Like market
       When I like the market
       Then The number of likes increment

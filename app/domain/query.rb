@@ -2,7 +2,6 @@ class Query
   def initialize(params, session)
     @params = params
     @session = session 
-    search_params
   end
 
   def search_params

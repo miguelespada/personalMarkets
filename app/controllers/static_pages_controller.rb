@@ -10,7 +10,9 @@ class StaticPagesController < ApplicationController
   end
 
   def map
-
+    if params[:location].present?
+      session[:location_id] = params[:location]
+    end
   end
 
   def cities

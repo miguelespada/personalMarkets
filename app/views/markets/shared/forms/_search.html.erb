@@ -3,9 +3,6 @@
     <li class="form-group search-filter-item">
       <%= link_to content_tag(:i, "", :class => "fa fa-refresh"), "#", :class=>  "btn btn-default btn-reset-search", :id=>"reset_search" %>
     </li>
-    <li class="form-group hidden">
-      <%= text_field_tag :query, session[:query], placeholder: "Query...", class: "query form-control"  %>
-    </li>
 
     <li class="form-group hidden">
       <% selection = session[:category_id] %>
@@ -51,6 +48,10 @@
 
     <li class="page hidden" >
       <%= text_field_tag :page, session[:page] || 1 %>  
+    </li>
+
+    <li class="form-group hidden">
+      <%= text_field_tag :query, session[:query], placeholder: "Query...", class: "query form-control"  %>
     </li>
 
     <%= submit_tag "Search", name: nil, class: "hidden" %>
@@ -121,14 +122,10 @@
       return false;
     });
 
-    $(window).keydown(function(event){
-      if(event.keyCode == 13) {
+    $( "#search_market").keypress(function(e) {
         event.preventDefault();
-        $('#search_market').change();
-          return false;
-        }
+        return false;
     });
-
 
   });
 

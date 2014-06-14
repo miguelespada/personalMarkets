@@ -139,45 +139,37 @@ Then(/^I see a show button$/) do
 end
 
 When(/^I like the market$/) do
-  visit markets_path
-  within(:css, "#market_#{@market_0.id}") do
-    find('.like-icon').click
-  end
+  visit market_path(@market_0)
+  find('.like-icon').click
 end
 
 Then(/^The number of likes increment$/) do
-  visit markets_path
-  within(:css, "#market_#{@market_0.id} .like-counter") do
+  visit market_path(@market_0)
+  within(:css, ".like-counter") do
     expect(page).to have_content "1"
   end
 end
 
 Then(/^I cannot like that market again$/) do
-  visit markets_path
-  within(:css, "#market_#{@market_0.id}") do
-    expect(page).to have_css '.unlike-icon'
-    expect(page).not_to have_css '.like-icon'
-  end
+  visit market_path(@market_0)
+  expect(page).to have_css '.unlike-icon'
+  expect(page).not_to have_css '.like-icon'
 end
 
 Then(/^I cannot unlike that market again$/) do
-  visit markets_path
-  within(:css, "#market_#{@market_0.id}") do
-    expect(page).not_to have_css '.unlike-icon'
-    expect(page).to have_css '.like-icon'
-  end
+  visit market_path(@market_0)
+  expect(page).not_to have_css '.unlike-icon'
+  expect(page).to have_css '.like-icon'
 end
 
 When(/^I unlike the market$/) do
-  visit markets_path
-  within(:css, "#market_#{@market_0.id}") do
+  visit market_path(@market_0)
     find('.unlike-icon').click
-  end
 end
 
 Then(/^The number of likes decrement$/) do
-  visit markets_path
-  within(:css, "#market_#{@market_0.id} .like-counter") do
+  visit market_path(@market_0)
+  within(:css, ".like-counter") do
     expect(page).to have_content "0"
   end
 end

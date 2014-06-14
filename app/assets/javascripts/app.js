@@ -54,17 +54,15 @@ PM.setDataRange =  function() {
 
 var ajaxSearch = function () {
     PM.setDataRange();
-    $.get("live_search" , $(this).serialize(), function(data) {
+    $.get("live_search", $("#search_market").serialize(), function(data) {
         $( "#gallery-items" ).html( data );
-
     });
     return false;
 };
 
 var jsonSearch = function () {
     PM.setDataRange();
-    $.get("markets/live_search.json" , $(this).serialize(), function(data) {
-        console.log(moment());
+    $.get("markets/live_search.json", $("#search_market").serialize(), function(data) {
        PM.fillMapView(data);
     });
     return false;
