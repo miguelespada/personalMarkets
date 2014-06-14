@@ -41,7 +41,9 @@ Then(/^I should see all the markets$/) do
 end
 
 When(/^I do a search$/) do
-  fill_in "query",  with: "market"
+  within(:css, ".search-form") do
+    fill_in "query",  with: ""
+  end
   find("#search_button").click
 end
 

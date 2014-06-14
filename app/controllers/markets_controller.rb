@@ -42,7 +42,6 @@ class MarketsController < ApplicationController
   end
 
   def search
-    query = Query.new(params, session)
   end
 
   def live_search

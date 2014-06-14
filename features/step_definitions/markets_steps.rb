@@ -313,7 +313,6 @@ end
 
 When(/^I make it PRO$/) do
   visit market_make_pro_payment_path(@market)
-  
   step "he needs to introduce his credit card data"
   click_on "Pay"
 end
