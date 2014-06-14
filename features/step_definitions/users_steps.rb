@@ -80,11 +80,11 @@ When(/^he wants to become premium$/) do
 end
 
 Then(/^he needs to introduce his credit card data$/) do
-    fill_in "Card holder name", with: "Dan North"
-    fill_in "Card number", with: 4111111111111111
-    select "05", :from => "month-selector"
-    select "2022", :from => "year-selector"
-    fill_in "cvc-field", with: 212
+  fill_in "Card holder name", with: "Dan North"
+  fill_in "Card number", with: 4111111111111111
+  select "05", :from => "month-selector"
+  select "2022", :from => "year-selector"
+  fill_in "cvc-field", with: 212
 end
 
 Given(/^a user submits for subscription with valid data$/) do

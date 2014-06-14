@@ -1,3 +1,4 @@
+@archive
 Feature: Archive market as admin
   As an admin
   I want to archive a market

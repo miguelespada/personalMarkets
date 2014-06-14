@@ -58,11 +58,6 @@ class MarketDecorator < Draper::Decorator
     "no_badge ribbon-badge-none"
   end
 
-  def archive_link
-    if can? :archive, market
-      link_to "Archive", market_archive_path(market), { method: :post }
-    end
-  end
 
   def publish_link
     if can?(:publish, market) && market.state != "published"
@@ -117,20 +112,6 @@ class MarketDecorator < Draper::Decorator
   def show_link
     link("Show")
   end
-  
-  def edit_link
-    if can? :edit, market
-      link_to("Edit", edit_user_market_path(market.user, market), 
-        :class => "edit market-action")
-    end
-  end
-
-  def delete_link
-    if can? :delete, market
-      link_to("Delete", user_market_path(market.user, market), method: :delete, 
-        class: "delete market-action", data: { confirm: 'Are you sure?'})
-    end
-  end
 
   def like_link
     if can? :like, market
@@ -147,11 +128,7 @@ class MarketDecorator < Draper::Decorator
     link_to("QR", user_market_path(market.user, market, :svg))
   end
 
-  def pro_link
-    if can? :edit, market
-      link_to "Go PRO", market_make_pro_payment_path(market), class: "pro market-action" unless market.pro?
-    end
-  end
+
 
   def statistics_link
     if can? :statistics, market
@@ -221,6 +198,7 @@ class MarketDecorator < Draper::Decorator
       link_to content_tag(:i, "", :class => "fa fa-undo"), market_archive_path(market), { method: :post, class: "archive-icon market-action"  }
     end
   end
+  
 
   def pro_link_icon
     if can? :edit, market

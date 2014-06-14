@@ -17,7 +17,7 @@ end
 
 Then(/^I can edit the market$/) do
   within(:css, ".market-actions") do
-    expect(page).to have_link "Edit"
+    find('.edit-icon').click
   end
 end
 
@@ -33,7 +33,7 @@ end
 When(/^I change market info$/) do
 
   within(:css, ".market-actions") do
-    click_on "Edit"
+    find('.edit-icon').click
   end
   fill_in "Name",  with: "New dummy Market"
   within(:css, ".market_description") do
@@ -249,7 +249,7 @@ Then(/^I cannot publish it again$/) do
 end
 
 When(/^I archive the market$/) do
-  click_on "Archive"
+    find('.archive-icon').click
 end
 
 When(/^I visit a published market$/) do
@@ -277,7 +277,7 @@ end
 
 When(/^I archive it$/) do
   visit market_path @market
-  click_on "Archive"
+  find('.archive-icon').click
 end
 
 Then(/^It is not visible in guest markets$/) do
@@ -312,8 +312,8 @@ Given(/^I have a regular market with a coupon$/) do
 end
 
 When(/^I make it PRO$/) do
-  visit market_path @market
-  find('.pro-icon').click
+  visit market_make_pro_payment_path(@market)
+  
   step "he needs to introduce his credit card data"
   click_on "Pay"
 end
@@ -365,6 +365,7 @@ Then(/^I click on edit the market$/) do
 end
 
 Then(/^I should see the link of photo gallery is enabled$/) do
+  visit edit_user_market_path(@market.user, @market)
   page.should have_css('li#form-link-gallery.enabled')
   step "I click on the link of photo gallery"
   step "I should be able to access photo gallery"
