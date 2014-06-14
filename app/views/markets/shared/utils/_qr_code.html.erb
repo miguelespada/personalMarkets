@@ -1,0 +1,13 @@
+<div id="market-qr"></div>   
+
+<script>
+$(document).ready(function(){
+  $.get( "<%= market_url(market.to_param, format: :svg) %>", function( data ) {
+    var qr = data.childNodes[0];
+    qr.setAttribute( "width", "200");
+    qr.setAttribute( "height", "200");
+    qr.setAttribute( "viewBox", "0 0 370 370");
+    $( "#market-qr" ).html( qr );
+  });
+});
+</script>

@@ -1,0 +1,48 @@
+<div class="panel panel-default panel-table panel-table-last market-full-description-panel">
+  
+  <%= render partial: 'markets/shared/market_title', locals: { market: market } %>
+
+  <div class="market-full-description-container">
+    <div class="market-badge">
+      <div class="ribbon-badge <%= market.badges %>">
+        <span id="market-badge-text"></span>
+      </div>
+    </div>
+
+    <div class="market-section-title"><%= t :general_information %></div>
+    
+    <div class="market-section-container">
+      <div class="col-md-6 market-featured-photo-detail">
+        <%= market.market_featured_photo_filtered(400, 200) %>
+      </div>
+    
+      <div class="market-data col-md-6">
+          <%= render partial: 'markets/shared/utils/description', locals: { market: market } %>
+      </div>
+    </div>
+  
+    <%= market.market_quality_section %>
+
+    <%= market.photo_gallery_section %>
+  
+    <%= market.coupon_section %>
+  
+    <div class="market-section-title"><%= t :location %></div>
+    <div class="market-section-container">
+      <div class="market-address-detail"> <%= market.address %>, <%= market.city %> </div>
+      <%= market.location %>
+    </div>
+
+    <div class="market-section-title">Comment & Share</div>
+    <div class="market-section-container social-container">
+      <%= render partial: 'markets/shared/utils/facebook_comments', locals: { market: market } %>
+    </div>
+
+    <div class="market-section-title">QR Code</div>
+    <div class="market-section-container qr-container">
+      <%= render partial: 'markets/shared/utils/qr_code', locals: { market: market } %>
+    </div>
+  </div>
+</div>
+
+

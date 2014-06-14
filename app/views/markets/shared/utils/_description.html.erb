@@ -7,10 +7,22 @@ Prices: <%= market.min_price %> € - <%= market.max_price %> € <br>
 <%= t :tags %>: <%= market.hashtags %> <br>
 Address: <%= market.address %>, <%= market.city %> <br>
 Date: <%= market.date %> <br>
-Schedule: <%= market.schedule %> <br>    
+Schedule: <span class:"market-schedule-string"> <%= market.schedule %> </span><br>    
  <i class="fa fa-heart-o"></i> <%= market.favorited.count %> <br>
 
 <div class="hidden">
   <%= market.latitude %>
   <%= market.longitude %> 
 </div>
+
+<script>
+  $(document).ready(function(){
+    var scheduleString = $(".market-schedule-string").text();
+    var scheduleItems = scheduleString.split(";");
+    $.each(scheduleItems, function(i, val){
+        valArray = val.split(",");
+        scheduleItems[i] = valArray[0]+", "+valArray[1]+" to "+valArray[2];
+    });
+      $(".market-schedule-detail").html(scheduleItems.join("<br>"));
+  });
+</script>

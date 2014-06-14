@@ -1,0 +1,33 @@
+<div class="panel panel-default panel-table" id="market_<%= market.id %>">
+    <%= render partial: 'markets/shared/market_title', locals: { market: market } %>
+
+    <div class="market-list-each-container">
+      <div class = "col-md-8">
+        <div class="market-list-section-title">Information</div>
+        <div class="market-list-section-container">
+          <div class = "market-list-section-container-inner">
+            <div class = "col-md-4">
+              <%= market.market_featured_photo_filtered(200, 100) %>
+            </div>
+            <div class = "col-md-6">
+              <%= render partial: 'markets/shared/utils/description', locals: { market: market } %>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class = "col-md-4">
+        <div class="market-list-section-title">Coupon</div>
+        <div class="market-list-section-container">
+          <%= render market.coupon %>
+        </div>
+      </div>
+
+      <div class="market-list-badge">
+        <div class="ribbon-badge <%= market.badges %>">
+          <span id="market-badge-text"></span>
+        </div>
+       </div>
+
+    </div>
+</div>
