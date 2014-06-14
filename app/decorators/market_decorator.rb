@@ -33,15 +33,11 @@ class MarketDecorator < Draper::Decorator
   end 
 
   def actions
-      render partial: 'markets/shared/actions', locals: { market: self }
-  end
-
-  def actions_icon
-      render partial: 'markets/shared/actions_icon', locals: { market: self }
+    render partial: 'markets/shared/utils/actions', locals: { market: self }
   end
 
   def social_icons
-    render partial: 'markets/shared/social_icons', locals: { market: self }
+    render partial: 'markets/shared/utils/social_icons', locals: { market: self }
   end
 
   def badges

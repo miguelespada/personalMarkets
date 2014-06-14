@@ -17,20 +17,9 @@
             <div class = "col-md-4">
               <%= market.market_featured_photo_filtered(200, 100) %>
             </div>
-            <div class = "col-md-8">
-              Description: <%= market.description %> <br>
-              External url: <%= market.url %> <br>
-              State: <%= market.state %> <br>
-              Owner: <%= market.owner %> <br>
-              Category: <%= market.category_name %> <br>
-              <%= t :tags %>: <%= market.hashtags %> <br>
-              Address: <%= market.address %>, <%= market.city %> <br>
-              <div class="hidden">
-                <%= market.latitude %>
-                <%= market.longitude %> 
-              </div>
-              Date: <%= market.date %> <br>
-              <div class="like-counter"> <%= market.favorited.count %> Likes </div>
+            <div class = "col-md-6">
+              <%= render partial: 'markets/shared/utils/description', locals: { market: market } %>
+
             </div>
           </div>
         </div>
@@ -52,11 +41,3 @@
   </div>
 <% end %>
 <div class="market-list-bottom"></div>
-
-<style>
-  @media (max-width: 992px){
-    .market-actions{
-      text-align: left;
-    }
-  }
-</style>

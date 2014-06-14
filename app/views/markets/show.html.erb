@@ -4,7 +4,6 @@
   
   <%= render partial: 'markets/shared/market_title', locals: { market: market } %>
 
-
   <div class="market-full-description-container">
     <div class="market-badge">
       <div class="ribbon-badge <%= market.badges %>">
@@ -12,22 +11,15 @@
       </div>
     </div>
     <div class="market-section-title"><%= t :general_information %></div>
+    
     <div class="market-section-container">
-    <div class="col-md-6 market-featured-photo-detail">
-      <%= market.market_featured_photo_filtered(400, 200) %>
-    </div>
-  
-    <div class="market-data col-md-6">
-      <div class="market-description-detail"> <%=  market.description %> </div>
-      <a href="<%=  market.url %>" target="_blank"><%=  market.url %></a>
-      <div class="market-category-detail"> Category: <%= market.category_name %> </div>
-      <div class="market-prices-detail"> Prices: <%= market.min_price %> € - <%= market.max_price %> € </div>
-      <div class="market-tags-detail"> <%= t :tags %>: <%= market.hashtags %> </div> 
-      <div class="market-date-detail hidden">  <%= market.date %> </div>
-      <div class="market-schedule-string hidden"> <%= market.schedule %> </div>
-      <div class="market-schedule-detail"></div>
-      <div class="market-likes-number-detail"> <i class="fa fa-heart-o"></i> <%= market.favorited.count %>&nbsp;&nbsp;</div>
-    </div>
+      <div class="col-md-6 market-featured-photo-detail">
+        <%= market.market_featured_photo_filtered(400, 200) %>
+      </div>
+    
+      <div class="market-data col-md-6">
+          <%= render partial: 'markets/shared/utils/description', locals: { market: market } %>
+      </div>
     </div>
   
     <%= market.market_quality_section %>
@@ -67,19 +59,9 @@
 
   </div>
 
-<style>
-  @media (max-width: 992px){
-    .market-actions{
-      text-align: left;
-    }
-  }
-</style>
-
 <script>
 
   $(document).ready(function(){
-    
-
     $.get( "<%= market_path(market, format: :svg) %>", function( data ) {
       var qr = data.childNodes[0];
       qr.setAttribute( "width", "200");
@@ -98,7 +80,4 @@
     $(".market-schedule-detail").html(scheduleItems.join("<br>"));
 
   });
-
-  
-
 </script>

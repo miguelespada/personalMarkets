@@ -1,0 +1,16 @@
+Description: <%= market.description %> <br>
+External url:  <a href="<%=  market.url %>" target="_blank"><%=  market.url %></a> <br>
+Category: <%= market.category_name %> <br>
+State: <%= market.state %> <br>
+Owner: <%= market.owner %> <br>
+Prices: <%= market.min_price %> € - <%= market.max_price %> € <br>
+<%= t :tags %>: <%= market.hashtags %> <br>
+Address: <%= market.address %>, <%= market.city %> <br>
+Date: <%= market.date %> <br>
+Schedule: <%= market.schedule %> <br>    
+ <i class="fa fa-heart-o"></i> <%= market.favorited.count %> <br>
+
+<div class="hidden">
+  <%= market.latitude %>
+  <%= market.longitude %> 
+</div>
