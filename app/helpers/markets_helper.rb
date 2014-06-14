@@ -8,14 +8,6 @@ module MarketsHelper
     end
   end
 
-  def market_list(markets, layout) 
-    if layout == "gallery"
-      render partial: "markets/shared/gallery", locals: {markets: markets } 
-    else
-      render partial: "markets/shared/slugs", locals: {markets: markets }
-    end
-  end
-
   def market_form(user, market)
     if user.allowed_market_creation? 
       render partial: "markets/shared/form", locals: {user: user, market: market.decorate }

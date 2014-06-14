@@ -3,7 +3,7 @@
  <div class="panel-heading table-title">
     User Markets
   </div>
-  <div id="gallery-items">
-    <%= market_list(@markets, "slugs") %>
+  <div id="gallery-items">  
+    <%= render partial: "markets/shared/views/slugs", locals: {markets: @markets } %>
   </div>
 </div>

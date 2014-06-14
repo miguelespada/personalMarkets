@@ -5,6 +5,6 @@
   </div>
 
   <div id="gallery-items">
-    <%= market_list(@markets, "gallery") %>
+    <%= render partial: "markets/shared/views/gallery", locals: {markets: @markets } %>
   </div>
 </div>
