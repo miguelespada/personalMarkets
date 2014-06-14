@@ -36,8 +36,8 @@ class MarketDecorator < Draper::Decorator
     render partial: 'markets/shared/utils/actions', locals: { market: self }
   end
 
-  def social_icons
-    render partial: 'markets/shared/utils/social_icons', locals: { market: self }
+  def social_links
+    render partial: 'markets/shared/utils/social_links', locals: { market: self }
   end
 
   def badges
@@ -78,19 +78,13 @@ class MarketDecorator < Draper::Decorator
 
   def location
     if can? :see_location, Market
-      render partial: 'markets/shared/location', locals: { market: market }
-    end
-  end
-
-  def comment_form
-    if can? :comment, market
-      render partial: 'layouts/shared/comment_form', locals: { market: market }
+      render partial: 'markets/shared/utils/location', locals: { market: market }
     end
   end
 
   def coupon_section
     if market.coupon_available?
-      render partial: "market_coupon", locals: { market: self }
+      render partial: "markets/shared/utils/coupon", locals: { market: self }
     end
   end
 
@@ -115,7 +109,7 @@ class MarketDecorator < Draper::Decorator
 
   def photo_gallery_section
     if market.photo_gallery_available?
-      render partial: "market_photo_gallery", locals: { market: self }
+      render partial: "markets/shared/utils/photo_gallery", locals: { market: self }
     end
   end
 
@@ -282,7 +276,7 @@ class MarketDecorator < Draper::Decorator
 
   def market_quality_section
     if can? :quality_section, market
-      render partial: 'market_quality', locals: {market: market.decorate }
+      render partial: 'markets/shared/utils/market_quality', locals: {market: market.decorate}
     end
   end
 
