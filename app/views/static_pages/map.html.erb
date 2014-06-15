@@ -12,10 +12,10 @@
     $('#search_market').change(jsonSearch);
       
     $('#location_location_id').change(function(){
-      if($(this).val() == "Any location") return;
+      if($(this).val() == "") return;
       else if($(this).val() == "My location" ) PM.setViewWithUserLocation();
       else{
-        $.get( "get_location.json", { 
+        $.get("get_location.json", { 
           name: $(this).val()}, function( data ) {
           PM.map.setView([data.latitude, data.longitude], 16);
         });
