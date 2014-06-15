@@ -42,18 +42,17 @@ class MarketsController < ApplicationController
   end
 
   def search
-    query = Query.new(params, session)
-    query.search_params
+    query = Query.new(params)
+    query.set_session(session)
   end
 
   def live_search
-    query = Query.new(params, session)
-    per_page = params[:per_age].present? ? params[:per_page].to_i : 9
-    page = params[:page].present? ? params[:page].to_i : 1
-    result = Market.search(query.search_params, page, per_page)
-    @markets = result[:markets]
-    @last_page = result[:total]/per_page.to_f <= page 
-    @first_page = page == 1
+    query = Query.new(params)
+
+    @markets = query.search_markets
+    @last_page = query.is_last_page?
+    @first_page = query.is_first_page?
+    query.set_session(session)
 
     respond_to do |format|
       format.html { render :layout => false }

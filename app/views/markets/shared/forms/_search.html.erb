@@ -6,10 +6,8 @@
     </li>
 
     <li class="form-group hidden">
-      <% selection = session[:category_id] %>
-      <% selection ||= "" %>
       <%= collection_select(:category, :category_id, Category.all, :name, :name, 
-        {:include_blank => "All categories", :selected => selection}, 
+        {:include_blank => "All categories", :selected => session[:category]}, 
         class: "category form-control" ) %>
     </li>
 
@@ -21,54 +19,30 @@
     </li>
 
     <li class="form-group search-filter-item" id="search-location-item">
-      <% selection =  session[:location_id] %>
-      <% selection ||= "" %>
       <%= collection_select(:location, :location_id, SpecialLocation.all, 
-        :name, :name, {:selected => selection, :include_blank => "Any location"},
+        :name, :name, {:selected => session[:location], 
+        :include_blank => "Any location"},
         class: "form-control" ) %>
     </li>
 
     <li class="form-group search-filter-item" id="search-city-item">
-      <%= collection_select(:city, :city_name, [], :name, :name, 
-        {:include_blank => "Any city"}, class: "form-control" ) %>
+      <%= select_tag(:city, options_for_select(Market.cities.prepend("Any city"), 
+        :selected => session[:city]), 
+        class: "form-control") %>
     </li>
 
-    <li class="date-range hidden">
-      <%= text_field_tag :from, session[:from]%>  
-      <%= text_field_tag :to, session[:to]%>  
-    </li>
-    
-
-    <li class="user-location hidden">
+    <li class="hidden">
+      <%= text_field_tag :from %>  
+      <%= text_field_tag :to %>  
       <%= text_field_tag :user_lat %>  
       <%= text_field_tag :user_lon %>
+      <%= text_field_tag :page, session[:page] || 1 %>
+      <%= text_field_tag :query, session[:query] %>
     </li>
 
-    <li class="page hidden" >
-      <%= text_field_tag :page, session[:page] || 1 %>  
-    </li>
-
-    <li class="form-group hidden">
-      <%= text_field_tag :query, session[:query], 
-        placeholder: "Query...", class: "query form-control"  %>
-    </li>
 <% end %>
 
 <script>
-  $.getJSON('/cities.json', function(data){
-      var html = '';
-      var len = data.length;
-      for (var i = 0; i< len; i++) {
-          html += '<option value="' + data[i] + '">' + data[i] + '</option>';
-      }
-      $('#city_city_name').append(html);
-
-      <% selection =  session[:city_name] %>
-      <% selection ||= "" %>
-      
-      $('#city_city_name').val("<%= selection %>");
-  });
-
 
   function pos_success(pos){
     var crd = pos.coords;
@@ -97,11 +71,11 @@
    
     $("#location_location_id").change(function(){
       if($("#location_location_id").val() != "")
-        $("#city_city_name option").prop("selected", false);
+        $("#city option").prop("selected", false);
     });
 
-    $("#city_city_name").change(function(){
-      if($("#city_city_name").val() != "")
+    $("#city").change(function(){
+      if($("#city").val() != "")
         $("#location_location_id option").prop("selected", false);
     });
 
@@ -110,7 +84,7 @@
         $("#query").val("");
         $("#search_bar_query").val("");
         $("#location_location_id").val("");
-        $("#city_city_name").val("");
+        $("#city").val("Any city");
         $("#category_category_id").val("");
         $('#page').val(1);
         $('#search_market').change();

@@ -1,7 +1,11 @@
 <li id="search_bar">
   <div class="input-group input-group">
-    <%= text_field_tag :query, params["query"], placeholder: "Search market", 
-    class: "query form-control", id: "search_bar_query" %>
+    <%= text_field_tag :query, 
+    session[:query], 
+    placeholder: "Search markets", 
+    class: "query form-control", 
+    id: "search_bar_query" %>
+    
     <span class="input-group-btn">
       <button class="btn btn-default" id="search_button" type="button">
         <i class="fa fa-search"></i>
@@ -17,10 +21,6 @@ $( document ).ready(function() {
     $("#query").val($( "#search_bar_query" ).val());
   });
 
-
-  $("#query").ready(function(){
-    $("#search_bar_query").val($( "#query" ).val());
-  })
 
   $("#search_button").click(function(){
     <% if ((controller_name == 'markets' && action_name == 'search') || (controller_name == 'static_pages' && action_name == 'map')) %>

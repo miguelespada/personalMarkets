@@ -1,7 +1,6 @@
 class Query
-  def initialize(params, session)
+  def initialize(params)
     @params = params
-    @session = session 
   end
 
   def search_params
@@ -17,10 +16,31 @@ class Query
     }
   end 
 
+  def is_last_page?
+    @result[:total]/@per_page.to_f <= @page 
+  end
+  def is_first_page?
+    @page == 1
+  end
+
+  def set_session(session)
+    session[:category] = @params[:category][:category_id]
+    session[:location] = @params[:location][:location_id]
+    session[:city] = @params[:city]
+    session[:range] = @params[:range]
+    session[:query] = @params[:query]
+  end
+
+  def search_markets
+    @per_page = @params[:per_age].present? ? @params[:per_page].to_i : 9
+    @page = @params[:page].present? ? @params[:page].to_i : 1
+    @result = Market.search(search_params, @page, @per_page)
+    @result[:markets]
+  end
+
   private
 
     def load_category
-        @session[:category_id] = @params[:category][:category_id]
         @params[:category][:category_id]
     rescue 
         ""
@@ -30,7 +50,6 @@ class Query
       if @params[:location][:location_id] == "My location"
         @params[:user_lat]
       else
-        @session[:location] = @params[:location][:location_id]
         SpecialLocation.find_by(name: @params[:location][:location_id]).latitude
       end
     rescue 
@@ -41,7 +60,6 @@ class Query
       if @params[:location][:location_id] == "My location"
         @params[:user_lon]
       else
-        @session[:location_id] = @params[:location][:location_id]
         SpecialLocation.find_by(name: @params[:location][:location_id]).longitude
       end
     rescue 
@@ -49,35 +67,30 @@ class Query
     end
 
     def load_city
-        @session[:city] = @params[:city][:city_name]
-        @params[:city][:city_name]
+        @params[:city]
     rescue 
         ""
     end
 
     def load_from
-        @session[:from] = @params[:from]
         @params[:from]
     rescue 
         DateTime.now.strftime("%d/%m/%Y")
     end
 
     def load_to
-        @session[:to] = @params[:to]
         @params[:to]
     rescue 
         ""
     end
     
     def load_range
-        @session[:range] = @params[:range]
         @params[:range]
     rescue 
         ""
     end
 
     def load_query
-        @session[:query] = @params[:query]
         @params[:query]
     rescue 
         ""

@@ -93,7 +93,7 @@ When(/^I select a special location$/) do
 end
 
 When(/^I select a city$/) do
-  find("#city_city_name").select("madrid")
+  find("#city").select("madrid")
 end
 
 When(/^I allow geolocation$/) do

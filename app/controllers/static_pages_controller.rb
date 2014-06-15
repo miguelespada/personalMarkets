@@ -14,14 +14,7 @@ class StaticPagesController < ApplicationController
       session[:location_id] = params[:location]
     end
   end
-
-  def cities
-    cities = Market.all.collect{|market| market.city if !market.city.blank?}.compact.uniq
-    respond_to do |format|
-      format.json {render json: cities}
-    end
-  end
-
+  
   private 
 
   def beginning_of(n)

@@ -276,4 +276,8 @@ class Market
     find_by(public_id: id)
   end
 
+  def self.cities
+    all.collect{|market| market.city if !market.city.blank?}.compact.uniq
+  end
+
 end
