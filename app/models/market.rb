@@ -205,7 +205,7 @@ class Market
     page ||= 1
     page = 1 if page < 1
     range = format_range_query(params[:from], params[:to])
-    city = params[:city].split(',')[0]
+    city = params[:city]
     category = params[:category]
     location = format_location(params[:latitude], params[:longitude])
 
@@ -279,7 +279,7 @@ class Market
   end
 
   def collect_cities
-    @@cities = Market.all.collect{|market| market.city if !market.city.blank?}.compact.uniq
+    @@cities = Market.all.collect{|market| market.city.split(',')[0] if !market.city.blank?}.compact.uniq
     @@cities.prepend("")
   end
 

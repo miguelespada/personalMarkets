@@ -72,11 +72,15 @@
     $("#location_location_id").change(function(){
       if($("#location_location_id").val() != "")
         $("#city option").prop("selected", false);
+      else
+        return false;
     });
 
     $("#city").change(function(){
       if($("#city").val() != "")
         $("#location_location_id option").prop("selected", false);
+      else
+        return false;
     });
 
     $("#reset_search").click(function(){
