@@ -14,14 +14,14 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require bootstrap
-//= require templates
-//= require helper
 //= require jquery.flexslider-min
 //= require vegas
 //= require moment
 //= require jquery.bootstrap.wizard
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es
+//= require bootstrap-colorpicker
+//= require bootstrap-switch
 //= require tagmanager
 //= require twitter/typeahead.min
 //= require jquery.ui.widget
@@ -30,5 +30,3 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require app
-//= require bootstrap-colorpicker
-//= require bootstrap-switch

@@ -11,18 +11,14 @@
  *= require_self
  *= require font-awesome
  *= require bootstrap
- *= require font-awesome
  *= require flexslider
  *= require jquery.steps
  *= require bootstrap-datepicker
  *= require tagmanager
  *= require jquery.ui.all
- *= require custom
- *= require wishes
- *= require markets/full-description
- *= require markets/gallery
  *= require bootstrap-colorpicker
  *= require bootstrap-switch
+ *= require custom
  */
 
 

@@ -1,6 +1,5 @@
 //= require mapbox
 //= require app
-//= require domain
 //= require data
 
 PM.changeTile = function(mapID) {
