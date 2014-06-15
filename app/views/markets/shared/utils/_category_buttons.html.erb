@@ -1,0 +1,18 @@
+<div id="map_theme_buttons" class="btn-group-vertical">
+  <%= all_categories_button %>
+  
+  <% Category.each do |category| %>
+    <%= formatted_button(category) %>
+  <% end %>
+</div>
+
+
+<script>
+    $('.theme').click(function (){
+        $('.theme').each(function(){
+          $(this).removeClass("theme-selected");
+        });
+        $(this).addClass("theme-selected");
+        $("#category_category_id").val($(this).attr('title')).change(); 
+    });
+</script>

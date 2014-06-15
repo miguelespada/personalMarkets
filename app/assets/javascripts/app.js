@@ -45,7 +45,7 @@ PM.getCurrentPosition = function(position){
   PM.map.setView([PM.newLatitude, PM.newLongitude], 14);
 };
 
-PM.setDataRange =  function() {
+var setDataRange =  function() {
     var v = H.makeDateString($('#range').val());
     $("#from").val(v.from);
     $("#to").val(v.to);
@@ -53,7 +53,6 @@ PM.setDataRange =  function() {
 
 
 var ajaxSearch = function () {
-    PM.setDataRange();
     $.get("live_search", $("#search_market").serialize(), function(data) {
         $( "#gallery-items" ).html( data );
     });
@@ -61,12 +60,13 @@ var ajaxSearch = function () {
 };
 
 var jsonSearch = function () {
-    PM.setDataRange();
     $.get("markets/live_search.json", $("#search_market").serialize(), function(data) {
        PM.fillMapView(data);
     });
     return false;
 };
+
+
 
 
 $( document ).ready(function() {

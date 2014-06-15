@@ -1,37 +1,38 @@
-
-  <%= form_tag search_markets_path, id: "search_market", class:"search-form" do %>
+<%= form_tag search_markets_path, id: "search_market", class:"search-form" do %>
+    
     <li class="form-group search-filter-item">
-      <%= link_to content_tag(:i, "", :class => "fa fa-refresh"), "#", :class=>  "btn btn-default btn-reset-search", :id=>"reset_search" %>
+      <%= link_to content_tag(:i, "", :class => "fa fa-refresh"), "#", 
+          :class=>  "btn btn-default btn-reset-search", 
+          :id=>"reset_search" %>
     </li>
 
     <li class="form-group hidden">
       <% selection = session[:category_id] %>
       <% selection ||= "" %>
       <%= collection_select(:category, :category_id, Category.all, :name, :name, 
-                          {:include_blank => "All categories", :selected => selection}, class: "category form-control" ) %>
+          {:include_blank => "All categories", 
+            :selected => selection}, 
+            class: "category form-control" ) %>
     </li>
 
 
     <li class="form-group search-filter-item" id="search-range-item">
-        <%= select_tag(:range, options_for_select(['All',
-                                              'Today', 
-                                              'This week', 
-                                              'This month', 
-                                              'Next week' 
-                                              ], :selected => session[:range]), class: "form-control" ) %>      
-
-     </li>
+        <%= select_tag(:range, 
+            options_for_select(['All','Today','This week', 
+                                'This month', 'Next week'], 
+         :selected => session[:range]), 
+         class: "form-control" ) %>      
+    </li>
 
      <li class="form-group search-filter-item" id="search-location-item">
-      <% selection =  session[:location_id] %>
-      <% selection ||= "" %>
-
-      <%= collection_select(:location, :location_id, SpecialLocation.all, :name, :name, {:selected => selection, :include_blank => "Any location"}, class: "form-control" ) %>
+        <% selection =  session[:location_id] %>
+        <% selection ||= "" %>
+        <%= collection_select(:location, :location_id, SpecialLocation.all, :name, :name, {:selected => selection, :include_blank => "Any location"}, class: "form-control" ) %>
      </li>
 
      <li class="form-group search-filter-item" id="search-city-item">
-      <%= collection_select(:city, :city_name, [], :name, :name, 
-                          {:include_blank => "Any city"}, class: "form-control" ) %>
+        <%= collection_select(:city, :city_name, [], :name, :name, 
+          {:include_blank => "Any city"}, class: "form-control" ) %>
 
      </li>
 
@@ -51,15 +52,14 @@
     </li>
 
     <li class="form-group hidden">
-      <%= text_field_tag :query, session[:query], placeholder: "Query...", class: "query form-control"  %>
+      <%= text_field_tag :query, session[:query], 
+        placeholder: "Query...", class: "query form-control"  %>
     </li>
 
-    <%= submit_tag "Search", name: nil, class: "hidden" %>
-  <% end %>
+<% end %>
 
   
 <script>
-
   $.getJSON('/cities.json', function(data){
       var html = '';
       var len = data.length;
@@ -70,9 +70,8 @@
 
       <% selection =  session[:city_name] %>
       <% selection ||= "" %>
-
+      
       $('#city_city_name').val("<%= selection %>");
-
   });
 
 
@@ -85,9 +84,6 @@
       $('#location_location_id').append("<option value='My location'>My location</option>");
   };
 
-  function append_location_option(){
-
-  }
 
   function pos_error(){
     $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i>  Enable browser location for better experience");
@@ -103,13 +99,18 @@
 
 
   $(document).ready(function(){
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(pos_success, pos_error);
-    }
-    else {
-      $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i>  Enable browser location for better experience");
-    }
- 
+    navigator.geolocation.getCurrentPosition(pos_success, pos_error);
+   
+    $("#location_location_id").change(function(){
+      if($("#location_location_id").val() != "")
+        $("#city_city_name option").prop("selected", false);
+    });
+
+    $("#city_city_name").change(function(){
+      if($("#city_city_name").val() != "")
+        $("#location_location_id option").prop("selected", false);
+    });
+
     $("#reset_search").click(function(){
         $("#range").val("All");
         $("#query").val("");
@@ -119,14 +120,15 @@
         $("#category_category_id").val("");
         $('#page').val(1);
         $('#search_market').change();
-      return false;
-    });
-
-    $( "#search_market").keypress(function(e) {
-        event.preventDefault();
         return false;
     });
 
+    $("#range").change(setDataRange).change();
+
+    $("#search_market").keypress(function(e) {
+        event.preventDefault();
+        return false;
+    });
   });
 
 
