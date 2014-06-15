@@ -60,6 +60,7 @@ var ajaxSearch = function () {
 };
 
 var jsonSearch = function () {
+    alert("search");
     $.get("markets/live_search.json", $("#search_market").serialize(), function(data) {
        PM.fillMapView(data);
     });

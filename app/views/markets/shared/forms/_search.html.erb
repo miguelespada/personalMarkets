@@ -117,7 +117,8 @@
         return false;
     });
 
-    $("#range").change(setDataRange).change();
+    $("#range").change(setDataRange);
+    setDataRange();
 
     $("#search_market").keypress(function(e) {
         event.preventDefault();

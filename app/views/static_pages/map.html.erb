@@ -8,8 +8,9 @@
 
 
 <script>
+
   $(document).ready(function(){
-    $('#search_market').change(jsonSearch).change();
+    $('#search_market').change(jsonSearch);
       
     $('#location_location_id').change(function(){
       if($(this).val() == "Any location") return;

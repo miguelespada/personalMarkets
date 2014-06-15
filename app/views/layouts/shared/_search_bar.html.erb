@@ -17,6 +17,19 @@ $( document ).ready(function() {
     $("#query").val($( "#search_bar_query" ).val());
   });
 
+
+  $("#query").ready(function(){
+    $("#search_bar_query").val($( "#query" ).val());
+  })
+
+  $("#search_button").click(function(){
+    <% if ((controller_name == 'markets' && action_name == 'search') || (controller_name == 'static_pages' && action_name == 'map')) %>
+      $("#search_market").change();
+    <% else %>
+      $("#search_market").submit();
+    <% end %>
+  });
+  
   $( "#search_bar_query").keypress(function(e) {
     if(e.keyCode == 13 ) {
       e.preventDefault();
@@ -24,17 +37,6 @@ $( document ).ready(function() {
     }
   });
 
-  $("#query").ready(function(){
-    $("#search_bar_query").val($( "#query" ).val());
-  })
-
-  $("#search_button").click(function(){
-    <% if controller_name == 'markets' && action_name == 'search' %>
-      $("#search_market").change();
-    <% else %>
-      $("#search_market").submit();
-    <% end %>
-  });
 });
 </script>
 
