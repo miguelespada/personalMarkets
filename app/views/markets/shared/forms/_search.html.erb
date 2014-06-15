@@ -1,40 +1,37 @@
 <%= form_tag search_markets_path, id: "search_market", class:"search-form" do %>
-    
     <li class="form-group search-filter-item">
       <%= link_to content_tag(:i, "", :class => "fa fa-refresh"), "#", 
-          :class=>  "btn btn-default btn-reset-search", 
-          :id=>"reset_search" %>
+        :class=>  "btn btn-default btn-reset-search", 
+        :id=>"reset_search" %>
     </li>
 
     <li class="form-group hidden">
       <% selection = session[:category_id] %>
       <% selection ||= "" %>
       <%= collection_select(:category, :category_id, Category.all, :name, :name, 
-          {:include_blank => "All categories", 
-            :selected => selection}, 
-            class: "category form-control" ) %>
+        {:include_blank => "All categories", :selected => selection}, 
+        class: "category form-control" ) %>
     </li>
-
 
     <li class="form-group search-filter-item" id="search-range-item">
-        <%= select_tag(:range, 
-            options_for_select(['All','Today','This week', 
-                                'This month', 'Next week'], 
-         :selected => session[:range]), 
-         class: "form-control" ) %>      
+      <%= select_tag(:range, 
+        options_for_select(['All','Today','This week', 'This month', 'Next week'],
+        :selected => session[:range]), 
+        class: "form-control" ) %>
     </li>
 
-     <li class="form-group search-filter-item" id="search-location-item">
-        <% selection =  session[:location_id] %>
-        <% selection ||= "" %>
-        <%= collection_select(:location, :location_id, SpecialLocation.all, :name, :name, {:selected => selection, :include_blank => "Any location"}, class: "form-control" ) %>
-     </li>
+    <li class="form-group search-filter-item" id="search-location-item">
+      <% selection =  session[:location_id] %>
+      <% selection ||= "" %>
+      <%= collection_select(:location, :location_id, SpecialLocation.all, 
+        :name, :name, {:selected => selection, :include_blank => "Any location"},
+        class: "form-control" ) %>
+    </li>
 
-     <li class="form-group search-filter-item" id="search-city-item">
-        <%= collection_select(:city, :city_name, [], :name, :name, 
-          {:include_blank => "Any city"}, class: "form-control" ) %>
-
-     </li>
+    <li class="form-group search-filter-item" id="search-city-item">
+      <%= collection_select(:city, :city_name, [], :name, :name, 
+        {:include_blank => "Any city"}, class: "form-control" ) %>
+    </li>
 
     <li class="date-range hidden">
       <%= text_field_tag :from, session[:from]%>  
@@ -55,10 +52,8 @@
       <%= text_field_tag :query, session[:query], 
         placeholder: "Query...", class: "query form-control"  %>
     </li>
-
 <% end %>
 
-  
 <script>
   $.getJSON('/cities.json', function(data){
       var html = '';
@@ -83,7 +78,6 @@
       $("#user_lon").val(crd.longitude);
       $('#location_location_id').append("<option value='My location'>My location</option>");
   };
-
 
   function pos_error(){
     $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i>  Enable browser location for better experience");
@@ -130,6 +124,4 @@
         return false;
     });
   });
-
-
 </script>
