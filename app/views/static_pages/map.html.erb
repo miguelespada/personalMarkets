@@ -24,7 +24,7 @@
     }).change();
       
     $('#city').change(function(){
-       if($(this).val() == "Any city") return;
+       if($(this).val() == "") return;
        else{
          var city = encodeURIComponent($(this).val());
          var adr = "http://maps.googleapis.com/maps/api/geocode/json?address=" + city + "&sensor=false";

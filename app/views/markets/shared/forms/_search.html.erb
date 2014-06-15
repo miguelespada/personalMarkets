@@ -26,7 +26,7 @@
     </li>
 
     <li class="form-group search-filter-item" id="search-city-item">
-      <%= select_tag(:city, options_for_select(Market.cities.prepend("Any city"), 
+      <%= select_tag(:city, options_for_select(Market.cities, 
         :selected => session[:city]), 
         class: "form-control") %>
     </li>
@@ -84,7 +84,7 @@
         $("#query").val("");
         $("#search_bar_query").val("");
         $("#location_location_id").val("");
-        $("#city").val("Any city");
+        $("#city").val("");
         $("#category_category_id").val("");
         $('#page').val(1);
         $('#search_market').change();

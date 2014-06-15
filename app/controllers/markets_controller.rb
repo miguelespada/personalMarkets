@@ -268,8 +268,8 @@ class MarketsController < ApplicationController
       MarketVisitor.new current_user
     end
 
-  def markers(markets)
-    markets.collect{|market| market.to_marker(view_context.tooltip(market))} if markets.count > 0
-  end
+    def markers(markets)
+      markets.collect{|market| market.to_marker(view_context.tooltip(market))} if markets.count > 0
+    end
 
 end

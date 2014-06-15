@@ -49,6 +49,8 @@ class Market
   scope :with_category, lambda {|category| where(category: category)}
 
   after_create :create_public_id
+  after_create :collect_cities 
+  after_update :collect_cities
 
   def coupon_available?
     self.has_coupon? && (self.pro? || self.belongs_to_premium_user?)
@@ -276,8 +278,13 @@ class Market
     find_by(public_id: id)
   end
 
+  def collect_cities
+    @@cities = Market.all.collect{|market| market.city if !market.city.blank?}.compact.uniq
+    @@cities.prepend("")
+  end
+
   def self.cities
-    all.collect{|market| market.city if !market.city.blank?}.compact.uniq
+    @cities ||= Market.first.collect_cities
   end
 
 end

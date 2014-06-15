@@ -8,13 +8,11 @@
 <script>
  $("#prev-markets").click(function(){
     var page = parseInt($('#page').val());
-    $('#page').val(page - 1);
-    $('form').change();
+    $('#page').val(page - 1).change();
   });
 
   $("#next-markets").click(function(){
     var page = parseInt($('#page').val());
-    $('#page').val(page + 1);
-    $('form').change();
+    $('#page').val(page + 1).change();
   });
 </script>
