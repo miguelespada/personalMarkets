@@ -278,6 +278,9 @@ describe Market do
     end
   end
   describe "#city list" do
+    before :each do
+      Market.reset_cities
+    end
     it "empty city lust" do
       expect(Market.cities).to eq [""]
     end

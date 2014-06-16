@@ -279,7 +279,7 @@ class Market
   end
 
   def collect_cities
-    @cities ||= [""]
+    @@cities ||= [""]
     @@cities.append(city.split(',')[0]) if !city.blank?
     @@cities = @@cities.compact.uniq
   end
@@ -288,4 +288,7 @@ class Market
     @@cities ||= [""]
   end
 
+   def self.reset_cities
+    @@cities = nil 
+  end
 end
