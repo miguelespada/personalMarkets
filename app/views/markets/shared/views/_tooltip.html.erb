@@ -1,2 +1,10 @@
-<div class="market-name"> <%= market.name %> </div>
-<div class="market-description"> <%=  market.description %> </div>
+<div class="tooltip-container">
+	<div class="tooltip-left">
+		<%= market.market_photo_round_thumb(60, 60) %>
+	</div>
+	<div class="tooltip-right">
+		<div class="market-name"> <%= market.name %> </div>
+		<div class="market-description"> <%= market.description %> </div>
+		<div class="market-tags"><%= market.tags.gsub(",", " #") %></div>
+	</div>
+</div>

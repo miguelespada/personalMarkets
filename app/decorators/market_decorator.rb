@@ -252,6 +252,10 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
+  def market_photo_round_thumb(width, height)
+    photo(featured, width, height, nil, "max")
+  end
+
   def market_quality_section
     if can? :quality_section, market
       render partial: 'markets/shared/utils/quality', locals: {market: market.decorate}

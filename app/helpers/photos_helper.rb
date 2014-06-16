@@ -8,13 +8,13 @@ module PhotosHelper
     link_to "My photos", user_photos_path(user) if user_signed_in?
   end
 
-  def photo(photo, width, height = nil, effect = nil, crop_mode = :scale)
+  def photo(photo, width, height = nil, effect = nil, radius = nil, crop_mode = :scale)
     height ||= width
     size = "#{width}x#{height}"
-    image_options = { size: size, crop: :scale, effect: effect }
+    image_options = { size: size, crop: :scale, effect: effect, radius: radius }
     crop = photo.crop if !photo.crop.nil?
     image_options = {transformation: { crop: :crop, x: crop["x"], y: crop["y"],
-                       width: crop["w"], height: crop["h"]}, size: size, crop: :pad, effect: effect} if !crop.nil?
+                       width: crop["w"], height: crop["h"]}, size: size, crop: :pad, effect: effect, radius: radius} if !crop.nil?
     cl_image_tag(photo.photo.path, image_options) 
     rescue
       image_tag "default-image.png", image_options

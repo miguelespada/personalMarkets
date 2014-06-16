@@ -2,18 +2,31 @@
 @import "bootstrap/theme";
 
 .market-tooltip{
-  .market-thumbnail{
-    height:40px;
-  }
   .market-name{
     font-weight: 100;
     font-size: 18px;
+    line-height:24px;
   }
   .market-description{
     font-size: 12px;
+    line-height:18px;
   }
 
-  .market-featured-photo{
-    display : none;
+  .market-tags{
+    font-size: 12px;
+    line-height:18px;
   }
+
+  .market-tags:before{
+    content:"#";
+  }
+
+  .tooltip-right{
+    margin-top: -60px;
+    margin-left: 70px;
+  }
+}
+
+.market-tooltip{
+  padding-top: 5px;
 }
