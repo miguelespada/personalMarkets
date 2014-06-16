@@ -4,6 +4,9 @@
       <%= special_location.name %>
       <i class="fa fa-angle-right explore-arrow"></i>
     </a> -->
-  <%=  link_to special_location.name, :controller =>"static_pages", :action =>"map", :location=> special_location.name  %>
+  <%=  link_to "", :controller => "static_pages", :action => "map", :location => special_location.name do %>
+  	<%= special_location.name %>
+    <i class="fa fa-angle-right explore-arrow"></i>
+  <% end %>
   </li>
 <% end %>
