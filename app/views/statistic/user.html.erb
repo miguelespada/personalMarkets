@@ -1,4 +1,8 @@
-<div class="user-statistics">
+<div class="paginate">
+  <%= paginate @markets %>
+</div>
+
+<div class="user-statistics panel-table-last">
   <div class="row">
     <% @markets.each do |market| %>
         <div class="col-md-6">
