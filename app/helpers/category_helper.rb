@@ -4,6 +4,7 @@ module CategoryHelper
         class='theme theme-styled btn btn-sm category-theme-button' 
         style='background-color:#{category.color}' 
         tile='#{category.style}'
+        id='#{category.name}'
         title='#{category.name}'>
         <i class='fa #{category.glyph}'>
         #{category.name}</i>

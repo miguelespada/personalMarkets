@@ -48,7 +48,6 @@ $( document ).ready(function() {
   $('.colorpicker').colorpicker();
   
  $('form').submit(function(){
-  console.log($("#category-name").val());
   if($("#category_name").val().indexOf(' ') > -1){
     alert("Category name cannot contain spaces");
     return false;

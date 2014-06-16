@@ -20,8 +20,8 @@
  *= require markets/gallery
  *= require bootstrap-colorpicker
  *= require bootstrap-switch
- *= require custom
  *= require cropper
+ *= require custom
  */
 
 

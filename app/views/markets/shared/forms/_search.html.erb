@@ -65,6 +65,12 @@
     });
   };
 
+  function setCategoryStyle(){
+    catSelected = $("#category_category_id").val();
+    if (catSelected){
+      $('#'+catSelected).click();
+    }
+  };
 
   $(document).ready(function(){
     navigator.geolocation.getCurrentPosition(pos_success, pos_error);
@@ -99,5 +105,6 @@
         event.preventDefault();
         return false;
     });
+    setCategoryStyle();
   });
 </script>
