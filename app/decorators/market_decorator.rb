@@ -246,14 +246,14 @@ class MarketDecorator < Draper::Decorator
 
   def market_featured_photo_filtered(width, height)
     if passed?
-      photo(featured, width, height, "grayscale")
+      photo(featured, width, height, {:effect => "grayscale"})
     else
       photo(featured, width, height)
     end
   end
 
   def market_photo_round_thumb(width, height)
-    photo(featured, width, height, nil, "max")
+    photo(featured, width, height, {:radius => "max"})
   end
 
   def market_quality_section
