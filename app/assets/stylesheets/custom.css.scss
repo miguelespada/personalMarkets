@@ -659,7 +659,7 @@ border-color: #d43f3a;
   display:inline;
 }
 
-.market-action-icon{
+.market-actions-links > .market-action-icon{
   @extend .btn;
   @extend .btn-default;
 }
