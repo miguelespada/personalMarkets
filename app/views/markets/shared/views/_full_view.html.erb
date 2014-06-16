@@ -33,8 +33,8 @@
       <%= market.location %>
     </div>
 
-    <div class="market-section-title">Comment & Share</div>
-    <div class="market-section-container social-container">
+    <div class="market-section-title facebook-section">Comment & Share</div>
+    <div class="market-section-container social-container facebook-section">
       <%= render partial: 'markets/shared/utils/facebook_comments', locals: { market: market } %>
     </div>
 
@@ -44,5 +44,13 @@
     </div>
   </div>
 </div>
+
+<style>
+@media(max-width: 650px){
+  .facebook-section{
+    display:none;
+  }
+}
+</style>
 
 

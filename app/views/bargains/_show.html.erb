@@ -1,6 +1,6 @@
 <div class="container">
   <div class="container-inner">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-10 col-md-offset-1">
       <div class="panel panel-default panel-table panel-table-last panel-bargain-show">
         <div class="panel-heading table-title">
           <div class="bargain-title-container"><%= bargain.description %></div>
@@ -15,22 +15,32 @@
               </div>
             </div>
           </div>
-          <div id="fb-root">
-            <script>(function(d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return;
-              js = d.createElement(s); js.id = id;
-              js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-              fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-            </script>
-      
-            <div class="fb-comments" data-href='<%=bargain_url(bargain.to_param)%>' data-numposts="5" data-colorscheme="light"></div>
-            <br>
-            <div class="fb-like" data-href='<%=bargain_url(bargain.to_param)%>' data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+          <div class="facebook-bargains">
+            <div id="fb-root">
+              <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));
+              </script>
+        
+              <div class="fb-comments" data-href='<%=bargain_url(bargain.to_param)%>' data-numposts="5"data-colorscheme="light"></div>
+              <br>
+              <div class="fb-like" data-href='<%=bargain_url(bargain.to_param)%>' data-layout="standard"data-action="like" data-show-faces="true" data-share="true"></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<style>
+@media(max-width: 768px){
+  .facebook-bargains{
+    display:none;
+  }
+}
+</style>
