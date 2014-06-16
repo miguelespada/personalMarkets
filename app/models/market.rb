@@ -285,7 +285,7 @@ class Market
   end
 
   def self.cities
-    @@cities ||= [""]
+    @@cities ||= all.collect{|market| market.city.split(',')[0] if !market.city.blank?}.compact.uniq.prepend("")
   end
 
    def self.reset_cities
