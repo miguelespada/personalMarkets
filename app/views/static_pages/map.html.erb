@@ -10,6 +10,7 @@
 <script>
 
   $(document).ready(function(){
+    $('.map-link').html('<%= link_to search_markets_path do %><i class="fa fa-search"></i><span id="search-link-text"></span><% end %>')
     $('#search_market').change(jsonSearch);
       
     $('#location_location_id').change(function(){
