@@ -277,7 +277,19 @@ describe Market do
       expect(result.last.name).to eq "Market 3"
     end
   end
-
+  describe "#city list" do
+    it "empty city lust" do
+      expect(Market.cities).to eq [""]
+    end
+    it "after insert" do
+      create(:market, :city => "Madrid, Spain")
+      create(:market, :city => "Madrid, Spain")
+      expect(Market.cities).to eq ["", "Madrid"]
+      create(:market, :city => "Barcelona, Spain")
+      expect(Market.cities).to eq ["", "Madrid", "Barcelona"]
+    end
+  end
+  
   describe "#coupon available" do
 
     context 'without coupon' do
@@ -286,7 +298,7 @@ describe Market do
         market = create(:market)
         expect(market.coupon_available?).to be_false
       end
-
+      
     end
 
     context 'with coupon' do

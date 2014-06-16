@@ -279,12 +279,13 @@ class Market
   end
 
   def collect_cities
-    @@cities = Market.all.collect{|market| market.city.split(',')[0] if !market.city.blank?}.compact.uniq
-    @@cities.prepend("")
+    @cities ||= [""]
+    @@cities.append(city.split(',')[0]) if !city.blank?
+    @@cities = @@cities.compact.uniq
   end
 
   def self.cities
-    @cities ||= Market.first.collect_cities
+    @@cities ||= [""]
   end
 
 end
