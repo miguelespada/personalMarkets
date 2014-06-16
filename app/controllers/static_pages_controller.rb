@@ -11,7 +11,7 @@ class StaticPagesController < ApplicationController
 
   def map
     if params[:location].present?
-      session[:location_id] = params[:location]
+      session[:location] = params[:location]
     end
   end
   
