@@ -14,7 +14,7 @@ module CategoryHelper
       "<button type='button' 
           class='theme btn btn-sm btn-all-categories' 
           style='background-color:#FFFFFF' 
-          tile='jameshedaweng.hf5b366j' 
+          tile='' 
           title='All categories'>
           <i class='fa fa-bars'>
           All categories</i>

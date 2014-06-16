@@ -1,6 +1,7 @@
 //= require mapbox
+//= require mapbox_config
 //= require app
-//= require data
+
 
 PM.changeTile = function(mapID) {
   PM.map.removeLayer(PM.mapTiles);
@@ -30,11 +31,11 @@ PM.addTooltipToMarker = function(layer) {
 };
 
 PM.initializeMap = function() {
-  var viewLat = DATA.maps.defaultLatitude;
-  var viewLng = DATA.maps.defaultLongitude;
+  var viewLat = DEFAULT_LOCATION.defaultLatitude;
+  var viewLng = DEFAULT_LOCATION.defaultLongitude;
   PM.map = L.mapbox.map('map').setView([viewLat, viewLng], 14);
 
   PM.map.scrollWheelZoom.disable();
-  PM.mapTiles = L.mapbox.tileLayer('jameshedaweng.hf5b366j');
+  PM.mapTiles = L.mapbox.tileLayer(MAPBOX_DEFAULT_STYLE);
   PM.map.addLayer(PM.mapTiles);
 };
