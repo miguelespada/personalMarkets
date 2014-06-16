@@ -825,12 +825,18 @@ border-color: #d43f3a;
 .fa.fa-star.regular {
   color: yellow;
 }
-//*############################ BARGAINS CSS #############################*//
+//*############################ WISH CSS #############################*//
 .wish-photo-container{
   width:600px;
+  max-width: 100%;
   position: relative;
   margin: 0 auto;
   padding: 30px 0px;
+}
+
+.wish-photo-container>img{
+  max-width: 100%;
+  height:auto;
 }
 //*############################ BARGAINS CSS #############################*//
 .bargain-gallery{
@@ -859,6 +865,7 @@ border-color: #d43f3a;
 }
 .bargain-photo-container{
   width:400px;
+  max-width: 100%;
   position: relative;
   margin: 0 auto;
   padding: 30px 0px;
@@ -866,6 +873,8 @@ border-color: #d43f3a;
 .bargain-photo-container > img{
   border:10px solid #FFFFFF;
   box-shadow: 3px 3px 10px #888888;
+  max-width: 100%;
+  height: auto;
 }
 
 .bargain-price-icon{
