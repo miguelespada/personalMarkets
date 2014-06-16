@@ -72,9 +72,7 @@ class MarketDecorator < Draper::Decorator
   end
 
   def location
-    if can? :see_location, Market
-      render partial: 'markets/shared/utils/location', locals: { market: market }
-    end
+    render partial: 'markets/shared/utils/location', locals: { market: market }
   end
 
   def coupon_section
