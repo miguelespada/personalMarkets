@@ -1,0 +1,9 @@
+<div class="admin-statistics">
+  <div class="row">
+    <% @markets.each do |market| %>
+        <div class="col-md-6">
+          <%= render "market_statistic", :market => market %>
+        </div>
+    <% end %>
+  </div>
+</div>

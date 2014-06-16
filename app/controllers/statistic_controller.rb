@@ -9,5 +9,9 @@ class StatisticController < ApplicationController
     @markets = user.markets
   end
 
+  def admin
+  	@markets = Market.all
+  end
+
 end
 

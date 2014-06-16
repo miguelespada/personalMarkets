@@ -64,7 +64,9 @@ PopUpStores::Application.routes.draw do
       get :market, :on => :member
     end
 
-    get "/users/:user_id/subscription", to: "users#subscription", as: "user_subscription"
+    resource :statistic, controller: "statistic", :only => [] do
+      get :admin, :on => :member, :as => "show"
+    end
 
     ### Coupons
     resources :coupons, :only => [:show, :index] do
