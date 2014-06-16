@@ -52,6 +52,7 @@ class Ability
         cannot :index, Market
         cannot :index, Wish
         cannot :index, Bargain
+        cannot :index, SpecialLocation
 
         can :buy, Coupon
         can :coupon_payment, Coupon
