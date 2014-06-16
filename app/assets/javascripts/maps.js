@@ -25,7 +25,7 @@ PM.addTooltipToMarker = function(layer) {
       layer.closePopup();
     });
     layer.on('click', function() {
-      layer.closePopup();
+      window.open(layer.feature.properties.url,"_self");
     });
 };
 

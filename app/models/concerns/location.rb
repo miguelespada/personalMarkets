@@ -8,7 +8,7 @@ module Location
   end
 
   module InstanceMethods
-    def to_marker(content)
+    def to_marker(content, url)
       {
         type: 'Feature',
         geometry: {
@@ -19,7 +19,8 @@ module Location
           content: content,
           :'marker-color' => '#48a',
           :'marker-symbol' => 'circle',
-          :'marker-size' => 'medium'
+          :'marker-size' => 'medium',
+          url: url
         }
       }
     end
