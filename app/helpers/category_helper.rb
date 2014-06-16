@@ -7,7 +7,7 @@ module CategoryHelper
         id='#{category.name}'
         title='#{category.name}'>
         <i class='fa #{category.glyph}'>
-        #{category.name}</i>
+        </i>#{category.name}
     </button> ".html_safe
   end
   
@@ -18,7 +18,7 @@ module CategoryHelper
           tile='' 
           title='All categories'>
           <i class='fa fa-bars'>
-          All categories</i>
+          </i>All categories
       </button> ".html_safe  
   end
 end
