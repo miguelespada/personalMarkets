@@ -24,7 +24,11 @@ class Query
   end
 
   def set_session(session)
-    session[:category] = @params[:category][:category_id] if @params[:category].present?
+    if @params[:category].present? && @params[:category][:category_id] .present?
+      session[:category] = @params[:category][:category_id] 
+      session[:style] = Category.find_by(name: session[:category]).style
+    end
+
     session[:location] = @params[:location][:location_id] if @params[:location].present?
     session[:city] = @params[:city]
     session[:range] = @params[:range]

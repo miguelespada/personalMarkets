@@ -36,7 +36,9 @@
       }
     });
 
-    PM.initializeMap(MAPBOX_DEFAULT_STYLE);
+    var tiles = '<%= session["style"] %>';
+    if(tiles == '') tiles = MAPBOX_DEFAULT_STYLE;
+    PM.initializeMap(tiles);
       
     $('.theme').click(function (){PM.changeTile($(this).attr('tile'));});
 
