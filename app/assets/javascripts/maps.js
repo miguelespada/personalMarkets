@@ -29,12 +29,12 @@ PM.addTooltipToMarker = function(layer) {
     });
 };
 
-PM.initializeMap = function() {
+PM.initializeMap = function(tile) {
   var viewLat = DEFAULT_LOCATION.defaultLatitude;
   var viewLng = DEFAULT_LOCATION.defaultLongitude;
   PM.map = L.mapbox.map('map').setView([viewLat, viewLng], 14);
 
   PM.map.scrollWheelZoom.disable();
-  PM.mapTiles = L.mapbox.tileLayer(MAPBOX_DEFAULT_STYLE);
+  PM.mapTiles = L.mapbox.tileLayer(tile);
   PM.map.addLayer(PM.mapTiles);
 };
