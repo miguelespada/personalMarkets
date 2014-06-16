@@ -1,7 +1,7 @@
 module CategoryHelper
   def formatted_button(category)
     "<button type='button' 
-        class='theme btn btn-sm category-theme-button' 
+        class='theme theme-styled btn btn-sm category-theme-button' 
         style='background-color:#{category.color}' 
         tile='#{category.style}'
         title='#{category.name}'>

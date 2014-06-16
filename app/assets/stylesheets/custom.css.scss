@@ -955,10 +955,15 @@ border-color: #d43f3a;
   padding-left: 0px !important;
   padding-right: 0px !important;
   text-shadow: none;
+  text-align: center;
 }
 
-.theme-selected{
+.theme-selected.theme-styled{
   color:#FFFFFF !important;
+}
+
+.theme-selected.btn-all-categories{
+  color:#1A89EB !important;
 }
 
 .category-theme-button:hover{
