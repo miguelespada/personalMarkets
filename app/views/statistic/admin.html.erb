@@ -1,12 +1,1 @@
-<div class="paginate">
-  <%= paginate @markets %>
-</div>
-<div class="admin-statistics panel-table-last">
-  <div class="row">
-    <% @markets.each do |market| %>
-        <div class="col-md-6">
-          <%= render "market_statistic", :market => market %>
-        </div>
-    <% end %>
-  </div>
-</div>
+<%= render "list", :markets => @markets %>

@@ -1163,3 +1163,18 @@ border-color: #d43f3a;
   vertical-align: middle;
   text-shadow: none !important;
 }
+
+//*############################ STATISTIC CSS #############################*//
+.statistic-title > a{
+  font-weight: 100;
+  font-size: 24px;
+  position:relative;
+}
+.user-statistics{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.statistic-visit-count{
+  margin-top: -32px;
+}
