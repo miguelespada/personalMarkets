@@ -21,7 +21,7 @@ module PhotosHelper
   end 
 
   def edit_photo_link(photo)
-    if !photo.photo.nil?
+    if !photo.photo.nil? && (can? :edit, photo)
       link_to content_tag(:i, "", class: "fa fa-crop"), edit_photo_path(photo), class: "btn edit btn-info btn-xs table-photo-edit"   
     end
   end
