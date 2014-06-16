@@ -1136,3 +1136,21 @@ border-color: #d43f3a;
   width:100%;
   text-align: center;
 }
+
+//*############################ PRO INDICATOR CSS #############################*//
+.pro-indicator{
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  padding:2px !important;
+  border: 1px #5bc0de solid;
+  color:#FFFFFF;
+  background-color: #5bc0de;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#5bc0de), to(#28a4c9)); 
+  background-image: -webkit-linear-gradient(top, #5bc0de, #28a4c9); 
+  background-image:    -moz-linear-gradient(top, #5bc0de, #28a4c9); 
+  background-image:     -ms-linear-gradient(top, #5bc0de, #28a4c9); 
+  background-image:      -o-linear-gradient(top, #5bc0de, #28a4c9);
+  border-radius:5px;
+  vertical-align: middle;
+  text-shadow: none !important;
+}

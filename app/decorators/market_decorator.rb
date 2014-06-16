@@ -256,6 +256,14 @@ class MarketDecorator < Draper::Decorator
     photo(featured, width, height, {:radius => "max"})
   end
 
+  def formatted_market_name
+    if market.pro?
+      content_tag(:span, "PRO", :class => "pro-indicator") + " " + market.name
+    else
+      market.name
+    end
+  end
+
   def market_quality_section
     if can? :quality_section, market
       render partial: 'markets/shared/utils/quality', locals: {market: market.decorate}

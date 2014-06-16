@@ -17,7 +17,7 @@
                 <% wish.recommended.each do |market| %>
                   <div class="wish-recommended-item">
                     <%= photo(market.featured, 160, 80)%><br>
-                    <%= market.name %>
+                    <%= market.formatted_market_name %>
                   </div>
                 <% end %>
               </div>
