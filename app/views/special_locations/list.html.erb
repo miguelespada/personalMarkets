@@ -4,9 +4,12 @@
       <%= special_location.name %>
       <i class="fa fa-angle-right explore-arrow"></i>
     </a> -->
-  <%=  link_to "", :controller => "static_pages", :action => "map", :location => special_location.name do %>
-  	<%= special_location.name %>
-    <i class="fa fa-angle-right explore-arrow"></i>
-  <% end %>
+  <%= link_to special_location.name, :controller => "static_pages", :action => "map", :location => special_location.name %>
   </li>
 <% end %>
+
+<script>
+$(document).ready(function(){
+	$('#explore_hotspots>.registered-user-action>a').append('<i class="fa fa-angle-right explore-arrow"></i>');
+});
+</script>
