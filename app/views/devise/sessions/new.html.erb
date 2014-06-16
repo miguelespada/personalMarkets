@@ -1,20 +1,45 @@
-<div class="user-session">
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, :required => false, :autofocus => true %>
-    <%= f.input :password, :required => false %>
-    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
-  </div>
+<div class = "home_gallery_title"><i class="fa fa-sign-in fa-2x"></i> <br/>Sign in</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign in" %>
-  </div>
-<% end %>
+<%= simple_form_for(resource, html: {:id => "sign-in-form"}, :url => session_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
 
-  <div class="omniauth-sign-up">
-      <%= link_to "Login with Facebook", user_omniauth_authorize_path(:facebook) %>
-      <%= link_to "Login with Google", user_omniauth_authorize_path(:google_oauth2) %>
-  </div>
+<div class="container user-session">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= t :sign_in %></h3>
+        </div>
+        <div class="panel-body">
+            <fieldset>
+            <div class="form-group">
+              <%= f.input :email, :required => true, :autofocus => true %>
+            </div>
+            <div class="form-group">
+              <%= f.input :password, :required => true %>
+              <p id="tags-container"></p>
+            </div>
 
-<%= render "devise/shared/links" %>
+            <div class="form-group">
+              <%= f.check_box :remember_me, as: :boolean, inline_label: 'Remember me', label: false if devise_mapping.rememberable? %> Remember me
+            </div>
+            <div class="form-group col-md-4 col-md-offset-4">
+              <%= f.button :submit, "Sign in" %>
+            </div>
+
+            <div class="form-group col-md-4 col-md-offset-4">
+              <span style="display: block; margin: 0px auto; text-align: center;" >or</span>
+            </div>
+            <div class="form-group col-md-4 col-md-offset-4">
+              <%= button_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), :class=>  "btn btn-primary btn-block"%>
+              <%= button_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :class=>  "btn btn-primary btn-block" %>
+            </div>
+
+            </fieldset>
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<% end %>
