@@ -1,9 +1,20 @@
 <div id="gallery-items" class="search-gallery"></div>
 
 <%= render partial: 'markets/shared/utils/category_buttons' %>
+<div class="panel panel-default panel-table panel-table-last">
+
+ <div class="panel-heading table-title">
+  Explore more markets...
+  </div>
+  <div id="pro_markets">
+  </div>
 
 <script>
   $(document).ready(function(){
     $("#search_market").change(ajaxSearch).change();
+     $.get( "<%= pro_markets_path %>", function( data ) {
+      $( "#pro_markets" ).html( data );
+    });
   });
+
 </script>

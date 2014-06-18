@@ -32,6 +32,11 @@ class MarketsController < ApplicationController
     render :layout => !request.xhr?
   end
 
+  def list_pro_markets
+    @markets = Market.last_pro_published.limit(6)
+    render :layout => false
+  end
+
   def list_user_markets
     @markets = Market.find_all(@user).page(params[:page]).per(3)
   end

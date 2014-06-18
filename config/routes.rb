@@ -106,6 +106,7 @@ PopUpStores::Application.routes.draw do
     ####
 
     get "/last_markets", to: "markets#list_last_markets", as: "last_markets"
+    get "/pro_markets", to: "markets#list_pro_markets", as: "pro_markets"
     get "/slideshow", to: "markets#slideshow", as: "slideshow"
 
     ### SpecialLocations

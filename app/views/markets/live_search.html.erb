@@ -1,18 +1,25 @@
-<%= render partial: "markets/shared/views/gallery", locals: {markets: @markets } %>
-
+<% if @markets == [] %>
 <div>
-  <%= link_to "Prev", "#", :id=>"prev-markets" if !@first_page %>
-  <%= link_to "Next", "#", :id=>"next-markets" if !@last_page %>
+  <h2> No markets matching your queries... </h2>
 </div>
+<% else %>
 
-<script>
- $("#prev-markets").click(function(){
-    var page = parseInt($('#page').val());
-    $('#page').val(page - 1).change();
-  });
+  <%= render partial: "markets/shared/views/gallery", locals: {markets: @markets } %>
 
-  $("#next-markets").click(function(){
-    var page = parseInt($('#page').val());
-    $('#page').val(page + 1).change();
-  });
-</script>
+  <div>
+    <%= link_to "Prev", "#", :id=>"prev-markets" if !@first_page %>
+    <%= link_to "Next", "#", :id=>"next-markets" if !@last_page %>
+  </div>
+
+  <script>
+   $("#prev-markets").click(function(){
+      var page = parseInt($('#page').val());
+      $('#page').val(page - 1).change();
+    });
+
+    $("#next-markets").click(function(){
+      var page = parseInt($('#page').val());
+      $('#page').val(page + 1).change();
+    });
+  </script>
+<% end %>

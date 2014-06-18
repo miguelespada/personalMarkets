@@ -62,6 +62,7 @@ var makeDateString = function(range){
 
 var ajaxSearch = function () {
     $.get("live_search", $("#search_market").serialize(), function(data) {
+        
         $( "#gallery-items" ).html( data );
     });
     return false;
