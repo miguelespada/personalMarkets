@@ -2,7 +2,7 @@ class MarketsController < ApplicationController
   before_filter :load_user
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
   authorize_resource :only => [:index, :edit, :create, :new, :destroy, :update, :archive, 
-                              :publish, :unpublish, :make_pro, :publish_anyway]
+                              :publish, :unpublish, :make_pro, :publish_anyway, :force_make_pro]
 
   def index
     @markets = Market.all.page(params[:page]).per(3)
@@ -188,6 +188,11 @@ class MarketsController < ApplicationController
 
     market = domain.make_pro params[:id], pro_payment
     redirect_to market, notice: "Your market is now PRO."
+  end
+
+  def force_make_pro
+    market = domain.force_make_pro params[:market_id]
+    redirect_to market, notice: "The market is now PRO."
   end
 
   private

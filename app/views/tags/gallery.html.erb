@@ -1,11 +1,13 @@
 <div class="panel panel-default panel-table">
   <div class="panel-heading table-title">
-    Tags
+  Tags
   </div>
   <div class="panel-body tags-panel-container">
   	<% @suggested.each do |tag| %>
-  		<div class="col-md-2"> <%= link_to(tag.name, tag_markets_path(tag.name), class: "tag-link") %> (<%= market_counter(tag.name) %>) </div>
-		<% end %>
+      <% if market_counter(tag.name) > 0 %>
+  		  <div class="col-md-2"> <%= link_to(tag.name, tag_markets_path(tag.name), class: "tag-link") %> (<%= market_counter(tag.name) %>) </div>
+	 	     <% end %>
+      <% end %>
 		<%= render "tags_link", :tags => @tags %> 
 	</div>
 </div>

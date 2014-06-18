@@ -30,3 +30,4 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require app
+//= require keen_io

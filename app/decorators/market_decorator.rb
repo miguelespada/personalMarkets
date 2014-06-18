@@ -12,10 +12,6 @@ class MarketDecorator < Draper::Decorator
   def owner
     user.email
   end
-
-  def owner
-    user.email
-  end
   
   def hashtags 
    s = ""
@@ -126,8 +122,6 @@ class MarketDecorator < Draper::Decorator
     link_to("QR", user_market_path(market.user, market, :svg))
   end
 
-
-
   def statistics_link
     if can? :statistics, market
       link_to "Statistics", show_market_statistic_path(market), class: "statistics market-action"
@@ -199,7 +193,9 @@ class MarketDecorator < Draper::Decorator
   
 
   def pro_link_icon
-    if can? :edit, market
+    if can? :manage, Market
+      link_to content_tag(:i, "", :class => "fa fa-plus-square"), market_force_make_pro_path(market), {method: :post, class: "pro-icon market-action market-action-icon btn-market-action-bar" } unless market.pro?
+    elsif can? :edit, market
       link_to content_tag(:i, "", :class => "fa fa-plus-square"), market_make_pro_payment_path(market), class: "pro-icon market-action market-action-icon btn-market-action-bar" unless market.pro?
     end
   end

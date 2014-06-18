@@ -16,6 +16,7 @@ PopUpStores::Application.routes.draw do
       post :archive
       get :make_pro_payment
       post :make_pro
+      post :force_make_pro
 
       resource :statistic, controller: "statistic", :only => [] do
         get :market, :on => :member, :as => "show"

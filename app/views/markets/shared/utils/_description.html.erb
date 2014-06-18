@@ -1,14 +1,18 @@
-Description: <%= market.description %> <br>
-External url:  <a href="<%=  market.url %>" target="_blank"><%=  market.url %></a> <br>
-Category: <%= market.category_name %> <br>
-State: <%= market.state %> <br>
-Owner: <%= market.owner %> <br>
-Prices: <%= market.min_price %> € - <%= market.max_price %> € <br>
-<%= t :tags %>: <%= market.hashtags %> <br>
-Address: <%= market.address %>, <%= market.city %> <br>
-Date: <%= market.date %> <br>
-Schedule: <span class:"market-schedule-string"> <%= market.schedule %> </span><br>    
-<%= market.market_like_count %>
+
+<%= market.market_like_count %> <br> 
+<strong>  Decription: </strong> <%= market.description %> <br> 
+<strong> Category: </strong> <%= market.category_name %> <br>
+
+<% if cannot? :edit, market %>
+  <strong> Owner: </strong> <%= link_to market.owner, user_markets_path(market.user) %> <br>
+<% end %>
+
+<strong> Prices: </strong> <%= market.min_price %> € - <%= market.max_price %> € <br>
+<strong> <%= t :tags %>: </strong> <%= market.hashtags %> <br>
+<strong> Address: </strong> <%= market.address %>, <%= market.city %> <br>
+<strong> Date: </strong> <%= market.date %> <br>
+<strong> Schedule: <span class:"market-schedule-string"> </strong> <%= market.schedule %> </span><br>
+<strong> External url:</strong>  <a href="<%=  market.url %>" target="_blank"><%=  market.url %></a> <br>
 
 <div class="hidden">
   <%= market.latitude %>

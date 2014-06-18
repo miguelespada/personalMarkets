@@ -84,6 +84,12 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
     market.go_pro
     market
   end
+  
+  def force_make_pro market_id
+    market = markets_repo.find market_id
+    market.go_pro
+    market
+  end
 
   def user_markets user_id
     markets = []
