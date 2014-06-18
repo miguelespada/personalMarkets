@@ -8,7 +8,7 @@ Prices: <%= market.min_price %> € - <%= market.max_price %> € <br>
 Address: <%= market.address %>, <%= market.city %> <br>
 Date: <%= market.date %> <br>
 Schedule: <span class:"market-schedule-string"> <%= market.schedule %> </span><br>    
- <i class="fa fa-heart-o "></i> <span class="like-counter"> <%= market.favorited.count %> </span><br>
+<%= market.market_count_highlight %>
 
 <div class="hidden">
   <%= market.latitude %>

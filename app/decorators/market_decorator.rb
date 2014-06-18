@@ -244,6 +244,10 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
+  def market_count_highlight
+    content_tag(:i, "", :class => "fa fa-heart-o") + " " + content_tag(:span, market.favorited.count, :class => "like-counter")
+  end
+
   def market_featured_photo_filtered(width, height)
     if passed?
       photo(featured, width, height, {:effect => "grayscale"})
