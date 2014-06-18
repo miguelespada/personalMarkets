@@ -1,0 +1,11 @@
+<div class="market-section-title">Coupons</div>
+<div class="market-section-container">
+  <div class="row">
+      <div class="col-md-6">  <%= photo(market.coupon.photography, 400, 200) %> </div>
+      <div class="col-md-6"> 
+        <%= render partial: "coupons/coupon", locals: {coupon: market.coupon } %>
+        <%= market.buy_coupon_link %><br>
+  			<%= market.edit_coupon_link %>
+      </div>
+    </div>
+</div>

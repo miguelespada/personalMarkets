@@ -1,12 +1,9 @@
 <% if !coupon.empty? %>
   <%= div_for coupon do %>
-    <ul>
-    <li>  <%= photo(coupon.photography, 200, 100) %> </li>
-    <li> <span> Market: </span> <span> <%= link_to coupon.market.name, market_path(coupon.market) %> </span> </li>
-    <li> <span> Coupon Description: </span>  <span> <%= coupon.description %> </span> </li>
-    <li> <span> Coupon Price </span>  <span> <%= coupon.price %> </span> </li>
-    <li> <span> Available</span> <span> <%= coupon.available %> </span> </li>
-    </ul>
+    <span> Market: </span> <span> <%= link_to coupon.market.name, market_path(coupon.market) %> </span> <br>
+    <span> Coupon Description: </span>  <span> <%= coupon.description %> </span> <br>
+    <span> Coupon Price </span>  <span> <%= coupon.price %> </span> <br>
+    <span> Available</span> <span> <%= coupon.available %> </span>
   <% end %>
 <% else %>
   <%= "Remember to create a coupon to offer extra services in your market" if coupon.market.pro? %>

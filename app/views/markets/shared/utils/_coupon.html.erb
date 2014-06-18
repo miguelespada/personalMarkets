@@ -1,12 +1,1 @@
-<div class="market-section-title">Coupons</div>
-    <div class="market-section-container">
-      <div class="col-md-3 market-coupon">
-    <h3> Coupon </h3>
-    <%= render partial: "coupons/coupon", locals: {coupon: market.coupon } %>
-    
-    <div class="market-coupons">
-      <%= market.buy_coupon_link %>
-      <%= market.edit_coupon_link %>
-    </div>
-  </div>
-</div>
+<%= render "coupons/shared/full_view_coupon", :market => market %>
