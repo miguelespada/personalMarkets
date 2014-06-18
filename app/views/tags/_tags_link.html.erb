@@ -1,0 +1,3 @@
+<% tags.each do |name| %>   
+  <div class="col-md-2"> <%= link_to(name, tag_markets_path(name)) %> (<%= market_counter(name) %>) </div>
+<% end %>

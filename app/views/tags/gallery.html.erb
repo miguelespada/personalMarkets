@@ -1,27 +1,19 @@
-<div class="panel panel-default panel-table panel-table-last">
+<% @suggested.each do |tag| %>
+  <div class="col-md-2"> <%= link_to(tag.name, tag_markets_path(tag.name), class: "tag-link") %> (<%= market_counter(tag.name) %>) </div>
+<% end %>
 
- <div class="panel-heading table-title">
-    Popular Tags 
-  </div>
+<%= render "tags_link", :tags => @tags %> 
 
-  <div class = "home_gallery tag_gallery">
-    <% @suggested.each do |tag| %>
-      <div class="home_gallery_item tag_gallery_item">
-          <div class="tag_gallery_label" data-name="<%= tag.name %>">
-            #<%= tag.name %>
-          </div>
-      </div>
-    <% end %>
-  </div>
-</div>
+
+<div id="gallery-items"></div>
+
 
 <script>
-$( document ).ready(function() {
-  $('.tag_gallery_label').css('cursor', 'pointer');
+  $('.tag-link').click(function(){
+    $.get( $(this).attr('href'), function( data ) {
+      $( "#gallery-items" ).html( data );
+    });
+    return false;
 
-  $(".tag_gallery_label").click(function(){
-    $("#query").val($(this).data("name"));
-    $("#search_market").submit();
   });
-});
 </script>

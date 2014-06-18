@@ -24,7 +24,7 @@ class MarketsController < ApplicationController
   
   def list_tag_markets
     @markets = Market.tagged_with(params[:tag]).page(params[:page]).per(3)
-    render 'index'
+    render :layout => !request.xhr?
   end
 
   def list_last_markets
