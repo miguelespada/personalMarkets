@@ -14,7 +14,7 @@
       <%= content_tag_for(:tr, tag) do %> 
     
         </td>
-        <td class="col-md-3"> <%= link_to(tag.name, tag_markets_path(tag.name)) %> </td> 
+        <td class="col-md-3"> <%= link_to(tag.name, tag_markets_path(tag.name), class: "tag-link") %> </td> 
         <td class="col-md-3 market-counter"> <%= market_counter(tag.name) %> </td>
         <td class="col-md-3"> 
           <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), tag_path(tag), :method => :delete, class: "delete btn btn-danger table-button table-button-delete", data: { confirm: 'Are you sure?' } %> </span>
@@ -26,18 +26,28 @@
 </div>
 </div>
 
-<div class="panel panel-default panel-table panel-table-last">
+<div class="panel panel-default panel-table">
   <div class="panel-heading table-title">User Tags</div>
-
-
-<%= render "tags_link", :tags => @tags %> 
+  <div class="panel-body tags-panel-container">
+    <%= render "tags_link", :tags => @tags %> 
+  </div>
 </div>
+
+<div id="gallery-items"></div>
 
 <script>
   $(document).ready(function(){
     buttonHover(".table-button-new", "fa-plus", "New Tag", 105);
     buttonHover(".table-button-delete", "fa-trash-o", "Delete", 85);
     buttonHover(".table-button-edit", "fa-pencil", "Edit", 70);
+
+    $('.tag-link').click(function(){
+      $.get( $(this).attr('href'), function( data ) {
+        $( "#gallery-items" ).html( data );
+      });
+      return false;
+  
+    });
   });
   
   var buttonHover = function(button, icon, text, width){
