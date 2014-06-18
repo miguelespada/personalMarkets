@@ -2,9 +2,9 @@
 <%= javascript_include_tag "explore_slideshows" %>
 
 <div class="market-section-title">Gallery</div>
-<div class="market-section-container">
+<div class="market-section-container market-section-photo-gallery-container">
 	<div id="carousel-container-market-photo-gallery" class="carousel slide photo-gallery" data-ride="carousel">
-		<div class="carousel-inner">
+		<div class="carousel-inner market-photo-gallery-carousel-inner">
 			<% market.gallery.photographies.each do |photo| %>
 				<div class="item">
 	  			<%= photo(photo, 800, 400) if photo.present? %>
@@ -22,3 +22,7 @@
 	}
 }
 </style>
+
+<script>
+	$(".market-photo-gallery-carousel-inner>.item:first").addClass("active");
+</script>
