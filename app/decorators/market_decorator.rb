@@ -244,7 +244,7 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
-  def market_count_highlight
+  def market_like_count
     content_tag(:i, "", :class => "fa fa-heart-o") + " " + content_tag(:span, market.favorited.count, :class => "like-counter")
   end
 
