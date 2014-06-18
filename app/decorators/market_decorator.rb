@@ -77,7 +77,7 @@ class MarketDecorator < Draper::Decorator
 
   def coupon_section
     if market.coupon_available?
-      render partial: "markets/shared/utils/coupon", locals: { market: self }
+      render partial: "coupons/shared/full_view_coupon", locals: { market: self }
     end
   end
 
