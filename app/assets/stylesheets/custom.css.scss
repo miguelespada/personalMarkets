@@ -10,12 +10,17 @@
  width:80%;   
 }
 
-#carousel-container-market-photo-gallery{
+.market-photos-slideshow-container{
   width:800px !important;
   max-width: 100% !important;
+  margin:0 auto !important;
 }
 
-.market-section-photo-gallery-container{
+#carousel-container-market-photo-gallery{
+  width:100% !important;
+}
+
+.photo-gallery-container{
   text-align: center;
 }
 
