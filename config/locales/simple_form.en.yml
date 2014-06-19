@@ -24,6 +24,8 @@ en:
   all_bargains: "All Bargains"
   whats_new: "What's new"
   enable_browser: "Enable browser location for better experience"
+  search_markets: "Search markets"
+  no_matches: "Oops... There're no markets matching your query."
   simple_form:
     "yes": 'Yes'
     "no": 'No'
@@ -45,6 +47,10 @@ en:
         tags: "Tags"
     error_notification:
       default_message: "Please review the problems below:"
+  wish_create_sucess: "Wish was successfully created."
+  wish_update_sucess: "Wish was successfully updated."
+  wish_delete_sucess: "Wish successfully deleted."
+  wish_delete_fail: "Cannot delete wish."
     # Labels and hints examples
     # labels:
     #   defaults:

@@ -16,10 +16,12 @@ es:
   categories: "Categorías"
   explore: "Explora"
   tags: "Etiquetas"
+  "Wish": "Deseo"
   wishlist: "Deseos"
+  "My Wishlist": "Mis deseos"
   Schedule: "Horarios"
   "External url": "Enlaces"
-  "Contact us" : "Contáctanos"
+  "Contact us": "Contáctanos"
   maps: "Mapas"
   all_markets: "Todos los Mercados"
   all_wishes: "Todos los Deseos"
@@ -27,6 +29,9 @@ es:
   all_bargains: "Todas las Gangas"
   whats_new: "Lo nuevo"
   enable_browser: "Habilite la ubicación en su navegador"
+  search_markets: "Buscar mercados"
+  "Explore more markets": "Más mercados..."
+  no_matches: "No hay ningún mercado que satisfaga tus criterios de búsqueda. :("
   simple_form:
     "yes": 'Si'
     "no": 'No'
@@ -46,3 +51,8 @@ es:
         tags: "Etiquetas"
     error_notification:
       default_message: "Por favor, revise los problemas abajo:"
+  wish_create_sucess: "Tu deseo se ha añadido correctamente."
+  wish_update_sucess: "Tu deseo se ha modificado correctamente."
+  wish_delete_sucess: "Tu deseo se ha borrado correctamente."
+  wish_delete_fail: "El deseo no puede ser borrado."
+

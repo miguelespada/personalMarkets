@@ -2,7 +2,6 @@ class Category
   include Mongoid::Document
 
   validates :name, uniqueness: { message: "Category name must be unique" }
-  validates :english, uniqueness: { message: "Category name must be unique" }
   field :name, type: String
   field :english, type: String
   field :style, type: String
