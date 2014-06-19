@@ -15,10 +15,10 @@
           <%= market.market_featured_photo_filtered(300, 150) %>
 
           <div class = "market_name_label">
-            <%= market.formatted_market_name %>
+            <span><%= market.formatted_market_name %></span>
           </div>
           <div class = "market_description_label">
-            <%= market.description %>
+            <span><%= market.description %></span>
           </div>
           <% end %>
           <span class="like-badge <%= market.like_class %>"><%= market.like_link_icon %></span>

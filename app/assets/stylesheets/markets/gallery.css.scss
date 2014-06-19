@@ -29,6 +29,14 @@
   text-shadow: 2px 2px 5px #222222;
 }
 
+.market_name_label > span{
+  max-width:280px;
+  float:left;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+}
+
 .market_description_label{
   position:absolute;
   display:inline;
@@ -40,6 +48,14 @@
   line-height: 24px;
   color:#FFFFFF;
   text-shadow: 2px 2px 5px #222222;
+}
+
+.market_description_label > span{
+  max-width:280px;
+  float:left;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
 }
 
 .market-like-button{
