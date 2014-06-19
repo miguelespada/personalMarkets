@@ -402,3 +402,14 @@ Then(/^I should see the badge of sample$/) do
   visit market_path @market
   page.should have_css ".ribbon-badge-sample"
 end
+
+When(/^I force it PRO$/) do
+  visit market_path(@market)
+  find(".force-pro-icon").click
+end
+
+Then(/^The market is PRO$/) do
+  visit market_path(@market)
+  page.should have_css('.pro-indicator')
+end
+

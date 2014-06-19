@@ -147,9 +147,8 @@ class User
   end
 
   def allowed_market_creation?
-    # market = self.markets.last
-    # market.nil? || market.created_one_month_ago? || self.has_role?("admin")
-    true
+    market = self.markets.last
+    market.nil? || market.created_one_month_ago? || self.has_role?("admin")
   end
 
   def admin?

@@ -78,6 +78,12 @@ Given(/^There are some tags/) do
               :name => "Dummy Tag")
 end
 
+Given(/^There is a regular market$/) do
+  @market_owner = create(:user)
+  @market = create(:market, :user => @market_owner)
+end
+
+
 When(/^There is a market with a specific tag$/) do
   step "There are some tags"
   @market = create(:market, :tags => @tag.name)

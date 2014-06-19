@@ -10,3 +10,10 @@ Feature: Make a market PRO
     And I have a regular market with a coupon
     When I make it PRO
     Then Its coupon is visible
+
+  @force_pro
+  Scenario:
+    Given I am logged in as an admin
+    And There is a regular market
+    When I force it PRO
+    Then The market is PRO
