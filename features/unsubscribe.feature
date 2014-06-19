@@ -1,4 +1,4 @@
-@unsubscribe @wip
+@unsubscribe 
 Feature: Unsubscribe
   In order to become a regular user
   As a premium user

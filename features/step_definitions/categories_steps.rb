@@ -56,8 +56,7 @@ Then(/^I should see the correct style in the map$/) do
   visit map_path
   expect(page).to have_content "Dummy Category"
   page.should have_css('.category_glyph')
-  click_on "map_style"
-
+  first(".theme-styled").click
 end
 
 Then(/^I should see the category with map and glyph in the category list$/) do

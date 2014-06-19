@@ -7,7 +7,8 @@
   <table class="table table-striped">
     <tr>
       <th>Photo</th>
-      <th>Name</th>
+      <th>Button</th>
+      <th>Link</th>
       <th>Map Style</th>
       <th>Market Count</th>
       <th>Actions </th>
@@ -23,6 +24,10 @@
         </td>
         <td class="col-md-2"> 
           <%= formatted_button(category) %>
+        </td> 
+
+        <td class="col-md-2"> 
+          <%= link_to category.name, category_markets_path(category) %>  
         </td> 
         <td class="col-md-2"> 
           <p> <%= category.style %> </p>

@@ -29,7 +29,6 @@ PopUpStores::Application.routes.draw do
     get "/users/:user_id/markets", to: "markets#list_user_markets", as: "user_markets"
     get "/published", to: "markets#list_published_markets", as: "published_markets"
 
-
     resources :users, :only => [:index, :show]
 
     resources :users do
