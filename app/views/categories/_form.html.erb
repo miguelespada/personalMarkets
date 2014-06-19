@@ -13,6 +13,9 @@
             <%= f.input :name, input_html: { class: 'category-name', placeholder: "Category Name", :required => true } %>
           </div>
           <div class="form-group">
+            <%= f.input :english, input_html: { class: 'english-category-name', placeholder: "in english...", :required => true } %>
+          </div>
+          <div class="form-group">
             <%= f.input :style, input_html: { class: 'category-style', placeholder: "Map Style", :required => true } %>
             <%= link_to "Create map styles", "https://www.mapbox.com", :target => "_blank" %>
           </div>

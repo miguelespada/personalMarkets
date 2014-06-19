@@ -23,7 +23,7 @@ class MarketDecorator < Draper::Decorator
   end
 
   def category_name
-    category.name
+    intl_name(category)
   rescue
     "Uncategorized"
   end 

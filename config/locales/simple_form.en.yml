@@ -4,6 +4,7 @@ en:
   location: "Location"
   name_and_description: "Name and Description"
   category_and_tags: "Category and Tags"
+  all_categories: "All categories"
   featured_photo: "Featured Photo"
   price_range: "Price Range"
   photo_gallery_pro: "Photo Gallery (PRO)"
@@ -22,6 +23,7 @@ en:
   bargains: "Bargains"
   all_bargains: "All Bargains"
   whats_new: "What's new"
+  enable_browser: "Enable browser location for better experience"
   simple_form:
     "yes": 'Yes'
     "no": 'No'
