@@ -2,10 +2,15 @@ When(/^I visit the sign in page$/) do
   visit new_user_session_path
 end
 
-Then(/^I am able to sign up with Facebook and Gmail$/) do
-  expect(page).to have_link "Facebook"
-  expect(page).to have_link "Google"
+Then(/^I am able to sign up with Gmail$/) do
+  expect(page).to have_css ".Google"
 end
+
+
+Then(/^I am able to sign up with Facebook$/) do
+  expect(page).to have_css ".Facebook"
+end
+
 
 Then(/^I should see the full description of the market including the address$/) do
   expect(page).to have_css '.market-location'
