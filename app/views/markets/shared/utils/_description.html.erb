@@ -11,8 +11,8 @@
 <strong> <%= t :tags %>: </strong> <%= market.hashtags %> <br>
 <strong> Address: </strong> <%= market.address %>, <%= market.city %> <br>
 <strong> Date: </strong> <%= market.date %> <br>
-<strong> Schedule: <span class:"market-schedule-string"> </strong> <%= market.schedule %> </span><br>
-<strong> External url:</strong>  <a href="<%=  market.url %>" target="_blank"><%=  market.url %></a> <br>
+<strong> <%= t "Schedule" %>: <span class:"market-schedule-string"> </strong> <%= market.schedule %> </span><br>
+<strong> <%= t "External url" %>:</strong>  <a href="<%=  market.url %>" target="_blank"><%=  market.url %></a> <br>
 
 <div class="hidden">
   <%= market.latitude %>

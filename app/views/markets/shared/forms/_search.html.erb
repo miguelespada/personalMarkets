@@ -52,9 +52,8 @@
       $("#user_lon").val(crd.longitude);
       $('#location_location_id').append("<option value='My location'>My location</option>");
   };
-
   function pos_error(){
-    $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i>  Enable browser location for better experience");
+    $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i> <%= t :enable_browser %>");
   };
 
 

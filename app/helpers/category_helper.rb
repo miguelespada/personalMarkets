@@ -7,7 +7,7 @@ module CategoryHelper
         id='#{category.name}'
         title='#{category.name}'>
         <i class='fa #{category.glyph}'>
-        </i> #{category.name}
+        </i> #{intl_name(category)}
     </button> ".html_safe
   end
   
@@ -18,8 +18,16 @@ module CategoryHelper
           tile='' 
           title='All categories'>
           <i class='fa fa-bars'>
-          </i> All categories
-      </button> ".html_safe  
+          </i> #{t :all_categories}
+       </button> ".html_safe  
+  end
+
+  def intl_name (category)
+    if params['language'] == 'es'
+      category.name
+    else
+      category.english
+    end
   end
 end
 

@@ -4,6 +4,7 @@ es:
   location: "Localización"
   name_and_description: "Nombre y descripción"
   category_and_tags: "Categoría y etiquetas"
+  all_categories: "Todo"
   featured_photo: "Foto principal"
   price_range: "Rango de Precios"
   photo_gallery_pro: "Galería de Fotos (PRO)"
@@ -16,12 +17,16 @@ es:
   explore: "Explora"
   tags: "Etiquetas"
   wishlist: "Deseos"
+  Schedule: "Horarios"
+  "External url": "Enlaces"
+  "Contact us" : "Contáctanos"
   maps: "Mapas"
   all_markets: "Todos los Mercados"
   all_wishes: "Todos los Deseos"
   bargains: "Gangas"
   all_bargains: "Todas las Gangas"
   whats_new: "Lo nuevo"
+  enable_browser: "Habilite la ubicación en su navegador"
   simple_form:
     "yes": 'Si'
     "no": 'No'
