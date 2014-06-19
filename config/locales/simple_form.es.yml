@@ -19,7 +19,7 @@ es:
   wishlist: "Deseos"
   Schedule: "Horarios"
   "External url": "Enlaces"
-  "Contact us" : "Contáctanos"
+  "Contact us": "Contáctanos"
   maps: "Mapas"
   all_markets: "Todos los Mercados"
   all_wishes: "Todos los Deseos"
@@ -27,6 +27,7 @@ es:
   all_bargains: "Todas las Gangas"
   whats_new: "Lo nuevo"
   enable_browser: "Habilite la ubicación en su navegador"
+  search_markets: "Buscar mercados"
   simple_form:
     "yes": 'Si'
     "no": 'No'

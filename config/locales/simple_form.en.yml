@@ -24,6 +24,7 @@ en:
   all_bargains: "All Bargains"
   whats_new: "What's new"
   enable_browser: "Enable browser location for better experience"
+  search_markets: "Search markets"
   simple_form:
     "yes": 'Yes'
     "no": 'No'
