@@ -66,6 +66,7 @@ class Ability
         cannot :index, Wish
         cannot :index, Bargain
         cannot :index, SpecialLocation
+        cannot [:force_make_pro], Market
 
     end
   end

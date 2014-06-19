@@ -206,5 +206,10 @@ describe SpecialLocationsController do
       delete :destroy, {:id => special_location.to_param}, valid_session
       expect(response.response_code).to eq 403
     end
+
+    it "cannot index all" do
+      get :index, {}, valid_session
+      expect(response.response_code).to eq 403
+    end
   end
 end

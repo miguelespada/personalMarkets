@@ -1,6 +1,6 @@
 class WishesController < ApplicationController
-  load_resource :only => [:show, :edit, :destroy, :update, :recommend]
-  authorize_resource :except => [:index, :list_user_wishes, :gallery, :show, :recommend]
+  load_resource :only => [:show,:edit, :destroy, :update, :recommend]
+  authorize_resource :except => [ :list_user_wishes, :gallery, :show, :recommend]
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
 
   def index

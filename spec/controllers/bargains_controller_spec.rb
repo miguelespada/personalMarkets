@@ -11,24 +11,12 @@ describe BargainsController do
 
   let(:valid_session) { {} }
 
-  describe "GET index" do
-    it "assigns all bargains as @bargains" do
-      bargain = Bargain.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:bargains).should eq([bargain])
-    end
-
+  describe "GET user bargains" do
+  
     it "assigns user bargains as @bargains " do
       bargain = Bargain.create! valid_attributes
       get :list_user_bargains, {user_id: user.to_param}, valid_session
       assigns(:bargains).should eq([bargain])
-    end
-
-    it "assigns all bargains as @bargains with 2 user bargains" do
-      Bargain.create! valid_attributes
-      Bargain.create!(description: "dummy bargain", user: other_user)
-      get :index, {}, valid_session
-      assigns(:bargains).count.should eq 2
     end
 
     it "assigns user bargains as @bargains with different user bargains" do
@@ -37,9 +25,7 @@ describe BargainsController do
       get :list_user_bargains, {user_id: user.to_param}, valid_session
       assigns(:bargains).count.should eq 1
     end
-  end
-
-  describe "GET list_user_bargains" do
+    
     it "assigns the requested bargain as @bargain" do
       bargain = Bargain.create!(description: "dummy bargain", user: user)
       get :list_user_bargains, { :user_id => user.to_param}, valid_session
@@ -55,6 +41,23 @@ describe BargainsController do
       @ability.can :manage, Bargain
       controller.stub(:current_user).and_return(user)
     end
+
+    describe "GET index" do
+      it "assigns all bargains as @bargains" do
+        bargain = Bargain.create! valid_attributes
+        get :index, {}, valid_session
+        assigns(:bargains).should eq([bargain])
+      end
+
+
+      it "assigns all bargains as @bargains with 2 user bargains" do
+        Bargain.create! valid_attributes
+        Bargain.create!(description: "dummy bargain", user: other_user)
+        get :index, {}, valid_session
+        assigns(:bargains).count.should eq 2
+      end
+    end 
+
 
     describe "GET new" do
       it "assigns a new bargain as @bargain" do

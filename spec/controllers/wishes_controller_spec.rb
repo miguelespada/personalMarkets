@@ -11,31 +11,37 @@ describe WishesController do
 
   let(:valid_session) { {} }
 
-  describe "GET index" do
+  describe "GET gallery" do
     it "assigns all wishes as @wishes" do
       wish = Wish.create! valid_attributes
-      get :index, {}, valid_session
+      get :gallery, {}, valid_session
       assigns(:wishes).should eq([wish])
     end
 
-    it "assigns user wishes as @wishes " do
-      wish = Wish.create! valid_attributes
-      Wish.create(description: "dummy wish", user: other_user)
-      get :list_user_wishes, {user_id: user.to_param}, valid_session
-      assigns(:wishes).should eq([wish])
+  
+    it "assigns all wishes as @wishes with 2 user wishes" do
+      Wish.create! valid_attributes
+      Wish.create!(description: "dummy wish", user: other_user)
+      get :gallery, {}, valid_session
+      assigns(:wishes).count.should eq 2
     end
+  end
 
+  describe "GET show" do
     it "show redirects to wishes_path " do
       wish = Wish.create! valid_attributes
       get :show, {id: wish.to_param}, valid_session 
       redirect_to wishes_path
     end
 
-    it "assigns all wishes as @wishes with 2 user wishes" do
-      Wish.create! valid_attributes
-      Wish.create!(description: "dummy wish", user: other_user)
-      get :index, {}, valid_session
-      assigns(:wishes).count.should eq 2
+  end
+
+  describe "GET list_user_wishes" do
+     it "assigns user wishes as @wishes " do
+      wish = Wish.create! valid_attributes
+      Wish.create(description: "dummy wish", user: other_user)
+      get :list_user_wishes, {user_id: user.to_param}, valid_session
+      assigns(:wishes).should eq([wish])
     end
 
     it "assigns user wishes as @wishes with different user wishes" do
@@ -44,9 +50,7 @@ describe WishesController do
       get :list_user_wishes, {user_id: user.to_param}, valid_session
       assigns(:wishes).count.should eq 1
     end
-  end
 
-  describe "GET list_user_wishes" do
     it "assigns the requested wish as @wish" do
       wish = Wish.create!(description: "dummy wish", user: user)
       get :list_user_wishes, { :user_id => user.to_param}, valid_session
@@ -61,6 +65,19 @@ describe WishesController do
       controller.stub(:current_ability) { @ability }
       @ability.can :manage, Wish
       controller.stub(:current_user).and_return(user)
+    end
+    describe "GET index" do
+      it "assigns all wishes as @wishes" do
+        wish = Wish.create! valid_attributes
+        get :index, {}, valid_session
+        assigns(:wishes).should eq([wish])
+      end
+      it "assigns all wishes as @wishes with 2 user wishes" do
+        Wish.create! valid_attributes
+        Wish.create!(description: "dummy wish", user: other_user)
+        get :index, {}, valid_session
+        assigns(:wishes).count.should eq 2
+      end
     end
 
     describe "GET new" do
@@ -126,6 +143,7 @@ describe WishesController do
         it "updates the recommendation list" do
           wish = Wish.create! valid_attributes
           market = create(:market)
+          @request.env['HTTP_REFERER'] = '/'
           post :recommend, {:id => wish.to_param, :market => {:market_id => market.id}}, valid_session
           assigns(:wish).recommended.should eq([market])
           expect(response.response_code).to eq 200
@@ -222,6 +240,11 @@ describe WishesController do
   end 
 
   context "guest user" do 
+     it "cannot index all" do
+      get :index, {}, valid_session
+      expect(response.response_code).to eq 403
+    end
+
     it "cannot edit" do
       wish = Wish.create! valid_attributes
       get :edit, {:id => wish.to_param}, valid_session
