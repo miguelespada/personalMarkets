@@ -1198,3 +1198,17 @@ border-color: #d43f3a;
 .payment-button-container > button{
   margin-bottom: 0px !important;
 }
+
+
+//*############################ GO BACK LINK CSS #############################*//
+.go-back-button-container{
+  text-align: center;
+  margin-bottom: 0px !important;
+}
+
+.go-back-button-container > a{
+  @extend .btn;
+  @extend .btn-default;
+  width:120px;
+  margin-bottom: 0px !important;
+}

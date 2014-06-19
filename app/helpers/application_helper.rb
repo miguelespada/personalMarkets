@@ -26,10 +26,9 @@ module ApplicationHelper
   end
 
   def back_link
-    content_tag :div, class:"col-md-offset-9" do
+    content_tag :div, class:"form-group col-md-4 col-md-offset-4 go-back-button-container" do
       link_to :back do
-         content_tag :i, :class => "fa fa-reply fa-3x" do
-        end 
+        content_tag(:i, "", :class => "fa fa-reply") + " Go Back"
       end
     end 
   end
