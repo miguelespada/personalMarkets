@@ -1,5 +1,15 @@
 <% if @user.allowed_market_creation? %>
   <%=  render partial: "markets/shared/forms/form", locals: {user: @user, market: @market.decorate } %>
 <% else %>
-  You have to wait one month to create another market
+  <div class="creation-not-allowed">
+  	You have to wait one month to create another market.
+  </div>
+  
+  <div class="form-group col-md-4 col-md-offset-4 go-premium-button-container">
+  	<%= link_to user_subscription_path do %>
+        <% content_tag(:i, "", :class => "fa fa-rocket") + " Go Premium" %>
+    <% end %>
+  </div>
+
+  <%= back_link %>
 <% end %>
