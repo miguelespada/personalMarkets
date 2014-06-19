@@ -16,3 +16,5 @@ Feature: Premium user
     And a user submits for subscription with valid data
     Then he is notified for a successful subscription
     Then he is premium
+    When I cancel my subscription
+    Then I am a regular user 
