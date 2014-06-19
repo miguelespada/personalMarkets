@@ -193,7 +193,7 @@ class MarketDecorator < Draper::Decorator
   
 
   def pro_link_icon
-    if can? :manage, Market
+    if can? :force_make_pro, market
       link_to content_tag(:i, "", :class => "fa fa-plus-square"), market_force_make_pro_path(market), {method: :post, class: "pro-icon market-action market-action-icon btn-market-action-bar" } unless market.pro?
     elsif can? :edit, market
       link_to content_tag(:i, "", :class => "fa fa-plus-square"), market_make_pro_payment_path(market), class: "pro-icon market-action market-action-icon btn-market-action-bar" unless market.pro?
