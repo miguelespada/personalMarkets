@@ -49,11 +49,6 @@ class Ability
             @user.owns(market)
         end 
 
-        cannot :index, Market
-        cannot :index, Wish
-        cannot :index, Bargain
-        cannot :index, SpecialLocation
-
         can :buy, Coupon
         can :coupon_payment, Coupon
         
@@ -66,6 +61,12 @@ class Ability
         can :list, Market, Market do |market|
           !@user.owns(market) && @user.favorites.include?(market)
         end
+        
+        cannot :index, Market
+        cannot :index, Wish
+        cannot :index, Bargain
+        cannot :index, SpecialLocation
+
     end
   end
 

@@ -8,18 +8,10 @@ describe SpecialLocationsController do
   let(:user) { create(:user) } 
   let(:special_location) { build(:special_location) }
 
-  describe "GET index" do
-    it "assigns all special_locations as @special_locations" do
-      special_location = SpecialLocation.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:special_locations).should eq([special_location])
-    end
-  end
-
   describe "GET gallery" do
     it "assigns all special_locations as @special_locations" do
       special_location = SpecialLocation.create! valid_attributes
-      get :index, {}, valid_session
+      get :gallery, {}, valid_session
       assigns(:special_locations).should eq([special_location])
     end
   end
@@ -32,6 +24,14 @@ describe SpecialLocationsController do
       @ability.can :manage, SpecialLocation
       controller.stub(:current_user).and_return(user)
     end
+    
+    describe "GET index" do
+      it "assigns all special_locations as @special_locations" do
+        special_location = SpecialLocation.create! valid_attributes
+        get :index, {}, valid_session
+        assigns(:special_locations).should eq([special_location])
+      end
+    end 
 
     describe "GET new" do
       it "assigns a new special_location as @special_location" do
