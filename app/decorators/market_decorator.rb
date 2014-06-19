@@ -238,6 +238,7 @@ class MarketDecorator < Draper::Decorator
     else
       content_tag(:i, "", :class => "fa fa-calendar") + " " + market.date
     end
+  rescue
   end
 
   def market_like_count
