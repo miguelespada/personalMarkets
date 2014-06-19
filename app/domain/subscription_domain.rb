@@ -16,7 +16,6 @@ class SubscriptionDomain
     UsersDomain.update_role user.id, "normal"
   rescue Paymill::PaymillError => e
     raise SubscriptionDomainException.new e.message
-    
   end
 end
 

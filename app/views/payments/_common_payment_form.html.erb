@@ -23,7 +23,7 @@
 			Expiration Year:<br>
 			<select id="expiration_year" class="exp-year-selector form-control">
 				<%= (Time.now.year..Time.now.year+20).to_a.each do |y| %>
-					<%= options_for_select([[y, y]]) %>
+					<%= options_for_select([[y, y]], :selected => Time.now.year) %>
 				<% end %>
 			</select>
 		</div>
