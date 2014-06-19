@@ -8,8 +8,6 @@ end
 
 When(/^I see the wish$/) do
   expect(page).to have_content "Dummy Wish"
-  expect(page).to have_content "tag1"
-  expect(page).to have_content "tag2"
 end
 
 Then(/^I should see the wish in my wishlist$/) do

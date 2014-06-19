@@ -47,7 +47,7 @@ When(/^I go to my wishlist$/) do
 end
 
 Then(/^I go to wishlist$/) do
-  visit wishes_path
+  visit wishes_gallery_path
 end
 
 When(/^I go to my bargain list$/) do

@@ -6,6 +6,8 @@ Feature: Manage wishes
   Background:
     Given I am logged in 
 
+
+  @add_wish
   Scenario: Add Wish
     When I add a wish
     Then I should be notified that the wish has been added
