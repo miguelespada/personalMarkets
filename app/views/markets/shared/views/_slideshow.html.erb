@@ -3,10 +3,10 @@
     	<%= link_to market do %>
     		<%= photo(market.featured, 480, 240)%>
     		<div class = "market_name_label">
-            <%= market.formatted_market_name %>
+            <span><%= market.formatted_market_name %></span>
           </div>
           <div class = "market_description_label">
-            <%= market.description %>
+            <span><%= market.description %></span>
           </div>
     	<% end %>
     <% end %>     

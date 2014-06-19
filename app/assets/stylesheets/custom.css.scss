@@ -1158,6 +1158,14 @@ border-color: #d43f3a;
   font-weight: 200;
 }
 
+//*############################ NEW MARKET NOT ALLOWED CSS #############################*//
+.creation-not-allowed{
+  @extend h2;
+  font-weight: 100;
+  text-align: center;
+  padding: 20px;
+}
+
 //*############################ CHANGE ROLE CSS #############################*//
 .change-role-panel{
   text-align: center;
@@ -1197,6 +1205,7 @@ border-color: #d43f3a;
   padding:2px !important;
   border: 1px #5bc0de solid;
   color:#FFFFFF;
+  line-height:15px;
   background-color: #5bc0de;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#5bc0de), to(#28a4c9)); 
   background-image: -webkit-linear-gradient(top, #5bc0de, #28a4c9); 
@@ -1246,3 +1255,19 @@ border-color: #d43f3a;
   width:120px;
   margin-bottom: 0px !important;
 }
+
+//*############################ GO PREMIUM LINK CSS #############################*//
+.go-premium-button-container{
+  text-align: center;
+  margin-top: 10px !important;
+}
+
+.go-premium-button-container > a{
+  @extend .btn;
+  @extend .btn-info;
+  width:120px;
+  margin-bottom: 0px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
