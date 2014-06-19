@@ -55,7 +55,8 @@ PopUpStores::Application.routes.draw do
     end
 
     post "/unsubscribe", to: "subscriptions#unsubscribe", as: "unsubscribe"
-    
+    get "/users/:user_id/subscription", to: "users#subscription", as: "user_subscription"
+
     resource :contact, controller: "contact", :only => [] do
       get :new, :on => :member
       post :create, :on => :member

@@ -76,7 +76,13 @@
   };
 
   $(document).ready(function(){
-    navigator.geolocation.getCurrentPosition(pos_success, pos_error);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos_success, pos_error);
+    }
+    else{
+      pos_error();
+    }
+
    
     $("#location_location_id").change(function(){
       if($("#location_location_id").val() != "")

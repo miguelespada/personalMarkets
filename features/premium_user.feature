@@ -1,4 +1,3 @@
-@premium
 @javascript
 Feature: Premium user
   As a registered user
@@ -12,10 +11,8 @@ Feature: Premium user
     When he wants to become premium
     Then he needs to introduce his credit card data
 
-  Scenario: When the action succeeds he is notified
-    And a user submits for subscription with valid data
-    Then he is notified for a successful subscription
-
+  @premium
   Scenario: His role is updated to premium
     And a user submits for subscription with valid data
+    Then he is notified for a successful subscription
     Then he is premium

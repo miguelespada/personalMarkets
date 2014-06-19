@@ -82,9 +82,9 @@ end
 Then(/^he needs to introduce his credit card data$/) do
   fill_in "Card holder name", with: "Dan North"
   fill_in "Card number", with: 4111111111111111
-  select "05", :from => "month-selector"
-  select "2022", :from => "year-selector"
-  fill_in "cvc-field", with: 212
+  select "5", :from => "expiration_month"
+  select "2022", :from => "expiration_year"
+  fill_in "cvc", with: 212
 end
 
 Given(/^a user submits for subscription with valid data$/) do
@@ -94,7 +94,7 @@ Given(/^a user submits for subscription with valid data$/) do
 end
 
 Then(/^he is notified for a successful subscription$/) do
-  # expect(find('#notice')).to have_content "You have become premium successfully."
+  expect(find('#notice')).to have_content "You have become premium successfully."
 end
 
 Given(/^an inactive user$/) do
