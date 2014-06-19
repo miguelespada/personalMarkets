@@ -42,7 +42,7 @@ class WishesController < ApplicationController
     current_user.wishes << @wish
     respond_to do |format|
       if @wish.save
-        format.html { redirect_to user_wishes_path(current_user), notice: 'Wish was successfully created.' }
+        format.html { redirect_to user_wishes_path(current_user), notice: t(:wish_create_sucess) }
       else
         format.html { render action: 'new' }
       end
@@ -52,7 +52,7 @@ class WishesController < ApplicationController
   def update
     respond_to do |format|
       if @wish.update(wish_params)
-        format.html { redirect_to user_wishes_path(current_user), notice: 'Wish was successfully updated.' }
+        format.html { redirect_to user_wishes_path(current_user), notice: t(:wish_update_sucess) }
       else
         format.html { render action: 'edit' }
       end
@@ -62,9 +62,9 @@ class WishesController < ApplicationController
   def destroy
     respond_to do |format|
       if @wish.destroy
-        format.html { redirect_to :back, notice: "Wish successfully deleted." }
+        format.html { redirect_to :back, notice: t(:wish_delete_sucess) }
       else
-        format.html { redirect_to :back, flash: { error: "Cannot delete wish." }}
+        format.html { redirect_to :back, flash: { error: t(:wish_delete_sucess) }}
       end
     end
   end
