@@ -1090,8 +1090,38 @@ border-color: #d43f3a;
 }
 
 //*############################ SEARCH PAGE CSS #############################*//
+.search-section-title{
+  @extend h2;
+  font-weight: 100;
+  text-align: center;
+  padding-top: 20px;
+}
+
 .search-gallery > .market_gallery{
   margin-top: 60px;
+  width:100% !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  padding-right: 180px !important;
+}
+
+.no-matching-markets{
+  margin-top: 60px;
+  margin-left: 30px !important;
+  margin-right: 210px !important;
+  padding: 20px 0px 0px 0px;
+}
+
+.explore-more-markets{
+  border-top: 1px solid #CCCCCC;
+  margin-top: 30px;
+  margin-left: 30px !important;
+  margin-right: 210px !important;
+  padding: 20px 0px;
+}
+
+#pro_markets > .market_gallery{
+  margin-bottom: 60px;
   width:100% !important;
   margin-left: 0px !important;
   margin-right: 0px !important;

@@ -1,7 +1,7 @@
 <% if @markets == [] %>
-<div>
-  <h2> No markets matching your queries... </h2>
-</div>
+  <div class="no-matching-markets search-section-title">
+    Oops... There's no markets matching your queries. 
+  </div>
 <% else %>
 
   <%= render partial: "markets/shared/views/gallery", locals: {markets: @markets } %>
