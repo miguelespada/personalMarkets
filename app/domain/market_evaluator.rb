@@ -63,19 +63,19 @@ class QualityRule
 
   RULES = {
     "description" => lambda do |field, market|
-      return "bad" unless market.has_description?
-      return "regular" if market.description.size < 50
-      return "good"
+      return {"value" => "bad", "msg" => "Please write a description for your market!"} unless market.has_description?
+      return {"value" => "regular", "msg" => "Add more details to your market description to make it better!"} if market.description.size < 50
+      return {"value" => "good", "msg" => "The description of your market is awesome!"}
     end,
     "tags" => lambda do |field, market|
-      return "bad" unless market.has_tags?
-      return "regular" if market.tags_array.size < 3
-      return "good"
+      return {"value" => "bad", "msg" => "Please add some tags to your market!"} unless market.has_tags?
+      return {"value" => "regular", "msg" => "Add more tags to your market to make it better!"} if market.tags_array.size < 3
+      return {"value" => "good", "msg" => "The tags of your market are awesome!"}
     end,
     "photos" => lambda do |field, market|
-      return "bad" unless market.has_photos?
-      return "regular" if market.how_many_photos < 3
-      return "good"
+      return {"value" => "bad", "msg" => "Please add some photos to your market!"} unless market.has_photos?
+      return {"value" => "regular", "msg" => "Add more photos to your market to make it prettier!"} if market.how_many_photos < 3
+      return {"value" => "good", "msg" => "The photos of your market are awesome!"}
     end,
     "url" => lambda do |field, market|
       generic_for_recommended field, market
@@ -99,17 +99,17 @@ class QualityRule
 
   def self.generic_quality field, market
     unless market.send("has_" + field + "?")
-      return "bad"
+      return {"value" => "bad", "msg" => "Please fill in the " + field + " field of your market!"}
     else
-      return "good"
+      return {"value" => "good", "msg" => "The " + field + " of your market is awesome!"}
     end
   end
 
   def self.generic_for_recommended field, market
     unless market.send("has_" + field + "?")
-      return "regular"
+      return {"value" => "regular", "msg" => "Update to PRO to add " + field + " to your market!"}
     else
-      return "good"
+      return {"value" => "good", "msg" => "The " + field + " of your market is awesome!"}
     end
   end
 

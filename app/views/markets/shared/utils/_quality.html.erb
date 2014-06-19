@@ -3,17 +3,16 @@
 <div class="market-section-title">Market quality</div>
 <div class="market-section-container">
   <div class="quality-section">
-    <ul class="field-list">
+    <div class="row">
       <% market.market_quality do |field, quality| %>
-        
-        <li>
-        <figure>
-          <i class="fa fa-star <%= quality %>"></i>
-          <figcaption><%= field.titleize %></figcaption>
-        </figure>
-        </li>
-
+          <div class="col-md-3 quality-line quality-title-<%= quality["value"] %>">
+            <span class="quality-item quality-item-<%= quality["value"] %>"></span>
+            &nbsp;&nbsp;<%= field.titleize %>
+          </div>
+          <div class="col-md-9 quality-detail-line quality-line-<%= quality["value"] %>">
+            <span><%= quality["msg"] %></span>
+          </div>
       <% end %>
-    </ul>
+    </div>
   </div>
 </div>

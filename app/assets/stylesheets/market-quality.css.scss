@@ -1,0 +1,57 @@
+.quality-section{
+	margin: 0px 15px;
+	color:#555555;
+}
+
+.quality-item{
+	font-family: FontAwesome;
+}
+
+.quality-line{
+	font-weight: 500;
+	line-height: 28px;
+}
+
+.quality-detail-line{
+	font-weight: 300;
+	line-height: 28px;
+}
+
+.quality-line-good{
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.quality-line-regular{
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.quality-line-bad{
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.quality-title-good{
+	border-left: 5px solid #A1E809;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.quality-title-regular{
+	border-left: 5px solid #FFB814;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.quality-title-bad{
+	border-left: 5px solid #FF6200;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.quality-item-good:after{
+  content:"\f118";
+}
+
+.quality-item-regular:after{
+  content:"\f11a";
+}
+
+.quality-item-bad:after{
+  content:"\f119";
+}
