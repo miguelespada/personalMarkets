@@ -10,7 +10,7 @@ Feature: Browse markets
   When I go to Search
 
 
-  @javascript
+  @javascript @category_filter
   Scenario: Filter category with ajax
     And I select a category filter
     Then I see the markets matching my filters

@@ -137,8 +137,8 @@ describe WishesController do
         end
       end
     end
-    describe "POST recommend" do
 
+    describe "POST recommend" do
       describe "with valid market" do
         it "updates the recommendation list" do
           wish = Wish.create! valid_attributes
@@ -146,7 +146,6 @@ describe WishesController do
           @request.env['HTTP_REFERER'] = '/'
           post :recommend, {:id => wish.to_param, :market => {:market_id => market.id}}, valid_session
           assigns(:wish).recommended.should eq([market])
-          expect(response.response_code).to eq 200
         end
       end
     end 
