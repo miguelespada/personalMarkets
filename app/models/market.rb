@@ -143,12 +143,15 @@ class Market
   end
 
   def can_be_published?
-    self.state != "published"
+    evaluation = MarketEvaluator.new(self).check_fields
+    evaluation.valid? && self.state != "published"
   end
 
   def draft?
+    self.state ||= "draft"
     self.state == "draft"
   end 
+
   def has_description?
     self.description?
   end
