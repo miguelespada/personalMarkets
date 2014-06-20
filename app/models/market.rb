@@ -141,7 +141,11 @@ class Market
   def archived?
     self.state == "archived"
   end
-  
+
+  def can_be_published?
+    self.state != "published"
+  end
+
   def draft?
     self.state == "draft"
   end 
@@ -172,6 +176,27 @@ class Market
   rescue
     false
   end
+
+  def is_today? 
+    date.split(',').each do |day|
+      return true if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i == 0
+    end
+    return false
+  rescue
+    false
+  end
+
+  def is_this_week?
+    return false if passed?
+    return false if is_today?
+    date.split(',').each do |day|
+      return true if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i < 7
+    end
+    return false
+  rescue
+    false
+  end
+
 
   def has_schedule?
     self.schedule?

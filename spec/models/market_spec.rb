@@ -10,6 +10,7 @@ describe Market do
       day = Time.now.strftime("%d/%m/%Y")
       @market = create(:market,:date => day)
       expect(@market.started?).to eq true
+      expect(@market.is_today?).to eq true
     end
 
     it "today market has not passed" do
@@ -38,6 +39,7 @@ describe Market do
         @market = create(:market,:date => days)
         expect(@market.passed?).to eq false
         expect(@market.started?).to eq true
+        expect(@market.is_this_week?).to eq true
       end
 
       it "not yet started" do
