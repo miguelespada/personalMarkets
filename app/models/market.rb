@@ -134,6 +134,17 @@ class Market
     !self.publish_date.nil?
   end
 
+  def published?
+    self.state == "published"
+  end
+
+  def archived?
+    self.state == "archived"
+  end
+  
+  def draft?
+    self.state == "draft"
+  end 
   def has_description?
     self.description?
   end
@@ -206,6 +217,7 @@ class Market
   rescue
     ""
   end
+
   def lat_lon
     if latitude.nil? or longitude.nil?
       "0,0"

@@ -1,11 +1,20 @@
 <% if can?(:manage, market) %>
   <section id="messages">
-  
-    <%if market.state = "published" %>
-      <div class="alert alert-warning flash"> This market is not public. Publish it or edit it add more content (<%= link_to "+info", :anchor => "market-quality" %>)
-      </div>
+    <%if market.archived? %>
+        <div class="alert alert-danger flash">The market is archived (this accion is not reversible).</div>
+    <%elsif market.draft? %>
+      <% if market.can_be_published? %>
+        <div class="alert alert-warning flash">This market is not public. Publish it or edit it add more content (<%= link_to "+info", :anchor => "market-quality" %>)
+        </div>
+      <% else %>
+        <div class="alert alert-danger flash">This market is not public. Edit it to add the required fields (<%= link_to "+info", :anchor => "market-quality" %>)</div>
+      <% end %>
+    <%elsif market.published?  %>
+      <% if market.passed? %>
+        <div class="alert alert-warning flash">This market public. It appears as 'passed'. 
+      <% else %>
+        <div class="alert alert-success flash">This market is public.</div>
+      <% end %>
     <% end %>
-
-  
   </section>
 <% end %>
