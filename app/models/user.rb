@@ -124,10 +124,8 @@ class User
   end
 
   def self.from_omniauth(auth, current_user)
-    puts "KJAÑKLSDFJ AÑSLK FDK ASFD JASÑLKF JSÑALKFJASÑLKFJASÑ KF ÑAS LKFJASÑLKF AJ"
     authorization = Authorization.where({:provider => auth.provider, :uid => auth.uid.to_s, :token => auth.credentials.token, :secret => auth.credentials.secret}).first_or_initialize
     if authorization.user.blank?
-      puts "siempre es blani ##@@@@@@@@"
       user = current_user.nil? ? User.where({:email => auth["info"]["email"]}).first : current_user
       user = create_with auth.info.email if user.blank?
       user.update_image auth.info.image
