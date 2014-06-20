@@ -192,13 +192,7 @@
   </div>
 </div>
   <%= f.button :submit, class: 'btn', id: 'market-save-button' %>
-  <% if market.draft? %>
-    <% if params[:action] == "edit" %>
-      <%= f.button :submit, "Udpate Market and Publish", class: 'btn', id: 'save-and-publish-button' %>
-      <% else %>
-      <%= f.button :submit, "Create Market and Publish", class: 'btn', id: 'save-and-publish-button' %>
-    <% end %>
-  <% end %>
+  <%= save_and_publish_button(f, market) %>
 <% end %>
 
 
