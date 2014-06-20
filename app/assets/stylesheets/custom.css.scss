@@ -1307,3 +1307,19 @@ border-color: #d43f3a;
 .coupon-table-container{
   margin-bottom: 100px;
 }
+
+//*############################ PAGINATE CSS #############################*//
+
+.pagination {
+  width:100%;
+}
+
+.pagination > span > a{
+  padding:5px 9px 5px 10px;
+  border:1px solid #CCCCCC;
+  border-radius: 500px;
+}
+
+.pagination > span{
+  margin: 0px 4px;
+}
