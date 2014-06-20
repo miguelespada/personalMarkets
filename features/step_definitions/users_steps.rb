@@ -126,3 +126,8 @@ end
 Then(/^I am a regular user$/) do
   expect(page).to_not have_css '.premium-star'
 end
+
+Given(/^I can create a PRO market$/) do
+  visit new_user_market_path(@user)
+  page.should have_css("#form-link-coupon.enabled")
+end
