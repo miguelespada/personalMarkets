@@ -363,7 +363,19 @@ border-color: #d43f3a;
 
 #save-and-publish-button{
   width:200px;
-  margin:8px auto 60px auto;
+  margin:8px auto 8px auto;
+}
+
+.form-section-title-small{
+  @extend h4;
+  font-weight: 200;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.form-intro-pane{
+  padding-bottom: 15px;
+  text-align: justify;
 }
 
 //*############################ RIBBON BADGE CSS #############################*//
@@ -1281,3 +1293,33 @@ border-color: #d43f3a;
   padding-right: 0px !important;
 }
 
+//*############################ COUPON CSS #############################*//
+
+.coupon-buy-button{
+  width:100%;
+  margin-top: 15px;
+}
+.coupon-form-inner{
+  margin-top: 15px;
+  margin-left: 33.3% !important;
+  margin-bottom: 15px;
+}
+.coupon-table-container{
+  margin-bottom: 100px;
+}
+
+//*############################ PAGINATE CSS #############################*//
+
+.pagination {
+  width:100%;
+}
+
+.pagination > span > a{
+  padding:5px 9px 5px 10px;
+  border:1px solid #CCCCCC;
+  border-radius: 500px;
+}
+
+.pagination > span{
+  margin: 0px 4px;
+}
