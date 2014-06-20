@@ -49,6 +49,15 @@ describe Market do
         expect(@market.started?).to eq false
       end
     end
+    
+    it "has been published" do
+      @market = create(:market)
+      expect(@market.has_been_published?).to eq false
+      @market.publish
+      expect(@market.has_been_published?).to eq true
+      @market.unpublish
+      expect(@market.has_been_published?).to eq true
+    end
   end 
 
   describe "Search with no index" do

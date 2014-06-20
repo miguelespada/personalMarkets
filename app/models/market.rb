@@ -130,6 +130,10 @@ class Market
     self.name?
   end
 
+  def has_been_published?
+    !self.publish_date.nil?
+  end
+
   def has_description?
     self.description?
   end

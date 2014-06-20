@@ -130,7 +130,6 @@ PopUpStores::Application.routes.draw do
     resources :categories
     ####
 
-    get "static_pages/calendar", path: "/calendar", as: 'calendar'
     get "static_pages/map", path: "/map", as: 'map'
 
     root "static_pages#home"
