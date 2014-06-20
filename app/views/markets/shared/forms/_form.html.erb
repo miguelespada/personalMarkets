@@ -2,7 +2,7 @@
 
 <div id="error" class="alert alert-danger flash hidden"></div>
 
-<div class="panel panel-default panel-table panel-table-last">
+<div class="panel panel-default panel-table">
   <div class="panel-heading table-title">
     Market
   </div>
@@ -110,12 +110,12 @@
         <% end %>
       </div>
       <div id="small-map-container"><%= render "markets/shared/utils/mapsmall" %></div>
-    </div>
-    <%= f.button :submit, class: 'btn hidden', id: 'market-save-button' %>
+    </div>  
   </div>
-<% end %>
 </div>
-
+  <%= f.button :submit, class: 'btn', id: 'market-save-button' %>
+  <button class="btn btn-primary btn-block" id="save-and-publish-button">Save and publish</button>
+<% end %>
 <script>
 
 $( document ).ready(function() {
@@ -129,22 +129,9 @@ $( document ).ready(function() {
       
       $('ul.nav a[href="' + window.location.hash + '"]').tab('show');
   
-      $(".add_market_button").addClass("btn-success");
+      $(".add_market_button").addClass("btn-default");
       $(".add_market_button").removeClass("btn-info");
-      $(".add_market_button").val("Save");
-      $(".add_market_button").click(function(){
-        $("#market-save-button").click(); 
-        return false;
-      });
-
-      $("input").change(function(){
-        formChanged();
-      });
-
-      $("textarea").change(function(){
-        formChanged();
-      });
-
+      $(".add_market_button").attr("disabled", true);
 
       if (scheduleAlreadyExist($('#market_schedule').val())){
         showExistSchedule($('#market_schedule').val());
@@ -241,18 +228,15 @@ var initializeDatepicker = function(){
 var addDatePickerEvent = function(){
   $('.input-group.date').datepicker().on('changeDate',function(){
     getAllDates();
-    formChanged();
   });
 };
 
 var initializeSchedule = function(){
   $('.schedule-start-input').change(function(){
     getAllSchedules();
-    formChanged();
   });
   $('.schedule-end-input').change(function(){
     getAllSchedules();
-    formChanged();
   });
 };
 
@@ -338,12 +322,6 @@ var getLocationFromAddress = function(url){
     PM.addMarker([lat, lng], false);
     PM.map.setView([lat, lng], 14);
   });
-};
-
-var formChanged = function(){
-  $(".add_market_button").addClass("btn-warning");
-  $(".add_market_button").removeClass("btn-success");
-  $(".button_to").exBounce();
 };
 
 $.fn.exBounce = function(){
