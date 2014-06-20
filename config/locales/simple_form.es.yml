@@ -5,7 +5,7 @@ es:
   name_and_description: "Nombre y descripción"
   category_and_tags: "Categoría y etiquetas"
   all_categories: "Todo"
-  featured_photo: "Foto principal"
+  featured_photo: "Foto destacada"
   price_range: "Rango de Precios"
   photo_gallery_pro: "Galería de Fotos (PRO)"
   external_url_pro: "Enlace Externo (PRO)"

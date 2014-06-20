@@ -5,6 +5,52 @@ describe Market do
   it { should have_field :name }
   it { should have_field :description }
 
+   describe "Market state" do
+    it "today market has started" do
+      day = Time.now.strftime("%d/%m/%Y")
+      @market = create(:market,:date => day)
+      expect(@market.started?).to eq true
+    end
+
+    it "today market has not passed" do
+      day = Time.now.strftime("%d/%m/%Y")
+      @market = create(:market,:date => day)
+      expect(@market.passed?).to eq false
+    end
+
+    it "yesterday market has started" do
+      day = 1.day.ago.strftime("%d/%m/%Y")
+      @market = create(:market,:date => day)
+      expect(@market.started?).to eq true
+    end
+
+    it "yesterday market has passed" do
+      day = 1.day.ago.strftime("%d/%m/%Y")
+      @market = create(:market,:date => day)
+      expect(@market.passed?).to eq true
+    end
+
+    describe "several dates" do
+      it " market has started and passed" do
+        day1 = 1.day.ago.strftime("%d/%m/%Y")
+        day2 = 2.days.from_now.strftime("%d/%m/%Y")
+        days = day1 + "," + day2
+        @market = create(:market,:date => days)
+        expect(@market.passed?).to eq false
+        expect(@market.started?).to eq true
+      end
+
+      it "not yet started" do
+        day1 = 2.days.from_now.strftime("%d/%m/%Y")
+        day2 = 5.days.from_now.strftime("%d/%m/%Y")
+        days = day1 + "," + day2
+        @market = create(:market,:date => days)
+        expect(@market.passed?).to eq false
+        expect(@market.started?).to eq false
+      end
+    end
+  end 
+
   describe "Search with no index" do
     it "creates an new index" do
       Market.delete_index

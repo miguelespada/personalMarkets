@@ -140,16 +140,6 @@ class MarketDecorator < Draper::Decorator
   rescue
     false
   end
- 
-  def passed? 
-    date.split(',').each do |day|
-      return false if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i >= 0
-    end
-    return true
-  rescue
-    false
-  end
-
 
   def is_this_week?
     return false if passed?
