@@ -78,6 +78,17 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
     evaluation
   end
 
+  def can_be_published? market
+    evaluation = MarketEvaluator.new(market).check_fields
+    if !evaluation.valid?
+      return false
+    elsif market_evaluation.warn_about_coupon?
+      return false
+    else
+      return true
+    end
+  end
+
   def make_pro market_id, pro_payment
     market = markets_repo.find market_id
     PaymillWrapper.create_transaction market.user.email, pro_payment
