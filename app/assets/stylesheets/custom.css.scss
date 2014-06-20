@@ -366,14 +366,14 @@ border-color: #d43f3a;
   margin:8px auto 60px auto;
 }
 
-.featured-photo-title{
+.form-section-title-small{
   @extend h4;
   font-weight: 200;
   text-align: center;
   padding-top: 10px;
 }
 
-#form-intro-pane{
+.form-intro-pane{
   padding-bottom: 15px;
   text-align: justify;
 }
@@ -1306,9 +1306,4 @@ border-color: #d43f3a;
 }
 .coupon-table-container{
   margin-bottom: 100px;
-}
-
-.form-pane-image{
-  width:100%;
-  text-align: center;
 }
