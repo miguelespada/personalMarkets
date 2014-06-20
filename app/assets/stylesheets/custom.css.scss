@@ -366,6 +366,13 @@ border-color: #d43f3a;
   margin:8px auto 60px auto;
 }
 
+.featured-photo-title{
+  @extend h4;
+  font-weight: 200;
+  text-align: center;
+  padding-top: 10px;
+}
+
 //*############################ RIBBON BADGE CSS #############################*//
 
 .wrapper-ribbon-badge {

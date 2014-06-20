@@ -42,7 +42,7 @@
       <div class="tab-pane" id="form-market-name-description"> 
         <%= f.input :name, required: true,  input_html: { class: 'market-name' } %>
         <%= f.input :description, :as => :text, input_html: { class: 'market-description' } %>
-        <strong> <%= t :featured_photo  %> </strong>
+        <p class="featured-photo-title"> <%= t :featured_photo  %> </p>
         <%= f.simple_fields_for :featured do |form_builder| %>
             <%= render 'photos/form', f: form_builder %>
         <% end %>
