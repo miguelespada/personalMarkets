@@ -5,7 +5,10 @@ class MarketDecorator < Draper::Decorator
   include Draper::LazyHelpers
 
   delegate_all 
-  
+  def link(text)
+    link_to(text, market_path(market), :class => "show market-action")
+  end 
+
   def owner
     user.email
   end
@@ -24,14 +27,6 @@ class MarketDecorator < Draper::Decorator
   rescue
     "Uncategorized"
   end 
-
-  def actions
-    render partial: 'markets/shared/utils/actions', locals: { market: self }
-  end
-
-  def social_links
-    render partial: 'markets/shared/utils/social_links', locals: { market: self }
-  end
 
   def badges
     if passed?
@@ -134,6 +129,8 @@ class MarketDecorator < Draper::Decorator
   end
 
 
+  ##### SOCIAL SHARING #####
+
   def twitter_text
     "http://twitter.com/home?status=@PersonalMarkets, #{short_url}, %23#{name.tr(' ', '_').camelize}: #{description} #{hashtags.gsub('#', '%23')}"
   end
@@ -152,14 +149,22 @@ class MarketDecorator < Draper::Decorator
 
   ##### LINKS #####
 
+  def actions
+    render partial: 'markets/shared/utils/actions', locals: { market: self }
+  end
+  
+  def social_links
+    return if market.archived?
+    render partial: 'markets/shared/utils/social_links', locals: { market: self }
+  end 
 
-  def statistics_link_icon
+  def statistics_link
     if can? :statistics, market
       link_to content_tag(:i, "", :class => "fa fa-sitemap"), show_market_statistic_path(market), class: "statistics-icon market-action market-action-icon btn-market-action-bar"
     end
   end
 
-  def like_link_icon
+  def like_link
     return if market.archived?
     if can? :like, market
       if !current_user.favorited?(market)
@@ -171,7 +176,7 @@ class MarketDecorator < Draper::Decorator
   rescue
   end
 
-  def edit_link_icon
+  def edit_link
     return if market.archived?
     if can? :edit, market 
       link_to(content_tag(:i, "", :class => "fa fa-pencil"), edit_user_market_path(market.user, market), 
@@ -179,7 +184,7 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
-  def delete_link_icon
+  def delete_link
     return if market.archived?
     if can? :delete, market 
       link_to(content_tag(:i, "", :class => "fa fa-trash-o"), user_market_path(market.user, market), method: :delete, 
@@ -187,7 +192,7 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
-  def archive_link_icon 
+  def archive_link 
     return if market.archived?
     if can? :archive, market
       link_to content_tag(:i, "", :class => "fa fa-undo"), market_archive_path(market), { method: :post, class: "archive-icon market-action market-action-icon btn-market-action-bar"  }
@@ -195,7 +200,7 @@ class MarketDecorator < Draper::Decorator
   end
   
 
-  def pro_link_icon
+  def pro_link
     return if market.archived?
     if can? :force_make_pro, market 
       link_to content_tag(:i, "", :class => "fa fa-plus-square"), market_force_make_pro_path(market), {method: :post, class: "force-pro-icon market-action market-action-icon btn-market-action-bar" } unless market.pro?
@@ -238,25 +243,7 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
-  def like_link
-    return if market.archived?
-    if can? :like, market 
-      if !current_user.favorited?(market)
-        link_to("Like", like_path(market), class: "like market-action")
-      else  
-        link_to("Unlike", unlike_path(market), class: "unlike market-action")
-      end
-    end
-  rescue
-  end
-
-  def statistics_link
-    if can? :statistics, market
-      link_to "Statistics", show_market_statistic_path(market), class: "statistics market-action"
-    end
-  end
-
-  def transactions_link_icon
+  def transactions_link
     if market.has_coupon?
      if can? :edit, coupon
       link_to(content_tag(:i, "", :class => "fa fa-ticket"), sold_coupons_by_market_path(market), 
