@@ -4,12 +4,11 @@
 
 <div class="panel panel-default panel-table">
   <div class="panel-heading table-title">
-    Market
+    <%= action %> Market
   </div>
 <div id="wizard" class="row">
   <ul class="col-md-3">
-    <li id="form-link-name"><a href="#form-market-name-description" data-toggle="tab"><%= t :name_and_description %></a></li>
-    <li id="form-link-featured"><a href="#form-market-photo" data-toggle="tab"><%= t :featured_photo %></a></li>
+    <li id="form-link-name"><a href="#form-market-name-description" data-toggle="tab"><%= t :general_information %></a></li>
 
     <% if market.pro? %>
       <li id="form-link-gallery" class="enabled"><a href="#form-market-photos" data-toggle="tab"><%= t :photo_gallery_pro %></a></li>
@@ -43,9 +42,7 @@
       <div class="tab-pane" id="form-market-name-description"> 
         <%= f.input :name, required: true,  input_html: { class: 'market-name' } %>
         <%= f.input :description, :as => :text, input_html: { class: 'market-description' } %>
-      </div>
-      
-      <div class="tab-pane" id="form-market-photo">
+        <strong> <%= t :featured_photo  %> </strong>
         <%= f.simple_fields_for :featured do |form_builder| %>
             <%= render 'photos/form', f: form_builder %>
         <% end %>
@@ -110,7 +107,7 @@
         <% end %>
       </div>
       <div id="small-map-container"><%= render "markets/shared/utils/mapsmall" %></div>
-    </div>  
+    </div>
   </div>
 </div>
   <%= f.button :submit, class: 'btn', id: 'market-save-button' %>
@@ -220,7 +217,7 @@ var initializeDatepicker = function(){
     format: "dd/mm/yyyy",
     startDate: "today",
     endDate:"+1m",
-    language: "en",
+    language: "<%= params['language'] %>",
     todayHighlight: true
   });
 };

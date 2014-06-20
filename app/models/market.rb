@@ -86,7 +86,6 @@ class Market
     self.save!
   end
 
-
   def archive
     self.state = "archived"
     self.save!
@@ -131,6 +130,25 @@ class Market
     self.name?
   end
 
+  def has_been_published?
+    !self.publish_date.nil?
+  end
+
+  def published?
+    self.state == "published"
+  end
+
+  def archived?
+    self.state == "archived"
+  end
+
+  def can_be_published?
+    self.state != "published"
+  end
+
+  def draft?
+    self.state == "draft"
+  end 
   def has_description?
     self.description?
   end
@@ -138,6 +156,47 @@ class Market
   def has_date?
     self.date?
   end
+
+  def passed?
+    return false if !self.has_date? 
+    self.date.split(',').each do |day|
+      return false if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i >= 0
+    end
+    return true
+  rescue
+    false
+  end
+
+   def started?
+    return false if !self.has_date? 
+    self.date.split(',').each do |day|
+      return true if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i <= 0
+    end
+    return false
+  rescue
+    false
+  end
+
+  def is_today? 
+    date.split(',').each do |day|
+      return true if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i == 0
+    end
+    return false
+  rescue
+    false
+  end
+
+  def is_this_week?
+    return false if passed?
+    return false if is_today?
+    date.split(',').each do |day|
+      return true if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i < 7
+    end
+    return false
+  rescue
+    false
+  end
+
 
   def has_schedule?
     self.schedule?
@@ -183,6 +242,7 @@ class Market
   rescue
     ""
   end
+
   def lat_lon
     if latitude.nil? or longitude.nil?
       "0,0"

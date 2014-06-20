@@ -38,7 +38,7 @@ class MarketsController < ApplicationController
   end
 
   def list_user_markets
-    @markets = Market.find_all(@user).page(params[:page]).per(3)
+    @markets = Market.find_all(@user).order_by(:created_date.desc).page(params[:page]).per(3)
   end
 
   def list_liked_markets

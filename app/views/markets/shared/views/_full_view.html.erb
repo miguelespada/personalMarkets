@@ -1,3 +1,5 @@
+<%= render partial: 'markets/shared/utils/status', locals: { market: market } %>
+
 <div class="panel panel-default panel-table panel-table-last market-full-description-panel">
   
   <%= render partial: 'markets/shared/utils/title_and_actions_bar', locals: { market: market } %>
@@ -22,7 +24,6 @@
       </div>
     </div>
   
-    <%= market.market_quality_section %>
 
     <%= market.photo_gallery_section %>
   
@@ -45,6 +46,8 @@
       <%= render partial: 'markets/shared/utils/qr_code', locals: { market: market } %>
     </div>
   </div>
+  
+    <%= market.market_quality_section %>
 </div>
 
 <style>
