@@ -9,6 +9,17 @@ class MarketEvaluator
     @evaluation = MarketEvaluation.new market
   end
 
+  def check_new_date
+    return true if @market.user.has_role? "admin"
+    within_one_week?(@market.date)
+  end
+
+  def check_update_date(new_date)
+    return true if @market.user.has_role? "admin"
+    within_one_week?(new_date)
+    raise MarketDateException.new "You cannot modify passed dates." if @market.has_been_published? && modify_passed_dates?(@market.date, new_date)
+  end
+
   def check_fields
     check_required
     check_recommended
@@ -56,7 +67,22 @@ class MarketEvaluator
   def field_quality field
     QualityRule.for field, @market
   end
+  
+  def within_one_week?(date)
+    dates = date.split(',')
+    return true if dates.count < 2
+    raise MarketDateException.new "Dates have to be within 7 days."  if (DateTime.parse(dates[-1]) - DateTime.parse(dates[0])).to_i >= 7
+  end
 
+  def modify_passed_dates?(date, new_date)
+    dates = date.split(',')
+    new_dates = new_date.split(',')
+    dates.each do |d|
+      passed = (DateTime.parse(d) - Date.today).to_i <= 0
+      return true if !new_dates.include?(d) && passed
+    end
+    false
+  end
 end
 
 class QualityRule

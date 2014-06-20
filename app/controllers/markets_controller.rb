@@ -121,8 +121,9 @@ class MarketsController < ApplicationController
     redirect_to market, notice: 'Market was successfully created.'
   end
 
-  def create_market_failed
-    flash[:notice] = "Something went wrong."
+  def create_market_failed market, message
+    @market = market
+    flash[:error] = message
     render action: 'new'
   end
 
@@ -179,8 +180,10 @@ class MarketsController < ApplicationController
     redirect_to market, notice: "Market successfully updated."
   end
 
-  def update_failed market
-    redirect_to market, notice: "Market update failed."
+  def update_failed market, message
+    @market = market
+    flash[:error] = message
+    render action: 'edit'
   end
 
   def make_pro_payment

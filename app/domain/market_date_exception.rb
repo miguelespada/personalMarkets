@@ -1,0 +1,2 @@
+class MarketDateException < Exception
+end
