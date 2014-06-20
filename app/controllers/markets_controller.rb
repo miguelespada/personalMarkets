@@ -233,6 +233,7 @@ class MarketsController < ApplicationController
         :date,
         :schedule,
         :url,
+        :social_link,
         :min_price,
         :max_price,
         :from,

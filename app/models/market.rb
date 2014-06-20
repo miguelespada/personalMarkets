@@ -23,6 +23,7 @@ class Market
   field :public_id, type: String
   field :schedule, type: String
   field :url, type: String
+  field :social_link, type: String
   field :min_price, type: Float
   field :max_price, type: Float
 
