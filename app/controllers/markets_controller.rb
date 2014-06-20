@@ -1,7 +1,7 @@
 class MarketsController < ApplicationController
   before_filter :load_user
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
-  authorize_resource :only => [:index, :edit, :create, :new, :destroy, :update, :archive, 
+  authorize_resource :only => [:index, :edit, :create, :new, :destroy, :update, :archive,
                               :publish, :unpublish, :make_pro, :publish_anyway, :force_make_pro]
 
   def index
@@ -114,11 +114,15 @@ class MarketsController < ApplicationController
   end
 
   def create
-    domain.create_market params[:user_id], market_params
+    domain.create_market params[:user_id], market_params, publish?
   end
 
-  def create_market_succeeded market
-    redirect_to market, notice: 'Market was successfully created.'
+  def create_market_succeeded market, publish = false
+    if publish
+      domain.publish_market market.public_id
+    else
+      redirect_to market, notice: 'Market was successfully created.'
+    end
   end
 
   def create_market_failed market, message
@@ -173,11 +177,15 @@ class MarketsController < ApplicationController
   end
 
   def update
-    domain.update_market params[:id], market_params
+    domain.update_market params[:id], market_params, publish?
   end
 
-  def update_suceeded market
-    redirect_to market, notice: "Market successfully updated."
+  def update_suceeded market, publish = false
+    if publish
+      domain.publish_market params[:id] 
+    else
+      redirect_to market, notice: "Market successfully updated."
+    end
   end
 
   def update_failed market, message
@@ -284,6 +292,10 @@ class MarketsController < ApplicationController
 
     def markers(markets)
       markets.collect{|market| market.to_marker(view_context.tooltip(market), market_path(market))} if markets.count > 0
+    end
+
+    def publish?
+      params["commit"].include?("Publish")
     end
 
 end
