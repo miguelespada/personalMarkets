@@ -68,7 +68,8 @@
 	$.get( "/slideshow", function( data ) {
     	$( "#carousel-latest-markets" ).html( data );
   	});
-  	$.get( "/categories/list", function( data ) {
+  	$.get( "<%= params['language'] %>/categories/list", 
+      function( data ) {
     	$( "#explore_categories" ).append( data );
   	});
   	$.get( "/special_locations/list", function( data ) {

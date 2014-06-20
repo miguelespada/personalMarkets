@@ -1,7 +1,7 @@
 test:
-  override:
-    - case $CIRCLE_NODE_INDEX in 0) rake spec ;; 1) rake cucumber ;; esac:
-        parallel: true
+ override:
+   - rake spec
+   - rake cucumber
 deployment:
   staging:
     branch: master
