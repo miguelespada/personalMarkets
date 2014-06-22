@@ -46,6 +46,14 @@ class MarketDecorator < Draper::Decorator
     "no_badge ribbon-badge-none"
   end
 
+  def address_and_city
+    if market.address.present? && market.city.present?
+      market.address + ", " + market.city 
+    else
+      "Market location is not provided"
+    end
+  end
+
   def location
     render partial: 'markets/shared/utils/location', locals: { market: market }
   end
