@@ -52,6 +52,7 @@ class Market
 
   after_create :create_public_id
   after_save :collect_cities 
+  after_update :order_schedule
 
   def coupon_available?
     self.has_coupon? && (self.pro? || self.belongs_to_premium_user?)
@@ -354,5 +355,13 @@ class Market
 
    def self.reset_cities
     @@cities = nil 
+  end
+
+  def order_schedule
+    dates = self.schedule.split(';')
+    sorted = dates.sort! {|a, b| DateTime.strptime(a, "%d/%m/%Y,%H:%M") <=> DateTime.strptime(b, "%d/%m/%Y,%H:%M")}.join(';')
+    if sorted != self.schedule
+      self.update_attribute(:schedule, sorted)
+    end
   end
 end
