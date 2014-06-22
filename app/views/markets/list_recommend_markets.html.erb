@@ -1,0 +1,28 @@
+<div>
+  <%= link_to "Prev", "#", :id=>"prev-markets" if !@first_page %>
+  <%= link_to "Next", "#", :id=>"next-markets" if !@last_page %>
+</div>
+
+
+<div id="gallery-items">
+  <%= render partial: "markets/shared/views/recommend", locals: {markets: @markets, wish: @wish } %>
+</div>
+
+
+<script>
+  $("#prev-markets").click(function(){
+      var page = parseInt($('#recommend_page').val());
+      if(page == 0) page = 1;
+      $('#recommend_page').val(page - 1);
+
+      ajaxRecommend();
+      return false;
+    });
+
+    $("#next-markets").click(function(){
+      var page = parseInt($('#recommend_page').val());
+      $('#recommend_page').val(page + 1);
+      ajaxRecommend();
+      return false;
+    });
+</script>

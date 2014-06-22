@@ -41,6 +41,14 @@ class MarketsController < ApplicationController
     @markets = Market.find_all(@user).order_by(:created_date.desc).page(params[:page]).per(3)
   end
 
+  def list_recommend_markets
+    @markets = Market.published.page(params[:recommend_page]).per(1)
+    @wish = Wish.find_by(id: params[:wish_id])
+    @first_page = params[:recommend_page].to_i == 1
+    @last_page = params[:recommend_page].to_i == Market.published.count 
+    render :layout => !request.xhr?
+  end
+
   def list_liked_markets
     @markets = @user.favorites
     render :layout => !request.xhr?

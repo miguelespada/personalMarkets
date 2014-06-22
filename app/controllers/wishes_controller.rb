@@ -28,7 +28,7 @@ class WishesController < ApplicationController
   end
 
   def recommend
-    market = Market.find_by(id: params[:market][:market_id])
+    market = Market.find(params[:market_id])
     @wish.recommend(market)
     redirect_to :back, notice: "Market recommended."  
   end 

@@ -363,5 +363,6 @@ class Market
     if sorted != self.schedule
       self.update_attribute(:schedule, sorted)
     end
+  rescue
   end
 end

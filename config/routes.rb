@@ -28,6 +28,7 @@ PopUpStores::Application.routes.draw do
     get "/users/admin", to: "users#admin", as: "admin"
     get "/users/:user_id/markets", to: "markets#list_user_markets", as: "user_markets"
     get "/published", to: "markets#list_published_markets", as: "published_markets"
+    get "/list_recommend_markets", to: "markets#list_recommend_markets", as: "list_recommend_markets"
 
     resources :users, :only => [:index, :show]
 
@@ -81,7 +82,7 @@ PopUpStores::Application.routes.draw do
     ### Wishes
     get "/wishes/gallery", as: "wishes_gallery"
     get "/users/:user_id/wishes", to: "wishes#list_user_wishes", as: "user_wishes"
-    post "/wishes/:id/recommend/", to: "wishes#recommend", as: "recommend_market_to_wish"
+    post "/wishes/:id/recommend/:market_id", to: "wishes#recommend", as: "recommend_market_to_wish"
     resources :wishes
     ####
 

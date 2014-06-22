@@ -3,14 +3,27 @@
     <div class="col-md-10 col-md-offset-1">
       <div class="panel panel-default panel-table panel-table-last panel-bargain-show">
         <div class="panel-heading table-title">
-          <div class="wish-title-container"><%= wish.description %></div>
+          <div class="wish-title-container"><%= wish.description %>
+           <h6> #tags_<%= wish.tags %> </h6></div>
         </div>
 
         <div class="wish-photo-container">
             <%= photo(wish.photography, 600, 300) %> 
         </div>
 
-        <div class="recomendations">
+       
+
+          <div class="market-list-section-title">Recommend Market</div>
+            <div class="market-list-section-container">
+          
+              <div id ="recommend" class = "market-list-section-container-inner">
+              
+              </div>
+            <%= hidden_field_tag 'recommend_page', params['recommend_page'] || 1 %>
+        
+          </div>
+
+         <div class="recomendations">
           <div class="market-list-section-title">Recommended</div>
             <div class="market-list-section-container">
               <div class = "market-list-section-container-inner">
@@ -23,20 +36,28 @@
               </div>
             </div>
           </div>
-
-          <div class="market-list-section-title">Recommend Market</div>
-            <div class="market-list-section-container">
-              <div class = "market-list-section-container-inner">
-                <%= form_tag recommend_market_to_wish_path(wish), id: "recommend_market", class:"form-group" do %>
-                  <%= collection_select(:market, :market_id, Market.published, :id, :name ) %>
-                  <%= submit_tag("Recommend") %>
-                <% end %>
-              </div>
-            </div>
-          </div>
         </div>
 
       </div>
     </div>
   </div>
+
+
+
+
+<script>
+    var ajaxRecommend = function(){
+      $.ajax({url: "/list_recommend_markets", 
+         data: { recommend_page:$("#recommend_page").val(),
+        wish_id: "<%= wish.id %>" }
+      }).done(function( data ) {
+        $( "#recommend" ).html( data );
+      });
+    };
+
+    $(document).ready(function(){
+      ajaxRecommend();
+    });
+</script>
+
 
