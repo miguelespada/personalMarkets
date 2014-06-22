@@ -51,8 +51,7 @@ class Market
   scope :with_category, lambda {|category| where(category: category)}
 
   after_create :create_public_id
-  after_create :collect_cities 
-  after_update :collect_cities
+  after_save :collect_cities 
 
   def coupon_available?
     self.has_coupon? && (self.pro? || self.belongs_to_premium_user?)

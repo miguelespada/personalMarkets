@@ -5,7 +5,7 @@
   </td>
   <td class="col-md-2"> <%= user.markets.count %></td>
   <td class="col-md-2"> <%= user.favorites.count %></td>
-  <td class="col-md-4"> <%= link_to content_tag(:i, "", class: "fa fa-share"), user_markets_path(user), :method => :get, :class => 'btn btn-primary table-button table-button-show' %>
+  <td class="col-md-4"> <%= link_to content_tag(:i, "", class: "fa fa-ticket"), bought_coupons_by_user_path(user), :method => :get, :class => 'btn btn-primary table-button table-button-show' %>
     <%= link_to content_tag(:i, "", class: "fa fa-refresh"), change_user_role_path(user), :method => :get, :class => 'btn btn-info table-button table-button-change-role' %>
 
     <% user.available_statuses.each do |status| %>
@@ -20,7 +20,7 @@
 
 <script>
   $(document).ready(function(){
-    buttonHover(".table-button-show", "fa-share", "Show", 85);
+    buttonHover(".table-button-show", "fa-ticket", "Transactions", 130);
     buttonHover(".table-button-change-role", "fa-refresh", "Change Role", 130);
     buttonHover(".table-button-switch-active", "fa-check-circle", "Activate", 100);
     buttonHover(".table-button-switch-inactive", "fa-times-circle", "Deactivate", 120);
