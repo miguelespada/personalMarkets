@@ -1,11 +1,11 @@
 <%= content_tag_for(:tr, user) do %>
-  <td class="col-md-3"> <%= user.email %> </td>
+  <td class="col-md-3"> <%= link_to user.email, user_markets_path(user) %> </td>
   <td class="col-md-1 <%= user.status %>"> 
     <div class="user-status-text"><%= user.status.titleize %></div>
   </td>
   <td class="col-md-2"> <%= user.markets.count %></td>
   <td class="col-md-2"> <%= user.favorites.count %></td>
-  <td class="col-md-4"> <%= link_to content_tag(:i, "", class: "fa fa-share"), user_path(user), :method => :get, :class => 'btn btn-primary table-button table-button-show' %>
+  <td class="col-md-4"> <%= link_to content_tag(:i, "", class: "fa fa-share"), user_markets_path(user), :method => :get, :class => 'btn btn-primary table-button table-button-show' %>
     <%= link_to content_tag(:i, "", class: "fa fa-refresh"), change_user_role_path(user), :method => :get, :class => 'btn btn-info table-button table-button-change-role' %>
 
     <% user.available_statuses.each do |status| %>
