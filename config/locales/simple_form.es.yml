@@ -1,4 +1,9 @@
 es:
+  today: "Hoy"
+  all_time: "Cualquier día"
+  this_week: "Esta semana"
+  next_week: "La próxima semana"
+  this_month: "Este mes"
   sign_up: "Registrarse"
   general_information: "Información General"
   location: "Localización"

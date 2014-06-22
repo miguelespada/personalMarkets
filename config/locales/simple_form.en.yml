@@ -1,4 +1,9 @@
 en:
+  today: "Today"
+  all_time: "Any day"
+  this_week: "This week"
+  next_week: "Next week"
+  this_month: "This month"
   sign_up: "Sign Up"
   general_information: "General Information"
   location: "Location"

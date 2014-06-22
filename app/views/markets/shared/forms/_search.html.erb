@@ -13,8 +13,8 @@
 
     <li class="form-group search-filter-item" id="search-range-item">
       <%= select_tag(:range, 
-        options_for_select(['All','Today','This week', 'This month', 'Next week'],
-        :selected => session[:range]), 
+     options_for_select({t(:all_time) => "All", t(:today) => "Today", t(:this_week) => "This week", t(:this_month) => "This month", t(:next_week) => "Next week"},
+        :selected => session[:range]),
         class: "form-control" ) %>
     </li>
 
