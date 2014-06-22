@@ -1,8 +1,8 @@
 class MarketEvaluator
 
   REQUIRED = ["name", "description", "featured", "location", "date", "schedule"]
-  RECOMMENDED = ["tags", "url", "prices"]
-  PRO_RECOMMENDED = ["coupon", "photos"]
+  RECOMMENDED = ["tags", "prices"]
+  PRO_RECOMMENDED = ["coupon", "photos", "url"]
 
   def initialize market
     @market = market
