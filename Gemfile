@@ -42,7 +42,7 @@ gem 'jbuilder', '~> 1.2'
 
 # Photo management
 gem 'cloudinary'
-gem 'attachinary', git: 'git://github.com/rochers/attachinary.git', branch: 'rails4'
+#gem 'attachinary', git: 'git://github.com/rochers/attachinary.git', branch: 'rails4'
 gem 'rqrcode-rails3'
 
 
@@ -72,9 +72,6 @@ gem 'draper', '~> 1.3'
 
 # Mapbox
 gem 'mapbox-rails'
-
-#D3
-gem 'd3-rails', '~> 3.3.7'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
