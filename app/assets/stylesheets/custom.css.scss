@@ -322,13 +322,15 @@ border-color: #d43f3a;
 }
 
 .panel-table-last{
-  margin-bottom: 80px !important;
+  margin-bottom: 10px !important;
 }
 
 .table-title{
   font-size: 24px;
   font-weight: 100;
   text-align: left;
+  margin-bottom: 10px !important;
+
 }
 .table-button{
   width:40px;
@@ -675,11 +677,14 @@ border-color: #d43f3a;
 }
 
 //*############################ MARKET FULL DESCRIPTION CSS #############################*//
+.panel-default > .panel-heading {
+background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
+}
+
 .market-title-container{
   @extend .row;
   margin: 0px !important;
 }
-
 .btn-market-action-bar{
   width:40px;
 }
@@ -704,9 +709,8 @@ border-color: #d43f3a;
   font-weight: 200;
   text-align: center;
   margin: 15px 15px 0px 15px!important;
-  color:#3B99FF;
-  background:#E4F2FF;
-  border-bottom: 1px solid #3B99FF;
+  color:#000;
+  border-bottom: 1px solid #000;
 }
 
 .market-list-section-title{
@@ -715,9 +719,8 @@ border-color: #d43f3a;
   font-weight: 200;
   text-align: center;
   margin: 0px 15px 0px 15px!important;
-  color:#3B99FF;
-  background:#E4F2FF;
-  border-bottom: 1px solid #3B99FF;
+  color:#000;
+  border-bottom: 1px solid #000;
 }
 
 

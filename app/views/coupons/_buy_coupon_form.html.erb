@@ -4,6 +4,7 @@
    <%= select_tag "number", options_for_select((1..coupon.available)), class:"form-control"  %>
    <%= submit_tag "Buy", class:"btn btn-info coupon-buy-button" %>
    <% end %>
+   <%= link_to "How it works?", buy_coupon_terms_path %></div>
   </div>
 <% else %>
    Sold out

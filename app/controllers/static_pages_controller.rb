@@ -2,7 +2,10 @@ class StaticPagesController < ApplicationController
   def home
   end
 
-  def coupon_terms
+  def sell_coupon_terms
+  end
+
+  def buy_coupon_terms
   end
 
   def map
