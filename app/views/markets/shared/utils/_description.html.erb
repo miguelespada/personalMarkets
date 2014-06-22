@@ -10,8 +10,11 @@
 <strong> Prices: </strong> <%= market.min_price %> € - <%= market.max_price %> € <br>
 <strong> <%= t :tags %>: </strong> <%= market.hashtags %> <br>
 <strong> Address: </strong> <%= market.address %>, <%= market.city %> <br>
-<strong> Date: </strong> <%= market.date %> <br>
-<strong> <%= t "Schedule" %>: <span class:"market-schedule-string"> </strong> <%= market.schedule %> </span><br>
+<!-- <strong> Date: </strong> <%= market.date %> <br> -->
+<strong> <%= t "Schedule" %>: <span class:"market-schedule-string"> </strong> </span><br>
+<% market.human_readable_schedule.each do |day| %> 
+  <%= day["day"].to_formatted_s(:rfc822)  %>, <%= day["from"] %> - <%= day["to"] %> <br>
+<% end %>
 <strong> <%= t "External url" %>:</strong>  <a href="<%=  market.url %>" target="_blank"><%=  market.url %></a> <br>
 <strong> <%= t "Social link" %>:</strong>  <a href="<%=  market.social_link %>" target="_blank"><%=  market.social_link %></a> <br>
 

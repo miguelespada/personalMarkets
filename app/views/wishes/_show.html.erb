@@ -10,17 +10,11 @@
         <div class="wish-photo-container">
             <%= photo(wish.photography, 600, 300) %> 
         </div>
-
-       
-
           <div class="market-list-section-title">Recommend Market</div>
             <div class="market-list-section-container">
-          
               <div id ="recommend" class = "market-list-section-container-inner">
-              
               </div>
             <%= hidden_field_tag 'recommend_page', params['recommend_page'] || 1 %>
-        
           </div>
 
          <div class="recomendations">
@@ -41,9 +35,6 @@
       </div>
     </div>
   </div>
-
-
-
 
 <script>
     var ajaxRecommend = function(){

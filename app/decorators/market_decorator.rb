@@ -28,6 +28,16 @@ class MarketDecorator < Draper::Decorator
     "Uncategorized"
   end 
 
+  def human_readable_schedule
+    dates = []
+    schedule.split(';').each do |day|
+      dates << {"day" => Date.strptime(day, "%d/%m/%Y"), "from" => day.split(',')[1], "to" => day.split(',')[2]}
+    end
+    dates
+  rescue
+    []
+  end
+
   def badges
     if passed?
       "passed ribbon-badge-passed"
