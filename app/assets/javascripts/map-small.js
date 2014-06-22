@@ -13,10 +13,14 @@ PM.initializeSmallMap = function() {
 };
 
 PM.setMarker = function(lat, lng){
-  var marketLat = lat;
-  var marketLng = lng;
-  PM.addMarker([parseFloat(marketLat), parseFloat(marketLng)]);
-  PM.map.setView([parseFloat(marketLat), parseFloat(marketLng)], 14);
+  try{
+    var coords = [parseFloat(lat), parseFloat(lng)];
+    PM.addMarker(coords);
+    PM.map.setView(coords, 14);
+  }
+  catch (err){
+    console.log(err.message);
+  };
 };
 
 PM._coordinatesSet = function(latitude, longitude) {
@@ -24,6 +28,7 @@ PM._coordinatesSet = function(latitude, longitude) {
 };
 
 PM.addMarker = function (latlng){
+
   PM.marker = L.marker(latlng,{
     icon: L.mapbox.marker.icon(
       {'marker-color': '#48a',

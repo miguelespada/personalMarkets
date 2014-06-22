@@ -202,6 +202,13 @@
 <script>
 
 $( document ).ready(function() {
+      $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+          event.preventDefault();
+          return false;
+        }
+      });
+
       initializeAutocomplete('market_city');
       $('#wizard').bootstrapWizard({
         tabClass: 'nav nav-pills nav-stacked',
