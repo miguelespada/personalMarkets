@@ -7,12 +7,12 @@ gem "thin"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 gem "devise"
-gem "mongoid", ">= 2.0.0.beta.19"
 gem "cancan"
 gem "rolify"
 gem 'faker'
 gem "paymill"
 
+gem "mongoid", ">= 2.0.0.beta.19"
 gem "mongoid_slug"
 
 gem "bson_ext"
