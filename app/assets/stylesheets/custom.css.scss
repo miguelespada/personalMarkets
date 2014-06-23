@@ -959,7 +959,8 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 //*############################ WISH RECOMMEND CSS #############################*//
 
 .wish-recommended-item{
-  @extend .col-md-4;
+  @extend .col-md-6;
+  @extend .col-md-offset-3;
   padding-top: 15px;
   text-align: center;
   font-weight: 200;
@@ -967,6 +968,19 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 }
 
 .wish-recommended-item > img{
+  max-width: 100%;
+  height:auto;
+}
+
+.wish-recommend-item{
+  @extend .col-md-4;
+  padding-top: 15px;
+  text-align: center;
+  font-weight: 200;
+  font-size: 12px;
+}
+
+.wish-recommend-item > img{
   max-width: 100%;
   height:auto;
 }
@@ -985,6 +999,16 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   @extend .btn-default;
   margin-top: 10px;
 }
+
+.recommend-control{
+  margin-top: 20px;
+  width:15px;
+}
+
+.recommend-control>a{
+  color:#CCCCCC !important;
+}
+
 
 //*############################ TAG LIST CSS #############################*//
 
@@ -1234,6 +1258,10 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 
 .wish-title-container{
   width:100%;
+  text-align: center;
+}
+
+#recommend{
   text-align: center;
 }
 
