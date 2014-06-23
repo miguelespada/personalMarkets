@@ -76,7 +76,14 @@ test:
         # low amounts for fast failures.
         max_retries: 1
         retry_interval: 0
+# production:
+#   sessions:
+#     default:
+#       uri: <%= ENV['MONGOHQ_URL'] %> 
 production:
   sessions:
-    default:
-      uri: <%= ENV['MONGOHQ_URL'] %> 
+      database: markets
+      hosts:
+        - localhost:27017
+      username: admin
+      password: 12345678

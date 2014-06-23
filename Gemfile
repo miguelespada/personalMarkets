@@ -15,7 +15,7 @@ gem "paymill"
 gem "mongoid", ">= 2.0.0.beta.19"
 gem "mongoid_slug"
 
-gem "bson_ext"
+#gem "bson_ext"
 gem "rails_12factor", group: :production
 
 # Use SCSS for stylesheets
@@ -42,7 +42,7 @@ gem 'jbuilder', '~> 1.2'
 
 # Photo management
 gem 'cloudinary'
-#gem 'attachinary', git: 'git://github.com/rochers/attachinary.git', branch: 'rails4'
+gem 'attachinary' #, git: 'git://github.com/rochers/attachinary.git', branch: 'rails4'
 gem 'rqrcode-rails3'
 
 
