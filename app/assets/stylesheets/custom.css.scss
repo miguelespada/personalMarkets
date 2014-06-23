@@ -958,30 +958,31 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 
 //*############################ WISH RECOMMEND CSS #############################*//
 
-.wish-recommended-item{
-  @extend .col-md-6;
-  @extend .col-md-offset-3;
+.wish-recommend-section-item{
   padding-top: 15px;
   text-align: center;
   font-weight: 200;
   font-size: 12px;
 }
 
-.wish-recommended-item > img{
-  max-width: 100%;
-  height:auto;
+.wish-recommended-item{
+  @extend .col-md-6;
+  @extend .col-md-offset-3;
+  @extend .wish-recommend-section-item;
 }
 
 .wish-recommend-item{
   @extend .col-md-4;
-  padding-top: 15px;
-  text-align: center;
-  font-weight: 200;
-  font-size: 12px;
+  @extend .wish-recommend-section-item;
 }
 
 .wish-recommend-item > img{
-  max-width: 100%;
+  max-width: 80%;
+  height:auto;
+}
+
+.wish-recommended-item > img{
+  max-width: 80%;
   height:auto;
 }
 
