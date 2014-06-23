@@ -8,6 +8,16 @@ mongohq:
   password: <%= mongohq.password %>
 <% end %>
 
+<% if ENV['MONGO_URL'] %>
+<% mongohq = URI.parse(ENV['MONGO_URL']) %>
+mongohq:
+  host: <%= mongohq.host %>
+  port: <%= mongohq.port %>
+  database: <%= mongohq.path.sub '/', '' %>
+  username: <%= mongohq.user %>
+  password: <%= mongohq.password %>
+<% end %>
+
 development:
   # Configure available database sessions. (required)
   sessions:
@@ -83,9 +93,13 @@ test:
 #       uri: <%= ENV['MONGOHQ_URL'] %> 
 production:
   sessions:
-      default:
-        database: personalmarkets-production
-        hosts:
-          - 172.17.0.71:49154
-        username: personalmarkets
-        password: Mm9xSUJnOXFyZnlJUnB4cXVIS0IrS2owTi9zR0t5QXFxVkRDMVZCZWpxUT0K
+    default:
+      uri: <%= ENV['MONGO_URL'] %> 
+# production:
+#   sessions:
+#       default:
+#         database: personalmarkets-production
+#         hosts:
+#           - 172.17.0.71:49154
+#         username: personalmarkets
+#         password: Mm9xSUJnOXFyZnlJUnB4cXVIS0IrS2owTi9zR0t5QXFxVkRDMVZCZWpxUT0K
