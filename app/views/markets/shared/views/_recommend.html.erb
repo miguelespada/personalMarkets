@@ -1,7 +1,14 @@
 
 <% markets.each do |market| %>
   <div class="wish-recommended-item">
-    <%= photo(market.featured, 160, 80)%><br>
+  	<div class="pull-left recommend-control">
+  		<%= link_to content_tag(:i, "", :class => "fa fa-angle-left fa-3x"), "#", :id=>"prev-markets" if !@first_page %>
+  	</div>
+  	<div class="pull-right recommend-control">
+  		<%= link_to content_tag(:i, "", :class => "fa fa-angle-right fa-3x"), "#", :id=>"next-markets" if !@last_page %>
+  	</div>
+  	<%= photo(market.featured, 200, 100)%>
+  	<br>
     <%= market.decorate.formatted_market_name %>
     <p> <%= link_to "Recommend", recommend_market_to_wish_path(wish, market), {:method => "post"} %> </p>
   </div>

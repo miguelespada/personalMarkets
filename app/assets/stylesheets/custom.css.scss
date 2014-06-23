@@ -317,6 +317,7 @@ border-color: #d43f3a;
 //*############################ TABLE CSS #############################*//
 
 .panel-table{
+  margin-top: 10px;
   margin-left: 30px;
   margin-right: 30px;
 }
@@ -709,8 +710,8 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   font-weight: 200;
   text-align: center;
   margin: 15px 15px 0px 15px!important;
-  color:#000;
-  border-bottom: 1px solid #000;
+  color:#777777;
+  border-bottom: 1px solid #CCCCCC;
 }
 
 .market-list-section-title{
@@ -719,8 +720,8 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   font-weight: 200;
   text-align: center;
   margin: 0px 15px 0px 15px!important;
-  color:#000;
-  border-bottom: 1px solid #000;
+  color:#777777;
+  border-bottom: 1px solid #CCCCCC;
 }
 
 
@@ -728,7 +729,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   @extend .row;
   margin: 0px 15px 15px 15px!important;
   padding: 10px !important;
-  background:#FCFCFF;
+  background:#FFFFFF;
 }
 
 .short-view-coupon-section{
@@ -743,7 +744,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 .market-list-section-container{
   margin: 0px 15px 15px 15px!important;
   padding: 10px !important;
-  background:#FCFCFF;
+  background:#FFFFFF;
 }
 
 .market-featured-photo-detail{
@@ -957,16 +958,31 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 
 //*############################ WISH RECOMMEND CSS #############################*//
 
-.wish-recommended-item{
-  @extend .col-md-4;
+.wish-recommend-section-item{
   padding-top: 15px;
   text-align: center;
   font-weight: 200;
   font-size: 12px;
 }
 
+.wish-recommended-item{
+  @extend .col-md-6;
+  @extend .col-md-offset-3;
+  @extend .wish-recommend-section-item;
+}
+
+.wish-recommend-item{
+  @extend .col-md-4;
+  @extend .wish-recommend-section-item;
+}
+
+.wish-recommend-item > img{
+  max-width: 80%;
+  height:auto;
+}
+
 .wish-recommended-item > img{
-  max-width: 100%;
+  max-width: 80%;
   height:auto;
 }
 
@@ -984,6 +1000,16 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   @extend .btn-default;
   margin-top: 10px;
 }
+
+.recommend-control{
+  margin-top: 20px;
+  width:15px;
+}
+
+.recommend-control>a{
+  color:#CCCCCC !important;
+}
+
 
 //*############################ TAG LIST CSS #############################*//
 
@@ -1191,6 +1217,19 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   padding: 20px;
 }
 
+//*############################ TERMS TITLE CSS #############################*//
+.terms-title{
+  @extend h2;
+  font-weight: 100;
+  text-align: center;
+  padding: 20px;
+}
+
+.terms-content{
+  text-align: justify;
+  margin-bottom: 30px;
+}
+
 //*############################ CHANGE ROLE CSS #############################*//
 .change-role-panel{
   text-align: center;
@@ -1223,6 +1262,10 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   text-align: center;
 }
 
+#recommend{
+  text-align: center;
+}
+
 //*############################ PRO INDICATOR CSS #############################*//
 .pro-indicator{
   font-size: 10px !important;
@@ -1241,6 +1284,26 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   vertical-align: middle;
   text-shadow: none !important;
 }
+
+//*############################ MARKET TITLE CSS #############################*//
+.market-title > .show:link {
+  color:#000 !important;
+  text-decoration:none !important;
+}
+.market-title > .show:visited {
+  color:#000 !important;
+  text-decoration:none !important;
+}
+.market-title > .show:hover {
+  color:#1A89EB !important;
+  text-shadow: 1px 1px 3px #999999;
+  text-decoration:none !important;
+}
+.market-title > .show:active {
+  color:#1A89EB !important;
+  text-decoration:none !important;
+}
+
 
 //*############################ STATISTIC CSS #############################*//
 .statistic-title > a{
@@ -1301,6 +1364,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 .coupon-buy-button{
   width:100%;
   margin-top: 15px;
+  margin-bottom: 10px;
 }
 .coupon-form-inner{
   margin-top: 15px;
@@ -1309,6 +1373,11 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 }
 .coupon-table-container{
   margin-bottom: 100px;
+}
+.coupon-action-button{
+  width:120px;
+  text-align: center;
+  margin:5px 0px;
 }
 
 //*############################ PAGINATE CSS #############################*//

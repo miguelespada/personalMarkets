@@ -1,13 +1,6 @@
-<div>
-  <%= link_to "Prev", "#", :id=>"prev-markets" if !@first_page %>
-  <%= link_to "Next", "#", :id=>"next-markets" if !@last_page %>
-</div>
-
-
-<div id="gallery-items">
+<div id="gallery-items" class="recommend-items">
   <%= render partial: "markets/shared/views/recommend", locals: {markets: @markets, wish: @wish } %>
 </div>
-
 
 <script>
   $("#prev-markets").click(function(){
