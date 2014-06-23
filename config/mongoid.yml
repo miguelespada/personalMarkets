@@ -82,8 +82,9 @@ test:
 #       uri: <%= ENV['MONGOHQ_URL'] %> 
 production:
   sessions:
-      database: markets
-      hosts:
-        - localhost:27017
-      username: admin
-      password: 12345678
+      default:
+        database: markets
+        hosts:
+          - localhost:27017
+        username: admin
+        password: 12345678  
