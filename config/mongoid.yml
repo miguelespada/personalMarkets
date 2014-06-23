@@ -8,11 +8,6 @@ mongohq:
   password: <%= mongohq.password %>
 <% end %>
 
-host: <%= URI.parse(ENV['MONGOHQ_URL']) %>
-port: <%= mongohq.port %>
-database: <%= mongohq.path.sub '/', '' %>
-username: <%= mongohq.user %>
-password: <%= mongohq.password %>
 development:
   # Configure available database sessions. (required)
   sessions:
