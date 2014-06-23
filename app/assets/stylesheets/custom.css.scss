@@ -709,8 +709,8 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   font-weight: 200;
   text-align: center;
   margin: 15px 15px 0px 15px!important;
-  color:#000;
-  border-bottom: 1px solid #000;
+  color:#777777;
+  border-bottom: 1px solid #CCCCCC;
 }
 
 .market-list-section-title{
@@ -719,8 +719,8 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   font-weight: 200;
   text-align: center;
   margin: 0px 15px 0px 15px!important;
-  color:#000;
-  border-bottom: 1px solid #000;
+  color:#777777;
+  border-bottom: 1px solid #CCCCCC;
 }
 
 
@@ -743,7 +743,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 .market-list-section-container{
   margin: 0px 15px 15px 15px!important;
   padding: 10px !important;
-  background:#FCFCFF;
+  background:#FFFFFF;
 }
 
 .market-featured-photo-detail{
@@ -1241,6 +1241,26 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   vertical-align: middle;
   text-shadow: none !important;
 }
+
+//*############################ MARKET TITLE CSS #############################*//
+.market-title > .show:link {
+  color:#000 !important;
+  text-decoration:none !important;
+}
+.market-title > .show:visited {
+  color:#000 !important;
+  text-decoration:none !important;
+}
+.market-title > .show:hover {
+  color:#1A89EB !important;
+  text-shadow: 1px 1px 3px #999999;
+  text-decoration:none !important;
+}
+.market-title > .show:active {
+  color:#1A89EB !important;
+  text-decoration:none !important;
+}
+
 
 //*############################ STATISTIC CSS #############################*//
 .statistic-title > a{
