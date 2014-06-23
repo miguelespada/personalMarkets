@@ -246,7 +246,7 @@ class MarketDecorator < Draper::Decorator
     return if market.archived?
     if market.has_coupon?
       if can? :buy, market.coupon 
-        link_to "Buy Coupon", coupon_path(market.coupon)
+        link_to "Buy Coupon", coupon_path(market.coupon), {class: "btn btn-default coupon-action-button"}
       end
     end
   end
@@ -256,7 +256,7 @@ class MarketDecorator < Draper::Decorator
     if market.has_coupon? 
      if can? :edit, coupon
       link_to("Edit", edit_user_market_path(market.user, market, :anchor => "form-market-coupon"), 
-        :class => "edit edit-coupon market-action")
+        :class => "edit edit-coupon market-action btn btn-default coupon-action-button")
       end
     end
   end
