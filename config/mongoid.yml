@@ -7,6 +7,12 @@ mongohq:
   username: <%= mongohq.user %>
   password: <%= mongohq.password %>
 <% end %>
+
+host: <%= URI.parse(ENV['MONGOHQ_URL']) %>
+port: <%= mongohq.port %>
+database: <%= mongohq.path.sub '/', '' %>
+username: <%= mongohq.user %>
+password: <%= mongohq.password %>
 development:
   # Configure available database sessions. (required)
   sessions:
@@ -83,8 +89,8 @@ test:
 production:
   sessions:
       default:
-        database: markets
+        database: personalmarkets-production
         hosts:
-          - localhost:27017
-        username: admin
-        password: 12345678  
+          - 172.17.0.71:49154
+        username: personalmarkets
+        password: Mm9xSUJnOXFyZnlJUnB4cXVIS0IrS2owTi9zR0t5QXFxVkRDMVZCZWpxUT0K
