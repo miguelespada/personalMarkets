@@ -15,7 +15,7 @@ gem "paymill"
 gem "mongoid", ">= 2.0.0.beta.19"
 gem "mongoid_slug"
 
-#gem "bson_ext"
+gem "bson_ext"
 gem "rails_12factor", group: :production
 
 # Use SCSS for stylesheets
