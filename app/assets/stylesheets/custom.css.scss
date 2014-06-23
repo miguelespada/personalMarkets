@@ -317,6 +317,7 @@ border-color: #d43f3a;
 //*############################ TABLE CSS #############################*//
 
 .panel-table{
+  margin-top: 10px;
   margin-left: 30px;
   margin-right: 30px;
 }
@@ -728,7 +729,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   @extend .row;
   margin: 0px 15px 15px 15px!important;
   padding: 10px !important;
-  background:#FCFCFF;
+  background:#FFFFFF;
 }
 
 .short-view-coupon-section{
@@ -1189,6 +1190,19 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   font-weight: 100;
   text-align: center;
   padding: 20px;
+}
+
+//*############################ TERMS TITLE CSS #############################*//
+.terms-title{
+  @extend h2;
+  font-weight: 100;
+  text-align: center;
+  padding: 20px;
+}
+
+.terms-content{
+  text-align: justify;
+  margin-bottom: 30px;
 }
 
 //*############################ CHANGE ROLE CSS #############################*//
