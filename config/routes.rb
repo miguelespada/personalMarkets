@@ -135,6 +135,7 @@ PopUpStores::Application.routes.draw do
     get "static_pages/buy_coupon_terms", as: "buy_coupon_terms"
     get "static_pages/sell_coupon_terms", as: "sell_coupon_terms"
     get "static_pages/privacy", as: "privacy"
+    get "static_pages/settings", as: "settings"
     root "static_pages#home"
 
   end

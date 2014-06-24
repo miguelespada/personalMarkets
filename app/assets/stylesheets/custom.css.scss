@@ -1227,7 +1227,11 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 
 .terms-content{
   text-align: justify;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
+}
+
+.terms-content > .go-back-button-container{
+  margin-top: 30px;
 }
 
 //*############################ CHANGE ROLE CSS #############################*//

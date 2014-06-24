@@ -27,9 +27,7 @@
         <%= link_to photos_path, class:"dashboard-button btn btn-primary btn-lg" do %>
           <i class="fa fa-camera fa-4x"></i> <br/> Photos
         <% end %>
-        <%= link_to admin_path, class:"dashboard-button btn btn-primary btn-lg" do %>
-			    <i class="fa fa-envelope-o fa-4x"></i> <br/> Messages
-		    <% end %>
+        <a class="dashboard-button btn btn-primary btn-lg" target="_blank" href="https://mail.google.com"><i class="fa fa-envelope-o fa-4x"></i> <br> Messages</a>
       </div>
       <div class="col-md-6 dashboard-column">
         <%= link_to users_path, class:"dashboard-button btn btn-primary btn-lg" do %>
@@ -44,6 +42,10 @@
 
         <%= link_to coupons_path, class:"dashboard-button dashboard-button btn btn-primary btn-lg" do %>
           <i class="fa fa-ticket fa-4x"></i> <br/> Coupons
+        <% end %>
+
+        <%= link_to settings_path, class:"dashboard-button btn btn-primary btn-lg" do %>
+          <i class="fa fa-cogs fa-4x"></i> <br/> Settings
         <% end %>
       </div>
     </div>
