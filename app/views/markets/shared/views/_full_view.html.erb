@@ -24,6 +24,9 @@
       </div>
     </div>
   
+    <% if !market.pro? %>
+      <div class="adsense-banner">ADVERTISEMENT</div>
+    <% end %>
 
     <%= market.photo_gallery_section %>
   
