@@ -31,6 +31,12 @@
         class: "form-control") %>
     </li>
 
+    <li class="form-group search-filter-item" id="my-location-item">
+      <%= link_to content_tag(:i, "", :class => "fa fa-crosshairs"), "#", 
+        :class=>  "btn btn-default btn-reset-search", 
+        :id=>"my_location" %>
+    </li>
+
     <li class="hidden">
       <%= text_field_tag :from %>  
       <%= text_field_tag :to %>  

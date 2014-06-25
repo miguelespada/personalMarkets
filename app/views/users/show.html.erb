@@ -29,7 +29,7 @@
 	            <li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> 20% menos en comisión / cupón</li>
 	          <form>
 	            <p><input type="checkbox" required name="premium_accept_term" id="premium_accept_term" > I accept the <%= link_to "terms of use.", go_premium_terms_path %></p>
-							<%= link_to "Become premium", user_subscription_path(@user), class:"btn btn-info become-premium-button" %>
+							<%= button_to "Become premium", user_subscription_path(@user), { method: :get, class:"btn btn-info become-premium-button" } %>
 						</form>
 				</ul>
 			</div>
