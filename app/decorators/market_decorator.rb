@@ -130,7 +130,7 @@ class MarketDecorator < Draper::Decorator
 
   def formatted_market_name
     if market.pro?
-      content_tag(:span, "PRO", :class => "pro-indicator") + " " + market.name
+      content_tag(:span, "VIM", :class => "pro-indicator") + " " + market.name
     else
       market.name
     end

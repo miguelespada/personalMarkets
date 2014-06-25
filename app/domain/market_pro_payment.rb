@@ -9,6 +9,6 @@ class MarketProPayment < Struct.new(:market, :payment)
   end
 
   def description
-    "Market PRO payment for #{market.to_param}"
+    "VIM payment for #{market.to_param}"
   end
 end

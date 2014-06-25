@@ -133,7 +133,7 @@ class QualityRule
 
   def self.generic_for_recommended field, market
     unless market.send("has_" + field + "?")
-      return {"value" => "regular", "msg" => "Update to PRO to add " + field + " to your market!"}
+      return {"value" => "regular", "msg" => "Update to VIM to add " + field + " to your market!"}
     else
       return {"value" => "good", "msg" => "The " + field + " of your market is awesome!"}
     end
