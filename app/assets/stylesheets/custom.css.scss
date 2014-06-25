@@ -1444,7 +1444,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   width: 100px;
   height: 80px;
   overflow: hidden;
-  left:-23px;
+  right:-23px;
   top:51px;
 }
 
@@ -1452,10 +1452,10 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   font: bold 12px Sans-Serif;
   letter-spacing: -0.1em;
   text-align: center;
-  -webkit-transform: rotate(-45deg);
-  -moz-transform:    rotate(-45deg);
-  -ms-transform:     rotate(-45deg);
-  -o-transform:      rotate(-45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform:    rotate(45deg);
+  -ms-transform:     rotate(45deg);
+  -o-transform:      rotate(45deg);
   position: relative;
   padding: 7px 0;
   left:-15px;
