@@ -937,19 +937,19 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 
 .bargain-price-icon{
   position: absolute;
-  top:280px;
-  left:250px;
+  top:63%;
+  left:65%;
 }
 
 .bargain-price-container{
   width:140px;
-  height:140px;
+  height:auto;
   position:relative;
 }
 
 .bargain-price-container > img{
-  width:140px;
-  height:140px;
+  width:100%;
+  height:auto;
 }
 
 .bargain-price{
