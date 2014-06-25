@@ -1,8 +1,8 @@
 class MarketEvaluator
 
-  REQUIRED = ["name", "description", "featured", "location", "date", "schedule"]
-  RECOMMENDED = ["tags", "prices"]
-  PRO_RECOMMENDED = ["coupon", "photos", "url"]
+  REQUIRED = ["name", "description", "featured", "location", "date", "schedule", "prices"]
+  RECOMMENDED = ["tags", "photos"]
+  PRO_RECOMMENDED = ["coupon", "url"]
 
   def initialize market
     @market = market
@@ -110,7 +110,7 @@ class QualityRule
       generic_for_recommended field, market
     end,
     "prices" => lambda do |field, market|
-      generic_for_recommended field, market
+      generic_quality field, market
     end
   }
 
@@ -132,10 +132,14 @@ class QualityRule
   end
 
   def self.generic_for_recommended field, market
-    unless market.send("has_" + field + "?")
-      return {"value" => "regular", "msg" => "Update to VIM to add " + field + " to your market!"}
+    if market.pro?
+      unless market.send("has_" + field + "?")
+        return {"value" => "regular", "msg" => "You can add " + field + " to your market to make it better!"}
+      else
+        return {"value" => "good", "msg" => "The " + field + " of your market is awesome!"}
+      end
     else
-      return {"value" => "good", "msg" => "The " + field + " of your market is awesome!"}
+      return {"value" => "regular", "msg" => "Update to VIM to add " + field + " to your market!"}
     end
   end
 
