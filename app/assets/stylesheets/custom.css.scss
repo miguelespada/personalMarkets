@@ -1437,3 +1437,37 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 .unsubscribe-button{
   margin-top: 15px;
 }
+
+//*############################ BETA BADGE CSS #############################*//
+#beta-badge-container{
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  left:-25px;
+  top:51px;
+}
+
+.beta-badge {
+  font: bold 12px Sans-Serif;
+  text-align: center;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform:    rotate(-45deg);
+  -ms-transform:     rotate(-45deg);
+  -o-transform:      rotate(-45deg);
+  position: relative;
+  padding: 7px 0;
+  left:-15px;
+  top: 10px;
+  width: 130px;
+  color: #000;
+  -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+  box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+  background-color: #d9534f;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FFDF00), to(#FFC900)); 
+  background-image: -webkit-linear-gradient(top, #FFDF00, #FFC900); 
+  background-image:    -moz-linear-gradient(top, #FFDF00, #FFC900); 
+  background-image:     -ms-linear-gradient(top, #FFDF00, #FFC900); 
+  background-image:      -o-linear-gradient(top, #FFDF00, #FFC900); 
+}
