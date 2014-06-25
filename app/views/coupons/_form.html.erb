@@ -1,6 +1,6 @@
 
 <%= f.input :description, { placeholder: "Description" } %>
-<%= f.input :price, collection: (5..25).step(5).to_a, :include_blank => false %>
+<%= f.input :price, collection: (5..25).step(5).to_a.collect{|n| n.to_s + " €"}, :include_blank => false %>
 <%= f.input :available, { placeholder: "Available" } %>
 <%= f.simple_fields_for :photography do |form_builder| %>
   <%= render 'photos/form', f: form_builder %>
