@@ -165,7 +165,7 @@ class MarketsController < ApplicationController
 
   def publish_not_available market, evaluation
     if evaluation.warn_about_coupon?
-      flash[:warning] = "In order to publish a market with a coupon you should make it PRO or become PREMIUM. Otherwise the coupon won't be available. #{view_context.link_to "Publish anyway", market_publish_anyway_path(market), { method: :post }}".html_safe
+      flash[:warning] = "In order to publish a market with a coupon you should make it VIM or become PREMIUM. Otherwise the coupon won't be available. #{view_context.link_to "Publish anyway", market_publish_anyway_path(market), { method: :post }}".html_safe
     end
     redirect_to market
   end
@@ -212,12 +212,12 @@ class MarketsController < ApplicationController
     pro_payment = MarketProPayment.new Market.find(params[:id]), payment
 
     market = domain.make_pro params[:id], pro_payment
-    redirect_to market, notice: "Your market is now PRO."
+    redirect_to market, notice: "Your market is now VIM."
   end
 
   def force_make_pro
     market = domain.force_make_pro params[:market_id]
-    redirect_to market, notice: "The market is now PRO."
+    redirect_to market, notice: "The market is now VIM."
   end
 
   private
