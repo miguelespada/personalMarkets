@@ -59,7 +59,7 @@ class Market
   end
 
   def photo_gallery_available?
-    self.has_gallery? && (self.pro? || self.belongs_to_premium_user?)
+    self.has_gallery?
   end
 
   def publish_available?

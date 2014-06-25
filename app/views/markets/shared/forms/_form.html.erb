@@ -10,18 +10,14 @@
   <ul class="col-md-3">
     <li id="form-link-name"><a href="#form-market-name-description" data-toggle="tab"><%= t :general_information %></a></li>
 
-    <% if market.pro? %>
-      <li id="form-link-gallery" class="enabled"><a href="#form-market-photos" data-toggle="tab"><%= t :photo_gallery_pro %></a></li>
-    <% else %>
-      <li id="form-link-gallery" class="disabled"><a href="#" data-toggle=""><%= t :photo_gallery_pro %></a></li>
-    <% end %>
+    <li id="form-link-gallery"><a href="#form-market-photos" data-toggle="tab"><%= t :photo_gallery_pro %></a></li>
     
     <li id="form-link-category"><a href="#form-market-category-tag" data-toggle="tab"><%= t :category_and_tags %></a></li>
     <li id="form-link-date"><a href="#form-market-date" data-toggle="tab"><%= t :date_and_time %></a></li>
     <li id="form-link-prices"><a href="#form-market-prices" data-toggle="tab"><%= t :price_range %></a></li>
     
     <% if market.pro? %>
-        <li id="form-external-url"><a href="#form-market-external-url" data-toggle="tab"><%= t :external_url_pro %></a></li>
+        <li id="form-external-url" class="enabled"><a href="#form-market-external-url" data-toggle="tab"><%= t :external_url_pro %></a></li>
     <% else %>
         <li id="form-external-url" class="disabled"><a href="#" data-toggle=""><%= t :external_url_pro %></a></li>
     <% end %>
