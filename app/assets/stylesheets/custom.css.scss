@@ -1442,14 +1442,15 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 #beta-badge-container{
   position: fixed;
   width: 100px;
-  height: 100px;
+  height: 80px;
   overflow: hidden;
-  left:-25px;
+  left:-23px;
   top:51px;
 }
 
 .beta-badge {
   font: bold 12px Sans-Serif;
+  letter-spacing: -0.1em;
   text-align: center;
   -webkit-transform: rotate(-45deg);
   -moz-transform:    rotate(-45deg);
