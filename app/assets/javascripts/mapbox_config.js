@@ -1,4 +1,4 @@
-var MAPBOX_DEFAULT_STYLE = "jameshedaweng.hf5b366j";
+var MAPBOX_DEFAULT_STYLE = "dowemarket.ik69hngm";
 
 var DEFAULT_LOCATION = {
   defaultLatitude: 40.416775,
