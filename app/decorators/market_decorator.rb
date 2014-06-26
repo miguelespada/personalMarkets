@@ -154,7 +154,7 @@ class MarketDecorator < Draper::Decorator
   end
 
   def pinterest_text
-    "http://pinterest.com/pin/create/link/?url=#{short_url}&media=#{cloudinary_url(featured.photo.path)}&description=Personal Markets: #{name}, #{description} #{hashtags.gsub('#', '%23')}"
+    "http://pinterest.com/pin/create/link/?url=#{short_url}&media=#{cloudinary_url(featured.photo.path)}&description=Do We Market: #{name}, #{description} #{hashtags.gsub('#', '%23')}"
   end
 
   def google_text

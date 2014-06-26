@@ -95,11 +95,3 @@ production:
   sessions:
     default:
       uri: <%= ENV['MONGO_URL'] %>
-# production:
-#   sessions:
-#       default:
-#         database: personalmarkets-production
-#         hosts:
-#           - 172.17.0.71:49154
-#         username: personalmarkets
-#         password: Mm9xSUJnOXFyZnlJUnB4cXVIS0IrS2owTi9zR0t5QXFxVkRDMVZCZWpxUT0K
