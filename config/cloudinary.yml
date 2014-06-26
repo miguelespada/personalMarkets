@@ -1,8 +1,8 @@
 ---
 development:
-  cloud_name: espadaysantacruz
-  api_key: '767115286582337'
-  api_secret: lXblXH0XKMDbAB7gqaCgDQtet8s
+  cloud_name: ENV['CLOUDINARY_NAME']
+  api_key: ENV['CLOUDINARY_KEY']
+  api_secret: ENV['CLOUDINARY_SECRET']
   enhance_image_tag: true
   static_image_support: false 
 production:
