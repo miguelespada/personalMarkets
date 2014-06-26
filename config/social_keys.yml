@@ -16,5 +16,5 @@ production:
   facebook_key: "435422749928665"
   facebook_secret: "41b63646f32ec5e54ae02e19ead5e2c1"
 
-  google_key: "230105097737-783k06t8lbfge134cgbsdt04k0cv7rg0.apps.googleusercontent.com"
+  google_key: ENV['GOOGLE_KEY']
   google_secret: ENV['GOOGLE_SECRET']
