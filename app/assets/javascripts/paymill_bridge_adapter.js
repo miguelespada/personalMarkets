@@ -1,4 +1,4 @@
-var PAYMILL_PUBLIC_KEY = "758157067538c48cb45513991681ca78";
+var PAYMILL_PUBLIC_KEY = "176242150348ea30e5575947bd6c7d55";
 
 $(document).ready(function ($) {
 
