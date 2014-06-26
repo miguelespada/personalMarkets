@@ -2,7 +2,7 @@ var Keen=Keen||{configure:function(e){this._cf=e},addEvent:function(e,t,n,i){thi
 
 // Configure the Keen object with your Project ID and (optional) access keys.
 Keen.configure({
-    projectId: "536c9567d97b852a5700000b",
-    writeKey: "322ddf830ccd5bd24db1f05ed627a05f492d507c10ec7c147d3ce7f6896c72058629340159171e23185660bde71836fd4abfeaf038c6137b732c7ac8053cd87750788c9cf12b41c653f325dbb7ee972cea075771617c2000f32e86749fe43528b5800e2740bda7a4ab5954c0e4b7558d", // required for sending events
-    readKey: "40df8c885326566c85d46b76e649da10bf2bcad3bd240c467b5a614473627be1bc095e9e2351284ce5121a7b81f1b6d6c7af727c99863a1cfa9126dafa73ef86f7bf9256987eb06fe2aef581ee40a7830f137fd765d5c855b3a03aeda03385a8bf86f07f66b778f918ff07c8d2224b59"    // required for doing analysis
+    projectId: "53ac26c433e40627c8000002",
+    writeKey: "b57f5d56055c9a87140bc776595e2ce3d13262fe6c9ab72b081c22dc1d1d90ae400ec687a2a2c4ca4b7151b64e65e33af9e95c589e0fd37f31a65c179b0b6ba03dd89125fff476442e8684c16fbfd953739a8afce737bb53ef514017bf794662308efa3854f9df8261b56a321dd45ff6", // required for sending events
+    readKey: "6cde6de4fcdc23cea2fa96d404107ef785dfebeeb3e82108b92646c1ba23fed11afcccc7ea0abdf73b77ef06fe7e6bca63ac39eddf788d64341141359e7e77cdcc201bba65694e6b9dfba9edef6958f04bfcb501dc50aa69b65c8a99862a804af448134caa247b98c59d0bb227deaba0"    // required for doing analysis
 });
