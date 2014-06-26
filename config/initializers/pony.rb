@@ -1,5 +1,8 @@
+# ENV['GMAIL_SMTP_USER'] = "dowemarket@gmail.com"
+# ENV['GMAIL_SMTP_PASSWORD'] = "A1m453S_X"
+
 Pony.options = {
-  :to => 'p3rs0n4l.m4rk3ts@gmail.com',
+  :to => 'dowemarket@gmail.com',
   :via => :smtp,
   :via_options => {
     :address => 'smtp.gmail.com',
