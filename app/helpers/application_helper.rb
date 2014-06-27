@@ -42,6 +42,9 @@ module ApplicationHelper
     end 
   end
 
+  def search_or_map_page?
+    (controller_name == 'markets' && action_name == 'search') || (controller_name == 'static_pages' && action_name == 'map')
+  end
 
 end
 

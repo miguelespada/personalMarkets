@@ -30,6 +30,9 @@ en:
   whats_new: "What's new"
   enable_browser: "Enable browser location for better experience"
   search_markets: "Search markets"
+  search_in_map: "Search in map"
+  My_location: "Near my location"
+  Any_location: "Any location"
   no_matches: "Oops... There're no markets matching your query."
   simple_form:
     "yes": 'Yes'

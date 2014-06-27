@@ -2,13 +2,13 @@
   <div class="input-group input-group">
     <%= text_field_tag :query, 
     session[:query], 
-    placeholder: t(:search_markets), 
+    placeholder: action_name == 'map' ? t(:search_in_map): t(:search_markets), 
     class: "query form-control", 
     id: "search_bar_query" %>
     
     <span class="input-group-btn">
       <button class="btn btn-default" id="search_button" type="button">
-        <i class="fa fa-search"></i>
+      <i class="fa fa-search"></i>
       </button>
     </span> 
   </div>
@@ -16,19 +16,6 @@
 
 <script>
 $( document ).ready(function() {
-
-  $( "#search_bar_query" ).keyup(function() {
-    $("#query").val($( "#search_bar_query" ).val());
-  });
-
-
-  $("#search_button").click(function(){
-    <% if ((controller_name == 'markets' && action_name == 'search') || (controller_name == 'static_pages' && action_name == 'map')) %>
-      $("#search_market").change();
-    <% else %>
-      $("#search_market").submit();
-    <% end %>
-  });
   
   $( "#search_bar_query").keypress(function(e) {
     if(e.keyCode == 13 ) {
@@ -37,7 +24,19 @@ $( document ).ready(function() {
     }
   });
 
+  $( "#search_bar_query" ).keyup(function() {
+    $("#query").val($( "#search_bar_query" ).val());
+  });
+
+  $("#search_button").click(function(){
+    <% if search_or_map_page? %>
+      $("#search_market").change();
+    <% else %>
+      $("#search_market").submit();
+    <% end %>
+  });
 });
+
 </script>
 
 <style>

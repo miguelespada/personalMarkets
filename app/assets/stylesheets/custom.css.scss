@@ -1111,7 +1111,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   padding-bottom: 8px !important;
 }
 
-.btn-reset-search{
+.btn-reset-search, .btn-my-location-search{
   margin-top: 0px !important;
   background-image: none !important;
   background-color: rgba(255, 255, 255, 0.7) !important; 
@@ -1149,7 +1149,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 }
 
 #my-location-item{
-  left:60%;
+  left:40%;
   width:20%;
   margin-left: 48px;
 }

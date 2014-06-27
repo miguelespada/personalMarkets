@@ -1,124 +1,123 @@
 <%= form_tag search_markets_path, id: "search_market", class:"search-form" do %>
-    <li class="form-group search-filter-item">
-      <%= link_to content_tag(:i, "", :class => "fa fa-refresh"), "#", 
-        :class=>  "btn btn-default btn-reset-search", 
-        :id=>"reset_search" %>
-    </li>
+    
+    <% if search_or_map_page? %>
+        <li class="form-group search-filter-item">
+          <%= link_to content_tag(:i, "", :class => "fa fa-refresh"), "#", 
+            :class=>  "btn btn-default btn-reset-search", 
+            :id=>"reset_search" %>
+        </li>
 
-    <li class="form-group hidden">
-      <%= collection_select(:category, :category_id, Category.all, :name, :name, 
-        {:include_blank => "All categories", :selected => session[:category]}, 
-        class: "category form-control" ) %>
-    </li>
+        <li class="form-group hidden">
+          <%= collection_select(:category, :category_id, Category.all, :name, :name, 
+            {:include_blank => "All categories", :selected => session[:category]}, 
+            class: "category form-control" ) %>
+        </li>
 
-    <li class="form-group search-filter-item" id="search-range-item">
-      <%= select_tag(:range, 
-     options_for_select({t(:all_time) => "All", t(:today) => "Today", t(:this_week) => "This week", t(:this_month) => "This month", t(:next_week) => "Next week"},
-        :selected => session[:range]),
-        class: "form-control" ) %>
-    </li>
+        <li class="form-group search-filter-item" id="search-range-item">
+          <%= select_tag(:range, 
+            options_for_select({t(:all_time) => "All", t(:today) => "Today", 
+                                t(:this_week) => "This week", t(:this_month) => "This month", 
+                                t(:next_week) => "Next week"},
+            :selected => session[:range]),
+            class: "form-control" ) %>
+        </li>
 
-    <li class="form-group search-filter-item" id="search-location-item">
-      <%= collection_select(:location, :location_id, SpecialLocation.all, 
-        :name, :name, {:selected => session[:location], 
-        :include_blank => "Any location"},
-        class: "form-control" ) %>
-    </li>
+        <li class="form-group search-filter-item" id="search-location-item">
+          <%= collection_select(:location, :location_id, SpecialLocation.all, 
+            :name, :name, {:selected => session[:location], 
+            :include_blank => t(:Any_location)},
+            class: "form-control" ) %>
+        </li>
 
-    <li class="form-group search-filter-item" id="search-city-item">
-      <%= select_tag(:city, options_for_select(Market.cities, 
-        :selected => session[:city]), 
-        class: "form-control") %>
-    </li>
+        <li class="form-group search-filter-item" id="my-location-item">
+          <%= link_to content_tag(:i, "", :class => "fa fa-crosshairs"), "#", 
+            :class=>  "btn btn-default btn-my-location-search", 
+            :id=>"my_location" %>
+        </li>
 
-    <li class="form-group search-filter-item" id="my-location-item">
-      <%= link_to content_tag(:i, "", :class => "fa fa-crosshairs"), "#", 
-        :class=>  "btn btn-default btn-reset-search", 
-        :id=>"my_location" %>
-    </li>
+        <div class="hidden">
+          <%= text_field_tag :from %>  
+          <%= text_field_tag :to %>  
+          <%= text_field_tag :user_lat %>  
+          <%= text_field_tag :user_lon %>
+          <%= text_field_tag :page, session[:page] || 1 %>
+        </div>
+    <% end %>
 
-    <li class="hidden">
-      <%= text_field_tag :from %>  
-      <%= text_field_tag :to %>  
-      <%= text_field_tag :user_lat %>  
-      <%= text_field_tag :user_lon %>
-      <%= text_field_tag :page, session[:page] || 1 %>
+
+    <div class="hidden">
       <%= text_field_tag :query, session[:query] %>
-    </li>
+    </div>
 
 <% end %>
 
-<script>
+<% if search_or_map_page? %>
+  <script>
 
-  function pos_success(pos){
-    var crd = pos.coords;
-    var addressUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + crd.latitude + "," + crd.longitude + "&sensor=false&key=AIzaSyBkhXw8kMql7c4tc1LwaMGbm9024z03AKU";
-      getCityName(addressUrl);
-      $("#user_lat").val(crd.latitude);
-      $("#user_lon").val(crd.longitude);
-      $('#location_location_id').append("<option value='My location'>My location</option>");
-  };
-  function pos_error(){
-    $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i> <%= t :enable_browser %>");
-  };
+    function pos_success(pos){
+      var crd = pos.coords;
+      var addressUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + crd.latitude + "," + crd.longitude + "&sensor=false&key=AIzaSyBkhXw8kMql7c4tc1LwaMGbm9024z03AKU";
+        getCityName(addressUrl);
+        $("#user_lat").val(crd.latitude);
+        $("#user_lon").val(crd.longitude);
+        $('#location_location_id').append("<option value='My location'><%= t :My_location %></option>");
+    };
+
+    function pos_error(){
+      $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i> <%= t :enable_browser %>");
+    };
 
 
-  function getCityName(url){
-    $.getJSON(url, function(data){
-      city = data.results[0].address_components[2].long_name;
-      $("#user-city-text").html("<i class='fa fa-crosshairs'></i>&nbsp;&nbsp;" + city);
-    });
-  };
+    function getCityName(url){
+      $.getJSON(url, function(data){
+        city = data.results[0].address_components[2].long_name;
+        $("#user-city-text").html("<i class='fa fa-crosshairs'></i>&nbsp;&nbsp;" + city);
+      });
+    };
 
-  function setCategoryStyle(){
-    catSelected = $("#category_category_id").val();
-    if (catSelected){
-      $('#'+catSelected).click();
-    }
-    else{
-      $(".btn-all-categories").click();
-    }
-  };
-
-  $(document).ready(function(){
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(pos_success, pos_error);
-    }
-    else{
-      pos_error();
-    }
-
-   
-    $("#location_location_id").change(function(){
-      if($("#location_location_id").val() != "")
-        $("#city option").prop("selected", false);
-
-    });
-
-    $("#city").change(function(){
-      if($("#city").val() != "")
-        $("#location_location_id option").prop("selected", false);
-    });
-
-    $("#reset_search").click(function(){
-        $("#range").val("All");
-        $("#query").val("");
-        $("#search_bar_query").val("");
-        $("#location_location_id").val("");
-        $("#city").val("");
-        $("#category_category_id").val("");
-        $('#page').val(1);
+    function setCategoryStyle(){
+      catSelected = $("#category_category_id").val();
+      if (catSelected){
+        $('#'+catSelected).click();
+      }
+      else{
         $(".btn-all-categories").click();
-        return false;
-    });
+      }
+    };
 
-    $("#range").change(setDataRange);
-    setDataRange();
+    $(document).ready(function(){
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos_success, pos_error);
+      }
+      else{
+        pos_error();
+      }
 
-    $("#search_market").keypress(function(e) {
-        event.preventDefault();
-        return false;
+      $("#reset_search").click(function(){
+          $("#range").val("All");
+          $("#query").val("");
+          $("#search_bar_query").val("");
+          $("#location_location_id").val("");
+          $("#category_category_id").val("");
+          $('#page').val(1);
+          $(".btn-all-categories").click();
+          return false;
+      });
+
+      $("#range").change(setDataRange);
+
+      setDataRange();
+
+      $("#search_market").keypress(function(e) {
+          event.preventDefault();
+          return false;
+      });
+      
+      $(".btn-my-location-search").click(function(){
+          $("#location_location_id").val("My location").change();
+      });
+
+      setCategoryStyle();
     });
-    setCategoryStyle();
-  });
-</script>
+  </script>
+<% end %>

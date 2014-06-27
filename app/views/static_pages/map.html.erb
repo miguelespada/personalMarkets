@@ -11,10 +11,11 @@
 
   $(document).ready(function(){
     $('.map-link').html('<%= link_to search_markets_path do %><i class="fa fa-search"></i><span id="search-link-text"></span><% end %>');
+    
     $('#search_button').html('<i class="fa fa-globe"></i>');
-    $('#search_bar_query').attr('placeholder', 'Search in map...');
 
     $('#search_market').change(jsonSearch);
+
     $('#location_location_id').change(function(){
       if($(this).val() == "") return;
       else if($(this).val() == "My location" ) PM.setViewWithUserLocation();
@@ -25,18 +26,6 @@
         });
       }
     }).change();
-      
-    $('#city').change(function(){
-       if($(this).val() == "") return;
-       else{
-         var city = encodeURIComponent($(this).val());
-         var adr = "http://maps.googleapis.com/maps/api/geocode/json?address=" + city + "&sensor=false";
-         $.get( adr, function(data){
-           var coords = data.results[0].geometry.location;
-           PM.map.setView([coords.lat, coords.lng], 14);
-         });
-      }
-    });
 
     var tiles = '<%= session["style"] %>';
     if(tiles == '') tiles = MAPBOX_DEFAULT_STYLE;
