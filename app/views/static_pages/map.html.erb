@@ -18,7 +18,9 @@
 
     $('#location_location_id').change(function(){
       if($(this).val() == "") return;
-      else if($(this).val() == "My location" ) PM.setViewWithUserLocation();
+      else if($(this).val() == "My location" ) {
+        PM.setViewWithUserLocation($("#user_lat").val(), $("#user_lon").val());
+      }
       else{
         $.get("get_location.json", { 
           name: $(this).val()}, function( data ) {

@@ -15,6 +15,12 @@ PM.fillMapView = function(data) {
   PM.map.addLayer(markers);
 };
 
+PM.setViewWithUserLocation = function(latitude, longitude){
+  PM.newLatitude = parseFloat(latitude);
+  PM.newLongitude = parseFloat(longitude);
+  PM.map.setView([PM.newLatitude, PM.newLongitude], 17);
+};
+
 PM.addTooltipToMarker = function(layer) {
   var popup = '<div>' + layer.feature.properties.content +'<\/div>';
     layer.bindPopup(popup,{ closeButton: false, maxWidth: 400, minWidth: 120 });

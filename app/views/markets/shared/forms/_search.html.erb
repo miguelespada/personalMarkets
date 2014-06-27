@@ -67,7 +67,6 @@
       $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i> <%= t :enable_browser %>");
     };
 
-
     function getCityName(url){
       $.getJSON(url, function(data){
         city = data.results[0].address_components[2].long_name;
