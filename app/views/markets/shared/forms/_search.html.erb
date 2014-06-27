@@ -53,8 +53,32 @@
 
 <% if search_or_map_page? %>
   
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-  <script>  
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+  <script> 
+
+    function pos_success(pos){
+      var crd = pos.coords;
+      reverseGeocode(crd.latitude, crd.longitude)
+      $("#user_lat").val(crd.latitude);
+      $("#user_lon").val(crd.longitude);
+      $('#location_location_id').append("<option value='My location'><%= t :My_location %></option>");
+    };
+
+    function pos_error(){
+      $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i> <%= t :enable_browser %>");
+    };
+
+
+    function user_localization(){
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos_success, pos_error);
+      }
+      else{
+        pos_error();
+      }
+    }
+
+ 
 
     $(document).ready(function(){
 
