@@ -30,4 +30,5 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require app
+//= require search
 //= require keen_io

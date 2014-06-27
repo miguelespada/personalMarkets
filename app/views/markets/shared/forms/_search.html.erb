@@ -52,45 +52,18 @@
 <% end %>
 
 <% if search_or_map_page? %>
-  <script>
-
-    function pos_success(pos){
-      var crd = pos.coords;
-      var addressUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + crd.latitude + "," + crd.longitude + "&sensor=false&key=AIzaSyBkhXw8kMql7c4tc1LwaMGbm9024z03AKU";
-        getCityName(addressUrl);
-        $("#user_lat").val(crd.latitude);
-        $("#user_lon").val(crd.longitude);
-        $('#location_location_id').append("<option value='My location'><%= t :My_location %></option>");
-    };
-
-    function pos_error(){
-      $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i> <%= t :enable_browser %>");
-    };
-
-    function getCityName(url){
-      $.getJSON(url, function(data){
-        city = data.results[0].address_components[2].long_name;
-        $("#user-city-text").html("<i class='fa fa-crosshairs'></i>&nbsp;&nbsp;" + city);
-      });
-    };
-
-    function setCategoryStyle(){
-      catSelected = $("#category_category_id").val();
-      if (catSelected){
-        $('#'+catSelected).click();
-      }
-      else{
-        $(".btn-all-categories").click();
-      }
-    };
+  
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+  <script>  
 
     $(document).ready(function(){
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(pos_success, pos_error);
-      }
-      else{
-        pos_error();
-      }
+
+      $("#search_market").keypress(function(e) {
+          event.preventDefault();
+          return false;
+      });
+
+      user_localization();
 
       $("#reset_search").click(function(){
           $("#range").val("All");
@@ -104,19 +77,13 @@
       });
 
       $("#range").change(setDataRange);
-
       setDataRange();
-
-      $("#search_market").keypress(function(e) {
-          event.preventDefault();
-          return false;
-      });
       
       $(".btn-my-location-search").click(function(){
           $("#location_location_id").val("My location").change();
       });
 
-      setCategoryStyle();
+      setCategoryMapStyle();
     });
   </script>
 <% end %>

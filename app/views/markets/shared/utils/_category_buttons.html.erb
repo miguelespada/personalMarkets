@@ -10,6 +10,16 @@
 
 
 <script>
+    function setCategoryMapStyle(){
+      catSelected = $("#category_category_id").val();
+      if (catSelected){
+        $('#'+catSelected).click();
+      }
+      else{
+        $(".btn-all-categories").click();
+      }
+    };
+
     $('.theme').click(function (){
         $('.theme').each(function(){
           $(this).removeClass("theme-selected");
