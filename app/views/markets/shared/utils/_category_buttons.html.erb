@@ -10,13 +10,13 @@
 
 
 <script>
-    function setCategoryMapStyle(){
-      catSelected = $("#category_category_id").val();
-      if (catSelected){
-        $('#'+catSelected).click();
+    function initializeCategory(category){
+      $('.btn-all-categories').attr('tile', MAPBOX_DEFAULT_STYLE); 
+      if (category){
+         $('#'+category).addClass("theme-selected");
       }
       else{
-        $(".btn-all-categories").click();
+          $('.btn-all-categories').addClass("theme-selected");
       }
     };
 
@@ -26,9 +26,9 @@
         });
         $(this).addClass("theme-selected");
         $("#category_category_id").val($(this).attr('title')).change(); 
+        try{
+          PM.changeTile($(this).attr('tile'));
+        } catch(err){};
     });
 
-    $(document).ready(function(){
-      $('.btn-all-categories').attr('tile', MAPBOX_DEFAULT_STYLE); 
-    });
 </script>

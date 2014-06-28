@@ -11,31 +11,26 @@
   function centerMap(location){
       if(location == "") return;
       else if(location == "My location" ) {
-        PM.setViewWithUserLocation($("#user_lat").val(), $("#user_lon").val());
+        PM.setViewWithUserLocation($("#user_lat").val(), $("#user_lon").val(), 16);
       }
       else if(location == "Custom location" ) {
-        PM.setViewWithUserLocation($("#lat").val(), $("#lon").val());
+        PM.setViewWithUserLocation($("#lat").val(), $("#lon").val(), 15);
       }
       else{
         $.get("get_location.json", { 
           name: location}, function( data ) {
-          PM.map.setView([data.latitude, data.longitude], 16);
+          PM.map.setView([data.latitude, data.longitude], 15);
         });
       }
     };
-
+  
+  
   $(document).ready(function(){
     $('.map-link').html('<%= link_to search_markets_path do %><i class="fa fa-search"></i><span id="search-link-text"></span><% end %>');
     
     $('#search_button').html('<i class="fa fa-globe"></i>');
-
-    $('#search_market').change(jsonSearch);
-
-    var tiles = '<%= session["style"] %>';
-    if(tiles == '') tiles = MAPBOX_DEFAULT_STYLE;
-    PM.initializeMap(tiles);
-      
-    $('.theme').click(function (){PM.changeTile($(this).attr('tile'));});
+    
+  $('#search_market').change(jsonSearch).change();
 
     $('html, body').css({
       'overflow': 'hidden'

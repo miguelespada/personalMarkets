@@ -15,10 +15,10 @@ PM.fillMapView = function(data) {
   PM.map.addLayer(markers);
 };
 
-PM.setViewWithUserLocation = function(latitude, longitude){
+PM.setViewWithUserLocation = function(latitude, longitude, dist){
   PM.newLatitude = parseFloat(latitude);
   PM.newLongitude = parseFloat(longitude);
-  PM.map.setView([PM.newLatitude, PM.newLongitude], 17);
+  PM.map.setView([PM.newLatitude, PM.newLongitude], dist);
 };
 
 PM.addTooltipToMarker = function(layer) {
@@ -35,10 +35,8 @@ PM.addTooltipToMarker = function(layer) {
     });
 };
 
-PM.initializeMap = function(tile) {
-  var viewLat = DEFAULT_LOCATION.defaultLatitude;
-  var viewLng = DEFAULT_LOCATION.defaultLongitude;
-  PM.map = L.mapbox.map('map').setView([viewLat, viewLng], 14);
+PM.initializeMap = function(tile, viewLat, viewLng, dist) {
+  PM.map = L.mapbox.map('map').setView([viewLat, viewLng], dist);
 
   PM.map.scrollWheelZoom.disable();
   PM.mapTiles = L.mapbox.tileLayer(tile);

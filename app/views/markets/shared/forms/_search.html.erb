@@ -65,6 +65,51 @@
   
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
   <script> 
+    function reset_search(){
+      $("#range").val("All");
+      $("#query").val("");
+      $("#search_bar_query").val("");
+      $("#location_location_id").val("");
+      $("#category_category_id").val("");
+      $('#page').val(1);
+      removeLocationData();
+      $(".btn-all-categories").click();
+      return false;
+    };
+    function initialize_session(){
+      user_localization();
+      setDataRange();
+
+      var tiles = '<%= session["style"] %>' || '';
+      if(tiles == '') tiles = MAPBOX_DEFAULT_STYLE;
+
+      var category = '<%= session["category"] %>' || "";
+
+      initializeCategory(category);
+
+      var location = '<%= session["location"] %>' || "";
+      
+      var lat = DEFAULT_LOCATION.defaultLatitude;
+      var lon = DEFAULT_LOCATION.defaultLongitude;
+      var dist = 14;
+
+      if(location == "My location"){
+        $('#location_location_id').append("<option value='My location'><%= t :My_location %></option>").val('My location');
+         lat = '<%= session["user_lat"] %>' || "";
+         lon = '<%= session["user_lon"] %>' || "";
+         dist = 16;
+      }
+      else if(location == "Custom location"){
+        $('#location_location_id').append("<option value='Custom location'><%= t :Custom_location %></option>").val('Custom location');
+          lat = '<%= session["lat"] %>' || "";
+          lon = '<%= session["lon"] %>' || "";
+          dist = 15;
+      }
+
+      try{
+        PM.initializeMap(tiles, lat, lon, dist);
+      }catch(err){};
+    };
 
     function pos_success(pos){
       var crd = pos.coords;
@@ -77,7 +122,6 @@
     function pos_error(){
       $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i> <%= t :enable_browser %>");
     };
-
 
     function user_localization(){
       if (navigator.geolocation) {
@@ -94,16 +138,6 @@
       }
     }
 
-    $("#address-query").keydown(function(event){
-      if(event.keyCode == 13) {
-        event.preventDefault();
-        addressSearch();
-        return false;
-      }
-    });
-
-    $("#address-query").blur(addressSearch);
-    
     function geocode(place){
        geocoder = new google.maps.Geocoder();
        geocoder.geocode({ 'address': place}, 
@@ -135,6 +169,7 @@
     }
 
     $(document).ready(function(){
+       initialize_session();
 
       $("#search_market").keypress(function(e) {
         if(event.keyCode == 13) {
@@ -143,22 +178,18 @@
         }
       });
 
-      user_localization();
-      $("#reset_search").click(function(){
-          $("#range").val("All");
-          $("#query").val("");
-          $("#search_bar_query").val("");
-          $("#location_location_id").val("");
-          $("#category_category_id").val("");
-          $('#page').val(1);
-          removeLocationData();
-          $(".btn-all-categories").click();
-          return false;
-      });
+      $("#reset_search").click(reset_search);
 
       $("#range").change(setDataRange);
 
-      setDataRange();
+      $("#address-query").keydown(function(event){
+      if(event.keyCode == 13) {
+        event.preventDefault();
+        addressSearch();
+        return false;
+        }
+      });
+      $("#address-query").blur(addressSearch);
 
       $("#location_location_id").change(function(){
           removeLocationData();
@@ -173,23 +204,9 @@
         try{
           centerMap("My location");
         }catch(err) {};
-
-        $("#search_market").change();
       });
 
-      setCategoryMapStyle();
     });
   </script>
 
-<% if session[:location] == "My location" %>
-
-  <script>
-    $(document).ready(function(){
-      $('#location_location_id').append("<option value='My location'><%= t :My_location %></option>").val("My location");
-      try{
-        centerMap("My location");
-      }catch(err) {};
-    });
-  </script>
-<% end %>
 <% end %>
