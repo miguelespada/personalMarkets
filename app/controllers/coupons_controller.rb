@@ -1,6 +1,6 @@
 class CouponsController < ApplicationController
   load_resource :only => [:show, :buy, :coupon_payment]
-  authorize_resource :except => [:show, :index, :bought_coupons_by_user, :sold_coupons_by_market]
+  authorize_resource :except => [:show, :bought_coupons_by_user, :sold_coupons_by_market]
   
   def index
     @coupons = Coupon.all

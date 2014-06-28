@@ -34,11 +34,10 @@ module ApplicationHelper
   end
 
    def before_form_link
-    content_tag :div, class:"col-md-offset-9" do
-      link_to  session[:my_previouse_url] do
-         content_tag :i, :class => "fa fa-reply fa-3x" do
-        end 
-      end
+    content_tag :div, class:"form-group col-md-4 col-md-offset-4 go-back-button-container" do
+      link_to session[:my_previouse_url] do
+        content_tag(:i, "", :class => "fa fa-reply") + " Go Back"
+      end 
     end 
   end
 

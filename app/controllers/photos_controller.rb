@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   load_resource :except => [:index, :list_user_photos]
-  authorize_resource :except => [:index, :list_user_photos, :show]
+  authorize_resource :except => [:list_user_photos, :show]
   after_filter "save_my_previous_url", only: [:new, :edit]
 
   def index
