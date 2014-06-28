@@ -9,7 +9,6 @@
 
 <script>
   function centerMap(location){
-      alert(location);
       if(location == "") return;
       else if(location == "My location" ) {
         PM.setViewWithUserLocation($("#user_lat").val(), $("#user_lon").val());

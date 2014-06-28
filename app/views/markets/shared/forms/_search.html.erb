@@ -63,7 +63,7 @@
 
 <% if search_or_map_page? %>
   
-  <script src="https://maps.googeapis.com/maps/api/js?v=3.exp"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
   <script> 
 
     function pos_success(pos){
@@ -71,11 +71,11 @@
       reverseGeocode(crd.latitude, crd.longitude)
       $("#user_lat").val(crd.latitude);
       $("#user_lon").val(crd.longitude);
+      $("#my-location-item").removeClass("hidden")
     };
 
     function pos_error(){
       $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i> <%= t :enable_browser %>");
-      $("#my-location-item").removeClass("hidden")
     };
 
 
