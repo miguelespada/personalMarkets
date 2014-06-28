@@ -261,7 +261,7 @@ $( document ).ready(function() {
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     limit: 3, 
     prefetch: {
-      url: '/tags.json',
+      url: '/tags/suggested.json',
       filter: function(list) {
         return $.map(list, function(tag) { return { name: tag }; });
       }

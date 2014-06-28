@@ -1,12 +1,18 @@
 class TagsController < ApplicationController
   load_resource :only => [:show, :edit, :destroy, :update]
-  authorize_resource :except => [:index, :show, :gallery, :list]
+  authorize_resource :except => [:suggested, :show, :gallery, :list]
   def index
     @suggested = Tag.all
     @tags = Market.tags
     respond_to do |format|
         format.html 
-        format.json {render json: @suggested.collect{|tag| tag.name}}
+    end
+  end
+
+  def suggested
+    @suggested = Tag.all.collect{|tag| tag.name}
+    respond_to do |format|
+      format.json {render json: @suggested}
     end
   end
 

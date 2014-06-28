@@ -119,6 +119,7 @@ PopUpStores::Application.routes.draw do
 
     ### Tags
     get "/tags/list", as: "tags_list"
+    get "/tags/suggested", as: "suggested_tags"
     get "/tags/gallery", as: "tags_gallery"
     get "/tags/:tag/markets", to: "markets#list_tag_markets", as: "tag_markets"
     resources :tags
