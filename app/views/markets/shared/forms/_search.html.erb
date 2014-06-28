@@ -25,7 +25,7 @@
         <li class="form-group search-filter-item" id="search-location-item">
           <%= collection_select(:location, :location_id, SpecialLocation.all, 
             :name, :name, {:selected => session[:location], 
-            :include_blank => t(:Select_location)},
+            :include_blank => t(:Any_location)},
             class: "form-control" ) %>
         </li>
 
@@ -41,9 +41,6 @@
           <%= link_to content_tag(:i, "", :class => "fa fa-crosshairs"), "#", 
             :class=>  "btn btn-default btn-my-location-search", 
             :id=>"my_location" %>
-        </li>
-
-        <li class="form-group search-filter-item" id="address-label-item">
         </li>
 
         <div class="hidden">
@@ -116,13 +113,25 @@
 
             $("#lat").val(lat);
             $("#lon").val(lon);
-            $("#location_location_id").val("");
-            $('#address-label-item').html(results[0].formatted_address);
+
+            $("#location_location_id option[value='My location']").remove();
+            $("#location_location_id option[value='Custom location']").remove();
+
+            $('#location_location_id').append("<option value='Custom location'><%= t :Custom_location %></option>").val('Custom location');
+            try{
+              centerMap("Custom location");
+            }catch(err) {};
             $("#search_market").change();
           }
         }
         );
     };
+
+    function removeLocationData(){
+          $("#address-query").val("");
+          $("#location_location_id option[value='My location']").remove();
+          $("#location_location_id option[value='Custom location']").remove();
+    }
 
     $(document).ready(function(){
 
@@ -131,7 +140,6 @@
           event.preventDefault();
           return false;
         }
-        
       });
 
       user_localization();
@@ -139,32 +147,41 @@
       $("#reset_search").click(function(){
           $("#range").val("All");
           $("#query").val("");
-          $("#address-query").val("");
           $("#search_bar_query").val("");
           $("#location_location_id").val("");
           $("#category_category_id").val("");
           $('#page').val(1);
-          $('#address-label-item').html("");
+          removeLocationData();
           $(".btn-all-categories").click();
           return false;
       });
 
       $("#range").change(setDataRange);
+
       setDataRange();
 
       $("#location_location_id").change(function(){
-        $('#address-label-item').html("");
-        $('#address-query').val("");
+          removeLocationData();
+          try{
+            centerMap($(this).val());
+          }catch(err) {};
       });
-
+      
       $(".btn-my-location-search").click(function(){
-          $("#address-query").val("");
-          $("#location_location_id").val("");
-          $('#address-label-item').html("<%= t :My_location %>");
+        removeLocationData();
+
+         $('#location_location_id').append("<option value='My location'><%= t :My_location %></option>").val("My location");
+          try{
+            centerMap("My location");
+          }catch(err) {};
+
           $("#search_market").change();
       });
 
       setCategoryMapStyle();
+
+
     });
   </script>
+
 <% end %>

@@ -54,22 +54,26 @@ class Query
     end
     
     def load_distance
-      if @params[:address].present?
+      if @params[:location][:location_id] == "My location"
+        "1km"
+      elsif @params[:location][:location_id] == "Custom location"
         "3km"
       elsif @params[:location][:location_id] == ""
-        "1km"
+        "100km"
       else
-        "3km" 
+        "3km"
       end
     rescue 
-       "10km"
+        "100km"
     end 
 
     def load_latitude
-      if @params[:address].present?
+      if @params[:location][:location_id] == "My location"
+        @params[:user_lat]
+      elsif @params[:location][:location_id] == "Custom location"
         @params[:lat]
       elsif @params[:location][:location_id] == ""
-        @params[:user_lat]
+        ""
       else
         SpecialLocation.find_by(name: @params[:location][:location_id]).latitude
       end
@@ -78,10 +82,12 @@ class Query
     end 
 
     def load_longitude
-      if @params[:address].present?
+      if @params[:location][:location_id] == "My location"
+        @params[:user_lon]
+      elsif @params[:location][:location_id] == "Custom location"
         @params[:lon]
       elsif @params[:location][:location_id] == ""
-        @params[:user_lon]
+        ""
       else
         SpecialLocation.find_by(name: @params[:location][:location_id]).longitude
       end
