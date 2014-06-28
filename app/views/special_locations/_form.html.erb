@@ -8,7 +8,7 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">New Location</h3>
+          <h3 class="panel-title"><%= action %> Location</h3>
         </div>
         <div class="panel-body">
           <fieldset>
@@ -21,10 +21,10 @@
           <div class="form-group">
             <%= f.input :city, { placeholder: "City" } %>
           </div>
-          <div class="hidden form-group">
+          <div class=" form-group">
             <%= f.input :latitude %>
           </div>
-          <div class="hidden form-group">
+          <div class=" form-group">
             <%= f.input :longitude %>
           </div>
           <div class="form-group">
@@ -49,11 +49,20 @@
 <script>
 $( document ).ready(function() {
   initializeAutocomplete("special_location_city");
-  $('.attachinary-input').attachinary();
-  $('#hotspot-address').blur(function () {
-    updateLocationData();
+  
+  $('#special_location_address').blur(function () {updateLocationData();});
+
+  $(window).keydown(function(event){
+      if(event.keyCode == 13) {
+        event.preventDefault();
+        return false;
+      }
   });
-});
+
+
+// ------------
+// SPECIAL LOCATIONS
+// ------------
 
 var initializeAutocomplete = function(input_id) {
   autocomplete = new google.maps.places.Autocomplete(
@@ -61,40 +70,43 @@ var initializeAutocomplete = function(input_id) {
     {
       types: ['(cities)']
     });
-  
-  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+   google.maps.event.addListener(autocomplete, 'place_changed', function() {
     updateLocationData();
   });
 };
 
 var updateLocationData = function(){
-  if (addressAndCityAreFilled())
-    getLocationFromAddress(encodeAddressToUrl());
+  if(addressAndCityAreFilled()) geocode();
 };
 
 var addressAndCityAreFilled = function(){
   return $('#special_location_address').val() && $('#special_location_city').val();
 };
 
-var encodeAddressToUrl = function(){
-  var encodedAddress = encodeURIComponent($('#special_location_address').val());
-  var encodedCity = encodeURIComponent($('#special_location_city').val());
-  var addressUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + encodedAddress + "%20" + encodedCity + "&sensor=false&key=AIzaSyBkhXw8kMql7c4tc1LwaMGbm9024z03AKU";
-  return addressUrl;
-};
 
-var getLocationFromAddress = function(url){
-  var lat, lng;
-  $.getJSON(url, function(data){
-    lat = data.results[0].geometry.location.lat;
-    lng = data.results[0].geometry.location.lng;
+function geocode(){
+ geocoder = new google.maps.Geocoder();
+  var address =  $('#special_location_address').val() + ", " + $('#special_location_city').val();
+  geocoder.geocode({ 'address': address}, 
+    function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      setLocation(results[0].geometry.location.k, results[0].geometry.location.A);
+    }
+    else{
+        $("#special_location_latitude").val("error");
+        $("#special_location_longitude").val("error");
+      }
+    });
+  };
+
+ function setLocation(lat, lon){
     $("#special_location_latitude").val(lat);
     $("#special_location_longitude").val(lng);
-    if (PM.marker) {
-      PM.map.removeLayer(PM.marker);
-    }
+    if (PM.marker)  PM.map.removeLayer(PM.marker);
     PM.addMarker([lat, lng], false);
-    PM.map.setView([lat, lng], 14);
-  });
-};
+    PM.map.setView([lat, lng], 16);
+  };
+  
+});
+
 </script>

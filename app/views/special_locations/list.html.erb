@@ -1,10 +1,9 @@
 <% @special_locations.each do |special_location| %>
   <li class="registered-user-action">
-<!--   	<a class="explore-link-hotspots" href="<%= map_path %>" data-name="<%= special_location.name %>">
-      <%= special_location.name %>
-      <i class="fa fa-angle-right explore-arrow"></i>
-    </a> -->
-  <%= link_to special_location.name, :controller => "static_pages", :action => "map", :location => special_location.name %>
+  <%= link_to special_location.name, 
+    :controller => "static_pages", 
+    :action => "map", 
+    :location => special_location.name %>
   </li>
 <% end %>
 

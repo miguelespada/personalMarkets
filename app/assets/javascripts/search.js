@@ -1,4 +1,3 @@
-
 var setDataRange =  function() {
     var v = makeDateString($('#range').val());
     $("#from").val(v.from);
@@ -27,6 +26,16 @@ var makeDateString = function(range){
 };
 
 
+function reverseGeocode(lat, lon){
+  geocoder = new google.maps.Geocoder();
+  var latlng = new google.maps.LatLng(lat, lon);
+  geocoder.geocode({'latLng': latlng}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      $("#user-city-text").html("<i class='fa fa-crosshairs'></i>&nbsp;&nbsp;" + results[1].formatted_address);
+    } 
+  });
+}
+
 var ajaxSearch = function () {
     $.get("live_search", $("#search_market").serialize(), function(data) {
         $( "#gallery-items" ).html( data );
@@ -41,13 +50,5 @@ var jsonSearch = function () {
     return false;
 };
 
-function reverseGeocode(lat, lon){
 
-  geocoder = new google.maps.Geocoder();
-  var latlng = new google.maps.LatLng(lat, lon);
-  geocoder.geocode({'latLng': latlng}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      $("#user-city-text").html("<i class='fa fa-crosshairs'></i>&nbsp;&nbsp;" + results[1].formatted_address);
-    } 
-  });
-}
+
