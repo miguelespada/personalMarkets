@@ -56,6 +56,9 @@ class MarketsController < ApplicationController
 
   def search
     session[:query] = params[:query]
+    if params[:category].present? && params[:category][:category_id] != ""
+      session[:category] = params[:category][:category_id] 
+    end
   end
 
   def live_search
