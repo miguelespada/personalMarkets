@@ -37,7 +37,7 @@
             id: "address-query" %>
         </li>
 
-        <li class="form-group search-filter-item" id="my-location-item">
+        <li class="form-group search-filter-item hidden" id="my-location-item">
           <%= link_to content_tag(:i, "", :class => "fa fa-crosshairs"), "#", 
             :class=>  "btn btn-default btn-my-location-search", 
             :id=>"my_location" %>
@@ -63,7 +63,7 @@
 
 <% if search_or_map_page? %>
   
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+  <script src="https://maps.googeapis.com/maps/api/js?v=3.exp"></script>
   <script> 
 
     function pos_success(pos){
@@ -75,6 +75,7 @@
 
     function pos_error(){
       $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i> <%= t :enable_browser %>");
+      $("#my-location-item").removeClass("hidden")
     };
 
 
@@ -169,18 +170,15 @@
       
       $(".btn-my-location-search").click(function(){
         removeLocationData();
+        $('#location_location_id').append("<option value='My location'><%= t :My_location %></option>").val("My location");
+        try{
+          centerMap("My location");
+        }catch(err) {};
 
-         $('#location_location_id').append("<option value='My location'><%= t :My_location %></option>").val("My location");
-          try{
-            centerMap("My location");
-          }catch(err) {};
-
-          $("#search_market").change();
+        $("#search_market").change();
       });
 
       setCategoryMapStyle();
-
-
     });
   </script>
 
