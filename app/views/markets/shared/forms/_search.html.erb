@@ -46,10 +46,10 @@
         <div class="hidden">
           <%= text_field_tag :from %>  
           <%= text_field_tag :to %>  
-          <%= text_field_tag :user_lat %>  
-          <%= text_field_tag :user_lon %>
-          <%= text_field_tag :lat %>  
-          <%= text_field_tag :lon %>
+          <%= text_field_tag :user_lat, session[:user_lat] %>  
+          <%= text_field_tag :user_lon, session[:user_lon] %>
+          <%= text_field_tag :lat, session[:lat] %>  
+          <%= text_field_tag :lon, session[:lon] %>
           <%= text_field_tag :page, session[:page] || 1 %>
         </div>
     <% end %>
@@ -144,7 +144,6 @@
       });
 
       user_localization();
-
       $("#reset_search").click(function(){
           $("#range").val("All");
           $("#query").val("");
@@ -182,4 +181,15 @@
     });
   </script>
 
+<% if session[:location] == "My location" %>
+
+  <script>
+    $(document).ready(function(){
+      $('#location_location_id').append("<option value='My location'><%= t :My_location %></option>").val("My location");
+      try{
+        centerMap("My location");
+      }catch(err) {};
+    });
+  </script>
+<% end %>
 <% end %>

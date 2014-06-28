@@ -55,8 +55,7 @@ class MarketsController < ApplicationController
   end
 
   def search
-    query = Query.new(params)
-    query.set_session(session)
+    session[:query] = params[:query]
   end
 
   def live_search

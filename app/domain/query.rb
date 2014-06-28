@@ -36,6 +36,10 @@ class Query
     session[:range] = @params[:range]
     session[:query] = @params[:query]
     session[:address] = @params[:address]
+    session[:user_lat] = @params[:user_lat]
+    session[:lat] = @params[:lat]
+    session[:user_lon] = @params[:user_lon]
+    session[:lon] = @params[:lon]
   end
 
   def search_markets
