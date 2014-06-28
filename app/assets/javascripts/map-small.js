@@ -43,7 +43,8 @@ PM.checkAndSetMarker = function(lat, lng){
     PM.setMarker(lat, lng);
   }
   else{
-    PM.setViewWithUserLocation();
+
+    PM.map.setView([DEFAULT_LOCATION.defaultLatitude, DEFAULT_LOCATION.defaultLongitude], 14);
   }
 };
 
@@ -54,12 +55,12 @@ $(document).ready(function(){
     PM.checkAndSetMarker($(".market_latitude > .controls > input").val(), 
                          $(".market_longitude > .controls > input").val());
   if ($('.new_market').is(':visible'))
-    PM.setViewWithUserLocation();
+    PM.map.setView([DEFAULT_LOCATION.defaultLatitude, DEFAULT_LOCATION.defaultLongitude], 14);
   if ($('.market-location').is(':visible'))
     PM.setMarker($(".market-latitude").html(), $(".market-longitude").html());
   if ($('.edit_special_location').is(':visible'))
     PM.checkAndSetMarker($(".special_location_latitude > .controls > input").val(), 
                          $(".special_location_longitude > .controls > input").val());
   if ($('.new_special_location').is(':visible'))
-    PM.setViewWithUserLocation();
+    PM.map.setView([DEFAULT_LOCATION.defaultLatitude, DEFAULT_LOCATION.defaultLongitude], 14);
 });
