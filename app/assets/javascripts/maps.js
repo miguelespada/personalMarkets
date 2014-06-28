@@ -1,5 +1,4 @@
 //= require mapbox
-//= require mapbox_config
 //= require app
 
 PM.changeTile = function(mapID) {
