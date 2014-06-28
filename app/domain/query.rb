@@ -12,7 +12,7 @@ class Query
       :latitude => load_latitude,
       :longitude => load_longitude,
       :category => load_category,
-      :city => load_city
+      :distance => load_distance
     }
   end 
 
@@ -33,9 +33,9 @@ class Query
     end
 
     session[:location] = @params[:location][:location_id] if @params[:location].present?
-    session[:city] = @params[:city]
     session[:range] = @params[:range]
     session[:query] = @params[:query]
+    session[:address] = @params[:address]
   end
 
   def search_markets
@@ -52,9 +52,23 @@ class Query
     rescue 
         ""
     end
+    
+    def load_distance
+      if @params[:address].present?
+        "3km"
+      elsif @params[:location][:location_id] == ""
+        "1km"
+      else
+        "3km" 
+      end
+    rescue 
+       "10km"
+    end 
 
     def load_latitude
-      if @params[:location][:location_id] == "My location"
+      if @params[:address].present?
+        @params[:lat]
+      elsif @params[:location][:location_id] == ""
         @params[:user_lat]
       else
         SpecialLocation.find_by(name: @params[:location][:location_id]).latitude
@@ -64,17 +78,13 @@ class Query
     end 
 
     def load_longitude
-      if @params[:location][:location_id] == "My location"
+      if @params[:address].present?
+        @params[:lon]
+      elsif @params[:location][:location_id] == ""
         @params[:user_lon]
       else
         SpecialLocation.find_by(name: @params[:location][:location_id]).longitude
       end
-    rescue 
-        ""
-    end
-
-    def load_city
-        @params[:city]
     rescue 
         ""
     end

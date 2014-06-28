@@ -273,6 +273,7 @@ class Market
     city = params[:city]
     category = params[:category]
     location = format_location(params[:latitude], params[:longitude])
+    distance = params[:distance] 
 
     elasticQuery = lambda do |boolean|
       boolean.must {string query, default_operator: "AND"}
@@ -286,7 +287,7 @@ class Market
       end
       sort { by :date, 'asc' }
       filter :terms, category: [category] if !category.blank?
-      filter :geo_distance, lat_lon: location, distance: '1km' if !location.blank?
+      filter :geo_distance, lat_lon: location, distance: distance if !location.blank?
       filter :terms, state: ["published"]
       search_size = per_page
       from (page - 1) * search_size

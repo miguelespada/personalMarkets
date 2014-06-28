@@ -25,8 +25,16 @@
         <li class="form-group search-filter-item" id="search-location-item">
           <%= collection_select(:location, :location_id, SpecialLocation.all, 
             :name, :name, {:selected => session[:location], 
-            :include_blank => t(:Any_location)},
+            :include_blank => t(:Select_location)},
             class: "form-control" ) %>
+        </li>
+
+        <li class="form-group search-filter-item" id="search-address-item">
+         <%= text_field_tag :address, 
+            session[:address], 
+            placeholder: t(:search_by_address), 
+            class: "form-control", 
+            id: "address-query" %>
         </li>
 
         <li class="form-group search-filter-item" id="my-location-item">
@@ -35,11 +43,16 @@
             :id=>"my_location" %>
         </li>
 
+        <li class="form-group search-filter-item" id="address-label-item">
+        </li>
+
         <div class="hidden">
           <%= text_field_tag :from %>  
           <%= text_field_tag :to %>  
           <%= text_field_tag :user_lat %>  
           <%= text_field_tag :user_lon %>
+          <%= text_field_tag :lat %>  
+          <%= text_field_tag :lon %>
           <%= text_field_tag :page, session[:page] || 1 %>
         </div>
     <% end %>
@@ -61,7 +74,6 @@
       reverseGeocode(crd.latitude, crd.longitude)
       $("#user_lat").val(crd.latitude);
       $("#user_lon").val(crd.longitude);
-      $('#location_location_id').append("<option value='My location'><%= t :My_location %></option>");
     };
 
     function pos_error(){
@@ -77,14 +89,49 @@
         pos_error();
       }
     }
+    
+    var addressSearch = function(){
+      if($("#address-query").val()){
+        geocode($("#address-query").val());
+      }
+    }
 
- 
+    $("#address-query").keydown(function(event){
+      if(event.keyCode == 13) {
+        event.preventDefault();
+        addressSearch();
+        return false;
+      }
+    });
+
+    $("#address-query").blur(addressSearch);
+    
+    function geocode(place){
+       geocoder = new google.maps.Geocoder();
+       geocoder.geocode({ 'address': place}, 
+        function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            var lat = results[0].geometry.location.k;
+            var lon = results[0].geometry.location.A;
+
+            $("#lat").val(lat);
+            $("#lon").val(lon);
+            $("#location_location_id").val("");
+            $('#address-label-item').html(results[0].formatted_address);
+            $("#search_market").change();
+          }
+        }
+        );
+    };
 
     $(document).ready(function(){
 
       $("#search_market").keypress(function(e) {
+        if(event.keyCode == 13) {
           event.preventDefault();
           return false;
+        }
+        
       });
 
       user_localization();
@@ -92,19 +139,29 @@
       $("#reset_search").click(function(){
           $("#range").val("All");
           $("#query").val("");
+          $("#address-query").val("");
           $("#search_bar_query").val("");
           $("#location_location_id").val("");
           $("#category_category_id").val("");
           $('#page').val(1);
+          $('#address-label-item').html("");
           $(".btn-all-categories").click();
           return false;
       });
 
       $("#range").change(setDataRange);
       setDataRange();
-      
+
+      $("#location_location_id").change(function(){
+        $('#address-label-item').html("");
+        $('#address-query').val("");
+      });
+
       $(".btn-my-location-search").click(function(){
-          $("#location_location_id").val("My location").change();
+          $("#address-query").val("");
+          $("#location_location_id").val("");
+          $('#address-label-item').html("<%= t :My_location %>");
+          $("#search_market").change();
       });
 
       setCategoryMapStyle();

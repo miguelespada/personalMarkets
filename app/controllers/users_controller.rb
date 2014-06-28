@@ -41,4 +41,10 @@ class UsersController < ApplicationController
     payment = Payment.new ENV['PREMIUM_PRICE'].to_f, 1
     @subscription_payment = SubscriptionPayment.new payment
   end
+
+  def admin
+    authorize! :admin, Market
+  end
+
+  
 end

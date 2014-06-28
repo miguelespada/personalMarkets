@@ -40,6 +40,7 @@ es:
   Any_location: "Cualquier lugar"
   search_in_map: "Buscar en el mapa"
   "Explore more markets": "Más mercados..."
+  search_by_address: "Dirección, ciudad..."
   no_matches: "No hay ningún mercado que satisfaga tus criterios de búsqueda. :("
   simple_form:
     "yes": 'Si'

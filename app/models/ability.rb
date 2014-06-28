@@ -92,6 +92,8 @@ class Ability
       can [:manage], Gallery
       can [:list_user_transactions], User
       can [:list_market_transactions], Market
+      
+      can :admin, Market
 
     end
   end

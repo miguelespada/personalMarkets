@@ -1142,17 +1142,23 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   margin-left: 48px;
 }
 
-#search-city-item{
+#search-address-item{
   left:40%;
   width:20%;
   margin-left: 48px;
 }
 
 #my-location-item{
-  left:40%;
+  left:60%;
+  width:10%;
+  margin-left: 48px;
+}
+#address-label-item{
+  left:70%;
   width:20%;
   margin-left: 48px;
 }
+
 
 //*############################ SEARCH PAGE CSS #############################*//
 .search-section-title{

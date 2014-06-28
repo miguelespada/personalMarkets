@@ -33,6 +33,7 @@ en:
   search_in_map: "Search in map"
   My_location: "Near my location"
   Any_location: "Any location"
+  search_by_address: "Address, city or location..."
   no_matches: "Oops... There're no markets matching your query."
   simple_form:
     "yes": 'Yes'
