@@ -94,16 +94,8 @@
       var lon = DEFAULT_LOCATION.defaultLongitude;
       var dist = 14;
       
-      if(location != ""){
-        $.get("get_location.json", { 
-          name: location}, function( data ) {
-          try{
-            PM.initializeMap(tiles, data.latitude, data.longitude, 15);
-          }catch(err){};
-        });
-        return;
-      }
-      else if(location == "My location"){
+      
+      if(location == "My location"){
         $('#location_location_id').append("<option value='My location'><%= t :My_location %></option>").val('My location');
          lat = '<%= session["user_lat"] %>' || "";
          lon = '<%= session["user_lon"] %>' || "";
@@ -115,6 +107,15 @@
           lon = '<%= session["lon"] %>' || "";
 
           dist = 15;
+      }
+      else if(location != ""){
+        $.get("get_location.json", { 
+          name: location}, function( data ) {
+          try{
+            PM.initializeMap(tiles, data.latitude, data.longitude, 15);
+          }catch(err){};
+        });
+        return;
       }
 
       try{
