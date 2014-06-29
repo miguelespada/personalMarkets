@@ -11,8 +11,7 @@ class Query
       :range => load_range,
       :latitude => load_latitude,
       :longitude => load_longitude,
-      :category => load_category,
-      :distance => load_distance
+      :category => load_category
     }
   end 
 
@@ -56,20 +55,6 @@ class Query
     rescue 
         ""
     end
-    
-    def load_distance
-      if @params[:location][:location_id] == "My location"
-        "1km"
-      elsif @params[:location][:location_id] == "Custom location"
-        "3km"
-      elsif @params[:location][:location_id] == ""
-        "100km"
-      else
-        "3km"
-      end
-    rescue 
-        "100km"
-    end 
 
     def load_latitude
       if @params[:location][:location_id] == "My location"

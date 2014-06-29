@@ -270,14 +270,12 @@ class Market
     page ||= 1
     page = 1 if page < 1
     range = format_range_query(params[:from], params[:to])
-    city = params[:city]
     category = params[:category]
     location = format_location(params[:latitude], params[:longitude])
     distance = params[:distance] 
 
     elasticQuery = lambda do |boolean|
       boolean.must {string query, default_operator: "AND"}
-      boolean.must {string "city:#{city}" } if !city.blank?
       boolean.must {string "date:[#{range}]" } if !range.blank?
     end
 
@@ -285,14 +283,23 @@ class Market
       query do
         boolean &elasticQuery
       end
-      sort { by :date, 'asc' }
+      if location.blank?
+        sort { by :date, 'asc' } 
+      else
+        sort do
+          by :_geo_distance, 
+            {lat_lon: location, 
+              order: 'asc',   
+              unit: 'km'}
+        end 
+      end
       filter :terms, category: [category] if !category.blank?
-      filter :geo_distance, lat_lon: location, distance: distance if !location.blank?
       filter :terms, state: ["published"]
       search_size = per_page
       from (page - 1) * search_size
       size search_size
     end
+    
     results = search.results
     {:markets => results.collect{|result| find_by(id: result.to_hash[:id])}, :total => results.total}
   end
