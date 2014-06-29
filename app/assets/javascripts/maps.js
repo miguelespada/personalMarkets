@@ -40,4 +40,12 @@ PM.initializeMap = function(tile, viewLat, viewLng, dist) {
   PM.map.scrollWheelZoom.disable();
   PM.mapTiles = L.mapbox.tileLayer(tile);
   PM.map.addLayer(PM.mapTiles);
+  PM.map.on('dragend', function(){
+     $("#lat").val(PM.map.getCenter().latitude);
+     $("#lon").val(PM.map.getCenter().longitude);
+     $("#location_location_id option[value='My location']").remove();
+     $("#location_location_id option[value='Custom location']").remove();
+     $('#location_location_id').append("<option value='Custom location'>Custom location</option>").val('Custom location');
+     $("#search_market").change();
+  });
 };

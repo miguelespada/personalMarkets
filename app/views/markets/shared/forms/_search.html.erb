@@ -200,7 +200,6 @@
         return false;
         }
       });
-      $("#address-query").blur(addressSearch);
 
       $("#location_location_id").change(function(){
           removeLocationData();
@@ -216,6 +215,8 @@
           centerMap("My location");
         }catch(err) {};
       });
+
+
 
     });
   </script>
