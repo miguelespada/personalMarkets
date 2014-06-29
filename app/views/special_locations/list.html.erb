@@ -3,9 +3,17 @@
   <%= link_to special_location.name, 
     :controller => "static_pages", 
     :action => "map", 
-    :location => special_location.name %>
+    :location => special_location.name,
+    :class => "explore-link-tags" %>
   </li>
 <% end %>
+
+<li class="divider"></li>
+<li class="registered-user-action">
+  <%= link_to special_locations_gallery_path do %>
+      <%= t :all_locations %>
+  <% end %>
+</li>
 
 <script>
 $(document).ready(function(){

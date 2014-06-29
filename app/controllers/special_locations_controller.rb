@@ -19,7 +19,7 @@ class SpecialLocationsController < ApplicationController
   end
 
   def list
-    @special_locations = SpecialLocation.all
+    @special_locations = SpecialLocation.all.limit(5)
     render :layout => !request.xhr?
   end
 

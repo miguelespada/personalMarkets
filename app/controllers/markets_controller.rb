@@ -9,7 +9,7 @@ class MarketsController < ApplicationController
   end
 
   def slideshow
-    @markets = Market.last_published
+    @markets = Market.last_published.limit(9)
     render :layout => !request.xhr?
   end
 
