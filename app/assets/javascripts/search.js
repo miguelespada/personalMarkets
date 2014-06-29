@@ -44,14 +44,19 @@ function reverseGeocode(lat, lon){
 }
 
 var ajaxSearch = function () {
+    $("#spinner-item").removeClass("hidden");
     $.get("live_search", $("#search_market").serialize(), function(data) {
+        $("#spinner-item").addClass("hidden");
         $( "#gallery-items" ).html( data );
     });
     return false;
 };
 
 var jsonSearch = function () {
+    $("#spinner-item").removeClass("hidden");
     $.get("markets/live_search.json", $("#search_market").serialize(), function(data) {
+        
+       $("#spinner-item").addClass("hidden");
        PM.fillMapView(data);
     });
     return false;

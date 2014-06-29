@@ -43,6 +43,9 @@
             :id=>"my_location" %>
         </li>
 
+        <li class="form-group search-filter-item anim-container hidden" id="spinner-item"><i class="fa fa-spinner fa-spin fa-1x" ></i>
+        </li>
+
         <div class="hidden">
           <%= text_field_tag :from %>  
           <%= text_field_tag :to %>  
@@ -94,7 +97,6 @@
       var lon = DEFAULT_LOCATION.defaultLongitude;
       var dist = 14;
       
-      
       if(location == "My location"){
         $('#location_location_id').append("<option value='My location'><%= t :My_location %></option>").val('My location');
          lat = '<%= session["user_lat"] %>' || "";
@@ -119,6 +121,8 @@
       }
 
       try{
+        lat = lat || DEFAULT_LOCATION.defaultLatitude;
+        lon = lon || DEFAULT_LOCATION.defaultLongitude;
         PM.initializeMap(tiles, lat, lon, dist);
       }catch(err){};
     };
@@ -216,9 +220,6 @@
           centerMap("My location");
         }catch(err) {};
       });
-
-
-
     });
   </script>
 
