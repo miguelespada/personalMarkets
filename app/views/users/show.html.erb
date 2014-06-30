@@ -1,32 +1,28 @@
-<% if @user.has_role? "normal" %>
-
 <div class="container">
 	<div class="row">
 		<div class="pricing-table">
 
 			<div class="plan col-sm-6">
 				<div class="plan-name-basic">
-					<h2>Actual Plan: <%= @user.role %></h2>
+					<h2>Regular Plan</h2>
 					<span>Free</span>
 				</div>
 				<ul>
 				<li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> 1 mercado / mes</li>
-	            <li class="plan-feature off"><span class="glyphicon glyphicon-remove red-cross"></span> Propio espacio</li>
-	            <li class="plan-feature off"><span class="glyphicon glyphicon-remove red-cross"></span> Estadisticas a tiempo real</li>
-	            <li class="plan-feature off"><span class="glyphicon glyphicon-remove red-cross"></span> 20% menos en comisión / cupón</li>
 				</ul>
 			</div>
 
 			<div class="plan col-sm-6">
 				<div class="plan-name-premium">
-					<h2>Premium Plan</h2>
-					<span>5.99€ / Month</span>
+					<h2>Pro Plan</h2>
+					<span>4.99€ / Month</span>
 				</div>
 				<ul>
-				<li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> Mercados ilimitados</li>
-	            <li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> Propio espacio</li>
-	            <li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> Estadisticas a tiempo real</li>
-	            <li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> 20% menos en comisión / cupón</li>
+				<li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> 4 mercados por mes </li>
+	            <li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> Todos tus mercados son VIM </li>
+	            <li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> Estadisticas de tus mercados a tiempo real</li>
+	            <li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> Creación de cupones</li>
+	            <li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> Unsubscribirte en un solo click</li>
 	          <form>
 	            <p><input type="checkbox" required name="premium_accept_term" id="premium_accept_term" > I accept the <%= link_to "terms of use.", go_premium_terms_path %></p>
 							<%= button_to "Become premium", user_subscription_path(@user), { method: :get, class:"btn btn-info become-premium-button" } %>
@@ -36,32 +32,3 @@
 	    </div>
     </div>
 </div>
-
-<% else %>
-
-<div class="container admin-profile-container">
-	<div class="row">
-		<div class="pricing-table">
-
-			<div class="plan col-sm-12">
-	          <div class="plan-name-premium">
-	             <h2>Actual: <%= @user.role %> Plan</h2>
-	            <span>5.99€ / Month</span>
-	          </div>
-	          <ul>
-	            <li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> Mercados ilimitados</li>
-	            <li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> Propio espacio</li>
-	            <li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> Estadisticas a tiempo real</li>
-	            <li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> 20% menos en comisión / cupón</li>
-	          </ul>
-	        </div>
-
- 		</div>
-
- 		<div>
- 			<%= link_to "Unsubscribe", unsubscribe_path, { method: :post, class: 'btn btn-info unsubscribe-button' } %>
- 		</div>
-    </div>
-</div>
-
-<% end %>
