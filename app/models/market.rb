@@ -283,23 +283,22 @@ class Market
       query do
         boolean &elasticQuery
       end
-      if location.blank?
-        sort { by :date, 'asc' } 
-      else
-        sort do
-          by :_geo_distance, 
-            {lat_lon: location, 
-              order: 'asc',   
-              unit: 'km'}
-        end 
-      end
+      sort do
+        by :_geo_distance, 
+          {lat_lon: location, 
+            order: 'asc',   
+            unit: 'km'} if !location.blank?
+        by :date, {
+          order: 'asc'
+        }
+      end 
       filter :terms, category: [category] if !category.blank?
+      filter :geo_distance, lat_lon: location, distance: '10km' if !location.blank?
       filter :terms, state: ["published"]
       search_size = per_page
       from (page - 1) * search_size
       size search_size
     end
-    
     results = search.results
     {:markets => results.collect{|result| find_by(id: result.to_hash[:id])}, :total => results.total}
   end
