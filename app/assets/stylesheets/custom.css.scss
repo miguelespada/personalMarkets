@@ -1,6 +1,3 @@
-@import "bootstrap";
-@import "bootstrap/theme";
-
 .badge{
 	margin-top: 15px;
 	margin-bottom: 15px;
@@ -25,7 +22,6 @@
 }
 
 .title{
-  @extend h1;
   font-weight: 100;
   text-align: center;
 }

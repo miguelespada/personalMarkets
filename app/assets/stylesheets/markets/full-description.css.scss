@@ -1,19 +1,13 @@
-@import "bootstrap";
-@import "bootstrap/theme";
 .market-full-description{
   text-align: left;
   padding-left:5%;
   margin-top:30px;
-  @extend .row;
 
   .market-name {
-      @extend .col-md-12;
-      @extend h1;
       font-weight: 100;
     }
 
   .market-thumbnail{
-    @extend .col-md-5;
 
     .market-featured-photo{
       img{
@@ -23,12 +17,9 @@
     }
   
     .market-description {
-      @extend h4;
     }
   
     .market-action{
-      @extend .btn;
-      @extend .btn-default;
     }
 
     .market-show-link{
@@ -37,10 +28,8 @@
   }
 
   .market-details{
-    @extend .col-md-5;
 
     .market-meta{
-      @extend h5;
     }
 
     .market-info{
@@ -55,7 +44,6 @@
 }
 
 .market_gallery{
-  @extend .row;
 }
 
 .market_item{

@@ -42,7 +42,7 @@ class Query
   end
 
   def search_markets
-    @per_page = @params[:per_age].present? ? @params[:per_page].to_i : 9
+    @per_page = @params[:per_age].present? ? @params[:per_page].to_i : 12
     @page = @params[:page].present? ? @params[:page].to_i : 1
     @result = Market.search(search_params, @page, @per_page)
     @result[:markets]

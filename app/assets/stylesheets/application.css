@@ -19,7 +19,6 @@
  *= require markets/full-description
  *= require markets/gallery
  *= require bootstrap-colorpicker
- *= require bootstrap-switch
  *= require cropper
  *= require custom
  */

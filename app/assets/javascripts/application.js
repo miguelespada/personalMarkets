@@ -21,7 +21,6 @@
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es
 //= require bootstrap-colorpicker
-//= require bootstrap-switch
 //= require tagmanager
 //= require twitter/typeahead.min
 //= require jquery.ui.widget
