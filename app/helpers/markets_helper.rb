@@ -12,7 +12,9 @@ module MarketsHelper
       if params[:action] == "edit"
         form.button :submit, "Update Market and Publish", class: 'btn btn-info', id: 'save-and-publish-button'
         else
-        form.button :submit, "Create Market and Publish", class: 'btn btn-info', id: 'save-and-publish-button'
+           '<div class="center tip"><i class="fa fa-arrow-circle-right"></i> Recuerda que una vez guardado, 
+              deberas "Publicar" tu Market para que sea visible!
+              </br> <i class="fa fa-arrow-circle-right"></i> Una vez guardado podrás modificar cualquiera de los campos.</div>'.html_safe
       end
     end
   end
