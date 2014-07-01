@@ -21,4 +21,6 @@
 //= require bootstrap.min
 //= require jquery.ui.effect-shake
 
+// -----------
+
 //= require search

@@ -178,7 +178,7 @@ class MarketDecorator < Draper::Decorator
 
   def statistics_link
     if can? :statistics, market
-      link_to content_tag(:i, "", :class => "fa fa-sitemap"), show_market_statistic_path(market), class: "statistics-icon market-action market-action-icon btn-market-action-bar"
+      link_to content_tag(:i, "", :class => "fa fa-sitemap"), show_market_statistic_path(market), class: "statistics-icon market-action market-action-icon btn btn-default btn-market-action-bar"
     end
   end
 
@@ -186,9 +186,9 @@ class MarketDecorator < Draper::Decorator
     return if market.archived?
     if can? :like, market
       if !current_user.favorited?(market)
-        link_to(content_tag(:i, "", :class => "fa fa-heart"), like_path(market), class: "like-icon market-action market-action-icon btn-market-action-bar")
+        link_to(content_tag(:i, "", :class => "fa fa-heart"), like_path(market), class: "like-icon market-action btn btn-default market-action-icon btn-market-action-bar")
       else  
-        link_to(content_tag(:i, "", :class => "fa fa-heart-o"), unlike_path(market), class: "unlike-icon market-action market-action-icon btn-market-action-bar")
+        link_to(content_tag(:i, "", :class => "fa fa-heart-o"), unlike_path(market), class: "unlike-icon market-action btn btn-default market-action-icon btn-market-action-bar")
       end
     end
   rescue
@@ -198,7 +198,7 @@ class MarketDecorator < Draper::Decorator
     return if market.archived?
     if can? :edit, market 
       link_to(content_tag(:i, "", :class => "fa fa-pencil"), edit_user_market_path(market.user, market), 
-        :class => "edit-icon market-action market-action-icon btn-market-action-bar")
+        :class => "edit-icon market-action market-action-icon btn btn-default btn-market-action-bar")
     end
   end
 
@@ -206,14 +206,14 @@ class MarketDecorator < Draper::Decorator
     return if market.archived?
     if can? :delete, market 
       link_to(content_tag(:i, "", :class => "fa fa-trash-o"), user_market_path(market.user, market), method: :delete, 
-        class: "delete-icon market-action market-action-icon btn-market-action-bar")
+        class: "delete-icon market-action market-action-icon btn btn-default btn-market-action-bar")
     end
   end
 
   def archive_link 
     return if market.archived?
     if can? :archive, market
-      link_to content_tag(:i, "", :class => "fa fa-undo"), market_archive_path(market), { method: :post, class: "archive-icon market-action market-action-icon btn-market-action-bar"  }
+      link_to content_tag(:i, "", :class => "fa fa-undo"), market_archive_path(market), { method: :post, class: "archive-icon market-action btn btn-default market-action-icon btn-market-action-bar"  }
     end
   end
   
@@ -221,9 +221,9 @@ class MarketDecorator < Draper::Decorator
   def pro_link
     return if market.archived?
     if can? :force_make_pro, market 
-      link_to content_tag(:i, "", :class => "fa fa-plus-square"), market_force_make_pro_path(market), {method: :post, class: "force-pro-icon market-action market-action-icon btn-market-action-bar" } unless market.pro?
+      link_to content_tag(:i, "", :class => "fa fa-plus-square"), market_force_make_pro_path(market), {method: :post, class: "force-pro-icon market-action  btn btn-default market-action-icon btn-market-action-bar" } unless market.pro?
     elsif can? :edit, market
-      link_to content_tag(:i, "", :class => "fa fa-plus-square"), market_make_pro_payment_path(market), class: "pro-icon market-action market-action-icon btn-market-action-bar" unless market.pro?
+      link_to content_tag(:i, "", :class => "fa fa-plus-square"), market_make_pro_payment_path(market), class: "pro-icon market-action market-action-icon btn btn-default btn-market-action-bar" unless market.pro?
     end
   end
 
@@ -265,7 +265,7 @@ class MarketDecorator < Draper::Decorator
     if market.has_coupon?
      if can? :edit, coupon
       link_to(content_tag(:i, "", :class => "fa fa-ticket"), sold_coupons_by_market_path(market), 
-        :class => "transactions-icon market-action market-action-icon btn-market-action-bar")
+        :class => "transactions-icon market-action btn btn-default market-action-icon btn-market-action-bar")
       end
     end
   end

@@ -1,12 +1,16 @@
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
+
 <%= javascript_include_tag "jquery.bootstrap.wizard" %>
 <%= javascript_include_tag "bootstrap-datepicker/core" %>
 <%= javascript_include_tag "bootstrap-datepicker/locales/bootstrap-datepicker.es" %>
+
 <%= javascript_include_tag "tagmanager" %>
+<%= stylesheet_link_tag  "tagmanager" %>
+
 <%= javascript_include_tag "twitter/typeahead.min" %>
+
 <%= stylesheet_link_tag "bootstrap-datepicker" %>
 <%= stylesheet_link_tag "jquery.ui.slider" %>
-<%= stylesheet_link_tag  "tagmanager" %>
 
 <div id="error" class="alert alert-danger flash hidden"></div>
 
@@ -16,10 +20,10 @@
   </div>
 <div id="wizard" class="row">
   <ul class="col-md-3">
-    <li id="form-link-name"><a href="#form-market-name-description" data-toggle="tab"><%= t :general_information %></a></li>
-
-    <li id="form-link-gallery"><a href="#form-market-photos" data-toggle="tab"><%= t :photo_gallery_pro %></a></li>
     
+    <li id="form-link-name"><a href="#form-market-name-description" data-toggle="tab"><%= t :general_information %></a></li>
+    <li id="form-link-gallery"><a href="#form-market-photos" data-toggle="tab"><%= t :photo_gallery_pro %></a></li>
+  
     <li id="form-link-category"><a href="#form-market-category-tag" data-toggle="tab"><%= t :category_and_tags %></a></li>
     <li id="form-link-date"><a href="#form-market-date" data-toggle="tab"><%= t :date_and_time %></a></li>
     <li id="form-link-prices"><a href="#form-market-prices" data-toggle="tab"><%= t :price_range %></a></li>
@@ -178,9 +182,10 @@
         </div>
         <%= f.input :address, { placeholder: "Address" } %>
         <%= f.input :city, { class: 'cities', placeholder: "City" } %>
-        <div class = "hidden">
-        <%= f.input :longitude %>
-        <%= f.input :latitude %>
+        
+          <div class = "hidden">
+          <%= f.input :longitude %>
+          <%= f.input :latitude %>
         </div>
       </div>
   
@@ -216,91 +221,157 @@
 
 
 <script>
-
 $( document ).ready(function() {
-      $(window).keydown(function(event){
-        if(event.keyCode == 13) {
-          event.preventDefault();
-          return false;
-        }
-      });
 
-      initializeAutocomplete('market_city');
-      $('#wizard').bootstrapWizard({
-        tabClass: 'nav nav-pills nav-stacked',
-        onTabChange: function(){
-          locationTabActive();
-        }
-      });
-      
-      $('ul.nav a[href="' + window.location.hash + '"]').tab('show');
+  // Disable add market button
+  $(".add_market_button").addClass("btn-default").removeClass("btn-info").attr("disabled", true);
+
+  // Jump to a section
+  $('ul.nav a[href="' + window.location.hash + '"]').tab('show');
+
+  // Prevent submission
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+
+  // Enable and disbale map
+  $('#wizard').bootstrapWizard({
+    tabClass: 'nav nav-pills nav-stacked',
+    onTabChange: function(){    
+      if ($("#form-market-location").hasClass("active"))
+        $("#small-map-container").show();
+      else
+        $("#small-map-container").hide();
+    }
+  });
+
+  // Error is no name is provided
+  $(".simple_form").submit(function(){
+   if( $("#market_name").val().length == 0 ) {
+        $("#error").removeClass("hidden");
+        $("#error").html("Market name cannot be empty");
+        return false;
+    }
+   else{
+      $("#error").html("");
+   }
+  });
+
+  // TAGS 
   
-      $(".add_market_button").addClass("btn-default");
-      $(".add_market_button").removeClass("btn-info");
-      $(".add_market_button").attr("disabled", true);
-
-      if (scheduleAlreadyExist($('#market_schedule').val())){
-        showExistSchedule($('#market_schedule').val());
-      }
-      else{
-        $('#date-schedule-table > tbody:last').append('<%= render "markets/shared/forms/form_date" %>');
-      }
-
-      initializeDatepicker();
-      addDatePickerEvent();
-      initializeSchedule();
-
-      $("#button-add-date").click(function(){
-        $('#date-schedule-table > tbody:last').append('<%= render "markets/shared/forms/form_date" %>');
-        initializeDatepicker();
-        addDatePickerEvent();
-        initializeSchedule();
-      });
-
-      $( "table" ).on( "click", ".button-delete-line", function() {
-        $(this).closest('tr').remove();
-        getAllDates();
-      });
-
-
   var tagApi = jQuery(".tm-input").tagsManager({
-      prefilled: $("#market_tags").attr("value"),
-      delimiters: [9, 13, 44],
-      tagClass: "tm-tag",
-      tagsContainer: '#tags-container'
-    });
+    prefilled: $("#market_tags").val(),
+    delimiters: [9, 13, 44],
+    tagClass: "tm-tag",
+    tagsContainer: '#tags-container'
+  });
 
   var tags = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     limit: 3, 
     prefetch: {
-      url: '/tags/suggested.json',
-      filter: function(list) {
+      url: "<%= suggested_tags_path %>",
+      filter: function(list) {  
         return $.map(list, function(tag) { return { name: tag }; });
       }
     }
   });
- 
+
   tags.initialize();
- 
+  console.log(tags);
   $('.tm-input').typeahead(null, {
     name: 'tags',
     displayKey: 'name',
     hint: true,
     highlight: true,
     minLength: 1,
-    source: tags.ttAdapter(),
+    source: tags.ttAdapter()
   });
 
-  $('#market_address').blur(function () {
-    updateLocationData();
-  });
+  initializeAutocomplete('market_city');
+  
+
+  // ---- SCHEDULE ----
+    if ($('#market_schedule').val() != ""){
+        showExistSchedule($('#market_schedule').val());
+    }
+    else{
+      $('#date-schedule-table > tbody:last').append('<%= render "markets/shared/forms/form_date" %>');
+    }
+
+    initializeDatepicker();
+    addDatePickerEvent();
+    initializeSchedule();
+
+    $("#button-add-date").click(function(){
+      $('#date-schedule-table > tbody:last').append('<%= render "markets/shared/forms/form_date" %>');
+      initializeDatepicker();
+      addDatePickerEvent();
+      initializeSchedule();
+    });
+
+    $( "table" ).on( "click", ".button-delete-line", function() {
+      $(this).closest('tr').remove();
+      getAllDates();
+    });
+
+
+
 });
 
-var scheduleAlreadyExist = function(scheduleString){
-  return scheduleString != "";
+// ---- LOCATION ----
+
+var initializeAutocomplete = function(input_id) {
+  autocomplete = new google.maps.places.Autocomplete(
+    (document.getElementById(input_id)),
+    {
+      types: ['(cities)']
+    });
+  
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    updateLocationData();
+  });
 };
+ $('#market_address').blur(function () {
+    updateLocationData();
+  });
+
+var updateLocationData = function(){
+  if(addressAndCityAreFilled()) geocode();
+};
+
+var addressAndCityAreFilled = function(){
+  return $('#market_address').val() && $('#market_city').val();
+};
+
+function geocode(){
+ geocoder = new google.maps.Geocoder();
+  var address =  $('#market_address').val() + ", " + $('#market_city').val()
+  geocoder.geocode({ 'address': address}, 
+    function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      setLocation(results[0].geometry.location.k, results[0].geometry.location.A);
+    }
+    });
+  };
+
+function setLocation(lat, lon){
+    $("#market_latitude").val(lat);
+    $("#market_longitude").val(lon);
+
+    if (PM.marker) {
+      PM.map.removeLayer(PM.marker);
+    }
+    PM.addMarker([lat, lon], false);
+    PM.map.setView([lat, lon], 16);
+
+};
+// ------------
+
 
 var showExistSchedule = function(scheduleString){
   var allSchedules = scheduleString.split(";");
@@ -384,94 +455,4 @@ var getAllSchedules = function(){
   $('#market_schedule').val(scheduleArray.join(";"));
 };
 
-var locationTabActive = function(){
-  if ($("#form-market-location").hasClass("active")){
-    $("#small-map-container").show();
-  }
-  else{
-    $("#small-map-container").hide();
-  }
-  
-};
-
-var initializeAutocomplete = function(input_id) {
-  autocomplete = new google.maps.places.Autocomplete(
-    (document.getElementById(input_id)),
-    {
-      types: ['(cities)']
-    });
-  
-  google.maps.event.addListener(autocomplete, 'place_changed', function() {
-    updateLocationData();
-  });
-};
-
-var updateLocationData = function(){
-  if (addressAndCityAreFilled())
-    getLocationFromAddress(encodeAddressToUrl());
-};
-
-var addressAndCityAreFilled = function(){
-  return $('#market_address').val() && $('#market_city').val();
-};
-
-var encodeAddressToUrl = function(){
-  var encodedAddress = encodeURIComponent($('#market_address').val());
-  var encodedCity = encodeURIComponent($('#market_city').val());
-  var addressUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + encodedAddress + "%20" + encodedCity + "&sensor=false&key=AIzaSyBkhXw8kMql7c4tc1LwaMGbm9024z03AKU";
-  return addressUrl;
-};
-
-var getLocationFromAddress = function(url){
-  var lat, lng;
-  $.getJSON(url, function(data){
-    lat = data.results[0].geometry.location.lat;
-    lng = data.results[0].geometry.location.lng;
-    $("#market_latitude").val(lat);
-    $("#market_longitude").val(lng);
-    if (PM.marker) {
-      PM.map.removeLayer(PM.marker);
-    }
-    PM.addMarker([lat, lng], false);
-    PM.map.setView([lat, lng], 14);
-  });
-};
-
-$.fn.exBounce = function(){
-  var self = this;
-  (function runEffect(){
-      self.effect("bounce", { times:3, distance: 5 }, 1000, runEffect);
-  })();
-  return this;
-};
-
-$(".simple_form").submit(function(){
-   if( $("#market_name").val().length == 0 ) {
-      $("#error").removeClass("hidden");
-      $("#error").html("Market name cannot be empty");
-        return false;
-      }
-   else{
-    $("#error").html("");
-   }
-});
-$(function(){
-  $("#prices-slider").slider( { 
-    range: true,
-    step: 10,
-    max: 1000,
-    min: 0,
-    values: [0, 1000],
-    slide: function(event, ui) {
-      var prices = $('#prices-slider').slider('option', 'values');
-      $('#market_min_price').val(prices[0]);
-      $('#market_max_price').val(prices[1]);
-    },
-    create: function(event, ui) {
-      var prices = $('#prices-slider').slider('option', 'values');
-      $('#market_min_price').val(prices[0]);
-      $('#market_max_price').val(prices[1]);
-    }
-  });
-});
 </script>
