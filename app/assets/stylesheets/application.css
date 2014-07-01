@@ -10,7 +10,7 @@
  *
  *= require_self
  *= require font-awesome
- *= require bootstrap
+ *= require bootstrap.min
  *= require flexslider
  *= require jquery.steps
  *= require bootstrap-datepicker
