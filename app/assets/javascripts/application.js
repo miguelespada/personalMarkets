@@ -19,5 +19,6 @@
 //= require cloudinary/jquery.cloudinary
 //= require app
 //= require bootstrap.min
+//= require jquery.ui.effect-shake
 
 //= require search
