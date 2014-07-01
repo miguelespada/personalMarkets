@@ -13,8 +13,8 @@ test:
   google_secret: "2HFc4pN14FlKn886WwV80SH9"
 
 production:
-  facebook_key: "435422749928665"
-  facebook_secret: "41b63646f32ec5e54ae02e19ead5e2c1"
+  facebook_key: <%= ENV['FACEBOOK_KEY'] %>
+  facebook_secret: <%= ENV['FACEBOOK_SECRET'] %>
 
   google_key: <%= ENV['GOOGLE_KEY'] %>
   google_secret: <%=  ENV['GOOGLE_SECRET'] %>
