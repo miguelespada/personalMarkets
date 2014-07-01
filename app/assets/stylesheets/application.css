@@ -15,7 +15,6 @@
  *= require jquery.steps
  *= require bootstrap-datepicker
  *= require tagmanager
- *= require jquery.ui.all
  *= require markets/full-description
  *= require markets/gallery
  *= require bootstrap-colorpicker

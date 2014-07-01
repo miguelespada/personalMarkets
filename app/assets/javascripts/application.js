@@ -10,10 +10,10 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require bootstrap.min
 //= require jquery.min
 //= require jquery_ujs
 //= require jquery.ui.all
-//= require bootstrap
 //= require jquery.flexslider-min
 //= require vegas
 //= require moment
