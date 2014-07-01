@@ -1,7 +1,7 @@
 development:
-  cloud_name: espadaysantacruz
-  api_key: '767115286582337'
-  api_secret: lXblXH0XKMDbAB7gqaCgDQtet8s
+  api_key:      599356598696835
+  cloud_name:     www-dowemarket-com
+  api_secret:   YiMwQT-h2H7TJRrSa1ETsqTaIck
   enhance_image_tag: true
   static_image_support: true
 test:
@@ -15,4 +15,4 @@ production:
   api_key:  <%= ENV['CLOUDINARY_KEY'] %>
   api_secret:  <%= ENV['CLOUDINARY_SECRET'] %>
   enhance_image_tag: true
-  static_image_support: false
+  static_image_support: true
