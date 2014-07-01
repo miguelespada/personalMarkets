@@ -1,3 +1,5 @@
+//= require moment
+
 var MAPBOX_DEFAULT_STYLE = "dowemarket.ik69hngm";
 
 var DEFAULT_LOCATION = {

@@ -12,22 +12,12 @@
 //
 //= require jquery.min
 //= require jquery_ujs
-//= require jquery.ui.all
-//= require bootstrap.min
-//= require jquery.flexslider-min
-//= require vegas
-//= require moment
-//= require jquery.bootstrap.wizard
-//= require bootstrap-datepicker/core
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.es
-//= require bootstrap-colorpicker
-//= require tagmanager
-//= require twitter/typeahead.min
+//= require keen_io
 //= require jquery.ui.widget
 //= require jquery.iframe-transport
 //= require jquery.fileupload
 //= require cloudinary/jquery.cloudinary
-//= require attachinary
 //= require app
+//= require bootstrap.min
+
 //= require search
-//= require keen_io

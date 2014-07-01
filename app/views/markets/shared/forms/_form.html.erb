@@ -1,4 +1,12 @@
-<%= javascript_include_tag "bootstrap-colorpicker" %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
+<%= javascript_include_tag "jquery.bootstrap.wizard" %>
+<%= javascript_include_tag "bootstrap-datepicker/core" %>
+<%= javascript_include_tag "bootstrap-datepicker/locales/bootstrap-datepicker.es" %>
+<%= javascript_include_tag "tagmanager" %>
+<%= javascript_include_tag "twitter/typeahead.min" %>
+<%= stylesheet_link_tag "bootstrap-datepicker" %>
+<%= stylesheet_link_tag "jquery.ui.slider" %>
+<%= stylesheet_link_tag  "tagmanager" %>
 
 <div id="error" class="alert alert-danger flash hidden"></div>
 
@@ -447,5 +455,23 @@ $(".simple_form").submit(function(){
     $("#error").html("");
    }
 });
-
+$(function(){
+  $("#prices-slider").slider( { 
+    range: true,
+    step: 10,
+    max: 1000,
+    min: 0,
+    values: [0, 1000],
+    slide: function(event, ui) {
+      var prices = $('#prices-slider').slider('option', 'values');
+      $('#market_min_price').val(prices[0]);
+      $('#market_max_price').val(prices[1]);
+    },
+    create: function(event, ui) {
+      var prices = $('#prices-slider').slider('option', 'values');
+      $('#market_min_price').val(prices[0]);
+      $('#market_max_price').val(prices[1]);
+    }
+  });
+});
 </script>
