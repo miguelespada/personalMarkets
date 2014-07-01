@@ -18,7 +18,6 @@
  *= require jquery.ui.all
  *= require markets/full-description
  *= require markets/gallery
- *= require bootstrap-colorpicker
  *= require cropper
  *= require custom
  */

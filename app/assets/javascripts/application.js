@@ -13,7 +13,7 @@
 //= require jquery.min
 //= require jquery_ujs
 //= require jquery.ui.all
-//= require bootstrap
+//= require bootstrap.min
 //= require jquery.flexslider-min
 //= require vegas
 //= require moment
