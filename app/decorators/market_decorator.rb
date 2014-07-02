@@ -32,8 +32,9 @@ class MarketDecorator < Draper::Decorator
     dates = []
     schedule.split(';').each do |day|
       date = Date.strptime(day, "%d/%m/%Y,%H:%M")
+      dateTime = DateTime.strptime(day, "%d/%m/%Y,%H:%M")
       dates << {"date" => date, 
-                "passed" => date < Time.now,
+                "passed" => dateTime < Time.now,
                 "to_string" => day, 
                 "day" => day.split(',')[0],
                 "from" => day.split(',')[1], 
