@@ -4,6 +4,7 @@
 
 <div class="container dashboard-container">
   <div class="panel-body">
+      <%= user_title(current_user) %>
     <div class="row">
       <div class="col-md-6 dashboard-column">
         <%= link_to user_markets_path(current_user), class:"dashboard-button btn btn-danger btn-lg" do %>

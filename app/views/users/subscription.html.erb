@@ -10,7 +10,7 @@
         <div class="panel-body">
           <fieldset>
           <%= form_tag({controller: "subscriptions", action: "create"}, method: "post", id: "new_payment") do %>
-
+          
           <%= render "payments/common_payment_form", :payment => @subscription_payment.payment %>
 
           <% end %>

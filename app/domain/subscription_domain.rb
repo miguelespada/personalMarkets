@@ -3,8 +3,9 @@ require 'users_domain'
 
 class SubscriptionDomain
 
-  def self.subscribe user, subscription_payment
+  def self.subscribe user, subscription_payment    
     subscription = PaymillWrapper.create_subscription user.email, subscription_payment.payment
+ 
     Subscription.create!(email: user.email, paymill_id: subscription.id)
     UsersDomain.update_role user.id, "premium"
   rescue Paymill::PaymillError => e

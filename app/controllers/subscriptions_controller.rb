@@ -2,8 +2,9 @@ class SubscriptionsController < ApplicationController
 
   def create
     subscription_payment = SubscriptionPayment.new Payment.for payment_params
+
     SubscriptionDomain.subscribe current_user, subscription_payment
-    redirect_to user_path(current_user), notice: "You have become premium successfully."
+    redirect_to user_dashboard_path(current_user), notice: "You have become premium successfully."
   rescue SubscriptionDomainException => e
     flash[:error] = "Something went wrong while subscribing (#{e.message})."
     redirect_to user_subscription_path(current_user)

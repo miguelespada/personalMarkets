@@ -1,5 +1,8 @@
 <div class="container">
+      <%= user_title(current_user) %>
 	<div class="row">
+
+		
 		<div class="pricing-table">
 
 			<div class="plan col-sm-6">
@@ -8,7 +11,7 @@
 					<span>Free</span>
 				</div>
 				<ul>
-				<li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> 1 mercado / mes</li>
+				<li class="plan-feature"><span class="fa fa-check-circle"></span> 1 mercado / mes</li>
 				</ul>
 			</div>
 
@@ -18,15 +21,22 @@
 					<span>4.99€ / Month</span>
 				</div>
 				<ul>
-				<li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> 4 mercados por mes </li>
-	            <li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> Todos tus mercados son VIM </li>
-	            <li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> Estadisticas de tus mercados a tiempo real</li>
-	            <li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> Creación de cupones</li>
-	            <li class="plan-feature"><span class="glyphicon glyphicon-ok green-check"></span> Unsubscribirte en un solo click</li>
-	          <form>
-	            <p><input type="checkbox" required name="premium_accept_term" id="premium_accept_term" > I accept the <%= link_to "terms of use.", go_premium_terms_path %></p>
-							<%= button_to "Become premium", user_subscription_path(@user), { method: :get, class:"btn btn-info become-premium-button" } %>
-						</form>
+				<li class="plan-feature"><span class="fa fa-check-circle"></span> 4 mercados por mes </li>
+	            <li class="plan-feature"><span class="fa fa-check-circle"></span> Todos tus mercados son VIM </li>
+	            <li class="plan-feature"><span class="fa fa-check-circle"></span> Markets sin anuncios. </li>
+	            <li class="plan-feature"><span class="fa fa-check-circle"></span> Estadisticas de tus mercados a tiempo real</li>
+	            <li class="plan-feature"><span class="fa fa-check-circle"></span> Creación de cupones</li>
+	            <li class="plan-feature"><span class="fa fa-check-circle"></span> Unsubscribirte en un solo click</li>
+	          <% if !current_user.has_role?(:premium) &&  !current_user.has_role?(:admin) %>
+		          <%= form_tag user_subscription_path(@user), method:"get" do %>
+
+				            <p><input type="checkbox" required name="premium_accept_term" id="premium_accept_term" > I accept the <%= link_to "terms of use.", go_premium_terms_path %></p>
+									<%= submit_tag "Become premium", class: 'btn btn-info' %>
+							<% end %>
+						<% end %>
+						 <% if current_user.has_role?(:premium) %>
+						  			<%= link_to "Unsubscribe", unsubscribe_path, { method: :post, class: 'btn btn-info unsubscribe-button' } %>
+						<% end %>
 				</ul>
 			</div>
 	    </div>
