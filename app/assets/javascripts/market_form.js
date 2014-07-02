@@ -125,7 +125,8 @@ function geocode(){
   geocoder.geocode({ 'address': address}, 
     function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
-      setLocation(results[0].geometry.location.k, results[0].geometry.location.A);
+      setLocation(results[0].geometry.location.lat(), 
+                  results[0].geometry.location.lng());
     }
     });
   };

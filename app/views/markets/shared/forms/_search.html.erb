@@ -159,12 +159,13 @@
        geocoder.geocode({ 'address': place}, 
         function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
-            var lat = results[0].geometry.location.k;
-            var lon = results[0].geometry.location.A;
+            console.log(results[0]);
+            var lat = results[0].geometry.location.lat();
+            var lon = results[0].geometry.location.lng();
 
             $("#lat").val(lat);
             $("#lon").val(lon);
-
+            
             $("#location_location_id option[value='My location']").remove();
             $("#location_location_id option[value='Custom location']").remove();
 
