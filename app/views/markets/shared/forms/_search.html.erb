@@ -1,5 +1,9 @@
 <%= form_tag search_markets_path, id: "search_market", class:"search-form" do %>
     
+    <div class="hidden">
+      <%= text_field_tag :query, session[:query] %>
+    </div>
+
     <% if search_or_map_page? %>
         <li class="form-group search-filter-item">
           <%= link_to content_tag(:i, "", :class => "fa fa-refresh"), "#", 
@@ -56,11 +60,6 @@
           <%= text_field_tag :page, session[:page] || 1 %>
         </div>
     <% end %>
-
-
-    <div class="hidden">
-      <%= text_field_tag :query, session[:query] %>
-    </div>
 
 <% end %>
 
