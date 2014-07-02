@@ -81,6 +81,7 @@ end
 gem "pony"
 
 gem "keen"
+gem 'google-analytics-rails'
 
 gem "em-http-request", "~> 1.0"
 

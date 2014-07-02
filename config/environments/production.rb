@@ -95,4 +95,6 @@ PopUpStores::Application.configure do
     :user_name => "dowemarket@gmail.com",
     :password => ENV['GMAIL_SMTP_PASSWORD']
   }
+
+  GA.tracker = ENV['GA']
 end

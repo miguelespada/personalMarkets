@@ -123,6 +123,7 @@ GEM
       railties (>= 3.2, < 5.0)
     gherkin (2.12.2)
       multi_json (~> 1.3)
+    google-analytics-rails (0.0.6)
     hashie (2.1.2)
     hashr (0.0.22)
     hike (1.2.3)
@@ -355,6 +356,7 @@ DEPENDENCIES
   faker
   flexslider
   font-awesome-rails
+  google-analytics-rails
   jasmine
   jbuilder (~> 1.2)
   jquery-rails
