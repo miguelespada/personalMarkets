@@ -211,14 +211,17 @@ class MarketDecorator < Draper::Decorator
 
   def delete_link
     return if market.archived?
+    return if market.has_been_published? && !current_user.has_role?(:admin)
     if can? :delete, market 
       link_to(content_tag(:i, "", :class => "fa fa-trash-o"), user_market_path(market.user, market), method: :delete, 
         class: "delete-icon market-action market-action-icon btn btn-default btn-market-action-bar")
     end
+  rescue
   end
 
   def archive_link 
     return if market.archived?
+    return if !market.has_been_published?
     if can? :archive, market
       link_to content_tag(:i, "", :class => "fa fa-undo"), market_archive_path(market), { method: :post, class: "archive-icon market-action btn btn-default market-action-icon btn-market-action-bar"  }
     end
