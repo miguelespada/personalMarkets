@@ -2,11 +2,15 @@
 
 
 <% required ||= false %>
-<%= f.input :photo, as: :attachinary, required: required %>
-
-
+<%= f.input :photo, as: :attachinary, required: required, label_html: { class: 'limited' } %>
 <script>
 $( document ).ready(function() {
   $('.attachinary-input').attachinary();
+  // data = $('.attachinary-input').attr("data-form-data");
+  // data = eval('(' + data + ')');
+
+  // data.transformation = "c_limit,h_100,w_100";
+  // $('.attachinary-input').attr("data-form-data", JSON.stringify(data));
+
 });
 </script>

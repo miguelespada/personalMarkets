@@ -37,6 +37,7 @@ en:
   search_by_address: "Address, city or location..."
   no_matches: "Oops... There're no markets matching your query."
   Custom_location: "Custom location"
+  to: "to"
   simple_form:
     "yes": 'Yes'
     "no": 'No'

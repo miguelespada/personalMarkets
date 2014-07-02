@@ -72,36 +72,7 @@ $( document ).ready(function() {
 
   initializeAutocomplete('market_city');
   
-
-  // ---- SCHEDULE ----
-    if ($('#market_schedule').val() != ""){
-        showExistSchedule($('#market_schedule').val());
-    }
-    else{
-      $('#date-schedule-table > tbody:last').append(form_date_template);
-    }
-
-    initializeDatepicker();
-    addDatePickerEvent();
-    initializeSchedule();
-
-    $("#button-add-date").click(function(){
-      $('#date-schedule-table > tbody:last').append(form_date_template);
-      initializeDatepicker();
-      addDatePickerEvent();
-      initializeSchedule();
-    });
-
-    $( "table" ).on( "click", ".button-delete-line", function() {
-      $(this).closest('tr').remove();
-      getAllDates();
-    });
-
-
-
-
 });
-
 
 $("#prices-slider").slider( { 
     range: true,
@@ -167,34 +138,8 @@ function setLocation(lat, lon){
     PM.map.setView([lat, lon], 16);
 
 };
+
 // ------------
-
-
-// ---- SCHEDULE ----
-var showExistSchedule = function(scheduleString){
-  var allSchedules = scheduleString.split(";");
-  $.each(allSchedules, function(i, val){
-    var scheduleDate = stringToDate(val.split(",")[0]);
-    var today = new Date(new Date().setHours(0, 0, 0, 0));
-
-    if (scheduleDate < today ){
-      $("#passed-schedules").append("<p>" + val + "</p>");
-    }
-    else{
-      $('#date-schedule-table > tbody:last').append(form_date_template);
-      initializeDatepicker();
-      $('.input-group.date').last().datepicker('setDates', scheduleDate);
-      $('.schedule-start-input').last().val(val.split(",")[1]);
-      $('.schedule-end-input').last().val(val.split(",")[2]);
-      addDatePickerEvent();
-      initializeSchedule();
-    }
-  });
-};
-
-var stringToDate = function(data){
-  return moment(data, 'DD/MM/YYYY').toDate();
-};
 
 var initializeDatepicker = function(){
   $('.input-group.date').datepicker({
@@ -207,48 +152,11 @@ var initializeDatepicker = function(){
   });
 };
 
-var addDatePickerEvent = function(){
-  $('.input-group.date').datepicker().on('changeDate',function(){
-    getAllDates();
-  });
-};
+var addEditableDate = function(day, init, end){
+  $('#date-schedule-table > tbody:last').append(form_date_template);
+  initializeDatepicker();
+  $('.input-group.date').last().datepicker('setDates', day);
+  $('.schedule-start-input').last().val(init);
+  $('.schedule-end-input').last().val(end);
+}
 
-var initializeSchedule = function(){
-  $('.schedule-start-input').change(function(){
-    getAllSchedules();
-  });
-  $('.schedule-end-input').change(function(){
-    getAllSchedules();
-  });
-};
-
-var getAllDates = function(){
-  var dates = new Array();
-  $('.input-group.date').each(function() {
-    dates.push($(this).data().datepicker.viewDate);
-  });
-  dates.sort(function(a, b){return a-b}); 
-  formatDates(dates);
-  getAllSchedules();
-};
-
-var formatDates = function(dates){
-  var datesFormatted = new Array();
-  $.each(dates, function(i, val){
-    datesFormatted.push(moment(val).format("DD/MM/YYYY"));
-  });
-  datesFormatted = $.unique(datesFormatted);
-  $('#market_date').val(datesFormatted.join(","));
-};
-
-var getAllSchedules = function(){
-  var scheduleArray = new Array();
-  $('.schedule-line').each(function(){
-    var schedule = new Array();
-    schedule.push(moment($(this).find('.input-group.date').data().datepicker.viewDate).format("DD/MM/YYYY"));
-    schedule.push($(this).find('.schedule-start-input').val());
-    schedule.push($(this).find('.schedule-end-input').val());
-    scheduleArray.push(schedule.join(","));
-  });
-  $('#market_schedule').val(scheduleArray.join(";"));
-};

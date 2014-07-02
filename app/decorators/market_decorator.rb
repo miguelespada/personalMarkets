@@ -31,7 +31,10 @@ class MarketDecorator < Draper::Decorator
   def human_readable_schedule
     dates = []
     schedule.split(';').each do |day|
-      dates << {"day" => Date.strptime(day, "%d/%m/%Y"), "from" => day.split(',')[1], "to" => day.split(',')[2]}
+      date = Date.strptime(day, "%d/%m/%Y,%H:%M")
+      dates << {"date" => date, "passed" => date < Time.now, 
+                "day" => day.split(',')[0],
+                "from" => day.split(',')[1], "to" => day.split(',')[2]}
     end
     dates
   rescue

@@ -15,7 +15,6 @@
 <%= javascript_include_tag "twitter/typeahead.min" %>
 
 
-
 <div id="error" class="alert alert-danger flash hidden"></div>
 
 <div class="panel panel-default panel-table">
@@ -126,6 +125,11 @@
 
         <div class="table-container">
           <table class="table table-striped" id="date-schedule-table">
+            <% market.human_readable_schedule.each do |day| %> 
+              <% if day["passed"] %>
+                <%= format_date(day) %> </br> 
+              <% end %>
+            <% end %>
             <tr>
               <th>Date</th>
               <th>Schedule</th>
@@ -138,7 +142,6 @@
             <tbody>
             </tbody>
           </table>
-
         </div>
       </div>
     
@@ -224,11 +227,24 @@
   <%= back_link %>
 </div>
 
+
+
 <script>
 var suggested_tags_path = "<%= suggested_tags_path %>";
-var form_date_template = '<%= render "markets/shared/forms/form_date" %>';
+var form_date_template = '<%= j render "markets/shared/forms/form_date" %>';
 var locale = "<%= params['language'] %>"; 
 </script>
 
 
 <%= javascript_include_tag "market_form" %>
+
+<% market.human_readable_schedule.each do |day| %> 
+  <% if !day["passed"] %>
+  <script>  
+    var day = "<%= day['day'] %>";
+    var init = "<%= day['from'] %>";
+    var end =  "<%= day['to'] %>";
+    addEditableDate(day, init, end);
+  </script>
+  <% end %>
+<% end %>

@@ -45,6 +45,7 @@ es:
   "Explore more markets": "Más mercados..."
   search_by_address: "Dirección, ciudad..."
   no_matches: "No hay ningún mercado que satisfaga tus criterios de búsqueda. :("
+  to: "hasta"
   simple_form:
     "yes": 'Si'
     "no": 'No'
