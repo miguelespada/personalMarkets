@@ -1,7 +1,11 @@
-<div class = "home_gallery_title"><i class="fa fa-sign-in fa-2x"></i> <br/>Registration</div>
 
-<%= simple_form_for(resource, html: {:id => "sign-up-form"}, :url => registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+
+<%= simple_form_for(resource, html: {:id => "sign-up-form"}, 
+  :url => registration_path(resource_name)) do |f| %>
+  <%= f.error_notification class: 'alert-danger flash'%>
+
+<div class = "home_gallery_title"><i class="fa fa-sign-in fa-2x"></i> 
+  <br/>Registration</div>
 
 <div class="container user-session">
   <div class="row">

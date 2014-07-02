@@ -20,6 +20,6 @@ module MarketsHelper
   end
 
   def format_date(day)
-    day["date"].to_formatted_s(:rfc822)  + " " + day["from"] + " - " + day["to"]
+    day["date"].to_formatted_s(:rfc822)  + ", " + day["from"] + " - " + day["to"]
   end
 end

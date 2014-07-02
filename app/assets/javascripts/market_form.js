@@ -1,6 +1,6 @@
 
 $( document ).ready(function() {
-
+ 
   // Disable add market button
   $(".add_market_button").addClass("btn-default").removeClass("btn-info").attr("disabled", true);
 
@@ -34,7 +34,10 @@ $( document ).ready(function() {
         return false;
     }
    else{
+      $('#market_date').val(passedDates + collectNewDates());
+      $('#market_schedule').val(passedSchedule + collectNewSchedules());
       $("#error").html("");
+
    }
   });
 
@@ -150,6 +153,8 @@ var initializeDatepicker = function(){
     language: locale,
     todayHighlight: true
   });
+
+  $('.input-group.date').last().datepicker('setDates', new Date());
 };
 
 var addEditableDate = function(day, init, end){
@@ -160,3 +165,43 @@ var addEditableDate = function(day, init, end){
   $('.schedule-end-input').last().val(end);
 }
 
+$("#button-add-date").click(function(){
+  $('#date-schedule-table > tbody:last').append(form_date_template);
+  initializeDatepicker();
+});
+
+$( "table" ).on( "click", ".button-delete-line", function() {
+  $(this).closest('tr').remove();
+});
+
+//----
+var collectNewDates = function(){
+  var dates = new Array();
+  $('.input-group.date').each(function() {
+    dates.push($(this).data().datepicker.viewDate);
+  });
+  dates.sort(function(a, b){return a-b}); 
+  return formatDates(dates);
+};
+
+var formatDates = function(dates){
+  var datesFormatted = new Array();
+  $.each(dates, function(i, val){
+    datesFormatted.push(moment(val).format("DD/MM/YYYY"));
+  });
+  datesFormatted = $.unique(datesFormatted);
+  return datesFormatted.join(",");
+};
+
+var collectNewSchedules = function(){
+  var scheduleArray = new Array();
+  $('.schedule-line').each(function(){
+    var schedule = new Array();
+    schedule.push(moment($(this).find('.input-group.date').data().datepicker.viewDate).format("DD/MM/YYYY"));
+    schedule.push($(this).find('.schedule-start-input').val());
+    schedule.push($(this).find('.schedule-end-input').val());
+    if(schedule[0] != "" && schedule[1] != "" && schedule[2] != "")
+      scheduleArray.push(schedule.join(","));
+  });
+  return scheduleArray.join(";");
+};

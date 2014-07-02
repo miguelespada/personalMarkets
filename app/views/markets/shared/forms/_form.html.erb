@@ -125,9 +125,18 @@
 
         <div class="table-container">
           <table class="table table-striped" id="date-schedule-table">
+            <tr>
+              <th>Passed</th>
+              <th></th>
+              <th></th>
+            </tr>
             <% market.human_readable_schedule.each do |day| %> 
               <% if day["passed"] %>
-                <%= format_date(day) %> </br> 
+              <tr>
+                <td> <%= format_date(day) %> </td>
+                <td> </td>
+                <td> </td>
+              </tr>
               <% end %>
             <% end %>
             <tr>
@@ -233,18 +242,29 @@
 var suggested_tags_path = "<%= suggested_tags_path %>";
 var form_date_template = '<%= j render "markets/shared/forms/form_date" %>';
 var locale = "<%= params['language'] %>"; 
+var passedDates = "";
+var passedSchedule = "";
 </script>
 
 
 <%= javascript_include_tag "market_form" %>
 
 <% market.human_readable_schedule.each do |day| %> 
-  <% if !day["passed"] %>
-  <script>  
-    var day = "<%= day['day'] %>";
-    var init = "<%= day['from'] %>";
-    var end =  "<%= day['to'] %>";
-    addEditableDate(day, init, end);
-  </script>
+
+  <% if day["passed"] %>
+    <script>  
+      var day = "<%= day['day'] %>";
+      var string = "<%= day['to_string'] %>";
+      passedDates = passedDates + day + ";" ;
+      passedSchedule = passedSchedule + string + ";";
+    </script>
+  <% else %>
+    <script>  
+      var day = "<%= day['day'] %>";
+      var init = "<%= day['from'] %>";
+      var end =  "<%= day['to'] %>";
+      addEditableDate(day, init, end);
+    </script>
   <% end %>
+
 <% end %>

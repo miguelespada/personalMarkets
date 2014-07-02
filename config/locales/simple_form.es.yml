@@ -69,4 +69,14 @@ es:
   wish_update_sucess: "Tu deseo se ha modificado correctamente."
   wish_delete_sucess: "Tu deseo se ha borrado correctamente."
   wish_delete_fail: "El deseo no puede ser borrado."
-
+  mongoid:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: "La dirección de correo no es válida"
+            password:
+              too_short: "La constraseña es demasiado corta"
+            password_confirmation:
+              confirmation: "Las contraseñas no coinciden"

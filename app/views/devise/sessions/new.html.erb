@@ -1,7 +1,8 @@
-<div class = "home_gallery_title"><i class="fa fa-sign-in fa-2x"></i> <br/>Sign in</div>
 
 <%= simple_form_for(resource, html: {:id => "sign-in-form"}, :url => session_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+<div class = "home_gallery_title"><i class="fa fa-sign-in fa-2x"></i> <br/>Sign in</div>
+
+  <%= f.error_notification class: 'alert-danger flash'%>
 
 <div class="container user-session">
   <div class="row">
