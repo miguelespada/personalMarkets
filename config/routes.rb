@@ -138,6 +138,7 @@ PopUpStores::Application.routes.draw do
     get "static_pages/go_premium_terms", as: "go_premium_terms"
     get "static_pages/go_vim_terms", as: "go_vim_terms"
     get "static_pages/privacy", as: "privacy"
+    get "static_pages/terms", as: "terms"
     get "static_pages/settings", path: "/settings", as: "settings"
 
     get "static_pages/home", path: "/", as: 'home'
