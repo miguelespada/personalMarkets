@@ -58,6 +58,7 @@ $( document ).ready(function() {
         return false;
       }
   });
+});
 
 
 // ------------
@@ -90,7 +91,8 @@ function geocode(){
   geocoder.geocode({ 'address': address}, 
     function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
-      setLocation(results[0].geometry.location.k, results[0].geometry.location.A);
+      setLocation(results[0].geometry.location.lat(), 
+                  results[0].geometry.location.lng());
     }
     else{
         $("#special_location_latitude").val("error");
@@ -99,14 +101,12 @@ function geocode(){
     });
   };
 
- function setLocation(lat, lon){
+ function setLocation(lat, lng){
     $("#special_location_latitude").val(lat);
     $("#special_location_longitude").val(lng);
     if (PM.marker)  PM.map.removeLayer(PM.marker);
     PM.addMarker([lat, lng], false);
     PM.map.setView([lat, lng], 16);
   };
-  
-});
 
 </script>
