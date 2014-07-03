@@ -30,7 +30,9 @@
       <div class="adsense-banner">ADVERTISEMENT <span>POWERED BY ADSENSE</span></div>
     <% end %>
 
-    <%= market.photo_gallery_section %>
+    <%= market.photo_slideshow_section %>
+
+    <%= market.photo_gallery_section if market.pro? %>
   
 
     <%= market.coupon_section %>

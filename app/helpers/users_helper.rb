@@ -7,15 +7,13 @@ module UsersHelper
     end
   end
 
-  def user_title(user)
-
+  def user_role(user)
     if current_user.has_role?(:admin) 
-      '<h3 class="center"> You are an ADMIN user</h3>'.html_safe()
+      'You are an ADMIN user'
     elsif current_user.has_role?(:premium)
-      '<h3 class="center"> You are a PRO user</h3>'.html_safe()
+      'You are a PRO user'
     else
-      '<h3 class="center"> You are a REGULAR user</h3>'.html_safe()
+      'You are a REGULAR user'
     end
-
   end
 end

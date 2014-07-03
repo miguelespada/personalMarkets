@@ -1,0 +1,29 @@
+<div class="market-section-title">Slideshow</div>
+<div class="market-section-container photo-gallery-container">
+	<div class="market-photos-slideshow-container">
+		<div id="carousel-container-market-photo-gallery" class="carousel slide photo-gallery" data-ride="carousel">
+			<div class="carousel-inner market-photo-gallery-carousel-inner">
+				<% market.gallery.photographies.each do |photo| %>
+					<div class="item">
+		  			<%= photo(photo, 800, 400) if photo.present? %>
+		  		</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<style>
+@media (max-width:992px){
+	.market-photos{
+	  padding: 0px !important;
+	}
+}
+</style>
+
+<script>
+	$(".item:first").addClass("active");
+	$(".item > a > img").css("width", "100%");
+	$(".market-photo-gallery-carousel-inner>.item:first").addClass("active");
+</script>

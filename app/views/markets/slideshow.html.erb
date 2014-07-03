@@ -4,4 +4,7 @@
 	<% end %>
 </div>
 
-<%= javascript_include_tag "explore_slideshows" %>
+<script>
+  $(".item:first").addClass("active");
+  $(".item > a > img").css("width", "100%");
+</script>

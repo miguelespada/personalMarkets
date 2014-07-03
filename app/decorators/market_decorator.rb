@@ -81,6 +81,12 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
+  def photo_slideshow_section
+    if market.photo_gallery_available?
+      render partial: "markets/shared/utils/photo_slideshow", locals: { market: self }
+    end
+  end
+  
   def photo_gallery_section
     if market.photo_gallery_available?
       render partial: "markets/shared/utils/photo_gallery", locals: { market: self }

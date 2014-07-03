@@ -93,8 +93,9 @@ class MarketsController < ApplicationController
 
   def new
     @market = domain.initialize_market
-    3.times {@market.gallery.photographies << Photo.new}
     @market.pro = true if current_user.is_premium?
+    3.times {@market.gallery.photographies << Photo.new}
+    9.times {@market.gallery.photographies << Photo.new} if @market.pro?
   end
 
   def show
@@ -113,6 +114,9 @@ class MarketsController < ApplicationController
   
   def edit
     @market = domain.get_market params[:id]
+    if @market.pro? && @market.gallery.photographies.count == 3
+      9.times {@market.gallery.photographies << Photo.new}
+    end
   end
 
   def user_markets_succeeded markets
