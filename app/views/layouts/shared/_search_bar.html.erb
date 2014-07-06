@@ -16,6 +16,8 @@
 
 <script>
 $( document ).ready(function() {
+
+  var largeSearchBar = false;
   
   $( "#search_bar_query").keypress(function(e) {
     if(e.keyCode == 13 ) {
@@ -26,6 +28,30 @@ $( document ).ready(function() {
 
   $( "#search_bar_query" ).keyup(function() {
     $("#query").val($( "#search_bar_query" ).val());
+  });
+
+  $("#search_bar_query").focus(function(){
+    if (window.innerWidth >= 768){
+      if (!largeSearchBar){
+        $("#search_bar").animate({
+          width: "220px"
+        }, 400, function(){
+          largeSearchBar = true;
+        });
+      }
+    }
+  });
+
+  $("#search_bar_query").focusout(function(){
+    if (window.innerWidth >= 768){
+      if (largeSearchBar){
+        $("#search_bar").animate({
+          width: "200px"
+        }, 400, function(){
+          largeSearchBar = false;
+        });
+      }
+    }
   });
 
   $("#search_button").click(function(){
