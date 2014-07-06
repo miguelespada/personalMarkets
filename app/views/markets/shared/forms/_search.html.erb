@@ -12,7 +12,7 @@
         </li>
 
         <li class="form-group hidden">
-          <%= collection_select(:category, :category_id, Category.all, :name, :name, 
+          <%= collection_select(:category, :category_id, Category.all, :slug, :slug, 
             {:include_blank => "All categories", :selected => session[:category]}, 
             class: "category form-control" ) %>
         </li>

@@ -242,7 +242,7 @@ class Market
   end
 
   def category_name
-    category.name
+    category.slug
   rescue
     ""
   end

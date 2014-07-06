@@ -25,7 +25,7 @@ class Query
   def set_session(session)
     if @params[:category].present? && @params[:category][:category_id].present?
       session[:category] = @params[:category][:category_id] 
-      session[:style] = Category.find_by(name: session[:category]).style
+      session[:style] = Category.find(session[:category]).style
     else
       session[:category] = ""
       session[:style] = nil

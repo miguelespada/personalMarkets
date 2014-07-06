@@ -1,5 +1,8 @@
 class Category
   include Mongoid::Document
+  include Mongoid::Slug
+
+  slug :name
 
   validates :name, uniqueness: { message: "Category name must be unique" }
   field :name, type: String
@@ -12,6 +15,12 @@ class Category
   accepts_nested_attributes_for :photography
 
   has_many :markets
+  
+  def slug_candidates
+    [
+      :name
+    ]
+  end
 
   def destroy
     return false if markets_in_category?
