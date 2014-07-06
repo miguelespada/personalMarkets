@@ -1,8 +1,8 @@
 <% if !coupon.empty? %>
   <%= div_for coupon do %>
-    <span> Coupon Description: </span>  <span> <%= coupon.description %> </span> <br>
-    <span> Coupon Price </span>  <span> <%= coupon.price %> </span> <br>
-    <span> Available</span> <span> <%= coupon.available %> </span>
+    <strong> Coupon Description: </strong>  <span> <%= coupon.description %> </span> <br>
+    <strong> Coupon Price: </strong>  <span> <%= coupon.price %> </span> <br>
+    <strong> Available: </strong> <span> <%= coupon.available %> </span>
   <% end %>
 <% else %>
   <%= "Remember to create a coupon to offer extra services in your market" if coupon.market.pro? %>
