@@ -1,1 +1,13 @@
+
+<% if @market.pro? %>
 <%= render "market_statistic", :market => @market %>
+<% else %>
+
+<div class="terms-title" ><i class="fa fa-frown-o fa-3x"></i><br> Sorry! <br>
+  Only Very Important Markets con see stats</div>
+
+<%= back_link %>
+</div>
+
+
+<% end %>

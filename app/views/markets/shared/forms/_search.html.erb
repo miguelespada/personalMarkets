@@ -8,7 +8,7 @@
         <li class="form-group search-filter-item">
           <%= link_to content_tag(:i, "", :class => "fa fa-refresh"), "#", 
             :class=>  "btn btn-default btn-reset-search", 
-            :id=>"reset_search" %>
+            :id=>"reset_search", :title => "Reset search", rel: 'tooltip' %>
         </li>
 
         <li class="form-group hidden">
@@ -42,9 +42,16 @@
         </li>
 
         <li class="form-group search-filter-item hidden" id="my-location-item">
-          <%= link_to content_tag(:i, "", :class => "fa fa-crosshairs"), "#", 
+          <%= link_to content_tag(:i, "", :class => "fa fa-crosshairs", :title => "Go to my location", rel: 'tooltip'), "#", 
             :class=>  "btn btn-default btn-my-location-search", 
             :id=>"my_location" %>
+        </li>
+
+        <li class="form-group search-filter-item anim-container hidden" id="location-not-found">
+          <span class="fa-stack fa-sm">
+            <i class="fa fa-ban fa-stack-2x text-danger ban hidden"></i>
+            <i class="fa fa-map-marker fa-stack-1x" ></i>
+          </span>
         </li>
 
         <li class="form-group search-filter-item anim-container hidden" id="spinner-item"><i class="fa fa-spinner fa-spin fa-1x" ></i>
@@ -132,7 +139,7 @@
       reverseGeocode(crd.latitude, crd.longitude)
       $("#user_lat").val(crd.latitude);
       $("#user_lon").val(crd.longitude);
-      $("#my-location-item").removeClass("hidden")
+      $("#my-location-item").removeClass("hidden");
     };
 
     function pos_error(){
@@ -159,7 +166,9 @@
        geocoder.geocode({ 'address': place}, 
         function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
-            console.log(results[0]);
+
+            $("#location-not-found").removeClass("hidden");
+             $("#location-not-found.ban").addClass("hidden");
             var lat = results[0].geometry.location.lat();
             var lon = results[0].geometry.location.lng();
 
@@ -172,7 +181,10 @@
             $('#location_location_id').append("<option value='Custom location'><%= t :Custom_location %></option>").val('Custom location');
             try{
               centerMap("Custom location");
-            }catch(err) {};
+            }catch(err) {
+              $("#location-not-found").removeClass("hidden");
+             $("#location-not-found.ban").removeClass("hidden");
+            };
             $("#search_market").change();
           }
         }
@@ -200,12 +212,17 @@
       $("#range").change(setDataRange);
 
       $("#address-query").keydown(function(event){
-      if(event.keyCode == 13) {
-        event.preventDefault();
-        addressSearch();
-        return false;
-        }
+        if(event.keyCode == 13) {
+          event.preventDefault();
+          addressSearch();
+          return false;
+          }
       });
+      $("#address-query").blur(function(event){
+          addressSearch();
+      });
+    
+    
 
       $("#location_location_id").change(function(){
           removeLocationData();
