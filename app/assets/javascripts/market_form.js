@@ -53,11 +53,10 @@ var initializeDatepicker = function(){
     format: "dd/mm/yyyy",
     startDate: "today",
     endDate:"+1m",
+    multidate:true,
     language: locale,
     todayHighlight: true
   });
-
-  $('.input-group.date').last().datepicker('setDates', new Date());
 };
 
 var addEditableDate = function(day, init, end){
@@ -68,36 +67,45 @@ var addEditableDate = function(day, init, end){
   $('.schedule-end-input').last().val(end);
 }
 
-
-
 //----
 var collectNewDates = function(){
-  var dates = new Array();
-  $('.input-group.date').each(function() {
-    dates.push($(this).data().datepicker.viewDate);
-  });
-  dates.sort(function(a, b){return a-b}); 
-  return formatDates(dates);
+  try{
+    var dates = new Array();
+
+    $('.schedule-line').each(function(){
+      var initTime = $(this).find('.schedule-start-input').val();
+      var endTime  = $(this).find('.schedule-end-input').val();
+      $(this).find('.input-group.date').data().datepicker.getDates().forEach(function(date){
+          var schedule = new Array();
+          schedule.push(date);
+          schedule.push(initTime);
+          schedule.push(endTime);
+
+          dates.push(schedule);
+        });
+    });
+    dates.sort(function(a, b){return a[0]-b[0]}); 
+  return dates;
+  } catch(em){
+    console.log(em);
+
+  } ;
 };
 
-var formatDates = function(dates){
+var serializeDates = function(dates){
   var datesFormatted = new Array();
-  $.each(dates, function(i, val){
-    datesFormatted.push(moment(val).format("DD/MM/YYYY"));
+  dates.forEach(function(val){
+    datesFormatted.push(moment(val[0]).format("DD/MM/YYYY"));
   });
   datesFormatted = $.unique(datesFormatted);
   return datesFormatted.join(",");
 };
 
-var collectNewSchedules = function(){
+var serializeSchedules = function(dates){
   var scheduleArray = new Array();
-  $('.schedule-line').each(function(){
-    var schedule = new Array();
-    schedule.push(moment($(this).find('.input-group.date').data().datepicker.viewDate).format("DD/MM/YYYY"));
-    schedule.push($(this).find('.schedule-start-input').val());
-    schedule.push($(this).find('.schedule-end-input').val());
-    if(schedule[0] != "" && schedule[1] != "" && schedule[2] != "")
-      scheduleArray.push(schedule.join(","));
+  dates.forEach(function(val){
+    var schedule = moment(val[0]).format("DD/MM/YYYY") + "," + val[1] + "," + val[2];
+    scheduleArray.push(schedule);
   });
   return scheduleArray.join(";");
 };
@@ -136,10 +144,16 @@ $( document ).ready(function() {
         return false;
     }
    else{
-      $('#market_date').val(passedDates + collectNewDates());
-      $('#market_schedule').val(passedSchedule + collectNewSchedules());
-      $("#error").html("");
+      try{
+        var dates = collectNewDates();
+        $('#market_date').val(passedDates + serializeDates(dates));
+        $('#market_schedule').val(passedSchedule + serializeSchedules(dates));
+        $("#error").html("");
 
+      } catch(em){
+        console.log(em);
+
+      } ;
    }
   });
 

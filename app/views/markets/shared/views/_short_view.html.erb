@@ -6,10 +6,10 @@
         <div class="market-list-section-title">Information</div>
         <div class="market-list-section-container">
           <div class = "market-list-section-container-inner row">
-            <div class = "col-md-4">
+            <div class = "col-md-3">
               <%= market.market_featured_photo_filtered(200, 100) %>
             </div>
-            <div class = "col-md-6">
+            <div class = "col-md-8">
               <%= render partial: 'markets/shared/utils/description', locals: { market: market } %>
             </div>
           </div>
