@@ -77,6 +77,15 @@ class MarketsController < ApplicationController
         }
     end
   end
+
+  def reindex
+    Market.reindex
+    redirect_to settings_path
+  end
+  def delete_index
+    Market.delete_index
+    redirect_to settings_path
+  end
   
 
 

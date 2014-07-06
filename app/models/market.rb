@@ -48,6 +48,11 @@ class Market
   scope :last_pro_published, lambda {where(state: "published").where(pro: :true).order_by(:published_date.desc).limit(6) }
   scope :last_published, lambda { where(state: "published").order_by(:published_date.desc).limit(6) }
   scope :published, lambda {where(state: "published").order_by(:date.asc)}
+  scope :vim, lambda {where(pro: :true)}
+  scope :draft, lambda {where(state: "draft")}
+  scope :archived, lambda {where(state: "archived")}
+
+
   scope :with_category, lambda {|category| where(category: category)}
 
   after_create :create_public_id
@@ -302,6 +307,17 @@ class Market
     
     results = search.results
     {:markets => results.collect{|result| find_by(id: result.to_hash[:id])}, :total => results.total}
+  end
+
+  def self.elasticsearch_count
+    s = Tire.search 'markets', :search_type => 'count' do
+      query do
+        string 'name:*'
+      end
+    end
+    s.results.total
+  rescue
+    -1
   end
 
   def self.format_location(lat, lon)

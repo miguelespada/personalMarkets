@@ -30,6 +30,9 @@ PopUpStores::Application.routes.draw do
     get "/published", to: "markets#list_published_markets", as: "published_markets"
     get "/list_recommend_markets", to: "markets#list_recommend_markets", as: "list_recommend_markets"
 
+    get   "/reindex", to: "markets#reindex", as: "market_reindex"
+    get   "/delete_index", to: "markets#delete_index", as: "market_delete_index"
+
     resources :users, :only => [:index, :show]
 
     resources :users do

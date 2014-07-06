@@ -27,12 +27,17 @@
         <%= link_to user_path(current_user), :method => :get, class:"dashboard-button btn btn-primary btn-lg" do %>
 			    <i class="fa fa-user fa-4x"></i> <br/> Profile
 		    <% end %>
-		    <%= link_to show_user_statistic_path(current_user), class:"dashboard-button btn btn-primary btn-lg" do %>
-			    <i class="fa fa-tasks fa-4x"></i> <br/> Statistics
-		    <% end %>
+
         <%= link_to user_photos_path(current_user), class:"dashboard-button btn btn-primary btn-lg" do %>
           <i class="fa fa-camera fa-4x"></i> <br/> Photos
         <% end %>
+        
+        <% if current_user.has_role?(:premium) %>
+          <%= link_to show_user_statistic_path(current_user), class:"dashboard-button btn btn-primary btn-lg" do %>
+            <i class="fa fa-tasks fa-4x"></i> <br/> Statistics
+          <% end %>
+        <% end %>
+
       </div>
     </div>
   </div>
