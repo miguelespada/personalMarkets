@@ -13,9 +13,9 @@
       </div>
     </div>
 
-    <div class="market-section-title"><%= t :general_information %></div>
+    <div class="market-section-title row"><%= t :general_information %></div>
     
-    <div class="market-section-container">
+    <div class="market-section-container row">
       <div class="col-md-6 market-featured-photo-detail">
         <%= market.market_featured_photo_filtered(400, 200) %>
         <%= edit_photo_link(market.featured) %>
@@ -37,19 +37,19 @@
 
     <%= market.coupon_section %>
     
-    <div class="market-section-title "><%= t :location %></div>
-    <div class="market-section-container">
+    <div class="market-section-title row"><%= t :location %></div>
+    <div class="market-section-container row">
       <div class="market-address-detail "> <%= market.address_and_city %> </div>
       <%= market.location %>
     </div>
 
-    <div class="market-section-title facebook-section">Comment & Share</div>
-    <div class="market-section-container social-container facebook-section">
+    <div class="market-section-title row facebook-section">Comment & Share</div>
+    <div class="market-section-container row social-container facebook-section">
       <%= render partial: 'markets/shared/utils/facebook_comments', locals: { market: market } %>
     </div>
 
-    <div class="market-section-title">QR Code</div>
-    <div class="market-section-container qr-container">
+    <div class="market-section-title row">QR Code</div>
+    <div class="market-section-container row qr-container">
       <%= render partial: 'markets/shared/utils/qr_code', locals: { market: market } %>
     </div>
   </div>

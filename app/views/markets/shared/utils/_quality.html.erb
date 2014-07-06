@@ -1,8 +1,8 @@
 <% if can?(:manage, market) %>
   <%= stylesheet_link_tag 'market-quality'%>
 
-  <div id="market-quality" class="market-section-title">Market quality</div>
-  <div class="market-section-container">
+  <div id="market-quality" class="market-section-title row">Market quality</div>
+  <div class="market-section-container row">
     <div class="quality-section">
       <div class="row">
         <% market.market_quality do |field, quality| %>
