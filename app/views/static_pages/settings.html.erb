@@ -1,6 +1,10 @@
+
+
 <div class="terms-title" ><i class="fa fa-cogs fa-3x"></i><br> Data & Settings </div>
 <div class="terms-content col-md-8 col-md-offset-2">
+<div id="my_chart">
 
+</div>
 
 <div class="table-container">
 <table class="table table-striped">
@@ -89,3 +93,21 @@
 
 </table>
 </div>
+
+
+
+<script>
+
+ Keen.onChartsReady(function() {
+     var series = new Keen.Series("sign_in", {
+       analysisType: "count",
+      timeframe: "this_week",
+      interval: "daily"
+    });
+
+      series.draw(document.getElementById("my_chart"), {
+                label: "Signins per day this week"
+            });
+  });
+
+</script>
