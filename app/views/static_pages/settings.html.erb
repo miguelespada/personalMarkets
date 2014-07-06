@@ -19,7 +19,11 @@
 
   <tr>
     <td>Numer of VIM Markets </td>
-    <td><%= User.all.count %></td>
+    <td><%= Market.vim.count %></td>
+  </tr>
+  <tr>
+    <td>Numer of New Markets </td>
+    <td><%= Market.last_published.count %></td>
   </tr>
 
   <tr>
