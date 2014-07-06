@@ -1,6 +1,8 @@
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
 
 <%= javascript_include_tag "jquery.bootstrap.wizard" %>
+
+
+
 
 <%= javascript_include_tag "bootstrap-datepicker/core" %>
 <%= javascript_include_tag "bootstrap-datepicker/locales/bootstrap-datepicker.es" %>
@@ -11,8 +13,8 @@
 
 <%= javascript_include_tag "tagmanager" %>
 <%= stylesheet_link_tag  "tagmanager" %>
-
 <%= javascript_include_tag "twitter/typeahead.min" %>
+<%= javascript_include_tag "market_form" %>
 
 
 <div id="error" class="alert alert-danger flash hidden"></div>
@@ -21,7 +23,7 @@
   <div class="panel-heading table-title">
     <%= action %> Market
   </div>
-<div id="wizard" class="row">
+<div id="wizard" class="row hidden">
   <ul class="col-md-3">
     
     <li id="form-link-name"><a href="#form-market-name-description" data-toggle="tab"><%= t :general_information %></a></li>
@@ -205,7 +207,7 @@
         </div>
       </div>
   
-      <div class="tab-pane" id = "form-market-coupon" > 
+      <div class="tab-pane" id="form-market-coupon" > 
         <div class="form-intro-pane">
           <div class="row">
             <div class="form-pane-image col-sm-2">
@@ -246,8 +248,7 @@ var passedDates = "";
 var passedSchedule = "";
 </script>
 
-
-<%= javascript_include_tag "market_form" %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
 
 
 <% market.human_readable_schedule.each do |day| %> 

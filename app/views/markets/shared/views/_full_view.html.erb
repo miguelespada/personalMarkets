@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div class="market-section-title row"><%= t :general_information %></div>
+    <div class="market-section-title row"><%= t :general_information %> <%= market.direct_edit_link("form-market-description") %></div>
     
     <div class="market-section-container row">
       <div class="col-md-6 market-featured-photo-detail">
@@ -34,10 +34,9 @@
 
     <%= market.photo_gallery_section if market.pro? %>
   
-
-    <%= market.coupon_section %>
+    <%= market.coupon_section if market.pro?  %>
     
-    <div class="market-section-title row"><%= t :location %></div>
+    <div class="market-section-title row"><%= t :location %> <%= market.direct_edit_link("form-market-location") %> </div>
     <div class="market-section-container row">
       <div class="market-address-detail "> <%= market.address_and_city %> </div>
       <%= market.location %>

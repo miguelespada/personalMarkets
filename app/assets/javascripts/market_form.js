@@ -1,12 +1,10 @@
 
 $( document ).ready(function() {
- 
+  $("#wizard").removeClass("hidden");
   // Disable add market button
   $(".add_market_button").addClass("btn-default").removeClass("btn-info").attr("disabled", true);
 
   // Jump to a section
-  $('ul.nav a[href="' + window.location.hash + '"]').tab('show');
-
   // Prevent submission
   $(window).keydown(function(event){
     if(event.keyCode == 13) {
@@ -75,6 +73,8 @@ $( document ).ready(function() {
 
   initializeAutocomplete('market_city');
   
+  $('ul.nav a[href="' + window.location.hash + '"]').tab('show');
+
 });
 
 $("#prices-slider").slider( { 
