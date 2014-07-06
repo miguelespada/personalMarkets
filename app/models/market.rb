@@ -391,7 +391,8 @@ class Market
   end
 
   def max_duration
-    if user.is_premium? 
+
+    if belongs_to_premium_user?
       30
     else
       7
