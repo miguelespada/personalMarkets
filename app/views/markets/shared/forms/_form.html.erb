@@ -1,29 +1,13 @@
 
 <%= javascript_include_tag "jquery.bootstrap.wizard" %>
 
-
-
-
-<%= javascript_include_tag "bootstrap-datepicker/core" %>
-<%= javascript_include_tag "bootstrap-datepicker/locales/bootstrap-datepicker.es" %>
-<%= stylesheet_link_tag "bootstrap-datepicker" %>
-
-<%= javascript_include_tag "jquery.ui.slider" %>
-<%= stylesheet_link_tag "jquery.ui.slider" %>
-
-<%= javascript_include_tag "tagmanager" %>
-<%= stylesheet_link_tag  "tagmanager" %>
-<%= javascript_include_tag "twitter/typeahead.min" %>
-<%= javascript_include_tag "market_form" %>
-
-
 <div id="error" class="alert alert-danger flash hidden"></div>
 
 <div class="panel panel-default panel-table">
   <div class="panel-heading table-title">
     <%= action %> Market
   </div>
-<div id="wizard" class="row hidden">
+<div id="wizard" class="row">
   <ul class="col-md-3">
     
     <li id="form-link-name"><a href="#form-market-name-description" data-toggle="tab"><%= t :general_information %></a></li>
@@ -117,7 +101,7 @@
             </div>
             <div class="form-pane-text col-sm-10">
               <span class="form-section-title-small"><%= t :date_and_time %></span><br>
-              Puedes elegir tantas franjas horarias como necesites. <br><i class="fa fa-arrow-circle-right"></i> Recuerda que tu market no puede durar más de 7 días!</div>
+              Puedes elegir tantas franjas horarias como necesites. <br><i class="fa fa-arrow-circle-right"></i> Recuerda que tu market no puede durar más de <%= market.max_duration %> días!</div>
           </div>
         </div>
         <%= f.input :date, input_html: { class: 'market-date hidden' }  %>
@@ -249,6 +233,22 @@ var passedSchedule = "";
 </script>
 
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
+
+
+<%= javascript_include_tag "bootstrap-datepicker/core" %>
+<%= javascript_include_tag "bootstrap-datepicker/locales/bootstrap-datepicker.es" %>
+<%= stylesheet_link_tag "bootstrap-datepicker" %>
+
+<%= javascript_include_tag "jquery.ui.slider" %>
+<%= stylesheet_link_tag "jquery.ui.slider" %>
+
+<%= javascript_include_tag "tagmanager" %>
+<%= stylesheet_link_tag  "tagmanager" %>
+
+<%= javascript_include_tag "twitter/typeahead.min" %>
+
+
+<%= javascript_include_tag "market_form" %>
 
 
 <% market.human_readable_schedule.each do |day| %> 

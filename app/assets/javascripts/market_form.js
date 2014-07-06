@@ -1,99 +1,5 @@
 
-$( document ).ready(function() {
-  $("#wizard").removeClass("hidden");
-  // Disable add market button
-  $(".add_market_button").addClass("btn-default").removeClass("btn-info").attr("disabled", true);
 
-  // Jump to a section
-  // Prevent submission
-  $(window).keydown(function(event){
-    if(event.keyCode == 13) {
-      event.preventDefault();
-      return false;
-    }
-  });
-
-  // Enable and disbale map
-  $('#wizard').bootstrapWizard({
-    tabClass: 'nav nav-pills nav-stacked',
-    onTabChange: function(){    
-      if ($("#form-market-location").hasClass("active"))
-        $("#small-map-container").show();
-      else
-        $("#small-map-container").hide();
-    }
-  });
-
-  // Error is no name is provided
-  $(".simple_form").submit(function(){
-   if( $("#market_name").val().length == 0 ) {
-        $("#error").removeClass("hidden");
-        $("#error").html("Market name cannot be empty");
-        return false;
-    }
-   else{
-      $('#market_date').val(passedDates + collectNewDates());
-      $('#market_schedule').val(passedSchedule + collectNewSchedules());
-      $("#error").html("");
-
-   }
-  });
-
-  // TAGS 
-  
-  var tagApi = jQuery(".tm-input").tagsManager({
-    prefilled: $("#market_tags").val(),
-    delimiters: [9, 13, 44],
-    tagClass: "tm-tag",
-    tagsContainer: '#tags-container'
-  });
-
-  var tags = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    limit: 3, 
-    prefetch: {
-      url: suggested_tags_path,
-      filter: function(list) {  
-        return $.map(list, function(tag) { return { name: tag }; });
-      }
-    }
-  });
-
-  tags.initialize();
-
-  $('.tm-input').typeahead(null, {
-    name: 'tags',
-    displayKey: 'name',
-    hint: true,
-    highlight: true,
-    minLength: 1,
-    source: tags.ttAdapter()
-  });
-
-  initializeAutocomplete('market_city');
-  
-  $('ul.nav a[href="' + window.location.hash + '"]').tab('show');
-
-});
-
-$("#prices-slider").slider( { 
-    range: true,
-    step: 10,
-    max: 1000,
-    min: 0,
-    values: [0, 1000],
-    slide: function(event, ui) {
-      var prices = $('#prices-slider').slider('option', 'values');
-      $('#market_min_price').val(prices[0]);
-      $('#market_max_price').val(prices[1]);
-    },
-    create: function(event, ui) {
-      var prices = $('#prices-slider').slider('option', 'values');
-      $('#market_min_price').val(prices[0]);
-      $('#market_max_price').val(prices[1]);
-    }
-  });
 // ---- LOCATION ----
 
 var initializeAutocomplete = function(input_id) {
@@ -107,10 +13,6 @@ var initializeAutocomplete = function(input_id) {
     updateLocationData();
   });
 };
- $('#market_address').blur(function () {
-    updateLocationData();
-  });
-
 var updateLocationData = function(){
   if(addressAndCityAreFilled()) geocode();
 };
@@ -166,14 +68,7 @@ var addEditableDate = function(day, init, end){
   $('.schedule-end-input').last().val(end);
 }
 
-$("#button-add-date").click(function(){
-  $('#date-schedule-table > tbody:last').append(form_date_template);
-  initializeDatepicker();
-});
 
-$( "table" ).on( "click", ".button-delete-line", function() {
-  $(this).closest('tr').remove();
-});
 
 //----
 var collectNewDates = function(){
@@ -206,3 +101,114 @@ var collectNewSchedules = function(){
   });
   return scheduleArray.join(";");
 };
+
+
+$( document ).ready(function() {
+  $("#wizard").removeClass("hidden");
+  // Disable add market button
+  $(".add_market_button").addClass("btn-default").removeClass("btn-info").attr("disabled", true);
+
+  // Jump to a section
+  // Prevent submission
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+
+  // Enable and disbale map
+  $('#wizard').bootstrapWizard({
+    tabClass: 'nav nav-pills nav-stacked',
+    onTabChange: function(){    
+      if ($("#form-market-location").hasClass("active"))
+        $("#small-map-container").show();
+      else
+        $("#small-map-container").hide();
+    }
+  });
+
+  // Error if no name is provided
+  $(".simple_form").submit(function(){
+   if( $("#market_name").val().length == 0 ) {
+        $("#error").removeClass("hidden");
+        $("#error").html("Market name cannot be empty");
+        return false;
+    }
+   else{
+      $('#market_date').val(passedDates + collectNewDates());
+      $('#market_schedule').val(passedSchedule + collectNewSchedules());
+      $("#error").html("");
+
+   }
+  });
+
+  // TAGS 
+  
+  var tagApi = jQuery(".tm-input").tagsManager({
+    prefilled: $("#market_tags").val(),
+    delimiters: [9, 13, 44],
+    tagClass: "tm-tag",
+    tagsContainer: '#tags-container'
+  });
+
+  var tags = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    limit: 3, 
+    prefetch: {
+      url: suggested_tags_path,
+      filter: function(list) {  
+        return $.map(list, function(tag) { return { name: tag }; });
+      }
+    }
+  });
+
+  tags.initialize();
+
+  $('.tm-input').typeahead(null, {
+    name: 'tags',
+    displayKey: 'name',
+    hint: true,
+    highlight: true,
+    minLength: 1,
+    source: tags.ttAdapter()
+  });
+
+  initializeAutocomplete('market_city');
+ 
+  $("#button-add-date").click(function(){
+    $('#date-schedule-table > tbody:last').append(form_date_template);
+    initializeDatepicker();
+  });
+
+  $( "table" ).on( "click", ".button-delete-line", function() {
+    $(this).closest('tr').remove();
+  });
+
+
+ $('#market_address').blur(function () {
+    updateLocationData();
+  });
+
+  $("#prices-slider").slider( { 
+    range: true,
+    step: 10,
+    max: 1000,
+    min: 0,
+    values: [0, 1000],
+    slide: function(event, ui) {
+      var prices = $('#prices-slider').slider('option', 'values');
+      $('#market_min_price').val(prices[0]);
+      $('#market_max_price').val(prices[1]);
+    },
+    create: function(event, ui) {
+      var prices = $('#prices-slider').slider('option', 'values');
+      $('#market_min_price').val(prices[0]);
+      $('#market_max_price').val(prices[1]);
+    }
+  });
+
+  $('ul.nav a[href="' + window.location.hash + '"]').tab('show');
+
+});

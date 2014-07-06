@@ -102,6 +102,7 @@ class MarketsController < ApplicationController
 
   def new
     @market = domain.initialize_market
+    @market.user = current_user
     @market.pro = true if current_user.is_premium?
     3.times {@market.gallery.photographies << Photo.new}
     9.times {@market.gallery.photographies << Photo.new} if @market.pro?

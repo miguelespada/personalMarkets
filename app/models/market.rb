@@ -389,4 +389,13 @@ class Market
     end
   rescue
   end
+
+  def max_duration
+
+    if belongs_to_premium_user?
+      30
+    else
+      7
+    end
+  end
 end

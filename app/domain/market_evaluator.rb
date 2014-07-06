@@ -71,7 +71,7 @@ class MarketEvaluator
   def within_one_week?(date)
     dates = date.split(',')
     return true if dates.count < 2
-    raise MarketDateException.new "Dates have to be within 7 days."  if (DateTime.parse(dates[-1]) - DateTime.parse(dates[0])).to_i >= 7
+    raise MarketDateException.new "Dates have to be within #{@market.max_duration} days." if (DateTime.parse(dates[-1]) - DateTime.parse(dates[0])).to_i >= @market.  max_duration
   end
 
   def modify_passed_dates?(date, new_date)

@@ -1,5 +1,7 @@
 //= require mapbox
-//= require app
+
+
+var PM = {};
 
 PM.initializeSmallMap = function() {
   var viewLat = DEFAULT_LOCATION.defaultLatitude;
@@ -13,9 +15,11 @@ PM.initializeSmallMap = function() {
 
 PM.setMarker = function(lat, lng){
   try{
+    
     var coords = [parseFloat(lat), parseFloat(lng)];
     PM.addMarker(coords);
     PM.map.setView(coords, 15);
+
   }
   catch (err){
     console.log(err.message);
