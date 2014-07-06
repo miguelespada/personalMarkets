@@ -27,7 +27,7 @@ module ApplicationHelper
 
   def back_link
     content_tag :div, class:"form-group col-md-4 col-md-offset-4 go-back-button-container" do
-      link_to :back do
+      link_to :back, class:"btn btn-default" do
         content_tag(:i, "", :class => "fa fa-reply") + " Go Back"
       end
     end 
@@ -35,7 +35,7 @@ module ApplicationHelper
 
    def before_form_link
     content_tag :div, class:"form-group col-md-4 col-md-offset-4 go-back-button-container" do
-      link_to session[:my_previouse_url] do
+      link_to session[:my_previouse_url], class:"btn btn-primary" do
         content_tag(:i, "", :class => "fa fa-reply") + " Go Back"
       end 
     end 

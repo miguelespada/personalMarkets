@@ -1,8 +1,8 @@
-<div class="home_gallery">
+<div class="home_gallery row">
 
 <% @photos.each do |photo| %>
     <%= content_tag_for(:tr, photo) do %> 
-    <div class="home_gallery_item"> 
+    <div class="home_gallery_item col-md-4"> 
       <div class="home_gallery_featured_photo">
         <%= photo(photo, 300, 150) %>
         <%= edit_photo_link(photo) %>

@@ -1,11 +1,11 @@
 <div class="panel panel-default panel-table" id="market_<%= market.id %>">
     <%= render partial: 'markets/shared/utils/title_and_actions_bar', locals: { market: market } %>
 
-    <div class="market-list-each-container">
+    <div class="market-list-each-container row">
       <div class = "col-md-8">
         <div class="market-list-section-title">Information</div>
         <div class="market-list-section-container">
-          <div class = "market-list-section-container-inner">
+          <div class = "market-list-section-container-inner row">
             <div class = "col-md-4">
               <%= market.market_featured_photo_filtered(200, 100) %>
             </div>

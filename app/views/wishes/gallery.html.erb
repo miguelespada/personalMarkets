@@ -4,7 +4,7 @@
   <%= paginate @wishes %>
 </div>
 
-<div class = "wish_gallery">
+<div class = "wish-gallery row">
   <% @wishes.each do |wish| %>
     <%= render "wishes/show", :wish => wish %>
   <% end %>

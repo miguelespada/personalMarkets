@@ -4,7 +4,7 @@
   <%= paginate @bargains %>
 </div>
 
-<div class = "bargain_gallery">
+<div class = "bargain_gallery row">
   <% @bargains.each do |bargain| %>
     <%= render "bargains/show", :bargain => bargain %>
   <% end %>

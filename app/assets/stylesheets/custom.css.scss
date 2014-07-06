@@ -280,18 +280,13 @@ border-color: #d43f3a;
 //*############################ HOME GALLERY CSS #############################*//
 
 .home_gallery_title{
-  @extend h1;
+  font-size: 32px;
   font-weight: 100;
   text-align: center;
   padding-top: 20px;
 }
 
-.home_gallery{
-  @extend .row;
-}
-
 .home_gallery_item{
-  @extend .col-md-4;
   padding: 15px 0px 15px 0px;
 }
 
@@ -370,7 +365,7 @@ border-color: #d43f3a;
 }
 
 .form-section-title-small{
-  @extend h4;
+  font-size: 18px;
   font-weight: 200;
   text-align: center;
   padding-top: 10px;
@@ -691,7 +686,6 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 }
 
 .market-title-container{
-  @extend .row;
   margin: 0px !important;
 }
 .btn-market-action-bar{
@@ -706,13 +700,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   display:inline;
 }
 
-.market-actions-links > .market-action-icon{
-  @extend .btn;
-  @extend .btn-default;
-}
-
 .market-section-title{
-  @extend .row;
   font-size: 18px;
   line-height: 40px;
   font-weight: 200;
@@ -734,7 +722,6 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 
 
 .market-section-container{
-  @extend .row;
   margin: 0px 15px 15px 15px!important;
   padding: 10px !important;
   background:#FFFFFF;
@@ -815,7 +802,6 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 }
 
 .market-list-section-container-inner{
-  @extend .row;
   margin: 0px !important;
 }
 
@@ -824,7 +810,6 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 }
 
 .market-list-each-container{
-  @extend .row;
   position: relative;
   margin-top: 20px;
 }
@@ -863,11 +848,6 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   margin-top: 10px;
 }
 
-.photo-actions-links > a{
-  @extend .btn;
-  @extend .btn-primary;
-}
-
 .photo-show-panel{
   text-align: center;
 }
@@ -897,13 +877,11 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   height:auto;
 }
 //*############################ BARGAINS CSS #############################*//
-.bargain-gallery{
-  @extend .row;
+.bargain_gallery{
   margin-top: 0px !important;
 }
 
-.bargain-gallery > .container > .container-inner{
-  @extend .row;
+.bargain_gallery > .container > .container-inner{
   margin-top: 0px !important;
 }
 
@@ -974,13 +952,10 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 }
 
 .wish-recommended-item{
-  @extend .col-md-6;
-  @extend .col-md-offset-3;
   @extend .wish-recommend-section-item;
 }
 
 .wish-recommend-item{
-  @extend .col-md-4;
   @extend .wish-recommend-section-item;
 }
 
@@ -992,21 +967,6 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 .wish-recommended-item > img{
   max-width: 80%;
   height:auto;
-}
-
-#recommend_market{
-  text-align: center;
-  margin-bottom: 0px !important;
-}
-
-#recommend_market > select{
-  @extend .form-control;
-}
-
-#recommend_market > input{
-  @extend .btn;
-  @extend .btn-default;
-  margin-top: 10px;
 }
 
 .recommend-control{
@@ -1163,7 +1123,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 
 //*############################ SEARCH PAGE CSS #############################*//
 .search-section-title{
-  @extend h2;
+  font-size: 28px;
   font-weight: 100;
   text-align: center;
   padding-top: 20px;
@@ -1232,7 +1192,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 
 //*############################ NEW MARKET NOT ALLOWED CSS #############################*//
 .creation-not-allowed{
-  @extend h2;
+  font-size: 28px;
   font-weight: 100;
   text-align: center;
   padding: 20px;
@@ -1240,7 +1200,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 
 //*############################ TERMS TITLE CSS #############################*//
 .terms-title{
-  @extend h2;
+  font-size: 28px;
   font-weight: 100;
   text-align: center;
   padding: 20px;
@@ -1267,12 +1227,10 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 
 //*############################ WISH CSS #############################*//
 .wish-gallery{
-  @extend .row;
   margin-top: 0px !important;
 }
 
 .wish-gallery > .container > .container-inner{
-  @extend .row;
   margin-top: 0px !important;
 }
 
@@ -1363,8 +1321,6 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 }
 
 .go-back-button-container > a{
-  @extend .btn;
-  @extend .btn-default;
   width:120px;
   margin-bottom: 0px !important;
 }
@@ -1376,8 +1332,6 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 }
 
 .go-premium-button-container > a{
-  @extend .btn;
-  @extend .btn-info;
   width:120px;
   margin-bottom: 0px !important;
   padding-left: 0px !important;

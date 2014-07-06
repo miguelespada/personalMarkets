@@ -1,6 +1,6 @@
 
 <% markets.each do |market| %>
-  <div class="wish-recommended-item">
+  <div class="wish-recommended-item col-md-6 col-md-offset-3">
   	<div class="pull-left recommend-control">
   		<%= link_to content_tag(:i, "", :class => "fa fa-angle-left fa-3x"), "#", :id=>"prev-markets" if !@first_page %>
   	</div>

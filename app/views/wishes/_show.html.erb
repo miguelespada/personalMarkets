@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="container-inner">
+  <div class="container-inner row">
     <div class="col-md-10 col-md-offset-1">
       <div class="panel panel-default panel-table panel-table-last panel-bargain-show">
         <div class="panel-heading table-title">
@@ -12,7 +12,7 @@
         </div>
           <div class="market-list-section-title">Recommend Market</div>
             <div class="market-list-section-container">
-              <div id ="recommend" class = "market-list-section-container-inner">
+              <div id ="recommend" class = "market-list-section-container-inner row">
               </div>
             <%= hidden_field_tag 'recommend_page', params['recommend_page'] || 1 %>
           </div>
@@ -20,9 +20,9 @@
          <div class="recomendations">
           <div class="market-list-section-title">Recommended</div>
             <div class="market-list-section-container">
-              <div class = "market-list-section-container-inner">
+              <div class = "market-list-section-container-inner row">
                 <% wish.recommended.each do |market| %>
-                  <div class="wish-recommend-item">
+                  <div class="wish-recommend-item col-md-4">
                     <%= photo(market.featured, 200, 100)%><br>
                     <%= market.decorate.formatted_market_name %>
                   </div>
