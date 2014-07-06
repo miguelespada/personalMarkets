@@ -1,7 +1,5 @@
 
 
-var PM = {};
-
 $( document ).ready(function() {
 
     if (window.location.hash && window.location.hash == '#_=_') {

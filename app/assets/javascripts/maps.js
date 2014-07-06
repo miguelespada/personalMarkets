@@ -1,6 +1,6 @@
 //= require mapbox
-//= require app
 
+var PM = {};
 PM.changeTile = function(mapID) {
   PM.map.removeLayer(PM.mapTiles);
   PM.mapTiles = L.mapbox.tileLayer(mapID);
