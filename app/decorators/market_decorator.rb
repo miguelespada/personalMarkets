@@ -273,19 +273,16 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
-  def edit_coupon_link
+  def direct_edit_link(anchor)
     return if market.archived?
-    if market.has_coupon? 
-     if can? :edit, coupon
-      link_to("Edit", edit_user_market_path(market.user, market, :anchor => "form-market-coupon"), 
-        :class => "edit edit-coupon market-action btn btn-default coupon-action-button")
-      end
+    if can? :edit, market
+      link_to("(edit)", edit_user_market_path(market.user, market, :anchor => anchor))
     end
   end
 
   def transactions_link
     if market.has_coupon?
-     if can? :edit, coupon
+     if can? :edit, market
       link_to(content_tag(:i, "", :class => "fa fa-ticket"), sold_coupons_by_market_path(market), 
         :class => "transactions-icon market-action btn btn-default market-action-icon btn-market-action-bar")
       end
