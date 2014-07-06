@@ -244,11 +244,6 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
-  def sold_coupons_link
-    if can? :edit, market 
-      link_to content_tag(:i, "", :class => "fa fa-ticket"), sold_coupons_by_market_path(market), class: "sold-coupons-icon market-action market-action-icon btn btn-default btn-market-action-bar" if market.pro?
-    end
-  end
 
   def publish_link
     return if market.archived?

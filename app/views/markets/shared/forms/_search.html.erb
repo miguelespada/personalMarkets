@@ -3,18 +3,19 @@
     <div class="hidden">
       <%= text_field_tag :query, session[:query] %>
     </div>
+    
+        <li class="form-group hidden">
+          <%= collection_select(:category, :category_id, Category.all, :slug, :slug, 
+            {:include_blank => "All categories", :selected => session[:category]}, 
+            class: "category form-control" ) %>
+        </li>
+
 
     <% if search_or_map_page? %>
         <li class="form-group search-filter-item">
           <%= link_to content_tag(:i, "", :class => "fa fa-refresh"), "#", 
             :class=>  "btn btn-default btn-reset-search", 
             :id=>"reset_search", :title => "Reset search", rel: 'tooltip' %>
-        </li>
-
-        <li class="form-group hidden">
-          <%= collection_select(:category, :category_id, Category.all, :slug, :slug, 
-            {:include_blank => "All categories", :selected => session[:category]}, 
-            class: "category form-control" ) %>
         </li>
 
         <li class="form-group search-filter-item" id="search-range-item">

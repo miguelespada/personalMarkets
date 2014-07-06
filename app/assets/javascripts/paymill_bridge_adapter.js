@@ -22,6 +22,10 @@ $(document).ready(function ($) {
     }
 
     var submitData = function (event) {
+        if( $("#accept_terms").length && !$("#accept_terms").is(":checked")){
+          displayError('You must accept terms and conditions');
+          return false;
+        }
 
         $('#messages').html("");
         $('.get-token').off('click');
@@ -39,7 +43,7 @@ $(document).ready(function ($) {
         }
 
         if ($('#name').val() == '') {
-          displayError('Invalid card holder name');
+            displayError('Invalid card holder name');
             $('.get-token').on('click', submitData);
             return false;
         }

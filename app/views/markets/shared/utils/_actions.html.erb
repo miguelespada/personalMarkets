@@ -5,7 +5,6 @@
 <%= market.delete_link %>
 <%= market.archive_link %>
 <%= market.pro_link %>
-<%= market.sold_coupons_link %>
 <%= market.statistics_link %>
 <%= market.publish_link %>
 <%= market.unpublish_link %>
@@ -21,7 +20,7 @@
     buttonHover(".pro-icon", "fa-plus-square", "Go VIM", 100);
     buttonHover(".sold-coupons-icon", "fa-ticket", "Sold Coupons", 135);
     buttonHover(".statistics-icon", "fa-sitemap", "Statistics", 115);
-    buttonHover(".transactions-icon", "fa-ticket", "Transactions", 130);
+    buttonHover(".transactions-icon", "fa-ticket", "Sold Coupons", 130);
   });
 
   var buttonHover = function(button, icon, text, width){
@@ -29,12 +28,12 @@
       $(this).html("<i class='fa " + icon + "'></i>&nbsp;&nbsp;" + text);
       $(this).animate({
         width: width
-      }, 100);
+      }, 10);
     }, function(){
       $(this).html("<i class='fa " + icon + "'></i>");
       $(this).animate({
         width: "40"
-      }, 100);
+      }, 10);
     });
   };
 </script>
