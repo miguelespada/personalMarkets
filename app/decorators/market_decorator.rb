@@ -1,4 +1,4 @@
-buy_coupon_link "shorturl"
+require "shorturl"
 
 
 class MarketDecorator < Draper::Decorator
