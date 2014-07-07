@@ -1,0 +1,25 @@
+<div class ="bargain_gallery_title">Active Coupons</div>
+
+<div class="paginate">
+  <%= paginate @coupons%>
+</div>
+
+<% @coupons.each do |coupon| %>
+    <% if coupon.active? %>
+      <div class="market-section-container row market-coupon">
+        <div class="row">
+            <div class="col-md-2">  <%= photo(coupon.photography, 200, 100) %> </div>
+            <div class="col-md-2"> 
+                  <%= link_to coupon.market.name, coupon.market %> <br>
+
+                  <strong> Coupon Description: </strong>  <span> <%= coupon.description %> </span> <br>
+                  <strong> Coupon Price: </strong>  <span> <%= coupon.price %> </span> <br>
+                  <strong> Available: </strong> <span> <%= coupon.available %> </span>
+
+                <%= coupon.market.decorate.buy_coupon_link %>
+
+            </div>
+          </div>
+      </div>
+    <% end %>
+  <% end %>

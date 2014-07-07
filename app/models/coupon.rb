@@ -34,4 +34,8 @@ class Coupon
   def empty?
     description == ""
   end 
+
+  def active?
+    !empty? && market.published?
+  end
 end

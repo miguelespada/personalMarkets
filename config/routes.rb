@@ -74,12 +74,15 @@ PopUpStores::Application.routes.draw do
     end
 
     ### Coupons
+    get "/coupons/gallery", to: "coupons#gallery", as: "coupons_gallery"
     resources :coupons, :only => [:show, :index] do
       post :coupon_payment, :on => :member
     end
-    post "/coupons/:id", to: "coupons#buy", as: "buy_coupon"
+
+    post "/coupons/:id/buy", to: "coupons#buy", as: "buy_coupon"
     get "/coupons/:user_id/bought_coupons_by_user", to: "coupons#bought_coupons_by_user", as: "bought_coupons_by_user"
     get "/coupons/:market_id/sold_coupons_by_market", to: "coupons#sold_coupons_by_market", as: "sold_coupons_by_market"
+
     ###
 
     ### Wishes

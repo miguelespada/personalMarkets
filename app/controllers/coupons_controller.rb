@@ -1,12 +1,17 @@
 class CouponsController < ApplicationController
   load_resource :only => [:show, :buy, :coupon_payment]
-  authorize_resource :except => [:show, :bought_coupons_by_user, :sold_coupons_by_market]
+  authorize_resource :except => [:show, :bought_coupons_by_user, :sold_coupons_by_market, :gallery]
   
   def index
     @coupons = Coupon.all
   end
 
   def show
+  end
+
+  def gallery
+    @coupons = Coupon.all.page(params[:page]).per(6)
+    render :layout => !request.xhr?
   end
 
   def coupon_payment
