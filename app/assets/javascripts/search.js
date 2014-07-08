@@ -1,6 +1,6 @@
 //= require moment
 
-var MAPBOX_DEFAULT_STYLE = "dowemarket.ik69hngm";
+var MAPBOX_DEFAULT_STYLE = "dowemarket.indhgaee";
 
 var DEFAULT_LOCATION = {
   defaultLatitude: 40.416775,
