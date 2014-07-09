@@ -5,7 +5,6 @@
 </div>
 
 <% @coupons.each do |coupon| %>
-    <% if coupon.active? %>
       <div class="market-section-container row market-coupon">
         <div class="row">
             <div class="col-md-2">  <%= photo(coupon.photography, 200, 100) %> </div>
@@ -21,5 +20,4 @@
             </div>
           </div>
       </div>
-    <% end %>
   <% end %>

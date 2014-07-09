@@ -10,8 +10,8 @@ class CouponsController < ApplicationController
   end
 
   def gallery
-    @coupons = Coupon.all.page(params[:page]).per(6)
-    render :layout => !request.xhr?
+    @coupons = Coupon.all.collect{|coupon| coupon if coupon.active?}.compact.uniq
+    @coupons = Kaminari.paginate_array(@coupons).page(params[:page]).per(6)
   end
 
   def coupon_payment

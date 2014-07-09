@@ -58,9 +58,6 @@ class MarketsController < ApplicationController
     session[:query] = params[:query]
     if params[:category].present? && params[:category][:category_id] != ""
       session[:category] = params[:category][:category_id] 
-      puts "***" * 20
-      puts session[:category]
-      puts "***" * 20
     end
   end
 
