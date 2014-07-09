@@ -65,7 +65,7 @@ class MarketDecorator < Draper::Decorator
 
   def address_and_city
     if market.address.present? && market.city.present?
-      "<strong>Address: </strong>".html_safe + market.address + "," + market.city 
+      "<strong>".html_safe + t(:Address) + ":</strong> ".html_safe + market.address + "," + market.city 
     else
       "Market location is not provided"
     end

@@ -26,6 +26,10 @@ run <code>rails s</code> to start the application
 
 mongorestore -h oceanic.mongohq.com:10000 -d app21981089  -u user -p password db/example_data.json/pop_up_stores_development/
 
+##Load Database example in Dokku
+
+mongodump --port 49154 -d personalmarkets-production -o test.json -u personalmarkets -p
+
 ##Dump Database example
 
 <code>mongodump -d pop_up_stores_development -o db/example_data.json</code>

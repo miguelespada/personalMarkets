@@ -3,7 +3,7 @@
 
     <div class="market-list-each-container row">
       <div class = "col-md-8">
-        <div class="market-list-section-title">Information</div>
+        <div class="market-list-section-title"><%= t :Information%></div>
         <div class="market-list-section-container">
           <div class = "market-list-section-container-inner row">
             <div class = "col-md-3">
@@ -17,7 +17,7 @@
       </div>
       
       <div class = "col-md-4">
-        <div class="market-list-section-title">Coupon</div>
+        <div class="market-list-section-title"> <%= t :Coupon %></div>
         <div class="market-list-section-container short-view-coupon-section">
           <div class="short-view-coupon-inner">
             <%= render "coupons/shared/short_view_coupon", :market => market %>

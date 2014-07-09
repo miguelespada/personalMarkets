@@ -85,10 +85,16 @@
       $( "#explore_categories" ).append( data );
     });
 
-  	$.get( "/special_locations/list", function( data ) {
-    	$( "#explore_hotspots" ).append( data );
+    $.ajax({url: "/special_locations/list", 
+       data: { language: "<%= params['language'] %>"}
+    }).done(function( data ) {
+  		$( "#explore_hotspots" ).append( data );
   	});
-  	$.get( "/tags/list", function( data ) {
+
+
+    $.ajax({url: "/tags/list", 
+       data: { language: "<%= params['language'] %>"}
+    }).done(function( data ) {
     	$( "#explore_tags" ).append( data );
   	});
 </script>
