@@ -1,8 +1,8 @@
 <div class = "home_gallery category_gallery row">
   <% @categories.each do |category| %>
-      <div class = "home_gallery_item category_gallery_item col-md-4">
+      <div class = "home_gallery_item category_gallery_item col-md-3">
         <div class = "home_gallery_featured_photo category_gallery_featured_photo" data-name="<%= category.slug %>">
-          <%= photo(category.photography, 300, 150) %>
+          <%= photo(category.photography, 250, 125) %>
           <div class = "home_gallery_label category_gallery_label">
             <%= intl_name(category) %>
           </div>
