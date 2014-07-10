@@ -25,5 +25,11 @@
     return false;
   });
 
-  $(":contains(<%= params['tag_name'] %>)").click();
 </script>
+
+
+<% if  params['tag_name'].present? %>
+  <script>
+    $(".tag-link:contains(<%= params['tag_name'] %>)").click();
+  </script>
+<% end %>
