@@ -212,9 +212,9 @@ class MarketDecorator < Draper::Decorator
     return if market.archived?
     if can? :like, market
       if !current_user.favorited?(market)
-        link_to(content_tag(:i, "", :class => "fa fa-thumbs-o-up"), like_path(market), class: "like-icon")
+        link_to(content_tag(:i, "", :class => "fa fa-heart-o"), like_path(market), class: "like-icon")
       else  
-        link_to(content_tag(:i, "", :class => "fa fa-thumbs-up"), unlike_path(market), class: "unlike-icon")
+        link_to(content_tag(:i, "", :class => "fa fa-heart"), unlike_path(market), class: "unlike-icon")
       end
     end
   rescue

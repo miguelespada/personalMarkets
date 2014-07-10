@@ -39,12 +39,12 @@ $(document).ready(function(){
     $(".like-badge").hide();
   $(".like-badge").hover(function(){
     $(this).width(60);
-    $(this).find('.like-icon').html("<i class='fa fa-thumbs-up'></i>&nbsp;&nbsp;Like");
-    $(this).find('.unlike-icon').html("<i class='fa fa-thumbs-o-down'></i>&nbsp;&nbsp;Unlike");
+    $(this).find('.like-icon').html("<i class='fa fa-heart'></i>&nbsp;&nbsp;Like");
+    $(this).find('.unlike-icon').html("<i class='fa fa-times'></i>&nbsp;&nbsp;Unlike");
   }, function(){
     $(this).width(30);
-    $(this).find('.like-icon').html("<i class='fa fa-thumbs-o-up'></i>");
-    $(this).find('.unlike-icon').html("<i class='fa fa-thumbs-up'></i>");
+    $(this).find('.like-icon').html("<i class='fa fa-heart-o'></i>");
+    $(this).find('.unlike-icon').html("<i class='fa fa-heart'></i>");
   });
 });
 </script>
