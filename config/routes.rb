@@ -15,6 +15,7 @@ PopUpStores::Application.routes.draw do
       post :unpublish
       post :archive
       get :make_pro_payment
+      get :poster
       post :make_pro
       post :force_make_pro
 

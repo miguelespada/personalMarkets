@@ -216,6 +216,11 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
+  def poster_link
+    return if market.archived?
+    link_to "Poster", market_poster_path(market), { method: :get, class: "btn btn-info poster market-action" }
+  end
+
   def delete_link
     return if market.archived?
     return if market.has_been_published? && !current_user.has_role?(:admin)

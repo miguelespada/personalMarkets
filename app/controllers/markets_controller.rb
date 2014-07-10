@@ -114,6 +114,10 @@ class MarketsController < ApplicationController
     domain.show_market params[:id]
   end
 
+  def poster
+    @market = Market.find params[:market_id]
+  end
+
   def show_succeeded market
     @market = market
     respond_to do |format|
