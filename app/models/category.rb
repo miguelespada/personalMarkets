@@ -10,11 +10,14 @@ class Category
   field :style, type: String
   field :glyph, type: String
   field :color, type: String
-  
+  field :order, type: Integer
+
+
   has_one :photography, class_name: "Photo", as: :photographic, autobuild: true, dependent: :destroy
   accepts_nested_attributes_for :photography
 
   has_many :markets
+  default_scope ->{ where(:name.ne => "").asc(:order)}
   
   def slug_candidates
     [

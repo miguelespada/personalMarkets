@@ -32,6 +32,9 @@
             <%= f.input :color, input_html: { class: 'category-color colorpicker', placeholder: "Hex color ex. #673423", :required => true } %>
           </div>
           <div class="form-group">
+            <%= f.input :order, input_html: { class: 'category-order', placeholder: "Order", :required => true } %>
+          </div>
+          <div class="form-group">
             <%= f.simple_fields_for :photography do |form_builder| %>
                 <%= render 'photos/form', f: form_builder, required: true %>
             <% end %>

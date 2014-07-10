@@ -12,6 +12,7 @@
       <th>Link</th>
       <th>Map Style</th>
       <th>Market Count</th>
+      <th>Order </th>
       <th>Actions </th>
     </tr>
   
@@ -42,11 +43,15 @@
         </td> 
 
         <td class="col-md-1"> <%= category.markets.count %> </td>
-        <td class="col-md-3"> 
+        <td class="col-md-1"> 
+          <p> <%= category.order %> </p>
+        </td> 
+        <td class="col-md-2"> 
           <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), category_path(category), :method => :delete, class: "delete btn btn-danger table-button table-button-delete", data: { confirm: 'Are you sure?' } %> </span>
           <span> <%= link_to content_tag(:i, "", class: "fa fa-pencil"), edit_category_path(category), class: "edit btn btn-info table-button table-button-edit" %></span>  
           
         </td>
+
       <% end %>
     <% end %>
   </table>
