@@ -22,8 +22,6 @@ class TagsController < ApplicationController
   end
 
   def gallery
-    @suggested = Tag.all
-
     @tags = Market.tags
     render :layout => !request.xhr?
   end
