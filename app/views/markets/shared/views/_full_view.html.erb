@@ -47,13 +47,6 @@
     <div class="market-section-container row social-container facebook-section">
       <%= render partial: 'markets/shared/utils/facebook_comments', locals: { market: market } %>
     </div>
-
-    <div class="market-section-title row"> <%= t :QR_Code %></div>
-    <div class="market-section-container row qr-container">
-      <%= render partial: 'markets/shared/utils/qr_code', locals: { market: market } %>
-    </div>
-  </div>
-  
     <%= market.market_quality_section %>
 </div>
 
