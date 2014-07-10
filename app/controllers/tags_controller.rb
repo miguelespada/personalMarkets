@@ -17,12 +17,13 @@ class TagsController < ApplicationController
   end
 
   def list
-    @suggested = Tag.all
+    @suggested = Tag.all.collect{|tag| tag if tag.has_markets?}.compact.uniq.take(6)
     render :layout => !request.xhr?
   end
 
   def gallery
     @suggested = Tag.all
+
     @tags = Market.tags
     render :layout => !request.xhr?
   end
