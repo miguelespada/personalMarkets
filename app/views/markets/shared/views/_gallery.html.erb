@@ -21,7 +21,7 @@
             <span><%= market.description %></span>
           </div>
           <% end %>
-          <span class="like-badge <%= market.like_class %>"><%= market.like_link %></span>
+          <span class="like-badge <%= market.like_class %>"><%= market.like_badge_link %></span>
         </div> 
 
         <div class="market-gallery-extra">
@@ -39,8 +39,12 @@ $(document).ready(function(){
     $(".like-badge").hide();
   $(".like-badge").hover(function(){
     $(this).width(60);
+    $(this).find('.like-icon').html("<i class='fa fa-thumbs-up'></i>&nbsp;&nbsp;Like");
+    $(this).find('.unlike-icon').html("<i class='fa fa-thumbs-o-down'></i>&nbsp;&nbsp;Unlike");
   }, function(){
     $(this).width(30);
+    $(this).find('.like-icon').html("<i class='fa fa-thumbs-o-up'></i>");
+    $(this).find('.unlike-icon').html("<i class='fa fa-thumbs-up'></i>");
   });
 });
 </script>

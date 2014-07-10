@@ -553,16 +553,16 @@ border-color: #d43f3a;
   color: #FFFFFF !important;
 }
 
-.like-badge:hover > .like-icon :after{
-  content: " Like";
+.like-badge:hover > .like-icon{
+  text-decoration: none;
 }
 
 .like-badge > .unlike-icon{
   color: #FFFFFF !important;
 }
 
-.like-badge:hover > .unlike-icon :after{
-  content: " Unlike";
+.like-badge:hover > .unlike-icon{
+  text-decoration: none;
 }
 
 //*############################ SPECIAL NAVBAR CSS #############################*//

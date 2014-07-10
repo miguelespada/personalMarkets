@@ -208,6 +208,18 @@ class MarketDecorator < Draper::Decorator
   rescue
   end
 
+  def like_badge_link
+    return if market.archived?
+    if can? :like, market
+      if !current_user.favorited?(market)
+        link_to(content_tag(:i, "", :class => "fa fa-thumbs-o-up"), like_path(market), class: "like-icon")
+      else  
+        link_to(content_tag(:i, "", :class => "fa fa-thumbs-up"), unlike_path(market), class: "unlike-icon")
+      end
+    end
+  rescue
+  end
+
   def edit_link
     return if market.archived?
     if can? :edit, market 
