@@ -1,5 +1,5 @@
 <div class="market-section-title row"> <%= t :Gallery %> <%= market.direct_edit_link("form-market-photos") %></div>
-<row>
+<div class="market-section-container row">
   <% market.gallery.photographies.each do |photo| %>
   <div class = "home_gallery_item col-md-4">
     <div class = "home_gallery_featured_photo">
@@ -8,4 +8,4 @@
     </div>
   </div>
   <% end %>
-</row>
+</div>
