@@ -1,0 +1,18 @@
+<div class = "coupon_item col-md-4">
+  <div class = "show gallery_coupon_photo">
+  <%= link_to coupon.market do %>
+    <%= photo(coupon.photography, 300, 150) %>
+
+    <div class = "home_gallery_label">
+      <span><%= coupon.market.name %></span>
+    </div>
+    <% end %>
+  </div> 
+
+  <div class="coupon-gallery-extra">
+    <strong> Coupon Description: </strong>  <span> <%= coupon.description %> </span> <br>
+    <strong> Coupon Price: </strong>  <span> <%= coupon.price %> </span> <br>
+    <strong> Available: </strong> <span> <%= coupon.available %> </span> <br>
+    <%= coupon.market.decorate.buy_coupon_link %>
+  </div>
+</div>
