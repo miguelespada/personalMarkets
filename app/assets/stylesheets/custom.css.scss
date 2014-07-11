@@ -1187,10 +1187,8 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 
 #search-category-buttons{
   opacity:0.85;
-}
-
-#search-category-buttons{
   position:fixed;
+  z-index:5;
   top:0%;
   left:100%;
   margin-top: 110px;
