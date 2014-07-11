@@ -81,4 +81,8 @@ en:
     #   defaults:
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'
-
+  market_archive: "This market is archived (this accion is not reversible)."
+  market_private: "This market is not public. Publish it or edit it to add more content"
+  market_private_required: "This market is not public. Edit it to add the required fields"
+  market_old:  "This market is public but has passed."
+  market_public: "This market is public. Edit it to improve your market quality "
