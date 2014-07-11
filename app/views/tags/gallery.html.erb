@@ -1,12 +1,23 @@
 
+
 <div class="panel panel-default panel-table">
   <div class="panel-heading table-title">
   Tags
   </div>
+
   <div class="panel-body tags-panel-container">
-		<%= render "tags_link", :tags => @tags %> 
-	</div>
+    <% @suggested.each do |tag| %>
+        <div class="col-md-2"> <%= link_to(tag.name, tag_markets_path(tag.name), class: "tag-link") %> </div>
+        <% @tags.delete(tag.name) %>
+    <% end %>
+      
+      <% @tags.each do |name| %> 
+        <div class="col-md-2">  <%= link_to(name, tag_markets_path(name), class: "tag-link") %> </div>
+      <% end %>
+
+  </div>
 </div>
+
 
 <div id="gallery-items"></div>
 
