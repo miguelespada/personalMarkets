@@ -1438,6 +1438,11 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   top:51px;
 }
 
+#beta-badge-text>a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 .beta-badge {
   font: bold 12px Sans-Serif;
   letter-spacing: -0.1em;
