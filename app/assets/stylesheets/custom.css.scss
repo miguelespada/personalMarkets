@@ -988,25 +988,44 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 //*############################ MAP BUTTON CSS #############################*//
 
 .theme{
-  text-align: center;
+  text-align: left;
   text-shadow: none;
 }
 
-.theme-selected.theme-styled{
-  color:#FFFFFF !important;
+.theme-selected{
+  color:#1A89EB !important;
+  background-color:#DDDDDD !important; 
 }
 
-.theme-selected.btn-all-categories{
-  color:#1A89EB !important;
+.btn-category{
+  height:32px;
+}
+
+.btn-category > i{
+  position: relative;
+  width:15px;
+  margin-top:-1px;
+}
+
+.btn-category > span{
+  position: absolute;
+  margin-left:15px;
+  margin-top:-2px;
 }
 
 .category-theme-button:hover{
-  color:#FFFFFF !important;
-  text-shadow: 1px 1px 5px #777777;
+  text-shadow: 1px 1px 3px #999999;
+  background-color:#DDDDDD !important; 
+  border-top: none !important;
 }
 
 .btn-all-categories:hover{
   text-shadow: 1px 1px 3px #999999;
+  background-color:#DDDDDD !important;
+}
+
+.category-theme-button{
+  border-top: 1px solid #DDDDDD;
 }
 
 #map_theme_buttons{
@@ -1175,8 +1194,8 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   top:0%;
   left:100%;
   margin-top: 110px;
-  margin-left: -195px;
-  width:180px;
+  margin-left: -265px;
+  width:250px;
   border:1px solid #999999;
   border-radius:5px;
 }
