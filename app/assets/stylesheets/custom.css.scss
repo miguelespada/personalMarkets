@@ -985,6 +985,13 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   text-align: justify;
 }
 
+.tag-link{
+  color:#AAA;
+}
+.tag-link.active{
+  color:#000;
+}
+
 //*############################ MAP BUTTON CSS #############################*//
 
 .theme{
