@@ -11,7 +11,8 @@ class Category
   field :glyph, type: String
   field :color, type: String
   field :order, type: Integer
-
+  has_attachment  :glyph_img, accept: [:png]
+  accepts_nested_attributes_for :glyph_img
 
   has_one :photography, class_name: "Photo", as: :photographic, autobuild: true, dependent: :destroy
   accepts_nested_attributes_for :photography

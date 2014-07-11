@@ -29,6 +29,7 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+    @category.glyph_img ||= Photo.new
   end
 
   def create
@@ -68,6 +69,7 @@ class CategoriesController < ApplicationController
 
   private
     def category_params
-      params.require(:category).permit(:name, :english, :style, :order, :glyph, :color, photography_attributes: [:photo])
+      params.require(:category).permit(:name, :english, :style, :order, :glyph, :color, :glyph_img,
+                    photography_attributes: [:photo])
     end
 end

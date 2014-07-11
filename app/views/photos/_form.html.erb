@@ -1,8 +1,8 @@
 <%= javascript_include_tag "attachinary" %>
 
-
 <% required ||= false %>
-<%= f.input :photo, as: :attachinary, required: required, label_html: { class: 'limited' } %>
+<%= f.input :photo, as: :attachinary, required: required %>
+
 <script>
 $( document ).ready(function() {
   $('.attachinary-input').attachinary();
@@ -11,6 +11,5 @@ $( document ).ready(function() {
 
   // data.transformation = "c_limit,h_100,w_100";
   // $('.attachinary-input').attr("data-form-data", JSON.stringify(data));
-
 });
 </script>

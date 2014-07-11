@@ -35,9 +35,15 @@
             <%= f.input :order, input_html: { class: 'category-order', placeholder: "Order", :required => true } %>
           </div>
           <div class="form-group">
+            <p>Image (300 x 150 px)</p>
             <%= f.simple_fields_for :photography do |form_builder| %>
                 <%= render 'photos/form', f: form_builder, required: true %>
             <% end %>
+          </div>
+
+          <div class="form-group">
+            <p>Icon.png (42 x 42 px)</p>
+            <%= f.input :glyph_img, as: :attachinary %>
           </div>
 
           <div class="form-group col-md-4 col-md-offset-4">

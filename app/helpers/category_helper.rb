@@ -10,6 +10,7 @@ module CategoryHelper
         </i> <span>#{intl_name(category)}</span>
     </button> ".html_safe
   end
+
   
   def all_categories_button
       "<button type='button' 

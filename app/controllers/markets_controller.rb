@@ -14,7 +14,7 @@ class MarketsController < ApplicationController
   end
 
   def list_category_markets
-    @markets = Market.with_category(load_category).page(params[:page]).per(3)
+    @markets = Market.published.with_category(load_category).page(params[:page]).per(3)
     render 'index'
   end
 
@@ -23,7 +23,7 @@ class MarketsController < ApplicationController
   end
   
   def list_tag_markets
-    @markets = Market.tagged_with(params[:tag]).page(params[:page]).per(3)
+    @markets = Market.published.tagged_with(params[:tag]).page(params[:page]).per(3)
     render :layout => !request.xhr?
   end
 
