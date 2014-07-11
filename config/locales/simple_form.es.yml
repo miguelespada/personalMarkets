@@ -33,6 +33,7 @@ es:
   "Social link": "Enlaces social"
   "Contact us": "Contáctanos"
   maps: "Mapas"
+  Map: "Mapa"
   all_markets: "Todos los Mercados"
   all_wishes: "Todos los Deseos"
   bargains: "Gangas"
@@ -61,6 +62,8 @@ es:
   QR_Code: "Código QR"
   Information: "Información"
   Published_Markets: "Mercados públicos"
+  Explore: "Explorar"  
+  Search: "Buscar"
   simple_form:
     "yes": 'Si'
     "no": 'No'

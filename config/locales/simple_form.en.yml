@@ -38,7 +38,11 @@ en:
   no_matches: "Oops... There're no markets matching your query."
   Custom_location: "Custom location"
   to: "to"
-  comments_and_share: Comments & Share
+  comments_and_share: "Comments & Share"
+  Map: "Map"
+  Explore: "Explore"
+  Search: "Search"
+
   simple_form:
     "yes": 'Yes'
     "no": 'No'
