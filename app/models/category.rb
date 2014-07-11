@@ -9,7 +9,6 @@ class Category
   field :english, type: String
   field :style, type: String
   field :glyph, type: String
-  field :color, type: String
   field :order, type: Integer
   has_attachment  :glyph_img, accept: [:png]
   accepts_nested_attributes_for :glyph_img
@@ -29,6 +28,10 @@ class Category
   def destroy
     return false if markets_in_category?
     self.delete
+  end
+
+  def color
+    "#FFFFFF"
   end
 
   private
