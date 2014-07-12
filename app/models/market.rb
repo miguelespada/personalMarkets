@@ -140,6 +140,22 @@ class Market
     self.social_link?
   end
 
+  def path_to_social_link
+    if !social_link.include?("http://") 
+      "http://" + social_link
+    else
+      social_link
+    end
+  end
+
+  def path_to_url
+    if !url.include?("http://") 
+      "http://" + url
+    else
+      url
+    end
+  end
+
   def has_name?
     self.name?
   end

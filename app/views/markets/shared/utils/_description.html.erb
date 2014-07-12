@@ -20,12 +20,12 @@
 
 
   <% if market.has_url? %>
-  <strong> <%= t "External url" %></strong> <%= market.direct_edit_link("form-market-external-url") %>: <a href="<%=  market.url %>" target="_blank"><%=  market.url %></a> <br>
+  <strong> <%= t "External url" %></strong> <%= market.direct_edit_link("form-market-external-url") %>: <a href="<%=  market.path_to_url %>" target="_blank"><%=  market.url %></a> <br>
   <% end %>
 
 
   <% if market.has_social? %>
-  <strong> <%= t "Social link" %></strong> <%= market.direct_edit_link("form-market-external-url") %>:   <a href="<%=  market.social_link %>" target="_blank"><%=  market.social_link %></a> <br>
+  <strong> <%= t "Social link" %></strong> <%= market.direct_edit_link("form-market-external-url") %>:   <a class="user-url" href="<%=  market.path_to_social_link %>" target="_blank"><%=  market.social_link %></a> <br>
   <% end %>
 
 
@@ -60,6 +60,8 @@
         valArray = val.split(",");
         scheduleItems[i] = valArray[0]+", "+valArray[1]+" to "+valArray[2];
     });
-      $(".market-schedule-detail").html(scheduleItems.join("<br>"));
+    $(".market-schedule-detail").html(scheduleItems.join("<br>"));
   });
+}
+
 </script>

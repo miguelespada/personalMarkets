@@ -112,7 +112,8 @@ class QualityRule
       generic_for_recommended field, market
     end,
     "extra_photos" => lambda do |field, market|
-      generic_for_recommended field, market
+      return {"value" => "regular", "msg" => I18n.t(:better_slideshow)} if market.how_many_photos < 6
+      return {"value" => "good", "msg" => I18n.t(:awesome)}
     end,
     "prices" => lambda do |field, market|
       return {"value" => "regular", "msg" => I18n.t(:recommended)} unless market.has_prices?

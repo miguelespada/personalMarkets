@@ -1,11 +1,13 @@
 <div class="market-section-title row"> <%= t :Gallery %> <%= market.direct_edit_link("form-market-photos") %></div>
 <div class="market-section-container row">
   <% market.gallery.photographies.each do |photo| %>
-  <div class = "home_gallery_item col-md-4">
-    <div class = "home_gallery_featured_photo">
-      <%= photo(photo, 300, 150) if photo.present? %>
-      <%= edit_photo_link(photo) %>
+  <% if photo.present? %>
+    <div class = "home_gallery_item col-md-4">
+      <div class = "home_gallery_featured_photo">
+        <%= photo(photo, 300, 150) %>
+        <%= edit_photo_link(photo) %>
+      </div>
     </div>
-  </div>
+  <% end %>
   <% end %>
 </div>
