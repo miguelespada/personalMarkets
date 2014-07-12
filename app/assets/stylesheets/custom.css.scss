@@ -1575,9 +1575,15 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 .market-poster-title{
   text-align: center;
   font-size: 32px;
+  line-height:50px;
   border-bottom: 1px solid #CCCCCC;
   margin-bottom: 10px;
   padding-bottom: 10px;
+}
+
+.poster-title-icon{
+  width:auto;
+  height:50px;
 }
 
 .market-poster-name{
