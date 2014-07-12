@@ -10,9 +10,7 @@
   </div> 
 
   <div class="coupon-gallery-extra">
-    <strong> Coupon Description: </strong>  <span> <%= coupon.description %> </span> <br>
-    <strong> Coupon Price: </strong>  <span> <%= coupon.price %> </span> <br>
-    <strong> Available: </strong> <span> <%= coupon.available %> </span> <br>
+    <%= render partial: "coupons/shared/description", locals: {coupon: coupon } %>
     <%= coupon.market.decorate.buy_coupon_link %>
   </div>
 </div>

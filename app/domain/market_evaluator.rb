@@ -109,7 +109,7 @@ class QualityRule
       generic_for_recommended field, market
     end,
     "coupon" => lambda do |field, market|
-      generic_for_recommended field, market
+      coupon_quality field, market
     end,
     "extra_photos" => lambda do |field, market|
       return {"value" => "regular", "msg" => I18n.t(:better_slideshow)} if market.how_many_photos < 6
@@ -140,8 +140,21 @@ class QualityRule
 
   def self.generic_for_recommended field, market
     if market.pro?
-      unless market.send("has_" + field + "?")
+      unless market.send("has_" + field + "?") 
         return {"value" => "regular", "msg" => I18n.t(:recommended)}
+      else
+        return {"value" => "good", "msg" => I18n.t(:awesome)}
+      end
+    else
+      return {"value" => "regular", "msg" => I18n.t(:update_vim)}
+    end
+  end
+
+  def self.coupon_quality field, market
+    if market.pro?
+      unless market.send("has_" + field + "?")
+        return {"value" => "bad", "msg" => I18n.t(:coupon_required_fields)} if market.coupon_initialized?
+        return {"value" => "regular", "msg" => I18n.t(:coupon_recommended)}
       else
         return {"value" => "good", "msg" => I18n.t(:awesome)}
       end

@@ -5,14 +5,14 @@
         <div class="plan col-md-4 col-md-offset-4 coupon-form-inner">
           <div class="coupon-style">
             <h2><%= photo(coupon.photography, 200, 100) %></h2>
-            <span><strong> Coupon Price: </span>  <span> <%= coupon.price %> € </strong></span> 
+            <span><strong> <%= t :Price %>: </span> </strong> <span> <%= coupon.price %> € </strong>
           </div>
           <ul>
 
             <li class="hidden plan-feature"><span> Coupon owner: </span> <span> <%= coupon.market.user.email %> </span></li>
-            <li class="plan-feature"><span> <%= link_to coupon.market.name, market_path(coupon.market) %> </span></li>
-            <li class="plan-feature"><span> <%= coupon.description %> </span></li>
-            <li class="plan-feature"><span> Available</span> <span> <%= coupon.available %> </span></li>
+            <li class="plan-feature"><span> <strong><%= t :Market %>:</strong> <%= link_to coupon.market.name, market_path(coupon.market) %> </span></li>
+            <li class="plan-feature"><span><strong> <%= t :Description %>:</strong> <%= coupon.description %> </span></li>
+            <li class="plan-feature"><span> <strong><%= t :Available %>:</strong></span> <span> <%= coupon.available %> </span></li>
             <li class="plan-feature">
             <%= render "buy_coupon_form", :coupon => @coupon %>
             </li>

@@ -1,7 +1,7 @@
-<div class="market-section-title row">Coupon <%= market.direct_edit_link("form-market-coupon") %></div>
+<div class="market-section-title row"><%= t :Coupon %> <%= market.direct_edit_link("form-market-coupon") %></div>
 <div class="market-section-container row market-coupon">
   <div class="row">
-      <div class="col-md-6">  <%= photo(market.coupon.photography, 400, 200) %> </div>
+      <div class="col-md-4 col-md-offset-2">  <%= photo(market.coupon.photography, 400, 200) %> </div>
       <div class="col-md-6"> 
         <%= render partial: "coupons/coupon", locals: {coupon: market.coupon } %>
         <%= market.buy_coupon_link %>

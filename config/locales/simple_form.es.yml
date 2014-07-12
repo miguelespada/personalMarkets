@@ -123,3 +123,7 @@ es:
   recommend_slideshow: "Recuerda que puedes añadir una galería de fotos."
   Market_name_cannot_be_empty: "El nombre del mercado es obligatorio"
   "Extra Photos": "Fotos extra"
+  coupon_recommended: "Puedes crear un cupón para ofrecer servicios extra en tu mercado"
+  coupon_required_fields: "Debes rellenar todos los datos del cupón"
+  Available: "Número disponible"
+  Price: "Precio"
