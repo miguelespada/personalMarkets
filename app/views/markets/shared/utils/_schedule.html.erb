@@ -1,4 +1,4 @@
-<strong> <%= t "Schedule" %>  <span class:"market-schedule-string"> </strong> <span class="schedule-edit-link"><%= market.direct_edit_link("form-market-date") %></span>:</span><br>
+
 <% prevDate = nil %>
 <% market.human_readable_schedule.each do |day| %>
     <% if prevDate && prevDate == day["date"] %>

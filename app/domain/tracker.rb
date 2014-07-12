@@ -5,7 +5,7 @@ module Tracker
   end
 
   def self.market_visit market_id, visitor
-    Keen.publish_async(:market_visit, { :market_id => market_id, :who => visitor })
+    Keen.publish_async(:market_visit, { :market_id => market_id, :who => visitor.email })
   end
 
 end

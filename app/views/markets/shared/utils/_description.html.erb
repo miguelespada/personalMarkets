@@ -37,6 +37,7 @@
 
 
 <div class="col-md-6">
+  <strong> <%= t "Schedule" %>  <span class:"market-schedule-string"> </strong> <span class="schedule-edit-link"><%= market.direct_edit_link("form-market-date") %></span>:</span><br>
   <%= render partial: 'markets/shared/utils/schedule', locals: { market: market } %>
 </div>
 
