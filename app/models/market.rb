@@ -219,6 +219,10 @@ class Market
     self.schedule?
   end
 
+  def has_extra_photos?
+    false
+  end
+
   def has_coupon?
     coupon != nil && coupon.description!= nil && coupon.available != nil && coupon.price != nil
   end

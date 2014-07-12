@@ -1,7 +1,7 @@
 class MarketEvaluator
   REQUIRED = ["name", "description", "category", "featured", "location", "schedule"]
   RECOMMENDED = ["tags", "prices", "slideshow"]
-  PRO_RECOMMENDED = ["coupon", "url", "social", "gallery"]
+  PRO_RECOMMENDED = ["coupon", "url", "social", "extra_photos"]
 
   def initialize market
     @market = market
@@ -109,6 +109,9 @@ class QualityRule
       generic_for_recommended field, market
     end,
     "coupon" => lambda do |field, market|
+      generic_for_recommended field, market
+    end,
+    "extra_photos" => lambda do |field, market|
       generic_for_recommended field, market
     end,
     "prices" => lambda do |field, market|
