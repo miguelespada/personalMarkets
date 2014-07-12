@@ -3,7 +3,9 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default panel-table panel-table-last" id="market_<%= market.id %>">
     <%= render partial: 'markets/shared/utils/poster_title', locals: { market: market } %>
-
+      <p class="center market-owner-detail ">
+       <%= market.owner %> 
+      </p>
     <div class="market-poster-container row">
       <div class="market-list-section-title"> <%= t :QR_Code %></div>
       <div class="market-list-section-container short-view-coupon-section">
@@ -12,10 +14,9 @@
         </div>
       </div>
 
-      <div class="market-list-section-title"><%= t :Information%></div>
+      <div class="market-list-section-title"><%= t :Schedule%></div>
       <div class="market-list-section-container short-view-coupon-section">
         <div class="short-view-coupon-inner poster-info-inner">
-          <strong> <%= t :Owner %> </strong>: <%= market.owner %> <br>
           <%= render partial: 'markets/shared/utils/schedule', locals: { market: market } %>
         </div>
       </div>
@@ -28,9 +29,3 @@
     </div>
   </div>
 </div>
-
-<style>
-.schedule-edit-link{
-  display: none;
-}
-</style>
