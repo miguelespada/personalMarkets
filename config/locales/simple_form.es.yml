@@ -127,3 +127,6 @@ es:
   coupon_required_fields: "Debes rellenar todos los datos del cupón"
   Available: "Número disponible"
   Price: "Precio"
+  shopping_details: "Detalles de tu compra"
+  Number_of_coupons: "Numero de cupones"
+  Total: "Precio total"

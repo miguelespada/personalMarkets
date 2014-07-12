@@ -8,7 +8,6 @@
             <span><strong> <%= t :Price %>: </span> </strong> <span> <%= coupon.price %> € </strong>
           </div>
           <ul>
-
             <li class="hidden plan-feature"><span> Coupon owner: </span> <span> <%= coupon.market.user.email %> </span></li>
             <li class="plan-feature"><span> <strong><%= t :Market %>:</strong> <%= link_to coupon.market.name, market_path(coupon.market) %> </span></li>
             <li class="plan-feature"><span><strong> <%= t :Description %>:</strong> <%= coupon.description %> </span></li>

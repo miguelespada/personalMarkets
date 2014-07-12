@@ -2,6 +2,15 @@
 
 <div class="container">
   <div class="row">
+
+    <div class="col-md-8 col-md-offset-2">
+      <h4> <%= t :shopping_details %>:</h4>
+      <strong> <%= t :Description %>: </strong>  <span> <%= coupon_payment.coupon.description %> </span> <br>
+      <strong> <%= t :Price %>: </strong>  <span> <%= coupon_payment.coupon.price %> - € </span> <br>
+      <strong> <%= t :Number_of_coupons %>: </strong>  <span> <%= coupon_payment.quantity %> </span> <br>
+      <strong>  <%= t :Total %>: </strong>  <span> <%= coupon_payment.coupon.price *  coupon_payment.quantity %> - € </span> <br> <br>
+      
+    </div>
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -26,3 +35,5 @@
   </div>
 </div>
 
+
+<%=  back_link %>
