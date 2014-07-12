@@ -1,5 +1,5 @@
 class MarketEvaluator
-  REQUIRED = ["name", "description", "featured", "location", "schedule"]
+  REQUIRED = ["name", "description", "category", "featured", "location", "schedule"]
   RECOMMENDED = ["tags", "prices", "slideshow"]
   PRO_RECOMMENDED = ["coupon", "url", "gallery"]
 
@@ -109,8 +109,9 @@ class QualityRule
       generic_for_recommended field, market
     end,
     "prices" => lambda do |field, market|
-      generic_quality field, market
-    end
+      return {"value" => "regular", "msg" => I18n.t(:recommended)} unless market.has_prices?
+      return {"value" => "good", "msg" => I18n.t(:awesome)}
+    end,
   }
 
   def self.for field, market

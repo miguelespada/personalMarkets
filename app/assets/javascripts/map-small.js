@@ -6,6 +6,7 @@ var PM = {};
 PM.initializeSmallMap = function() {
   var viewLat = DEFAULT_LOCATION.defaultLatitude;
   var viewLng = DEFAULT_LOCATION.defaultLongitude;
+
   PM.map = L.mapbox.map('map-small').setView([viewLat, viewLng], 14);
 
   PM.map.scrollWheelZoom.disable();
@@ -15,11 +16,9 @@ PM.initializeSmallMap = function() {
 
 PM.setMarker = function(lat, lng){
   try{
-    
     var coords = [parseFloat(lat), parseFloat(lng)];
     PM.addMarker(coords);
-    PM.map.setView(coords, 15);
-
+    PM.map.setView(coords);
   }
   catch (err){
     console.log(err.message);
@@ -31,7 +30,6 @@ PM._coordinatesSet = function(latitude, longitude) {
 };
 
 PM.addMarker = function (latlng){
-
   PM.marker = L.marker(latlng,{
     icon: L.mapbox.marker.icon(
       {'marker-color': '#48a',
@@ -47,7 +45,6 @@ PM.checkAndSetMarker = function(lat, lng){
     PM.setMarker(lat, lng);
   }
   else{
-
     PM.map.setView([DEFAULT_LOCATION.defaultLatitude, DEFAULT_LOCATION.defaultLongitude], 14);
   }
 };

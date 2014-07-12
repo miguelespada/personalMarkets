@@ -88,7 +88,7 @@
               Elige la categoría y las tags que mejor se ajuste a tu market.<br><i class="fa fa-arrow-circle-right"></i> Elige buenas tags y seguro que apareces más a menudo en las búsquedas. </div>
           </div>
         </div>
-        <%= f.association :category, :include_blank => false %>
+        <%= f.association :category, :include_blank => true %>
         <%= f.input :tags, input_html: { class: 'tm-input' } %>
         <p id="tags-container"></p>
       </div>
