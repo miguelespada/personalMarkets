@@ -128,6 +128,10 @@ class Market
     (self.min_price? && self.min_price > 0) || (self.max_price? && self.max_price < 1000)
   end
 
+  def has_slideshow?
+    true
+  end
+
   def has_url?
     self.url?
   end

@@ -1,20 +1,20 @@
 <% if can?(:manage, market) %>
   <%= stylesheet_link_tag 'market-quality'%>
 
-  <div id="market-quality" class="market-section-title row">Market quality</div>
+  <div id="market-quality" class="market-section-title row"><%= t :Market_quality %>
+    <h6><%= t :private_section %></h6>
+  </div>
   <div class="market-section-container row">
     <div class="quality-section">
-      <div class="row">
         <% market.market_quality do |field, quality| %>
-            <div class="col-md-3 quality-line quality-title-<%= quality["value"] %>">
+            <div class="col-md-3  col-sm-offset-3 quality-line quality-title-<%= quality["value"] %>">
               <span class="quality-item quality-item-<%= quality["value"] %>"></span>
-              &nbsp;&nbsp;<%= field.titleize %>
+              &nbsp;&nbsp;<%= t(field.titleize) %>
             </div>
-            <div class="col-md-9 quality-detail-line quality-line-<%= quality["value"] %>">
+            <div class="col-md-6 quality-detail-line quality-line-<%= quality["value"] %>">
               <span><%= quality["msg"] %></span>
             </div>
         <% end %>
       </div>
-    </div>
   </div>
 <% end %>

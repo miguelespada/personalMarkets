@@ -136,26 +136,7 @@ $( document ).ready(function() {
     }
   });
 
-  // Error if no name is provided
-  $(".simple_form").submit(function(){
-   if( $("#market_name").val().length == 0 ) {
-        $("#error").removeClass("hidden");
-        $("#error").html("Market name cannot be empty");
-        return false;
-    }
-   else{
-      try{
-        var dates = collectNewDates();
-        $('#market_date').val(passedDates + serializeDates(dates));
-        $('#market_schedule').val(passedSchedule + serializeSchedules(dates));
-        $("#error").html("");
-
-      } catch(em){
-        console.log(em);
-
-      } ;
-   }
-  });
+ 
 
   // TAGS 
   

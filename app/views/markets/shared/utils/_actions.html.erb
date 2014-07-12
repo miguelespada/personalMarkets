@@ -37,4 +37,13 @@
       }, 10);
     });
   };
+
+  $(".archive-icon").click(function(){
+    
+    confirm("<%= t :action_not_reversible %>");
+  });
+
+  $(".delete-icon").click(function(){
+    confirm("<%= t :action_not_reversible %>");
+  });
 </script>
