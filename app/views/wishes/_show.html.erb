@@ -23,7 +23,9 @@
               <div class = "market-list-section-container-inner row">
                 <% wish.recommended.each do |market| %>
                   <div class="wish-recommend-item col-md-4">
-                    <%= photo(market.featured, 200, 100)%><br>
+                    <%= link_to market do %>
+                      <%= photo(market.featured, 200, 100)%><br>
+                    <% end %>
                     <%= market.decorate.formatted_market_name %>
                   </div>
                 <% end %>
