@@ -21,6 +21,7 @@ class Coupon
     transaction.user = user
     transaction.coupon = self
     transaction.number = number
+    transaction.client_token = rand(36**8).to_s(36)
     transaction.paymill_transaction_id = paymill_transaction_id
     transaction.save
     self.available -= number
