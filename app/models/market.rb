@@ -129,11 +129,15 @@ class Market
   end
 
   def has_slideshow?
-    true
+    has_photos?
   end
 
   def has_url?
     self.url?
+  end
+
+  def has_social?
+    self.social_link?
   end
 
   def has_name?

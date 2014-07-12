@@ -15,8 +15,16 @@
   <strong> <%= t :Address %> </strong><%= market.direct_edit_link("form-market-location") %>: <%= market.address %>, <%= market.city %> <br>
   <!-- <strong> Date: </strong> <%= market.date %> <br> -->
 
+
+  <% if market.has_url? %>
   <strong> <%= t "External url" %></strong> <%= market.direct_edit_link("form-market-external-url") %>: <a href="<%=  market.url %>" target="_blank"><%=  market.url %></a> <br>
+  <% end %>
+
+
+  <% if market.has_social? %>
   <strong> <%= t "Social link" %></strong> <%= market.direct_edit_link("form-market-external-url") %>:   <a href="<%=  market.social_link %>" target="_blank"><%=  market.social_link %></a> <br>
+  <% end %>
+
 
   <div class="hidden">
     <%= market.latitude %>

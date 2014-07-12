@@ -1,7 +1,7 @@
 class MarketEvaluator
   REQUIRED = ["name", "description", "category", "featured", "location", "schedule"]
   RECOMMENDED = ["tags", "prices", "slideshow"]
-  PRO_RECOMMENDED = ["coupon", "url", "gallery"]
+  PRO_RECOMMENDED = ["coupon", "url", "social", "gallery"]
 
   def initialize market
     @market = market
@@ -97,12 +97,15 @@ class QualityRule
       return {"value" => "regular", "msg" => I18n.t(:better_tags)} if market.tags_array.size < 3
       return {"value" => "good", "msg" => I18n.t(:awesome)}
     end,
-    "photos" => lambda do |field, market|
-      return {"value" => "bad", "msg" => I18n.t(:required_field)} unless market.has_photos?
-      return {"value" => "regular", "msg" => I18n.t(:better_photos)} if market.how_many_photos < 3
+    "slideshow" => lambda do |field, market|
+      return {"value" => "regular", "msg" => I18n.t(:recommend_slideshow)} if market.how_many_photos == 0
+      return {"value" => "regular", "msg" => I18n.t(:better_slideshow)} if market.how_many_photos < 3
       return {"value" => "good", "msg" => I18n.t(:awesome)}
     end,
     "url" => lambda do |field, market|
+      generic_for_recommended field, market
+    end,
+    "social" => lambda do |field, market|
       generic_for_recommended field, market
     end,
     "coupon" => lambda do |field, market|

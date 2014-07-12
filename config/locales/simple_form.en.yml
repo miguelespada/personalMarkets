@@ -19,6 +19,7 @@ en:
   date_and_time: "Date and Schedule"
   latest_markets: "Latest Markets"
   hot_spots: "Hot Spots"
+  Social: "Social link" 
   categories: "Categories"
   explore: "Explore"
   tags: "Tags"
@@ -99,3 +100,4 @@ en:
   better_description: "Add more details to your market description to make it better!"
   better_tags: "Add more tags to make it easier to find!"
   better_slideshow: "Add more photos to your market to make it prettier!"
+  recommend_slideshow: "You can add a image gallery!"

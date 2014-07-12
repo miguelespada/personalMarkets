@@ -4,9 +4,11 @@
 		<div id="carousel-container-market-photo-gallery" class="carousel slide photo-gallery" data-ride="carousel">
 			<div class="carousel-inner market-photo-gallery-carousel-inner">
 				<% market.gallery.photographies.each do |photo| %>
-					<div class="item">
-		  			<%= photo(photo, 800, 400) if photo.present? %>
-		  		</div>
+					<% if !photo.empty? %>
+						<div class="item">
+			  			<%= photo(photo, 800, 400)  %>
+			  		</div>
+				<% end %>
 				<% end %>
 			</div>
 		</div>
