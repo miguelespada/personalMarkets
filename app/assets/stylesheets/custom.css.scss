@@ -296,6 +296,12 @@ border-color: #d43f3a;
   margin:auto;
 }
 
+.home_gallery_featured_photo_small{
+  position:relative;
+  width:250px;
+  margin:auto;
+}
+
 .home_gallery_label{
   position:absolute;
   display:inline;
@@ -307,6 +313,14 @@ border-color: #d43f3a;
   line-height: 48px;
   color:#FFFFFF;
   text-shadow: 2px 2px 5px #222222;
+}
+
+.home_gallery_label > span{
+  max-width:200px;
+  float:left;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
 }
 
 //*############################ TABLE CSS #############################*//
@@ -1469,22 +1483,22 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 }
 
 //*############################ SPECIAL LOCATION GALLERY CSS #############################*//
-.special_location_label > a:link { 
+.special_location_label > span > a:link { 
   color:#FFFFFF !important;
   text-decoration: none;
 }
 
-.special_location_label > a:visited { 
+.special_location_label > span > a:visited { 
   color:#FFFFFF !important;
   text-decoration: none;
 }
 
-.special_location_label > a:hover { 
+.special_location_label > span > a:hover { 
   color:#FFFFFF !important;
   text-decoration: none;
 }
 
-.special_location_label > a:active { 
+.special_location_label > span > a:active { 
   color:#FFFFFF !important;
   text-decoration: none;
 }

@@ -1,13 +1,15 @@
 <div class = "home_gallery special_location_gallery row">
   <% @special_locations.each do |special_location| %>
       <div class = "home_gallery_item special_location_item col-md-3">
-        <div class = "home_gallery_featured_photo special_location_featured_photo" data-name="<%= special_location.name %>">
+        <div class = "home_gallery_featured_photo_small special_location_featured_photo" data-name="<%= special_location.name %>">
           <%=  photo(special_location.photography, 250, 125) %>
           <div class = "home_gallery_label special_location_label">
-            <%= link_to special_location.name, 
-              :controller => "static_pages", 
-              :action => "map", 
-              :location => special_location.name %>
+            <span>
+              <%= link_to special_location.name, 
+                :controller => "static_pages", 
+                :action => "map", 
+                :location => special_location.name %>
+            </span>
           </div>
         </div>
       </div>
