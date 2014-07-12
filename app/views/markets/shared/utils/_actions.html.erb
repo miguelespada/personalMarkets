@@ -22,6 +22,7 @@
     buttonHover(".sold-coupons-icon", "fa-ticket", "Sold Coupons", 135);
     buttonHover(".statistics-icon", "fa-sitemap", "Statistics", 115);
     buttonHover(".transactions-icon", "fa-ticket", "Sold Coupons", 130);
+    buttonHover(".force-pro-icon","fa-plus-square", "Free VIM for admin", 180);
   });
 
   var buttonHover = function(button, icon, text, width){
@@ -39,11 +40,12 @@
   };
 
   $(".archive-icon").click(function(){
-    
-    confirm("<%= t :action_not_reversible %>");
+    if(!confirm("<%= t :action_not_reversible %>"))
+      return false;
   });
 
   $(".delete-icon").click(function(){
-    confirm("<%= t :action_not_reversible %>");
+    if(!confirm("<%= t :action_not_reversible %>"))
+      return false;
   });
 </script>

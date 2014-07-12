@@ -106,7 +106,7 @@ es:
               confirmation: "Las contraseñas no coinciden"
   market_archive: "Este mercado está archivado (está acción no es reversible)."
   market_private: "Este mercado no es público. Lo puedes publicar o editar para añadir más información"
-  market_private_required: "ESte mercado no es público. Para publicarlo debes rellenar los campos requeridos"
+  market_private_required: "Este mercado no es público. Para publicarlo debes rellenar los campos requeridos"
   market_old:  "Este mercado es público, pero ha pasado."
   market_public: "Este mercado es público, aunque todavía puedes editarlo para modificar la información."
   action_not_reversible: "Esta action no se puede deshacer. Deseas continuar?"
@@ -121,3 +121,4 @@ es:
   better_slideshow: "Añade más fotos para hacer tu mercado más bonito"
   better_tags: "Añade más tags para hacer tu mercado más accesible"
   recommend_slideshow: "Recuerda que puedes añadir una galería de fotos."
+  Market_name_cannot_be_empty: "El nombre del mercado es obligatorio"

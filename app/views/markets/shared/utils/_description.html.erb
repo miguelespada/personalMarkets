@@ -12,8 +12,11 @@
   <% end %>
 
   <strong> <%= t :tags %> </strong><%= market.direct_edit_link("form-market-date") %> : <%= market.hashtags %> <br>
+
+
+  <% if market.has_location? %>
   <strong> <%= t :Address %> </strong><%= market.direct_edit_link("form-market-location") %>: <%= market.address %>, <%= market.city %> <br>
-  <!-- <strong> Date: </strong> <%= market.date %> <br> -->
+  <% end %>
 
 
   <% if market.has_url? %>
