@@ -191,7 +191,7 @@ $( document ).ready(function() {
     step: 10,
     max: 1000,
     min: 0,
-    values: [0, 1000],
+    values: [$('#market_min_price').val(), $('#market_max_price').val()],
     slide: function(event, ui) {
       var prices = $('#prices-slider').slider('option', 'values');
       $('#market_min_price').val(prices[0]);
@@ -199,11 +199,7 @@ $( document ).ready(function() {
     },
     create: function(event, ui) {
       var prices = $('#prices-slider').slider('option', 'values');
-      $('#market_min_price').val(prices[0]);
-      $('#market_max_price').val(prices[1]);
     }
   });
-
   $('ul.nav a[href="' + window.location.hash + '"]').tab('show');
-
 });
