@@ -15,7 +15,8 @@
       <div class="market-list-section-title"><%= t :Information%></div>
       <div class="market-list-section-container short-view-coupon-section">
         <div class="short-view-coupon-inner poster-info-inner">
-          <%= render partial: 'markets/shared/utils/description', locals: { market: market } %>
+          <strong> <%= t :Owner %> </strong>: <%= market.owner %> <br>
+          <%= render partial: 'markets/shared/utils/schedule', locals: { market: market } %>
         </div>
       </div>
 
@@ -29,7 +30,7 @@
 </div>
 
 <style>
-  .poster-info-inner > .col-md-6 > a{
-    display:none;
-  }
+.schedule-edit-link{
+  display: none;
+}
 </style>

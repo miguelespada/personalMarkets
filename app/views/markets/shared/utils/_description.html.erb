@@ -37,19 +37,7 @@
 
 
 <div class="col-md-6">
-  <strong> <%= t "Schedule" %>  <span class:"market-schedule-string"> </strong> <%= market.direct_edit_link("form-market-date") %>:</span><br>
-    
-
-    <% prevDate = nil %>
-    <% market.human_readable_schedule.each do |day| %>
-        <% if prevDate && prevDate == day["date"] %>
-          <%= append_date(day) %> 
-        <% else %>
-         </br>  <%= format_date(day) %> 
-        <% end %>
-        <%  prevDate = day["date"] %>
-    <% end %>
-
+  <%= render partial: 'markets/shared/utils/schedule', locals: { market: market } %>
 </div>
 
 <script>
