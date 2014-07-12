@@ -1,10 +1,33 @@
 <%= content_tag_for(:tr, transaction) do %>
   <td> <%= transaction.id %> </td>
   <td> <%= transaction.coupon.market.name %> </td>
-  <td> <%= transaction.coupon.market.user.email %> </td>
+  
+  <td>
+  <% if cannot? :edit, transaction.coupon.market %>
+     <%= transaction.coupon.market.user.email %> 
+  <% else %>
+    This market is yours 
+  <% end %>
+  </td>
+
   <td> <%= transaction.coupon.description %> </td>
   <td> <%= transaction.coupon.price %>€ </td>
-  <td> <%= transaction.user.email %> </td>
+
+  <td> 
+    <% if can? :edit, transaction.coupon.market %>
+      <%= transaction.user.email %>
+    <% else %> 
+      This coupons is yours 
+    <% end %>
+  </td>
+
   <td> <%= transaction.number %> </td>
   <td> <%= transaction.number * transaction.coupon.price %> €</td>
+  
+  <td>
+  <% if cannot? :edit, transaction.coupon.market %>
+    <%= link_to "Localizador", localizador_path(transaction) %>
+  <% end %>
+ </td>
+
 <% end %>

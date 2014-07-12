@@ -1,6 +1,6 @@
 class CouponsController < ApplicationController
   load_resource :only => [:show, :buy, :coupon_payment]
-  authorize_resource :except => [:show, :bought_coupons_by_user, :sold_coupons_by_market, :gallery]
+  authorize_resource :except => [:show, :bought_coupons_by_user, :sold_coupons_by_market, :gallery, :localizador]
   
   def index
     @coupons = Coupon.all
@@ -40,6 +40,12 @@ class CouponsController < ApplicationController
     market = Market.find(params[:market_id])
     authorize! :list_market_transactions, market
     @transactions = market.coupon.transactions
+  end
+
+  def localizador
+    @transaction = CouponTransaction.find(params[:transaction_id])
+    authorize! :see_localizador, @transaction
+
   end
 
   private

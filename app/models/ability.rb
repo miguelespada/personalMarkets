@@ -68,6 +68,10 @@ class Ability
         cannot :index, SpecialLocation
         cannot [:force_make_pro], Market
 
+        can :see_localizador, CouponTransaction, CouponTransaction do |transaction|
+          @user == transaction.user
+        end
+
     end
   end
 
