@@ -230,7 +230,7 @@ class MarketDecorator < Draper::Decorator
 
   def poster_link
     return if market.archived?
-    link_to(content_tag(:i, "", :class => "fa fa-print"), market_poster_path(market), { method: :get, class: "btn btn-info poster poster-icon market-action" })
+    link_to(content_tag(:i, "", :class => "fa fa-print"), market_poster_path(market), { method: :get, class: "btn btn-default poster poster-icon market-action" })
   end
 
   def delete_link
