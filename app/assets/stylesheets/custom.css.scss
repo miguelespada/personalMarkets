@@ -1554,6 +1554,30 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 }
 
 //*############################ POSTER CSS #############################*//
-.poster-title{
-  text-align: center;
+.market-poster-container{
+  padding:15px;
 }
+
+.market-poster-title{
+  text-align: center;
+  font-size: 32px;
+  border-bottom: 1px solid #CCCCCC;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.market-poster-name{
+  font-weight: 100;
+  font-size: 30px;
+  line-height:50px;
+}
+.market-poster-description{
+  font-size: 16px;
+  line-height:25px;
+}
+
+.market-poster-tags{
+  font-size: 16px;
+  line-height:25px;
+}
+

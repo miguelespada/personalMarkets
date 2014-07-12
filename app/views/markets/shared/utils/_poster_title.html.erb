@@ -1,7 +1,15 @@
 <div class="panel-heading table-title">
   <div class="market-title-container row">
-    <div class="market-title col-md-12 poster-title">
-    <%= market.link(market.formatted_market_name)%>  
+    <div class="market-title market-poster-title col-md-12">
+      DOWEMARKET
+    </div>
+  	<div class="market-title market-poster-picture col-md-4">
+    	<%= market.market_photo_round_thumb(120, 120) %>
+    </div>
+    <div class="market-title col-md-8">
+    	<div class="market-poster-name"> <%= market.formatted_market_name %> </div>
+			<div class="market-poster-description"> <%= market.description %> </div>
+			<div class="market-poster-tags"><%= market.tags.gsub(",", " #") %></div>
     </div>
   </div>
 </div>
