@@ -145,8 +145,18 @@ class User
   end
 
   def allowed_market_creation?
-    market = self.markets.last
-    market.nil? || market.created_one_month_ago? || self.has_role?("admin") || self.has_role?("premium")
+    return true if self.has_role?("admin") 
+    return true if number_of_last_month_markets < allowed_markets && self.has_role?("premium")
+    return true if number_of_last_month_markets < allowed_markets && self.has_role?("normal")
+    false
+  end
+
+  def number_of_last_month_markets
+    n = 0
+    markets.each do |market|
+      n = n+1 if market.published_one_month_ago? 
+    end
+    n
   end
 
   def admin?
@@ -156,6 +166,9 @@ class User
   def update_image image
     self.image = image
     self.save!
+  end
+  def remaining_markets
+    allowed_markets - number_of_last_month_markets
   end
 
   private
@@ -172,4 +185,8 @@ class User
     add_role :normal if self.roles.blank?
   end
 
+   def allowed_markets
+    return 4 if self.has_role?("premium")
+    1
+  end
 end

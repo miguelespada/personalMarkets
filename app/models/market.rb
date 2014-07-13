@@ -370,8 +370,8 @@ class Market
       range ||= ""
   end
 
-  def created_one_month_ago?
-    self.created_at? && self.created_at <= 1.month.ago
+  def published_one_month_ago?
+    self.publish_date? && self.publish_date >= 1.month.ago 
   end
 
   def staff_pick?
@@ -382,7 +382,7 @@ class Market
   end
 
   def new_market?
-    self.created_at? && self.created_at >= 1.day.ago
+    self.publish_date? && self.publish_date >= 1.day.ago 
   end
 
   def to_param

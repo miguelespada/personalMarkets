@@ -1,12 +1,12 @@
 module CategoryHelper
   def icon(category)
-
     if !category.glyph_img.nil?
      "<i class='fa icon'>#{cl_image_tag(category.glyph_img.path, :width => 16, :height => 16, :crop => :fill, :class => "icon")}</i>"
     else
       "<i class='fa #{category.glyph}'></i>"
     end
   end
+  
   def formatted_button(category)
     "<button type='button' 
         class='theme theme-styled btn btn-sm category-theme-button btn-category' 
