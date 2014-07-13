@@ -261,11 +261,14 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
+  def publicable?
+    return can?(:publish, market) && market.can_be_published? && !market.archived?
+  end
+
 
   def publish_link
-    return if market.archived?
-    if can?(:publish, market) && market.can_be_published?
-      link_to "Publish", market_publish_path(market), { method: :post, class: "btn btn-info publish market-action" }
+    if publicable?
+      link_to t(:Publish), market_publish_path(market), { method: :post, class: "btn btn-success publish market-action" }
     end
   end
 

@@ -71,6 +71,7 @@ es:
   Published_Markets: "Mercados públicos"
   Explore: "Explorar"  
   Search: "Buscar"
+  Publish: "Publicar"
   simple_form:
     "yes": 'Si'
     "no": 'No'

@@ -4,6 +4,13 @@
   <div id="market-quality" class="market-section-title row"><%= t :Market_quality %>
     <h6><%= t :private_section %></h6>
   </div>
+
+  <% if market.publicable? %>
+    <div class = "home_gallery_title"><i class="fa fa-thumbs-up fa-3x"></i> <br/> 
+  <%= market.publish_link %></div>
+<% end %>
+
+
   <div class="market-section-container row">
     <div class="quality-section">
         <% market.market_quality do |field, quality| %>
