@@ -42,15 +42,13 @@
 </div>
 
 <script>
-  $(document).ready(function(){
-    var scheduleString = $(".market-schedule-string").text();
-    var scheduleItems = scheduleString.split(";");
-    $.each(scheduleItems, function(i, val){
-        valArray = val.split(",");
-        scheduleItems[i] = valArray[0]+", "+valArray[1]+" to "+valArray[2];
-    });
-    $(".market-schedule-detail").html(scheduleItems.join("<br>"));
+$(document).ready(function(){
+  var scheduleString = $(".market-schedule-string").text();
+  var scheduleItems = scheduleString.split(";");
+  $.each(scheduleItems, function(i, val){
+      valArray = val.split(",");
+      scheduleItems[i] = valArray[0]+", "+valArray[1]+" to "+valArray[2];
   });
-}
-
+  $(".market-schedule-detail").html(scheduleItems.join("<br>"));
+});
 </script>

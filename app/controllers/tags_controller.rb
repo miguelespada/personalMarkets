@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   authorize_resource :except => [:suggested, :show, :gallery, :list]
   def index
     @suggested = Tag.all
-    @tags = Market.tags
+    @tags = Market.tags.uniq
     respond_to do |format|
         format.html 
     end
@@ -23,7 +23,7 @@ class TagsController < ApplicationController
 
   def gallery
     @suggested = Tag.all
-    @tags = Market.tags
+    @tags = Market.tags.uniq
     render :layout => !request.xhr?
   end
 
