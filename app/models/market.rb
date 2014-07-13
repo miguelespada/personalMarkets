@@ -242,11 +242,11 @@ class Market
   end
 
   def has_coupon?
-    coupon != nil && coupon.description!= nil && coupon.available != nil && coupon.price != nil
+    coupon != nil && coupon.description!= nil && coupon.description!= "" && coupon.available != nil && coupon.price != nil
   end
 
   def coupon_initialized?
-    coupon != nil || coupon.description!= nil
+    coupon != nil || coupon.description!= nil && coupon.description!= ""
   end
 
   def has_gallery?

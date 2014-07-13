@@ -19,11 +19,11 @@ class MarketsController < ApplicationController
   end
 
   def list_published_markets
-    @markets = Market.published
+    @markets = Market.published.page(params[:page]).per(6)
   end
   
   def list_tag_markets
-    @markets = Market.published.tagged_with(params[:tag].downcase).page(params[:page]).per(6)
+    @markets = Market.published.tagged_with(params[:tag].downcase).page(params[:page]).per(9)
     render :layout => !request.xhr?
   end
 
