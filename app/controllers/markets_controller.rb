@@ -23,7 +23,7 @@ class MarketsController < ApplicationController
   end
   
   def list_tag_markets
-    @markets = Market.published.tagged_with(params[:tag]).page(params[:page]).per(3)
+    @markets = Market.published.tagged_with(params[:tag].downcase).page(params[:page]).per(6)
     render :layout => !request.xhr?
   end
 
@@ -50,7 +50,7 @@ class MarketsController < ApplicationController
   end
 
   def list_liked_markets
-    @markets = @user.favorites
+    @markets = @user.favorites.page(params[:page]).per(3)
     render :layout => !request.xhr?
   end
 

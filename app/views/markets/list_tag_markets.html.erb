@@ -1,7 +1,7 @@
 <div class="panel panel-default panel-table panel-table-last">
-   <% if @markets.count %>
+   <% if @markets.count == 0 %>
     <div class="no-matching-markets search-section-title">
-    <%= t :no_matches %>
+    <%= t :no_matches_by_tag %>
     </div>
   <% else %>
 

@@ -4,7 +4,13 @@
     Your likes
   </div>
 
+  <div class="paginate">
+  <%= paginate @coupons%>
+  </div>
+
+
   <div id="gallery-items">
     <%= render partial: "markets/shared/views/gallery", locals: {markets: @markets } %>
   </div>
+
 </div>

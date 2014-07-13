@@ -2,6 +2,8 @@ class Market
   
   include Mongoid::Document
   include Mongoid::Taggable
+  disable_tags_index! 
+
   include Mongoid::Timestamps::Created
 
   include Tire::Model::Search
@@ -429,4 +431,5 @@ class Market
       7
     end
   end
+  
 end

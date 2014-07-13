@@ -38,6 +38,7 @@ en:
   Any_location: "Any location"
   search_by_address: "Address, city or location..."
   no_matches: "Oops... There're no markets matching your query."
+  no_matches_by_tag: "There're no markets with this tag :("
   Custom_location: "Custom location"
   to: "to"
   comments_and_share: "Comments & Share"

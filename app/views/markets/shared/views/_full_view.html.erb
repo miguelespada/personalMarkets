@@ -17,15 +17,23 @@
         <%= market.direct_edit_link("form-market-description") %></div>
     
     <div class="market-section-container row">
-      <div class="col-md-4 market-featured-photo-detail">
+      <div class="col-md-6 market-featured-photo-detail">
         <%= market.market_featured_photo_filtered(400, 200) %>
         <%= edit_photo_link(market.featured) %>
       </div>
     
-      <div class="market-data col-md-8">
           <%= render partial: 'markets/shared/utils/description', locals: { market: market } %>
       </div>
     </div>
+
+     <div class="market-section-title row"><%= t :schedule %> 
+      <%= market.direct_edit_link("form-market-date ") %></div>
+    <div class="market-section-container row">
+      <div class="market-data col-md-6">
+        <%= render partial: 'markets/shared/utils/schedule', locals: { market: market } %>
+      </div>
+    </div>
+  
   
     <% if !market.pro? %>
       <div class="adsense-banner">ADVERTISEMENT <span>POWERED BY ADSENSE</span></div>

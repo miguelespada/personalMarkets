@@ -1,54 +1,35 @@
-<div class="col-md-6" >
-  <%= market.market_like_count %> <br> 
-  <strong> <%= t :Description %></strong> <%= market.direct_edit_link("form-market-description") %>:<%= market.description %> <br> 
-  <strong> <%= t :Category %></strong> <%= market.direct_edit_link("form-market-category-tag") %>: <%= market.category_name %> <br>
 
-  <% if cannot? :edit, market %>
-    <strong> <%= t :Owner %>: </strong> <%= link_to market.owner, user_markets_path(market.user) %> <br>
-  <% end %>
+<%= market.market_like_count %> <br> 
+<strong> <%= t :Description %></strong> <%= market.direct_edit_link("form-market-description") %>:<%= market.description %> <br> 
+<strong> <%= t :Category %></strong> <%= market.direct_edit_link("form-market-category-tag") %>: <%= market.category_name %> <br>
 
-  <% if market.has_prices? %>
-    <strong> <%= t :Prices %>  </strong><%= market.direct_edit_link("form-market-prices") %>: <%= market.min_price %> € - <%= market.max_price %> € <br>
-  <% end %>
+<% if cannot? :edit, market %>
+  <strong> <%= t :Owner %>: </strong> <%= link_to market.owner, user_markets_path(market.user) %> <br>
+<% end %>
 
-  <strong> <%= t :tags %> </strong><%= market.direct_edit_link("form-market-date") %> : <%= market.hashtags %> <br>
+<% if market.has_prices? %>
+  <strong> <%= t :Prices %>  </strong><%= market.direct_edit_link("form-market-prices") %>: <%= market.min_price %> € - <%= market.max_price %> € <br>
+<% end %>
 
-
-  <% if market.has_location? %>
-  <strong> <%= t :Address %> </strong><%= market.direct_edit_link("form-market-location") %>: <%= market.address %>, <%= market.city %> <br>
-  <% end %>
+<strong> <%= t :tags %> </strong><%= market.direct_edit_link("form-market-date") %> : <%= market.hashtags %> <br>
 
 
-  <% if market.has_url? %>
-  <strong> <%= t "External url" %></strong> <%= market.direct_edit_link("form-market-external-url") %>: <a href="<%=  market.path_to_url %>" target="_blank"><%=  market.url %></a> <br>
-  <% end %>
+<% if market.has_location? %>
+<strong> <%= t :Address %> </strong><%= market.direct_edit_link("form-market-location") %>: <%= market.address %>, <%= market.city %> <br>
+<% end %>
 
 
-  <% if market.has_social? %>
-  <strong> <%= t "Social link" %></strong> <%= market.direct_edit_link("form-market-external-url") %>:   <a class="user-url" href="<%=  market.path_to_social_link %>" target="_blank"><%=  market.social_link %></a> <br>
-  <% end %>
+<% if market.has_url? %>
+<strong> <%= t "External url" %></strong> <%= market.direct_edit_link("form-market-external-url") %>: <a href="<%=  market.path_to_url %>" target="_blank"><%=  market.url %></a> <br>
+<% end %>
 
 
-  <div class="hidden">
-    <%= market.latitude %>
-    <%= market.longitude %> 
-  </div> 
-  </div>
+<% if market.has_social? %>
+<strong> <%= t "Social link" %></strong> <%= market.direct_edit_link("form-market-external-url") %>:   <a class="user-url" href="<%=  market.path_to_social_link %>" target="_blank"><%=  market.social_link %></a> <br>
+<% end %>
 
 
-<div class="col-md-6">
-  <strong> <%= t "Schedule" %>  <span class:"market-schedule-string"> </strong> <span class="schedule-edit-link"><%= market.direct_edit_link("form-market-date") %></span>:</span><br>
-  <%= render partial: 'markets/shared/utils/schedule', locals: { market: market } %>
-</div>
-
-<script>
-$(document).ready(function(){
-  var scheduleString = $(".market-schedule-string").text();
-  var scheduleItems = scheduleString.split(";");
-  $.each(scheduleItems, function(i, val){
-      valArray = val.split(",");
-      scheduleItems[i] = valArray[0]+", "+valArray[1]+" to "+valArray[2];
-  });
-  $(".market-schedule-detail").html(scheduleItems.join("<br>"));
-});
-</script>
+<div class="hidden">
+  <%= market.latitude %>
+  <%= market.longitude %> 
+</div> 

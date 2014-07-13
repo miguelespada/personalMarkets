@@ -5,7 +5,7 @@
 	<div class="tooltip-right">
 		<div class="market-name"> <%= market.formatted_market_name %> </div>
 		<div class="market-description"> <%= market.description %> </div>
-		<div class="market-tags"><%= market.tags.gsub(",", " #") %></div>
+		<div class="market-tags"><%= market.hashtags %></div>
 	</div>
 	<div class="tooltip-buttons pull-right">
 		<span> <%= link_to content_tag(:i, "", class: "fa fa-expand"), market_path(market), class: "tooltip-expand" %></span>

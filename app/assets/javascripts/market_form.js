@@ -1,5 +1,9 @@
 
+  var downcase_tags = function(){
+    var tags = $('[name="hidden-market[tags]"]').attr("value").toLowerCase();
+     $('[name="hidden-market[tags]"]').attr("value", tags);
 
+  }
 // ---- LOCATION ----
 
 var initializeAutocomplete = function(input_id) {
@@ -139,6 +143,7 @@ $( document ).ready(function() {
  
 
   // TAGS 
+ 
   
   var tagApi = jQuery(".tm-input").tagsManager({
     prefilled: $("#market_tags").val(),

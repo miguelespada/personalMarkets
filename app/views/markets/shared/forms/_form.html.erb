@@ -33,7 +33,7 @@
     
   </ul>
 
-  <%= simple_form_for [user, market], :html => {"data-tags" => "#{raw_tags(market)}", 
+  <%= simple_form_for [user, market], :html => {"data-tags" => "#{raw_tags(market).downcase}", 
         novalidate: true, role: "form"}  do |f| %>
 
     <div class="tab-content col-md-9">
@@ -273,6 +273,7 @@ var passedSchedule = "";
 
 
 <script> 
+
 // Error if no name is provided
   $(".simple_form").submit(function(){
    if( $("#market_name").val().length == 0 ) {
@@ -286,7 +287,7 @@ var passedSchedule = "";
         $('#market_date').val(passedDates + serializeDates(dates));
         $('#market_schedule').val(passedSchedule + serializeSchedules(dates));
         $("#error").html("");
-
+        downcase_tags();
       } catch(em){
         console.log(em);
       }

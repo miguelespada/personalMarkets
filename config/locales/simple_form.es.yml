@@ -57,6 +57,7 @@ es:
   "Explore more markets": "Más mercados..."
   search_by_address: "Dirección, ciudad..."
   no_matches: "No hay ningún mercado que satisfaga tus criterios de búsqueda. :("
+  no_matches_by_tag: "No hay ningún mercado con ese tag :("
   to: "hasta"
   comments_and_share: Comentar y comartir
   Owner: "Dueño"
