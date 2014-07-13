@@ -272,6 +272,13 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
+
+  def publish_icon_link
+    if publicable?
+      link_to image_tag("upload.png", size: "120"), market_publish_path(market), { method: :post}
+    end
+  end
+
   def unpublish_link
     return if market.archived?
     if (can? :unpublish, market) && market.state == "published"

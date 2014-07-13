@@ -6,8 +6,10 @@
   </div>
 
   <% if market.publicable? %>
-    <div class = "home_gallery_title"><i class="fa fa-thumbs-up fa-3x"></i> <br/> 
-  <%= market.publish_link %></div>
+    <div class = "home_gallery_title">
+    <%= market.publish_icon_link %>
+      <%= t(:Publish) %>
+  </div>
 <% end %>
 
 
