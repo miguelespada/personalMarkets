@@ -7,7 +7,7 @@
   	<div class="pull-right recommend-control">
   		<%= link_to content_tag(:i, "", :class => "fa fa-angle-right fa-3x"), "#", :id=>"next-markets" if !@last_page %>
   	</div>
-  	<%= photo(market.featured, 200, 100)%>
+  	<%= photo(market.featured, 200)%>
   	<br>
     <%= market.decorate.formatted_market_name %>
     <p> <%= link_to "Recommend", recommend_market_to_wish_path(wish, market), {:method => "post"} %> </p>

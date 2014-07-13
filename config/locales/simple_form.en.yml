@@ -45,7 +45,7 @@ en:
   Map: "Map"
   Explore: "Explore"
   Search: "Search"
-  Publish: "Publish"
+  Publish: "Publishcs"
 
   simple_form:
     "yes": 'Yes'
@@ -110,3 +110,4 @@ en:
   Total: "Total amount to be paid"
   "External url": "External url"
   "Social link": "Social link"
+  discard_changes: "Do you wish to discard changes?"

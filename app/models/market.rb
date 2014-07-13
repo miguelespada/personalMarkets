@@ -246,7 +246,7 @@ class Market
   end
 
   def coupon_initialized?
-    coupon != nil || coupon.description!= nil || coupon.available != nil 
+    coupon != nil || coupon.description!= nil
   end
 
   def has_gallery?

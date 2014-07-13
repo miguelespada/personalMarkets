@@ -24,4 +24,12 @@ module MarketsHelper
   def append_date(day)
      ", " + day["from"] + " - " + day["to"]
   end
+
+  def discard_button(market)
+    if params[:action] == "edit"
+      link_to content_tag(:i, "", :class => "fa fa-undo", :title => "Discard", rel: 'tooltip'), market, 
+                    :class=>  "btn btn-default", 
+                    :id=>"discard" 
+    end
+  end
 end

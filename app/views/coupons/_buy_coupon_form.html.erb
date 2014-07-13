@@ -2,8 +2,7 @@
   <div id = "buy-coupon-action">
 		<%= form_tag({controller: "coupons", action: "coupon_payment"}, method: "post") do %>
 		<%= select_tag "number", options_for_select((1..coupon.available)), class:"form-control"  %>
-
-                    <p><input type="checkbox" required name="premium_accept_term" id="premium_accept_term" > I accept the <%= link_to "terms of use.", buy_coupon_terms_path %></p>
+    <p><input type="checkbox" required name="premium_accept_term" id="premium_accept_term" > I accept the <%= link_to "terms of use.", buy_coupon_terms_path %></p>
 		<%= submit_tag "Buy", class:"btn btn-info coupon-buy-button" %>
 	</div>
 <% end %>

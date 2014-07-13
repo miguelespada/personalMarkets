@@ -36,8 +36,7 @@ PM.addMarker = function (latlng){
        'marker-symbol' : 'circle',
        'marker-size' : 'medium'}),
     draggable: false
-  });
-  PM.marker.addTo(PM.map);
+  }).addTo(PM.map);
 };
 
 PM.checkAndSetMarker = function(lat, lng){

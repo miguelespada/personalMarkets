@@ -9,9 +9,9 @@ module PhotosHelper
   end
 
   def photo(photo, width, height = nil, params = {})
-    height ||= width
-    size = "#{width}x#{height}"
-    image_options = { size: size, crop: :scale, quality: 50, effect: params[:effect], radius: params[:radius] }
+    height ||= width * 0.75
+    size = "#{width.to_i}x#{height.to_i}"
+    image_options = { size: size, crop: :fill, quality: 50, effect: params[:effect], radius: params[:radius] }
     crop = photo.crop if !photo.crop.nil?
     image_options = {transformation: { crop: :crop, x: crop["x"], y: crop["y"],
                        width: crop["w"], height: crop["h"]}, size: size, quality: 50, effect: params[:effect], radius: params[:radius]} if !crop.nil?
@@ -22,7 +22,7 @@ module PhotosHelper
 
   def edit_photo_link(photo)
     if !photo.photo.nil? && (can? :edit, photo)
-      link_to content_tag(:i, "", class: "fa fa-crop"), edit_photo_path(photo), class: "btn edit btn-info btn-xs table-photo-edit"   
+      link_to content_tag(:i, "", class: "fa fa-crop"), edit_photo_path(photo), class: "btn edit btn-danger btn-xs table-photo-edit"   
     end
   end
 

@@ -4,7 +4,7 @@
 <div id="error" class="alert alert-danger flash hidden"></div>
 
 <div class="panel panel-default panel-table">
-  <div class="panel-heading table-title">
+  <div class="panel-heading table-title"> <%= discard_button(market) %>
     <%= action %>  Market <span  id="progress"> </span>
   </div>
   <div id="wizard" class="row">
@@ -304,5 +304,10 @@ else{
   }
 });
 $("#refresh_location").click(updateLocationData);
+$("#discard").click(function(){
+    if(!confirm("<%= t :discard_changes %>"))
+      return false;
+
+});
 
 </script>
