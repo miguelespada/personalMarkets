@@ -2,14 +2,35 @@
 
 <% required ||= false %>
 <%= f.input :photo, as: :attachinary, required: required %>
-
 <script>
 $( document ).ready(function() {
   $('.attachinary-input').attachinary();
-  // data = $('.attachinary-input').attr("data-form-data");
-  // data = eval('(' + data + ')');
 
-  // data.transformation = "c_limit,h_100,w_100";
-  // $('.attachinary-input').attr("data-form-data", JSON.stringify(data));
+  $('.attachinary-input').fileupload({
+      progressall: function (e, data) {
+        $('#progress').removeAttr( 'style' );
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        try{
+          if(progress >= 100){
+            $("#progress").html("[Upload progress: DONE]");
+            setTimeout(function() {
+              $('#progress').fadeOut('slow');
+            }, 1000); // <-- time in milliseconds
+          }
+          else{
+            $("#progress").html("[Upload progress: " + progress + " %]");
+          }
+        }catch(ex){}
+      },
+      add: function(e, data) {
+        if(data.originalFiles[0]['size'] > 1000000) {
+            alert("Filesize is too big. Maximun size is 1 Mb");
+        }
+        else {
+            data.submit();
+        }
+    }
+  });
+
 });
 </script>

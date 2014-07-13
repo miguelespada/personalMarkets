@@ -5,7 +5,7 @@
 
 <div class="panel panel-default panel-table">
   <div class="panel-heading table-title">
-    <%= action %> Market
+    <%= action %>  Market <span  id="progress"> </span>
   </div>
 <div id="wizard" class="row">
   <ul class="col-md-3">
@@ -212,7 +212,6 @@
     </div>
   </div>
 </div>
-  
   <%= f.button :submit, class: 'btn', id: 'market-save-button' %>
   <%= save_and_publish_button(f, market) %>
   
@@ -293,4 +292,9 @@ var passedSchedule = "";
       }
     }
   });
+
+        
+
+   
+
 </script>
