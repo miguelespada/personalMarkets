@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'UVF-Funkydori';
+    src:url('/fonts/UVF-Funkydori.ttf.woff') format('woff'),
+        url('/fonts/UVF-Funkydori.ttf.svg#UVF-Funkydori') format('svg'),
+        url('/fonts/UVF-Funkydori.ttf.eot'),
+        url('/fonts/UVF-Funkydori.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
 .badge{
 	margin-top: 15px;
 	margin-bottom: 15px;
@@ -663,8 +673,9 @@ border-color: #d43f3a;
 }
 
 .navbar-brand{
-  font-size: 18px;
-  font-weight: 200;
+  font-family: 'UVF-Funkydori';
+  font-size: 36px;
+  padding:18px 15px 12px 15px !important;
 }
 
 //*############################ PHOTO EDIT CSS #############################*//
@@ -1581,8 +1592,9 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 }
 
 .market-poster-title{
+  font-family: 'UVF-Funkydori';
   text-align: center;
-  font-size: 32px;
+  font-size: 40px;
   line-height:50px;
   border-bottom: 1px solid #CCCCCC;
   margin-bottom: 10px;
