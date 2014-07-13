@@ -12,10 +12,6 @@ var initializeAutocomplete = function(input_id) {
     {
       types: ['(cities)']
     });
-  
-  google.maps.event.addListener(autocomplete, 'place_changed', function() {
-    updateLocationData();
-  });
 };
 var updateLocationData = function(){
   if(addressAndCityAreFilled()) geocode();
@@ -184,11 +180,6 @@ $( document ).ready(function() {
 
   $( "table" ).on( "click", ".button-delete-line", function() {
     $(this).closest('tr').remove();
-  });
-
-
- $('#market_address').blur(function () {
-    updateLocationData();
   });
 
   $("#prices-slider").slider( { 
