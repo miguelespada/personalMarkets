@@ -36,6 +36,8 @@ PopUpStores::Application.routes.draw do
 
     resources :users, :only => [:index, :show]
 
+    resources :slideshow_images, :except => [:show]
+
     resources :users do
       resources :markets, only: [:index, :new, :create, :edit, :update, :destroy]
 

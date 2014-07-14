@@ -98,6 +98,7 @@ class Ability
       can [:list_market_transactions], Market
       
       can :admin, Market
+      can [:manage], SlideshowImage
 
     end
   end
