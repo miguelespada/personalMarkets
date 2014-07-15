@@ -1,0 +1,33 @@
+<div class="panel panel-default panel-table">
+  <div class="panel-heading table-title">
+    Slideshow text <%= link_to content_tag(:i, "", class: "fa fa-plus"), new_slideshow_text_path, class: "new btn btn-info table-button table-button-new"%>
+  </div>
+  <div class="table-container">
+  <table class="table table-striped">
+    <tr>
+      <th>Texts</th>
+      <th>Actions</th>
+    </tr>
+  
+    <% @slideshow.each do |text| %>
+      <%= content_tag_for(:tr, text) do %> 
+        <td class="col-md-9"> 
+          
+          <p><%= text.intl_title('es') %></p>
+          <p><%= text.intl_subtitle('es') %></p>
+          <p><%= text.intl_title('en') %></p>
+          <p><%= text.intl_subtitle('en') %></p>
+
+        </td>
+
+
+        <td class="col-md-3"> 
+          <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), slideshow_text_path(text), :method => :delete, class: "delete btn btn-danger table-button table-button-delete", data: { confirm: 'Are you sure?' } %> </span>
+          <span> <%= link_to content_tag(:i, "", class: "fa fa-pencil"), edit_slideshow_text_path(text), class: "edit btn btn-info table-button table-button-edit" %></span>
+        </td>
+      <% end %>
+    <% end %>
+  </table>
+</div>
+</div>
+

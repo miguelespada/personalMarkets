@@ -1,3 +1,23 @@
+  
+@font-face {
+  font-family: 'GillSansMT';
+  src: url('/fonts/GillSansMT.eot') format('eot'), 
+       url('/fonts/GillSansMT.woff') format('woff'), 
+       url('/fonts/GillSansMT.ttf')  format('truetype'),
+       url('/fonts/GillSansMT.svg#GillSansMT') format('svg');
+}
+
+
+@font-face {
+  font-family: 'GillSansMT-Bold';
+  src: url('/fonts/GillSansMT-Bold.eot') format('eot'), 
+       url('/fonts/GillSansMT-Bold.woff') format('woff'), 
+       url('/fonts/GillSansMT-Bold.ttf')  format('truetype'),
+       url('/fonts/GillSansMT-Bold.svg#GillSansMT-Bold') format('svg');
+}
+
+
+
 @font-face {
     font-family: 'UVF-Funkydori';
     src:url('/fonts/UVF-Funkydori.ttf.woff') format('woff'),
@@ -7,6 +27,46 @@
     font-weight: normal;
     font-style: normal;
 }
+
+  #slideshow_titles{
+    position: absolute;
+    text-align: center;
+    z-index:10;
+    max-width: 80%;
+    color: white;
+    text-shadow: 2px 2px 5px #222222;
+    font-family: 'GillSansMT-Bold';
+  }
+  #slideshow_titles .title{
+    font-size:36px;
+  }
+
+  #slideshow_titles .subtitle{
+    font-size:24px;
+  }
+
+  #home-container{
+    margin-bottom:80px;
+  }
+
+  .anim-container{
+    width:100%;
+    text-align: center;
+  }
+
+  .fa-spin{
+    margin: 100px;
+    color:#777777;
+  }
+
+  .gallery-section{
+    margin-left: 30px;
+    margin-right:30px;
+    padding-bottom:30px;
+    border-bottom: 1px solid #CCCCCC;
+  }
+
+
 
 .badge{
 	margin-top: 15px;
@@ -290,10 +350,11 @@ border-color: #d43f3a;
 //*############################ HOME GALLERY CSS #############################*//
 
 .home_gallery_title{
-  font-size: 32px;
-  font-weight: 100;
+  font-size: 20px;
+  font-weight: bold;
   text-align: center;
   padding-top: 20px;
+  font-family: "GillSansMT-Bold";
 }
 
 .home_gallery_item{

@@ -99,6 +99,7 @@ class Ability
       
       can :admin, Market
       can [:manage], SlideshowImage
+      can [:manage], SlideshowText
 
     end
   end

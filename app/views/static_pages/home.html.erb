@@ -8,15 +8,12 @@
       <%  SlideshowImage.all.each do |slideshow| %>
         <%=  cl_image_tag(slideshow.photography.photo.path, {quality: "50" } ) %>
       <% end %> 
-      
-
     </div>
-  <div id="search-sample" onclick="goToSearchQuery();">
-  	<span id="search_time" class="search-field">Today</span> I would like to look for a market in  
-  	<span id="search_place" class="search-field">Malasaña</span> for 
-  	<span id="search_item" class="search-field">mobile phones</span>.
-  </div>
+
+    <div id="slideshow_titles" >
+    </div>
   </section>
+
 
   <div class = "home_gallery_title"><%= t :latest_markets %></div>
   <section id="latest_markets" class="gallery-section">
@@ -35,46 +32,8 @@
 
 </div>
 
-<style>
-	#search-sample{
-		position:absolute;
-		z-index:10;
-		max-width: 80%;
-		font-weight:200;
-		font-size:24px;
-		color:#FFFFFF;
-		text-shadow: 2px 2px 5px #222222;
-		cursor:pointer;
-	}
-	.search-field{
-		text-decoration: underline;
-	}
-
-	#home-container{
-		margin-bottom:80px;
-	}
-
-  .anim-container{
-    width:100%;
-    text-align: center;
-  }
-
-  .fa-spin{
-    margin: 100px;
-    color:#777777;
-  }
-
-  .gallery-section{
-    margin-left: 30px;
-    margin-right:30px;
-    padding-bottom:30px;
-    border-bottom: 1px solid #CCCCCC;
-  }
-
-</style>
-
 <script>
-  $.get( "last_markets", function( data ) {
+  $.get( "<%= last_markets_path %>", function( data ) {
     $( "#latest_markets" ).html( data );
   });
 
@@ -82,90 +41,12 @@
     $( "#special_locations" ).html( data );
   });
 
-  $.get( "<%= wishes_gallery_path %>", function( data ) {
-    $( "#wishes" ).html( data );
-  });
-
-  $.get( "<%= bargains_gallery_path %>", function( data ) {
-    $( "#bargains" ).html( data );
-  });
-
   $.get( "<%= category_gallery_path %>", function( data ) {
     $( "#categories" ).html( data );
   });
 
-  $.get( "<%= tags_gallery_path %>", function( data ) {
-    $( "#tags" ).html( data );
-  });
-
-	var searchTimeArray = ["Today", "This week", "This month", "Next week"];
-  var searchItemArray = ["bicycle", "books", "flowers", "CD", "mobile phones", "drinks", "video games"];
-	
-
-    $(document).ready(function(){
-    var searchPlaceArray = $.map($('#location_location_id option'), 
-      function(e) { return e.value; });
-    searchPlaceArray.join(',');
-    searchPlaceArray.shift();
-
-  	changeSearchItems("#search_time",searchTimeArray);
-  	changeSearchItems("#search_place",searchPlaceArray);
-  	changeSearchItems("#search_item",searchItemArray);
-
-    $("#slides").slidesjs({
-      width: 1000,
-      height: 300,
-      navigation: {
-        active: false,
-        effect: "fade"
-      },
-      play: {
-        active: false,
-        effect: "fade",
-        interval: 4000,
-        auto: true,
-        swap: false,
-        pauseOnHover: false,
-        restartDelay: 1000
-      },
-      effect: {
-        fade: {
-          speed: 1000,
-          crossfade: true
-        }
-      },
-      pagination: {
-        active: false
-      }
-    });
-
-    centerSearchDiv();
-  	window.onresize = function(){
-			centerSearchDiv();
-  	};
-  });
-
-  var centerSearchDiv = function(){
-  	$( "#search-sample" ).position({
-  		my: "center center",
-  		at: "center center",
-  		of: "#slides"
-		});
-  };
-
-  var changeSearchItems = function(span, array){
-  	setInterval(function(){
-			rand = Math.floor(Math.random() * array.length);
-			 $(span).html(array[rand]);
-			 centerSearchDiv();
-  	}, 3000);
-  }
-
-  var goToSearchQuery = function(){
-  	$("#range").val($("#search_time").html());
-    $("#query").val($("#search_item").html());
-    $("#location_location_id").val($("#search_place").html());
-    $("#search_market").submit();
-  };
-
+  var titlesArray = "<%= SlideshowText.title_list(params['language']) %>".split(";") ;
+  var subtitlesArray =  "<%= SlideshowText.subtitle_list(params['language']) %>".split(";");
 </script>
+
+<%= javascript_include_tag "home" %>
