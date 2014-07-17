@@ -19,7 +19,7 @@ var changeTitles= function(){
   }, 3000);
 }
 
-$(document).ready(function(){
+var setSlides = function(){
 
     $("#slides").slidesjs({
       width: 1000,
@@ -47,6 +47,10 @@ $(document).ready(function(){
         active: false
       }
     });
+  };
+
+$(document).ready(function(){
+    setSlides();
 
     generateTitles();
     changeTitles();

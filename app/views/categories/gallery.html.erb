@@ -1,10 +1,10 @@
 <div class = "home_gallery category_gallery row">
   <% @categories.each do |category| %>
       <div class = "home_gallery_item category_gallery_item col-md-3">
-        <div class = "home_gallery_featured_photo_small category_gallery_featured_photo" data-name="<%= category.slug %>">
-          <%= photo(category.photography, 250, 125) %>
-          <div class = "home_gallery_label category_gallery_label">
-            <span><%= intl_name(category) %></span>
+        <div class = "center" data-name="<%= category.slug %>">
+          <%= cl_image_tag(category.glyph_img.path, :width => 100, :height => 100, :crop => :fill) %>
+          <div>
+            <%= intl_name(category) %>
           </div>
         </div>
       </div>
