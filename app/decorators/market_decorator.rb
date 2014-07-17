@@ -132,9 +132,9 @@ class MarketDecorator < Draper::Decorator
 
   def market_featured_photo_filtered(width)
     if passed?
-      photo(featured, width, width*0.75, {:effect => "grayscale"})
+      photo(featured, width, nil, {:effect => "grayscale"})
     else
-      photo(featured, width, width*0.75)
+      photo(featured, width, nil)
     end
   end
 

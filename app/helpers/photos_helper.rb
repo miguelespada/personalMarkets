@@ -9,7 +9,7 @@ module PhotosHelper
   end
 
   def photo(photo, width, height = nil, params = {})
-    height ||= width * 0.75
+    height ||= width * 0.56
     size = "#{width.to_i}x#{height.to_i}"
     image_options = { size: size, crop: :fill, quality: 50, effect: params[:effect], radius: params[:radius] }
     crop = photo.crop if !photo.crop.nil?

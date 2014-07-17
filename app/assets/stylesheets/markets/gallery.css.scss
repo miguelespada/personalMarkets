@@ -1,3 +1,5 @@
+$gallery_item_with: 225px;
+
 .market_gallery{
 }
 
@@ -7,7 +9,7 @@
 
 .gallery_market_featured_photo{
   position:relative;
-  width:300px;
+  width: $gallery_item_with;
   margin:auto;
 }
 
@@ -25,7 +27,7 @@
 }
 
 .market_name_label > span{
-  max-width:240px;
+  max-width: $gallery_item_with * 0.8;
   float:left;
   overflow:hidden;
   white-space:nowrap;
@@ -46,7 +48,7 @@
 }
 
 .market_description_label > span{
-  max-width:240px;
+  max-width: $gallery_item_with * 0.8;
   float:left;
   overflow:hidden;
   white-space:nowrap;
@@ -65,7 +67,7 @@
 }
 
 .market-gallery-extra{
-  width:300px;
+  width: $gallery_item_with;
   text-align: center;
   font-weight: 200;
   margin: 0 auto;

@@ -3,7 +3,7 @@
   <% markets.each do |market| %>
     <% market = market.decorate %>
     <%= content_tag_for(:tr, market) do %>
-      <div class = "market_item col-md-4">
+      <div class = "market_item col-md-3">
       
         <div class = "show gallery_market_featured_photo">
 
@@ -13,7 +13,7 @@
             </div>
           </div>
         <%= link_to market do %>
-          <%= market.market_featured_photo_filtered(300) %>
+          <%= market.market_featured_photo_filtered(225) %>
 
           <div class = "market_name_label">
             <span><%= market.formatted_market_name %></span>
@@ -26,8 +26,9 @@
         </div> 
 
         <div class="market-gallery-extra">
+          <%= market.market_like_count %><br>
           <%= market.address %>, <%= market.city %><br>
-          <%= market.market_date_highlight %> &nbsp;&nbsp;&nbsp;<%= market.market_like_count %>
+          <%= market.market_date_highlight %>
         </div>
       </div>
     <% end %>

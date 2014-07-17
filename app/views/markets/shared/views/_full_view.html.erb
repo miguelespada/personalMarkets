@@ -34,8 +34,7 @@
       </div>
     </div>
   
-  
-    <% if !market.pro? %>
+     <% if !market.pro? && false%>
       <div class="adsense-banner">ADVERTISEMENT <span>POWERED BY ADSENSE</span></div>
     <% end %>
 
@@ -56,8 +55,6 @@
       <%= render partial: 'markets/shared/utils/facebook_comments', locals: { market: market } %>
     </div>
     
-
-
 
     <%= market.market_quality_section %>
 
