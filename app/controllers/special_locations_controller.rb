@@ -24,7 +24,7 @@ class SpecialLocationsController < ApplicationController
   end
 
   def gallery
-    @special_locations = SpecialLocation.all
+    @special_locations = SpecialLocation.all.limit(params['limit'] || 20)
     render :layout => !request.xhr?
   end
   

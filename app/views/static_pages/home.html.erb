@@ -40,14 +40,14 @@
 
 
   <section class="gallery-section">
-    <div class = "home_gallery_title col-md-3"><%= t :hot_spots %></div>
+    <div class = "home_gallery_title"><%= t :hot_spots %></div>
   
-   <div id="special_locations">
-    <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
-  </div>
+     <div id="special_locations">
+      <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
+    </div>
   
     <p class="home-action">
-      <%= link_to t(:see_more_hotspots), special_locations_list_path  %>
+      <%= link_to t(:see_more_hotspots), special_locations_gallery_path  %>
     </p>
 </section>
 
@@ -60,14 +60,16 @@
     $( "#latest_markets" ).html( data );
   });
 
-  $.get( "<%= special_locations_gallery_path %>", function( data ) {
-    $( "#special_locations" ).html( data );
-  });
+
 
   $.get( "<%= category_gallery_path(:limit => '8') %>", function( data ) {
     $( "#categories" ).html( data );
   });
 
+  $.get( "<%= special_locations_gallery_path(:limit => '8') %>", function( data ) {
+    $( "#special_locations" ).html( data );
+  });
+  
   var titlesArray = "<%= SlideshowText.title_list(params['language']) %>".split(";") ;
   var subtitlesArray =  "<%= SlideshowText.subtitle_list(params['language']) %>".split(";");
 </script>
@@ -78,7 +80,7 @@
 <style>
 
 
-  @media (max-width: 767px){
+  @media (max-width: 990px){
      .home_gallery_title{
          text-align: center;
       }
