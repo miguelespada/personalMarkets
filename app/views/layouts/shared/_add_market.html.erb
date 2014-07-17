@@ -1,7 +1,7 @@
 
 <li class="registered-user-action ">
   <% if user_signed_in? %>
-      <%= button_to "✚", new_user_market_path(current_user), class:"add_market_button btn btn-info", :method => :get %>
+     <%= button_to "✚", open_market_path , class:"add_market_button btn btn-info", :method => :get %>
   <% else %>
     <%= button_to "✚", "javascript:shakeButton();", class:"add_market_button btn btn-info", :method => :get %>
   <% end %>
@@ -14,8 +14,11 @@
 	});
 
 	function checkIfMobileButton(){
-		if (window.innerWidth >= 768){
-			$(".add_market_button").val("✚ Market");
+		if (window.innerWidth >= 992){
+			$(".add_market_button").val("Abre tu Market");
+		}
+		else if (window.innerWidth >= 768){
+			$(".add_market_button").val("+ Market");
 		}
 		else{
 			$(".add_market_button").val("✚");

@@ -246,6 +246,7 @@ class Market
   end
 
   def coupon_initialized?
+    return false if coupon == nil
     coupon != nil || coupon.description!= nil && coupon.description!= ""
   end
 

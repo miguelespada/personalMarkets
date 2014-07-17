@@ -103,6 +103,12 @@ class User
     market
   end
 
+  def create_new_market 
+    market = self.markets.new(:name => "New Market")
+    market.pro = self.is_premium?
+    market
+  end
+
   def owns object
     object.user_id == self.id
   end

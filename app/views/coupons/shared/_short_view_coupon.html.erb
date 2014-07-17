@@ -1,4 +1,4 @@
-<% if !market.coupon.empty? %>
+<% if market.coupon && !market.coupon.empty? %>
   <%= photo(market.coupon.photography, 200) %>
+  <%= render market.coupon %>
 <% end %>
-<%= render market.coupon %>

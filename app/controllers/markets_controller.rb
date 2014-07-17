@@ -131,6 +131,9 @@ class MarketsController < ApplicationController
     if @market.pro? && @market.gallery.photographies.count == 3
       9.times {@market.gallery.photographies << Photo.new}
     end
+    if @market.pro? && @market.coupon == nil
+      @market.coupon = Coupon.new
+    end
   end
 
   def user_markets_succeeded markets
@@ -223,8 +226,15 @@ class MarketsController < ApplicationController
   end
 
   def make_pro_payment
+    begin
+      market = Market.find(params[:market_id])
+    rescue => ex
+       market = current_user.create_new_market
+       market.save!
+    end 
+
     payment = Payment.new ENV['PRO_PRICE'].to_f, 1
-    @pro_payment = MarketProPayment.new Market.find(params[:market_id]), payment
+    @pro_payment = MarketProPayment.new market, payment
   end
 
   def make_pro

@@ -152,6 +152,7 @@ PopUpStores::Application.routes.draw do
     get "static_pages/terms", as: "terms"
     get "static_pages/settings", path: "/settings", as: "settings"
     get "static_pages/beta", path: "/beta", as: "beta"
+    get "static_pages/open_market_menu", path: "/open_market", as: "open_market"
 
     get "static_pages/home", path: "/", as: 'home'
     root "static_pages#home"
