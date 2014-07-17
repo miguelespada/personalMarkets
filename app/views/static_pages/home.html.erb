@@ -64,7 +64,7 @@
     $( "#special_locations" ).html( data );
   });
 
-  $.get( "<%= category_gallery_path %>", function( data ) {
+  $.get( "<%= category_gallery_path(:limit => '4') %>", function( data ) {
     $( "#categories" ).html( data );
   });
 

@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
   end
 
   def gallery
-    @categories = Category.all
+    @categories = Category.all.limit(params['limit'] || 1) 
     render :layout => !request.xhr?
   end
 
