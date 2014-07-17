@@ -188,10 +188,11 @@
                     <%= f.input :address, { placeholder: "Address" } %>
                     <%= f.input :city, { class: 'cities', placeholder: "City" } %>
                    
-
-                    <%= link_to content_tag(:i, "    Refresh location", :class => "fa fa-refresh", :title => "Refresh location", rel: 'tooltip'), "#", 
-                    :class=>  "btn btn-default", 
-                    :id=>"refresh_location" %>
+                    <div class="control-group">
+                      <%= link_to content_tag(:i, "   Refresh location", :class => "fa fa-refresh", :title => "Refresh location", rel: 'tooltip'), "#", 
+                      :class=>  "btn btn-default hidden", 
+                      :id=>"refresh_location" %>
+                    </div>
 
                     <div class = "hidden">
                       <%= f.input :longitude %>
@@ -304,6 +305,9 @@ else{
   }
 });
 $("#refresh_location").click(updateLocationData);
+$('#market_address').keypress(function(){$("#refresh_location").removeClass('hidden')});
+$('#market_city').keypress(function(){$("#refresh_location").removeClass('hidden')});
+
 $("#discard").click(function(){
     if(!confirm("<%= t :discard_changes %>"))
       return false;
