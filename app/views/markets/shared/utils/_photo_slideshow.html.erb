@@ -2,16 +2,24 @@
 <div class="market-section-container row photo-gallery-container">
 	<div class="market-photos-slideshow-container">
 		<div id="carousel-container-market-photo-gallery" class="carousel slide photo-gallery" data-ride="carousel">
-			<div class="carousel-inner market-photo-gallery-carousel-inner">
-				<% market.gallery.photographies.each do |photo| %>
-					<% if !photo.empty? %>
-						<div class="item">
-			  			<%= photo(photo, 600)  %>
-			  		</div>
-				<% end %>
-				<% end %>
-			</div>
+				<div class="carousel-inner market-photo-gallery-carousel-inner">
+					<% market.gallery.photographies.each do |photo| %>
+						<% if !photo.empty? %>
+							<div class="item ">
+				  			<%= photo(photo, 600)  %>
+				  		</div>
+						<% end %>
+					<% end %>
+				</div>
+				<a class="left carousel-control" href="#carousel-container-market-photo-gallery" role="button" data-slide="prev">
+    			<i class="fa fa-arrow-circle-o-left fa-1x"></i>
+  			</a>
+  			<a class="right carousel-control" href="#carousel-container-market-photo-gallery" role="button" data-slide="next">
+  				<i class="fa fa-arrow-circle-o-right fa-1x"></i>
+  			</a>
+
 		</div>
+
 	</div>
 </div>
 
@@ -26,6 +34,5 @@
 
 <script>
 	$(".item:first").addClass("active");
-	$(".item > a > img").css("width", "100%");
 	$(".market-photo-gallery-carousel-inner>.item:first").addClass("active");
 </script>

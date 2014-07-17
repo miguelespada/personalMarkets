@@ -16,7 +16,7 @@ var generateTitles = function(){
 var changeTitles= function(){
   setInterval(function(){
     generateTitles();
-  }, 3000);
+  }, 5000);
 }
 
 var setSlides = function(){
