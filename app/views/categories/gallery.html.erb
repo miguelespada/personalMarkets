@@ -1,7 +1,7 @@
 <div class = "home_gallery category_gallery row">
   <% @categories.each do |category| %>
       <div class = "home_gallery_item category_gallery_item col-md-3">
-        <div class = "center" data-name="<%= category.slug %>">
+        <div class = "category_gallery_featured_photo center" data-name="<%= category.slug %>">
           <%= cl_image_tag(category.glyph_img.path, :width => 100, :height => 100, :crop => :fill) %>
           <div>
             <%= intl_name(category) %>

@@ -34,7 +34,7 @@
     </div>
   
     <p class="home-action">
-      <%= link_to t(:see_more_categories), published_markets_path  %>
+      <%= link_to t(:see_more_categories), category_gallery_path  %>
     </p>
 </section>
 
@@ -64,7 +64,7 @@
     $( "#special_locations" ).html( data );
   });
 
-  $.get( "<%= category_gallery_path(:limit => '4') %>", function( data ) {
+  $.get( "<%= category_gallery_path(:limit => '8') %>", function( data ) {
     $( "#categories" ).html( data );
   });
 
