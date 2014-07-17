@@ -4,9 +4,9 @@
 $(document).ready(function(){
   $.get( "<%= market_url(market.to_param, format: :svg) %>", function( data ) {
     var qr = data.childNodes[0];
-    qr.setAttribute( "width", "300");
-    qr.setAttribute( "height", "300");
-    qr.setAttribute( "viewBox", "0 0 370 370");
+    qr.setAttribute( "width", "350");
+    qr.setAttribute( "height", "350");
+    qr.setAttribute( "viewBox", "0 0 420 420");
     $( "#market-qr" ).html( qr );
   });
 });
