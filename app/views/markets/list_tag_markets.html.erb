@@ -1,13 +1,16 @@
+
 <div class="paginate">
-    <%= paginate @markets %>
+  <%= paginate @markets %>
+  <%= link_to t(:tag_list), tags_gallery_path %>
 </div>
 
 <div class="panel panel-default panel-table panel-table-last">
    <% if @markets.count == 0 %>
     <div class="no-matching-markets search-section-title">
-    <%= t :no_matches_by_tag %>
+      <%= t :no_matches_by_tag %>
     </div>
   <% else %>
       <%= render partial: "markets/shared/views/gallery", locals: {markets: @markets } %>
   <% end %>
 </div>
+

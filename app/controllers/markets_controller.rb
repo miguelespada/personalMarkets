@@ -23,12 +23,12 @@ class MarketsController < ApplicationController
   end
   
   def list_tag_markets
-    @markets = Market.published.tagged_with(params[:tag].downcase).page(params[:page]).per(9)
+    @markets = Market.published.tagged_with(params[:tag].downcase).page(params[:page]).per(6)
     render :layout => !request.xhr?
   end
 
   def list_last_markets
-    @markets = Market.last_published.limit(4)
+    @markets = Market.last_published.limit(6)
     render :layout => !request.xhr?
   end
 

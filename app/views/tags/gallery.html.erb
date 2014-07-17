@@ -1,20 +1,19 @@
 
-
-<div class="panel panel-default panel-table">
-  <% @tags = @tags.map{|tag| tag.capitalize} %>
-  <div class="panel-body tags-panel-container">
-    <% @suggested.each do |tag| %>
-        <div class="col-md-2"> <%= link_to(tag.name.capitalize, tag_markets_path(tag.name), class: "tag-link") %> </div>
-        <% @tags.delete(tag.name.capitalize) %>
-    <% end %>
-      <% @tags.each do |name| %> 
-        <div class="col-md-2">  <%= link_to(name, tag_markets_path(name), class: "tag-link") %> </div>
+<div id="gallery-items">
+  <div class="panel panel-default panel-table">
+    <% @tags = @tags.map{|tag| tag.capitalize} %>
+    <div class="panel-body tags-panel-container">
+      <% @suggested.each do |tag| %>
+          <div class="col-md-2"> <%= link_to(tag.name.capitalize, tag_markets_path(tag.name), class: "tag-link") %> </div>
+          <% @tags.delete(tag.name.capitalize) %>
       <% end %>
+        <% @tags.each do |name| %> 
+          <div class="col-md-2">  <%= link_to(name, tag_markets_path(name), class: "tag-link") %> </div>
+        <% end %>
 
+    </div>
   </div>
 </div>
-
-<div id="gallery-items"></div>
 
 <script>
 

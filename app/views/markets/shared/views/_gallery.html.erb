@@ -1,5 +1,7 @@
+
 <div class = "market_gallery row">
- 
+
+    
   <% markets.each do |market| %>
     <% market = market.decorate %>
     <%= content_tag_for(:tr, market) do %>
@@ -33,7 +35,10 @@
       </div>
     <% end %>
   <% end %>
+
 </div>
+
+
 
 <script>
 $(document).ready(function(){
