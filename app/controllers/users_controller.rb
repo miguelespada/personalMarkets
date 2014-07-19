@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  load_resource :only => [:show, :list_coupons, :destroy]
+  load_resource :only => [:show, :destroy]
   authorize_resource :only => [:index, :show, :destroy]  
  
   def index
@@ -44,7 +44,6 @@ class UsersController < ApplicationController
 
   def admin
     authorize! :admin, Market
+    render "admin_panel"
   end
-
-  
 end

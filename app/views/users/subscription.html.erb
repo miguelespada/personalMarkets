@@ -5,18 +5,18 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">PREMIUM Payment</h3>
+        <h3 class="panel-title">PREMIUM Payment</h3>
         </div>
         <div class="panel-body">
           <fieldset>
-          <%= form_tag({controller: "subscriptions", action: "create"}, method: "post", id: "new_payment") do %>
-          
-          <%= render "payments/common_payment_form", :payment => @subscription_payment.payment %>
+            <%= form_tag({controller: "subscriptions", action: "create"}, method: "post", id: "new_payment") do %>
+            
+            <%= render "payments/common_payment_form", :payment => @subscription_payment.payment %>
 
-          <% end %>
-          <div class="form-group col-md-4 col-md-offset-4 payment-button-container">
-            <button class="get-token btn btn-info">Subscribe</button>
-          </div>
+            <% end %>
+            <div class="form-group col-md-4 col-md-offset-4 payment-button-container">
+              <button class="get-token btn btn-info">Subscribe</button>
+            </div>
           </fieldset>
         </div>
       </div>

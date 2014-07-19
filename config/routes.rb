@@ -25,7 +25,7 @@ PopUpStores::Application.routes.draw do
 
     end
 
-    get "/users/:user_id/dashboard", to: "users#dashboard", as: "user_dashboard"
+    get "/users/:user_id/dashboard", to: "users#user_dashboard", as: "user_dashboard"
     get "/users/admin", to: "users#admin", as: "admin"
     get "/users/:user_id/markets", to: "markets#list_user_markets", as: "user_markets"
     get "/published", to: "markets#list_published_markets", as: "published_markets"
