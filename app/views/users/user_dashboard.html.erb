@@ -10,17 +10,17 @@
     <div class="row">
       <div class="col-md-6 dashboard-column">
         <%= link_to user_markets_path(current_user), class:"dashboard-button btn btn-danger btn-lg" do %>
-			    <i class="fa fa-shopping-cart fa-4x"></i> <br/> Markets
-		    <% end %>
+          <i class="fa fa-shopping-cart fa-4x"></i> <br/> Markets
+        <% end %>
         <%= link_to user_likes_path(current_user), class:"dashboard-button btn btn-warning btn-lg" do %>
           <i class="fa fa-heart-o fa-4x"></i> <br/> Likes
         <% end %>
         <%= link_to user_bargains_path(current_user), class:"dashboard-button btn btn-success btn-lg" do %>
           <i class="fa fa-bullhorn fa-4x"></i> <br/> Bargains
         <% end %>
-		    <%= link_to user_wishes_path(current_user), class:"dashboard-button btn btn-info btn-lg" do %>
-			    <i class="fa fa-magic fa-4x"></i> <br/> Wishlist
-		    <% end %>
+        <%= link_to user_wishes_path(current_user), class:"dashboard-button btn btn-info btn-lg" do %>
+          <i class="fa fa-magic fa-4x"></i> <br/> Wishlist
+        <% end %>
       </div>
 
       <div class="col-md-6 dashboard-column">   
@@ -29,8 +29,8 @@
         <% end %>
         
         <%= link_to user_path(current_user), :method => :get, class:"dashboard-button btn btn-primary btn-lg" do %>
-			    <i class="fa fa-user fa-4x"></i> <br/> Profile
-		    <% end %>
+          <i class="fa fa-user fa-4x"></i> <br/> Profile
+        <% end %>
 
         <%= link_to user_photos_path(current_user), class:"dashboard-button btn btn-primary btn-lg" do %>
           <i class="fa fa-camera fa-4x"></i> <br/> Photos

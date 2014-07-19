@@ -4,14 +4,14 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-md-6 dashboard-column">
+        
         <%= link_to markets_path, class:"dashboard-button btn btn-danger btn-lg" do %>
-			    <i class="fa fa-shopping-cart fa-4x"></i> <br/> Markets
-		    <% end %>
+          <i class="fa fa-shopping-cart fa-4x"></i> <br/> Markets
+        <% end %>
 
         <%= big_button(Category) %>
 
         <%= big_button(SpecialLocation) %>
-
 
         <%= big_button(Tag) %>
         
@@ -22,22 +22,25 @@
         <%= link_to photos_path, class:"dashboard-button btn btn-primary btn-lg" do %>
           <i class="fa fa-camera fa-4x"></i> <br/> Photos
         <% end %>
+        
         <a class="dashboard-button btn btn-primary btn-lg" target="_blank" href="https://mail.google.com"><i class="fa fa-envelope-o fa-4x"></i> <br> Messages</a>
+      
       </div>
+      
       <div class="col-md-6 dashboard-column">
         <%= link_to users_path, class:"dashboard-button btn btn-primary btn-lg" do %>
-			    <i class="fa fa-users fa-4x"></i> <br/> Users
-		    <% end %>
+          <i class="fa fa-users fa-4x"></i> <br/> Users
+        <% end %>
 
-		    <%= link_to show_statistic_path, class:"dashboard-button dashboard-button btn btn-primary btn-lg" do %>
-			    <i class="fa fa-tasks fa-4x"></i> <br/> Statistics
-		    <% end %>
+        <%= link_to show_statistic_path, class:"dashboard-button dashboard-button btn btn-primary btn-lg" do %>
+          <i class="fa fa-tasks fa-4x"></i> <br/> Statistics
+        <% end %>
 
         <%= big_button(SlideshowImage) %>
 
         <%= big_button(SlideshowText) %>
 
-		    <a class="dashboard-button btn btn-primary btn-lg" target="_blank" href="https://app.paymill.com/es-es/auth/login"><i class="fa fa-money fa-4x"></i> <br/> Paymill</a>
+        <a class="dashboard-button btn btn-primary btn-lg" target="_blank" href="https://app.paymill.com/es-es/auth/login"><i class="fa fa-money fa-4x"></i> <br/> Paymill</a>
 
         <%= link_to coupons_path, class:"dashboard-button dashboard-button btn btn-primary btn-lg" do %>
           <i class="fa fa-ticket fa-4x"></i> <br/> Coupons
@@ -46,6 +49,7 @@
         <%= link_to settings_path, class:"dashboard-button btn btn-primary btn-lg" do %>
           <i class="fa fa-cogs fa-4x"></i> <br/> Admin data
         <% end %>
+
       </div>
     </div>
   </div>

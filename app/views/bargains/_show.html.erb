@@ -10,12 +10,12 @@
             <%= photo(bargain.photography, 400) %> 
             <div class="bargain-price-icon">
               <div class="bargain-price-container">
-                <img src="../../images/price-badge.svg"></img>
+                <%= image_tag "price-badge.svg" %>
                 <span class="bargain-price"><%= bargain.price %>€</span>
               </div>
             </div>
           </div>
-          <div class="facebook-bargains">
+          <div class="facebook-bargains, hidden-xs">
             <div id="fb-root">
               <script>(function(d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
@@ -26,9 +26,9 @@
               }(document, 'script', 'facebook-jssdk'));
               </script>
         
-              <div class="fb-comments" data-href='<%=bargain_url(bargain.to_param)%>' data-numposts="5"data-colorscheme="light"></div>
+              <div class="fb-comments" data-href='<%=bargain_url(bargain.to_param)%>' data-numposts="5" data-colorscheme="light"></div>
               <br>
-              <div class="fb-like" data-href='<%=bargain_url(bargain.to_param)%>' data-layout="standard"data-action="like" data-show-faces="true" data-share="true"></div>
+              <div class="fb-like" data-href='<%=bargain_url(bargain.to_param)%>' data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
             </div>
           </div>
         </div>
@@ -36,11 +36,3 @@
     </div>
   </div>
 </div>
-
-<style>
-@media(max-width: 768px){
-  .facebook-bargains{
-    display:none;
-  }
-}
-</style>
