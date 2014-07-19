@@ -17,16 +17,19 @@ class BargainsController < ApplicationController
 
   def list_user_bargains
     @bargains = load_user.bargains.all
+    render "index"
   end
 
   def new
     @bargain = Bargain.new
+    render "form"
   end
 
   def show
   end
 
   def edit
+    render "form"
   end
 
   def create

@@ -1,0 +1,16 @@
+<div class="form-group">
+  <%= f.input :description, input_html: { placeholder: "Bargain Description" }, required: true %>
+</div>
+
+<div class="form-group">
+  <div class="input-group">
+    <%= f.input_field :price, input_html: { placeholder: "Bargain Price" }, required: true %>
+    <span class="input-group-addon">€</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.simple_fields_for :photography do |form_builder| %>
+    <%= render 'photos/form', f: form_builder, required: true %>
+  <% end %>
+</div>
