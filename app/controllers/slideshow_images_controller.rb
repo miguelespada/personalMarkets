@@ -3,7 +3,7 @@ class SlideshowImagesController < ApplicationController
   authorize_resource
 
   def index
-    @slideshow = SlideshowImage.all
+    @slideshow_images = SlideshowImage.all
   end
 
   def new

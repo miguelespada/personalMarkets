@@ -1,0 +1,29 @@
+<% route = model.model_name.singular_route_key %>
+<% new_path = "new_#{route}_path" %>
+<% edit_path = "edit_#{route}_path" %>
+<% delete_path = "#{route}_path" %>
+
+<div class="panel panel-default panel-table">
+  <%= entity_table_header(model, send(new_path)) %>
+  <div class="table-container">
+    <table class="table table-striped">
+      <tr>
+        <th>Fields</th>
+        <th>Actions</th>
+      </tr>
+    
+      <% @slideshow_images.each do |entity| %>
+        <%= content_tag_for(:tr, entity) do %> 
+          <td> 
+            <%= render "table_fields", entity: entity %>
+          </td>
+
+          <td> 
+            <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), send(delete_path, entity), :method => :delete, class: "delete btn btn-danger table-button table-button-delete", data: { confirm: 'Are you sure?' } %> </span>
+            <span> <%= link_to content_tag(:i, "", class: "fa fa-pencil"), send(edit_path, entity), class: "edit btn btn-info table-button table-button-edit" %></span>
+          </td>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>

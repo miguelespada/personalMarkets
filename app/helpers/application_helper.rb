@@ -45,9 +45,18 @@ module ApplicationHelper
     (controller_name == 'markets' && action_name == 'search') || (controller_name == 'static_pages' && action_name == 'map')
   end
 
+  # Entities
+
   def page_title(model)
     "<div class = 'page_title'><i class='fa #{model.icon} fa-2x'></i> <br/>#{model.title}</div>".html_safe
   end
+
+  def entity_table_header(model, new_action)
+    content_tag :div, class: "panel-heading table-title" do
+      concat model.title.pluralize
+      concat link_to content_tag(:i, " New", class: "fa fa-plus"), new_action, class: "new btn btn-info table-button table-button-new"
+    end
+  end 
 
 end
 
