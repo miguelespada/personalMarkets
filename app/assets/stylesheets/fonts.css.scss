@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'GillSansMT';
+  src: url('/fonts/GillSansMT.eot') format('eot'), 
+       url('/fonts/GillSansMT.woff') format('woff'), 
+       url('/fonts/GillSansMT.ttf')  format('truetype'),
+       url('/fonts/GillSansMT.svg#GillSansMT') format('svg');
+}
+
+@font-face {
+  font-family: 'GillSansMT-Bold';
+  src: url('/fonts/GillSansMT-Bold.eot') format('eot'), 
+       url('/fonts/GillSansMT-Bold.woff') format('woff'), 
+       url('/fonts/GillSansMT-Bold.ttf')  format('truetype'),
+       url('/fonts/GillSansMT-Bold.svg#GillSansMT-Bold') format('svg');
+}
+
+@font-face {
+    font-family: 'UVF-Funkydori';
+    src:url('/fonts/UVF-Funkydori.ttf.woff') format('woff'),
+        url('/fonts/UVF-Funkydori.ttf.svg#UVF-Funkydori') format('svg'),
+        url('/fonts/UVF-Funkydori.ttf.eot'),
+        url('/fonts/UVF-Funkydori.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'donoso';
+    src: url('/fonts/donoso_5jul_1-webfont.eot');
+    src: url('/fonts/donoso_5jul_1-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/donoso_5jul_1-webfont.woff') format('woff'),
+         url('/fonts/donoso_5jul_1-webfont.ttf') format('truetype'),
+         url('/fonts/donoso_5jul_1-webfont.svg#donosoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 100;
+  text-align: center;
+  padding-top: 20px; 
+}

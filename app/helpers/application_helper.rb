@@ -1,8 +1,4 @@
 module ApplicationHelper
-  def page_title(title)
-    content_for :page_title, title
-    "<h4>#{title}</h4>".html_safe
-  end
   
   def devise_mapping
     Devise.mappings[:user]
@@ -48,12 +44,20 @@ module ApplicationHelper
   # Entities
 
   def page_title(model)
-    content_tag :div, "", class:"page_title" do
+    content_tag :h1, "" do
       concat content_tag :i, "", class:"fa #{model.icon} fa-2x"
       concat "<br/>".html_safe
       concat params['action'].titleize
       concat " ".html_safe
       concat model.model_name.human
+    end
+  end
+
+  def page_title(text, icon)
+    content_tag :h1, "" do
+      concat content_tag :i, "", class:"fa #{icon} fa-2x"
+      concat "<br/>".html_safe
+      concat text
     end
   end
 

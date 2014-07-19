@@ -1,22 +1,22 @@
-<div class = "page_title"><i class="fa fa-camera-retro fa-2x"></i> <br/>Photo</div>
+<%= page_title(t("Photo"), "fa-camera-retro") %>
 
 <div class="container user-session">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default panel-table-last edit-photo-panel">
         <div class="panel-body photo-show-panel">
-        	<%= div_for @photo do %>
-        	<div class="photo-show"> 
-  				  <%= photo(@photo, 600) %>
-  				  <%= edit_photo_link(@photo) %>
-  				  <%= photographic_link(@photo) %>
-  				</div>
-  				<% end %>
-  				<div class="photo-actions-links">
+          <%= div_for @photo do %>
+          <div class="photo-show"> 
+            <%= photo(@photo, 600) %>
+            <%= edit_photo_link(@photo) %>
+            <%= photographic_link(@photo) %>
+          </div>
+          <% end %>
+          <div class="photo-actions-links">
             <%= before_form_link %>
-						<%= all_photos_link %>
-						<%= user_photos_link(current_user) %>
-					</div>
+            <%= all_photos_link %>
+            <%= user_photos_link(current_user) %>
+          </div>
         </div>
       </div>
     </div>

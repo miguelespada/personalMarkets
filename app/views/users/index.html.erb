@@ -1,6 +1,7 @@
 <%= stylesheet_link_tag 'users'%>
+
 <div class="user-table-container">
-	<% @users.grouped_by_role do |role, grouped_users| %>
-  	<%= render "users", :users => grouped_users, :role => role %>
-	<% end %>
+  <% @users.grouped_by_role do |role, grouped_users| %>
+    <%= render "users", :users => grouped_users, :role => role %>
+  <% end %>
 </div>

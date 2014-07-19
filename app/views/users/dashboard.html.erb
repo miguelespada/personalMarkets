@@ -1,13 +1,12 @@
-<%-# ICONS LINKS ARE NOT DEFINED -%>
+<%= page_title(user_role(current_user), "fa-dashboard") %>
 
-<div class ="page_title"><i class="fa fa-dashboard fa-5x"></i> <br/>Dashboard<br><%= user_role(current_user) %></div>
-
-  <div class="panel-body">
+<div class="panel-body">
 
     <div class="center">
         <p>You have published: <%= current_user.number_of_last_month_markets %> market(s) during the last month</p>
         <p>You can publish: <%= current_user.remaining_markets  %> market(s)</p>
     <div>
+
     <div class="row">
       <div class="col-md-6 dashboard-column">
         <%= link_to user_markets_path(current_user), class:"dashboard-button btn btn-danger btn-lg" do %>
