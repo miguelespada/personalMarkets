@@ -1,36 +1,18 @@
+<%= stylesheet_link_tag 'bargains'%>
+
 <div class="container">
   <div class="container-inner row">
     <div class="col-md-10 col-md-offset-1">
       <div class="panel panel-default panel-table panel-table-last panel-bargain-show">
-        <div class="panel-heading table-title">
-          <div class="bargain-title-container"><%= bargain.description %></div>
+        <div class="panel-heading table-title center">
+         <%= bargain.description %>
         </div>
-        <div class="bargain-full-container">
+        <div>
           <div class="bargain-photo-container">
             <%= photo(bargain.photography, 400) %> 
-            <div class="bargain-price-icon">
-              <div class="bargain-price-container">
-                <%= image_tag "price-badge.svg" %>
-                <span class="bargain-price"><%= bargain.price %>€</span>
-              </div>
-            </div>
+            <%= render "bargains/utils/price_badge", bargain: bargain %>
           </div>
-          <div class="facebook-bargains, hidden-xs">
-            <div id="fb-root">
-              <script>(function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-                fjs.parentNode.insertBefore(js, fjs);
-              }(document, 'script', 'facebook-jssdk'));
-              </script>
-        
-              <div class="fb-comments" data-href='<%=bargain_url(bargain.to_param)%>' data-numposts="5" data-colorscheme="light"></div>
-              <br>
-              <div class="fb-like" data-href='<%=bargain_url(bargain.to_param)%>' data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-            </div>
-          </div>
+          <%= render "bargains/utils/facebook", bargain: bargain %>
         </div>
       </div>
     </div>

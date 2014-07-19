@@ -16,7 +16,7 @@ $( document ).ready(function() {
             $("#progress").html("[Upload progress: DONE]");
             setTimeout(function() {
               $('#progress').fadeOut('slow');
-            }, 1000); // <-- time in milliseconds
+            }, 1000); 
           }
           else{
             $("#progress").html("[Upload progress: " + progress + " %]");
@@ -25,13 +25,12 @@ $( document ).ready(function() {
       },
       add: function(e, data) {
         if(data.originalFiles[0]['size'] > 1000000) {
-            alert("Filesize is too big. Maximun size is 1 Mb");
+            alert("Filesize is too big. Maximun size is 1 MB");
         }
         else {
             data.submit();
         }
     }
   });
-
 });
 </script>

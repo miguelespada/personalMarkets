@@ -371,13 +371,6 @@ border-color: #d43f3a;
   margin-bottom: 80px !important;
 }
 
-.table-title{
-  font-size: 24px;
-  font-weight: 100;
-  text-align: left;
-  margin-bottom: 10px !important;
-
-}
 .table-button{
   width:auto;
 }
@@ -937,71 +930,6 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 .wish-photo-container>img{
   max-width: 100%;
   height:auto;
-}
-//*############################ BARGAINS CSS #############################*//
-.bargain_gallery{
-  margin-top: 0px !important;
-}
-
-.bargain_gallery > .container > .container-inner{
-  margin-top: 0px !important;
-}
-
-.bargain_gallery_title{
-  @extend .home_gallery_title;
-  margin-bottom:0px !important;
-  padding: 0px !important;
-}
-
-.bargain-title-container{
-  width:100%;
-  text-align: center;
-}
-.bargain-full-container{
-  width:100%;
-  text-align: center;
-}
-.bargain-photo-container{
-  width:400px;
-  max-width: 100%;
-  position: relative;
-  margin: 0 auto;
-  padding: 30px 0px;
-}
-.bargain-photo-container > img{
-  border:10px solid #FFFFFF;
-  box-shadow: 3px 3px 10px #888888;
-  max-width: 100%;
-  height: auto;
-}
-
-.bargain-price-icon{
-  position: absolute;
-  top:63%;
-  left:65%;
-}
-
-.bargain-price-container{
-  width:140px;
-  height:auto;
-  position:relative;
-}
-
-.bargain-price-container > img{
-  width:100%;
-  height:auto;
-}
-
-.bargain-price{
-  position: absolute;
-  top:0px;
-  left:0px;
-  width:140px;
-  text-align: center;
-  line-height: 140px;
-  font-size:30px;
-  font-weight: 100;
-  color:#68511E;
 }
 
 //*############################ WISH RECOMMEND CSS #############################*//

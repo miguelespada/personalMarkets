@@ -1,13 +1,9 @@
-<h1>People Bargains</h1>
+<h1><%= t :Bargains %> </h1>
 
 <div class="paginate">
   <%= paginate @bargains %>
 </div>
 
-<div class = "bargain_gallery row">
-  <% @bargains.each do |bargain| %>
-    <%= render "bargains/show", :bargain => bargain %>
-  <% end %>
-</div>
-
-
+<% @bargains.each do |bargain| %>
+  <%= render "bargains/show", :bargain => bargain %>
+<% end %>
