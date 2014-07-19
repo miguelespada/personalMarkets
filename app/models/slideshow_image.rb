@@ -5,10 +5,6 @@ class SlideshowImage
   accepts_nested_attributes_for :photography
 
   def self.icon
-    "fa-tag"
-  end
-  
-  def self.title
-    "Slideshow Image"
+    "fa-film"
   end
 end

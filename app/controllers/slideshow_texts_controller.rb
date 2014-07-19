@@ -3,7 +3,7 @@ class SlideshowTextsController < ApplicationController
   authorize_resource
 
   def index
-    @slideshow = SlideshowText.all
+    @slideshow_texts = SlideshowText.all
   end
 
   def new

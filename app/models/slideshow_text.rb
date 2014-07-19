@@ -21,4 +21,8 @@ class SlideshowText
   def self.subtitle_list(language)
     all.collect{|t| t.intl_subtitle(language)}.join(";")
   end
+
+  def self.icon
+    "fa-quote-right"
+  end
 end

@@ -8,9 +8,11 @@ class SlideshowImagesController < ApplicationController
 
   def new
     @slideshow_image= SlideshowImage.new
+    render'form'
   end
 
   def edit
+    render'form'
   end
 
   def create

@@ -48,15 +48,23 @@ module ApplicationHelper
   # Entities
 
   def page_title(model)
-    "<div class = 'page_title'><i class='fa #{model.icon} fa-2x'></i> <br/>#{model.title}</div>".html_safe
+    "<div class = 'page_title'><i class='fa #{model.icon} fa-2x'></i> <br/>#{params['action'].titleize} #{model.model_name.human}</div>".html_safe
   end
 
   def entity_table_header(model, new_action)
     content_tag :div, class: "panel-heading table-title" do
-      concat model.title.pluralize
+      concat model.model_name.human.pluralize
       concat link_to content_tag(:i, " New", class: "fa fa-plus"), new_action, class: "new btn btn-info table-button table-button-new"
     end
   end 
+
+  def big_button(model)
+    link_to send("#{model.model_name.route_key}_path"), class:"dashboard-button dashboard-button btn btn-primary btn-lg" do
+      concat content_tag :i, "", class:"fa #{model.icon} fa-4x"
+      concat "<br/>".html_safe
+      concat truncate(model.model_name.human,  length: 12)
+    end 
+  end
 
 end
 

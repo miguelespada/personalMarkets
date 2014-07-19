@@ -14,4 +14,8 @@ class Wish
   def recommend(market)
     recommended << market
   end
+
+  def self.icon
+    "fa-magic"
+  end
 end

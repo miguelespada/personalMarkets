@@ -18,9 +18,9 @@
 		    <%= link_to tags_path, class:"dashboard-button btn btn-info btn-lg" do %>
 			    <i class="fa fa-tags fa-4x"></i> <br/> <%= t :tags %>
 		    <% end %>
-		    <%= link_to wishes_path, class:"dashboard-button btn btn-primary btn-lg" do %>
-			    <i class="fa fa-magic fa-4x"></i> <br/> Wishlist
-		    <% end %>
+
+        <%= big_button(Wish) %>
+
 		    <%= link_to bargains_path, class:"dashboard-button btn btn-primary btn-lg" do %>
           <i class="fa fa-bullhorn fa-4x"></i> <br/> Bargains
         <% end %>
@@ -33,18 +33,15 @@
         <%= link_to users_path, class:"dashboard-button btn btn-primary btn-lg" do %>
 			    <i class="fa fa-users fa-4x"></i> <br/> Users
 		    <% end %>
+
 		    <%= link_to show_statistic_path, class:"dashboard-button dashboard-button btn btn-primary btn-lg" do %>
 			    <i class="fa fa-tasks fa-4x"></i> <br/> Statistics
 		    <% end %>
 
-        <%= link_to slideshow_images_path, class:"dashboard-button dashboard-button btn btn-primary btn-lg" do %>
-          <i class="fa fa-film fa-4x"></i> <br/> Slideshow
-        <% end %>
+        <%= big_button(SlideshowImage) %>
 
-        <%= link_to slideshow_texts_path, class:"dashboard-button dashboard-button btn btn-primary btn-lg" do %>
-          <i class="fa fa-quote-right fa-4x"></i> <br/> Slide. Texts
-        <% end %>
-		    
+        <%= big_button(SlideshowText) %>
+
 		    <a class="dashboard-button btn btn-primary btn-lg" target="_blank" href="https://app.paymill.com/es-es/auth/login"><i class="fa fa-money fa-4x"></i> <br/> Paymill</a>
 
         <%= link_to coupons_path, class:"dashboard-button dashboard-button btn btn-primary btn-lg" do %>
@@ -52,7 +49,7 @@
         <% end %>
 
         <%= link_to settings_path, class:"dashboard-button btn btn-primary btn-lg" do %>
-          <i class="fa fa-cogs fa-4x"></i> <br/> Data & Sets
+          <i class="fa fa-cogs fa-4x"></i> <br/> Admin data
         <% end %>
       </div>
     </div>
