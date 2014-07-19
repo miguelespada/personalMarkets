@@ -1,6 +1,36 @@
 $gallery_item_with:300px;
+$default_size:14px;
+$default_weight: 200;
 
-.market_gallery{
+@mixin market_label_color{
+  color:#FFFFFF;
+  text-shadow: 2px 2px 5px #222222; 
+}
+
+@mixin market_extra_text{
+  text-align: center;
+  color: #777;
+  font-weight: $default_weight;
+}
+
+@mixin market_font($size: 1, $weight: 1, $height:24px){
+  max-width: $gallery_item_with * 0.8;
+  @include market_label_color;
+  font-weight: $default_size * $weight;
+  font-size: $default_size * $size;
+  line-height: $height;
+  float:left;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin label_position($margin-top){
+  position:absolute;
+  display:inline;
+  top:100%;
+  left:12px;
+  margin-top:$margin-top;
 }
 
 .market_item{
@@ -14,64 +44,35 @@ $gallery_item_with:300px;
 }
 
 .market_name_label{
-  position:absolute;
-  display:inline;
-  top:100%;
-  left:12px;
-  margin-top:-68px;
-  font-weight:200;
-  font-size:24px;
-  line-height: 48px;
-  color:#FFFFFF;
-  text-shadow: 2px 2px 5px #222222;
+  @include label_position(-68px); 
 }
 
 .market_name_label > span{
-  max-width: $gallery_item_with * 0.8;
-  float:left;
-  overflow:hidden;
-  white-space:nowrap;
-  text-overflow: ellipsis;
+  @include market_font(1.5, 1, 48px); 
 }
 
 .market_description_label{
-  position:absolute;
-  display:inline;
-  top:100%;
-  left:12px;
-  margin-top:-30px;
-  font-weight:400;
-  font-size:12px;
-  line-height: 24px;
-  color:#FFFFFF;
-  text-shadow: 2px 2px 5px #222222;
+  @include label_position(-30px); 
 }
 
 .market_description_label > span{
-  max-width: $gallery_item_with * 0.8;
-  float:left;
-  overflow:hidden;
-  white-space:nowrap;
-  text-overflow: ellipsis;
+  @include market_font(1, 2, 24px); 
 }
 
 .market-like-button{
+  @include market_label_color;
   position:absolute;
   display:inline;
   top:0%;
   left:0%;
   margin-top:8px;
   margin-left:10px;
-  color:#FFFFFF;
-  text-shadow: 1px 1px 3px #222222;
 }
 
 .market-gallery-extra{
+  @include market_extra_text;
   width: $gallery_item_with;
-  text-align: center;
-  font-weight: 200;
   margin: 0 auto;
   padding: 5px;
-  color: #777;
   border: 1px solid #ccc;
 }

@@ -45,6 +45,10 @@ module ApplicationHelper
     (controller_name == 'markets' && action_name == 'search') || (controller_name == 'static_pages' && action_name == 'map')
   end
 
+  def page_title(model)
+    "<div class = 'page_title'><i class='fa #{model.icon} fa-2x'></i> <br/>#{model.title}</div>".html_safe
+  end
+
 end
 
 

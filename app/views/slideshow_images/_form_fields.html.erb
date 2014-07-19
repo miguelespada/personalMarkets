@@ -1,0 +1,5 @@
+<div class="form-group">
+  <%= f.simple_fields_for :photography do |form_builder| %>
+    <%= render 'photos/form', f: form_builder, required: true %>
+  <% end %>
+</div>

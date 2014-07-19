@@ -7,7 +7,6 @@
        url('/fonts/GillSansMT.svg#GillSansMT') format('svg');
 }
 
-
 @font-face {
   font-family: 'GillSansMT-Bold';
   src: url('/fonts/GillSansMT-Bold.eot') format('eot'), 
@@ -15,8 +14,6 @@
        url('/fonts/GillSansMT-Bold.ttf')  format('truetype'),
        url('/fonts/GillSansMT-Bold.svg#GillSansMT-Bold') format('svg');
 }
-
-
 
 @font-face {
     font-family: 'UVF-Funkydori';
@@ -37,48 +34,27 @@
          url('/fonts/donoso_5jul_1-webfont.svg#donosoregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
+#home-container{
+  margin-bottom:80px;
+}
 
+.anim-container{
+  width:100%;
+  text-align: center;
+}
 
-  #slideshow_titles{
-    position: absolute;
-    text-align: center;
-    z-index:10;
-    max-width: 80%;
-    color: white;
-    text-shadow: 2px 2px 5px #222222;
-    font-family: 'GillSansMT-Bold';
-  }
-  #slideshow_titles .title{
-    font-size:36px;
-  }
+.fa-spin{
+  margin: 100px;
+  color:#777777;
+}
 
-  #slideshow_titles .subtitle{
-    font-size:24px;
-  }
-
-  #home-container{
-    margin-bottom:80px;
-  }
-
-  .anim-container{
-    width:100%;
-    text-align: center;
-  }
-
-  .fa-spin{
-    margin: 100px;
-    color:#777777;
-  }
-
-  .gallery-section{
-    margin-left: 30px;
-    margin-right:30px;
-    border-bottom: 1px solid #CCCCCC;
-  }
-
+.gallery-section{
+  margin-left: 30px;
+  margin-right:30px;
+  border-bottom: 1px solid #CCCCCC;
+}
 
 
 .badge{
@@ -86,6 +62,7 @@
 	margin-bottom: 15px;
 	background-color: #5bc0de;
 }
+
 #search_img{
  width:80%;   
 }
