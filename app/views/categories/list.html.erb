@@ -1,14 +1,14 @@
 <% @categories.each do |category| %>
   <li class="registered-user-action">
   	<a class="explore-link-categories" href="#" data-name="<%= category.slug %>">
-    <%= intl_name(category) %><i class="fa fa-angle-right explore-arrow"></i>
+    <%= truncate(intl_name(category), length: 16) %><i class="fa fa-angle-right explore-arrow"></i>
     </a>
   </li>
 <% end %>
 
 <script>
-	$(".explore-link-categories").click(function(){
-    	$("#category_category_id").val($(this).data("name"));
-    	$("#search_market").submit();
-  	});
+  $(".explore-link-categories").click(function(){
+    $("#category_category_id").val($(this).data("name"));
+    $("#search_market").submit();
+  });
 </script>

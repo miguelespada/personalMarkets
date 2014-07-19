@@ -9,16 +9,14 @@
         <%= link_to markets_path, class:"dashboard-button btn btn-danger btn-lg" do %>
 			    <i class="fa fa-shopping-cart fa-4x"></i> <br/> Markets
 		    <% end %>
-		    <%= link_to categories_path, class:"dashboard-button btn btn-warning btn-lg" do %>
-			    <i class="fa fa-bars fa-4x"></i> <br/> <%= t :categories %>
-		    <% end %>
+
+        <%= big_button(Category) %>
 
         <%= big_button(SpecialLocation) %>
 
-		    <%= link_to tags_path, class:"dashboard-button btn btn-info btn-lg" do %>
-			    <i class="fa fa-tags fa-4x"></i> <br/> <%= t :tags %>
-		    <% end %>
 
+        <%= big_button(Tag) %>
+        
         <%= big_button(Wish) %>
 
 		    <%= link_to bargains_path, class:"dashboard-button btn btn-primary btn-lg" do %>

@@ -26,10 +26,12 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
+    render 'form'
   end
 
   def edit
     @category.glyph_img ||= Photo.new
+    render 'form'
   end
 
   def create

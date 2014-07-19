@@ -2,8 +2,8 @@ class TagsController < ApplicationController
   load_resource :only => [:show, :edit, :destroy, :update]
   authorize_resource :except => [:suggested, :show, :gallery, :list]
   def index
-    @suggested = Tag.all
-    @tags = Market.tags.uniq
+    @tags = Tag.all
+    @user_tags = Market.tags.uniq
     respond_to do |format|
         format.html 
     end
@@ -33,9 +33,11 @@ class TagsController < ApplicationController
 
   def new
     @tag = Tag.new
+    render "form"
   end
 
   def edit
+    render "form"
   end
 
   def create

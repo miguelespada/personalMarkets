@@ -18,10 +18,12 @@ class WishesController < ApplicationController
 
   def list_user_wishes
     @wishes = load_user.wishes.all
+    render "index"
   end
 
   def new
     @wish = Wish.new
+    render "form"
   end
 
   def show
@@ -34,6 +36,7 @@ class WishesController < ApplicationController
   end 
 
   def edit
+    render "form"
   end
 
   def create

@@ -6,4 +6,8 @@ class Tag
   def has_markets?
      Market.tagged_with(name).count > 0
   end
+
+  def self.icon
+    "fa-tags"
+  end
 end

@@ -1,7 +1,7 @@
 <% @special_locations.each do |special_location| %>
 <li class="registered-user-action">
   <%= link_to map_path(location: special_location.name) do %>
-    <%=  special_location.name %>
+    <%=  truncate(special_location.name, length: 16) %>
     <i class="fa fa-angle-right explore-arrow"></i>
   <% end %>
 </li>

@@ -1,0 +1,15 @@
+<div class="form-group">
+  <%= f.input :description, input_html: { placeholder: "Wish Description" }, required: true %>
+</div>
+
+<div class="form-group">
+  <%= f.input :tags, input_html: { class: 'tm-input', placeholder: "Tags" } %>
+  <p id="tags-container"></p>
+</div>
+
+<div class="form-group">
+  <%= f.simple_fields_for :photography do |form_builder| %>
+    <%= render 'photos/form', f: form_builder, required: true %>
+  <% end %>
+</div>
+

@@ -1,0 +1,21 @@
+<div class="col-md-2"> 
+  <div class="table-photo-container">
+     <%= photo(entity.photography, 120, 60) %>
+     <%= edit_photo_link(entity.photography) %>
+  </div>
+</div>
+
+<div class="col-md-3"> 
+  <em> Name:</em> <%= link_to entity.name, category_markets_path(entity) %> (<%= entity.markets.count %>)<br>
+  <em> English name:</em> <%= entity.english %><br>
+  <em> Slug:</em> <%= entity.slug %>
+  <em> Order:</em> <%= entity.order %>
+</div> 
+
+<div class="col-md-2"> 
+  <%= formatted_button(entity) %>
+</div> 
+
+<div class="col-md-2"> 
+  <%= entity.style %>
+</div> 

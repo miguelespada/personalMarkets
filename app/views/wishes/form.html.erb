@@ -1,0 +1,16 @@
+<%= javascript_include_tag "tagmanager" %>
+<%= stylesheet_link_tag  "tagmanager" %>
+
+<%= form(@wish) %>
+
+
+<script>
+  $( document ).ready(function() {
+    var tagApi = jQuery(".tm-input").tagsManager({
+      prefilled: $( "#wish_tags" ).val(),
+      delimiters: [9, 13, 44],
+      tagClass: "tm-tag",
+      tagsContainer: '#tags-container'
+    });
+  });
+</script>

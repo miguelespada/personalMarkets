@@ -1,18 +1,16 @@
 <% @suggested.each do |tag| %>
   <li class="registered-user-action">
-     <%= link_to tag.name, tags_gallery_path(:tag_name => tag.name) %>
+     <%= link_to tags_gallery_path(:tag_name => tag.name) do %>
+     <%= truncate(tag.name, length: 16) %>
+     <i class="fa fa-angle-right explore-arrow"></i>
+  <% end %>
   </li>
 <% end %>
+
 <li class="divider"></li>
 <li class="registered-user-action">
 	<%= link_to tags_gallery_path do %>
 		<%= t :All_tags %>
+    <i class="fa fa-angle-right explore-arrow"></i>
 	<% end %>
 </li>
-
-
-<script>
-$(document).ready(function(){
-  $('#explore_tags>.registered-user-action>a').append('<i class="fa fa-angle-right explore-arrow"></i>');
-});
-</script>
