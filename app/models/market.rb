@@ -61,6 +61,10 @@ class Market
   after_save :collect_cities 
   after_update :order_schedule
 
+   def self.icon
+    "fa-shopping-cart"
+  end
+  
   def coupon_available?
     self.has_coupon? && (self.pro? || self.belongs_to_premium_user?)
   end
