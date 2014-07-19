@@ -193,6 +193,7 @@ class User
 
    def allowed_markets
     return 4 if self.has_role?("premium")
+    return 1000000 if self.has_role?("admin")
     1
   end
 end
