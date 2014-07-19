@@ -65,6 +65,7 @@ module ApplicationHelper
 
   def entity_table_header(model, new_action)
     content_tag :div, class: "panel-heading table-title" do
+      concat link_to "<i class='fa fa-cog fa-1x'></i> ".html_safe, admin_path if current_user.has_role?(:admin)
       table_user
       concat model.model_name.human.pluralize
       concat link_to content_tag(:i, " New", class: "fa fa-plus"), new_action, class: "new btn btn-info table-button table-button-new"
