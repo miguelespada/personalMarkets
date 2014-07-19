@@ -57,8 +57,15 @@ module ApplicationHelper
     end
   end
 
+  def table_user
+      concat "Your " if params['user_id'].present? && params['user_id'] == current_user.id.to_s
+      concat User.find(params['user_id']).email + " " if params['user_id'].present? && params['user_id'] != current_user.id.to_s
+      concat "All " if !params['user_id'].present?
+  end
+
   def entity_table_header(model, new_action)
     content_tag :div, class: "panel-heading table-title" do
+      table_user
       concat model.model_name.human.pluralize
       concat link_to content_tag(:i, " New", class: "fa fa-plus"), new_action, class: "new btn btn-info table-button table-button-new"
     end
@@ -73,11 +80,11 @@ module ApplicationHelper
   end
 
   def form(entity)
-    render 'shared/form_scaffold', entity: entity, action: params['action']
+    render 'scaffolds/form', entity: entity, action: params['action']
   end
 
   def table(entities)
-    render 'shared/table_scaffold', entities: entities, model: entities.klass
+    render 'scaffolds/table', entities: entities, model: entities.klass
   end
 
 end
