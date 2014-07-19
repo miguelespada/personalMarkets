@@ -8,9 +8,11 @@ class SlideshowTextsController < ApplicationController
 
   def new
     @slideshow_text= SlideshowText.new
+    render'form'
   end
 
   def edit
+    render'form'
   end
 
   def create
