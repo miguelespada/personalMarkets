@@ -43,21 +43,21 @@ module ApplicationHelper
 
   # Entities
 
-  def page_title(model)
+  def page_title(text, icon)
+    content_tag :h1, "" do
+      concat content_tag :i, "", class:"fa #{icon} fa-2x"
+      concat "<br/>".html_safe
+      concat text
+    end
+  end
+
+  def action_title(model)
     content_tag :h1, "" do
       concat content_tag :i, "", class:"fa #{model.icon} fa-2x"
       concat "<br/>".html_safe
       concat params['action'].titleize
       concat " ".html_safe
       concat model.model_name.human
-    end
-  end
-
-  def page_title(text, icon)
-    content_tag :h1, "" do
-      concat content_tag :i, "", class:"fa #{icon} fa-2x"
-      concat "<br/>".html_safe
-      concat text
     end
   end
 

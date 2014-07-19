@@ -30,6 +30,7 @@
               <li class="plan-feature"><span class="fa fa-check-circle"></span> Estadisticas de tus mercados a tiempo real</li>
               <li class="plan-feature"><span class="fa fa-check-circle"></span> Creación de cupones</li>
               <li class="plan-feature"><span class="fa fa-check-circle"></span> Unsubscribirte en un solo click</li>
+            
             <% if !current_user.has_role?(:premium) &&  !current_user.has_role?(:admin) %>
               <%= form_tag user_subscription_path(@user), method:"get" do %>
 
