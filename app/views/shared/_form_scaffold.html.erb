@@ -1,3 +1,5 @@
+<%= page_title(entity.class) %>
+
 <%= simple_form_for(entity) do |f| %>
   <%= f.error_notification %>
   <div class="container">
@@ -17,3 +19,5 @@
     </div>
   </div>
 <% end %>
+
+<%= back_link %>

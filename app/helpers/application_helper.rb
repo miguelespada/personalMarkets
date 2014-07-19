@@ -48,7 +48,13 @@ module ApplicationHelper
   # Entities
 
   def page_title(model)
-    "<div class = 'page_title'><i class='fa #{model.icon} fa-2x'></i> <br/>#{params['action'].titleize} #{model.model_name.human}</div>".html_safe
+    content_tag :div, "", class:"page_title" do
+      concat content_tag :i, "", class:"fa #{model.icon} fa-2x"
+      concat "<br/>".html_safe
+      concat params['action'].titleize
+      concat " ".html_safe
+      concat model.model_name.human
+    end
   end
 
   def entity_table_header(model, new_action)
@@ -64,6 +70,14 @@ module ApplicationHelper
       concat "<br/>".html_safe
       concat truncate(model.model_name.human,  length: 12)
     end 
+  end
+
+  def form(entity)
+    render 'shared/form_scaffold', entity: entity, action: params['action']
+  end
+
+  def table(entities)
+    render 'shared/table_scaffold', entities: entities, model: entities.klass
   end
 
 end

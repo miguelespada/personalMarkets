@@ -1,0 +1,12 @@
+<div class="col-md-2">
+  <div class="table-photo-container">
+     <%= photo(entity.photography, 120, 60) %>
+     <%= edit_photo_link(entity.photography) %>
+  </div>
+</div>
+
+<div class="col-md-2"> <%= entity.name %> </div>
+<div class="col-md-2"> <%= entity.address %> </div>
+<div class="col-md-2"> <%= entity.city %> </div>
+<div class="col-md-1"> <%= truncate(entity.latitude.to_s, length: 8) %> </div>
+<div class="col-md-1"> <%= truncate(entity.longitude.to_s, length: 8) %> </div>

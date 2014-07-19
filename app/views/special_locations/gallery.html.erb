@@ -5,14 +5,12 @@
           <%=  photo(special_location.photography, 250, 125) %>
           <div class = "home_gallery_label special_location_label">
             <span>
-              <%= link_to special_location.name, 
-                :controller => "static_pages", 
-                :action => "map", 
-                :location => special_location.name %>
+              <%= link_to map_path(location: special_location.name) do %>
+                <%=  special_location.name %>
+              <% end %>
             </span>
           </div>
         </div>
       </div>
   <% end %>
 </div>
-

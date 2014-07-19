@@ -1,21 +1,17 @@
 <% @special_locations.each do |special_location| %>
-  <li class="registered-user-action">
-  <%= link_to special_location.name, 
-    :controller => "static_pages", 
-    :action => "map", 
-    :location => special_location.name %>
-  </li>
+<li class="registered-user-action">
+  <%= link_to map_path(location: special_location.name) do %>
+    <%=  special_location.name %>
+    <i class="fa fa-angle-right explore-arrow"></i>
+  <% end %>
+</li>
 <% end %>
 
 <li class="divider"></li>
+
 <li class="registered-user-action">
   <%= link_to special_locations_gallery_path do %>
-      <%= t :all_locations %>
+    <%= t :all_locations %>
+    <i class="fa fa-angle-right explore-arrow"></i>
   <% end %>
 </li>
-
-<script>
-$(document).ready(function(){
-	$('#explore_hotspots>.registered-user-action>a').append('<i class="fa fa-angle-right explore-arrow"></i>');
-});
-</script>

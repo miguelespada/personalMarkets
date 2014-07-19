@@ -34,9 +34,11 @@ class SpecialLocationsController < ApplicationController
 
   def new
     @special_location = SpecialLocation.new
+    render 'form'
   end
 
   def edit
+    render 'form'
   end
 
   def create

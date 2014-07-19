@@ -12,9 +12,9 @@
 		    <%= link_to categories_path, class:"dashboard-button btn btn-warning btn-lg" do %>
 			    <i class="fa fa-bars fa-4x"></i> <br/> <%= t :categories %>
 		    <% end %>
-		    <%= link_to special_locations_path, class:"dashboard-button btn btn-success btn-lg" do %>
-			    <i class="fa fa-map-marker fa-4x"></i> <br/> Locations
-		    <% end %>
+
+        <%= big_button(SpecialLocation) %>
+
 		    <%= link_to tags_path, class:"dashboard-button btn btn-info btn-lg" do %>
 			    <i class="fa fa-tags fa-4x"></i> <br/> <%= t :tags %>
 		    <% end %>
