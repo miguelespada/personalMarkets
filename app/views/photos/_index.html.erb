@@ -2,7 +2,7 @@
   <% @photos.each do |photo| %>
       <%= content_tag_for(:tr, photo) do %> 
       <div class="col-md-4 table-photo center"> 
-          <%= photo(photo, 300) %>
+          <%= photo(photo, 250) %>
           <%= render "photos/utils/actions", photo: photo %>
       </div>
     <% end %>

@@ -1,7 +1,10 @@
 <%= javascript_include_tag "attachinary" %>
 
 <% required ||= false %>
-<%= f.input :photo, as: :attachinary, required: required %>
+
+<%= f.attachinary_file_field :photo,
+    :cloudinary => { :transformation => {:width=>800, 
+    :height =>800, :quality => 50, :crop=>:limit }} %>
 
 <script>
 $( document ).ready(function() {

@@ -3,7 +3,7 @@ class BargainsController < ApplicationController
   authorize_resource :except => [:show, :list_user_bargains, :gallery]
 
   def index
-    @bargains = Bargain.all
+    @bargains = Bargain.all.desc(:created_at)
     respond_to do |format|
         format.html
         format.json {render json: @bargains}
@@ -11,12 +11,12 @@ class BargainsController < ApplicationController
   end
 
   def gallery
-    @bargains = Bargain.all.order_by(:created_at.desc).page(params[:page]).per(1)
+    @bargains = Bargain.all.desc(:created_at).page(params[:page]).per(1)
     render :layout => !request.xhr?
   end
 
   def list_user_bargains
-    @bargains = load_user.bargains.all
+    @bargains = load_user.bargains.all.desc(:created_at)
     render "index"
   end
 

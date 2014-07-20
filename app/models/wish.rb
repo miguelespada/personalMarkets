@@ -1,6 +1,8 @@
 class Wish
   include Mongoid::Document
   include Mongoid::Taggable
+  include Mongoid::Timestamps::Created
+
   field :description, type: String
 
   belongs_to :user, class_name: "User", inverse_of: :wishes

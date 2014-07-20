@@ -4,7 +4,7 @@ class WishesController < ApplicationController
   before_filter :load_hidden_tags, only: [:create, :edit, :update]
 
   def index
-    @wishes = Wish.all
+    @wishes = Wish.all.desc(:created_at)
     respond_to do |format|
         format.html
         format.json {render json: @wishes}
@@ -12,12 +12,12 @@ class WishesController < ApplicationController
   end
 
   def gallery
-    @wishes = Wish.all.order_by(:created_at.desc).page(params[:page]).per(1)
+    @wishes = Wish.all.desc(:created_at).page(params[:page]).per(1)
     render :layout => !request.xhr?
   end
 
   def list_user_wishes
-    @wishes = load_user.wishes.all
+    @wishes = load_user.wishes.all.desc(:created_at)
     render "index"
   end
 

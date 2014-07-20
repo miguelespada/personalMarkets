@@ -1,5 +1,7 @@
 class Photo
   include Mongoid::Document
+  include Mongoid::Timestamps::Created
+  
   has_attachment :photo, accept: [:jpg, :png, :gif]
   accepts_nested_attributes_for :photo
   field :crop, type: Hash

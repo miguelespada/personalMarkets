@@ -4,11 +4,11 @@ class PhotosController < ApplicationController
   after_filter "save_my_previous_url", only: [:new, :edit]
 
   def index
-    @photos = Photo.all.order_by(:created_at.desc).page(params[:page]).per(6)
+    @photos = Photo.all.desc(:created_at).page(params[:page]).per(6)
   end
 
   def list_user_photos
-    @photos = Photo.non_empty.collect{|photo| photo if photo.is_owner?(load_user)}.compact.uniq
+    @photos = Photo.desc(:created_at).non_empty.collect{|photo| photo if photo.is_owner?(load_user)}.compact.uniq.reverse
     @photos = Kaminari.paginate_array(@photos).page(params[:page]).per(6)
     render "index"
   end

@@ -1,5 +1,7 @@
 class Bargain
   include Mongoid::Document
+  include Mongoid::Timestamps::Created
+
   field :description, type: String
   field :price, type: String
 
