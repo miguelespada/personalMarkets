@@ -1,10 +1,5 @@
 @import "color";
 
-
-#home-container{
-  margin-bottom:80px;
-}
-
 .anim-container{
   width:100%;
   text-align: center;
@@ -15,23 +10,15 @@
   color:#777777;
 }
 
-.gallery-section{
-  margin-left: 30px;
-  margin-right:30px;
-  border-bottom: 1px solid #CCCCCC;
-}
-
-
 .badge{
-	margin-top: 15px;
-	margin-bottom: 15px;
-	background-color: #5bc0de;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: #5bc0de;
 }
 
 #search_img{
  width:80%;   
 }
-
 
 .market-photos-slideshow-container{
   width:600px !important;
@@ -104,7 +91,6 @@ footer {
 
 //*############################ DASHBOARD CSS #############################*//
 
-// .panel-body .btn:not(.btn-block) { width:120px;margin-bottom:10px; }
 .dashboard-button{
   text-align: center !important;
   font-weight: 200 !important;
@@ -112,66 +98,6 @@ footer {
   height:120px !important;
   padding: 12px !important;
   color: darken($colBrand, 30%);
-}
-
-//*############################ HOME GALLERY CSS #############################*//
-.home_gallery_title{
-  display: block;
-  font-size: 20px;
-  padding-top: 15px;
-  margin-left: 2%;
-  clear: both;
-  color: rgb(65, 65, 65);
-  white-space: normal;
-  text-align: left;
-  font-family: 'GillSansMT';
-}
-
-.home-action > a{
-  display: block;
-  padding: 3px 20px;
-  clear: both;
-  font-weight: normal;
-  line-height: 1.428571429;
-  color: #999;
-  white-space: normal;
-  text-align: right;
-  font-family: 'GillSansMT';
-}
-
-.category_gallery_label{
-  text-align: center;
-}
-
-.home_gallery_item, .gallery_item{
-  padding-top: 15px;
-}
-
-.home_gallery_featured_photo_small{
-  position:relative;
-  width:100;
-  margin:auto;
-}
-
-.home_gallery_label, .gallery_label{
-  position:absolute;
-  display:inline;
-  top:100%;
-  left:20%;
-  margin-top:-48px;
-  font-weight:200;
-  font-size:24px;
-  line-height: 48px;
-  color:#FFFFFF;
-  text-shadow: 2px 2px 5px #222222;
-}
-
-.home_gallery_label > span{
-  max-width:200px;
-  float:left;
-  overflow:hidden;
-  white-space:nowrap;
-  text-overflow: ellipsis;
 }
 
 //*############################ TABLE CSS #############################*//
@@ -410,6 +336,8 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   text-align: center;
 }
 
+//*############################ QUALITY #############################*//
+
 .fa.fa-star.bad {
   color: red;
 }
@@ -436,7 +364,6 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   height:auto;
 }
 
-//*############################ WISH RECOMMEND CSS #############################*//
 
 .wish-recommend-section-item{
   padding-top: 15px;

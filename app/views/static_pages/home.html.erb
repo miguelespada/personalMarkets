@@ -1,66 +1,65 @@
-<%= javascript_include_tag "jquery.slides" %>
-<%= javascript_include_tag "jquery.ui.position" %>
+<div class="main-container">
 
-<div id="home-container">
   <section id="slideshow" >
-  
     <div id="slides" >
       <%  SlideshowImage.all.each do |slideshow| %>
         <%=  cl_image_tag(slideshow.photography.photo.path, {quality: "50" } ) %>
       <% end %> 
     </div>
 
-    <div id="slideshow_titles" class="hidden-xs" >
+    <div id="slideshow_titles" class="hidden-xs center " >
     </div>
   </section>
-<!-- 
-  <section class="gallery-section">
-    <div class = "home_gallery_title"><%= t(:latest_markets) %></div>
 
-    <div id="latest_markets" >
-      <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>  
-    </div>
-    <p class="home-action">
-      <%= link_to t(:see_more_markets), published_markets_path  %>
-    </p>
-</section>
+    <section class="home_gallery_section">
+      <div class = "home_gallery_title"><%= t(:latest_markets) %></div>
+
+      <div id="latest_markets" >
+        <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>  
+      </div>
+      <p class="home_action">
+        <%= link_to t(:see_more_markets), published_markets_path  %>
+      </p>
+  </section>
 
 
-  <section class="gallery-section">
+  <section class="home_gallery_section">
     <div class = "home_gallery_title"><%= t(:categories) %></div>
 
     <div id="categories">
       <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
     </div>
   
-    <p class="home-action">
+    <p class="home_action">
       <%= link_to t(:see_more_categories), category_gallery_path  %>
     </p>
-</section>
+ </section>
 
 
-  <section class="gallery-section">
+  <section class="home_gallery_section">
     <div class = "home_gallery_title"><%= t :hot_spots %></div>
-  
+
      <div id="special_locations">
       <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
     </div>
-  
-    <p class="home-action">
+
+    <p class="home_action">
       <%= link_to t(:see_more_hotspots), special_locations_gallery_path  %>
     </p>
-</section>
- -->
+  </section>
 
 
 </div>
+
+<%= javascript_include_tag "jquery.slides" %>
+<%= javascript_include_tag "jquery.ui.position" %>
+<%= stylesheet_link_tag "home" %>
+<%= javascript_include_tag "home" %>
 
 <script>
   $.get( "<%= last_markets_path %>", function( data ) {
     $( "#latest_markets" ).html( data );
   });
-
-
 
   $.get( "<%= category_gallery_path(:limit => '8') %>", function( data ) {
     $( "#categories" ).html( data );
@@ -73,15 +72,3 @@
   var titlesArray = "<%= SlideshowText.title_list(params['language']) %>".split(";") ;
   var subtitlesArray =  "<%= SlideshowText.subtitle_list(params['language']) %>".split(";");
 </script>
-
-<%= javascript_include_tag "home" %>
-
-
-<style>
-
-  @media (max-width: 990px){
-     .home_gallery_title{
-         text-align: center;
-      }
-  }
-</style>
