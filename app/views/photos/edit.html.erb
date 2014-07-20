@@ -8,7 +8,8 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default panel-table-last">
         <div class="panel-body">
-          <%= cl_image_tag(@photo.photo.path, {:class => "cropper"}) %>
+
+          <%= cl_image_tag(@photo.photo.path, { size: "400x400", crop: :pad, quality: 50, :class => "cropper"}) %>
           <%= form_tag crop_photo_path(@photo), id: "crop_image_form" do %>
             <div class="hidden">
               <%= text_field_tag(:x) %>
@@ -22,7 +23,9 @@
           <% end %>
         </div>
       </div>
+      <div class="center">
          <%= back_link %>
+      </div>
     </div>
   </div>
 </div>
@@ -33,12 +36,14 @@
     $dataY1 = $("#y"),
     $dataWidth = $("#w"),
     $dataHeight = $("#h");
+    $reduction_x = <%= @photo.photo.width/400 %>;
+    $reduction_y = <%= @photo.photo.height/400 %>;
   
   <% if @photo.crop.present? %>
-    _x1 = <%=  @photo.crop["x"] %>;
-    _y1 = <%=  @photo.crop["y"] %>;
-    _width = <%= @photo.crop["w"] %>;
-    _heigth = <%= @photo.crop["h"] %>;
+    _x1 = <%=  @photo.crop["x"] %> / $reduction_x;
+    _y1 = <%=  @photo.crop["y"] %> / $reduction_y;
+    _width = <%= @photo.crop["w"] %> / $reduction_x;
+    _heigth = <%= @photo.crop["h"] %> / $reduction_y;
   <% else %>
     _x1 = $dataX1 || 0;
     _y1 = $dataY1 || 0;
@@ -50,10 +55,11 @@
     aspectRatio: <%= @photo.aspect_ratio %>,
     data: {x1: _x1, y1: _y1, width: _width, height: _heigth},
     done: function(data) {
-      $dataX1.val(data.x1);
-      $dataY1.val(data.y1);
-      $dataHeight.val(data.height);
-      $dataWidth.val(data.width);
+      console.log(data);
+      $dataX1.val(data.x1 * $reduction_x );
+      $dataY1.val(data.y1 * $reduction_y);
+      $dataHeight.val(data.height * $reduction_y );
+      $dataWidth.val(data.width * $reduction_x );
     }
   });
 </script>

@@ -5,10 +5,16 @@ module PhotosHelper
   def photo(photo, width, height = nil, params = {})
     height ||= width / photo.aspect_ratio
     size = "#{width.to_i}x#{height.to_i}"
-    image_options = { size: size, crop: :fill, quality: 50, effect: params[:effect], radius: params[:radius] }
-    crop = photo.crop if !photo.crop.nil?
-    image_options = {transformation: { crop: :crop, x: crop["x"], y: crop["y"],
-                       width: crop["w"], height: crop["h"]}, size: size, quality: 50, effect: params[:effect], radius: params[:radius]} if !crop.nil?
+    if photo.crop.nil? 
+      image_options = { size: size, crop: :fill, quality: 50, effect: params[:effect], radius: params[:radius] }
+    else
+      crop = photo.crop 
+      image_options = {transformation: { crop: :crop, x: crop["x"], y: crop["y"],
+                       width: crop["w"], height: crop["h"]}, 
+                       size: size, crop: :scale, 
+                       quality: 50, effect: params[:effect], radius: params[:radius]} 
+    end
+
     cl_image_tag(photo.photo.path, image_options) 
     rescue
       image_tag "default-image.png", image_options
