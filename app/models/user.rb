@@ -129,6 +129,10 @@ class User
     self != market.user
   end
 
+  def can_see_markets_stats?
+    has_role?(:premium) || has_role?(:admin)
+  end
+
   def self.from_omniauth(auth, current_user)
     authorization = Authorization.where({:provider => auth.provider, :uid => auth.uid.to_s, :token => auth.credentials.token, :secret => auth.credentials.secret}).first_or_initialize
     if authorization.user.blank?

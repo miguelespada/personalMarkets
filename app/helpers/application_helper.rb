@@ -76,22 +76,6 @@ module ApplicationHelper
     end
   end 
 
-  def big_button(model)
-    link_to send("#{model.model_name.route_key}_path"), class:"dashboard-button dashboard-button btn btn-primary btn-lg" do
-      concat content_tag :i, "", class:"fa #{model.icon} fa-4x"
-      concat "<br/>".html_safe
-      concat truncate(model.model_name.human.pluralize,  length: 12)
-    end 
-  end
-  
-  def big_user_link(model)
-     
-    link_to send("user_#{model.model_name.route_key}_path", current_user), class:"dashboard-button btn btn-lg" do
-      concat content_tag :i, "", class:"fa #{model.icon} fa-4x"
-      concat "<br/>".html_safe
-      concat truncate(model.model_name.human.pluralize,  length: 12)
-    end 
-  end
 
   def form(entity)
     render 'scaffolds/form', entity: entity, action: params['action']

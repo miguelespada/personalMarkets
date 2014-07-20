@@ -2,44 +2,33 @@
 
 <div class="panel-body">
 
-    <div class="center">
-        <p>You have published: <%= current_user.number_of_last_month_markets %> market(s) during the last month</p>
-        <p>You can publish: <%= current_user.remaining_markets  %> market(s)</p>
-    <div>
-
     <div class="row">
-      <div class="col-md-6 col-md-offset-3 dashboard-column">
+      <div class="col-md-6 col-md-offset-3 center">
 
-        <%= big_user_link(Market) %>
-       
-        <%= link_to user_likes_path(current_user), class:"dashboard-button btn btn-lg" do %>
-          <i class="fa fa-heart-o fa-4x"></i> <br/> Likes
-        <% end %>
+        <%= user_dashboard_link("user_markets_path", "Markets", Market.icon) %>
 
-        <%= big_user_link(Bargain) %>
+        <%= user_dashboard_link("user_likes_path", "Likes", "fa-heart-o") %>
 
-        <%= big_user_link(Wish) %>
-        
+        <%= user_dashboard_link("user_bargains_path", "Bargains", Bargain.icon) %>
 
-        <%= link_to bought_coupons_by_user_path(current_user), class:"dashboard-button btn btn-lg" do %>
-          <i class="fa fa-ticket fa-4x"></i> <br/> Coupons
-        <% end %>
-        
-        <%= link_to user_path(current_user), :method => :get, class:"dashboard-button btn btn-lg" do %>
-          <i class="fa fa-user fa-4x"></i> <br/> Profile
-        <% end %>
+        <%= user_dashboard_link("user_wishes_path", "Wishes", Wish.icon) %>
 
-        <%= link_to user_photos_path(current_user), class:"dashboard-button btn btn-lg" do %>
-          <i class="fa fa-camera fa-4x"></i> <br/> Photos
-        <% end %>
-        
-        <% if current_user.has_role?(:premium) %>
-          <%= link_to show_user_statistic_path(current_user), class:"dashboard-button btn btn-lg" do %>
-            <i class="fa fa-tasks fa-4x"></i> <br/> Statistics
-          <% end %>
-        <% end %>
+        <%= user_dashboard_link("bought_coupons_by_user_path", "Coupons", "fa-ticket") %>
+
+        <%= user_dashboard_link("user_path", "Profile", "fa-user") %>
+
+        <%= user_dashboard_link("user_photos_path", "Photos", "fa-camera") %>
+
+        <%= user_dashboard_link("show_user_statistic_path", "Stats", "fa-tasks") if current_user.can_see_markets_stats? %>
 
       </div>
     </div>
-  </div>
+
+
+    <div class="row ">
+      <div class="col-md-6 col-md-offset-3 center">
+        <%= published_markets_status(current_user) %>
+      </div>
+    <div>
+
 </div>
