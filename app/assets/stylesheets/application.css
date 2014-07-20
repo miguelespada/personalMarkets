@@ -16,6 +16,10 @@
  *= require pricing_table
  *= require custom
  *= require navbar
+ *= require badges
+ *= require poster
+ *= require photo
+ *= require typeahead
  */
 
 

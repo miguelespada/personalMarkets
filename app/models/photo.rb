@@ -40,4 +40,10 @@ class Photo
   def self.icon
     "fa-camera"
   end
+
+  def aspect_ratio
+    photographic.aspect_ratio
+  rescue
+    16.0/9
+  end
 end

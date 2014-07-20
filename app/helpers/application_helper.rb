@@ -22,18 +22,14 @@ module ApplicationHelper
   end
 
   def back_link
-    content_tag :div, class:"form-group col-md-4 col-md-offset-4 go-back-button-container" do
-      link_to :back, class:"btn btn-default" do
-        content_tag(:i, "", :class => "fa fa-reply") + " Go Back"
-      end
-    end 
+    link_to :back, class:"btn btn-default" do
+      content_tag(:i, "", :class => "fa fa-reply") + " Go Back"
+    end
   end
 
-   def before_form_link
-    content_tag :div, class:"form-group col-md-4 col-md-offset-4 go-back-button-container" do
-      link_to session[:my_previouse_url], class:"btn btn-primary" do
-        content_tag(:i, "", :class => "fa fa-reply") + " Go Back"
-      end 
+  def before_form_link
+    link_to session[:my_previouse_url], class:"btn btn-default" do
+      content_tag(:i, "", :class => "fa fa-reply") + " Go Back"
     end 
   end
 
@@ -73,10 +69,11 @@ module ApplicationHelper
       concat link_to "<i class='fa fa-cog fa-1x'></i>".html_safe, admin_path if current_user.has_role?(:admin)
       table_user
       concat model.model_name.human.pluralize
-      concat link_to content_tag(:i, " New", class: "fa fa-plus"), new_action, class: "new btn btn-info table-button table-button-new"
+      if new_action.present?
+        concat link_to content_tag(:i, " New", class: "fa fa-plus"), new_action, class: "new btn btn-info table-button table-button-new"
+      end
     end
   end 
-
 
   def form(entity)
     render 'scaffolds/form', entity: entity, action: params['action']

@@ -3,74 +3,64 @@
 
 <%= page_title(t("Edit photo"), "fa-camera-retro") %>
 
-<div class="container user-session">
+<div class="main-container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default panel-table-last edit-photo-panel">
+      <div class="panel panel-default panel-table-last">
         <div class="panel-body">
           <%= cl_image_tag(@photo.photo.path, {:class => "cropper"}) %>
           <%= form_tag crop_photo_path(@photo), id: "crop_image_form" do %>
-						<div class="hidden">
-					    <%= text_field_tag(:x) %>
-					    <%= text_field_tag(:y) %>
-					    <%= text_field_tag(:w) %>
-					    <%= text_field_tag(:h) %>
-					  </div>
-					  <div class="photo-submit-button">
-					  	<%= submit_tag "Save", class:"btn btn-success" %>
-					  </div>
-					<% end %>
+            <div class="hidden">
+              <%= text_field_tag(:x) %>
+              <%= text_field_tag(:y) %>
+              <%= text_field_tag(:w) %>
+              <%= text_field_tag(:h) %>
+            </div>  
+            <div class="center form-group " id="crop-button">
+                <%= submit_tag "Save", class:"btn btn-success" %>
+            </div>
+          <% end %>
         </div>
       </div>
+         <%= back_link %>
     </div>
   </div>
 </div>
-<%= back_link %>
+
 <script>
-	
-	var $image = $(".cropper"),
-		$dataX1 = $("#x"),
-		$dataY1 = $("#y"),
-		$dataHeight = $("#h"),
-		$dataWidth = $("#w");
-	
+  var $image = $(".cropper"),
+    $dataX1 = $("#x"),
+    $dataY1 = $("#y"),
+    $dataWidth = $("#w"),
+    $dataHeight = $("#h");
+  
+  <% if @photo.crop.present? %>
+    _x1 = <%=  @photo.crop["x"] %>;
+    _y1 = <%=  @photo.crop["y"] %>;
+    _width = <%= @photo.crop["w"] %>;
+    _heigth = <%= @photo.crop["h"] %>;
+  <% else %>
+    _x1 = $dataX1 || 0;
+    _y1 = $dataY1 || 0;
+    _width = $dataWidth || 100;
+    _heigth = $dataHeight || 100;
+  <% end %>
 
-	<% if @photo.crop.present? %>
-		_x1 = <%=	 @photo.crop["x"] %>;
-		_y1 = <%=	 @photo.crop["y"] %>;
-		_width = <%= @photo.crop["w"] %>;
-		_heigth = <%=	@photo.crop["h"] %>;
-	<% else %>
-		_x1 = $dataX1;
-		_y1 = $dataY1;
-		_width = $dataWidth;
-		_heigth = $dataHeight;
-	<% end %>
-
-	$image.cropper({
-		aspectRatio: 4 / 3,
-		preview: ".extra-preview",
-		data: {x1: _x1, y1: _y1, width: _width, height: _heigth},
-		done: function(data) {
-			$dataX1.val(data.x1);
-			$dataY1.val(data.y1);
-			$dataHeight.val(data.height);
-			$dataWidth.val(data.width);
-		}
-	});
-
+  $image.cropper({
+    aspectRatio: <%= @photo.aspect_ratio %>,
+    data: {x1: _x1, y1: _y1, width: _width, height: _heigth},
+    done: function(data) {
+      $dataX1.val(data.x1);
+      $dataY1.val(data.y1);
+      $dataHeight.val(data.height);
+      $dataWidth.val(data.width);
+    }
+  });
 </script>
 
 <style>
-	.edit-photo-panel{
-		text-align: center;
-	}
-
-	.cropper-container{
-		margin-top: -25px;
-	}
-
-	.photo-submit-button{
-		padding-top: 40px;
-	}
+#crop-button{
+  margin-top: 80px;
+}
 </style>
+  

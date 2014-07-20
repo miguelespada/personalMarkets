@@ -14,4 +14,8 @@ class SpecialLocation
   def self.icon
     "fa-map-marker"
   end
+
+  def aspect_ratio
+    2/1
+  end
 end

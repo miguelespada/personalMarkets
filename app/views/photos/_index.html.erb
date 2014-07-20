@@ -1,17 +1,12 @@
-<div class="home_gallery row">
-
-<% @photos.each do |photo| %>
-    <%= content_tag_for(:tr, photo) do %> 
-    <div class="home_gallery_item col-md-4"> 
-      <div class="home_gallery_featured_photo">
-        <%= photo(photo, 300) %>
-        <%= edit_photo_link(photo) %>
-        <%= photographic_link(photo) %>
-         <span> <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), photo, :method => :delete, class: "delete btn btn-danger btn-xs table-photo-delete", data:{ confirm: 'Are you sure?'} %> </span>
+<div class="row">
+  <% @photos.each do |photo| %>
+      <%= content_tag_for(:tr, photo) do %> 
+      <div class="col-md-4 table-photo center"> 
+          <%= photo(photo, 300) %>
+          <%= render "photos/utils/actions", photo: photo %>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
 </div>
 
 <div class="paginate">

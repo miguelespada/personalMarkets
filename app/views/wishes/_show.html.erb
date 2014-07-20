@@ -10,7 +10,7 @@
         </div>
 
         <div class="wish-photo-container">
-            <%= photo(wish.photography, 600, 300) %> 
+            <%= photo(wish.photography, 600) %> 
         </div>
           <div class="market-list-section-title">Recommend Market</div>
             <div class="market-list-section-container">
@@ -26,7 +26,7 @@
                 <% wish.recommended.each do |market| %>
                   <div class="wish-recommend-item col-md-4">
                     <%= link_to market do %>
-                      <%= photo(market.featured, 200, 100)%><br>
+                      <%= photo(market.featured, 200)%><br>
                     <% end %>
                     <%= market.decorate.formatted_market_name %>
                   </div>

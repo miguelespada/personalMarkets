@@ -18,4 +18,8 @@ class Wish
   def self.icon
     "fa-magic"
   end
+
+  def aspect_ratio
+    4/3.0
+  end
 end

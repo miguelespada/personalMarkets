@@ -11,4 +11,8 @@ class Bargain
   def self.icon
     "fa-bullhorn"
   end
+
+  def aspect_ratio
+    1
+  end
 end

@@ -87,47 +87,6 @@ footer {
   margin: 50px 0;
 }
 
-.tt-query {
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-}
-
-.tt-hint {
-  color: #999
-}
-
-.tt-dropdown-menu {
-  width: 422px;
-  margin-top: 12px;
-  padding: 8px 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-border-radius: 8px;
-     -moz-border-radius: 8px;
-          border-radius: 8px;
-  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-          box-shadow: 0 5px 10px rgba(0,0,0,.2);
-}
-
-.tt-suggestion {
-  padding: 3px 20px;
-  font-size: 18px;
-  line-height: 24px;
-}
-
-.tt-suggestion.tt-cursor {
-  color: #fff;
-  background-color: #0097cf;
-
-}
-
-.tt-suggestion p {
-  margin: 0;
-}
-
 .gist {
   font-size: 14px;
 }
@@ -136,10 +95,13 @@ footer {
   color: yellow;
 }
 
+.main-container{
+  margin-bottom: 60px;
+}
 
 //*############################ DASHBOARD CSS #############################*//
 
-.panel-body .btn:not(.btn-block) { width:120px;margin-bottom:10px; }
+// .panel-body .btn:not(.btn-block) { width:120px;margin-bottom:10px; }
 .dashboard-button{
   text-align: center !important;
   font-weight: 200 !important;
@@ -149,59 +111,8 @@ footer {
 }
 
 
-.main-container{
-  margin-bottom: 60px;
-}
-
-//*############################ BADGER CSS #############################*//
 
 
-[class*="badger"] {
-    position: relative;
-    background: #fff;
-    border-radius: 6px;
-}
-
-[class*="badger"]:after {
-    content: attr(data-badger);
-    position: absolute;
-    top: 0;
-    padding: 3px 7px;
-    font-size: 12px;
-    font-weight: bold;
-    background: #999;
-    color: #fff;
-}
-
-.badger-left:after {
-    left: 0;
-    border-radius: 0 0 6px 0;
-}
-
-.badger-right:after {
-    right: 0;
-    border-radius: 0 0 0 6px;
-}
-
-.badger-danger:after {
-    background: #d9534f;
-}
-
-.badger-warning:after {
-    background: #f0ad4e;
-}
-
-.badger-success:after {
-    background: #5cb85c;
-}
-
-.badger-info:after {
-    background: #5bc0de;
-}
-
-.badger-inverse:after {
-    background: #222;
-}
 
 //*############################ HOME GALLERY CSS #############################*//
 .home_gallery_title{
@@ -227,11 +138,12 @@ footer {
   text-align: right;
   font-family: 'GillSansMT';
 }
+
 .category_gallery_label{
   text-align: center;
 }
 
-.home_gallery_item{
+.home_gallery_item, .gallery_item{
   padding-top: 15px;
 }
 
@@ -241,7 +153,7 @@ footer {
   margin:auto;
 }
 
-.home_gallery_label{
+.home_gallery_label, .gallery_label{
   position:absolute;
   display:inline;
   top:100%;
@@ -289,9 +201,11 @@ footer {
 .table{
   margin-bottom: 0px !important;
 }
+
 .table-title .fa{
   padding-right: 10px;
 }
+
 //*############################ FORM CSS #############################*//
 
 #wizard{
@@ -332,305 +246,6 @@ footer {
   width:150px;
 }
 
-//*############################ RIBBON BADGE CSS #############################*//
-
-.wrapper-ribbon-badge {
-  width: 85px;
-  height: 88px;
-  overflow: hidden;
-  position: absolute;
-  top: -3px;
-  right: -3px;
-}
-
-.ribbon-badge-normal {
-  font: bold 9px Sans-Serif;
-  text-align: center;
-  -webkit-transform: rotate(45deg);
-  -moz-transform:    rotate(45deg);
-  -ms-transform:     rotate(45deg);
-  -o-transform:      rotate(45deg);
-  position: relative;
-  padding: 7px 0;
-  left: -5px;
-  top: 15px;
-  width: 120px;
-  color: #fff;
-  -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
-  -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
-  box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
-}
-
-.ribbon-badge-none{
-  display: none;
-}
-
-.ribbon-badge-new {
-  @extend .ribbon-badge-normal;
-  background-color: #d9534f;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#d9534f), to(#d43f3a)); 
-  background-image: -webkit-linear-gradient(top, #d9534f, #d43f3a); 
-  background-image:    -moz-linear-gradient(top, #d9534f, #d43f3a); 
-  background-image:     -ms-linear-gradient(top, #d9534f, #d43f3a); 
-  background-image:      -o-linear-gradient(top, #d9534f, #d43f3a); 
-}
-
-.ribbon-badge-new > #market-badge-text:before{
-  content:"NEW";
-}
-
-.ribbon-badge-staff_pick {
-  @extend .ribbon-badge-normal;
-  background-color: #C95EA0;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#5bc0de), to(#28a4c9)); 
-  background-image: -webkit-linear-gradient(top, #C95EA0, #A85292); 
-  background-image:    -moz-linear-gradient(top, #C95EA0, #A85292); 
-  background-image:     -ms-linear-gradient(top, #C95EA0, #A85292); 
-  background-image:      -o-linear-gradient(top, #C95EA0, #A85292); 
-}
-
-.ribbon-badge-staff_pick > #market-badge-text:before{
-  content:"STAFF PICK";
-}
-
-.ribbon-badge-pro {
-  @extend .ribbon-badge-normal;
-  background-color: #5bc0de;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#5bc0de), to(#28a4c9)); 
-  background-image: -webkit-linear-gradient(top, #5bc0de, #28a4c9); 
-  background-image:    -moz-linear-gradient(top, #5bc0de, #28a4c9); 
-  background-image:     -ms-linear-gradient(top, #5bc0de, #28a4c9); 
-  background-image:      -o-linear-gradient(top, #5bc0de, #28a4c9);
-}
-
-.ribbon-badge-pro > #market-badge-text:before{
-  content:"VIM";
-}
-
-.ribbon-badge-sample {
-  @extend .ribbon-badge-normal;
-  background-color: #f0ad4e;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#f0ad4e), to(#eea236)); 
-  background-image: -webkit-linear-gradient(top, #f0ad4e, #eea236); 
-  background-image:    -moz-linear-gradient(top, #f0ad4e, #eea236); 
-  background-image:     -ms-linear-gradient(top, #f0ad4e, #eea236); 
-  background-image:      -o-linear-gradient(top, #f0ad4e, #eea236);
-}
-
-.ribbon-badge-sample > #market-badge-text:before{
-  content:"SAMPLE";
-}
-
-.ribbon-badge-passed {
-  @extend .ribbon-badge-normal;
-  background-color: #aaaaaa;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#aaaaaa), to(#999999)); 
-  background-image: -webkit-linear-gradient(top, #aaaaaa, #999999); 
-  background-image:    -moz-linear-gradient(top, #aaaaaa, #999999); 
-  background-image:     -ms-linear-gradient(top, #aaaaaa, #999999); 
-  background-image:      -o-linear-gradient(top, #aaaaaa, #999999);
-}
-
-.ribbon-badge-passed > #market-badge-text:before{
-  content:"PASSED";
-}
-
-.ribbon-badge:before, .ribbon-badge:after {
-  content: "";
-  border-top:   3px solid #6e8900;   
-  border-left:  3px solid transparent;
-  border-right: 3px solid transparent;
-  position:absolute;
-  bottom: -3px;
-}
-
-.ribbon-badge:before {
-  left: 0;
-}
-.ribbon-badge:after {
-  right: 0;
-}
-
-
-
-//*############################ LIKE BADGE CSS #############################*//
-
-
-.like-badge {
-  position: absolute;
-  top: -15px;
-  left: -15px;
-  width: 30px;
-  font: 14px/30px Helvetica, Arial, sans-serif;
-  color: white;
-  text-align: center;
-  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.3);
-  text-indent: -1px;
-  letter-spacing: -1px;
-  border: 1px solid;
-  border-radius: 21px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.like-badge-color {
-  background: #FF8685;
-  border-color: #FF6966;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#FF8685), to(#FF6966)); 
-  background-image: -webkit-linear-gradient(top, #FF8685, #FF6966); 
-  background-image:    -moz-linear-gradient(top, #FF8685, #FF6966); 
-  background-image:     -ms-linear-gradient(top, #FF8685, #FF6966); 
-  background-image:      -o-linear-gradient(top, #FF8685, #FF6966); 
-}
-
-.unlike-badge-color {
-  background: #5bc0de;
-  border-color: #28a4c9;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#5bc0de), to(#28a4c9)); 
-  background-image: -webkit-linear-gradient(top, #5bc0de, #28a4c9); 
-  background-image:    -moz-linear-gradient(top, #5bc0de, #28a4c9); 
-  background-image:     -ms-linear-gradient(top, #5bc0de, #28a4c9); 
-  background-image:      -o-linear-gradient(top, #5bc0de, #28a4c9); 
-}
-
-.like-badge > .like-icon{
-  color: #FFFFFF !important;
-}
-
-.like-badge:hover > .like-icon{
-  text-decoration: none;
-}
-
-.like-badge > .unlike-icon{
-  color: #FFFFFF !important;
-}
-
-.like-badge:hover > .unlike-icon{
-  text-decoration: none;
-}
-
-//*############################ SPECIAL NAVBAR CSS #############################*//
-
-.navbar-nav>li>.dropdown-menu {
-    border-top-left-radius:4px;
-    border-top-right-radius:4px;
-}
-.navbar-default .navbar-nav>li>a {
-    width:200px;
-    font-weight:bold;
-}
-.mega-dropdown {
-  position: static !important;
-}
-.mega-dropdown-menu {
-    padding-top: 10px;
-    width: 100%;
-    box-shadow: none;
-    -webkit-box-shadow: none;
-}
-
-.mega-dropdown-menu > li > ul {
-  padding: 0;
-  margin: 0;
-}
-.mega-dropdown-menu > li > ul > li {
-  list-style: none;
-}
-
-
-
-.mega-dropdown-menu > li > ul > li > a {
-  display: block;
-  padding: 3px 20px;
-  clear: both;
-  font-weight: normal;
-  line-height: 1.428571429;
-  color: #999;
-  white-space: normal;
-}
-.mega-dropdown-menu > li ul > li > a:hover,
-.mega-dropdown-menu > li ul > li > a:focus {
-  text-decoration: none;
-  color: #444;
-  background-color: #f5f5f5;
-}
-.mega-dropdown-menu .dropdown-header {
-  color: #428bca;
-  font-size: 18px;
-  font-weight:bold;
-}
-.mega-dropdown-menu form {
-    margin:3px 20px;
-}
-.mega-dropdown-menu .form-group {
-    margin-bottom: 3px;
-}
-
-.item-title{
-  @extend .table-title;
-  color:#248DCF;
-}
-
-.explore-arrow{
-  margin-top:3px;
-}
-
-.explore_section{
-  margin-bottom:20px !important;
-}
-
-#search_button{
-  margin-top: 0px !important;
-}
-
-.add-market-button-container{
-  padding-right: 15px !important;
-}
-
-.navbar-collapse-button{
-  margin-left: 15px !important;
-}
-
-.snavbar-hidden{
-  display:none;
-}
-
-.navbar-brand{
-  font-family: 'donoso';
-  font-size: 24px;
-  padding:18px 15px 12px 15px !important;
-}
-
-//*############################ PHOTO EDIT CSS #############################*//
-.table-photo-container{
-  position: relative;
-  width:100%;
-  height:100%;
-}
-.table-photo-edit{
-  position: absolute;
-  top:5px !important;
-  left:5px !important;
-  width:24px !important;
-}
-
-.table-photo-photographic{
-  position: absolute;
-  top:5px !important;
-  left:30px !important;
-  width:24px !important;
-}
-
-.table-photo-delete{
-  position: absolute;
-  top:5px !important;
-  left:56px !important;
-  width:24px !important;
-}
 
 //*############################ MARKET FULL DESCRIPTION CSS #############################*//
 .panel-default > .panel-heading {
@@ -743,24 +358,6 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   display: inline-block;
 }
 
-.market-badge{
-  @extend .wrapper-ribbon-badge;
-  margin-top: -12px;
-  margin-right: 2px !important;
-}
-
-.market-list-badge{
-  @extend .wrapper-ribbon-badge;
-  margin-top: -18px;
-  margin-right: 18px;
-}
-
-.market-gallery-badge{
-  @extend .wrapper-ribbon-badge;
-  margin-top: 3px;
-  margin-right: 3px;
-}
-
 .market-list-section-container-inner{
   margin: 0px !important;
 }
@@ -791,6 +388,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 .explore-arrow{
   float:right;
 }
+
 //*############################ PHOTOS CSS #############################*//
 
 .paginate{
@@ -823,6 +421,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 .fa.fa-star.regular {
   color: yellow;
 }
+
 //*############################ WISH CSS #############################*//
 .wish-photo-container{
   width:600px;
@@ -1320,45 +919,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   margin-top: 15px;
 }
 
-//*############################ BETA BADGE CSS #############################*//
-#beta-badge-container{
-  position: fixed;
-  width: 100px;
-  height: 80px;
-  overflow: hidden;
-  right:-23px;
-  top:51px;
-}
 
-#beta-badge-text>a {
-  color: inherit;
-  text-decoration: inherit;
-}
-
-.beta-badge {
-  font: bold 12px Sans-Serif;
-  letter-spacing: -0.1em;
-  text-align: center;
-  -webkit-transform: rotate(45deg);
-  -moz-transform:    rotate(45deg);
-  -ms-transform:     rotate(45deg);
-  -o-transform:      rotate(45deg);
-  position: relative;
-  padding: 7px 0;
-  left:-15px;
-  top: 10px;
-  width: 130px;
-  color: #000;
-  -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
-  -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
-  box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
-  background-color: #d9534f;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#FFDF00), to(#FFC900)); 
-  background-image: -webkit-linear-gradient(top, #FFDF00, #FFC900); 
-  background-image:    -moz-linear-gradient(top, #FFDF00, #FFC900); 
-  background-image:     -ms-linear-gradient(top, #FFDF00, #FFC900); 
-  background-image:      -o-linear-gradient(top, #FFDF00, #FFC900); 
-}
 
 //*############################ SPECIAL LOCATION GALLERY CSS #############################*//
 .special_location_label > span > a:link { 
@@ -1372,7 +933,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 }
 
 .special_location_label > span > a:hover { 
-  color:#FFFFFF !important;
+  color:#CCC !important;
   text-decoration: none;
 }
 
@@ -1445,37 +1006,3 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   padding: 0px !important;
 }
 
-//*############################ POSTER CSS #############################*//
-.market-poster-container{
-  padding:15px;
-}
-
-.market-poster-title{
-  font-family: 'donoso';
-  text-align: center;
-  font-size: 36px;
-  line-height:50px;
-  border-bottom: 1px solid #CCCCCC;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-}
-
-.poster-title-icon{
-  width:auto;
-  height:50px;
-}
-
-.market-poster-name{
-  font-weight: 100;
-  font-size: 30px;
-  line-height:50px;
-}
-.market-poster-description{
-  font-size: 16px;
-  line-height:25px;
-}
-
-.market-poster-tags{
-  font-size: 16px;
-  line-height:25px;
-}

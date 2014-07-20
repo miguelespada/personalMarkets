@@ -7,4 +7,9 @@ class SlideshowImage
   def self.icon
     "fa-film"
   end
+
+  def aspect_ratio
+    10/3.0
+  end
+
 end

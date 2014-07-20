@@ -1,22 +1,17 @@
-<%= page_title(t("Photo"), "fa-camera-retro") %>
+<%= page_title(t("Photo"), Photo.icon) %>
 
-<div class="container user-session">
+<div class="main-container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default panel-table-last edit-photo-panel">
-        <div class="panel-body photo-show-panel">
-          <%= div_for @photo do %>
-          <div class="photo-show"> 
-            <%= photo(@photo, 600) %>
-            <%= edit_photo_link(@photo) %>
-            <%= photographic_link(@photo) %>
-          </div>
-          <% end %>
-          <div class="photo-actions-links">
-            <%= before_form_link %>
-            <%= all_photos_link %>
-            <%= user_photos_link(current_user) %>
-          </div>
+      <div class="panel panel-default panel-table-last center">
+        <div class="panel-body">
+            <%= photo(@photo, 400) %>
+            <%= render "photos/utils/actions", photo: @photo %>
+        </div>
+        <div>
+          <%= before_form_link %>
+          <%= all_photos_link %>
+          <%= user_photos_link(current_user) %>
         </div>
       </div>
     </div>
