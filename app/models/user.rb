@@ -200,4 +200,8 @@ class User
     return 1000000 if self.has_role?("admin")
     1
   end
+
+  def self.icon
+    "fa-users"
+  end
 end

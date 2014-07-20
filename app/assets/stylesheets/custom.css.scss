@@ -243,7 +243,7 @@ border-color: #d43f3a;
 }
 
 
-.dashboard-container{
+.main-container{
   margin-bottom: 60px;
 }
 
@@ -383,7 +383,9 @@ border-color: #d43f3a;
 .table{
   margin-bottom: 0px !important;
 }
-
+.table-title .fa{
+  padding-right: 10px;
+}
 //*############################ FORM CSS #############################*//
 
 #wizard{

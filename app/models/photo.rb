@@ -35,4 +35,9 @@ class Photo
   def self.all
     self.non_empty
   end
+
+
+  def self.icon
+    "fa-camera"
+  end
 end

@@ -39,4 +39,8 @@ class Coupon
   def active?
     !empty? && market.published?
   end
+
+    def self.icon
+    "fa-ticket"
+  end
 end
