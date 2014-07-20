@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   end
   
   def show
-    rescue  => each 
+    render "subscription_plans"
+    rescue => each 
       redirect_to action: 'index'
   end
 
@@ -40,6 +41,7 @@ class UsersController < ApplicationController
   def subscription
     payment = Payment.new ENV['PREMIUM_PRICE'].to_f, 1
     @subscription_payment = SubscriptionPayment.new payment
+    render "subscription_payment_form"
   end
 
   def admin

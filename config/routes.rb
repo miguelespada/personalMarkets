@@ -22,7 +22,6 @@ PopUpStores::Application.routes.draw do
       resource :statistic, controller: "statistic", :only => [] do
         get :market, :on => :member, :as => "show"
       end
-
     end
 
     get "/users/:user_id/dashboard", to: "users#user_dashboard", as: "user_dashboard"
