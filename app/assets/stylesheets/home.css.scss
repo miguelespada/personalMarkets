@@ -1,15 +1,4 @@
 //*############################ HOME GALLERY CSS #############################*//
-.home_gallery_title{
-  display: block;
-  font-size: 20px;
-  padding-top: 15px;
-  margin-left: 2%;
-  clear: both;
-  color: #999;
-  white-space: normal;
-  text-align: left;
-  font-family: 'GillSansMT';
-}
 
 .home_action > a{
   display: block;
@@ -30,26 +19,7 @@
   padding-top: 15px;
 }
 
-.home_gallery_label, .gallery_label{
-  position:absolute;
-  display:inline;
-  top:100%;
-  left:20%;
-  margin-top:-48px;
-  font-weight:200;
-  font-size:24px;
-  line-height: 48px;
-  color:#FFFFFF;
-  text-shadow: 2px 2px 5px #222222;
-}
 
-.home_gallery_label > span{
-  max-width:200px;
-  float:left;
-  overflow:hidden;
-  white-space:nowrap;
-  text-overflow: ellipsis;
-}
 
 .home_gallery_section{
   margin-left: 30px;
@@ -57,7 +27,7 @@
   border-bottom: 1px solid #CCCCCC;
 }
 
-.home_gallery_title{
+.home_gallery_section_title{
   display: block;
   font-size: 20px;
   padding-top: 15px;

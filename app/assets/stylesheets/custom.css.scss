@@ -89,6 +89,19 @@ footer {
   margin-bottom: 60px;
 }
 
+.gallery_label{
+  position:absolute;
+  display:inline;
+  top:100%;
+  left:15%;
+  margin-top:-28px;
+  font-weight:100;
+  font-size:20px;
+  line-height: 24px;
+  color:#FFFFFF;
+  text-shadow: 2px 2px 5px #222222;
+}
+
 //*############################ DASHBOARD CSS #############################*//
 
 .dashboard-button{
