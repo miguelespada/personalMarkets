@@ -1,0 +1,23 @@
+<section>
+  <div class="panel panel-default panel-table">
+    <div class="panel-heading table-title">
+      <%= role.titleize %>
+    </div>
+    <div class="table-container">
+      <table class="table table-striped <%= role %>">
+        <tr>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Markets</th>
+        <th>Likes</th>
+        <th>Wishes</th>
+        <th>Bargains</th>
+        <th>Actions</th>
+        </tr>
+        <% users.each do |user| %>
+          <%= render "users/list/user", user: user %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</section>

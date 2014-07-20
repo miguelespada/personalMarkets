@@ -1,0 +1,24 @@
+<%= content_tag_for(:tr, user) do %>
+  <td class="col-md-3"> <%= mail_to truncate(user.email, length: 15), user.email %> </td>
+  <td class="col-md-2 <%= user.status %>"> 
+    <div class="user-status-text"><%= user.status.titleize %></div>
+  </td>
+  <td class="col-md-1">  <%= link_to user.markets.count,  user_markets_path(user) %></td>
+  <td class="col-md-1"> <%=  link_to user.favorites.count, user_likes_path(user) %></td>
+  <td class="col-md-1"> <%=  link_to user.wishes.count, user_wishes_path(user) %></td>
+  <td class="col-md-1"> <%=  link_to user.bargains.count, user_bargains_path(user) %></td>
+
+  <td class="col-md-3"> <%= link_to content_tag(:i, "", class: "fa fa-ticket"), bought_coupons_by_user_path(user), :method => :get, :class => 'btn btn-primary table-button table-button-show' %>
+
+    <%= link_to content_tag(:i, "", class: "fa fa-refresh"), change_user_role_path(user), :method => :get, :class => 'btn btn-info table-button table-button-change-role' %>
+
+    <% user.available_statuses.each do |status| %>
+      <% if status == "active" %>
+        <%= link_to content_tag(:i, "", class: "fa fa-check-circle"), user_status_path(user, :new_status => status), :method => :put, :class => "btn btn-success table-button table-button-switch-active" %>
+      <% elsif status == "inactive" %>
+        <%= link_to content_tag(:i, "", class: "fa fa-times-circle"), user_status_path(user, :new_status => status), :method => :put, :class => "btn btn-warning table-button table-button-switch-inactive" %>
+      <% end %>
+    <% end %>
+    
+    <%= link_to content_tag(:i, "", class: "fa fa-trash-o"), user_path(user), :method => :delete, :class => 'btn btn-danger table-button table-button-delete', data: { confirm: 'Are you sure?'} %></td>
+<% end %>

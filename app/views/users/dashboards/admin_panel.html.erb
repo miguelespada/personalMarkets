@@ -1,0 +1,41 @@
+<%= page_title(t("Admin Panel"), "fa-cog") %>
+
+<div class="main-container">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 center">
+
+        <%= admin_link(Market) %>
+
+        <%= admin_link(Category) %>
+
+        <%= admin_link(SpecialLocation) %>
+
+        <%= admin_link(Tag) %>
+        
+        <%= admin_link(Wish) %>
+
+        <%= admin_link(Bargain) %>
+
+        <%= admin_link(Photo) %>
+
+        <%= external_link("https://mail.google.com", "Messages", "fa-envelope-o") %>
+
+        <%= admin_link(User) %>
+
+        <%= user_dashboard_link("show_statistic_path", "Stats", "fa-tasks") %>
+
+        <%= admin_link(SlideshowImage) %>
+
+        <%= admin_link(SlideshowText) %>
+
+        <%= external_link("https://app.paymill.com/es-es/auth/login", "Paymill", "fa-money") %>
+
+        <%= admin_link(Coupon) %>
+
+        <%= user_dashboard_link("settings_path", "Admin data", "fa-cogs") %>
+
+      </div>
+    </div>
+  </div>
+</div>
