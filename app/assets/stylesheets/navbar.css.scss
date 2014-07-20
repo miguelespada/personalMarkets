@@ -1,7 +1,4 @@
-
-$bgDefault      : #F1F1F1;
-$colDefault     : #2f2f2f;
-$colBrand   : #C76363;
+@import "color";
 
 $bgHighlight :  lighten($bgDefault, 3%);
 $colHighlight :  lighten($colDefault, 20%);

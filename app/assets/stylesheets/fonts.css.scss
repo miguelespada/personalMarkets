@@ -15,16 +15,6 @@
 }
 
 @font-face {
-    font-family: 'UVF-Funkydori';
-    src:url('/fonts/UVF-Funkydori.ttf.woff') format('woff'),
-        url('/fonts/UVF-Funkydori.ttf.svg#UVF-Funkydori') format('svg'),
-        url('/fonts/UVF-Funkydori.ttf.eot'),
-        url('/fonts/UVF-Funkydori.ttf.eot?#iefix') format('embedded-opentype'); 
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
     font-family: 'donoso';
     src: url('/fonts/donoso_5jul_1-webfont.eot');
     src: url('/fonts/donoso_5jul_1-webfont.eot?#iefix') format('embedded-opentype'),
@@ -48,7 +38,6 @@ h1 {
   text-align: left;
   margin-bottom: 10px !important;
 }
-
 
 h3.panel-title{
   margin-top: 0;
