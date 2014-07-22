@@ -48,11 +48,11 @@ class Market
   validates_presence_of :name, :user
 
   scope :last_pro_published, lambda {where(state: "published").where(pro: :true).order_by(:published_date.desc).limit(6) }
-  scope :last_published, lambda { where(state: "published").order_by(:published_date.desc).limit(6) }
-  scope :published, lambda {where(state: "published").order_by(:date.asc)}
-  scope :vim, lambda {where(pro: :true)}
-  scope :draft, lambda {where(state: "draft")}
-  scope :archived, lambda {where(state: "archived")}
+  scope :last_published, lambda { where(state: "published").order_by(:publish_date.desc).limit(6) }
+  scope :published, lambda {where(state: "published").order_by(:publish_date.desc)}
+  scope :vim, lambda {where(pro: :true).order_by(:publish_date.desc)}
+  scope :draft, lambda {where(state: "draft").order_by(:created_at.desc)}
+  scope :archived, lambda {where(state: "archived").order_by(:publish_date.desc)}
 
 
   scope :with_category, lambda {|category| where(category: category)}
