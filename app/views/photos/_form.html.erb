@@ -2,9 +2,9 @@
 
 <% required ||= false %>
 
-<%= f.attachinary_file_field :photo,
-    :cloudinary => { :transformation => {:width=>800, 
-    :height =>800, :quality => 50, :crop=>:limit }} %>
+<%= f.attachinary_file_field(:photo, 
+    :cloudinary => { :transformation => {:width=>5, 
+    :height =>5, :quality => 50, :crop=>:limit }}) %>
 
 <script>
 $( document ).ready(function() {
@@ -35,5 +35,16 @@ $( document ).ready(function() {
         }
     }
   });
+
+
 });
 </script>
+
+<% if required %>
+<script>
+  $('.simple_form').submit(function(){
+    
+    return false;
+  });
+</script>
+<% end %>  

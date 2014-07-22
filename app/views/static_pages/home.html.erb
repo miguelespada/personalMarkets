@@ -3,7 +3,7 @@
   <section id="slideshow" >
     <div id="slides" >
       <%  SlideshowImage.all.each do |slideshow| %>
-        <%=  cl_image_tag(slideshow.photography.photo.path, {size: "1000x300", crop: :crop, quality: "50" } ) %>
+        <%=  cl_image_tag(slideshow.photography.photo.path, {quality: "50" } ) %>
       <% end %> 
     </div>
 
