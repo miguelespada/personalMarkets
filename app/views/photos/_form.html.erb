@@ -3,8 +3,8 @@
 <% required ||= false %>
 
 <%= f.attachinary_file_field(:photo, 
-    :cloudinary => { :transformation => {:width=>5, 
-    :height =>5, :quality => 50, :crop=>:limit }}) %>
+    :cloudinary => { :transformation => {:width=>800, 
+    :height =>800, :quality => 50, :crop=>:limit }}) %>
 
 <script>
 $( document ).ready(function() {
@@ -38,13 +38,15 @@ $( document ).ready(function() {
 
 
 });
-</script>
 
-<% if required %>
-<script>
-  $('.simple_form').submit(function(){
-    
-    return false;
-  });
 </script>
+<% if required %>
+  <script>
+    $('.simple_form').submit(function(){
+      if(!$('.attachinary_container input').val()){
+        alert("Image cannot be empty!");
+        return false;
+      }
+    });
+  </script>
 <% end %>  
