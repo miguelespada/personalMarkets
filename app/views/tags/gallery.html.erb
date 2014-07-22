@@ -3,11 +3,11 @@
     <div class="panel-body tags-panel-container">
       <% @suggested.each do |tag| %>
           <div class="col-md-2"> 
-            <%= link_to(tag.name.capitalize, tag_markets_path(tag.name), class: "tag-link") %> </div>
+            <%= link_to(tag.name.mb_chars.upcase, tag_markets_path(tag.name), class: "tag-link") %> </div>
           <% @tags.delete(tag.name.capitalize) %>
       <% end %>
         <% @tags.each do |name| %> 
-          <div class="col-md-2">  <%= link_to(name, tag_markets_path(name), class: "tag-link") %> </div>
+          <div class="col-md-2">  <%= link_to(name.upcase, tag_markets_path(name), class: "tag-link") %> </div>
         <% end %>
     </div>
   </div>
@@ -20,17 +20,16 @@
   $('.tag-link').click(function(){
     $('.tag-link').removeClass("active");
     $(this).addClass("active");
-    $.get( $(this).attr('href'), function( data ) {
-      $( "#gallery-items" ).html( data );
-    });
+    ajaxTagSearch();
     return false;
   });
 
     function  ajaxTagSearch(){
+      var page =  $('#page').val() || 1;
       $.ajax({
         type: "GET",
         url: $(".tag-link.active").attr('href'),
-        data: "page=" + $('#page').val(),
+        data: "page=" + page,
         success: function(data){
           $( "#gallery-items" ).html( data );
         }
@@ -44,4 +43,24 @@
   </script>
 <% end %>
 
+<style>
+
+.tag-link{
+  font-size: 20px;
+  color:#000;
+  font-weight: 500 !important;
+}
+.tag-link.active{
+  text-decoration: underline;
+}
+
+.tag-link:hover{
+  color:#000;
+  text-decoration: none;
+}
+.tag-link:hover{
+  color:#000;
+  text-decoration: none;
+}
+</style>
 

@@ -25,12 +25,13 @@ class MarketsController < ApplicationController
   def list_tag_markets
     @markets = Market.published.tagged_with(params[:tag].downcase)
     per_page = 6
+
     @total = @markets.count
     if !params[:page].present?
       @first_page = true
       @last_page =  per_page >= @total
     else
-      @first_page =  !params[:page].present? || params[:page].to_i == 1 
+      @first_page = params[:page].to_i == 1 
       @last_page = params[:page].to_i * per_page >= @total
     end
     @markets = @markets.page(params[:page]).per(per_page)
@@ -97,8 +98,6 @@ class MarketsController < ApplicationController
     redirect_to settings_path
   end
   
-
-
   def destroy
     domain.delete_market params[:id]
   end
