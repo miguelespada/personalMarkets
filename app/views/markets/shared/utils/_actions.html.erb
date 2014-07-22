@@ -1,4 +1,4 @@
-
+<row>
 <%= market.transactions_link %>
 <%= market.like_link %>
 <%= market.edit_link %>
@@ -9,35 +9,36 @@
 <%= market.poster_link %>
 <%= market.publish_link %>
 <%= market.unpublish_link %>
+</row>
 
 <script>
 
-  $(document).ready(function(){
-    buttonHover(".like-icon", "fa-heart", "Like", 75);
-    buttonHover(".unlike-icon", "fa-heart-o", "Unlike", 85);
-    buttonHover(".edit-icon", "fa-pencil", "Edit", 70);
-    buttonHover(".delete-icon", "fa-trash-o", "Delete", 85);
-    buttonHover(".archive-icon", "fa-undo", "Archive", 95);
-    buttonHover(".pro-icon", "fa-plus-square", "Go VIM", 100);
-    buttonHover(".statistics-icon", "fa-sitemap", "Statistics", 115);
-    buttonHover(".transactions-icon", "fa-ticket", "Sold Coupons", 145);
-    buttonHover(".force-pro-icon","fa-plus-square", "Free VIM for admin", 180);
-    buttonHover(".poster-icon","fa-print", "Poster", 95);
-  });
+  // $(document).ready(function(){
+  //   buttonHover(".like-icon", "fa-heart", "Like", 75);
+  //   buttonHover(".unlike-icon", "fa-heart-o", "Unlike", 85);
+  //   buttonHover(".edit-icon", "fa-pencil", "Edit", 70);
+  //   buttonHover(".delete-icon", "fa-trash-o", "Delete", 85);
+  //   buttonHover(".archive-icon", "fa-undo", "Archive", 95);
+  //   buttonHover(".pro-icon", "fa-plus-square", "Go VIM", 100);
+  //   buttonHover(".statistics-icon", "fa-sitemap", "Statistics", 115);
+  //   buttonHover(".transactions-icon", "fa-ticket", "Sold Coupons", 145);
+  //   buttonHover(".force-pro-icon","fa-plus-square", "Free VIM for admin", 180);
+  //   buttonHover(".poster-icon","fa-print", "Poster", 95);
+  // });
 
-  var buttonHover = function(button, icon, text, width){
-    $(button).hover(function(){
-      $(this).html("<i class='fa " + icon + "'></i>&nbsp;&nbsp;" + text);
-      $(this).animate({
-        width: width
-      }, 10);
-    }, function(){
-      $(this).html("<i class='fa " + icon + "'></i>");
-      $(this).animate({
-        width: "40"
-      }, 10);
-    });
-  };
+  // var buttonHover = function(button, icon, text, width){
+  //   $(button).hover(function(){
+  //     $(this).html("<i class='fa " + icon + "'></i>&nbsp;&nbsp;" + text);
+  //     $(this).animate({
+  //       width: width
+  //     }, 10);
+  //   }, function(){
+  //     $(this).html("<i class='fa " + icon + "'></i>");
+  //     $(this).animate({
+  //       width: "40"
+  //     }, 10);
+  //   });
+  // };
 
   $(".archive-icon").click(function(){
     if(!confirm("<%= t :action_not_reversible %>"))
