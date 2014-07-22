@@ -1,9 +1,9 @@
-<div id="gallery-items">
   <div class="panel panel-default panel-table">
     <% @tags = @tags.map{|tag| tag.capitalize} %>
     <div class="panel-body tags-panel-container">
       <% @suggested.each do |tag| %>
-          <div class="col-md-2"> <%= link_to(tag.name.capitalize, tag_markets_path(tag.name), class: "tag-link") %> </div>
+          <div class="col-md-2"> 
+            <%= link_to(tag.name.capitalize, tag_markets_path(tag.name), class: "tag-link") %> </div>
           <% @tags.delete(tag.name.capitalize) %>
       <% end %>
         <% @tags.each do |name| %> 
@@ -11,6 +11,9 @@
         <% end %>
     </div>
   </div>
+
+
+<div id="gallery-items">
 </div>
 
 <script>
@@ -22,6 +25,16 @@
     });
     return false;
   });
+
+    function  ajaxTagSearch(){
+      $.ajax({
+        type: "GET",
+        url: $(".tag-link.active").attr('href'),
+        data: "page=" + $('#page').val(),
+        success: function(data){
+          $( "#gallery-items" ).html( data );
+        }
+    })};
 </script>
 
 
@@ -30,3 +43,5 @@
     $(".tag-link:contains(<%= params['tag_name'] %>)").click();
   </script>
 <% end %>
+
+

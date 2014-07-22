@@ -23,7 +23,17 @@ class MarketsController < ApplicationController
   end
   
   def list_tag_markets
-    @markets = Market.published.tagged_with(params[:tag].downcase).page(params[:page]).per(6)
+    @markets = Market.published.tagged_with(params[:tag].downcase)
+    per_page = 6
+    @total = @markets.count
+    if !params[:page].present?
+      @first_page = true
+      @last_page =  per_page >= @total
+    else
+      @first_page =  !params[:page].present? || params[:page].to_i == 1 
+      @last_page = params[:page].to_i * per_page >= @total
+    end
+    @markets = @markets.page(params[:page]).per(per_page)
     render :layout => !request.xhr?
   end
 

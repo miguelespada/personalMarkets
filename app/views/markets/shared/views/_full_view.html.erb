@@ -19,7 +19,9 @@
     <div class="market-section-container row">
       <div class="col-md-6 market-featured-photo-detail">
         <%= market.market_featured_photo_filtered(400) %>
-        <%= edit_photo_link(market.featured) %>
+        <div class="photo_actions">
+          <%= edit_photo_link(market.featured) %>
+        </div>
       </div>
     
           <%= render partial: 'markets/shared/utils/description', locals: { market: market } %>

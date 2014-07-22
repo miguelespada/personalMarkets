@@ -1,7 +1,28 @@
+  <%= hidden_field_tag 'page', params['page'] || 1 %>
+  <%= hidden_field_tag 'tag', params['tag'] %>
 
-<div class="paginate">
-  <%= paginate @markets %>
-  <%= link_to t(:tag_list), tags_gallery_path %>
+
+  <div class="center">
+    <%= link_to "Prev", "#", :id=>"prev-markets" if !@first_page %>
+    <%= link_to "Next", "#", :id=>"next-markets" if !@last_page %>
+  </div>
+
+  <script>
+   $("#prev-markets").click(function(){
+      var page = parseInt($('#page').val());
+      $('#page').val(page - 1);
+      ajaxTagSearch();
+
+    });
+
+    $("#next-markets").click(function(){
+      var page = parseInt($('#page').val());
+      $('#page').val(page + 1);
+      ajaxTagSearch();
+    });
+</script>
+
+
 </div>
 
 <div class="panel panel-default panel-table panel-table-last">
