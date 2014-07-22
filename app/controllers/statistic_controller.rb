@@ -7,10 +7,12 @@ class StatisticController < ApplicationController
   def user
     user = User.find params[:user_id]
     @markets = user.markets.order_by(:created_at.desc).page(params[:page]).per(4)
+    render "markets"
   end
 
   def admin
-  	@markets = Market.all.order_by(:created_at.desc).page(params[:page]).per(4)
+    @markets = Market.all.order_by(:created_at.desc).page(params[:page]).per(4)
+    render "markets"
   end
 
 end
