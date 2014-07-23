@@ -1,58 +1,12 @@
 @import "color";
 
-$bgHighlight :  lighten($bgDefault, 3%);
-$colHighlight :  lighten($colDefault, 20%);
-$colBrandHighlight :  lighten($colBrand, 20%);
-
 .navbar-inverse {
-  background-color: $bgDefault;
-  border-color: $bgHighlight;
   .navbar-brand {
     color: $colBrand;
     &:hover, &:focus { 
-      color: $colBrandHighlight; }}
-  .navbar-text {
-    color: $colDefault; }
-  .navbar-nav {
-    > li {
-      > a {
-        color: $colDefault;
-        &:hover,  &:focus {
-          color: $colHighlight; }}}
-    > .active {
-      > a, > a:hover, > a:focus {
-        color: $colHighlight;
-        background-color: $bgHighlight; }}
-    > .open {
-      > a, > a:hover, > a:focus {
-        color: $colHighlight;
-        background-color: $bgHighlight; }}}
-  .navbar-toggle {
-    border-color: $bgHighlight;
-    &:hover, &:focus {
-      background-color: $bgHighlight; }
-    .icon-bar {
-      background-color: $colDefault; }}
-  .navbar-collapse,
-  .navbar-form {
-    border-color: $colDefault; }
-  .navbar-link {
-    color: $colDefault;
-    &:hover {
-      color: $colHighlight; }}}
-
-@media (max-width: 767px) {
-  .navbar-default .navbar-nav .open .dropdown-menu {
-    > li > a {
-      color: $colDefault;
-      &:hover, &:focus {
-        color: $colHighlight; }}
-    > .active {
-      > a, > a:hover, > a:focus, {
-        color: $colHighlight;
-        background-color: $bgHighlight; }}}
-}
-
+      color: lighten($colBrand, 20%) }}
+ 
+ }
 
 //*############################ SPECIAL NAVBAR CSS #############################*//
 

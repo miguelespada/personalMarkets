@@ -1,9 +1,9 @@
 
 <li class="registered-user-action ">
   <% if user_signed_in? %>
-     <%= button_to "✚", open_market_path , class:"add_market_button btn btn-info", :method => :get %>
+     <%= button_to "✚", open_market_path , class:"add_market_button btn btn-default", :method => :get %>
   <% else %>
-    <%= button_to "✚", "javascript:shakeButton();", class:"add_market_button btn btn-info", :method => :get %>
+    <%= button_to "✚", "javascript:shakeButton();", class:"add_market_button btn btn-default", :method => :get %>
   <% end %>
 </li>
 
