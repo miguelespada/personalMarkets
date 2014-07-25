@@ -1,0 +1,91 @@
+
+<div class="main-container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default panel-table panel-table-last">
+          <div class="panel-heading table-title">
+          <div class="market-title-container row">
+            <div class="market-title market-poster-title col-md-12">
+              <img src="/images/favicon.png" class="poster-title-icon"><%= @user.name %> 
+           
+            </div>
+
+            <% if can? :manage, @user %>
+              <div class="center">
+              <h5>
+              <%= published_markets_status(current_user) %>
+              </h5>
+
+                <p> 
+                <%= link_to "Edit Profile", edit_user_path(@user)  %>  <br>
+                <%= link_to "Subscription plan", user_subscription_plan_path(@user)  %>
+                </p> 
+
+              </div>
+               <div class="market-list-section-title"></div>
+
+            <% end %>
+            <div class="market-title market-poster-picture col-md-4">
+              <%= photo(@user.featured, 150) %>
+            </div>
+            <div class="col-md-8">
+              <div class="market-poster-description"> <%= @user.description %> </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="market-list-section-container short-view-coupon-section">
+        <div class="short-view-coupon-inner poster-info-inner">
+          <div class="center">
+           <%= user_dashboard_link("user_markets_path", @user, "Markets", Market.icon) %>
+           <%= user_dashboard_link("gallery_user_bargains_path", @user, "Bargains", Bargain.icon) %>
+           <%= user_dashboard_link("gallery_user_wishes_path", @user, "Wishes", Wish.icon) %>
+        </div>
+        </div>
+      </div>
+
+
+      <div class="market-list-section-title"></div>
+
+      <div class="market-list-section-container short-view-coupon-section">
+        <div class="short-view-coupon-inner poster-info-inner">
+          <div class="center">
+          <% if current_user.following?(@user) %>
+            <%= user_dashboard_link("unfollow_user_path", @user, "Unfollow", "fa-thumbs-o-down") %>
+          <% else %>
+            <%= user_dashboard_link("follow_user_path", @user, "Follow", "fa-thumbs-o-up") %>
+          <% end %>
+            </div>
+
+            <div>
+              <div class="table-responsive">
+                <table class="table">
+                  <tr>
+                    <th>Following</th>
+                    <th>Followers</th>
+                  </tr>
+                  <td>
+
+                  <% @user.following.each do |user| %>
+                    <p> <%= link_to user.name, user_path(user) %> </p>
+                  <% end %>
+                  </td>
+
+                  <td>
+                   <% @user.followers.each do |user| %>
+                     <p> <%= link_to user.name, user_path(user) %> </p>
+                    <% end %>
+               </td>
+            
+              </table>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="center">
+      <%= back_link %>
+      </div>
+    </div>
+  </div>
+</div>

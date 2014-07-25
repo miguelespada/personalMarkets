@@ -1,0 +1,13 @@
+<%= page_title(user_role(current_user), "fa-dashboard") %>
+
+<div class="main-container">  
+  <div class="row">
+    <div class="pricing-table">
+
+      <%= render "users/utils/regular_plan" %>
+
+      <%= render "users/utils/pro_plan" %>
+
+    </div>
+  </div>
+</div>
