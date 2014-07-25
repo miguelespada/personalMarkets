@@ -114,14 +114,6 @@ class Market
     self.save!
   end
 
-  def like(user)
-    favorited << user
-  end
-
-  def unlike(user)
-    favorited.delete(user)
-  end
-
   def has_tags?
     !(self.tags.nil? || self.tags.empty?)
   end

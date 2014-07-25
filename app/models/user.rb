@@ -6,11 +6,23 @@ class User
 
   rolify
 
+
   has_many :markets, class_name: "Market", dependent: :destroy, inverse_of: :user
   has_and_belongs_to_many :favorites, class_name: "Market", inverse_of: :favorited
   has_many :coupon_transactions, class_name: "CouponTransaction", dependent: :destroy, inverse_of: :user
   has_many :wishes, class_name: "Wish", dependent: :destroy, inverse_of: :user
   has_many :bargains, class_name: "Bargain", dependent: :destroy, inverse_of: :user
+
+
+  field :nickname, type: String
+  field :description, type: String
+
+  has_and_belongs_to_many :following, class_name: 'User', inverse_of: :followers, autosave: true
+  has_and_belongs_to_many :followers, class_name: 'User', inverse_of: :following
+
+
+  has_one :featured, class_name: "Photo", as: :photographic, autobuild: true, dependent: :destroy
+  accepts_nested_attributes_for :featured
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -113,6 +125,12 @@ class User
     object.user_id == self.id
   end
 
+  def name
+    nickname || "Anonymous"
+  end
+
+  #### favorite market 
+
   def like(market)
     favorites << market
   end
@@ -125,6 +143,25 @@ class User
     favorites.include?(market)
   end 
   
+
+  #### follow users  
+
+  def follow(user)
+    self.following << user
+  end
+
+  def unfollow(user)
+    self.following.delete(user)
+  end
+
+  def following?(user)
+    following.include?(user)
+  end 
+
+
+
+  #####
+
   def does_not_own(market)
     self != market.user
   end
@@ -156,8 +193,7 @@ class User
 
   def allowed_market_creation?
     return true if self.has_role?("admin") 
-    return true if number_of_last_month_markets < allowed_markets && self.has_role?("premium")
-    return true if number_of_last_month_markets < allowed_markets && self.has_role?("normal")
+    return true if number_of_last_month_markets < allowed_markets
     false
   end
 
@@ -177,8 +213,13 @@ class User
     self.image = image
     self.save!
   end
+
   def remaining_markets
     allowed_markets - number_of_last_month_markets
+  end
+
+  def self.icon
+    "fa-users"
   end
 
   private
@@ -201,7 +242,4 @@ class User
     1
   end
 
-  def self.icon
-    "fa-users"
-  end
 end

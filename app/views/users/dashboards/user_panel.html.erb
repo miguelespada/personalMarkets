@@ -5,31 +5,27 @@
       <div class="row">
         <div class="col-md-6 col-md-offset-3 center">
 
-          <%= user_dashboard_link("user_markets_path", "Markets", Market.icon) %>
+          <%= current_user_dashboard_link("user_markets_path", "Markets", Market.icon) %>
 
-          <%= user_dashboard_link("user_likes_path", "Likes", "fa-heart-o") %>
+          <%= current_user_dashboard_link("user_likes_path", "Likes", "fa-heart-o") %>
 
-          <%= user_dashboard_link("user_bargains_path", "Bargains", Bargain.icon) %>
+          <%= current_user_dashboard_link("user_bargains_path", "Bargains", Bargain.icon) %>
 
-          <%= user_dashboard_link("user_wishes_path", "Wishes", Wish.icon) %>
+          <%= current_user_dashboard_link("user_wishes_path", "Wishes", Wish.icon) %>
 
-          <%= user_dashboard_link("bought_coupons_by_user_path", "Coupons", "fa-ticket") %>
+          <%= current_user_dashboard_link("bought_coupons_by_user_path", "Coupons", "fa-ticket") %>
 
-          <%= user_dashboard_link("user_path", "Profile", "fa-user") %>
+          <%= current_user_dashboard_link("user_path", "Profile", "fa-user") %>
 
-          <%= user_dashboard_link("user_photos_path", "Photos", "fa-camera") %>
+          <%= current_user_dashboard_link("user_photos_path", "Photos", "fa-camera") %>
 
-          <%= user_dashboard_link("show_user_statistic_path", "Stats", "fa-tasks") if current_user.can_see_markets_stats? %>
+          <%= current_user_dashboard_link("show_user_statistic_path", "Stats", "fa-tasks") if current_user.can_see_markets_stats? %>
 
         </div>
       </div>
 
 
-      <div class="row ">
-        <div class="col-md-6 col-md-offset-3 center">
-          <%= published_markets_status(current_user) %>
-        </div>
-      <div>
+
 
   </div>
 </div>

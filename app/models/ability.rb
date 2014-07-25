@@ -41,6 +41,8 @@ class Ability
             @user.owns(photo)
         end
 
+        can :manage, @user
+
         can :manage, Bargain, Bargain do |bargain|
             @user.owns(bargain)
         end
@@ -78,7 +80,6 @@ class Ability
   def admin_abilities
     if @user.has_role? :admin
       can [:update], Status
-      can [:show, :index, :destroy], User
       can [:change, :update], Role
 
       can [:list], Coupon
@@ -94,6 +95,7 @@ class Ability
       can [:manage], Coupon
       can [:manage], Photo
       can [:manage], Gallery
+      can [:manage], Users
       can [:list_user_transactions], User
       can [:list_market_transactions], Market
       

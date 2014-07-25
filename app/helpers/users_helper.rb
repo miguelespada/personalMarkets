@@ -30,8 +30,12 @@ module UsersHelper
     end 
   end
   
-  def user_dashboard_link(action, text, icon)
-    link_to send(action, current_user), class:"dashboard-button btn btn-lg" do
+  def current_user_dashboard_link(action, text, icon)
+    user_dashboard_link(action, current_user, text, icon)
+  end
+
+  def user_dashboard_link(action, user, text, icon)
+    link_to send(action, user), class:"dashboard-button btn btn-lg" do
       concat content_tag :i, "", class:"fa #{icon} fa-4x"
       concat "<br/>".html_safe
       concat truncate(text,  length: 12)

@@ -1,32 +1,51 @@
 class UsersController < ApplicationController
-  load_resource :only => [:show, :destroy]
-  authorize_resource :only => [:index, :show, :destroy]  
+  load_resource :only => [:show, :destroy, :edit, :update, :user_dashboard, :subscription_plan, :subscription]
+  authorize_resource :only => [:index, :destroy, :edit, :update]  
  
   def index
     @users = UsersPresenter.for User.all
   end
   
   def show
-    render "subscription_plans"
-    rescue => each 
-      redirect_to action: 'index'
   end
 
+  def edit
+    render 'form'
+  end
+
+
+  def update
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to user_path, notice: 'User was successfully updated.' }
+      else
+        format.html { render action: 'edit' }
+      end
+    end
+  end
+
+
   def like
-    @user = current_user
     market = Market.find(params[:market_id])
-    authorize! :like, market
-    @user.like(market)
-    market.like(@user)
+    current_user.like(market)
     redirect_to :back
   end
 
   def unlike
-    @user = current_user
     market = Market.find(params[:market_id])
-    authorize! :like, market
-    @user.unlike(market)
-    market.unlike(@user)
+    current_user.unlike(market)
+    redirect_to :back
+  end
+
+  def follow
+    user = User.find(params[:user_id])
+    current_user.follow(user) if current_user != user
+    redirect_to :back
+  end
+
+  def unfollow
+    user = User.find(params[:user_id])
+    current_user.unfollow(user)
     redirect_to :back
   end
 
@@ -38,7 +57,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def subscription_plan
+    authorize! :manage, @user
+  end
+
   def subscription
+    authorize! :manage, @user
     payment = Payment.new ENV['PREMIUM_PRICE'].to_f, 1
     @subscription_payment = SubscriptionPayment.new payment
     render "subscription_payment_form"
@@ -50,6 +74,11 @@ class UsersController < ApplicationController
   end
 
   def user_dashboard
+    authorize! :manage, @user
     render "users/dashboards/user_panel"
   end
+   private
+    def user_params
+      params.require(:user).permit(:nickname, :description, featured_attributes: [:photo])
+    end
 end

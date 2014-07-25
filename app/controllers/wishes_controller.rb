@@ -11,9 +11,15 @@ class WishesController < ApplicationController
     end
   end
 
+
   def gallery
     @wishes = Wish.all.desc(:created_at).page(params[:page]).per(1)
     render :layout => !request.xhr?
+  end
+
+  def gallery_user_wishes
+    @wishes = load_user.wishes.all.desc(:created_at).page(params[:page]).per(1)
+    render "gallery"
   end
 
   def list_user_wishes

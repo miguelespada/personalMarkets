@@ -23,7 +23,7 @@
 
         <%= admin_link(User) %>
 
-        <%= user_dashboard_link("show_statistic_path", "Stats", "fa-tasks") %>
+        <%= current_user_dashboard_link("show_statistic_path", "Stats", "fa-tasks") %>
 
         <%= admin_link(SlideshowImage) %>
 
@@ -33,7 +33,7 @@
 
         <%= admin_link(Coupon) %>
 
-        <%= user_dashboard_link("settings_path", "Admin data", "fa-cogs") %>
+        <%= current_user_dashboard_link("settings_path", "Admin data", "fa-cogs") %>
 
       </div>
     </div>

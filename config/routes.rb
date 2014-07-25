@@ -24,16 +24,16 @@ PopUpStores::Application.routes.draw do
       end
     end
 
-    get "/users/:user_id/dashboard", to: "users#user_dashboard", as: "user_dashboard"
+    get "/users/:id/dashboard", to: "users#user_dashboard", as: "user_dashboard"
     get "/users/admin", to: "users#admin", as: "admin"
     get "/users/:user_id/markets", to: "markets#list_user_markets", as: "user_markets"
     get "/published", to: "markets#list_published_markets", as: "published_markets"
     get "/list_recommend_markets", to: "markets#list_recommend_markets", as: "list_recommend_markets"
 
-    get   "/reindex", to: "markets#reindex", as: "market_reindex"
-    get   "/delete_index", to: "markets#delete_index", as: "market_delete_index"
+    get "/reindex", to: "markets#reindex", as: "market_reindex"
+    get "/delete_index", to: "markets#delete_index", as: "market_delete_index"
 
-    resources :users, :only => [:index, :show]
+    resources :users
 
     resources :slideshow_images, :except => [:show]
     resources :slideshow_texts, :except => [:show]
@@ -61,7 +61,8 @@ PopUpStores::Application.routes.draw do
     end
 
     post "/unsubscribe", to: "subscriptions#unsubscribe", as: "unsubscribe"
-    get "/users/:user_id/subscription", to: "users#subscription", as: "user_subscription"
+    get "/users/:id/subscription", to: "users#subscription", as: "user_subscription"
+    get "/users/:id/subscription_plan", to: "users#subscription_plan", as: "user_subscription_plan"
 
     resource :contact, controller: "contact", :only => [] do
       get :new, :on => :member
@@ -93,12 +94,15 @@ PopUpStores::Application.routes.draw do
     get "/wishes/gallery", as: "wishes_gallery"
     get "/users/:user_id/wishes", to: "wishes#list_user_wishes", as: "user_wishes"
     post "/wishes/:id/recommend/:market_id", to: "wishes#recommend", as: "recommend_market_to_wish"
+    get "/users/:user_id/wishes_gallery", to: "wishes#gallery_user_wishes", as: "gallery_user_wishes"
+
     resources :wishes
     ####
 
     ### Bargains
     get "/bargains/gallery", as: "bargains_gallery"
     get "/users/:user_id/bargains", to: "bargains#list_user_bargains", as: "user_bargains"
+    get "/users/:user_id/bargains_gallery", to: "bargains#gallery_user_bargains", as: "gallery_user_bargains"
     resources :bargains
     ####
 
@@ -106,7 +110,11 @@ PopUpStores::Application.routes.draw do
     get "/likes/:user_id", to: "markets#list_liked_markets", as: "user_likes"
     get "/like/:market_id",  to: 'users#like', as: 'like'
     get "/unlike/:market_id",  to: 'users#unlike', as: 'unlike'
-    ####
+
+
+    get "/follow/:user_id",  to: 'users#follow', as: 'follow_user'
+    get "/unfollow/:user_id",  to: 'users#unfollow', as: 'unfollow_user'
+        ####
 
     #### Edit photos
     get "/photos/:id/edit", to: "photos#edit", as: 'edit_photo'

@@ -15,6 +15,11 @@ class BargainsController < ApplicationController
     render :layout => !request.xhr?
   end
 
+  def gallery_user_bargains
+    @bargains = load_user.bargains.all.desc(:created_at).page(params[:page]).per(1)
+    render "gallery"
+  end
+
   def list_user_bargains
     @bargains = load_user.bargains.all.desc(:created_at)
     render "index"
