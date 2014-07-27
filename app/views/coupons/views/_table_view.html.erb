@@ -1,0 +1,26 @@
+<table class="table table-striped">
+<tr>
+  <th>Market</th>
+  <th>State</th>
+  <th>Photo</th>
+  <th>Owner</th>
+  <th>Description</th>
+  <th>Price</th>
+  <th>Available</th>
+  <th>Transactions</th>
+</tr>
+
+<% @coupons.each do |coupon| %>
+  <%= content_tag_for(:tr, coupon) do %> 
+  <td class="col-md-2"> <%= link_to coupon.market.name, market_path(coupon.market) %> </td> 
+  <td class="col-md-1"> <%= coupon.market.state %> </td> 
+  <td class="col-md-2"> <%= coupon.market.user.email %> </td>
+  <td class="col-md-2"> <%= photo(coupon.photography, 120) %> </td> 
+  <td class="col-md-2"> <%= coupon.description %> </td> 
+  <td class="col-md-1"> <%= coupon.price %> </td>
+  <td class="col-md-1"> <%= coupon.available %> </td> 
+  <td class="col-md-1"> <%= link_to "Transactions", 
+                          sold_coupons_by_market_path(coupon.market) %> (<%= coupon.transactions.count %>) </td> 
+  <% end %>
+<% end %>
+</table>
