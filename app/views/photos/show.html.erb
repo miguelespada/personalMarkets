@@ -6,7 +6,7 @@
       <div class="panel panel-default panel-table-last center">
         <div class="panel-body">
             <%= photo(@photo, 400) %>
-            <%= render "photos/utils/actions", photo: @photo %>
+            <%= render "photos/utils/actions", photo: @photo, photographic: true  %>
         </div>
         <div>
           <%= before_form_link %>

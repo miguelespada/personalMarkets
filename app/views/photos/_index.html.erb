@@ -3,7 +3,7 @@
       <%= content_tag_for(:tr, photo) do %> 
       <div class="col-md-4 table-photo center"> 
           <%= photo(photo, 250) %>
-          <%= render "photos/utils/actions", photo: photo %>
+          <%= render "photos/utils/actions", photo: photo, photographic: true %>
       </div>
     <% end %>
   <% end %>

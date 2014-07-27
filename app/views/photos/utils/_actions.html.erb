@@ -1,8 +1,8 @@
-<% photographic ||= false %>
+<% photographic &&= true %>
 <% delete &&= true %>
 
 <div class="photo-actions">
   <%= edit_photo_link(photo) if !photo.empty? %>
   <%= delete_photo_link(photo) if !photo.empty? && delete %>
-  <%= photographic_link(photo) if photo.photographic %>
+  <%= photographic_link(photo) if photographic %>
 </div>
