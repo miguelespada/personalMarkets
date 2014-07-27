@@ -3,7 +3,6 @@
 <%= form_tag  users_live_search_path, id: "search_users" do %>
       <div class="row">
         <div class="form-group col-md-2 col-md-offset-5">
-
           <%= text_field_tag "user_query", 
                 params['user_query'],
                 placeholder: "Search users", 
@@ -35,9 +34,3 @@
     return false;
   });
 </script>
-
-<style>
-  #user_query{
-
-  }
-</style>
