@@ -1,10 +1,16 @@
-<div class = "center row">
-  <div class = "col-md-offset-1">
+<div class="panel panel-default panel-table panel-table-last">
+
+  <div class="panel-heading table-title">
+    <%= t(:categories) %>
+  </div>
+
+  <div class = "row col-md-offset-1">
     <% @categories.each do |category| %>
         <div class = "col-md-1">
           <div class = "center category_gallery_featured_photo" data-name="<%= category.slug %>">
             <%= cl_image_tag(category.glyph_img.path, 
-              :width => 50, :height => 50, :crop => :fill) if category.glyph_img.present? %>
+              :width => 50, :height => 50, :crop => :fill) 
+              if category.glyph_img.present? %>
             <div>
               <%= intl_name(category) %>
             </div>
@@ -14,12 +20,9 @@
   </div>
 </div>
 
-
-
 <script>
 $( document ).ready(function() {
   $('.category_gallery_featured_photo').css('cursor', 'pointer');
-
   $(".category_gallery_featured_photo").click(function(){
     $("#category_category_id").val($(this).data("name"));
     $("#search_market").submit();

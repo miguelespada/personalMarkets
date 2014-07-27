@@ -1,7 +1,7 @@
 <div class="panel panel-default panel-table panel-table-last">
   <div class="paginate">
-  <%= paginate @markets %>
-</div>
+    <%= paginate @markets %>
+  </div>
 
   <div id="gallery-items">
     <%= render partial: "markets/shared/views/gallery", locals: {markets: @markets } %>

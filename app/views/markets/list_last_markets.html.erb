@@ -1,3 +1,15 @@
-<div id="gallery-items">
-  <%= render partial: "markets/shared/views/gallery", locals: {markets: @markets } %>
+<div class="panel panel-default panel-table">
+
+ <div class="panel-heading table-title">
+    <%= t(:latest_markets) %>
+  </div>
+
+  <div id="gallery-items">  
+    <%= render partial: "markets/shared/views/gallery", locals: {markets: @markets } %>
+  </div>
+
+  <p class="home_action">
+    <%= link_to t(:see_more_markets), published_markets_path  %>
+  </p>
+
 </div>

@@ -1,18 +1,18 @@
-  <div class="panel panel-default panel-table">
-    <% @tags = @tags.map{|tag| tag.capitalize} %>
-    <div class="panel-body tags-panel-container">
-      -
-      <% @suggested.each do |tag| %>
-          <%= link_to(tag.name.mb_chars.upcase, tag_markets_path(tag.name), class: "tag-link") %> 
-          <% @tags.delete(tag.name.capitalize) %>
-          -
-      <% end %>
-      <% @tags.each do |name| %> 
-       <%= link_to(name.upcase, tag_markets_path(name), class: "tag-link") %>
-       -
-      <% end %>
-    </div>
+<div class="panel panel-default panel-table">
+  <% @tags = @tags.map{|tag| tag.capitalize} %>
+  <div class="panel-body tags-panel-container">
+    -
+    <% @suggested.each do |tag| %>
+        <%= link_to(tag.name.mb_chars.upcase, tag_markets_path(tag.name), class: "tag-link") %> 
+        <% @tags.delete(tag.name.capitalize) %>
+        -
+    <% end %>
+    <% @tags.each do |name| %> 
+     <%= link_to(name.upcase, tag_markets_path(name), class: "tag-link") %>
+     -
+    <% end %>
   </div>
+</div>
 
 
 <div id="gallery-items">
@@ -26,16 +26,16 @@
     return false;
   });
 
-    function  ajaxTagSearch(){
-      var page =  $('#page').val() || 1;
-      $.ajax({
-        type: "GET",
-        url: $(".tag-link.active").attr('href'),
-        data: "page=" + page,
-        success: function(data){
-          $( "#gallery-items" ).html( data );
-        }
-    })};
+  function  ajaxTagSearch(){
+    var page =  $('#page').val() || 1;
+    $.ajax({
+      type: "GET",
+      url: $(".tag-link.active").attr('href'),
+      data: "page=" + page,
+      success: function(data){
+        $( "#gallery-items" ).html( data );
+      }
+  })};
 </script>
 
 
