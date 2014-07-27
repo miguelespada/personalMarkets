@@ -85,7 +85,7 @@ class User
     index_all
     return {:users => [], :total => 0} if User.count == 0 
 
-    query = params[:query].blank? ? '*' : params[:query].gsub(/[\!]/, '')
+    query = params[:user_query].blank? ? '*' : params[:user_query].gsub(/[\!]/, '')
     page ||= 1
     page = 1 if page < 1
     

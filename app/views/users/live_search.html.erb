@@ -1,5 +1,17 @@
 <%= page_title("Users", User.icon) %>
 
+<%= form_tag  users_live_search_path, id: "search_users" do %>
+      <div class="row">
+        <div class="form-group col-md-2 col-md-offset-5">
+
+          <%= text_field_tag "user_query", 
+                params['user_query'],
+                placeholder: "Search users", 
+                class: "form-control" %>
+        </div>
+      </div>
+<% end %>
+
 <div id="gallery-items">
   <%= render partial: "users/views/live_gallery"%>
 </div>
@@ -7,14 +19,25 @@
 <script>
   function  ajaxUserSearch(){
     var page =  $('#page').val() || 1;
-    var query =  $('#user_query').val();
+    var user_query =  $('#user_query').val();
 
     $.ajax({
       type: "GET",
       url: "<%= users_live_search_path %>",
-      data: {page: page, query: query},
+      data: {page: page, user_query: user_query},
       success: function(data){
         $( "#gallery-items" ).html( data );
       }
   })};
+
+  $('#search_users').submit(function(){
+    ajaxUserSearch();
+    return false;
+  });
 </script>
+
+<style>
+  #user_query{
+
+  }
+</style>
