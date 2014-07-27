@@ -1,5 +1,6 @@
 <% if @user.allowed_market_creation? %>
-  <%=  render partial: "markets/shared/forms/form", locals: {user: @user, market: @market.decorate, action: "New" } %>
+  <%=  render partial: "markets/shared/forms/form", 
+      locals: {user: @user, market: @market.decorate, action: "New" } %>
 <% else %>
   <div class="creation-not-allowed">
   	As a normal user, you have to wait one month to create another market.

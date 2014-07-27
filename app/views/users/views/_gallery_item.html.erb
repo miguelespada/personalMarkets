@@ -1,0 +1,19 @@
+<%= content_tag_for(:div, user) do %>
+  <div class = "market_item col-md-4">
+    
+    <div class="center">
+    <%= link_to user do %>
+      <%= photo(user.featured, 300) %>
+    <% end %>
+    </div>
+
+    <div class="market-gallery-extra">
+      <% if user.has_role? "premium" %>
+        <i class="fa fa-star premium-star"></i>
+      <% end %>
+
+      <%= user.name %><br>
+      <%= user.description %><br>
+    </div>
+  </div>
+<% end %>

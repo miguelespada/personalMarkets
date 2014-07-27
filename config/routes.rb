@@ -33,6 +33,8 @@ PopUpStores::Application.routes.draw do
     get "/reindex", to: "markets#reindex", as: "market_reindex"
     get "/delete_index", to: "markets#delete_index", as: "market_delete_index"
 
+    get "/users/gallery",  to: "users#gallery", as: "users_gallery"
+    get "/users/like_market/:market_id",  to: "users#users_who_like_market", as: "users_who_like_market"
     resources :users
 
     resources :slideshow_images, :except => [:show]

@@ -8,7 +8,7 @@ module PhotosHelper
     if photo.crop.nil? 
       image_options = { size: size, crop: :fill, quality: 50, effect: params[:effect], radius: params[:radius] }
     else
-      crop = photo.crop 
+      crop = photo.crop
       image_options = {transformation: { crop: :crop, x: crop["x"], y: crop["y"],
                        width: crop["w"], height: crop["h"]}, 
                        size: size, crop: :scale, 

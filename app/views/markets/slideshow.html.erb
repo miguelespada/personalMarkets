@@ -1,7 +1,7 @@
 <div class="carousel-inner">
-	<% @markets.each do |market| %>
-  	 <%= render "/markets/shared/views/slideshow", :market => market.decorate %>
-	<% end %>
+  <% @markets.each do |market| %>
+     <%= render "/markets/shared/views/slideshow", :market => market.decorate %>
+  <% end %>
 </div>
 
 <script>

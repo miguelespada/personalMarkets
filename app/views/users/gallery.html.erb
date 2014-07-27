@@ -1,0 +1,16 @@
+<%= page_title("Users", User.icon) %>
+
+<div class="paginate">
+  <%= paginate @users%>
+</div>
+
+<div class = "main-container">
+  <div class = "market_gallery row">
+    <% @users.each do |user| %>
+      <%= render "users/views/gallery_item", user: user %>
+    <% end %>
+  </div>
+  <div class="center">
+    <%= back_link %>
+  </div>
+</div>

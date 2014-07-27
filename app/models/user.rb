@@ -1,6 +1,7 @@
 class User
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
+  include Mongoid::Timestamps::Created
 
   after_create :set_default_role
 

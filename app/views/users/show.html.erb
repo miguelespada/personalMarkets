@@ -50,11 +50,14 @@
       <div class="market-list-section-container short-view-coupon-section">
         <div class="short-view-coupon-inner poster-info-inner">
           <div class="center">
-          <% if current_user.following?(@user) %>
-            <%= user_dashboard_link("unfollow_user_path", @user, "Unfollow", "fa-thumbs-o-down") %>
-          <% else %>
-            <%= user_dashboard_link("follow_user_path", @user, "Follow", "fa-thumbs-o-up") %>
-          <% end %>
+              <% if current_user &&  current_user != @user %>
+                <% if current_user.following?(@user) %>
+                  <%= user_dashboard_link("unfollow_user_path", @user, "Unfollow", "fa-thumbs-o-down") %>
+                <% else %>
+                  <%= user_dashboard_link("follow_user_path", @user, "Follow", "fa-thumbs-o-up") %>
+                <% end %>
+              <% end %>
+
             </div>
 
             <div>

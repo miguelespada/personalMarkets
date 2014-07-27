@@ -6,6 +6,15 @@ class UsersController < ApplicationController
     @users = UsersPresenter.for User.all
   end
   
+  def gallery
+    @users = User.all.desc(:nickname).page(params[:page]).per(6)
+  end
+
+  def users_who_like_market
+    @users = Market.find(params[:market_id]).favorited.page(params[:page]).per(6)
+    render "gallery"
+  end
+
   def show
   end
 
