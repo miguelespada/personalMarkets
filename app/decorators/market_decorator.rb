@@ -10,7 +10,7 @@ class MarketDecorator < Draper::Decorator
   end 
 
   def owner
-    user.email
+    link_to user.name, user_path(user)
   end
   
   def hashtags 

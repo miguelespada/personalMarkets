@@ -59,7 +59,7 @@ module ApplicationHelper
 
   def table_user
       concat "Your " if params['user_id'].present? && params['user_id'] == current_user.id.to_s
-      concat User.find(params['user_id']).email + " " if params['user_id'].present? && params['user_id'] != current_user.id.to_s
+      concat User.find(params['user_id']).name + " " if params['user_id'].present? && params['user_id'] != current_user.id.to_s
       concat "All " if !params['user_id'].present?
   end
 

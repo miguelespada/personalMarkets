@@ -4,19 +4,13 @@
     <%= market.link(market.formatted_market_name)%>  
     </div>
     <div class="market-actions col-md-8">
+      <%= market.like_link %>
       <%= market.social_links %>
-      <div class="market-actions-links">
-        <%= market.actions %>
-      </div>
+      <%= market.poster_link %>
+    
     </div>
   </div>
+    <div class="market-actions-links">
+        <%= market.actions %>
+      </div>
 </div>
-
-
-<style>
-  @media (max-width: 992px){
-    .market-actions{
-      text-align: left;
-    }
-  }
-</style>
