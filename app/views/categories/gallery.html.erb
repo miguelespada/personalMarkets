@@ -9,8 +9,7 @@
         <div class = "col-md-1">
           <div class = "center category_gallery_featured_photo" data-name="<%= category.slug %>">
             <%= cl_image_tag(category.glyph_img.path, 
-              :width => 50, :height => 50, :crop => :fill) 
-              if category.glyph_img.present? %>
+              :width => 50, :height => 50, :crop => :fill) if category.glyph_img.present? %>
             <div>
               <%= intl_name(category) %>
             </div>
