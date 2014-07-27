@@ -1,67 +1,64 @@
 <li class="dropdown mega-dropdown">
-	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		<i class="fa fa-list-ul"></i>
-		<span id="explore-link-text"></span>
-		<b class="caret"></b>
-	</a>
-	
-	<ul class="dropdown-menu mega-dropdown-menu row">
-		<li class="col-sm-3">
-			<ul class="explore_section">
-				<li class="item-title"><%= t :whats_new %></li>
-				<li class="divider"></li>
-        <li class="registered-user-action">
-					<%= link_to published_markets_path do %>
-						<%= t :all_markets %><i class="fa fa-angle-right explore-arrow"></i>
-    			<% end %>
-    		</li>
-				<li class="divider"></li>                           
-        	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-						<div class="carousel-inner" id="carousel-latest-markets"></div>
-        	</div>
-			</ul>
-		</li>
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <i class="fa fa-list-ul"></i>
+    <span id="explore-link-text"></span>
+    <b class="caret"></b>
+  </a>
+  
+  <ul class="dropdown-menu mega-dropdown-menu row">
     <li class="col-sm-3">
-			<ul id="explore_categories" class="explore_section">
-				<li class="item-title"><%= t :categories %></li>
-				<li class="divider"></li>
-			</ul>
-		</li>
-		<li class="col-sm-2">
-			<ul id="explore_tags" class="explore_section">
-				<li class="item-title"><%= t :tags %></li>  
-				<li class="divider"></li>
-			</ul>
-		</li>
-		<li class="col-sm-2">
-			<ul id="explore_hotspots" class="explore_section">
-				<li class="item-title"><%= t :hot_spots %></li>
-				<li class="divider"></li>  
-			</ul>
-		</li>
-		<li class="col-sm-2">
-			<ul class="explore_section">
-				<li class="item-title"><%= t :wishlist %></li>
-				<li class="divider"></li>
-				<li class="registered-user-action">
-				<%= link_to wishes_gallery_path do %>
-						<%= t :all_wishes %><i class="fa fa-angle-right explore-arrow"></i>
+      <ul class="explore_section">
+        <li class="item-title"><%= t :whats_new %></li>
+        <li class="divider"></li>
+        <li class="registered-user-action">
+          <%= link_to published_markets_path do %>
+            <%= t :all_markets %><i class="fa fa-angle-right explore-arrow"></i>
           <% end %>
-				</li>
-			</ul>
-			<ul class="explore_section bargain_section">
-				<li class="item-title"><%= t :bargains %></li>
-				<li class="divider"></li>
-				<li class="registered-user-action">
+        </li>
+        <li class="divider"></li>                           
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" id="carousel-latest-markets"></div>
+          </div>
+      </ul>
+    </li>
+    <li class="col-sm-3">
+      <ul id="explore_categories" class="explore_section">
+        <li class="item-title"><%= t :categories %></li>
+        <li class="divider"></li>
+      </ul>
+    </li>
+    <li class="col-sm-2">
+      <ul id="explore_tags" class="explore_section">
+        <li class="item-title"><%= t :tags %></li>  
+        <li class="divider"></li>
+      </ul>
+    </li>
+    <li class="col-sm-2">
+      <ul id="explore_hotspots" class="explore_section">
+        <li class="item-title"><%= t :hot_spots %></li>
+        <li class="divider"></li>  
+      </ul>
+    </li>
+    <li class="col-sm-2">
+      <ul class="explore_section">
+        <li class="item-title">More...</li>
+        <li class="divider"></li>
+        <li class="registered-user-action">
+        <%= link_to wishes_gallery_path do %>
+            <%= t :all_wishes %><i class="fa fa-angle-right explore-arrow"></i>
+          <% end %>
+        </li>
+      </ul>
+      <ul class="explore_section bargain_section">
+        <li class="divider"></li>
+        <li class="registered-user-action">
         <%= link_to bargains_gallery_path do %>
-						<%= t :all_bargains %><i class="fa fa-angle-right explore-arrow"></i>
+            <%= t :all_bargains %><i class="fa fa-angle-right explore-arrow"></i>
           <% end %>
-				</li>
-			</ul>  
-
+        </li>
+      </ul>  
 
       <ul class="explore_section bargain_section">
-        <li class="item-title"><%= t :coupons %></li>
         <li class="divider"></li>
         <li class="registered-user-action">
         <%= link_to coupons_gallery_path do %>
@@ -69,16 +66,24 @@
           <% end %>
         </li>
       </ul>  
+      <ul class="explore_section bargain_section">
+        <li class="divider"></li>
+        <li class="registered-user-action">
+        <%= link_to users_live_search_path do %>
+            <%= t :all_users %><i class="fa fa-angle-right explore-arrow"></i>
+          <% end %>
+        </li>
+      </ul>  
 
-		</li>
-	</ul>
-	
+    </li>
+  </ul>
+  
 </li>
 
 <script>
-	$.get( "/slideshow", function( data ) {
-    	$( "#carousel-latest-markets" ).html( data );
-  	});
+  $.get( "/slideshow", function( data ) {
+      $( "#carousel-latest-markets" ).html( data );
+    });
 
     $.ajax({url: "/categories/list", 
        data: { language: "<%= params['language'] %>"}
@@ -89,23 +94,23 @@
     $.ajax({url: "/special_locations/list", 
        data: { language: "<%= params['language'] %>"}
     }).done(function( data ) {
-  		$( "#explore_hotspots" ).append( data );
-  	});
+      $( "#explore_hotspots" ).append( data );
+    });
 
 
     $.ajax({url: "/tags/list", 
        data: { language: "<%= params['language'] %>"}
     }).done(function( data ) {
-    	$( "#explore_tags" ).append( data );
-  	});
+      $( "#explore_tags" ).append( data );
+    });
 </script>
 
 <style>
 @media (min-width:768px){
-	.mega-dropdown-menu > li > ul > li > a {
-  	overflow:hidden;
-  	float:inherit;
-  	white-space:nowrap;
-  	text-overflow: ellipsis;
-	}
+  .mega-dropdown-menu > li > ul > li > a {
+    overflow:hidden;
+    float:inherit;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+  }
 </style>
