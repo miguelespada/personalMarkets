@@ -27,7 +27,7 @@ module MarketsHelper
 
   def discard_button(market)
     if params[:action] == "edit"
-      link_to content_tag(:i, "", :class => "fa fa-undo", :title => "Discard", rel: 'tooltip'), market, 
+      link_to content_tag(:i, " Discard", :class => "fa fa-undo", :title => "Discard", rel: 'tooltip'), market, 
                     :class=>  "btn btn-default", 
                     :id=>"discard" 
     end
