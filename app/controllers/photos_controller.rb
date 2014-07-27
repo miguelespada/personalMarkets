@@ -33,7 +33,7 @@ class PhotosController < ApplicationController
   def destroy
     respond_to do |format|
       if @photo.destroy
-        format.html { redirect_to :back, 
+        format.html { redirect_to @photo.photographic, 
                       notice: "Photo successfully deleted." }
       else
         format.html { redirect_to :back, 
