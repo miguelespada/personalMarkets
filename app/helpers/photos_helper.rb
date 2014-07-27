@@ -4,6 +4,7 @@ module PhotosHelper
 
   def photo(photo, width, height = nil, params = {})
     height ||= width / photo.aspect_ratio
+
     size = "#{width.to_i}x#{height.to_i}"
     if photo.crop.nil? 
       image_options = { size: size, crop: :fill, quality: 50, effect: params[:effect], radius: params[:radius] }
@@ -11,7 +12,7 @@ module PhotosHelper
       crop = photo.crop
       image_options = {transformation: { crop: :crop, x: crop["x"], y: crop["y"],
                        width: crop["w"], height: crop["h"]}, 
-                       size: size, crop: :scale, 
+                       size: size, crop: :fill, 
                        quality: 50, effect: params[:effect], radius: params[:radius]} 
     end
 

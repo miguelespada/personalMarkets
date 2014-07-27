@@ -10,6 +10,8 @@ class Photo
 
   scope :non_empty, lambda { where(:photo.exists => true) }
 
+
+
   def present?
     !photo.nil?
   end

@@ -50,6 +50,7 @@ class PhotosController < ApplicationController
     def load_user
       User.find(params[:user_id])
     end
+
     def save_my_previous_url
       session[:my_previouse_url] = URI(request.referer).path
     end

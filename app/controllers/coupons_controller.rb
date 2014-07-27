@@ -1,6 +1,6 @@
 class CouponsController < ApplicationController
-  load_resource :only => [:buy_coupon_form, :buy, :coupon_payment]
-  authorize_resource :except => [:buy_coupon_form, :bought_coupons_by_user, :sold_coupons_by_market, :gallery, :localizador]
+  load_resource :only => [:show, :buy_coupon_form, :buy, :coupon_payment]
+  authorize_resource :except => [:show, :buy_coupon_form, :bought_coupons_by_user, :sold_coupons_by_market, :gallery, :localizador]
   
   def index
     @coupons = Coupon.all
@@ -19,6 +19,10 @@ class CouponsController < ApplicationController
   def buy_coupon_form
   end
 
+  def show
+    redirect_to market_path(@coupon.market, :anchor => "coupon")
+  end
+  
   def buy
     payment = Payment.for payment_params
     coupon_payment = CouponPayment.new @coupon, payment

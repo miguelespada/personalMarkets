@@ -9,10 +9,7 @@
       <div class="panel panel-default panel-table-last">
         <div class="panel-body">
 
-          <%= cl_image_tag(@photo.photo.path, { size: "400", 
-                                                crop: :fit, 
-                                                quality: 50, 
-                                                :class => "cropper"}) %>
+          <%= cl_image_tag(@photo.photo.path, { quality: 50, :class => "cropper"}) %>
           <%= form_tag crop_photo_path(@photo), id: "crop_image_form" do %>
             <div class="hidden">
               <%= text_field_tag(:x) %>
@@ -33,13 +30,14 @@
   </div>
 </div>
 
+
 <script>
   var $image = $(".cropper"),
     $dataX1 = $("#x"),
     $dataY1 = $("#y"),
     $dataWidth = $("#w"),
     $dataHeight = $("#h");
-    $scale = <%= @photo.photo.width / 400.0 %>;
+    $scale = 1 ;
 
   <% if @photo.crop.present? %>
     _x1 = parseInt(<%=  @photo.crop["x"] %> / $scale);
