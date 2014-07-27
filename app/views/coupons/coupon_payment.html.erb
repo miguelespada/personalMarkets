@@ -1,1 +1,36 @@
-<%= render partial: "coupon_payment_form", locals: { coupon_payment: @coupon_payment } %>
+<%= page_title("Payment details", Coupon.icon) %>
+<div class="main-container">
+  <div class="row">
+
+    <div class="col-md-8 col-md-offset-2">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= render "coupons/views/description", coupon: @coupon %>
+          <strong> <%= t :Number_of_coupons %>: </strong>  <span> <%= @coupon_payment.quantity %> </span> <br>
+          <strong>  <%= t :Total %>: </strong>  <span> <%= @coupon_payment.coupon.price *  @coupon_payment.quantity %> € </span> 
+
+          <p class="payment-errors"></p>
+        </div>
+        <div class="panel-body">
+          <fieldset>
+          <%= form_tag({controller: "coupons", action: "buy"}, method: "post", id: "new_payment") do %>
+          <%= hidden_field_tag "id", "#{@coupon_payment.coupon.id}" %>
+
+          <%= render "payments/common_payment_form", :payment => @coupon_payment.payment %>
+
+          <% end %>
+          <div class="form-group col-md-4 col-md-offset-4 payment-button-container">
+            <button class="get-token btn btn-info">Pay</button>
+          </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class = "center">
+<%=  back_link %>
+</div>
+
+</div>

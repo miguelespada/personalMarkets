@@ -1,0 +1,9 @@
+<%= page_title("Buy Coupon", Coupon.icon) %>
+
+<%= render partial: "coupons/coupon", locals: {coupon: @coupon, buy: true } %>
+
+<br>
+<br>
+<div class = "center">
+  <%= back_link %>
+</div>

@@ -76,9 +76,7 @@ class MarketDecorator < Draper::Decorator
   end
 
   def coupon_section
-    if market.coupon_available?
-      render partial: "coupons/shared/full_view_coupon", locals: { market: self }
-    end
+    render partial: "coupons/views/full_view", locals: { market: self }
   end
 
   def photo_slideshow_section
@@ -250,7 +248,14 @@ class MarketDecorator < Draper::Decorator
       link_to content_tag(:i, " Archive", :class => "fa fa-undo"), market_archive_path(market), { method: :post, class: "archive-icon market-action btn btn-default market-action-icon btn-market-action-bar"  }
     end
   end
-  
+
+  def buy_coupon_link
+    if can? :buy, market.coupon
+      link_to "Buy Coupon", buy_coupon_form_path(market.coupon), {class: "btn btn-default coupon-action-button"}
+    else
+      "<h1> Register or login to buy coupons </h1>".html_safe
+    end 
+  end
 
   def pro_link
     return if market.archived?
@@ -286,14 +291,6 @@ class MarketDecorator < Draper::Decorator
     end
   end
 
-  def buy_coupon_link
-    return if market.archived?
-    if market.has_coupon?
-      if can? :buy, market.coupon 
-        link_to "Buy Coupon", coupon_path(market.coupon), {class: "btn btn-default coupon-action-button"}
-      end
-    end
-  end
 
   def direct_edit_link(anchor)
     return if market.archived?
@@ -308,6 +305,18 @@ class MarketDecorator < Draper::Decorator
       link_to(content_tag(:i, " Coupons", :class => "fa fa-ticket"), sold_coupons_by_market_path(market), 
         :class => "transactions-icon market-action btn btn-default market-action-icon btn-market-action-bar")
       end
+    end
+  end
+
+  def invite_to_add_coupon
+    if can? :edit, market
+      if market.can_have_coupon? 
+        "Remember to create a coupon to offer extra services in your market."
+      else 
+        "Upgrade your market to offer coupons."
+      end
+    else
+      "This market do not have available coupons"
     end
   end
 

@@ -40,7 +40,15 @@ class Coupon
     !empty? && market.published?
   end
 
-    def self.icon
+  def self.icon
     "fa-ticket"
+  end
+
+  def initialized?
+    description != nil && description != ""
+  end
+
+  def filled?
+    description != nil && description != "" && available != nil && price != nil && !photography.empty?
   end
 end

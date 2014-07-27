@@ -1,0 +1,5 @@
+
+<strong><%= t :Market %>:</strong> <%= link_to coupon.market.name, market_path(coupon.market) %> </span><br>
+<strong><%= t :Owner %>:</strong> <%= link_to coupon.market.user.name, user_path(coupon.market.user) %> </span><br>
+<strong> <%= t :Description %>: </strong>  <span> <%= coupon.description %> </span> <br>
+<strong> <%= t :Price %>: </strong>  <span> <%= coupon.price %> € </span> <br>

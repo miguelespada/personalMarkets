@@ -65,16 +65,30 @@ class Market
     "fa-shopping-cart"
   end
   
-  def coupon_available?
-    self.has_coupon? && (self.pro? || self.belongs_to_premium_user?)
+  def can_have_coupon?
+    pro? || belongs_to_premium_user? && !archived?
   end
+
+  def coupon_available?
+    has_coupon? && can_have_coupon?
+  end
+
+  def has_coupon?
+    coupon.filled?
+    rescue
+      false  
+  end
+
+  def coupon_initialized?
+    coupon.initialized?
+    rescue
+      false
+  end
+
+
 
   def photo_gallery_available?
     self.has_gallery?
-  end
-
-  def publish_available?
-    !self.has_coupon? || self.pro? || self.belongs_to_premium_user?
   end
 
   def belongs_to_premium_user?
@@ -237,15 +251,7 @@ class Market
     false
   end
 
-  def has_coupon?
-    coupon != nil && coupon.description!= nil && coupon.description!= "" && coupon.available != nil && coupon.price != nil
-  end
-
-  def coupon_initialized?
-    return false if coupon == nil
-    coupon != nil || coupon.description!= nil && coupon.description!= ""
-  end
-
+  
   def has_gallery?
     gallery != nil
   end

@@ -214,7 +214,7 @@
                       </div>
                     </div>
                     <%= f.simple_fields_for :coupon do |form_builder| %>
-                    <%= render 'coupons/form', f: form_builder %>
+                    <%= render 'coupons/forms/form', f: form_builder %>
                     <% end %>
                   </div>
                   <div id="small-map-container"><%= render "markets/shared/utils/mapsmall" %></div>

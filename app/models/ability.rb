@@ -103,6 +103,8 @@ class Ability
       can [:manage], SlideshowImage
       can [:manage], SlideshowText
 
+      can :see_localizador, CouponTransaction
+
     end
   end
 

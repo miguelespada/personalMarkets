@@ -1,11 +1,15 @@
-<%= page_title("Active Coupons", Coupon.icon) %>
+<%= page_title("Coupons", Coupon.icon) %>
 
 <div class="paginate">
   <%= paginate @coupons%>
 </div>
+  <div class = "main-container">
+  <div class="panel panel-default panel-table">
 
-<div class = "market_gallery row">
-  <% @coupons.each do |coupon| %>
-    <%= render "gallery_item", :coupon => coupon %>
-  <% end %>
+    <% @coupons.each do |coupon| %>
+      <div class = "market-list-section-container row">
+           <%= render coupon, buy: false %>
+      </div>
+    <% end %>
+  </div>
 </div>

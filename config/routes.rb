@@ -81,6 +81,7 @@ PopUpStores::Application.routes.draw do
     end
 
     ### Coupons
+    get "coupons/buy_coupon_form/:id", to: "coupons#buy_coupon_form", as: "buy_coupon_form"
     get "/coupons/gallery", to: "coupons#gallery", as: "coupons_gallery"
     get "/coupons/localizador/:transaction_id", to: "coupons#localizador", as: "localizador"
     resources :coupons, :only => [:show, :index] do

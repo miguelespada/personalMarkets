@@ -1,0 +1,12 @@
+<div id="coupon" class="market-section-title row"><%= t :Coupon %> 
+        <%= market.direct_edit_link("form-market-coupon") %></div>
+ <div class="market-section-container row market-coupon">
+    <% if market.coupon_available? %>
+      <%= render partial: "coupons/coupon", locals: {coupon: market.coupon, buy: false } %>
+    <% else %>
+      <h1>
+        <%= market.invite_to_add_coupon %>
+      </h1>
+    <% end %>
+  </div>
+</div>
