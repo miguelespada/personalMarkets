@@ -1,6 +1,6 @@
 <div class="main-container">
 
-  <section id="slideshow" >
+  <section id="slideshow"  class="hidden-xs" >
     <div id="slides" >
       <%  SlideshowImage.all.each do |slideshow| %>
         <%=  cl_image_tag(slideshow.photography.photo.path, {quality: "50" } ) %>
@@ -11,12 +11,12 @@
     </div>
   </section>
 
+
   <div id="latest_markets" >
-    <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>  
   </div>
 
   <div id="categories">
-    <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
+    <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>  
   </div>
   
 

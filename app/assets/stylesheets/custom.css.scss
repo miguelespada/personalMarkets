@@ -6,7 +6,6 @@
 }
 
 .fa-spin{
-  margin: 100px;
   color:#777777;
 }
 
@@ -546,8 +545,10 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 #search-range-item{
   left:0px;
   width:20%;
+  min-width:130px;
   margin-left: 48px;
 }
+
 
 #search-location-item{
   left:20%;
@@ -568,7 +569,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 }
 
 #spinner-item{
-  left:68%;
+  left:71%;
   width:5%;
   margin-top: 6px;
 }

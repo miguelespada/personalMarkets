@@ -27,14 +27,14 @@
             class: "form-control" ) %>
         </li>
 
-        <li class="form-group search-filter-item" id="search-location-item">
+        <li class="form-group search-filter-item hidden-xs" id="search-location-item">
           <%= collection_select(:location, :location_id, SpecialLocation.all, 
             :name, :name, {:selected => session[:location], 
             :include_blank => t(:Any_location)},
             class: "form-control" ) %>
         </li>
 
-        <li class="form-group search-filter-item" id="search-address-item">
+        <li class="form-group search-filter-item hidden-xs" id="search-address-item">
          <%= text_field_tag :address, 
             session[:address], 
             placeholder: t(:search_by_address), 
@@ -43,7 +43,8 @@
         </li>
 
         <li class="form-group search-filter-item hidden" id="my-location-item">
-          <%= link_to content_tag(:i, "", :class => "fa fa-crosshairs", :title => "Go to my location", rel: 'tooltip'), "#", 
+          <%= link_to content_tag(:i, "<span class = 'hidden-md hidden-xs'> Near me </span>".html_safe, 
+            :class => "fa fa-crosshairs ", :title => "Go to my location", rel: 'tooltip'), "#", 
             :class=>  "btn btn-default btn-my-location-search", 
             :id=>"my_location" %>
         </li>
@@ -244,3 +245,6 @@
   </script>
 
 <% end %>
+
+<style>
+</style>
