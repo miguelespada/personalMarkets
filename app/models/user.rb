@@ -3,6 +3,10 @@ class User
   include Mongoid::Attributes::Dynamic
   include Mongoid::Timestamps::Created
 
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+  include UserElasticsearch
+
   after_create :set_default_role
 
   rolify
@@ -66,6 +70,44 @@ class User
   # field :failed_attempts, :type => Integer, :default => 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
   # field :locked_at,       :type => Time
+  
+
+  #### elastic search
+
+  def to_indexed_json
+      { id: id,
+        nickname: nickname,
+        description: description
+      }.to_json
+  end
+
+  def self.search(params, page = 1, per_page = 6)
+    index_all
+    return {:users => [], :total => 0} if User.count == 0 
+
+    query = params[:query].blank? ? '*' : params[:query].gsub(/[\!]/, '')
+    page ||= 1
+    page = 1 if page < 1
+    
+    elasticQuery = lambda do |boolean|
+      boolean.must {string query, default_operator: "AND"}
+    end
+
+    search = Tire.search 'users' do
+      query do
+        boolean &elasticQuery
+      end
+
+      search_size = per_page
+      from (page - 1) * search_size
+      size search_size
+    end
+
+    results = search.results
+    {:users => results.collect{|result| find_by(id: result.to_hash[:id])}, :total => results.total}
+  end
+
+  #####
 
   def available_statuses
     ["active", "inactive"] - [self.status]

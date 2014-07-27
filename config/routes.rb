@@ -35,6 +35,7 @@ PopUpStores::Application.routes.draw do
 
     get "/users/gallery",  to: "users#gallery", as: "users_gallery"
     get "/users/like_market/:market_id",  to: "users#users_who_like_market", as: "users_who_like_market"
+    get "/users/live_search", to: "users#live_search", path: "users_live_search"
     resources :users
 
     resources :slideshow_images, :except => [:show]

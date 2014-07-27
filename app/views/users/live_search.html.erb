@@ -1,0 +1,20 @@
+<%= page_title("Users", User.icon) %>
+
+<div id="gallery-items">
+  <%= render partial: "users/views/live_gallery"%>
+</div>
+
+<script>
+  function  ajaxUserSearch(){
+    var page =  $('#page').val() || 1;
+    var query =  $('#user_query').val();
+
+    $.ajax({
+      type: "GET",
+      url: "<%= users_live_search_path %>",
+      data: {page: page, query: query},
+      success: function(data){
+        $( "#gallery-items" ).html( data );
+      }
+  })};
+</script>

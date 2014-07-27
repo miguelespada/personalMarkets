@@ -22,6 +22,20 @@ class UsersController < ApplicationController
     render 'form'
   end
 
+  def live_search
+    @per_page = params[:per_age].present? ? params[:per_page].to_i : 6
+    @page = params[:page].present? ? params[:page].to_i : 1
+    @result = User.search(params, @page, @per_page)
+    @last_page = @result[:total]/@per_page.to_f <= @page 
+    @first_page = @page == 1
+    @users = @result[:users]
+    if !request.xhr? == false
+      render partial: "users/views/live_gallery", :layout => false
+    else
+      render "live_search"
+    end 
+  end 
+
 
   def update
     respond_to do |format|

@@ -1,0 +1,31 @@
+<% if @users == [] %>
+  <div class="no-matching-markets search-section-title">
+    <%= t :no_user_matches %>
+  </div>
+<% else %>
+  
+    <div class="center">
+      <%= hidden_field_tag 'user_query', params['query'] %>
+      <%= hidden_field_tag 'page', params['page'] || 1 %>
+      <%= link_to "Prev", "#", :id=>"prev-users" if !@first_page %>
+      <%= link_to "Next", "#", :id=>"next-users" if !@last_page %>
+   </div>
+
+  <%= render partial: "users/views/gallery", locals: {users: @users } %>
+
+
+  <script>
+   $("#prev-users").click(function(){
+      var page = parseInt($('#page').val());
+      $('#page').val(page - 1);
+       ajaxUserSearch();
+    });
+
+    $("#next-users").click(function(){
+      var page = parseInt($('#page').val());
+      $('#page').val(page + 1);
+      ajaxUserSearch();
+    });
+  </script>
+
+<% end %>
