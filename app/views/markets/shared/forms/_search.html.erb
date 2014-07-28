@@ -120,7 +120,7 @@
           dist = 15;
       }
       else if(location != ""){
-        $.get("get_location.json", { 
+        $.get("<%= get_location_path(:format => :json) %>", { 
           name: location}, function( data ) {
           try{
             PM.initializeMap(tiles, data.latitude, data.longitude, 15);
