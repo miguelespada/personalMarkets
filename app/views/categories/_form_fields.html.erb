@@ -1,3 +1,6 @@
+<%= javascript_include_tag "bootstrap-colorpicker" %>
+<%= stylesheet_link_tag "bootstrap-colorpicker" %>
+
 <div class="form-group">
   <%= f.input :name, input_html: { class: 'category-name', placeholder: "Category Name", :required => true } %>
 </div>
@@ -17,6 +20,10 @@
 </div>
 
 <div class="form-group">
+  <%= f.input :color, input_html: { class: 'category-color colorpicker', placeholder: "Hex color ex. #673423", :required => true } %>
+</div>
+
+<div class="form-group">
   <%= f.input :order, input_html: { class: 'category-order', placeholder: "Order", :required => true } %>
 </div>
 
@@ -30,3 +37,18 @@
   <p>Icon.png (maximun size 42 x 42 px)</p>
   <%= f.input :glyph_img, as: :attachinary %>
 </div>
+
+<script>
+$( document ).ready(function() {
+
+  $('.colorpicker').colorpicker();
+  
+ $('form').submit(function(){
+  if($("#category_name").val().indexOf(' ') > -1){
+    alert("Category name cannot contain spaces");
+    return false;
+  }
+ });
+
+});
+</script>
