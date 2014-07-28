@@ -3,13 +3,15 @@
 <div class="paginate">
   <%= paginate @coupons%>
 </div>
-  <div class = "main-container">
-  <div class="panel panel-default panel-table">
 
-    <% @coupons.each do |coupon| %>
-      <div class = "market-list-section-container row">
-           <%= render coupon, buy: false %>
+<div class="main-container">
+  <% @coupons.each do |coupon| %> 
+      <div class="panel panel-default panel-table">
+        <div class="market-section-container row market-coupon">
+            <div class="market-list-section-container">
+                 <%= render coupon, buy: false %>
+            </div>
+        </div>
       </div>
-    <% end %>
-  </div>
+  <% end %>
 </div>
