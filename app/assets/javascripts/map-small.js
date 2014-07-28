@@ -30,10 +30,9 @@ PM._coordinatesSet = function(latitude, longitude) {
 };
 
 PM.addMarker = function (latlng){
-  var color = $('.category-data-color').text();
   PM.marker = L.marker(latlng,{
     icon: L.mapbox.marker.icon(
-      {'marker-color': color,
+      {'marker-color': '#aaa',
        'marker-symbol' : 'shop',
        'marker-size' : 'medium'}),
     draggable: false

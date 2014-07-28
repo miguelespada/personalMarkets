@@ -339,7 +339,7 @@ class MarketsController < ApplicationController
     end
 
     def markers(markets)
-      markets.collect{|market| market.to_marker(view_context.tooltip(market), market_path(market), market.category.color)} if markets.count > 0
+      markets.collect{|market| market.to_marker(view_context.tooltip(market), market_path(market))} if markets.count > 0
     end
 
     def publish?

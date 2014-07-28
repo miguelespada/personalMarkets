@@ -71,7 +71,7 @@ class CategoriesController < ApplicationController
 
   private
     def category_params
-      params.require(:category).permit(:name, :english, :style, :order, :glyph, :color, :glyph_img,
+      params.require(:category).permit(:name, :english, :style, :order, :glyph, :marker, :glyph_img,
                     photography_attributes: [:photo])
     end
 end
