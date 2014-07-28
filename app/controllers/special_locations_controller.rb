@@ -19,7 +19,7 @@ class SpecialLocationsController < ApplicationController
   end
 
   def list
-    @special_locations = SpecialLocation.all.limit(5)
+    @special_locations = SpecialLocation.where(important: true)
     render :layout => !request.xhr?
   end
 
@@ -77,6 +77,6 @@ class SpecialLocationsController < ApplicationController
 
   private
     def special_location_params
-      params.require(:special_location).permit(:name, :address, :city, :latitude, :longitude, photography_attributes: [:photo])
+      params.require(:special_location).permit(:name, :address, :city, :latitude, :longitude, :important, photography_attributes: [:photo])
     end
 end

@@ -10,3 +10,5 @@
 <div class="col-md-2"> <%= entity.city %> </div>
 <div class="col-md-1"> <%= truncate(entity.latitude.to_s, length: 8) %> </div>
 <div class="col-md-1"> <%= truncate(entity.longitude.to_s, length: 8) %> </div>
+<div class="col-md-2"> important: <%= entity.important || false %> </div>
+

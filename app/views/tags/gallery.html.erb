@@ -8,7 +8,7 @@
         -
     <% end %>
     <% @tags.each do |name| %> 
-     <%= link_to(name.mb_chars.upcase, tag_markets_path(name), class: "tag-link", :data => {tag: name} ) %>
+     <%= link_to( name.mb_chars.upcase, tag_markets_path(name), class: "tag-link", :data => {tag: name} ) %>
      -
     <% end %>
   </div>
