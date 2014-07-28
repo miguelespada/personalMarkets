@@ -31,11 +31,10 @@ PM._coordinatesSet = function(latitude, longitude) {
 
 PM.addMarker = function (latlng){
   PM.marker = L.marker(latlng,{
-    icon: L.icon(
-      { "iconUrl": "/images/favicon.png",
-        "iconSize": [30, 30],
-        "iconAnchor": [15, 15]
-      }),
+    icon: L.mapbox.marker.icon(
+      {'marker-color': '#48a',
+       'marker-symbol' : 'shop',
+       'marker-size' : 'medium'}),
     draggable: false
   }).addTo(PM.map);
 };
