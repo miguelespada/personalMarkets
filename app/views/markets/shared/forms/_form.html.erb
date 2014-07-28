@@ -52,7 +52,7 @@
           </div>
           <%= f.input :name, required: true,  input_html: { class: 'market-name' } %>
           <%= f.input :description, :as => :text, input_html: { class: 'market-description' } %>
-          <p class="form-section-title-small"> <%= t :featured_photo  %> </p>
+          <p><%= t :featured_photo %>:</p>
           <%= f.simple_fields_for :featured do |form_builder| %>
           <%= render 'photos/form', f: form_builder %>
           <% end %>

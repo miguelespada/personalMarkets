@@ -1,4 +1,10 @@
 <%= page_title("Bargains", Bargain.icon) %>
+<div class = "center">
+	<%= link_to new_bargain_path, class: "btn btn-default" do %>
+		<i class="fa fa-plus"></i> <%= t :new_bargain %>
+	<% end %>
+</div>
+
 <div class="paginate">
   <%= paginate @bargains %>
 </div>

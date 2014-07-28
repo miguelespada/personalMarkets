@@ -33,7 +33,7 @@ PM.addMarker = function (latlng){
   PM.marker = L.marker(latlng,{
     icon: L.mapbox.marker.icon(
       {'marker-color': '#48a',
-       'marker-symbol' : 'circle',
+       'marker-symbol' : 'shop',
        'marker-size' : 'medium'}),
     draggable: false
   }).addTo(PM.map);

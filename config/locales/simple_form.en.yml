@@ -32,6 +32,8 @@ en:
   bargains: "Bargains"
   all_bargains: "All Bargains"
   all_locations: "All hotspots"
+  new_wish: "New Wish"
+  new_bargain: "New Bargain"
   whats_new: "What's new"
   enable_browser: "Enable browser location for better experience"
   search_markets: "Search markets"
