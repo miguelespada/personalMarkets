@@ -1,9 +1,12 @@
 <%= f.input :description, { placeholder: "Description" } %>
-<div class = "col-md-6"><%= t :Price %>: <%= f.input :price, collection: (5..25).step(5), :include_blank => false %></div>
-<div class = "col-md-6"><%= t :Available %>: <%= f.input :available, collection: (10..100).step(5), :include_blank => false %></div>
+<div class = "row">
+	<div class = "col-md-6"><%= t :Price %>: <%= f.input :price, collection: (5..25).step(5), :include_blank => false %></div>
+	<div class = "col-md-6"><%= t :Available %>: <%= f.input :available, collection: (10..100).step(5), :include_blank => false %></div>
 
-<div class = "col-md-12">
-	<%= f.simple_fields_for :photography do |form_builder| %>
-  	<%= render 'photos/form', f: form_builder %>
-	<% end %>
+	<div class = "col-md-12">
+		<%= t :Photo %>:
+		<%= f.simple_fields_for :photography do |form_builder| %>
+  		<%= render 'photos/form', f: form_builder %>
+		<% end %>
+	</div>
 </div>
