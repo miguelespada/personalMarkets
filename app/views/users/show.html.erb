@@ -12,14 +12,14 @@
 
             <% if can? :manage, @user %>
               <div class="center">
-              <h5>
+              <h4>
               <%= published_markets_status(current_user) %>
-              </h5>
+              </h4>
 
-                <p> 
+                <h5> 
                 <%= link_to "Edit Profile", edit_user_path(@user)  %>  <br>
                 <%= link_to "Subscription plan", user_subscription_plan_path(@user)  %>
-                </p> 
+                </h5> 
 
               </div>
                <div class="market-list-section-title"></div>
@@ -63,8 +63,8 @@
               <div class="table-responsive">
                 <table class="table">
                   <tr>
-                    <th class="col-md-2">Following</th>
-                    <th class="col-md-2">Followers</th>
+                    <th class="col-md-2 center">Following</th>
+                    <th class="col-md-2 center">Followers</th>
                   </tr>
                   <td>
 

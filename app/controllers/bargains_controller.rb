@@ -1,6 +1,6 @@
 class BargainsController < ApplicationController
   load_resource :only => [:show, :edit, :destroy, :update]
-  authorize_resource :except => [:show, :list_user_bargains, :gallery]
+  authorize_resource :except => [:show, :list_user_bargains, :gallery_user_bargains, :gallery]
 
   def index
     @bargains = Bargain.all.desc(:created_at)
