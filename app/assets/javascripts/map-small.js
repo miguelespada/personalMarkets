@@ -31,7 +31,6 @@ PM._coordinatesSet = function(latitude, longitude) {
 
 PM.addMarker = function (latlng){
   var color = $('.category-data-color').text();
-  console.log("**"+color+"**")
   PM.marker = L.marker(latlng,{
     icon: L.mapbox.marker.icon(
       {'marker-color': color,
