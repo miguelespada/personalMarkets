@@ -1,6 +1,5 @@
 <%= page_title(t(:hotspots), SpecialLocation.icon) %>
 
-
 <div class = "market_gallery row">    
   <% @special_locations.each do |special_location| %>
     <%= content_tag_for(:tr, special_location) do %>
