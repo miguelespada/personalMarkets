@@ -1,28 +1,100 @@
-<div class="terms-title" ><i class="fa fa-beer fa-3x"></i><br>Abre tu Market</div>
+<% if !user_signed_in? %>
+<div id="error" class="alert alert-danger flash">You must be logged in in order to add a market!</div>
+<% end %>
+
+<h1>Abre un Market</h1>
+
 <div class="terms-content col-md-8 col-md-offset-2">
 
 <div class="row">
-<div class="col-md-6 col-md-offset-3">
-  En dowemarket conectamos personas. Si tienes muebles que ya no te son útiles, una colección de cómics única en tu ciudad, o un talento culinario que te gustaría compartir con los demás, con dowemarket puedes abrir tu propio market, crear invitaciones para tus cenas privadas, o convertir tu casa en una tienda por un día. Es fácil. Abre un market. Aquí puedes encontrar toda la información.
-<p>
-<%= link_to "Abre tu market", new_user_market_path(current_user) %> 
-</p>
-</div>
+
+  <div class="center">
+
+      <% if !user_signed_in? %>
+          <%= link_to '#', class:"dashboard-button btn btn-lg huge-icon empty" do %>  
+          <i class="fa <%= Market.icon %> fa-5x new-market-icon "></i>
+          <br/>
+          Abre un Market
+          <% end %>
+      <% else %>
+          <%= link_to new_user_market_path(current_user), class:"dashboard-button btn btn-lg huge-icon" do %>  
+          <i class="fa <%= Market.icon %> fa-5x new-market-icon "></i>
+          <br/>
+          Abre un Market
+          <% end %>
+      <% end %>
+
+      
+       <% if !user_signed_in? %>
+          <%= link_to '#', class:"dashboard-button btn btn-lg huge-icon empty" do %>  
+          <i class="fa fa-plus-square fa-5x new-vim-market-icon "></i>
+          <br/>
+          Abre un VIM <br> Market
+          <% end %>
+      <% else %>
+          <%= link_to market_make_pro_payment_path(Market.new.id), class:"dashboard-button btn btn-lg huge-icon" do %>  
+          <i class="fa center fa-plus-square fa-5x new-vim-market-icon "></i>
+          <br/>
+          Abre un <br> VIM Market 
+          <% end %>
+      <% end %>
+
+      <% if !user_signed_in? %>
+          <%= link_to '#', class:"dashboard-button btn btn-lg huge-icon empty" do %>  
+          <i class="fa fa-star fa-5x go-pro-icon "></i>
+          <br/>
+          Go PRO
+          <% end %>
+      <% else %>
+          <%= link_to user_subscription_plan_path(current_user), class:"dashboard-button btn btn-lg huge-icon" do %>  
+          <i class="fa center fa-star fa-5x go-pro-icon "></i>
+          <br/>
+          Go PRO
+          <% end %>
+      <% end %>
+  </div>
+
+  <div class="col-md-6 center col-md-offset-3 hidden new-market-text ">
+    En dowemarket conectamos personas. Si tienes muebles que ya no te son útiles, una colección de cómics única en tu ciudad, o un talento culinario que te gustaría compartir con los demás, con dowemarket puedes abrir tu propio market, crear invitaciones para tus cenas privadas, o convertir tu casa en una tienda por un día. <br> Es fácil. Abre un market. 
+  </div>
+  <div class="col-md-6 center col-md-offset-3 hidden go-pro-text">
+    Porque tu talento es tu profesión y estás abierto jornadas completas, entonces el market Pro es para ti. Links a tu página, imágenes, cupones para ofrecer experiencias diferentes y únicas, disponibles durante todo el mes. Sin límites. 
+  </div>
+  <div class="col-md-6 center col-md-offset-3 hidden new-vim-market-text">
+    Porque sabemos que tu talento es alto y pones mucho mimo a las cosas, abriendo un VIM puedes añadir tantos detalles como tu quieras, links a tu blog, tus imágenes favoritas, ofrecer un vino a quienes vayan a verte habilitando cupones para que la experiencia sea personal. Como esas cosas que tu tan bien haces.
+  </div>
 </div>
 
-<div class="row">
-<div class="col-md-6 col-md-offset-3">
-  Porque tu talento es tu profesión y estás abierto jornadas completas, entonces el market Pro es para ti. Links a tu página, imágenes, cupones para ofrecer experiencias diferentes y únicas, disponibles durante todo el mes. Sin límites. 
+<script>
+$(".new-market-icon").hover(function(){
+    $(".new-market-text").removeClass("hidden");
+  },
+  function(){
+    $(".new-market-text").addClass("hidden");
+  }
+);
+$(".new-vim-market-icon").hover(function(){
+    $(".new-vim-market-text").removeClass("hidden");
+  },
+  function(){
+    $(".new-vim-market-text").addClass("hidden");
+  }
+);
+$(".go-pro-icon").hover(function(){
+    $(".go-pro-text").removeClass("hidden");
+  },
+  function(){
+    $(".go-pro-text").addClass("hidden");
+  }
+);
+$(".huge-icon.empty").click(function(){
+  $("#error").slideDown(200);
+});
+</script>
 
-  <p>
-  <%= link_to "Hazte un cuenta PRO", user_path(current_user) %></p>
-</div>
-</div>
+<style>
 
-<div class="row">
-<div class="col-md-6 col-md-offset-3">
-  Porque sabemos que tu talento es alto y pones mucho mimo a las cosas, abriendo un VIM puedes añadir tantos detalles como tu quieras, links a tu blog, tus imágenes favoritas, ofrecer un vino a quienes vayan a verte habilitando cupones para que la experiencia sea personal. Como esas cosas que tu tan bien haces.
-  <p>
-  <%= link_to "Abre tu Very Important Market",  market_make_pro_payment_path(Market.new.id) %></p>
-</div>
-</div>
+.huge-icon{
+  margin:0px 50px 50px 50px;
+}
+</style>

@@ -6,8 +6,7 @@
           <div class="panel-heading table-title">
           <div class="market-title-container row">
             <div class="market-title market-poster-title col-md-12">
-              <img src="/images/favicon.png" class="poster-title-icon"><%= @user.name %> 
-           
+              <%= image_tag "favicon.png", class:"poster-title-icon" %><%= @user.name %> 
             </div>
 
             <% if can? :manage, @user %>

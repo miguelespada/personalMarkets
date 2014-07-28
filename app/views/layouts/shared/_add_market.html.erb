@@ -1,10 +1,6 @@
 
 <li class="registered-user-action ">
-  <% if user_signed_in? %>
      <%= button_to "✚", open_market_path , class:"add_market_button btn btn-default", :method => :get %>
-  <% else %>
-    <%= button_to "✚", "javascript:shakeButton();", class:"add_market_button btn btn-default", :method => :get %>
-  <% end %>
 </li>
 
 <script>
@@ -15,7 +11,7 @@
 
 	function checkIfMobileButton(){
 		if (window.innerWidth >= 992){
-			$(".add_market_button").val("Abre tu Market");
+			$(".add_market_button").val("Abre un Market");
 		}
 		else if (window.innerWidth >= 768){
 			$(".add_market_button").val("+ Market");
@@ -24,28 +20,10 @@
 			$(".add_market_button").val("✚");
 		}
 	}
-	var shakeButton = function(){
-		$(".button_to").effect("shake", {times: 2, distance: 10}, 300);
-		$(".add_market_button").addClass("btn-warning");
-		$(".add_market_button").tooltip({
-			placement: "bottom",
-			title: "Login first!"
-		});
-	};
 </script>
 
 <style>
-	.button_to .tooltip.bottom .tooltip-inner{
-		font-size:14px;
-		font-weight: 200;
-		background-color: #FF0000;
-	}
-	.button_to .tooltip.bottom .tooltip-arrow{
-  		border-bottom-color: #FF0000;
-	}
-	@media (min-width: 768px){
-		.add-market-button-container{
-  		margin-left: 15px !important;
-		}
-	}
+.add_market_button {
+	margin-left: 20px;
+}
 </style>
