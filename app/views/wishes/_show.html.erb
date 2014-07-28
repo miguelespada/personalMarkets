@@ -5,12 +5,13 @@
         <div class="panel-heading table-title">
           <div class="wish-title-container">
             <%= wish.description %>
-           <h6> #tags_<%= wish.tags %> </h6>
+           <h5> #tags_<%= wish.tags %> </h5>
+           <h6> by: <%= link_to wish.user.name, wish.user %> </h6>
           </div>
         </div>
 
         <div class="wish-photo-container">
-            <%= photo(wish.photography, 600) %> 
+            <%= photo(wish.photography, 400) %> 
         </div>
           <div class="market-list-section-title">Recommend Market</div>
             <div class="market-list-section-container">

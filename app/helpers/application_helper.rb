@@ -41,7 +41,7 @@ module ApplicationHelper
 
   def page_title(text, icon)
     content_tag :h1, "" do
-      concat content_tag :i, "", class:"fa #{icon} fa-2x"
+      concat content_tag :i, "", class:"fa #{icon} fa-3x"
       concat "<br/>".html_safe
       concat text
     end
@@ -65,8 +65,8 @@ module ApplicationHelper
 
   def entity_table_header(model, new_action)
     content_tag :div, class: "panel-heading table-title" do
-      concat link_to "<i class='fa fa-dashboard fa-1x'></i>".html_safe, user_dashboard_path(current_user)
-      concat link_to "<i class='fa fa-cog fa-1x'></i>".html_safe, admin_path if current_user.has_role?(:admin)
+      concat link_to "<i class='fa fa-dashboard fa-1x header-icon'></i>".html_safe, user_dashboard_path(current_user)
+      concat link_to "<i class='fa fa-cog fa-1x header-icon'></i>".html_safe, admin_path if current_user.has_role?(:admin)
       table_user
       concat model.model_name.human.pluralize
       if new_action.present?
