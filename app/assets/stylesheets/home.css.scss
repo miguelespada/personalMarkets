@@ -1,6 +1,13 @@
 //*############################ HOME GALLERY CSS #############################*//
 
 .home_action > a{
+  font-weight: normal;
+  line-height: 1.428571429;
+  color: #999;
+  white-space: normal;
+}
+
+.home_action {
   display: block;
   padding: 3px 20px;
   clear: both;
