@@ -11,6 +11,8 @@ class Market
 
   include Elasticsearch
   include Location
+  include MarketDates
+  include MarketStatus
 
   field :name, type: String
   field :description, type: String
@@ -58,217 +60,38 @@ class Market
   scope :with_category, lambda {|category| where(category: category)}
 
   after_create :create_public_id
-  after_save :collect_cities 
-  after_update :order_schedule
+  before_save :order_schedule
 
    def self.icon
     "fa-shopping-cart"
   end
   
-  def can_have_coupon?
-    pro? || belongs_to_premium_user? && !archived?
-  end
-
-  def coupon_available?
-    has_coupon? && can_have_coupon?
-  end
-
-  def has_coupon?
-    coupon.filled?
-    rescue
-      false  
-  end
-
-  def coupon_initialized?
-    coupon.initialized?
-    rescue
-      false
-  end
-
-
-
-  def photo_gallery_available?
-    self.has_gallery?
-  end
-
-  def belongs_to_premium_user?
-    self.user.is_premium?
-  end
-
-  def belongs_to_admin?
-    self.user.admin?
-  end
-
-  def pro?
-    return self.pro
-  end
-
-  def not_pro?
-    return !(self.pro? || self.belongs_to_premium_user?)
-  end
-
-  def go_pro
-    self.pro = true
-    self.save!
-  end
-
-  def archive
-    self.state = "archived"
-    self.save!
-  end
-
-  def publish
-    self.state = "published"
-    self.publish_date ||= Time.now
-    self.save!
-  end
-
-  def unpublish
-    self.state = "draft"
-    self.save!
-  end
-
-  def has_tags?
-    !(self.tags.nil? || self.tags.empty?)
-  end
-
-  def has_location?
-    self.latitude? && self.longitude?
-  end
-
-  def has_prices?
-    (self.min_price? && self.min_price > 0) || (self.max_price? && self.max_price < 1000)
-  end
-
-  def has_slideshow?
-    has_photos?
-  end
-
-  def has_url?
-    self.url?
-  end
-
-  def has_social?
-    self.social_link?
-  end
-
-  def path_to_social_link
-    if !social_link.include?("http://") 
-      "http://" + social_link
-    else
-      social_link
-    end
-  end
-
-  def path_to_url
-    if !url.include?("http://") 
-      "http://" + url
-    else
-      url
-    end
-  end
-
-  def has_name?
-    self.name?
-  end
-
-  def has_been_published?
-    !self.publish_date.nil?
-  end
-
-  def published?
-    self.state == "published"
-  end
-
-  def archived?
-    self.state == "archived"
-  end
-
-  def can_be_published?
-    evaluation = MarketEvaluator.new(self).check_fields
-    evaluation.valid? && self.state != "published"
-  end
-
-  def draft?
-    self.state ||= "draft"
-    self.state == "draft"
-  end 
-
-  def has_description?
-    self.description?
-  end
-
-  def has_date?
-    self.date?
-  end
-
-  def passed?
-    return false if !self.has_date? 
-    self.date.split(',').each do |day|
-      return false if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i >= 0
-    end
-    return true
-  rescue
-    false
-  end
-
-   def started?
-    return false if !self.has_date? 
-    self.date.split(',').each do |day|
-      return true if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i <= 0
-    end
-    return false
-  rescue
-    false
-  end
-
-  def is_today? 
-    date.split(',').each do |day|
-      return true if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i == 0
-    end
-    return false
-  rescue
-    false
-  end
-
-  def is_this_week?
-    return false if passed?
-    return false if is_today?
-    date.split(',').each do |day|
-      return true if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i < 7
-    end
-    return false
-  rescue
-    false
-  end
-
-
-  def has_schedule?
-    self.schedule?
-  end
-
-  def has_extra_photos?
-    false
-  end
-
-  
-  def has_gallery?
-    gallery != nil
-  end
-
-  def has_photos?
-    has_gallery? && !gallery.empty?
-  end
-
-  def how_many_photos
-    self.gallery.size
-  end
-
   def create_coupon!(params)
-    raise "Coupon already exists." if has_coupon?
-    self.coupon = Coupon.new(params)
-    save!
+      raise "Coupon already exists." if has_coupon?
+      self.coupon = Coupon.new(params)
+      save!
   end
+
+
+  ####### MARKET FRIENDLY ID  ########
+    def to_param
+      self.public_id
+    end
+
+    def create_public_id
+      name_ord = self.name.codepoints.inject(:+)
+      creation = self.created_at.to_i
+      self.public_id ||= (creation + name_ord).to_s(32)
+      self.save!
+    end
+
+    def self.find id
+      find_by(public_id: id)
+    end
+
+
+  ####### SEARCH MARKETS ########
+
 
   def to_indexed_json
       { id: id,
@@ -373,66 +196,9 @@ class Market
       range ||= ""
   end
 
-  def published_one_month_ago?
-    self.publish_date? && self.publish_date >= 1.month.ago 
-  end
 
-  def staff_pick?
-    favorited.each do |user|
-      return true if user.admin?
-    end
-    false
-  end
 
-  def new_market?
-    self.publish_date? && self.publish_date >= 1.day.ago 
-  end
 
-  def to_param
-    self.public_id
-  end
 
-  def create_public_id
-    name_ord = self.name.codepoints.inject(:+)
-    creation = self.created_at.to_i
-    self.public_id ||= (creation + name_ord).to_s(32)
-    self.save!
-  end
 
-  def self.find id
-    find_by(public_id: id)
-  end
-
-  def collect_cities
-    @@cities ||= [""]
-    @@cities.append(city.split(',')[0]) if !city.blank?
-    @@cities = @@cities.compact.uniq
-  end
-
-  def self.cities
-    @@cities ||= all.collect{|market| market.city.split(',')[0] if !market.city.blank?}.compact.uniq.prepend("")
-  end
-
-   def self.reset_cities
-    @@cities = nil 
-  end
-
-  def order_schedule
-    dates = self.schedule.split(';')
-    sorted = dates.sort! {|a, b| DateTime.strptime(a, "%d/%m/%Y,%H:%M") <=> DateTime.strptime(b, "%d/%m/%Y,%H:%M")}.join(';')
-    if sorted != self.schedule
-      self.update_attribute(:schedule, sorted)
-    end
-  rescue
-  end
-
-  def max_duration
-
-    if belongs_to_premium_user?
-      30
-    else
-      7
-    end
-  end
-  
 end
