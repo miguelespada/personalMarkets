@@ -256,9 +256,15 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   background:#FFFFFF;
 }
 
-.market-featured-photo-detail{
+.market-photo{
   float: left;
   padding-left: 0px !important;
+  padding-bottom: 10px;
+}
+
+.market-photo img{
+  max-width: 100%;
+  height: auto;
 }
 
 #carousel-container-market-photo-gallery{
