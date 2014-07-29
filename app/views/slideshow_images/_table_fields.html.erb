@@ -1,1 +1,1 @@
-<%= photo(entity.photography, 200) %>
+<%=  cl_image_tag(entity.photography.photo.path, {quality: "50", size: "300x100", crop: :pad } ) %>

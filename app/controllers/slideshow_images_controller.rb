@@ -7,7 +7,7 @@ class SlideshowImagesController < ApplicationController
   end
 
   def new
-    @slideshow_image= SlideshowImage.new
+    @slideshow_image = SlideshowImage.new
     render'form'
   end
 
@@ -30,7 +30,7 @@ class SlideshowImagesController < ApplicationController
   def update
     respond_to do |format|
       if @slideshow_image.update(slideshow_image_params)
-        format.html { redirect_to slideshows_path, notice: 'Slideshow image was successfully updated.' }
+        format.html { redirect_to slideshow_images_path, notice: 'Slideshow image was successfully updated.' }
       else
         format.html { render action: 'edit' }
       end
