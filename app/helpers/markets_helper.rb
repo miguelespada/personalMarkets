@@ -32,4 +32,34 @@ module MarketsHelper
                     :id=>"discard" 
     end
   end
+
+
+  def month_calendar(market, d0, d1, month) 
+      (d0..d1).collect.with_index { |d, i| 
+        if d.month == month
+          content_tag(:span, d.day.to_s.rjust(2, "0"), class: "day market_#{market.in_date?(d)} passed_#{d.past?} today_#{d.today?}")
+        else
+          content_tag(:span, "---", class: "day passed_true")
+        end
+      }.join().html_safe
+  end
+
+  def market_calendar(market)
+    d0 = market.first_date.at_beginning_of_month.at_beginning_of_week
+    d1 = market.first_date.end_of_month.at_end_of_week
+    d2 = market.last_date.end_of_month.at_end_of_week
+    
+    s = content_tag :div, class: "month" do
+       month_calendar(market, d0, d1, market.first_date.month)
+    end
+    
+    if d1 != d2
+      s += content_tag :div, class: "month" do
+        month_calendar(market, d1.at_beginning_of_month.at_beginning_of_week, d2, market.last_date.month)
+      end
+    end
+    s
+  end
+
+
 end

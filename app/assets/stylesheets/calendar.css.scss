@@ -1,0 +1,35 @@
+$day_size : 26px;
+
+div.month{
+  max-width: $day_size*7;
+  margin: 25  px;
+  float:left;
+}
+
+span{
+  &.day{
+    float: left;
+    width: $day_size;
+    line-height: 20px;
+    text-align: center;
+
+    &.passed_true{
+      font-weight: 200;
+      color: #666666;
+    }
+
+    &.passed_false{
+      color: #333;
+      font-weight: 600;
+    }
+
+    &.market_true{
+      font-weight: bold;
+      color: red;
+    }
+
+    &.today_true{
+      text-decoration: underline;
+    }
+  }
+}

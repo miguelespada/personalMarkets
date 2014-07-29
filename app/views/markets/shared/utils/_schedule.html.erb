@@ -1,14 +1,16 @@
+<%= stylesheet_link_tag "calendar" %>
+
+<%= market_calendar(market) %>
 
 <% prevDate = nil %>
 <% market.human_readable_schedule.each do |day| %>
     <% if prevDate && prevDate == day["date"] %>
       <%= append_date(day) %> 
     <% else %>
-     </br>  <%= format_date(day) %> 
+       </br>  <%= format_date(day) %> 
     <% end %>
     <%  prevDate = day["date"] %>
 <% end %>
-
 
 <script>
 $(document).ready(function(){
@@ -21,3 +23,4 @@ $(document).ready(function(){
   $(".market-schedule-detail").html(scheduleItems.join("<br>"));
 });
 </script>
+
