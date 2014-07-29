@@ -1,0 +1,24 @@
+.price-labels{
+  @extend .form-section-title-small;
+  padding:10px 15px;
+}
+
+.ui-slider{
+  height:5px !important;
+  background:#CCCCCC !important;
+  border: none !important;
+}
+
+.ui-slider-handle{
+  border-radius: 50% !important;
+  width: 15px !important;
+  height:15px !important;
+}
+
+.ui-slider-handle:focus {
+  outline: none;
+}
+
+.ui-slider-range{
+  background: #f38286 !important;
+}
