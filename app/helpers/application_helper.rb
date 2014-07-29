@@ -33,9 +33,18 @@ module ApplicationHelper
     end 
   end
 
-  def search_or_map_page?
-    (controller_name == 'markets' && action_name == 'search') || (controller_name == 'static_pages' && action_name == 'map')
+  def search_page?
+    free_search? || search_on_map?
   end
+
+  def search_on_map?
+    (controller_name == 'static_pages' && action_name == 'map')
+  end
+  
+  def free_search?
+    (controller_name == 'markets' && action_name == 'search')
+  end
+
 
   # Entities
 

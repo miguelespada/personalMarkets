@@ -45,7 +45,7 @@ $( document ).ready(function() {
   });
 
   $("#search_button").click(function(){
-    <% if search_or_map_page? %>
+    <% if search_page? %>
       $("#search_market").change();
     <% else %>
       $("#search_market").submit();
