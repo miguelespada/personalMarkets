@@ -942,3 +942,28 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   margin-bottom:0px !important;
   padding: 0px !important;
 }
+
+.price-labels{
+  @extend .form-section-title-small;
+  padding:10px 15px;
+}
+
+.ui-slider{
+  height:5px !important;
+  background:#CCCCCC !important;
+  border: none !important;
+}
+
+.ui-slider-handle{
+  border-radius: 50% !important;
+  width: 15px !important;
+  height:15px !important;
+}
+
+.ui-slider-handle:focus {
+  outline: none;
+}
+
+.ui-slider-range{
+  background: #f38286 !important;
+}

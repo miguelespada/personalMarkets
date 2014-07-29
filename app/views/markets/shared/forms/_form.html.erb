@@ -152,8 +152,12 @@
                   </div>
                 </div>
                 <div id="prices-slider"></div>
-                <%= f.input :min_price %>
-                <%= f.input :max_price %>
+                <div class="row price-labels">
+                  <div class="pull-left"><span id="min-price"></span> €</div>
+                  <div class="pull-right"><span id="max-price"></span> €</div>
+                </div>
+                <%= f.input :min_price, :as => :hidden %>
+                <%= f.input :max_price, :as => :hidden %>
               </div>
 
               <div class="tab-pane" id="form-market-external-url">
