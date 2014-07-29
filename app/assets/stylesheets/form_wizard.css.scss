@@ -1,0 +1,23 @@
+.nav-pills{
+	li{
+		a{
+			color:#555555;
+			font-size: 18px;
+			font-weight: 200;
+		}
+		a:hover{
+			color:#f38286;
+		}
+		&.active{
+			a{
+				background-color: #f38286 !important;
+				color:#FFFFFF;
+			}
+		}
+		&.disabled{
+			a{
+				background-color: #EEEEEE !important;
+			}
+		}
+	}
+}
