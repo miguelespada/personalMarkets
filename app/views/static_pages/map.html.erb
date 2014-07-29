@@ -17,7 +17,7 @@
         PM.setViewWithUserLocation($("#lat").val(), $("#lon").val(), 15);
       }
       else{
-        $.get("get_location.json", { 
+        $.get("<%= get_location_path(:format => :json) %>", { 
           name: location}, function( data ) {
           PM.map.setView([data.latitude, data.longitude], 15);
         });

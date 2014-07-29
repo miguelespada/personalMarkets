@@ -1,82 +1,73 @@
 <%= form_tag search_markets_path, id: "search_market", class:"search-form" do %>
+
+  <%= hidden_field_tag :query, session[:query] %>
     
-    <div class="hidden">
-      <%= text_field_tag :query, session[:query] %>
-    </div>
-    
-        <li class="form-group hidden">
-          <%= collection_select(:category, :category_id, Category.all, :slug, :slug, 
-            {:include_blank => "All categories", :selected => session[:category]}, 
-            class: "category form-control" ) %>
-        </li>
+  <%= collection_select(:category, :category_id, Category.all, :slug, :slug, 
+    {:include_blank => "All categories", :selected => session[:category]}, 
+    class: "category form-control hidden" ) %>
 
 
-    <% if search_or_map_page? %>
-        <li class="form-group search-filter-item">
-          <%= link_to content_tag(:i, "", :class => "fa fa-refresh"), "#", 
-            :class=>  "btn btn-default btn-reset-search", 
-            :id=>"reset_search", :title => "Reset search", rel: 'tooltip' %>
-        </li>
+  <% if search_page? %>
+    <li class="form-group search-filter-item">
+      <%= link_to content_tag(:i, "", :class => "fa fa-refresh"), "#", 
+        :class=>  "btn btn-default btn-reset-search", 
+        :id=>"reset_search", :title => "Reset search", rel: 'tooltip' %>
+    </li>
 
-        <li class="form-group search-filter-item" id="search-range-item">
-          <%= select_tag(:range, 
-            options_for_select({t(:all_time) => "All", t(:today) => "Today", 
-                                t(:this_week) => "This week", t(:this_month) => "This month", 
-                                t(:next_week) => "Next week"},
-            :selected => session[:range]),
-            class: "form-control" ) %>
-        </li>
+    <li class="form-group search-filter-item" id="search-range-item">
+      <%= select_tag(:range, 
+        options_for_select({t(:all_time) => "All", 
+                            t(:today) => "Today", 
+                            t(:this_week) => "This week", 
+                            t(:this_month) => "This month", 
+                            t(:next_week) => "Next week"},
+        :selected => session[:range]),
+        class: "form-control" ) %>
+    </li>
 
-        <li class="form-group search-filter-item hidden-xs" id="search-location-item">
-          <%= collection_select(:location, :location_id, SpecialLocation.all, 
-            :name, :name, {:selected => session[:location], 
-            :include_blank => t(:Any_location)},
-            class: "form-control" ) %>
-        </li>
+    <li class="form-group search-filter-item hidden-xs" id="search-location-item">
+      <%= collection_select(:location, :location_id, SpecialLocation.all, 
+        :name, :name, {:selected => session[:location], 
+        :include_blank => t(:Any_location)},
+        class: "form-control" ) %>
+    </li>
 
-        <li class="form-group search-filter-item hidden-xs" id="search-address-item">
-         <%= text_field_tag :address, 
-            session[:address], 
-            placeholder: t(:search_by_address), 
-            class: "form-control", 
-            id: "address-query" %>
-        </li>
+    <li class="form-group search-filter-item hidden-xs" id="search-address-item">
+     <%= text_field_tag :address, 
+        session[:address], 
+        placeholder: t(:search_by_address), 
+        class: "form-control", 
+        id: "address-query" %>
+    </li>
 
-        <li class="form-group search-filter-item hidden" id="my-location-item">
-          <%= link_to content_tag(:i, "<span class = 'hidden-md hidden-xs'> Near me </span>".html_safe, 
-            :class => "fa fa-crosshairs ", :title => "Go to my location", rel: 'tooltip'), "#", 
-            :class=>  "btn btn-default btn-my-location-search", 
-            :id=>"my_location" %>
-        </li>
+    <li class="form-group search-filter-item hidden" id="my-location-item">
+      <%= link_to content_tag(:i, content_tag(:span, " " + t(:near_me), :class => "hidden-xs"), 
+        :class => "fa fa-crosshairs ", :title => "Go to my location", rel: 'tooltip'), "#", 
+        :class=>  "btn btn-default btn-my-location-search", 
+        :id=>"my_location" %>
+    </li>
 
-        <li class="form-group search-filter-item anim-container hidden" id="location-not-found">
-          <span class="fa-stack fa-sm">
-            <i class="fa fa-map-marker fa-stack-1x" ></i>
-          </span>
-        </li>
+    <li class="form-group search-filter-item anim-container hidden" id="spinner-item">
+      <i class="fa fa-spinner fa-spin fa-1x" ></i> 
+    </li>
 
-        <li class="form-group search-filter-item anim-container hidden" id="spinner-item">
-          <i class="fa fa-spinner fa-spin fa-1x" ></i> 
-        </li>
-
-        <div class="hidden">
-          <%= text_field_tag :from %>  
-          <%= text_field_tag :to %>  
-          <%= text_field_tag :user_lat, session[:user_lat] %>  
-          <%= text_field_tag :user_lon, session[:user_lon] %>
-          <%= text_field_tag :lat, session[:lat] %>  
-          <%= text_field_tag :lon, session[:lon] %>
-          <%= text_field_tag :page, session[:page] || 1 %>
-        </div>
-    <% end %>
+    <%= hidden_field_tag :from %>  
+    <%= hidden_field_tag :to %>  
+    <%= hidden_field_tag :user_lat, session[:user_lat] %>  
+    <%= hidden_field_tag :user_lon, session[:user_lon] %>
+    <%= hidden_field_tag :lat, session[:lat] %>  
+    <%= hidden_field_tag :lon, session[:lon] %>
+    <%= hidden_field_tag :page, session[:page] || 1 %>
+  <% end %>
 
 <% end %>
 
-<% if search_or_map_page? %>
-  
-  
+<% if search_page? %>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
   <script> 
+    var on_map = <%= search_on_map? %>;
+
     function reset_search(){
       $("#range").val("All");
       $("#address-query").val("");
@@ -89,14 +80,14 @@
       $(".btn-all-categories").click();
       return false;
     };
+
     function initialize_session(){
-      user_localization();
+
+      if(on_map) var tiles = '<%= session["style"] %>' || MAPBOX_DEFAULT_STYLE;
+      var category = '<%= session["category"] %>';
+
+      user_location();
       setDataRange();
-
-      var tiles = '<%= session["style"] %>' || '';
-      if(tiles == '') tiles = MAPBOX_DEFAULT_STYLE;
-
-      var category = '<%= session["category"] %>' || "";
 
       initializeCategory(category);
 
@@ -116,24 +107,21 @@
         $('#location_location_id').append("<option value='Custom location'><%= t :Custom_location %></option>").val('Custom location');
           lat = '<%= session["lat"] %>' || "";
           lon = '<%= session["lon"] %>' || "";
-
           dist = 15;
       }
       else if(location != ""){
-        $.get("get_location.json", { 
-          name: location}, function( data ) {
-          try{
-            PM.initializeMap(tiles, data.latitude, data.longitude, 15);
-          }catch(err){};
+        $.get("<%= get_location_path(:format => :json) %>", { name: location}, function( data ) {
+          lat = data.latitude;
+          lon = data.longitude;
+          if(on_map)  PM.initializeMap(tiles, data.latitude, data.longitude, 15);
         });
         return;
       }
 
-      try{
-        lat = lat || DEFAULT_LOCATION.defaultLatitude;
-        lon = lon || DEFAULT_LOCATION.defaultLongitude;
-        PM.initializeMap(tiles, lat, lon, dist);
-      }catch(err){};
+      lat = lat || DEFAULT_LOCATION.defaultLatitude;
+      lon = lon || DEFAULT_LOCATION.defaultLongitude;
+
+      if(on_map) PM.initializeMap(tiles, lat, lon, dist);
     };
 
     function pos_success(pos){
@@ -148,7 +136,7 @@
       $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i> <%= t :enable_browser %>");
     };
 
-    function user_localization(){
+    function user_location(){
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos_success, pos_error);
       }
@@ -169,8 +157,6 @@
         function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
 
-            $("#location-not-found").removeClass("hidden");
-             $("#location-not-found.ban").addClass("hidden");
             var lat = results[0].geometry.location.lat();
             var lon = results[0].geometry.location.lng();
 
@@ -179,18 +165,14 @@
             
             $("#location_location_id option[value='My location']").remove();
             $("#location_location_id option[value='Custom location']").remove();
-
             $('#location_location_id').append("<option value='Custom location'><%= t :Custom_location %></option>").val('Custom location');
-            try{
-              centerMap("Custom location");
-            }catch(err) {
-              $("#location-not-found").removeClass("hidden");
-             $("#location-not-found.ban").removeClass("hidden");
-            };
+              
+            if(on_map) centerMap("Custom location");
+          
             $("#search_market").change();
           }
         }
-        );
+      );
     };
 
     function removeLocationData(){
@@ -200,7 +182,7 @@
     }
 
     $(document).ready(function(){
-       initialize_session();
+      initialize_session();
 
       $("#search_market").keypress(function(e) {
         if(event.keyCode == 13) {
@@ -220,31 +202,24 @@
           return false;
           }
       });
+
       $("#address-query").blur(function(event){
           addressSearch();
       });
     
-    
-
       $("#location_location_id").change(function(){
-          removeLocationData();
-          try{
-            centerMap($(this).val());
-          }catch(err) {};
+        removeLocationData();
+        if(on_map) centerMap($(this).val());
       });
       
       $(".btn-my-location-search").click(function(){
         removeLocationData();
         $('#location_location_id').append("<option value='My location'><%= t :My_location %></option>").val("My location");
-        try{
-          centerMap("My location");
-        }catch(err) {};
+        if(on_map) centerMap("My location");
         $("#search_market").change();
       });
     });
+
   </script>
 
 <% end %>
-
-<style>
-</style>

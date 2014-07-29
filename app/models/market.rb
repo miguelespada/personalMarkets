@@ -158,7 +158,7 @@ class Market
         }
       end 
       filter :terms, category: [category] if !category.blank?
-      filter :geo_distance, lat_lon: location, distance: '10km' if !location.blank?
+      filter :geo_distance, lat_lon: location, distance: '3km' if !location.blank?
       filter :terms, state: ["published"]
       search_size = per_page
       from (page - 1) * search_size

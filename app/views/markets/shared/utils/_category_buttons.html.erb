@@ -12,10 +12,10 @@
     function initializeCategory(category){
       $('.btn-all-categories').attr('tile', MAPBOX_DEFAULT_STYLE); 
       if (category){
-         $('#'+category).addClass("theme-selected");
+        $('#'+category).addClass("theme-selected");
       }
       else{
-          $('.btn-all-categories').addClass("theme-selected");
+        $('.btn-all-categories').addClass("theme-selected");
       }
     };
 
@@ -23,11 +23,12 @@
         $('.theme').each(function(){
           $(this).removeClass("theme-selected");
         });
+
         $(this).addClass("theme-selected");
+        
         $("#category_category_id").val($(this).attr('title')).change(); 
-        try{
-          PM.changeTile($(this).attr('tile'));
-        } catch(err){};
+        
+        if(on_map) PM.changeTile($(this).attr('tile'));
     });
 
 </script>
