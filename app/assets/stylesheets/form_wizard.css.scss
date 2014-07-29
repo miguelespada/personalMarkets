@@ -1,25 +1,19 @@
-.nav-pills{
-	li{
-		a{
-			color:#2F2F2F;
-			font-size: 18px;
-			font-weight: 200;
-			&:hover{
-				color:#f38286;
-			}
+.nav-pills li{
+	a{
+		color:#2F2F2F;
+		font-size: 18px;
+		font-weight: 200;
+		&:hover{
+			color:#f38286;
 		}
+	}
 
-		&.active{
-			a{
-				background-color: #f38286 !important;
-				color:#FFFFFF;
-			}
-		}
+	&.active a{
+		background-color: #f38286 !important;
+		color:#FFFFFF;
+	}
 
-		&.disabled{
-			a{
-				background-color: #EEEEEE !important;
-			}
-		}
+	&.disabled a{
+		background-color: #EEEEEE !important;
 	}
 }
