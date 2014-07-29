@@ -232,12 +232,11 @@ class MarketDecorator < Draper::Decorator
   end
 
   def delete_link
+    return if cannot? :delete, market 
     return if market.archived?
     return if market.has_been_published? && !current_user.has_role?(:admin)
-    if can? :delete, market 
-      link_to(content_tag(:i, " Delete", :class => "fa fa-trash-o"), user_market_path(market.user, market), method: :delete, 
+    link_to(content_tag(:i, " Delete", :class => "fa fa-trash-o"), user_market_path(market.user, market), method: :delete, 
         class: "delete-icon market-action market-action-icon btn btn-default btn-market-action-bar")
-    end
   rescue
   end
 

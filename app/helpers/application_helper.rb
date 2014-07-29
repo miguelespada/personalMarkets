@@ -22,8 +22,8 @@ module ApplicationHelper
   end
 
   def back_link
-    link_to :back, class:"btn btn-default" do
-      content_tag(:i, "", :class => "fa fa-reply") + " Go Back"
+    link_to :back, class:"btn btn-default back_link" do
+      content_tag(:i, "", :class => "fa fa-reply ") + " Go Back"
     end
   end
 

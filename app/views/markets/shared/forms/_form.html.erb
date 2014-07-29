@@ -304,10 +304,9 @@ $("#refresh_location").click(updateLocationData);
 $('#market_address').keypress(function(){$("#refresh_location").removeClass('hidden')});
 $('#market_city').keypress(function(){$("#refresh_location").removeClass('hidden')});
 
-$("#discard").click(function(){
+$("#discard").unbind().click(function(){
     if(!confirm("<%= t :discard_changes %>"))
       return false;
-
 });
 
 </script>

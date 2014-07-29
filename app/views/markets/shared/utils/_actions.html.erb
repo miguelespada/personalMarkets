@@ -8,12 +8,12 @@
 <%= market.unpublish_link %>
 
 <script>
-  $(".archive-icon").click(function(){
+  $(".archive-icon").unbind().click(function(){
     if(!confirm("<%= t :action_not_reversible %>"))
       return false;
   });
 
-  $(".delete-icon").click(function(){
+  $(".delete-icon").unbind().click(function(){
     if(!confirm("<%= t :action_not_reversible %>"))
       return false;
   });
