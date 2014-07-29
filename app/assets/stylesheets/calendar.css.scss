@@ -1,12 +1,18 @@
 $day_size : 26px;
 
 div.month{
-  max-width: $day_size*7;
-  margin: 25  px;
+  width: $day_size*7;
+  margin: 25px !important;
   float:left;
 }
 
 span{
+  &.month_title{
+    float: left;
+    width: $day_size*7;
+    line-height: 20px;
+    text-align: center;
+  }
   &.day{
     float: left;
     width: $day_size;

@@ -34,7 +34,8 @@ module MarketsHelper
   end
 
 
-  def month_calendar(market, d0, d1, month) 
+  def month_calendar(market, d0, d1, month, year) 
+      content_tag(:span, Date::MONTHNAMES[month] + " " + year.to_s, class: "month_title") + 
       (d0..d1).collect.with_index { |d, i| 
         if d.month == month
           content_tag(:span, d.day.to_s.rjust(2, "0"), class: "day market_#{market.in_date?(d)} passed_#{d.past?} today_#{d.today?}")
@@ -50,12 +51,12 @@ module MarketsHelper
     d2 = market.last_date.end_of_month.at_end_of_week
     
     s = content_tag :div, class: "month" do
-       month_calendar(market, d0, d1, market.first_date.month)
+       month_calendar(market, d0, d1, market.first_date.month, market.first_date.year)
     end
     
     if d1 != d2
       s += content_tag :div, class: "month" do
-        month_calendar(market, d1.at_beginning_of_month.at_beginning_of_week, d2, market.last_date.month)
+        month_calendar(market, d1.at_beginning_of_month.at_beginning_of_week, d2, market.last_date.month, market.last_date.year)
       end
     end
     s

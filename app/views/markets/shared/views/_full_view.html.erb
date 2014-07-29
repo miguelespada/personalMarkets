@@ -30,9 +30,7 @@
        <div class="market-section-title row"><%= t :schedule %> 
         <%= market.direct_edit_link("form-market-date ") %></div>
       <div class="market-section-container row">
-        <div class="market-data col-md-6">
-          <%= render partial: 'markets/shared/utils/schedule', locals: { market: market } %>
-        </div>
+        <%= render partial: 'markets/shared/utils/schedule', locals: { market: market } %>
       </div>
     
        <% if !market.pro? && false%>

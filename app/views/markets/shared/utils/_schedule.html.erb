@@ -1,7 +1,11 @@
 <%= stylesheet_link_tag "calendar" %>
 
-<%= market_calendar(market) %>
+<div class="row">
+<div class="col-md-6">
+  <%= market_calendar(market) %>
+</div>
 
+<div class="col-md-6">
 <% prevDate = nil %>
 <% market.human_readable_schedule.each do |day| %>
     <% if prevDate && prevDate == day["date"] %>
@@ -11,6 +15,8 @@
     <% end %>
     <%  prevDate = day["date"] %>
 <% end %>
+</div>
+</div>
 
 <script>
 $(document).ready(function(){
