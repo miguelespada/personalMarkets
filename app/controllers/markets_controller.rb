@@ -125,6 +125,14 @@ class MarketsController < ApplicationController
 
   def poster
     @market = Market.find params[:market_id]
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "poster.pdf", 
+               :template => 'markets/poster.html.erb',
+               :page_size => "A4"
+      end
+    end
   end
 
   def show_succeeded market

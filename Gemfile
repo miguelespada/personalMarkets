@@ -123,3 +123,7 @@ gem "pcs_vegas", "~> 0.0.1.alpha"
 
 # dateformat
 gem 'momentjs-rails'
+
+# pdf
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'

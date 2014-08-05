@@ -1,4 +1,4 @@
-
+<%= wicked_pdf_stylesheet_link_tag "markets/poster" %>
 <div id="printable" class="main-container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
@@ -29,9 +29,7 @@
       </div>
       <div class="center print-hide"><%= back_link %></div>
       <div class="center print-hide">
-        <button type="button" onclick="window.print();" class="btn btn-default">
-          <i class="fa fa-print"></i> Print
-        </button>
+        <%= market.print_link %>
       </div>
     </div>
   </div>
