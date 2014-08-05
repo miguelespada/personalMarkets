@@ -1,42 +1,45 @@
-
-<%= javascript_include_tag "jquery.bootstrap.wizard" %>
 <%= stylesheet_link_tag "price_slider" %>
 <%= stylesheet_link_tag "form_wizard" %>
+<%= stylesheet_link_tag "bootstrap-datepicker" %>
+<%= stylesheet_link_tag "jquery.ui.slider" %>
+<%= stylesheet_link_tag  "tagmanager" %>
+
 
 <div id="error" class="alert alert-danger flash hidden"></div>
 
 <div class="panel panel-default panel-table">
-  <div class="panel-heading table-title"> <%= market.discard_button if params[:action] == "edit" %>
-    <%= action %>  Market <span  id="progress"> </span>
+  <div class="panel-heading table-title"> 
+    <%= market.discard_button if params[:action] == "edit" %>
+    <%= t(action.to_s).capitalize %>  Market <span  id="progress"> </span>
   </div>
+
   <div id="wizard" class="row">
     <ul class="col-md-3">
+      <li id="form-link-name"><a href="#form-market-name-description" data-toggle="tab"><%= t(:general_information).capitalize %></a></li>
+      <li id="form-link-gallery"><a href="#form-market-photos" data-toggle="tab"><%= t(:photo_gallery_pro).capitalize %></a></li>
 
-      <li id="form-link-name"><a href="#form-market-name-description" data-toggle="tab"><%= t :general_information %></a></li>
-      <li id="form-link-gallery"><a href="#form-market-photos" data-toggle="tab"><%= t :photo_gallery_pro %></a></li>
-
-      <li id="form-link-category"><a href="#form-market-category-tag" data-toggle="tab"><%= t :category_and_tags %></a></li>
-      <li id="form-link-date"><a href="#form-market-date" data-toggle="tab"><%= t :date_and_time %></a></li>
-      <li id="form-link-prices"><a href="#form-market-prices" data-toggle="tab"><%= t :price_range %></a></li>
-
-      <% if market.pro? %>
-      <li id="form-external-url" class="enabled"><a href="#form-market-external-url" data-toggle="tab"><%= t :external_url_pro %></a></li>
-      <% else %>
-      <li id="form-external-url" class="disabled"><a href="#" data-toggle=""><%= t :external_url_pro %></a></li>
-      <% end %>
-
-      <li id="form-link-location"><a href="#form-market-location" data-toggle="tab"><%= t :location %></a></li>
+      <li id="form-link-category"><a href="#form-market-category-tag" data-toggle="tab"><%= t(:category_and_tags).capitalize %></a></li>
+      <li id="form-link-date"><a href="#form-market-date" data-toggle="tab"> <%= t(:date_and_time).capitalize %></a></li>
+      <li id="form-link-prices"><a href="#form-market-prices" data-toggle="tab"><%= t(:price_range).capitalize %></a></li>
 
       <% if market.pro? %>
-      <li id="form-link-coupon" class="enabled"><a href="#form-market-coupon" data-toggle="tab"><%= t :coupon_pro %></a></li>
-      <% else %>
-      <li id="form-link-coupon" class="disabled"><a href="#" data-toggle=""><%= t :coupon_pro %></a></li>
+        <li id="form-external-url" class="enabled"><a href="#form-market-external-url" data-toggle="tab"><%= t(:external_url_pro).capitalize %>(VIM) </a></li>
+        <% else %>
+        <li id="form-external-url" class="disabled"><a href="#" data-toggle=""><%= t(:external_url_pro).capitalize %> (VIM)</a></li>
       <% end %>
 
+      <li id="form-link-location"><a href="#form-market-location" data-toggle="tab"><%= t(:location).capitalize %></a></li>
+
+      <% if market.pro? %>
+        <li id="form-link-coupon" class="enabled"><a href="#form-market-coupon" data-toggle="tab"><%= t(:coupon_pro).capitalize %> (VIM)</a></li>
+        <% else %>
+        <li id="form-link-coupon" class="disabled"><a href="#" data-toggle=""><%= t(:coupon_pro).capitalize %> (VIM)</a></li>
+      <% end %>
     </ul>
 
-    <%= simple_form_for [user, market], :html => {"data-tags" => "#{raw_tags(market).downcase}", 
-    novalidate: true, role: "form"}  do |f| %>
+    <%= simple_form_for [user, market], 
+      :html => {"data-tags" => "#{raw_tags(market).downcase}", 
+      novalidate: true, role: "form"}  do |f| %>
 
     <div class="tab-content col-md-9">
       <div class="tab-pane" id="form-market-name-description"> 
@@ -46,11 +49,14 @@
               <i class="fa fa-pencil-square-o fa-5x"></i>
             </div>
             <div class="form-pane-text col-sm-10">
-              <span class="form-section-title-small"><%= t :general_information %></span><br>
-              El título, descripción y foto destacada son los atributos más importantes de tu market. Cuanto más atractivos sean más público vas a tener.
-              <br><i class="fa fa-arrow-circle-right"></i> Recuerda que puedes modificar tus datos en cualquier momento!
-              <br><i class="fa fa-arrow-circle-right"></i> La foto de portada tiene un aspecto apaisado (2:1); así que para mejor visualiación deberá tener por ejemplo 600x300 píxeles</div>
+              <span class="form-section-title-small"><%= t(:general_information).capitalize %></span><br>
+             
             </div>
+             <div class="col-sm-8">
+                  El título, descripción y foto destacada son los atributos más importantes de tu market. Cuanto más atractivos sean más público vas a tener.
+              <br><i class="fa fa-arrow-circle-right"></i> ¡Recuerda que puedes modificar tus datos en cualquier momento!
+            </div>
+          </div>
           </div>
           <%= f.input :name, required: true,  input_html: { class: 'market-name' } %>
           <%= f.input :description, :as => :text, input_html: { class: 'market-description' } %>
@@ -67,13 +73,14 @@
                 <i class="fa fa-camera-retro fa-5x"></i>
               </div>
               <div class="form-pane-text col-sm-10">
-                <span class="form-section-title-small"><%= t :photo_gallery_pro %></span><br>
-                Estas fotos sirven para ilustrar tu mercado, no tienen porque ser e tus productos, también pueden ser del espacio o fotos inspiradoras<br><i class="fa fa-arrow-circle-right"></i> Puedes editar tus fotos una vez guardadas, en tu espacio personal.
+                <span class="form-section-title-small"><%= t(:photo_gallery_pro).capitalize %></span><br>
+                <i class="fa fa-arrow-circle-right"></i> Puedes editar tus fotos una vez guardadas, en tu espacio personal.
                 <br> <i class="fa fa-arrow-circle-right"></i> Si quieres añadir más fotos convierte tu market en VIM (Very important market).
               </div>          
             </div>
 
           </div>
+          <br>
           <%= f.simple_fields_for :gallery do |form_builder| %>
           <%= render 'photos/gallery_form', f: form_builder %>
           <% end %>
@@ -86,8 +93,8 @@
                 <i class="fa fa-tags fa-5x"></i>
               </div>
               <div class="form-pane-text col-sm-10">
-                <span class="form-section-title-small"><%= t :category_and_tags %></span><br>
-                Elige la categoría y las tags que mejor se ajuste a tu market.<br><i class="fa fa-arrow-circle-right"></i> Elige buenas tags y seguro que apareces más a menudo en las búsquedas. </div>
+                <span class="form-section-title-small"><%= t(:category_and_tags).capitalize %></span><br>
+                <i class="fa fa-arrow-circle-right"></i> Elige buenas tags y seguro que apareces más a menudo en las búsquedas. </div>
               </div>
             </div>
             <%= f.association :category, :include_blank => true %>
@@ -102,8 +109,10 @@
                   <i class="fa fa-calendar fa-5x"></i>
                 </div>
                 <div class="form-pane-text col-sm-10">
-                  <span class="form-section-title-small"><%= t :date_and_time %></span><br>
-                  Puedes elegir tantas franjas horarias como necesites. <br><i class="fa fa-arrow-circle-right"></i> Recuerda que tu market no puede durar más de <%= market.max_duration %> días!</div>
+                  <span class="form-section-title-small"><%= t(:date_and_time).capitalize  %></span><br>
+                  Puedes elegir tantas franjas horarias como necesites. <br><i class="fa fa-arrow-circle-right"></i> Recuerda que tu market no puede durar más de <%= market.max_duration %> días!
+                  <br><i class="fa fa-arrow-circle-right"></i> Hazte una cuenta PRO para tener mercados más largos.
+                </div>
                 </div>
               </div>
               <%= f.input :date, input_html: { class: 'market-date hidden' }  %>
@@ -114,7 +123,7 @@
               <div class="table-container">
                 <table class="table table-striped" id="date-schedule-table">
                   <tr>
-                    <th>Passed</th>
+                    <th><%= t(:passed_dates).capitalize %></th>
                     <th></th>
                     <th></th>
                   </tr>
@@ -128,8 +137,8 @@
                   <% end %>
                   <% end %>
                   <tr>
-                    <th>Date</th>
-                    <th>Schedule</th>
+                    <th><%= t(:date).capitalize %> </th>
+                    <th><%= t(:schedule).capitalize %></th>
                     <th>
                       <button class="btn btn-default pull-right btn-xs" id="button-add-date" type="button">
                         <i class="fa fa-plus"></i>
@@ -149,7 +158,7 @@
                     <i class="fa fa-money fa-5x"></i>
                   </div>
                   <div class="form-pane-text col-sm-10">
-                    <span class="form-section-title-small"><%= t :price_range %></span><br>
+                    <span class="form-section-title-small"><%= t(:price_range).capitalize %></span><br>
                     Informa a tus compradores de el rango de precios de tu Market.<br><i class="fa fa-arrow-circle-right"></i> Este apartado es meramente informativo, así que no limita las búsquedas.</div>
                   </div>
                 </div>
@@ -169,7 +178,7 @@
                       <i class="fa fa-link fa-5x"></i>
                     </div>
                     <div class="form-pane-text col-sm-10">
-                      <span class="form-section-title-small"><%= t :external_url_pro %></span><br>
+                      <span class="form-section-title-small"><%= t(:external_url_pro).capitalize %> (VIM)</span><br>
                       Añade links a tu blog, web y a tu evento de facebook para estar más contectado.</div>
                     </div>
                   </div>
@@ -184,15 +193,14 @@
                         <i class="fa fa-map-marker fa-5x"></i>
                       </div>
                       <div class="form-pane-text col-sm-10">
-                        <span class="form-section-title-small" class="form-section-title-small"><%= t :location %></span><br>
-                        Escribe tu dirección y ciudad y comprueba que aparece correctamente en el mapa!</div>
-
+                        <span class="form-section-title-small" class="form-section-title-small"><%= t(:location).capitalize %></span><br>
+                        Comprueba que aparece correctamente en el mapa</div>
                       </div>
                     </div>
                     
 
-                    <%= f.input :address, { placeholder: "Address" } %>
-                    <%= f.input :city, { class: 'cities', placeholder: "City" } %>
+                    <%= f.input :address, { placeholder: t(:address).capitalize } %>
+                    <%= f.input :city, { class: 'cities', placeholder: t(:city).capitalize } %>
                    
                     <div class="control-group">
                       <%= link_to content_tag(:i, " Update map", :class => "fa fa-refresh", :title => "Update Map", rel: 'tooltip'), "#", 
@@ -213,9 +221,9 @@
                           <i class="fa fa-ticket fa-5x"></i>
                         </div>
                         <div class="form-pane-text col-sm-10">
-                          <span class="form-section-title-small"><%= t :coupon_pro %></span><br>
-                          Para ofrecer servicos extras a tus clientes puedes emitir un cupón.
-                          <br><i class="fa fa-arrow-circle-right"></i> <%= link_to "How it works?", sell_coupon_terms_path %>
+                          <span class="form-section-title-small"><%= t(:coupon_pro).capitalize %> (VIM)</span><br>
+                          <%= t(:you_can_emit_a_coupon) %>
+                          <br><i class="fa fa-arrow-circle-right"></i> <%= link_to t(:how_it_works), sell_coupon_terms_path %>
                         </div>
                       </div>
                     </div>
@@ -229,8 +237,14 @@
             </div>
             <%= f.button :submit, class: 'btn', id: 'market-save-button' %>
           </div>
-          <%= save_and_publish_button(f, market) %>
-
+            
+            <% if params[:action] == "edit" %>
+              <%= save_and_publish_button(f, market) %>
+            <% else %>
+              <div class="center tip">
+                <%= t('market_form.remember_to_publish') %>
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -246,54 +260,41 @@ var passedDates = "";
 var passedSchedule = "";
 </script>
 
+<%= javascript_include_tag "jquery.bootstrap.wizard" %>
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
-
-
 <%= javascript_include_tag "bootstrap-datepicker/core" %>
 <%= javascript_include_tag "bootstrap-datepicker/locales/bootstrap-datepicker.es" %>
-<%= stylesheet_link_tag "bootstrap-datepicker" %>
-
 <%= javascript_include_tag "jquery.ui.slider" %>
-<%= stylesheet_link_tag "jquery.ui.slider" %>
-
 <%= javascript_include_tag "tagmanager" %>
-<%= stylesheet_link_tag  "tagmanager" %>
-
 <%= javascript_include_tag "twitter/typeahead.min" %>
-
-
 <%= javascript_include_tag "market_form" %>
 
-
 <% market.human_readable_schedule.each do |day| %> 
-
-<% if day["passed"] %>
-  <script>  
-  var day = "<%= day['day'] %>";
-  var string = "<%= day['to_string'] %>";
-  passedDates = passedDates + day + "," ;
-  passedSchedule = passedSchedule + string + ";";
-  </script>
-<% else %>
-  <script>  
-  var day = "<%= day['day'] %>";
-  var init = "<%= day['from'] %>";
-  var end =  "<%= day['to'] %>";
-  addEditableDate(day, init, end);
-  </script>
-<% end %>
-
+  <% if day["passed"] %>
+    <script>  
+    var day = "<%= day['day'] %>";
+    var string = "<%= day['to_string'] %>";
+    passedDates = passedDates + day + "," ;
+    passedSchedule = passedSchedule + string + ";";
+    </script>
+  <% else %>
+    <script>  
+    var day = "<%= day['day'] %>";
+    var init = "<%= day['from'] %>";
+    var end =  "<%= day['to'] %>";
+    addEditableDate(day, init, end);
+    </script>
+  <% end %>
 <% end %>
 
 
 <script> 
-// Error if no name is provided
 $(".simple_form").submit(function(){
  if( $("#market_name").val().length == 0 ) {
   $("#error").removeClass("hidden");
-  $("#error").html("<%= t :Market_name_cannot_be_empty %>");
+  $("#error").html("<%= t('market_form.market_name_cannot_be_empty') %>");
   return false;
-  }
+}
 else{
     try{
       var dates = collectNewDates();
@@ -311,7 +312,7 @@ $('#market_address').keypress(function(){$("#refresh_location").removeClass('hid
 $('#market_city').keypress(function(){$("#refresh_location").removeClass('hidden')});
 
 $("#discard").unbind().click(function(){
-    if(!confirm("<%= t :discard_changes %>"))
+    if(!confirm("<%= t('market_form.discard_changes') %>"))
       return false;
 });
 

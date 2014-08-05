@@ -225,7 +225,6 @@ class MarketsController < ApplicationController
       domain.publish_market params[:id] 
     else
       redirect_to market, notice: ControllerNotice.success('update', 'market')
-  end
     end
   end
 

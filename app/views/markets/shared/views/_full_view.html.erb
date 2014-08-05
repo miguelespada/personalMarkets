@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <div class="market-section-title row"><%= t :general_information %> 
+      <div class="market-section-title row"><%= t(:general_information).capitalize %> 
           <%= market.direct_edit_link("form-market-description") %></div>
       
       <div class="market-section-container row">
@@ -43,7 +43,7 @@
     
       <%= market.coupon_section if market.pro?  %>
       
-      <div class="market-section-title row"><%= t :location %> <%= market.direct_edit_link("form-market-location") %> </div>
+      <div class="market-section-title row"><%= t(:location).capitalize %> <%= market.direct_edit_link("form-market-location") %> </div>
       <div class="market-section-container row">
         
         <div class="market-address-detail "> <%= market.address_and_city %> </div>

@@ -16,11 +16,11 @@
 
     <li class="form-group search-filter-item" id="search-range-item">
       <%= select_tag(:range, 
-        options_for_select({t(:all_time) => "All", 
-                            t(:today) => "Today", 
-                            t(:this_week) => "This week", 
-                            t(:this_month) => "This month", 
-                            t(:next_week) => "Next week"},
+        options_for_select({t(:all_time).capitalize => "All", 
+                            t(:today).capitalize => "Today", 
+                            t(:this_week).capitalize => "This week", 
+                            t(:this_month).capitalize=> "This month", 
+                            t(:next_week).capitalize => "Next week"},
         :selected => session[:range]),
         class: "form-control" ) %>
     </li>
@@ -41,7 +41,7 @@
     </li>
 
     <li class="form-group search-filter-item hidden" id="my-location-item">
-      <%= link_to content_tag(:i, content_tag(:span, " " + t(:near_me), :class => "hidden-xs"), 
+      <%= link_to content_tag(:i, content_tag(:span, " " + t(:near_me).capitalize, :class => "hidden-xs"), 
         :class => "fa fa-crosshairs ", :title => "Go to my location", rel: 'tooltip'), "#", 
         :class=>  "btn btn-default btn-my-location-search", 
         :id=>"my_location" %>

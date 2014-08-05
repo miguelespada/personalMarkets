@@ -8,13 +8,7 @@ module MarketsHelper
   end
 
   def save_and_publish_button(form, market)
-    if params[:action] == "edit"
-      form.button :submit, "Update Market and Publish", class: 'btn btn-info', id: 'save-and-publish-button'
-      else
-         '<div class="center tip"><i class="fa fa-arrow-circle-right"></i> Recuerda que una vez guardado, 
-            deberas "Publicar" tu Market para que sea visible!
-            </br> <i class="fa fa-arrow-circle-right"></i> Una vez guardado podrás modificar cualquiera de los campos.</div>'.html_safe
-    end
+    form.button :submit, I18n.t("market_form.update_and_publish_market").titleize, class: 'btn btn-info', id: 'save-and-publish-button'
   end
 
   def market_calendar(market)

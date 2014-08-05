@@ -15,14 +15,14 @@
         </div>
       </div>
 
-      <div class="market-list-section-title"><%= t :Schedule%></div>
+      <div class="market-list-section-title"><%= t :schedule %></div>
       <div class="market-list-section-container short-view-coupon-section">
         <div class="short-view-coupon-inner poster-info-inner">
           <%= render partial: 'markets/shared/utils/schedule', locals: { market: market } %>
         </div>
       </div>
 
-      <div class="market-list-section-title"> <%= t :location %> </div>
+      <div class="market-list-section-title"> <%= t(:location).capitalize %> </div>
       <div class="market-section-container row">
         <div class="market-address-detail "> <%= market.address_and_city %> </div>
         <div class="print-hide"> <%= market.location %> </div>
