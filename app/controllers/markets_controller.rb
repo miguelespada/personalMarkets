@@ -339,11 +339,31 @@ class MarketsController < ApplicationController
     end
 
     def markers(markets)
-      markets.collect{|market| market.to_marker(view_context.tooltip(market), market_path(market))} if markets.count > 0
+      markets.collect{|market| to_marker(market)} if markets.count > 0
     end
 
     def publish?
       params["commit"].include?("Publish")
+    end
+
+    def to_marker(market)
+      url = market_path(market)
+      content = view_context.tooltip(market) 
+
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [market.longitude, market.latitude]
+        },
+        properties: {
+          content: content,
+          :'marker-color' => market.category.color,
+          :'marker-symbol' => 'circle',
+          :'marker-size' => 'medium',
+          url: url
+        }
+      }
     end
 
 end

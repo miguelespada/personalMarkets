@@ -1,10 +1,10 @@
 
-<div class="container main-container">
+<div id="printable" class="container main-container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default panel-table panel-table-last" id="market_<%= market.id %>">
     <%= render partial: 'markets/shared/utils/poster_title', locals: { market: market } %>
-      <p class="center market-owner-detail ">
+      <p class="center market-owner-detail print-hide">
        <%= market.owner %> 
       </p>
     <div class="market-poster-container row">
@@ -25,9 +25,24 @@
       <div class="market-list-section-title"> <%= t :location %> </div>
       <div class="market-section-container row">
         <div class="market-address-detail "> <%= market.address_and_city %> </div>
-        <%= market.location %>
+        <div class="print-hide"> <%= market.location %> </div>
       </div>
-      <div class="center"><%= back_link %></div>
+      <div class="center print-hide"><%= back_link %></div>
+      <div class="center print-hide">
+        <button type="button" onclick="window.print();" class="btn btn-default">
+          <i class="fa fa-print"></i> Print
+        </button>
+      </div>
     </div>
   </div>
 </div>
+
+<style>
+  @media print{
+    body * { visibility: hidden; }
+    #printable * { visibility: visible; }
+    .print-hide{
+      display:none;
+    }
+  }
+</style>

@@ -20,8 +20,7 @@
 </div>
 
 <div class="form-group">
-  <p>Marker.png</p>
-  <%= f.input :marker, as: :attachinary %>
+  <%= f.input :color, input_html: { class: 'category-color colorpicker', placeholder: "Hex color ex. #673423", :required => true } %>
 </div>
 
 <div class="form-group">
@@ -38,3 +37,9 @@
   <p>Icon.png (maximun size 42 x 42 px)</p>
   <%= f.input :glyph_img, as: :attachinary %>
 </div>
+
+<script>
+$( document ).ready(function() {
+  $('.colorpicker').colorpicker();
+});
+</script>

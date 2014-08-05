@@ -9,13 +9,11 @@ class Category
   field :english, type: String
   field :style, type: String
   field :glyph, type: String
+  field :color, type: String
   field :order, type: Integer
 
   has_attachment  :glyph_img, accept: [:png]
   accepts_nested_attributes_for :glyph_img
-
-  has_attachment  :marker, accept: [:png]
-  accepts_nested_attributes_for :marker
 
   has_one :photography, class_name: "Photo", as: :photographic, autobuild: true, dependent: :destroy
   accepts_nested_attributes_for :photography
@@ -37,7 +35,7 @@ class Category
   def self.icon
     "fa-bars"
   end
-  
+
   private
 
   def markets_in_category?
