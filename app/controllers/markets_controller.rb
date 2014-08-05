@@ -105,7 +105,7 @@ class MarketsController < ApplicationController
   def delete_succeeded
     respond_to do |format|
       format.html { redirect_to  user_markets_path(@user), 
-                      notice: "Market successfully deleted."}
+                      notice: ControllerNotice.success('delete', 'market')}
     end
   end
 
@@ -169,7 +169,7 @@ class MarketsController < ApplicationController
     if publish
       domain.publish_market market.public_id
     else
-      redirect_to market, notice: 'Market was successfully created.'
+      redirect_to market, notice: ControllerNotice.success('create', 'market')
     end
   end
 
@@ -184,7 +184,7 @@ class MarketsController < ApplicationController
   end
 
   def archive_succeeded market
-    redirect_to market, notice: "Market successfully archived."
+    redirect_to market, notice: ControllerNotice.success('archive', 'market')
   end
 
   def unpublish
@@ -192,7 +192,7 @@ class MarketsController < ApplicationController
   end
 
   def unpublish_succeeded market
-    redirect_to market, notice: "Market successfully unpublished."
+    redirect_to market, notice: ControllerNotice.success('unpublish', 'market')
   end
 
   def publish
@@ -216,7 +216,7 @@ class MarketsController < ApplicationController
   end
 
   def publish_succeeded market
-    redirect_to market, notice: "Market successfully published."
+    redirect_to market, notice: ControllerNotice.success('publish', 'market')
   end
 
   def published_succeeded markets
@@ -232,7 +232,8 @@ class MarketsController < ApplicationController
     if publish
       domain.publish_market params[:id] 
     else
-      redirect_to market, notice: "Market successfully updated."
+      redirect_to market, notice: ControllerNotice.success('update', 'market')
+  end
     end
   end
 
@@ -259,12 +260,12 @@ class MarketsController < ApplicationController
     pro_payment = MarketProPayment.new Market.find(params[:id]), payment
 
     market = domain.make_pro params[:id], pro_payment
-    redirect_to market, notice: "Your market is now VIM."
+    redirect_to market, notice: ControllerNotice.success('VIM', 'market')
   end
 
   def force_make_pro
     market = domain.force_make_pro params[:market_id]
-    redirect_to market, notice: "The market is now VIM."
+    redirect_to market, notice: ControllerNotice.success('VIM', 'market')
   end
 
   private
