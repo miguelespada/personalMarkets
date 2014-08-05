@@ -1,6 +1,5 @@
 //= require mapbox
 
-
 var PM = {};
 
 PM.initializeSmallMap = function() {
@@ -32,7 +31,7 @@ PM._coordinatesSet = function(latitude, longitude) {
 PM.addMarker = function (latlng){
   PM.marker = L.marker(latlng,{
     icon: L.mapbox.marker.icon(
-      {'marker-color': '#1D577D',
+      {'marker-color': colorDef,
        'marker-symbol' : 'circle',
        'marker-size' : 'medium'}),
     draggable: false
