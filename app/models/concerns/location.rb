@@ -17,8 +17,8 @@ module Location
         },
         properties: {
           content: content,
-          :'marker-color' => '#aaa',
-          :'marker-symbol' => 'shop',
+          :'marker-color' => '#1D577D',
+          :'marker-symbol' => 'circle',
           :'marker-size' => 'medium',
           url: url
         }

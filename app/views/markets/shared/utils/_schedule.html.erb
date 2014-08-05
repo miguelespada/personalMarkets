@@ -1,19 +1,23 @@
 <%= stylesheet_link_tag "calendar", media: "all" %>
 
 <div class="col-md-6">
-  <%= market_calendar(market) %>
+  <div class="center">
+    <%= market_calendar(market) %>
+  </div>
 </div>
 
 <div class="col-md-6">
-<% prevDate = nil %>
-<% market.human_readable_schedule.each do |day| %>
-    <% if prevDate && prevDate == day["date"] %>
-      <%= append_date(day) %> 
-    <% else %>
-       </br>  <%= format_date(day) %> 
+  <div class="center">
+    <% prevDate = nil %>
+    <% market.human_readable_schedule.each do |day| %>
+        <% if prevDate && prevDate == day["date"] %>
+          <%= append_date(day) %> 
+        <% else %>
+           </br>  <%= format_date(day) %> 
+        <% end %>
+        <%  prevDate = day["date"] %>
     <% end %>
-    <%  prevDate = day["date"] %>
-<% end %>
+  </div>
 </div>
 
 <script>
