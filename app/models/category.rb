@@ -35,7 +35,7 @@ class Category
   def self.icon
     "fa-bars"
   end
-  
+
   private
 
   def markets_in_category?
