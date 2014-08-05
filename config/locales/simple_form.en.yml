@@ -76,10 +76,20 @@ en:
         tags: "Tags"
     error_notification:
       default_message: "Please review the problems below:"
-  wish_create_sucess: "Wish was successfully created."
-  wish_update_sucess: "Wish was successfully updated."
-  wish_delete_sucess: "Wish successfully deleted."
-  wish_delete_fail: "Cannot delete wish."
+  market_recommended: "Market recommended!"
+  wish_create_sucess: "Your wish was successfully created."
+  wish_update_sucess: "Your wish was successfully updated."
+  wish_delete_sucess: "Your wish successfully deleted."
+  wish_delete_fail: "Your wish cannot be delete."
+  your: "Your"
+  was: "was successfully"
+  successfully: ""
+  create: "created"
+  update: "updated"
+  delete: "deleted"
+  fail: "cannot be"
+  wish: "wish"
+
     # Labels and hints examples
     # labels:
     #   defaults:

@@ -11,7 +11,6 @@ class WishesController < ApplicationController
     end
   end
 
-
   def gallery
     @wishes = Wish.all.desc(:created_at).page(params[:page]).per(1)
     render :layout => !request.xhr?
@@ -38,7 +37,7 @@ class WishesController < ApplicationController
   def recommend
     market = Market.find(params[:market_id])
     @wish.recommend(market)
-    redirect_to :back, notice: "Market recommended."  
+    redirect_to :back, notice: t(:market_recommended) 
   end 
 
   def edit
@@ -48,12 +47,11 @@ class WishesController < ApplicationController
   def create
     @wish = Wish.new(wish_params)
     @wish.user = current_user
-    current_user.wishes << @wish
     respond_to do |format|
       if @wish.save
-        format.html { redirect_to user_wishes_path(current_user), notice: t(:wish_create_sucess) }
+        format.html { redirect_to user_wishes_path(current_user), notice: ControllerNotice.success('create', 'wish') }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new',flash: { error:  ControllerNotice.fail('create', 'wish')  } }
       end
     end
   end
@@ -61,9 +59,9 @@ class WishesController < ApplicationController
   def update
     respond_to do |format|
       if @wish.update(wish_params)
-        format.html { redirect_to user_wishes_path(current_user), notice: t(:wish_update_sucess) }
+        format.html { redirect_to user_wishes_path(current_user), notice: ControllerNotice.success('update', 'wish') }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'edit', flash: { error:  ControllerNotice.fail('update', 'wish') } }
       end
     end
   end
@@ -71,16 +69,16 @@ class WishesController < ApplicationController
   def destroy
     respond_to do |format|
       if @wish.destroy
-        format.html { redirect_to :back, notice: t(:wish_delete_sucess) }
+        format.html { redirect_to :back, notice: ControllerNotice.success('delete', 'wish') }
       else
-        format.html { redirect_to :back, flash: { error: t(:wish_delete_sucess) }}
+        format.html { redirect_to :back, flash: { error: ControllerNotice.fail('delete', 'wish') } }
       end
     end
   end
 
   private
     def wish_params
-      params.require(:wish).permit(:description, :tags, "hidden-wish",   photography_attributes: [:photo])
+      params.require(:wish).permit(:description, :tags, "hidden-wish",   photography_attributes: [:id, :photo])
     end
 
     def load_user

@@ -77,6 +77,6 @@ class SpecialLocationsController < ApplicationController
 
   private
     def special_location_params
-      params.require(:special_location).permit(:name, :address, :city, :latitude, :longitude, :important, photography_attributes: [:photo])
+      params.require(:special_location).permit(:name, :address, :city, :latitude, :longitude, :important, photography_attributes: [:id, :photo])
     end
 end

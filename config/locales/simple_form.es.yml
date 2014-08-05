@@ -102,6 +102,14 @@ es:
   wish_update_sucess: "Tu deseo se ha modificado correctamente."
   wish_delete_sucess: "Tu deseo se ha borrado correctamente."
   wish_delete_fail: "El deseo no puede ser borrado."
+  your: "Tu"
+  was: "ha sido"
+  successfully: "correctamente"
+  fail: "no puede ser"
+  wish: "deseo"
+  update: "modificado"
+  delete: "borrado"
+  market_recommended: "Market recomendado!"
   mongoid:
     errors:
       models:
