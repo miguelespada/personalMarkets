@@ -190,7 +190,7 @@ class MarketDecorator < Draper::Decorator
 
   def statistics_link
     if can? :statistics, market
-      link_to content_tag(:i, " Statistics", :class => "fa fa-sitemap"), show_market_statistic_path(market), class: "statistics-icon market-action market-action-icon btn btn-default btn-market-action-bar"
+      link_to content_tag(:i, content_tag(:span, " Stats", :class => "hidden-xs"), :class => "fa fa-sitemap"), show_market_statistic_path(market), class: "statistics-icon market-action market-action-icon btn btn-default btn-market-action-bar"
     end
   end
 
@@ -198,9 +198,9 @@ class MarketDecorator < Draper::Decorator
     return if market.archived?
     if can? :like, market
       if !current_user.favorited?(market)
-        link_to(content_tag(:i, " Like", :class => "fa fa-heart"), like_path(market), class: "like-icon market-action btn btn-default market-action-icon btn-market-action-bar")
+        link_to(content_tag(:i,  content_tag(:span, " Like", :class => "hidden-xs"), :class => "fa fa-heart"), like_path(market), class: "like-icon market-action btn btn-default market-action-icon btn-market-action-bar")
       else  
-        link_to(content_tag(:i, " Unlike", :class => "fa fa-heart-o"), unlike_path(market), class: "unlike-icon market-action btn btn-default market-action-icon btn-market-action-bar")
+        link_to(content_tag(:i, content_tag(:span, " Unlike", :class => "hidden-xs") , :class => "fa fa-heart-o"), unlike_path(market), class: "unlike-icon market-action btn btn-default market-action-icon btn-market-action-bar")
       end
     end
   rescue
@@ -221,21 +221,21 @@ class MarketDecorator < Draper::Decorator
   def edit_link
     return if market.archived?
     if can? :edit, market 
-      link_to(content_tag(:i, " Edit", :class => "fa fa-pencil"), edit_user_market_path(market.user, market), 
+      link_to(content_tag(:i, content_tag(:span, " Edit", :class => "hidden-xs"), :class => "fa fa-pencil"), edit_user_market_path(market.user, market), 
         :class => "edit-icon market-action market-action-icon btn btn-default btn-market-action-bar")
     end
   end
 
   def poster_link
     return if market.archived?
-    link_to(content_tag(:i, " Poster", :class => "fa fa-print"), market_poster_path(market), { method: :get, class: "btn btn-default poster poster-icon market-action  btn-market-action-bar" })
+    link_to(content_tag(:i, content_tag(:span, " Poster", :class => "hidden-xs"), :class => "fa fa-print"), market_poster_path(market), { method: :get, class: "btn btn-default poster poster-icon market-action  btn-market-action-bar" })
   end
 
   def delete_link
     return if cannot? :delete, market 
     return if market.archived?
     return if market.has_been_published? && !current_user.has_role?(:admin)
-    link_to(content_tag(:i, " Delete", :class => "fa fa-trash-o"), user_market_path(market.user, market), method: :delete, 
+    link_to(content_tag(:i, content_tag(:span, " Delete", :class => "hidden-xs"), :class => "fa fa-trash-o"), user_market_path(market.user, market), method: :delete, 
         class: "delete-icon market-action market-action-icon btn btn-default btn-market-action-bar")
   rescue
   end
@@ -244,7 +244,7 @@ class MarketDecorator < Draper::Decorator
     return if market.archived?
     return if !market.has_been_published?
     if can? :archive, market
-      link_to content_tag(:i, " Archive", :class => "fa fa-undo"), market_archive_path(market), { method: :post, class: "archive-icon market-action btn btn-default market-action-icon btn-market-action-bar"  }
+      link_to content_tag(:i, content_tag(:span, " Archive", :class => "hidden-xs"), :class => "fa fa-undo"), market_archive_path(market), { method: :post, class: "archive-icon market-action btn btn-default market-action-icon btn-market-action-bar"  }
     end
   end
 
@@ -259,9 +259,9 @@ class MarketDecorator < Draper::Decorator
   def pro_link
     return if market.archived?
     if can? :force_make_pro, market 
-      link_to content_tag(:i, " Free VIM", :class => "fa fa-plus-square"), market_force_make_pro_path(market), {method: :post, class: "force-pro-icon market-action  btn btn-default market-action-icon btn-market-action-bar" } unless market.pro?
+      link_to content_tag(:i, content_tag(:span, " Free VIM", :class => "hidden-xs"), :class => "fa fa-plus-square"), market_force_make_pro_path(market), {method: :post, class: "force-pro-icon market-action  btn btn-default market-action-icon btn-market-action-bar" } unless market.pro?
     elsif can? :edit, market
-      link_to content_tag(:i, " Go VIM", :class => "fa fa-plus-square"), market_make_pro_payment_path(market), class: "pro-icon market-action market-action-icon btn btn-default btn-market-action-bar" unless market.pro?
+      link_to content_tag(:i, content_tag(:span, " Go VIM", :class => "hidden-xs"), :class => "fa fa-plus-square"), market_make_pro_payment_path(market), class: "pro-icon market-action market-action-icon btn btn-default btn-market-action-bar" unless market.pro?
     end
   end
 
@@ -301,7 +301,7 @@ class MarketDecorator < Draper::Decorator
   def transactions_link
     if market.has_coupon?
      if can? :edit, market
-      link_to(content_tag(:i, " Coupons", :class => "fa fa-ticket"), sold_coupons_by_market_path(market), 
+      link_to(content_tag(:i, content_tag(:span, " Coupons", :class => "hidden-xs"), :class => "fa fa-ticket"), sold_coupons_by_market_path(market), 
         :class => "transactions-icon market-action btn btn-default market-action-icon btn-market-action-bar")
       end
     end
