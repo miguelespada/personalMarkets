@@ -51,7 +51,7 @@ class WishesController < ApplicationController
       if @wish.save
         format.html { redirect_to user_wishes_path(current_user), notice: ControllerNotice.success('create', 'wish') }
       else
-        format.html { render action: 'new',flash: { error:  ControllerNotice.fail('create', 'wish')  } }
+        format.html { render action: 'new', flash: { error:  ControllerNotice.fail('create', 'wish')  } }
       end
     end
   end
