@@ -218,6 +218,13 @@ class MarketDecorator < Draper::Decorator
   rescue
   end
 
+  def discard_button
+    link_to content_tag(:i, content_tag(:span, " Discard", :class => "hidden-xs"), 
+      :class => "fa fa-undo", :title => "Discard", rel: 'tooltip'), self, 
+      :class=>  "btn btn-default", 
+      :id=>"discard" 
+  end
+
   def edit_link
     return if market.archived?
     if can? :edit, market 

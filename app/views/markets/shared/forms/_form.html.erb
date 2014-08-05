@@ -6,7 +6,7 @@
 <div id="error" class="alert alert-danger flash hidden"></div>
 
 <div class="panel panel-default panel-table">
-  <div class="panel-heading table-title"> <%= discard_button(market) %>
+  <div class="panel-heading table-title"> <%= market.discard_button if params[:action] == "edit" %>
     <%= action %>  Market <span  id="progress"> </span>
   </div>
   <div id="wizard" class="row">
