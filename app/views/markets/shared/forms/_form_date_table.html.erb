@@ -1,0 +1,50 @@
+<div id="passed-schedules">
+</div>
+
+<div class="table-container">
+  <table class="table table-striped" id="date-schedule-table">
+    <tr>
+      <th><%= t(:passed_dates).capitalize %></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% market.human_readable_schedule.each do |day| %> 
+    <% if day["passed"] %>
+    <tr>
+      <td> <%= format_date(day) %> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <% end %>
+    <% end %>
+    <tr>
+      <th><%= t(:date).capitalize %> </th>
+      <th><%= t(:schedule).capitalize %></th>
+      <th>
+        <button class="btn btn-default pull-right btn-xs" id="button-add-date" type="button">
+          <i class="fa fa-plus"></i>
+        </button>
+      </th>
+    </tr>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+
+<% market.human_readable_schedule.each do |day| %> 
+  <% if day["passed"] %>
+    <script>  
+    var day = "<%= day['day'] %>";
+    var string = "<%= day['to_string'] %>";
+    passedDates = passedDates + day + "," ;
+    passedSchedule = passedSchedule + string + ";";
+    </script>
+  <% else %>
+    <script>  
+    var day = "<%= day['day'] %>";
+    var init = "<%= day['from'] %>";
+    var end =  "<%= day['to'] %>";
+    addEditableDate(day, init, end);
+    </script>
+  <% end %>
+<% end %>
