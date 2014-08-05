@@ -98,10 +98,16 @@ es:
         tags: "Etiquetas"
     error_notification:
       default_message: "Por favor, revise los problemas abajo:"
-  wish_create_sucess: "Tu deseo se ha añadido correctamente."
-  wish_update_sucess: "Tu deseo se ha modificado correctamente."
-  wish_delete_sucess: "Tu deseo se ha borrado correctamente."
-  wish_delete_fail: "El deseo no puede ser borrado."
+  your: "Tu"
+  was: "ha sido"
+  successfully: "correctamente"
+  fail: "no puede ser"
+  update: "modificado"
+  delete: "borrado"
+  create: "creado"
+  market_recommended: "Market recomendado!"
+  wish: "deseo"
+  bargain: "ganga"
   mongoid:
     errors:
       models:

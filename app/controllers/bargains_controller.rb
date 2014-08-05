@@ -40,12 +40,11 @@ class BargainsController < ApplicationController
   def create
     @bargain = Bargain.new(bargain_params)
     @bargain.user = current_user
-    current_user.bargains << @bargain
     respond_to do |format|
       if @bargain.save
-        format.html { redirect_to user_bargains_path(current_user), notice: 'Bargain was successfully created.' }
+        format.html { redirect_to user_bargains_path(current_user), notice: ControllerNotice.success('create', 'bargain')  }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new', flash: { error:  ControllerNotice.fail('create', 'bargain') }
       end
     end
   end
@@ -53,9 +52,9 @@ class BargainsController < ApplicationController
   def update
     respond_to do |format|
       if @bargain.update(bargain_params)
-        format.html { redirect_to user_bargains_path(current_user), notice: 'Bargain was successfully updated.' }
+        format.html { redirect_to user_bargains_path(current_user), notice: ControllerNotice.success('update', 'bargain')  }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'edit', flash: { error:  ControllerNotice.fail('update', 'bargain') }
       end
     end
   end
@@ -64,10 +63,10 @@ class BargainsController < ApplicationController
     respond_to do |format|
       if @bargain.destroy
         format.html { redirect_to user_bargains_path(current_user),
-                      notice: "Bargain successfully deleted." }
+                      notice: ControllerNotice.success('delete', 'bargain')  }
       else
         format.html { redirect_to user_bargains_path(current_user),
-                      flash: { error: "Cannot delete bargain." }}
+                      flash: { error:  ControllerNotice.fail('delete', 'bargain')}
       end
     end
   end
