@@ -1,8 +1,14 @@
 <div class="col-md-4"> 
-    <div class="table-photo-container">
-      <%= photo(entity.photography, 120) %>
-      <%= render partial: 'photos/utils/actions', locals: { photo: entity.photography} %>
-    </div>
+  <div class="table-photo-container">
+    <%= photo(entity.photography, 120) %>
+    <%= render partial: 'photos/utils/actions', locals: { photo: entity.photography} %>
+  </div>
 </div>
-<div class="col-md-2"> <%= entity.description %> </div>
-<div class="col-md-2"> <%= entity.price %> € </div>
+
+<div class="col-md-2"> 
+	<%= entity.description %> 
+</div>
+
+<div class="col-md-2"> 
+	<%= entity.price %> € 
+</div>

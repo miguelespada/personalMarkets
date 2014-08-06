@@ -5,9 +5,9 @@
     <div class="col-md-10 col-md-offset-1">
       <div class="panel panel-default panel-table panel-table-last panel-bargain-show">
         <div class="panel-heading table-title center">
-         <%= bargain.description %> <br>
-         <h5>
-         by: <%= link_to bargain.user.name, bargain.user %>
+          <%= bargain.description %> <br>
+          <h5>
+            by: <%= link_to bargain.user.name, bargain.user %>
           </h5>
         </div>
         <div>
@@ -16,7 +16,7 @@
             <%= render "bargains/utils/price_badge", bargain: bargain %>
           </div>
           <div class="center">
-          <%= render "bargains/utils/facebook", bargain: bargain %>
+            <%= render "bargains/utils/facebook", bargain: bargain %>
           </div>
         </div>
       </div>

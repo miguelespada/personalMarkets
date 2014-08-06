@@ -1,9 +1,7 @@
-<%= page_title("Buy Coupon", Coupon.icon) %>
-
+<%= page_title(t(:buy_coupon).capitalize, Coupon.icon) %>
 <%= render partial: "coupons/coupon", locals: {coupon: @coupon, buy: true } %>
+<br>
 
-<br>
-<br>
 <div class = "center">
   <%= back_link %>
 </div>

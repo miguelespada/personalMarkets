@@ -1,4 +1,6 @@
 <div class="panel panel-default panel-table out_coupons">
-  <div class="panel-heading table-title">Your coupons</div>
+  <div class="panel-heading table-title">
+    <%= t(:your_coupons) %> 
+  </div>
   <%= render "coupons/transactions/transactions", transactions: @transactions %>
 </div>

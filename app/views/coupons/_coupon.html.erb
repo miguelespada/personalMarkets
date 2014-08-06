@@ -3,17 +3,17 @@
     <%= photo(coupon.photography, 300) %>
     <%= render partial: 'photos/utils/actions', locals: { photo: coupon.photography} %>
   </div>
-  <div class="col-md-6 col-md-offset-1">
 
-      <%= render "coupons/views/description", coupon: coupon %>
-    <strong> <%= t(:available).capitalize %>: </strong> <span> <%= coupon.available %> </span> <br>
-  
+  <div class="col-md-6 col-md-offset-1">
+    <%= render "coupons/views/description", coupon: coupon %>
+    <strong> <%= t(:available).capitalize %>: </strong> 
+    <span> <%= coupon.available %> </span> <br>
+
     <% if buy %>
       <%= render "coupons/forms/buy_coupon", coupon: @coupon %>
     <% else %>
       <%= coupon.market.decorate.buy_coupon_link %>
     <% end %>
-
   </div>
 </div>
   

@@ -30,7 +30,7 @@
         <li class="map-link">
           <%= link_to map_path do %>
             <i class="fa fa-globe"></i>
-            <span id="map-link-text" class="hidden-sm hidden-md"> &nbsp; <%= t(:map).capitalize %> </span>
+            <span id="map-link-text" class="hidden-sm hidden-md">&nbsp;<%= t(:map).capitalize %> </span>
           <% end %>
         </li>
          
@@ -51,15 +51,6 @@
   @media (min-width: 768px){
     .topbar-right > .footer-collapse{
       display:none;
-    }
-  }
-  @media (max-width: 767px), (min-width: 1024px){
-   
-    #explore-link-text:after{
-      content:"\00a0 <%= t(:explore).capitalize %>";
-    }
-    #search-link-text:after{
-      content:"\00a0 <%= t(:search).capitalize %>...";
     }
   }
 </style>

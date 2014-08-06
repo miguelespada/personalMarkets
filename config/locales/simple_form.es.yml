@@ -48,7 +48,7 @@ es:
   schedule: "Horarios"
   external_url: "Link"
   social_link: "Enlace a redes sociales"
-  "Contact us": "Contáctanos"
+  contact_us: "contáctanos"
   see_more_markets: "Ver más markets..."
   see_more_categories: "Ver más categorias..."
   see_more_hotspots: "Ver más vecindarios..."
@@ -187,3 +187,21 @@ es:
   create_coupon_to_add_extra_services: Crea cupones para ofrecer servicios extra
   go_vim_to_offer_coupons: Go VIM para poder crear cupones
   market_has_no_coupons: Este Market no tiene cupones
+  contact_form: Formulario de contacto
+  email: email
+  subject: motivo
+  your_message: Tu mensaje
+  send: enviar
+  how_many_coupons_would_you_like_to_buy: ¿Cuántos cupones quieres comprar?
+  i_accept_the: Acepto las
+  terms_of_use: condiciones de uso.
+  this_coupon_is_sold_out: El cupón ya está agotado.
+  transaction_id: ID de transacción
+  buyer: comprador
+  seller: vendedor
+  locator: localizador
+  your_coupons: Tus cupones
+  for_the_service_offered_with_the_coupon: "Deberás darle este número al dueño del mercado a cambio del servicio ofrecido con el cupón, así en caso de incidencia podremos comprobar que la transacción se ha realizado correctamente."
+  sold_coupons: Cupones vendidos
+  payment_details: Detalles del pago
+  pay: pagar

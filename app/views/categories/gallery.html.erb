@@ -6,15 +6,15 @@
 
   <div class = "row col-md-offset-1">
     <% @categories.each do |category| %>
-        <div class = "col-md-1">
-          <div class = "center category_gallery_featured_photo" data-name="<%= category.slug %>">
-            <%= cl_image_tag(category.glyph_img.path, 
-              :width => 50, :height => 50, :crop => :fill) if category.glyph_img.present? %>
-            <div>
-              <%= intl_name(category) %>
-            </div>
+      <div class = "col-md-1">
+        <div class = "center category_gallery_featured_photo" data-name="<%= category.slug %>">
+          <%= cl_image_tag(category.glyph_img.path, 
+            :width => 50, :height => 50, :crop => :fill) if category.glyph_img.present? %>
+          <div>
+            <%= intl_name(category) %>
           </div>
         </div>
+      </div>
     <% end %>
   </div>
 </div>
