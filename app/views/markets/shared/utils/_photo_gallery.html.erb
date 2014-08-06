@@ -1,11 +1,15 @@
-<div class="market-section-title row"> <%= t :Gallery %> <%= market.direct_edit_link("form-market-photos") %></div>
+<div class="market-section-title row"> 
+  <%= t(:gallery).capitalize %>
+  <%= market.direct_edit_link("form-market-photos") %>
+</div>
+
 <div class="market-section-container row">
   <% market.gallery.photographies.each do |photo| %>
-  <% if photo.present? %>
-    <div class = "col-md-4 market-photo">
+    <% if photo.present? %>
+      <div class = "col-md-4 market-photo">
         <%= photo(photo, 300) %>
         <%= render partial: 'photos/utils/actions', locals: { photo: photo, delete: true} %>
       </div>
-  <% end %>
+    <% end %>
   <% end %>
 </div>

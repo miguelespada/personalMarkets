@@ -27,7 +27,7 @@
         </div>
       </div>
 
-       <div class="market-section-title row"><%= t :schedule %> 
+       <div class="market-section-title row"><%= t(:schedule).capitalize %> 
         <%= market.direct_edit_link("form-market-date ") %></div>
       <div class="market-section-container row">
         <%= render partial: 'markets/shared/utils/schedule', locals: { market: market } %>
@@ -50,7 +50,7 @@
         <%= market.location %>
       </div>
 
-      <div class="market-section-title row facebook-section"><%= t :comments_and_share %></div>
+      <div class="market-section-title row facebook-section"><%= t(:comments_and_share).capitalize %></div>
       <div class="market-section-container row social-container facebook-section">
         <%= render partial: 'markets/shared/utils/facebook_comments', locals: { market: market } %>
       </div>

@@ -1,14 +1,16 @@
 <% if can?(:manage, market) %>
+
   <%= stylesheet_link_tag 'market-quality'%>
 
-  <div id="market-quality" class="market-section-title row"><%= t :Market_quality %>
-    <h6><%= t :private_section %></h6>
+  <div id="market-quality" class="market-section-title row">
+    <%= t(:market_quality).capitalize %>
+    <h6><%= t(:private_section).capitalize %></h6>
   </div>
 
   <% if market.publicable? %>
     <h1> 
       <%= market.publish_icon_link %>
-      <%= t(:Publish) %>
+      <%= t(:publish) %>
     </h1>
   <% end %>
 
@@ -16,10 +18,12 @@
   <div class="market-section-container row">
     <div class="quality-section">
         <% market.market_quality do |field, quality| %>
+
             <div class="col-md-3  col-sm-offset-3 quality-line quality-title-<%= quality["value"] %>">
               <span class="quality-item quality-item-<%= quality["value"] %>"></span>
-              &nbsp;&nbsp;<%= t(field.titleize) %>
+              &nbsp;&nbsp;<%= t(field).capitalize %>
             </div>
+            
             <div class="col-md-6 quality-detail-line quality-line-<%= quality["value"] %>">
               <span><%= quality["msg"] %></span>
             </div>

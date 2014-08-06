@@ -9,12 +9,12 @@
 
 <script>
   $(".archive-icon").unbind().click(function(){
-    if(!confirm("<%= t :action_not_reversible %>"))
+    if(!confirm("<%= t(:action_not_reversible) %>"))
       return false;
   });
 
   $(".delete-icon").unbind().click(function(){
-    if(!confirm("<%= t :action_not_reversible %>"))
+    if(!confirm("<%= t(:action_not_reversible) %>"))
       return false;
   });
 </script>

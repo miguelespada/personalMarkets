@@ -9,7 +9,7 @@
        <%= market.owner %> 
       </p>
     <div class="market-poster-container row">
-      <div class="market-list-section-title"> <%= t :QR_Code %></div>
+      <div class="market-list-section-title"> <%= t(:QR_Code) %></div>
       <div class="market-list-section-container short-view-coupon-section">
         <div class="short-view-coupon-inner">
           <%= render partial: 'markets/shared/utils/qr_code', locals: { market: market } %>

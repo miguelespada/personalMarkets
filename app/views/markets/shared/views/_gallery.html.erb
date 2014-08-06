@@ -1,7 +1,6 @@
 
 <div class = "market_gallery row ">
 
-    
   <% markets.each do |market| %>
     <% market = market.decorate %>
     <%= content_tag_for(:tr, market) do %>
@@ -14,12 +13,13 @@
               <span id="market-badge-text"></span>
             </div>
           </div>
-        <%= link_to market do %>
+          <%= link_to market do %>
           <%= market.market_featured_photo_filtered(300) %>
 
           <div class = "market_name_label">
             <span><%= market.formatted_market_name %></span>
           </div>
+
           <div class = "market_description_label">
             <span><%= market.description %></span>
           </div>

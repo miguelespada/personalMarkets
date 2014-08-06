@@ -1,6 +1,9 @@
-
 <% if market.gallery.size > 0 %>
-  <div class="market-section-title row">Slideshow <%= market.direct_edit_link("form-market-photos") %></div>
+  <div class="market-section-title row">
+    <%= t(:slideshow).capitalize %>
+    <%= market.direct_edit_link("form-market-photos") %>
+  </div>
+
   <div class="market-section-container row photo-gallery-container">
   	<div class="market-photos-slideshow-container">
   		<div id="carousel-container-market-photo-gallery" class="carousel slide photo-gallery" data-ride="carousel">
@@ -36,4 +39,5 @@
   	$(".item:first").addClass("active");
   	$(".market-photo-gallery-carousel-inner>.item:first").addClass("active");
   </script>
+
 <% end %>

@@ -1,13 +1,13 @@
 <div class="item">
 	<%= content_tag_for(:tr, market) do %>
-    	<%= link_to market do %>
-    		<%= photo(market.featured, 300)%>
-    		<div class = "market_name_label">
-            <span><%= market.formatted_market_name %></span>
-          </div>
-          <div class = "market_description_label">
-            <span><%= market.description %></span>
-          </div>
-    	<% end %>
-    <% end %> 
+    <%= link_to market do %>
+    	<%= photo(market.featured, 300)%>
+    	<div class = "market_name_label">
+        <span><%= market.formatted_market_name %></span>
+      </div>
+      <div class = "market_description_label">
+        <span><%= market.description %></span>
+      </div>
+    <% end %>
+  <% end %> 
 </div>
