@@ -1,14 +1,16 @@
 <div class="form-group">
-  <%= f.input :nickname, input_html: { placeholder: "Your Name or nickname" } %>
+  <%= f.input :nickname, input_html: { placeholder: t(:your_name) } %>
 </div>
 
 <div class="form-group">
-  <%= f.input :description, as: :text, input_html: { :rows => 7, placeholder: "Tell us something about you..." } %>
+  <%= f.input :description, as: :text, input_html: { :rows => 7, placeholder: t(:your_description) } %>
 </div>
 
 <div class="form-group">
-  <strong> Your photo or logo </strong>
-  <%= f.simple_fields_for :featured do |form_builder| %>
+  <p> <%= t(:your_logo) %>: </p>
+  <div class="form-group">
+    <%= f.simple_fields_for :featured do |form_builder| %>
       <%= render 'photos/form', f: form_builder %>
-  <% end %>
+    <% end %>
+  </div>
 </div>

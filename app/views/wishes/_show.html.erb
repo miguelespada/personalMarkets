@@ -6,14 +6,14 @@
           <div class="wish-title-container">
             <%= wish.description %>
             <h5> #tags_<%= wish.tags %> </h5>
-            <h6> by: <%= link_to wish.user.name, wish.user %> </h6>
+            <h6> <%= t(:by) %>: <%= link_to wish.user.name, wish.user %> </h6>
           </div>
         </div>
 
         <div class="wish-photo-container">
             <%= photo(wish.photography, 400) %> 
         </div>
-          <div class="market-list-section-title">Recommend Market</div>
+          <div class="market-list-section-title"><%= t(:recommend_market) %></div>
             <div class="market-list-section-container">
               <div id ="recommend" class = "market-list-section-container-inner row">
               </div>
@@ -21,7 +21,7 @@
           </div>
 
          <div class="recomendations">
-          <div class="market-list-section-title">Recommended</div>
+          <div class="market-list-section-title"><%= t(:recommended) %></div>
             <div class="market-list-section-container">
               <div class = "market-list-section-container-inner row">
                 <% wish.recommended.each do |market| %>
@@ -42,7 +42,7 @@
 
 <script>
     var ajaxRecommend = function(){
-      $.ajax({url: "/list_recommend_markets", 
+      $.ajax({url: "<%= list_recommend_markets_path %>", 
          data: { recommend_page:$("#recommend_page").val(),
         wish_id: "<%= wish.id %>" }
       }).done(function( data ) {
@@ -54,5 +54,3 @@
       ajaxRecommend();
     });
 </script>
-
-

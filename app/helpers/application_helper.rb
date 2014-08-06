@@ -23,13 +23,13 @@ module ApplicationHelper
 
   def back_link
     link_to :back, class:"btn btn-default back_link" do
-      content_tag(:i, "", :class => "fa fa-reply ") + " Go Back"
+      content_tag(:i, "", :class => "fa fa-reply ") + " " + t(:go_back).capitalize
     end
   end
 
   def before_form_link
     link_to session[:my_previouse_url], class:"btn btn-default" do
-      content_tag(:i, "", :class => "fa fa-reply") + " Go Back"
+      content_tag(:i, "", :class => "fa fa-reply") + " " + t(:go_back).capitalize
     end 
   end
 
@@ -56,13 +56,18 @@ module ApplicationHelper
     end
   end
 
+  def action_button
+    return :update if params['action'] == "edit"
+    return :create if params['action'] == "new"
+  end
+
   def action_title(model)
     content_tag :h1, "" do
       concat content_tag :i, "", class:"fa #{model.icon} fa-2x"
       concat "<br/>".html_safe
-      concat params['action'].titleize
+      concat t(params['action']).titleize
       concat " ".html_safe
-      concat model.model_name.human
+      concat t(model.model_name.human.downcase).capitalize
     end
   end
 

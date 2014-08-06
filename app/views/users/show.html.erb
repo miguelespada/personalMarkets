@@ -1,111 +1,122 @@
-
 <div class="container main-container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default panel-table panel-table-last">
-          <div class="panel-heading table-title">
+        <div class="panel-heading table-title">
           <div class="market-title-container row">
             <div class="market-title market-poster-title col-md-12">
-              <%= image_tag "favicon.png", class:"poster-title-icon" %><%= @user.name %> 
+              <%= image_tag "favicon.png", class:"poster-title-icon" %>
+              <%= @user.name %> 
             </div>
 
             <% if can? :manage, @user %>
+
               <div class="center">
-              <h4>
-              <%= published_markets_status(current_user) %>
-              </h4>
 
                 <h5> 
-                <%= link_to "Edit Profile", edit_user_path(@user)  %>  <br>
-                <%= link_to "Subscription plan", user_subscription_plan_path(@user)  %>
-                </h5> 
+                  <%= published_markets_status(current_user) %>
+                </h5>
+
+                <h6> 
+                  <%= link_to t(:edit_profile), edit_user_path(@user)  %>  <br>
+                  <%= link_to t(:edit_subscription_plan), user_subscription_plan_path(@user)  %>
+                </h6> 
 
               </div>
-               <div class="market-list-section-title"></div>
+
+              <div class="market-list-section-title">
+              </div>
 
             <% end %>
+
             <div class="market-title market-poster-picture col-md-4">
               <%= photo(@user.featured, 150) %>
             </div>
+
             <div class="col-md-8">
-              <div class="market-poster-description"> <%= @user.description %> </div>
+              <div class="market-poster-description">
+                <%= @user.description %> 
+              </div>
             </div>
           </div>
         </div>
 
-      <div class="market-list-section-container short-view-coupon-section">
-        <div class="short-view-coupon-inner poster-info-inner">
-          <div class="center">
-           <%= user_dashboard_link("user_markets_path", @user, "Markets", Market.icon) %>
-           <%= user_dashboard_link("gallery_user_bargains_path", @user, "Bargains", Bargain.icon) %>
-           <%= user_dashboard_link("gallery_user_wishes_path", @user, "Wishes", Wish.icon) %>
+        <div class="market-list-section-container short-view-coupon-section">
+          <div class="short-view-coupon-inner poster-info-inner">
+            <div class="center">
+              <%= user_dashboard_link("user_markets_path", @user, t(:markets).capitalize, Market.icon) %>
+              <%= user_dashboard_link("gallery_user_bargains_path", @user, t(:bargains).capitalize, Bargain.icon) %>
+              <%= user_dashboard_link("gallery_user_wishes_path", @user, t(:wishes).capitalize, Wish.icon) %>
+            </div>
+          </div>
         </div>
+
+        <div class="market-list-section-title">
         </div>
-      </div>
 
-      <div class="market-list-section-title"></div>
-
-      <div class="market-list-section-container short-view-coupon-section">
-        <div class="short-view-coupon-inner poster-info-inner">
-          <div class="center">
+        <div class="market-list-section-container short-view-coupon-section">
+          <div class="short-view-coupon-inner poster-info-inner">
+            <div class="center">
               <% if current_user &&  current_user != @user %>
                 <% if current_user.following?(@user) %>
-                  <%= user_dashboard_link("unfollow_user_path", @user, "Unfollow", "fa-thumbs-o-down") %>
+                  <%= user_dashboard_link("unfollow_user_path", @user, t(:unfollow).capitalize, "fa-thumbs-o-down") %>
                 <% else %>
-                  <%= user_dashboard_link("follow_user_path", @user, "Follow", "fa-thumbs-o-up") %>
+                  <%= user_dashboard_link("follow_user_path", @user, t(:follow).capitalize, "fa-thumbs-o-up") %>
                 <% end %>
               <% end %>
-
             </div>
 
             <div>
               <div class="table-responsive">
                 <table class="table">
                   <tr>
-                    <th class="col-md-2 center">Following</th>
-                    <th class="col-md-2 center">Followers</th>
+                    <th class="col-md-2 center"><%= t(:following).capitalize %></th>
+                    <th class="col-md-2 center"><%= t(:followers).capitalize %></th>
                   </tr>
                   <td>
-
-                  <% @user.following.each do |user| %>
-                    <p> <%= link_to user.name, user_path(user) %> </p>
-                  <% end %>
+                    <% @user.following.each do |user| %>
+                      <p> <%= link_to user.name, user_path(user) %> </p>
+                    <% end %>
                   </td>
 
                   <td>
-                   <% @user.followers.each do |user| %>
-                     <p> <%= link_to user.name, user_path(user) %> </p>
+                    <% @user.followers.each do |user| %>
+                      <p> <%= link_to user.name, user_path(user) %> </p>
                     <% end %>
-               </td>
-            
-              </table>
+                  </td>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="market-list-section-title">
+          </div>
+          
+          <br>
+
+          <script>
+            (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+          </script>
+
+          <div id="fb-roor center">
+            <div class="fb-comments" data-href='<%=user_url(@user.to_param)%>' data-numposts="5" data-colorscheme="light">
+            </div>
+            <br>
+            <div class="fb-like" data-href='<%=user_url(@user.to_param)%>' data-layout="standard" data-action="like" data-show-faces="true" data-share="true">
+            </div>
+          </div>
+
+
+          <div class="center">
+            <%= back_link %>
           </div>
         </div>
-      </div>
-
-      <div class="market-list-section-title"></div>
-      <br>
-
-      <script>
-        (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-        </script>
-
-        <div id="fb-roor center">
-          <div class="fb-comments" data-href='<%=user_url(@user.to_param)%>' data-numposts="5" data-colorscheme="light"></div>
-                <br>
-          <div class="fb-like" data-href='<%=user_url(@user.to_param)%>' data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-        </div>
-
-
-      <div class="center">
-        <br>
-      <%= back_link %>
       </div>
     </div>
   </div>

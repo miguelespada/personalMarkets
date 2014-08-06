@@ -1,7 +1,11 @@
 <% if current_user.has_role?(:normal) %>
   <%= form_tag user_subscription_path(@user), method:"get" do %>
-  <p><input type="checkbox" required name="premium_accept_term" id="accept_terms" > I accept the <%= link_to "terms of use.", go_premium_terms_path %></p>
-  <%= submit_tag "Become premium", class: 'btn btn-info' %>
+    <p>
+      <input type="checkbox" required name="premium_accept_term" id="accept_terms" > 
+      I accept the <%= link_to "terms of use.", go_premium_terms_path %>
+    </p>
+    
+    <%= submit_tag "Become premium", class: 'btn btn-info' %>
   <% end %>
 <% end %>
 

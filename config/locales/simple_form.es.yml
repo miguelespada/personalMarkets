@@ -4,6 +4,7 @@ es:
   delete: "borrar"
   print: "imprimir"
   archive: "archivar"
+  create: "crear"
   recommend: "recomendar"
   buy_coupon: "comprar cupón"
   slideshow: "slideshow"
@@ -58,10 +59,11 @@ es:
   all_wishes: "Todos los deseos"
   all_users: "Todos los usuarios"
   bargains: "Gangas"
-  all_bargains: "Todas las Gangas"
+  all_bargains: "Todas las gangas"
   all_locations: "Todos los lugares"
-  new_wish: "Deseo Nuevo"
-  new_bargain: "Ganga Nueva"
+  new_wish: "Nuevo deseo"
+  wishes: "Deseos"
+  new_bargain: "Nueva ganga"
   all_tags: "Todas las tags"
   whats_new: "Lo nuevo"
   enable_browser: "Habilite la ubicación en su navegador"
@@ -260,3 +262,18 @@ es:
   your: tus
   i_accept_the: "Acepto"
   terms_of_use: "condiciones de uso"
+  by: de
+  recommend_markets: "Haz los deseaos de la gente realidad."
+  recommend_market: "Recomienda markets"
+  recommended: "Markers recomendados"
+  edit_profile: "Modificar perfil"
+  edit_subscription_plan: "Modificar subscriptción"
+  follow: follow
+  unfollow: unfollow
+  following: following
+  followers: followers
+  your_name: Tu nombre o nick
+  your_description: Cuéntanos algo sobre ti
+  your_logo: Tu foto o tu logo
+  user: usuario
+  go_back: "volver"

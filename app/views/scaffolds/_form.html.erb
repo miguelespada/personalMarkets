@@ -9,8 +9,8 @@
             <div class="panel-body">
               <fieldset>
                 <%= render "form_fields", f: f %>
-                <div class="form-group col-md-4 col-md-offset-4">
-                  <%= f.button :submit, class:"btn btn-info" %>
+                <div class="form-group center">
+                  <%= f.submit t(action_button).capitalize, class:"btn btn-info" %>
                 </div>
               </fieldset>
           </div>

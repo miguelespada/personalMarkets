@@ -7,7 +7,7 @@
         <div class="panel-heading table-title center">
           <%= bargain.description %> <br>
           <h5>
-            by: <%= link_to bargain.user.name, bargain.user %>
+            <%= t(:by) %>: <%= link_to bargain.user.name, bargain.user %>
           </h5>
         </div>
         <div>
