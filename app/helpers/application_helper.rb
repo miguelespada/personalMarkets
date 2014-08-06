@@ -66,17 +66,17 @@ module ApplicationHelper
     end
   end
 
-  def table_user
-      concat "Your " if params['user_id'].present? && params['user_id'] == current_user.id.to_s
+  def user_scope 
+      concat (t(:your).capitalize + " ") if params['user_id'].present? && params['user_id'] == current_user.id.to_s
       concat User.find(params['user_id']).name + " " if params['user_id'].present? && params['user_id'] != current_user.id.to_s
-      concat "All " if !params['user_id'].present?
+      concat (t(:all).capitalize + " ") if !params['user_id'].present?
   end
 
   def entity_table_header(model, new_action)
     content_tag :div, class: "panel-heading table-title" do
       concat link_to "<i class='fa fa-dashboard fa-1x header-icon'></i>".html_safe, user_dashboard_path(current_user)
       concat link_to "<i class='fa fa-cog fa-1x header-icon'></i>".html_safe, admin_path if current_user.has_role?(:admin)
-      table_user
+      user_scope 
       concat model.model_name.human.pluralize
       if new_action.present?
         concat link_to content_tag(:i, " New", class: "fa fa-plus"), new_action, class: "new btn btn-info table-button table-button-new"

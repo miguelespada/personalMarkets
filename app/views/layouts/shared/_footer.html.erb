@@ -1,7 +1,6 @@
-<!-- Footer START -->
 <nav class="navbar navbar-default navbar-fixed-bottom hidden-xs" role="navigation">
   <div class="container">
-    <p class="navbar-text">Copyright &copy; DOWEMARKET 2014 -  <%= link_to "Terms of service", terms_path %> -  <%= link_to "Privacy", privacy_path %> </p>
+    <p class="navbar-text">Copyright &copy; DOWEMARKET 2014 -  <%= link_to t(:terms_of_use).capitalize, terms_path %> - <%= link_to t(:privacy).capitalize, privacy_path %> </p>
     <ul class="nav navbar-nav navbar-right footer-right">
       <%= render "layouts/shared/user_city" %>
       <%= render "layouts/shared/footer_menu" %>
@@ -45,4 +44,3 @@
   }
 
 </style>
-<!-- Footer STOP -->

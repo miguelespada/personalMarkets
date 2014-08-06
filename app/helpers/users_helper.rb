@@ -12,13 +12,17 @@ module UsersHelper
 
   def published_markets_status(user)
     content_tag :p, "" do
-      concat "<em>You have published:</em> ".html_safe
+      concat t(:you_have_published)
+      concat " "
       concat user.number_of_last_month_markets 
-      concat " market(s) during the last month"
+      concat " "
+      concat t(:during_last_month)
       concat "</br>".html_safe
-      concat "<em>You can publish:</em> ".html_safe
+      concat t(:you_can_publish)
+      concat " "
       concat current_user.remaining_markets
-      concat " market(s)"
+      concat " "
+      concat t(:market_s)
     end
   end
 

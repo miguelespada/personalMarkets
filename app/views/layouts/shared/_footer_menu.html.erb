@@ -3,11 +3,13 @@
     <span class="current-language"><%= I18n.locale.to_s.upcase %></span>
     <b class="caret"></b>
   </a>
+
   <ul class="dropdown-menu language-select">
     <li><%= link_to "English (EN)", :language => :en %></li>
     <li><%= link_to "Español (ES)", :language => :es %></li>
   </ul>
 </li>
+
 <script>
 $(".language-select li a").click(function(){
   var languageSelected = $(this).attr("name");
@@ -18,6 +20,6 @@ $(".language-select li a").click(function(){
 <li class="contact-us footer-collapse">
   <a href="/contact" class="contact-button">
   	<i class="fa fa-envelope"></i>&nbsp;
-  	<span><%= t "Contact us" %></span>
+  	<span><%= t(:contact_us) %></span>
   </a>
 </li>

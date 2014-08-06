@@ -1,29 +1,28 @@
-
 <li class="registered-user-action ">
-     <%= button_to "✚", open_market_path , class:"add_market_button btn btn-default", :method => :get %>
+  <%= button_to "✚", open_market_path , class:"add_market_button btn btn-default", :method => :get %>
 </li>
 
 <script>
-	$(document).ready(function(){
-		checkIfMobileButton();
-		$(window).bind('resize', checkIfMobileButton);
-	});
+  $(document).ready(function(){
+    checkIfMobileButton();
+    $(window).bind('resize', checkIfMobileButton);
+  });
 
-	function checkIfMobileButton(){
-		if (window.innerWidth >= 992){
-			$(".add_market_button").val("Abre un Market");
-		}
-		else if (window.innerWidth >= 768){
-			$(".add_market_button").val("+ Market");
-		}
-		else{
-			$(".add_market_button").val("✚");
-		}
-	}
+  function checkIfMobileButton(){
+    if (window.innerWidth >= 992){
+      $(".add_market_button").val("<%= t(:new_market) %>");
+    }
+    else if (window.innerWidth >= 768){
+      $(".add_market_button").val("✚ <%= t(:market).capitalize %>");
+    }
+    else{
+      $(".add_market_button").val("✚");
+    }
+  }
 </script>
 
 <style>
-.add_market_button {
-	margin-left: 20px;
-}
+  .add_market_button {
+    margin-left: 20px;
+  }
 </style>

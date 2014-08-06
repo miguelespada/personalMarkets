@@ -1,5 +1,5 @@
 <head>
-  <title>Do We Market</title>
+  <title>dowemarket</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -11,29 +11,24 @@
   <%= csrf_meta_tags %>
   <%= analytics_init if Rails.env.production? %>
 
-<!-- for Google -->
-<meta name="description" content="Plataforma de búsqueda de markets. Un nuevo concepto emergente de
-market alternativo,creativo, emprendedor,excepcional, chic, clandestino y sorprendente" />
-<meta name="keywords" content="pop up store, personal markets, shopping" />
-
-<meta name="author" content="Do we market" />
-<meta name="copyright" content="Do we market" />
-<meta name="application-name" content="Do we market" />
-
-<!-- for Facebook -->          
-<meta property="og:title" content="Do we market" />
-<meta property="og:type" content="Shooping platform" />
-<meta property="og:image" content="/images/logo.jpg" />
-<meta property="og:url" content="http://dowemarket.com" />
-<meta property="og:description" content="Plataforma de búsqueda de markets. Un nuevo concepto emergente de
-market alternativo, creativo, emprendedor, clandestino y sorprendente" />
-
-<!-- for Twitter -->          
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Do we market" />
-<meta name="twitter:description" content="Plataforma de búsqueda de markets. Un nuevo concepto emergente de
-market alternativo,creativo, emprendedor,excepcional, chic, clandestino y sorprendente" />
-<meta name="twitter:image" content="/images/logo.jpg" />
-
+  <!-- for Google -->
+  <meta name="description" content="<%= t(:header_content) %>" />
+  <meta name="keywords" content="<%= t(:header_keywords) %>" />
+  <meta name="author" content="dowemarket" />
+  <meta name="copyright" content="dowemarket" />
+  <meta name="application-name" content="dowemarket" />
+  
+  <!-- for Facebook -->          
+  <meta property="og:title" content="dowemarket" />
+  <meta property="og:type" content="<%= t(:header_type) %>" />
+  <meta property="og:image" content="/images/logo.jpg" />
+  <meta property="og:url" content="http://dowemarket.com" />
+  <meta property="og:description" content="<%= t(:header_content) %>" />
+  
+  <!-- for Twitter -->          
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="dowemarket" />
+  <meta name="twitter:description" content="<%= t(:header_content) %>" />
+  <meta name="twitter:image" content="/images/logo.jpg" />
 
 </head>

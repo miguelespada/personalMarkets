@@ -1,6 +1,8 @@
 <% if @user.allowed_market_creation? %>
+  
   <%=  render partial: "markets/shared/forms/form", 
       locals: {user: @user, market: @market.decorate, action: "new" } %>
+
 <% else %>
 
   <div class="creation-not-allowed">

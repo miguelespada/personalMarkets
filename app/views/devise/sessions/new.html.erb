@@ -1,45 +1,50 @@
-<%= page_title(t("Registration"), "fa-sign-in") %>
+<%= page_title(t(:sign_in), "fa-sign-in") %>
 
 <%= simple_form_for(resource, html: {:id => "sign-in-form"}, :url => session_path(resource_name)) do |f| %>
   <%= f.error_notification class: 'alert-danger flash'%>
 
-<div class="container user-session">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><%= t :sign_in %></h3>
-        </div>
-        <div class="panel-body">
+  <div class="container user-session">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= t :sign_in %></h3>
+          </div>
+
+          <div class="panel-body">
             <fieldset>
-            <div class="form-group">
-              <%= f.input :email, :required => true, :autofocus => true %>
-            </div>
-            <div class="form-group">
-              <%= f.input :password, :required => true %>
-              <p id="tags-container"></p>
-            </div>
+              <div class="form-group">
+                <%= f.input :email, :required => true, :autofocus => true %>
+              </div>
 
-            <div class="form-group">
-              <%= f.check_box :remember_me, as: :boolean, inline_label: 'Remember me', label: false if devise_mapping.rememberable? %> Remember me
-            </div>
-            <div class="form-group col-md-4 col-md-offset-4">
-              <%= f.button :submit, "Sign in" %>
-            </div>
+              <div class="form-group">
+                <%= f.input :password, :required => true %>
+                <p id="tags-container"></p>
+              </div>
 
-            <div class="form-group col-md-4 col-md-offset-4">
-              <span style="display: block; margin: 0px auto; text-align: center;" >or</span>
-            </div>
-            <div class="form-group col-md-4 col-md-offset-4 sign-in-social-group">
-              <%= button_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), :class=>  "Google btn btn-primary btn-block"%>
-              <%= button_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :class=>  "Facebook btn btn-primary btn-block" %>
-            </div>
+              <div class="form-group">
+                <%= f.check_box :remember_me, as: :boolean, inline_label: t(:remember_me), label: false if devise_mapping.rememberable? %> <%= t(:remember_me) %>
+              </div>
 
+              <div class="form-group col-md-4 col-md-offset-4">
+                <%= f.button :submit, t(:sign_in) %>
+              </div>
+
+              <div class="form-group col-md-4 col-md-offset-4">
+                <span style="display: block; margin: 0px auto; text-align: center;" >
+                  <%= t(:or) %>
+                </span>
+              </div>
+
+              <div class="form-group col-md-4 col-md-offset-4 sign-in-social-group">
+                <%= button_to t(:sign_in_with_google), user_omniauth_authorize_path(:google_oauth2), :class=>  "Google btn btn-primary btn-block"%>
+                <%= button_to t(:sign_in_with_facebook), user_omniauth_authorize_path(:facebook), :class=>  "Facebook btn btn-primary btn-block" %>
+              </div>
             </fieldset>
-          <%= render "devise/shared/links" %> 
+            <%= render "devise/shared/links" %> 
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 <% end %>

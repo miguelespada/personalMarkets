@@ -7,7 +7,6 @@
       var page = parseInt($('#recommend_page').val());
       if(page == 0) page = 1;
       $('#recommend_page').val(page - 1);
-
       ajaxRecommend();
       return false;
     });

@@ -1,27 +1,11 @@
-  <%= hidden_field_tag 'page', params['page'] || 1 %>
-  <%= hidden_field_tag 'tag', params['tag'] %>
+<%= hidden_field_tag 'page', params['page'] || 1 %>
+<%= hidden_field_tag 'tag', params['tag'] %>
 
 
-  <div class="center">
-    <%= link_to "<", "#", :id=>"prev-markets" if !@first_page %>
-    <%= link_to ">", "#", :id=>"next-markets" if !@last_page %>
-  </div>
-
-  <script>
-   $("#prev-markets").click(function(){
-      var page = parseInt($('#page').val());
-      $('#page').val(page - 1);
-      ajaxTagSearch();
-
-    });
-
-    $("#next-markets").click(function(){
-      var page = parseInt($('#page').val());
-      $('#page').val(page + 1);
-      ajaxTagSearch();
-    });
-</script>
-
+<div class="center">
+  <%= link_to "<", "#", :id=>"prev-markets" if !@first_page %>
+  <%= link_to ">", "#", :id=>"next-markets" if !@last_page %>
+</div>
 
 </div>
 
@@ -34,4 +18,20 @@
       <%= render partial: "markets/shared/views/gallery", locals: {markets: @markets } %>
   <% end %>
 </div>
+
+
+<script>
+ $("#prev-markets").click(function(){
+    var page = parseInt($('#page').val());
+    $('#page').val(page - 1);
+    ajaxTagSearch();
+
+  });
+
+  $("#next-markets").click(function(){
+    var page = parseInt($('#page').val());
+    $('#page').val(page + 1);
+    ajaxTagSearch();
+  });
+</script>
 
