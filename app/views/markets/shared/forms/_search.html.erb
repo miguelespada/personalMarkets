@@ -28,7 +28,7 @@
     <li class="form-group search-filter-item hidden-xs" id="search-location-item">
       <%= collection_select(:location, :location_id, SpecialLocation.all, 
         :name, :name, {:selected => session[:location], 
-        :include_blank => t(:Any_location)},
+        :include_blank => t(:any_location)},
         class: "form-control" ) %>
     </li>
 
@@ -98,13 +98,13 @@
       var dist = 14;
       
       if(location == "My location"){
-        $('#location_location_id').append("<option value='My location'><%= t :My_location %></option>").val('My location');
+        $('#location_location_id').append("<option value='My location'><%= t(:my_location).capitalize %></option>").val('My location');
          lat = '<%= session["user_lat"] %>' || "";
          lon = '<%= session["user_lon"] %>' || "";
          dist = 16;
       }
       else if(location == "Custom location"){
-        $('#location_location_id').append("<option value='Custom location'><%= t :Custom_location %></option>").val('Custom location');
+        $('#location_location_id').append("<option value='Custom location'><%= t(:custom_location) %></option>").val('Custom location');
           lat = '<%= session["lat"] %>' || "";
           lon = '<%= session["lon"] %>' || "";
           dist = 15;
@@ -133,7 +133,7 @@
     };
 
     function pos_error(){
-      $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i> <%= t :enable_browser %>");
+      $("#user-city-text").html("<i class='fa fa-exclamation-triangle'></i> <%= t(:enable_browser) %>");
     };
 
     function user_location(){
