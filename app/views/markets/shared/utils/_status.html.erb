@@ -1,19 +1,28 @@
 <% if can?(:manage, market) %>
   <section id="messages">
     <%if market.archived? %>
-        <div class="alert alert-danger flash"><%= t :market_archive %></div>
+        <div class="alert alert-danger flash">
+            <%= t :market_archive %>
+        </div>
     <%elsif market.draft? %>
       <% if market.can_be_published? %>
-        <div class="alert alert-warning flash"><%= t :market_private %> (<%= link_to "+info", :anchor => "market-quality" %>)
+        <div class="alert alert-warning flash">
+            <%= t :market_private %> (<%= link_to "+info", :anchor => "market-quality" %>)
         </div>
       <% else %>
-        <div class="alert alert-danger flash"><%= t :market_private_required %> (<%= link_to "+info", :anchor => "market-quality" %>)</div>
+        <div class="alert alert-danger flash">
+          <%= t :market_private_required %> (<%= link_to "+info", :anchor => "market-quality" %>)
+        </div>
       <% end %>
     <%elsif market.published?  %>
       <% if market.passed? %>
-        <div class="alert alert-warning flash"><%= t :market_old %>
+        <div class="alert alert-warning flash">
+          <%= t :market_old %>
+        </div>
       <% else %>
-        <div class="alert alert-success flash"><%= t :market_public %> (<%= link_to "+info", :anchor => "market-quality" %>)</div>
+        <div class="alert alert-success flash">
+          <%= t :market_public %> (<%= link_to "+info", :anchor => "market-quality" %>)
+        </div>
       <% end %>
     <% end %>
   </section>

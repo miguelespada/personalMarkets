@@ -1,7 +1,9 @@
 <% if @markets == [] %>
+  
   <div class="no-matching-markets search-section-title">
     <%= t :no_matches %>
   </div>
+
 <% else %>
 
   <%= render partial: "markets/shared/views/gallery", locals: {markets: @markets } %>

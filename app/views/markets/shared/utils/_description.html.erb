@@ -1,38 +1,55 @@
-
-<%= market.market_like_count %> <%= link_to t(:who_liked), users_who_like_market_path(market) %>
+<%= market.market_like_count %>
+<%= link_to t(:who_liked), users_who_like_market_path(market) %>
 <br> 
-<strong> <%= t(:description).capitalize %></strong> <%= market.direct_edit_link("form-market-description") %>:<%= market.description %> <br> 
-<strong> <%= t(:category).capitalize %></strong> <%= market.direct_edit_link("form-market-category-tag") %>: <%= market.category_name %> <br>
+
+<strong> <%= t(:description).capitalize %>:</strong>
+<%= market.description %> 
+<%= market.direct_edit_link("form-market-description") %>
+<br> 
+
+<strong> <%= t(:category).capitalize %>:</strong>
+<%= market.category_name %> 
+<%= market.direct_edit_link("form-market-category-tag") %>
+<br>
 
 <% if cannot? :edit, market %>
-  <strong> <%= t(:owner).capitalize %>: </strong> <%= link_to market.user.name, user_path(market.user) %>
+  <strong> <%= t(:owner).capitalize %>:</strong>
+  <%= link_to market.user.name, user_path(market.user) %>
   <br>
 <% end %>
 
 <% if market.has_prices? %>
-  <strong> <%= t(:prices).capitalize %>  </strong>
-  <%= market.direct_edit_link("form-market-prices") %>: <%= market.min_price %> € - <%= market.max_price %> € <br>
+  <strong> <%= t(:prices).capitalize %>:</strong>
+  <%= market.min_price %> € - <%= market.max_price %> € 
+  <%= market.direct_edit_link("form-market-prices") %>
+  <br>
 <% end %>
 
-<strong> <%= t(:tags).capitalize %> </strong>
-<%= market.direct_edit_link("form-market-tag") %> : <%= market.hashtags %>
+<strong> <%= t(:tags).capitalize %>:</strong>
+<%= market.hashtags %>
+<%= market.direct_edit_link("form-market-tag") %>
 <br>
 
 <% if market.has_location? %>
-  <strong> <%= t(:address).capitalize %> </strong>
-  <%= market.direct_edit_link("form-market-location") %>: <%= market.address %>, <%= market.city %> 
+  <strong> <%= t(:address).capitalize %>:</strong>
+  <%= market.address %>, <%= market.city %> 
+  <%= market.direct_edit_link("form-market-location") %>
   <br>
 <% end %>
 
 
 <% if market.has_url? %>
-  <strong> <%= t(:external_url) %></strong> 
-  <%= market.direct_edit_link("form-market-external-url") %>: <a href="<%=  market.path_to_url %>" target="_blank"><%=  market.url %></a> <br>
+  <strong> <%= t(:external_url) %>:</strong>
+  <a href="<%=  market.path_to_url %>" target="_blank"><%=  market.url %></a> 
+  <%= market.direct_edit_link("form-market-external-url") %>
+  <br>
 <% end %>
 
 <% if market.has_social? %>
-  <strong> <%= t(:social_link) %></strong> 
-  <%= market.direct_edit_link("form-market-external-url") %>: <a class="user-url" href="<%=  market.path_to_social_link %>" target="_blank"><%=  market.social_link %></a> <br>
+  <strong> <%= t(:social_link) %>:</strong>
+  <a class="user-url" href="<%=  market.path_to_social_link %>" target="_blank"><%=  market.social_link %></a>
+  <%= market.direct_edit_link("form-market-external-url") %>
+  <br>
 <% end %>
 
 <div class="hidden">

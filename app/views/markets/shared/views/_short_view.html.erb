@@ -1,34 +1,36 @@
 <div class="panel panel-default panel-table" id="market_<%= market.id %>">
+  
   <%= render partial: 'markets/shared/utils/title_and_actions_bar', locals: { market: market } %>
 
-    <div class="market-list-each-container row">
-      <div class = "col-md-8">
-        <div class="market-list-section-title">
-          <%= t(:information).capitalize %>
-        </div>
+  <div class="market-list-each-container row">
+    <div class = "col-md-8">
+      <div class="market-list-section-title">
+        <%= t(:information).capitalize %>
+      </div>
 
-        <div class="market-list-section-container">
-          <div class = "market-list-section-container-inner row">
-            <div class = "col-md-6">
-              <%= market.market_featured_photo_filtered(200) %>
-            </div>
-            <div class = "col-md-6">
-              <%= render partial: 'markets/shared/utils/description', locals: { market: market } %>
-            </div>
+      <div class="market-list-section-container">
+        <div class = "market-list-section-container-inner row">
+          <div class = "col-md-6">
+            <%= market.market_featured_photo_filtered(200) %>
+          </div>
+          <div class = "col-md-6">
+            <%= render partial: 'markets/shared/utils/description', locals: { market: market } %>
           </div>
         </div>
       </div>
     </div>
-      
-  <div class = "col-md-4">
-    <div class="market-list-section-title"> <%= t(:coupon).capitalize %></div>
-    <div class="market-list-section-container short-view-coupon-section">
-      <div class="short-view-coupon-inner">
-        <%= render "coupons/views/short_view", :market => market %>
+    
+    <div class = "col-md-4">
+      <div class="market-list-section-title"> <%= t(:coupon).capitalize %></div>
+      <div class="market-list-section-container short-view-coupon-section">
+        <div class="short-view-coupon-inner">
+          <%= render "coupons/views/short_view", :market => market %>
+        </div>
       </div>
     </div>
-  </div>
 
+  </div>
+  
   <div class="market-list-badge">
     <div class="ribbon-badge <%= market.badges %>">
       <span id="market-badge-text"></span>
