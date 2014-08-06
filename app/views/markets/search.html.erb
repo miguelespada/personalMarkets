@@ -1,9 +1,11 @@
-<div id="gallery-items" class="search-gallery"></div>
+<div id="gallery-items" class="search-gallery">
+</div>
 
 <%= render partial: 'markets/shared/utils/category_buttons' %>
+
 <div>
- <div class="explore-more-markets search-section-title">
-  <%= t "Explore more markets" %>
+  <div class="explore-more-markets search-section-title">
+    <%= t(:explore_more_markets) %>
   </div>
   <div id="pro_markets">
   </div>
@@ -16,5 +18,4 @@
       $( "#pro_markets" ).html( data );
     });
   });
-
 </script>

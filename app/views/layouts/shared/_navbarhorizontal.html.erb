@@ -30,7 +30,7 @@
         <li class="map-link">
           <%= link_to map_path do %>
             <i class="fa fa-globe"></i>
-            <span id="map-link-text"></span>
+            <span id="map-link-text" class="hidden-sm hidden-md"> &nbsp; <%= t(:map).capitalize %> </span>
           <% end %>
         </li>
         
@@ -54,14 +54,12 @@
     }
   }
   @media (max-width: 767px), (min-width: 1024px){
-    #map-link-text:after{
-      content:"\00a0 <%= t :Map %>";
-    }
+   
     #explore-link-text:after{
-      content:"\00a0 <%= t :Explore %>";
+      content:"\00a0 <%= t(:explore).capitalize %>";
     }
     #search-link-text:after{
-      content:"\00a0 <%= t :Search %>...";
+      content:"\00a0 <%= t(:search).capitalize %>...";
     }
   }
 </style>

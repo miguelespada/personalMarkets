@@ -3,8 +3,8 @@
 
 
   <div class="center">
-    <%= link_to "Prev", "#", :id=>"prev-markets" if !@first_page %>
-    <%= link_to "Next", "#", :id=>"next-markets" if !@last_page %>
+    <%= link_to "<", "#", :id=>"prev-markets" if !@first_page %>
+    <%= link_to ">", "#", :id=>"next-markets" if !@last_page %>
   </div>
 
   <script>

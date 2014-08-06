@@ -6,7 +6,7 @@
   <div class="col-md-6 col-md-offset-1">
 
       <%= render "coupons/views/description", coupon: coupon %>
-    <strong> <%= t :Available %>: </strong> <span> <%= coupon.available %> </span> <br>
+    <strong> <%= t(:available).capitalize %>: </strong> <span> <%= coupon.available %> </span> <br>
   
     <% if buy %>
       <%= render "coupons/forms/buy_coupon", coupon: @coupon %>

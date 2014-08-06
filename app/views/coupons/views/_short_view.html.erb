@@ -1,11 +1,11 @@
  <div class="market-section-container row market-coupon">
-      <h3>
+  <h3>
     <% if market.coupon_available? %>
-        This markets offers a coupon! <br> 
-        <%= link_to "+info", market_path(market, :anchor => "coupon") %>
+      <%= t(:this_market_offers_a_coupon) %>
+      <br> 
+      <%= link_to "+info", market_path(market, :anchor => "coupon") %>
     <% else %>
-       <%= market.invite_to_add_coupon %>
+      <%= market.invite_to_add_coupon %>
     <% end %>
-      </h3>
-  </div>
+  </h3>
 </div>

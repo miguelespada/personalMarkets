@@ -1,5 +1,8 @@
-
-<strong><%= t :Market %>:</strong> <%= link_to coupon.market.name, market_path(coupon.market) %> </span><br>
-<strong><%= t :Owner %>:</strong> <%= coupon.market.decorate.owner %> </span><br>
-<strong> <%= t :Description %>: </strong>  <span> <%= coupon.description %> </span> <br>
-<strong> <%= t :Price %>: </strong>  <span> <%= coupon.price %> € </span> <br>
+<strong><%= t(:market).capitalize %>:</strong> <%= link_to coupon.market.name, market_path(coupon.market) %>
+<br>
+<strong><%= t(:owner).capitalize %>:</strong> <%= coupon.market.decorate.owner %> 
+<br>
+<strong> <%= t(:description).capitalize %>:</strong> <%= coupon.description %> 
+<br>
+<strong> <%= t(:price).capitalize %>: </strong> <%= coupon.price %> € 
+<br>
