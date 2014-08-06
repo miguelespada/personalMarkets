@@ -27,8 +27,6 @@ PM.addTooltipToMarker = function(layer) {
 
 PM.initializeMap = function(tile, viewLat, viewLng, dist) {
   PM.map = L.mapbox.map('map').setView([viewLat, viewLng], dist);
-
-  // PM.map.scrollWheelZoom.disable();
   PM.mapTiles = L.mapbox.tileLayer(tile);
   PM.map.addLayer(PM.mapTiles);
   PM.map.on('dragend', function(){

@@ -1,4 +1,4 @@
-
+var colorDef = "#C76363"
 
 $( document ).ready(function() {
     if (window.location.hash && window.location.hash == '#_=_') {

@@ -1,1 +1,0 @@
-var colorDef = "#C76363"

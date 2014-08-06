@@ -57,7 +57,6 @@ var ajaxSearch = function () {
 var jsonSearch = function () {
     $("#spinner-item").removeClass("hidden");
     $.get("markets/live_search.json", $("#search_market").serialize(), function(data) {
-        
        $("#spinner-item").addClass("hidden");
        PM.fillMapView(data);
     });

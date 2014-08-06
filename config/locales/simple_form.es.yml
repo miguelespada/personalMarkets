@@ -199,7 +199,7 @@ es:
   send: enviar
   how_many_coupons_would_you_like_to_buy: ¿Cuántos cupones quieres comprar?
   i_accept_the: Acepto las
-  terms_of_use: condiciones de uso
+  terms_of_use: condiciones de servicio
   this_coupon_is_sold_out: El cupón ya está agotado.
   transaction_id: ID de transacción
   buyer: comprador
@@ -261,7 +261,6 @@ es:
   vim_feature_5: Sin anuncios
   your: tus
   i_accept_the: "Acepto"
-  terms_of_use: "condiciones de uso"
   by: de
   recommend_markets: "Haz los deseaos de la gente realidad."
   recommend_market: "Recomienda markets"

@@ -20,7 +20,6 @@
 //= require app
 //= require bootstrap.min
 //= require jquery.ui.effect-shake
-//= require def_values
 
 // -----------
 

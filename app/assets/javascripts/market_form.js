@@ -88,7 +88,6 @@ var collectNewDates = function(){
   return dates;
   } catch(em){
     console.log(em);
-
   } ;
 };
 
@@ -113,11 +112,7 @@ var serializeSchedules = function(dates){
 
 $( document ).ready(function() {
   $("#wizard").removeClass("hidden");
-  // Disable add market button
   $(".add_market_button").addClass("btn-default").removeClass("btn-info").attr("disabled", true);
-
-  // Jump to a section
-  // Prevent submission
   $(window).keydown(function(event){
     if(event.keyCode == 13) {
       event.preventDefault();
@@ -135,8 +130,6 @@ $( document ).ready(function() {
         $("#small-map-container").hide();
     }
   });
-
- 
 
   // TAGS 
  
