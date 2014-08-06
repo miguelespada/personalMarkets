@@ -205,3 +205,20 @@ es:
   sold_coupons: Cupones vendidos
   payment_details: Detalles del pago
   pay: pagar
+  resend_confirmation_instructions: Enviar de nuevo las instrucciones de confirmación
+  change_your_password: Cambiar la contraseña
+  new_password: Contraseña nueva
+  confirm_your_new_password: Confirmar tu contraseña nueva
+  change_my_password: Cambiar mi contraseña
+  forgot_your_password: ¿Has olvidado tu contraseña?
+  password_recovery: Recuperación de contraseña
+  reset_my_password: Restablecer mi contraseña
+  or: o
+  currently_waiting_confirmation_for: "Esperando la confirmación para:"
+  leave_it_blank: Déjalo blanco si no quieres cambiarlo
+  we_need_your_current_password: Necesitamos tu contraseña actual para confirmar los cambios
+  update: actualizar
+  cancel_my_account: Cancelar mi cuenta
+  unhappy: ¿No estás contento?
+  are_you_sure: ¿Estás seguro?
+  back: volver
