@@ -42,9 +42,9 @@ class BargainsController < ApplicationController
     @bargain.user = current_user
     respond_to do |format|
       if @bargain.save
-        format.html { redirect_to user_bargains_path(current_user), notice: ControllerNotice.success('create', 'bargain')  }
+        format.html { redirect_to user_bargains_path(current_user), notice: ControllerNotice.success('created', 'bargain')  }
       else
-        format.html { render action: 'new', flash: { error:  ControllerNotice.fail('create', 'bargain') }}
+        format.html { render action: 'new', flash: { error:  ControllerNotice.fail('created', 'bargain') }}
       end
     end
   end
@@ -52,9 +52,9 @@ class BargainsController < ApplicationController
   def update
     respond_to do |format|
       if @bargain.update(bargain_params)
-        format.html { redirect_to user_bargains_path(current_user), notice: ControllerNotice.success('update', 'bargain')  }
+        format.html { redirect_to user_bargains_path(current_user), notice: ControllerNotice.success('updated', 'bargain')  }
       else
-        format.html { render action: 'edit', flash: { error:  ControllerNotice.fail('update', 'bargain') }}
+        format.html { render action: 'edit', flash: { error:  ControllerNotice.fail('updated', 'bargain') }}
       end
     end
   end
@@ -63,10 +63,10 @@ class BargainsController < ApplicationController
     respond_to do |format|
       if @bargain.destroy
         format.html { redirect_to user_bargains_path(current_user),
-                      notice: ControllerNotice.success('delete', 'bargain')  }
+                      notice: ControllerNotice.success('deleted', 'bargain')  }
       else
         format.html { redirect_to user_bargains_path(current_user),
-                      flash: { error:  ControllerNotice.fail('delete', 'bargain')}}
+                      flash: { error:  ControllerNotice.fail('deleted', 'bargain')}}
       end
     end
   end

@@ -1,6 +1,11 @@
 es:
   new: "nuevo"
   edit: "editar"
+  delete: "borrar"
+  print: "imprimir"
+  archive: "archivar"
+  buy_coupon: "comprar cupón"
+  register_to_buy_coupon: Debe registrarse para poder comprar cupones
   city: "ciudad"
   passed_dates: "fechas pasadas"
   near_me: "cerca mío"
@@ -24,13 +29,13 @@ es:
   external_url_pro: "Enlace externo"
   coupon_pro: "Cupón"
   coupon: "Cupón"
-  coupons: "Cupones"
+  coupons: "cupones"
   all_coupons: "Todos los cupones"
   date_and_time: "Fecha y horario"
   latest_markets: "Últimos markets"
   hot_spots: "vecindarios"
   categories: "categorías"
-  Category: "categoría"
+  category: "categoría"
   explore: "explora"
   tags: "etiquetas"
   tag_list: "Volver a la lista de tags"
@@ -38,8 +43,8 @@ es:
   wishlist: "Deseos"
   "My Wishlist": "Mis deseos"
   schedule: "Horarios"
-  "External url": "Enlace"
-  "Social link": "Enlaces a redes sociales"
+  external_url: "Enlace"
+  social_link: "Enlaces a redes sociales"
   "Contact us": "Contáctanos"
   see_more_markets: "Ver más markets..."
   see_more_categories: "Ver más categorias..."
@@ -80,7 +85,8 @@ es:
   published_Markets: "Mercados publicados"
   explore: "Explorar"  
   search: "Buscar"
-  publish: "Publicar"
+  publish: "publicar"
+  unpublish: "retirar"
   simple_form:
     "yes": 'Si'
     "no": 'No'
@@ -104,11 +110,11 @@ es:
   was: "ha sido"
   successfully: "correctamente"
   fail: "no puede ser"
-  update: "modificado"
-  delete: "borrado"
-  create: "creado"
-  archive: "archivado"
-  unpublish: "retirado"
+  updated: "modificado"
+  deleted: "borrado"
+  created: "creado"
+  archived: "archivado"
+  unpublished: "retirado"
   market_recommended: "Market recomendado!"
   wish: "deseo"
   bargain: "ganga"
@@ -152,6 +158,10 @@ es:
   total: "Precio total"
   how_it_works: "¿Cómo funciona?"
   days: "días"
+  uncategorized: sin categoría
+  stats: estadísticas
+  discard: descartar
+  who_liked: "¿A quién le gusta?"
   market_form:
     update_and_publish_market: "Update market and publish"
     discard_changes: "Si continuas perderás todos los cambios"
@@ -167,3 +177,6 @@ es:
     your_market_cannot_be_longer_than: "Recuerda que tu market no puede durar más de"
     update_map: "Actualiza el mapa"
     check_map_is_correct: Comprueba que tu dirección aparece correctamente en el mapa
+  create_coupon_to_add_extra_services: Crea cupones para ofrecer servicios extra
+  go_vim_to_offer_coupons: Go VIM para poder crear cupones
+  market_has_no_coupons: Este Market no tiene cupones

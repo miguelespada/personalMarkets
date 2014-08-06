@@ -49,9 +49,9 @@ class WishesController < ApplicationController
     @wish.user = current_user
     respond_to do |format|
       if @wish.save
-        format.html { redirect_to user_wishes_path(current_user), notice: ControllerNotice.success('create', 'wish') }
+        format.html { redirect_to user_wishes_path(current_user), notice: ControllerNotice.success('created', 'wish') }
       else
-        format.html { render action: 'new', flash: { error:  ControllerNotice.fail('create', 'wish')  } }
+        format.html { render action: 'new', flash: { error:  ControllerNotice.fail('created', 'wish')  } }
       end
     end
   end
@@ -59,9 +59,9 @@ class WishesController < ApplicationController
   def update
     respond_to do |format|
       if @wish.update(wish_params)
-        format.html { redirect_to user_wishes_path(current_user), notice: ControllerNotice.success('update', 'wish') }
+        format.html { redirect_to user_wishes_path(current_user), notice: ControllerNotice.success('updated', 'wish') }
       else
-        format.html { render action: 'edit', flash: { error:  ControllerNotice.fail('update', 'wish') } }
+        format.html { render action: 'edit', flash: { error:  ControllerNotice.fail('updated', 'wish') } }
       end
     end
   end
@@ -69,9 +69,9 @@ class WishesController < ApplicationController
   def destroy
     respond_to do |format|
       if @wish.destroy
-        format.html { redirect_to :back, notice: ControllerNotice.success('delete', 'wish') }
+        format.html { redirect_to :back, notice: ControllerNotice.success('deleted', 'wish') }
       else
-        format.html { redirect_to :back, flash: { error: ControllerNotice.fail('delete', 'wish') } }
+        format.html { redirect_to :back, flash: { error: ControllerNotice.fail('deleted', 'wish') } }
       end
     end
   end

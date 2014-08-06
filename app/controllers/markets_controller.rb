@@ -105,7 +105,7 @@ class MarketsController < ApplicationController
   def delete_succeeded
     respond_to do |format|
       format.html { redirect_to  user_markets_path(@user), 
-                      notice: ControllerNotice.success('delete', 'market')}
+                      notice: ControllerNotice.success('deleted', 'market')}
     end
   end
 
@@ -169,7 +169,7 @@ class MarketsController < ApplicationController
     if publish
       domain.publish_market market.public_id
     else
-      redirect_to market, notice: ControllerNotice.success('create', 'market')
+      redirect_to market, notice: ControllerNotice.success('created', 'market')
     end
   end
 
@@ -184,7 +184,7 @@ class MarketsController < ApplicationController
   end
 
   def archive_succeeded market
-    redirect_to market, notice: ControllerNotice.success('archive', 'market')
+    redirect_to market, notice: ControllerNotice.success('archived', 'market')
   end
 
   def unpublish
@@ -192,7 +192,7 @@ class MarketsController < ApplicationController
   end
 
   def unpublish_succeeded market
-    redirect_to market, notice: ControllerNotice.success('unpublish', 'market')
+    redirect_to market, notice: ControllerNotice.success('unpublished', 'market')
   end
 
   def publish
@@ -232,7 +232,7 @@ class MarketsController < ApplicationController
     if publish
       domain.publish_market params[:id] 
     else
-      redirect_to market, notice: ControllerNotice.success('update', 'market')
+      redirect_to market, notice: ControllerNotice.success('updated', 'market')
     end
   end
 

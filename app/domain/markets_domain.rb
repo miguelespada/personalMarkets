@@ -14,7 +14,7 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
     market.save!
     listener.create_market_succeeded market, publish
   rescue MarketsDomainException
-    listener.create_market_failed market, ControllerNotice.fail('create', 'market')
+    listener.create_market_failed market, ControllerNotice.fail('created', 'market')
   rescue MarketDateException => e
     listener.update_failed market, e.message
   end
@@ -28,7 +28,7 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
     ####
     listener.update_suceeded market, publish
   rescue MarketsDomainException
-    listener.update_failed market, ControllerNotice.fail('update', 'market')
+    listener.update_failed market, ControllerNotice.fail('updated', 'market')
   rescue MarketDateException => e
     listener.update_failed market, e.message
   end
