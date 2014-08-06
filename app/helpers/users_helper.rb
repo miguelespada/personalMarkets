@@ -1,12 +1,12 @@
 module UsersHelper
 
   def user_role(user)
-    if user.has_role?(:admin) 
-      'You are an ADMIN user'
+    if user.has_role?(:admin)
+      t(:you_are_admin) 
     elsif user.has_role?(:premium)
-      'You are a PRO user'
+      t(:you_are_pro)
     else
-      'You are a REGULAR user'
+      t(:you_are_regular)
     end
   end
 

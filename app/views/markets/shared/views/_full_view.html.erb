@@ -1,13 +1,13 @@
 <div class="container main-container">
   <%= stylesheet_link_tag "markets/full-description" %>
 
-  <%= render partial: 'markets/shared/utils/status', locals: { market: market } %>
-
   <div class="panel panel-default panel-table panel-table-last row market-full-description-panel">
+    <%= render partial: 'markets/shared/utils/status', locals: { market: market } %>
     
     <%= render partial: 'markets/shared/utils/title_and_actions_bar', locals: { market: market } %>
 
     <div class="market-full-description-container">
+
       <div class="market-badge">
         <div class="ribbon-badge <%= market.badges %>">
           <span id="market-badge-text"></span>
@@ -15,7 +15,8 @@
       </div>
 
       <div class="market-section-title row"><%= t(:general_information).capitalize %> 
-          <%= market.direct_edit_link("form-market-description") %></div>
+        <%= market.direct_edit_link("form-market-description") %>
+      </div>
       
       <div class="market-section-container row">
         <div class="col-md-6 market-photo">
@@ -23,18 +24,22 @@
           <%= render partial: 'photos/utils/actions', locals: { photo: market.featured  } %>
         </div>
       
-            <%= render partial: 'markets/shared/utils/description', locals: { market: market } %>
-        </div>
+          
+        <%= render partial: 'markets/shared/utils/description', locals: { market: market } %>
       </div>
 
-       <div class="market-section-title row"><%= t(:schedule).capitalize %> 
-        <%= market.direct_edit_link("form-market-date ") %></div>
+      <div class="market-section-title row"><%= t(:schedule).capitalize %> 
+        <%= market.direct_edit_link("form-market-date ") %>
+      </div>
+      
       <div class="market-section-container row">
         <%= render partial: 'markets/shared/utils/schedule', locals: { market: market } %>
       </div>
     
-       <% if !market.pro? && false%>
-        <div class="adsense-banner">ADVERTISEMENT <span>POWERED BY ADSENSE</span></div>
+       
+      <% if !market.pro? && false%>
+        <div class="adsense-banner">ADVERTISEMENT <span>POWERED BY ADSENSE</span>
+        </div>
       <% end %>
 
       <%= market.photo_slideshow_section %>
@@ -43,22 +48,29 @@
     
       <%= market.coupon_section if market.pro?  %>
       
-      <div class="market-section-title row"><%= t(:location).capitalize %> <%= market.direct_edit_link("form-market-location") %> </div>
-      <div class="market-section-container row">
-        
-        <div class="market-address-detail "> <%= market.address_and_city %> </div>
+      <div class="market-section-title row">
+        <%= t(:location).capitalize %>
+        <%= market.direct_edit_link("form-market-location") %>
+      </div>
+      
+      <div class="market-section-container row"> 
+        <div class="market-address-detail ">
+          <%= market.address_and_city %>
+        </div>
         <%= market.location %>
       </div>
 
-      <div class="market-section-title row facebook-section"><%= t(:comments_and_share).capitalize %></div>
+      <div class="market-section-title row facebook-section">
+        <%= t(:comments_and_share).capitalize %>
+      </div>
+      
       <div class="market-section-container row social-container facebook-section">
         <%= render partial: 'markets/shared/utils/facebook_comments', locals: { market: market } %>
       </div>
       
-
       <%= market.market_quality_section %>
 
-
+  </div>
 </div>
 
 

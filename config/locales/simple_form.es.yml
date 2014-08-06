@@ -187,3 +187,10 @@ es:
   create_coupon_to_add_extra_services: Crea cupones para ofrecer servicios extra
   go_vim_to_offer_coupons: Go VIM para poder crear cupones
   market_has_no_coupons: Este Market no tiene cupones
+  you_are_admin: "Eres administrador"
+  you_are_pro: "Eres un usuario pro"
+  you_are_regular: "Eres un usuario normal"
+  you_have_publised: 
+  during_last_month:
+  you_can_publish:
+  market_s:
