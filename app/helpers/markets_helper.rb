@@ -56,8 +56,7 @@ module MarketsHelper
   end
 
   def format_date(day)
-      # I18n.l(day["date"], :format => :long).to_s + ", " + day["from"] + " - " + day["to"] 
-      day["date"].to_s + ", " + day["from"] + " - " + day["to"] 
+      (I18n.l day["date"], :format => :long).to_s + ", " + day["from"] + " - " + day["to"] 
   end
 
 end
