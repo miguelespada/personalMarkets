@@ -21,38 +21,43 @@
           </div>
       </ul>
     </li>
+
     <li class="col-sm-3">
       <ul id="explore_categories" class="explore_section">
         <li class="item-title"><%= t(:categories).capitalize %></li>
         <li class="divider"></li>
       </ul>
     </li>
+
     <li class="col-sm-2">
       <ul id="explore_tags" class="explore_section">
         <li class="item-title"><%= t(:tags).capitalize %></li>  
         <li class="divider"></li>
       </ul>
     </li>
+
     <li class="col-sm-2">
       <ul id="explore_hotspots" class="explore_section">
         <li class="item-title"><%= t(:hot_spots).capitalize %></li>
         <li class="divider"></li>  
       </ul>
     </li>
+
     <li class="col-sm-2">
       <ul class="explore_section">
-        <li class="item-title">More...</li>
+        <li class="item-title"><%= t(:more) %></li>
         <li class="divider"></li>
         <li class="registered-user-action">
-        <%= link_to wishes_gallery_path do %>
+          <%= link_to wishes_gallery_path do %>
             <%= t(:all_wishes).capitalize %><i class="fa fa-angle-right explore-arrow"></i>
           <% end %>
         </li>
       </ul>
+
       <ul class="explore_section bargain_section">
         <li class="divider"></li>
         <li class="registered-user-action">
-        <%= link_to bargains_gallery_path do %>
+          <%= link_to bargains_gallery_path do %>
             <%= t(:all_bargains).capitalize %><i class="fa fa-angle-right explore-arrow"></i>
           <% end %>
         </li>
@@ -61,23 +66,22 @@
       <ul class="explore_section bargain_section">
         <li class="divider"></li>
         <li class="registered-user-action">
-        <%= link_to coupons_gallery_path do %>
+          <%= link_to coupons_gallery_path do %>
             <%= t(:all_coupons).capitalize %><i class="fa fa-angle-right explore-arrow"></i>
           <% end %>
         </li>
-      </ul>  
+      </ul>
+
       <ul class="explore_section bargain_section">
         <li class="divider"></li>
         <li class="registered-user-action">
-        <%= link_to users_live_search_path do %>
+          <%= link_to users_live_search_path do %>
             <%= t(:all_users).capitalize %><i class="fa fa-angle-right explore-arrow"></i>
           <% end %>
         </li>
-      </ul>  
-
+      </ul>
     </li>
-  </ul>
-  
+  </ul> 
 </li>
 
 <script>
@@ -106,11 +110,12 @@
 </script>
 
 <style>
-@media (min-width:768px){
-  .mega-dropdown-menu > li > ul > li > a {
-    overflow:hidden;
-    float:inherit;
-    white-space:nowrap;
-    text-overflow: ellipsis;
+  @media (min-width:768px){
+    .mega-dropdown-menu > li > ul > li > a {
+      overflow:hidden;
+      float:inherit;
+      white-space:nowrap;
+      text-overflow: ellipsis;
+    }
   }
 </style>

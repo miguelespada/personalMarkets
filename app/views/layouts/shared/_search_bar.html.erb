@@ -8,60 +8,60 @@
     
     <span class="input-group-btn">
       <button class="btn btn-default" id="search_button" type="button">
-      <i class="fa fa-search"></i>
+        <i class="fa fa-search"></i>
       </button>
     </span> 
   </div>
 </li>
 
 <script>
-var largeSearchBar = false;
-
-$( document ).ready(function() {
+  var largeSearchBar = false;
   
-  $( "#search_bar_query").keypress(function(e) {
-    if(e.keyCode == 13 ) {
-      e.preventDefault();
-      $("#search_button").click();
-    }
-  });
-
-  $( "#search_bar_query" ).keyup(function() {
-    $("#query").val($( "#search_bar_query" ).val());
-  });
-
-  $("#search_bar_query").focus(function(){
-    if (window.innerWidth >= 768 && window.innerWidth < 1024)
-      changeSearchBarSize(240, false);
-    else if (window.innerWidth >= 1024)
-      changeSearchBarSize(300, false);
-  });
-
-  $("#search_bar_query").focusout(function(){
-    if (window.innerWidth >= 768 && window.innerWidth < 1024)
-      changeSearchBarSize(200, true);
-    else if (window.innerWidth >= 1024)
-      changeSearchBarSize(240, true);
-  });
-
-  $("#search_button").click(function(){
-    <% if search_page? %>
-      $("#search_market").change();
-    <% else %>
-      $("#search_market").submit();
-    <% end %>
-  });
-});
-
-var changeSearchBarSize = function(newsize, flag){
-  if (largeSearchBar == flag){
-    $("#search_bar").animate({
-      width: newsize
-    }, 400, function(){
-      largeSearchBar = !flag;
+  $( document ).ready(function() {
+    
+    $( "#search_bar_query").keypress(function(e) {
+      if(e.keyCode == 13 ) {
+        e.preventDefault();
+        $("#search_button").click();
+      }
     });
-  }
-};
+  
+    $( "#search_bar_query" ).keyup(function() {
+      $("#query").val($( "#search_bar_query" ).val());
+    });
+  
+    $("#search_bar_query").focus(function(){
+      if (window.innerWidth >= 768 && window.innerWidth < 1024)
+        changeSearchBarSize(240, false);
+      else if (window.innerWidth >= 1024)
+        changeSearchBarSize(300, false);
+    });
+  
+    $("#search_bar_query").focusout(function(){
+      if (window.innerWidth >= 768 && window.innerWidth < 1024)
+        changeSearchBarSize(200, true);
+      else if (window.innerWidth >= 1024)
+        changeSearchBarSize(240, true);
+    });
+  
+    $("#search_button").click(function(){
+      <% if search_page? %>
+        $("#search_market").change();
+      <% else %>
+        $("#search_market").submit();
+      <% end %>
+    });
+  });
+  
+  var changeSearchBarSize = function(newsize, flag){
+    if (largeSearchBar == flag){
+      $("#search_bar").animate({
+        width: newsize
+      }, 400, function(){
+        largeSearchBar = !flag;
+      });
+    }
+  };
 </script>
 
 <style>

@@ -48,7 +48,7 @@ es:
   schedule: "Horarios"
   external_url: "Link"
   social_link: "Enlace a redes sociales"
-  contact_us: "contáctanos"
+  contact_us: "Contáctanos"
   see_more_markets: "Ver más markets..."
   see_more_categories: "Ver más categorias..."
   see_more_hotspots: "Ver más vecindarios..."
@@ -194,7 +194,7 @@ es:
   send: enviar
   how_many_coupons_would_you_like_to_buy: ¿Cuántos cupones quieres comprar?
   i_accept_the: Acepto las
-  terms_of_use: condiciones de uso.
+  terms_of_use: condiciones de uso
   this_coupon_is_sold_out: El cupón ya está agotado.
   transaction_id: ID de transacción
   buyer: comprador
@@ -222,3 +222,26 @@ es:
   unhappy: ¿No estás contento?
   are_you_sure: ¿Estás seguro?
   back: volver
+  registration: Registro de usuario
+  sign_up_with_google: Registrarse con Google
+  sign_up_with_facebook: Registrarse con Facebook
+  sign_in: Identificarse
+  remember_me: Recordarme
+  sign_in_with_google: Identificarse con Google
+  sign_in_with_facebook: Identificarse con Facebook
+  did_not_receive_confirmation_instructions: "¿No has recibido las instrucciones de confirmación?"
+  did_not_receive_unlock_instructions: "¿No has recibido las instrucciones para desbloquear?"
+  resend_unlock_instructions: "Reenviar las instrucciones para desbloquear"
+  new_market: Abre un Market
+  admin_panel: Panel de admin
+  dashboard: dashboard
+  privacy: privacidad
+  more: "Más..."
+  header_content: "Plataforma de búsqueda de markets. Un nuevo concepto emergente de market alternativo, creativo, emprendedor, excepcional, chic, clandestino y sorprendente"
+  header_keywords: "pop up store, personal markets, shopping"
+  header_type: "Plataforma de compras"
+  beta: beta
+  markets: mercados
+  likes: le gusta
+  sign_out: Cerrar la sesión
+  you_are_signed_in_as: Estás indentificado como

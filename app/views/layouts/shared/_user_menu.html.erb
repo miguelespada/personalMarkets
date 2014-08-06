@@ -1,11 +1,13 @@
 <li>
-  	<%= link_to user_dashboard_path(current_user), class:"btn btn-xs btn-info btn-lg btn-100" do %>
-        <i class="fa fa-dashboard"></i> Dashboard
-    <% end %>
-    <%= link_to user_markets_path(current_user), class:"btn btn-xs btn-danger btn-lg btn-100" do %>
-	     <i class="fa fa-shopping-cart"></i> Markets
-	<% end %>
-	<%= link_to user_likes_path(current_user), class:"btn btn-xs btn-warning btn-lg btn-100" do %>
-	     <i class="fa fa-heart-o"></i> Likes
-	<% end %>
+  <%= link_to user_dashboard_path(current_user), class:"btn btn-xs btn-info btn-lg btn-100" do %>
+    <i class="fa fa-dashboard"></i> <%= t(:dashboard).capitalize %>
+  <% end %>
+
+  <%= link_to user_markets_path(current_user), class:"btn btn-xs btn-danger btn-lg btn-100" do %>
+    <i class="fa fa-shopping-cart"></i> <%= t(:markets).capitalize %>
+  <% end %>
+
+  <%= link_to user_likes_path(current_user), class:"btn btn-xs btn-warning btn-lg btn-100" do %>
+    <i class="fa fa-heart-o"></i> <%= t(:likes).capitalize %>
+  <% end %>
 </li>

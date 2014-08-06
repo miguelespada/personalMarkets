@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-
   <%= render "layouts/shared/header" %>
-  
-<body> 
-  <%= render "layouts/shared/navbarhorizontal" %>
-  <%= render "layouts/shared/filter_bar" %>
-
-  <%= render "layouts/shared/flash" %>
-  <%= yield %>
-
-
-  <%= render "layouts/shared/footer" %>
-</body>
-
+  <body> 
+    <%= render "layouts/shared/navbarhorizontal" %>
+    <%= render "layouts/shared/filter_bar" %>
+    <%= render "layouts/shared/flash" %>
+    <%= yield %>
+    <%= render "layouts/shared/footer" %>
+  </body>
 </html>

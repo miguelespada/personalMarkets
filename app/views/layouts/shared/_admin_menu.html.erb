@@ -1,8 +1,8 @@
 <li>
-  	<%= link_to admin_path, class:"btn btn-xs btn-primary btn-lg btn-100" do %>
-        <i class="fa fa-cog"></i> Admin Panel
-    <% end %>
-    <%= link_to user_dashboard_path(current_user), class:"btn btn-xs btn-info btn-lg btn-100" do %>
-        <i class="fa fa-dashboard"></i> Dashboard
-    <% end %>
+  <%= link_to admin_path, class:"btn btn-xs btn-primary btn-lg btn-100" do %>
+      <i class="fa fa-cog"></i> <%= t(:admin_panel) %>
+  <% end %>
+  <%= link_to user_dashboard_path(current_user), class:"btn btn-xs btn-info btn-lg btn-100" do %>
+      <i class="fa fa-dashboard"></i> <%= t(:dashboard).capitalize %>
+  <% end %>
 </li>

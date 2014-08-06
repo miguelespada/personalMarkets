@@ -2,9 +2,10 @@
   <div class="container">
     <div id="beta-badge-container">
       <div class="beta-badge">
-        <span id="beta-badge-text"><%= link_to "BETA", beta_path %></span>
+        <span id="beta-badge-text"><%= link_to t(:beta).upcase, beta_path %></span>
       </div>
     </div>
+
     <div class="navbar-header pull-left">
       <button type="button" class="navbar-toggle pull-left navbar-collapse-button" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
@@ -42,7 +43,7 @@
         <% end %>
         <%= render "layouts/shared/footer_menu" %>
       </ul>
-    </div>
+
     </div>
   </div>
 </nav>
@@ -56,22 +57,20 @@
 </style>
 
 <script>
-
-$(document).ready(function(){
-  footerCollapse();
-  window.onresize = footerCollapse();
-});
-
-var toggleDropup = function(widthBoolean){
-  $(".languages").toggleClass("dropup", widthBoolean);
-  $(".languages").toggleClass("dropdown", !widthBoolean);
-}
-
-var footerCollapse = function(){
-  if (window.innerwidth > 768)
-    toggleDropup(true);
-  else
-    toggleDropup(false);
-}
-
+  $(document).ready(function(){
+    footerCollapse();
+    window.onresize = footerCollapse();
+  });
+  
+  var toggleDropup = function(widthBoolean){
+    $(".languages").toggleClass("dropup", widthBoolean);
+    $(".languages").toggleClass("dropdown", !widthBoolean);
+  }
+  
+  var footerCollapse = function(){
+    if (window.innerwidth > 768)
+      toggleDropup(true);
+    else
+      toggleDropup(false);
+  }
 </script>

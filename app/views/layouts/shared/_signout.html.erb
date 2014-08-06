@@ -1,47 +1,46 @@
 <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <% if current_user.has_role? "premium" %>
+      <i class="fa fa-star premium-star"></i>
+    <% end %>
 
-<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <% if current_user.image? %>
+      <img src="<%= current_user.image %>" class="img img-circle" style="width: 20px; height: 20px;">
+    <% else %>
+      <i class="fa fa-user"></i>
+    <% end %>
 
-<% if current_user.has_role? "premium" %>
-  <i class="fa fa-star premium-star"></i>
-<% end %>
+    <span id="nav_user_container"><span id="nav_user_name"><%=current_user.email%></span><b class="caret"></b></span>
+  </a>
 
-<% if current_user.image? %>
-  <img src="<%= current_user.image %>" class="img img-circle" style="width: 20px; height: 20px;">
-<% else %>
-  <i class="fa fa-user"></i>
-<% end %>
-
-
-&nbsp;<div id="nav_user_container"><span id="nav_user_name"><%=current_user.email%></span> <b class="caret"></b></div>
-
-</a>
-
-<ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
-
-  <div class="well well-sm">
+  <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+    <div class="well well-sm">
       <div class="media">
-          <a class="thumbnail pull-left" href="#">
-              <img class="media-object" src="<%= current_user.image? ? current_user.image : 'http://critterapp.pagodabox.com/img/user.jpg' %>">
-          </a>
-          <div class="media-body">
+        <a class="thumbnail pull-left" href="#">
+          <img class="media-object" src="<%= current_user.image? ? current_user.image : 'http://critterapp.pagodabox.com/img/user.jpg' %>">
+        </a>
+
+        <div class="media-body">
           <% if current_user.has_role? "admin" %>
-                  <%= render "layouts/shared/admin_menu" %>
+            <%= render "layouts/shared/admin_menu" %>
           <% else %>
-                  <%= render "layouts/shared/user_menu"  %>
+            <%= render "layouts/shared/user_menu"  %>
           <% end %>
-          </div>
+        </div>
+
       </div>
+
       <div class="form-actions center">
-        You are signed in as <span style="color: #5bc0de;"><%=current_user.email%></span>
+        <%= t(:you_are_signed_in_as) %> 
+        <span style="color: #5bc0de;"><%=current_user.email%></span>
       </div>
-  </div>
+    </div>
 
-  <div class="form-actions">
-     <%= link_to "Sign out", destroy_user_session_path, :class=>  "btn btn-info btn-block"  %>
-  </div>
-
-</ul>
+    <div class="form-actions">
+      <%= link_to t(:sign_out), destroy_user_session_path, :class=>  "btn btn-info btn-block"  %>
+    </div>
+  </ul>
+</li>
 
 <style>
   #nav_user_container{
@@ -58,9 +57,9 @@
     }
   }
   
-	.center{
- 		text-align: center;
-	}
+  .center{
+    text-align: center;
+  }
   .btn-100{
     width: 100%;
   }
