@@ -9,37 +9,43 @@
           <span>2.99€</span>
         </div>
         <ul>
-        <li class="plan-feature"><span class="fa fa-check-circle"></span> Imágenes extra </li>
-        <li class="plan-feature"><span class="fa fa-check-circle"></span> Links a tu blog y a tu evento de facebook </li>
-              <li class="plan-feature"><span class="fa fa-check-circle"></span> Estadisticas de tus mercados a tiempo real</li>
-              <li class="plan-feature"><span class="fa fa-check-circle"></span> Creación de cupones</li>
-              <li class="plan-feature"><span class="fa fa-check-circle"></span> Sin anuncios</li>
+          <li class="plan-feature"><span class="fa fa-check-circle"></span> Imágenes extra </li>
+          <li class="plan-feature"><span class="fa fa-check-circle"></span> Links a tu blog y a tu evento de facebook </li>
+          <li class="plan-feature"><span class="fa fa-check-circle"></span> Estadisticas de tus mercados a tiempo real</li>
+          <li class="plan-feature"><span class="fa fa-check-circle"></span> Creación de cupones</li>
+          <li class="plan-feature"><span class="fa fa-check-circle"></span> Sin anuncios</li>
         </ul>
       </div>
-      </div>
+    </div>
 
     <div class="col-sm-6 col-md-offset-1">
       <div class="panel panel-default">
         <div class="panel-heading">
-        <div class="panel-body">
-          <fieldset>
-          <%= form_tag({controller: "markets", action: "make_pro"}, method: "post", id: "new_payment") do %>
-          <%= hidden_field_tag "id", "#{@pro_payment.market.public_id}" %>
+          <div class="panel-body">
+            <fieldset>
+              <%= form_tag({controller: "markets", action: "make_pro"}, method: "post", id: "new_payment") do %>
+                
+                <%= hidden_field_tag "id", "#{@pro_payment.market.public_id}" %>
 
-          <%= render "payments/common_payment_form", :payment => @pro_payment.payment %>
-          <p><input type="checkbox" required name="premium_accept_term" id="accept_terms" > I accept the <%= link_to "terms of use.", go_vim_terms_path %></p>
+                <%= render "payments/common_payment_form", :payment => @pro_payment.payment %>
 
-          <% end %>
-          <div class="form-group col-md-4 col-md-offset-4 payment-button-container">
+                <p>
+                  <input type="checkbox" required name="premium_accept_term" id="accept_terms" > 
+                  I accept the <%= link_to "terms of use.", go_vim_terms_path %>
+                </p>
 
-            <button class="get-token btn btn-info">Pay</button>
+              <% end %>
+              <div class="form-group col-md-4 col-md-offset-4 payment-button-container">
+                <button class="get-token btn btn-info">Pay</button>
+              </div>
+            </fieldset>
           </div>
-          </fieldset>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <div class="center">
-<%= back_link %>
+  <%= back_link %>
 </div>
