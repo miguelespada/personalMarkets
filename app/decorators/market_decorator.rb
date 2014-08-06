@@ -239,7 +239,7 @@ class MarketDecorator < Draper::Decorator
   end
 
   def print_link
-    link_to(content_tag(:i, " " + t(:print).capitalized, :class => "fa fa-print"), market_poster_path(market, :format => "pdf"), { method: :get, class: "btn btn-default" })
+    link_to(content_tag(:i, " " + t(:print).capitalize, :class => "fa fa-print"), market_poster_path(market, :format => "pdf"), { method: :get, class: "btn btn-default" })
   end
 
   def delete_link
