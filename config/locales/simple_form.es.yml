@@ -43,8 +43,8 @@ es:
   wishlist: "Deseos"
   "My Wishlist": "Mis deseos"
   schedule: "Horarios"
-  external_url: "Enlace"
-  social_link: "Enlaces a redes sociales"
+  external_url: "Link"
+  social_link: "Enlace a redes sociales"
   "Contact us": "Contáctanos"
   see_more_markets: "Ver más markets..."
   see_more_categories: "Ver más categorias..."
@@ -162,8 +162,9 @@ es:
   stats: estadísticas
   discard: descartar
   who_liked: "¿A quién le gusta?"
+  market: "market"
   market_form:
-    update_and_publish_market: "Update market and publish"
+    update_and_publish_market: "Actualizar y publicar"
     discard_changes: "Si continuas perderás todos los cambios"
     market_name_cannot_be_empty: "El nombre del Market es obligatorio"
     remember_to_publish: 'Una vez guardado, deberas "Publicar" tu Market para que sea visible.'
@@ -177,6 +178,7 @@ es:
     your_market_cannot_be_longer_than: "Recuerda que tu market no puede durar más de"
     update_map: "Actualiza el mapa"
     check_map_is_correct: Comprueba que tu dirección aparece correctamente en el mapa
+    add_external_links: "Añade links a tu blog, web y a tu evento de facebook."
   create_coupon_to_add_extra_services: Crea cupones para ofrecer servicios extra
   go_vim_to_offer_coupons: Go VIM para poder crear cupones
   market_has_no_coupons: Este Market no tiene cupones
