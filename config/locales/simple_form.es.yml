@@ -155,7 +155,7 @@ es:
   market_form:
     update_and_publish_market: "Update market and publish"
     discard_changes: "Si continuas perderás todos los cambios"
-    market_name_cannot_be_empty: "El nombre del mercado es obligatorio"
+    market_name_cannot_be_empty: "El nombre del Market es obligatorio"
     remember_to_publish: 'Una vez guardado, deberas "Publicar" tu Market para que sea visible.'
     you_can_emit_a_coupon: 'Para ofrecer servicos extras a tus clientes puedes emitir un cupón.'
     you_can_edit_your_photos: "Puedes editar tus fotos una vez guardadas, en tu espacio personal."
@@ -165,3 +165,5 @@ es:
     you_can_select_many_schedules: "Puedes elegir tantas franjas horarias como necesites."
     become_pro_to_have_longer_markets: "Hazte una cuenta PRO para tener mercados más largos."
     your_market_cannot_be_longer_than: "Recuerda que tu market no puede durar más de"
+    update_map: "Actualiza el mapa"
+    check_map_is_correct: Comprueba que tu dirección aparece correctamente en el mapa

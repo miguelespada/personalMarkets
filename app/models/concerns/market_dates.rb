@@ -3,6 +3,8 @@ module MarketDates
 
 
   module InstanceMethods
+   
+
     def passed?
       return false if !self.has_date? 
       self.date.split(',').each do |day|
@@ -74,8 +76,6 @@ module MarketDates
     rescue
     end
     
-
-
     def max_duration
       if belongs_to_premium_user?
         30

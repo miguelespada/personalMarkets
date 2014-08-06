@@ -2,9 +2,11 @@
 
 <% required ||= false %>
 
-<%= f.attachinary_file_field(:photo, 
+<div class="form-group">
+  <%= f.attachinary_file_field(:photo, 
     :cloudinary => { :transformation => {:width=>800, 
     :height =>800, :quality => 50, :crop=>:limit }}) %>
+</div>
 
 <script>
 $( document ).ready(function() {

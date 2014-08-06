@@ -12,6 +12,8 @@ module MarketsHelper
   end
 
   def market_calendar(market)
+    return if !market.has_date? 
+
     d0 = market.first_date.at_beginning_of_month.at_beginning_of_week
     d1 = market.first_date.end_of_month.at_end_of_week
     d2 = market.last_date.end_of_month.at_end_of_week
