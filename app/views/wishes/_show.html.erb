@@ -11,16 +11,18 @@
         </div>
 
         <div class="wish-photo-container">
-            <%= photo(wish.photography, 400) %> 
+          <%= photo(wish.photography, 400) %> 
         </div>
-          <div class="market-list-section-title"><%= t(:recommend_market) %></div>
-            <div class="market-list-section-container">
-              <div id ="recommend" class = "market-list-section-container-inner row">
-              </div>
+
+        <div class="market-list-section-title"><%= t(:recommend_market) %></div>
+          <div class="market-list-section-container">
+            <div id ="recommend" class = "market-list-section-container-inner row">
+            </div>
             <%= hidden_field_tag 'recommend_page', params['recommend_page'] || 1 %>
           </div>
+        </div>
 
-         <div class="recomendations">
+        <div class="recomendations">
           <div class="market-list-section-title"><%= t(:recommended) %></div>
             <div class="market-list-section-container">
               <div class = "market-list-section-container-inner row">
@@ -32,6 +34,7 @@
                     <%= market.decorate.formatted_market_name %>
                   </div>
                 <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -41,16 +44,16 @@
 </div>
 
 <script>
-    var ajaxRecommend = function(){
-      $.ajax({url: "<%= list_recommend_markets_path %>", 
-         data: { recommend_page:$("#recommend_page").val(),
-        wish_id: "<%= wish.id %>" }
-      }).done(function( data ) {
-        $( "#recommend" ).html( data );
-      });
-    };
-
-    $(document).ready(function(){
-      ajaxRecommend();
+  var ajaxRecommend = function(){
+    $.ajax({url: "<%= list_recommend_markets_path %>", 
+       data: { recommend_page:$("#recommend_page").val(),
+      wish_id: "<%= wish.id %>" }
+    }).done(function( data ) {
+      $( "#recommend" ).html( data );
     });
+  };
+
+  $(document).ready(function(){
+    ajaxRecommend();
+  });
 </script>

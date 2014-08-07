@@ -3,13 +3,13 @@
   <div class="panel-body tags-panel-container">
     -
     <% @suggested.each do |tag| %>
-        <%= link_to(tag.name.mb_chars.upcase, tag_markets_path(tag.name), class: "tag-link", :data => {tag: tag.name}) %> 
-        <% @tags.delete(tag.name.capitalize) %>
-        -
+      <%= link_to(tag.name.mb_chars.upcase, tag_markets_path(tag.name), class: "tag-link", :data => {tag: tag.name}) %> 
+      <% @tags.delete(tag.name.capitalize) %>
+      -
     <% end %>
     <% @tags.each do |name| %> 
-     <%= link_to( name.mb_chars.upcase, tag_markets_path(name), class: "tag-link", :data => {tag: name} ) %>
-     -
+      <%= link_to( name.mb_chars.upcase, tag_markets_path(name), class: "tag-link", :data => {tag: name} ) %>
+      -
     <% end %>
   </div>
 </div>
@@ -25,8 +25,8 @@
     return false;
   });
 
-  function  ajaxTagSearch(){
-    var page =  $('#page').val() || 1;
+  function ajaxTagSearch(){
+    var page = $('#page').val() || 1;
     $.ajax({
       type: "GET",
       url: $(".tag-link.active").attr('href'),
@@ -34,35 +34,35 @@
       success: function(data){
         $( "#gallery-items" ).html( data );
       }
-  })};
+    })
+  };
 </script>
 
-
-<% if  params['tag_name'].present? %>
+<% if params['tag_name'].present? %>
   <script>
     $("*[data-tag='<%= params['tag_name'] %>']").click();
   </script>
 <% end %>
 
 <style>
-.tag-link{
-  font-size: 20px;
-  padding-right: 5px;
-  padding-left: 5px;
-  color:#000;
-  font-weight: 500 !important;
-}
-.tag-link.active{
-  text-decoration: underline;
-  color:#F00;
-}
-
-.tag-link:hover{
-  color:#000;
-  text-decoration: none;
-}
-.tag-link:hover{
-  color:#000;
-  text-decoration: none;
-}
+  .tag-link{
+    font-size: 20px;
+    padding-right: 5px;
+    padding-left: 5px;
+    color:#000;
+    font-weight: 500 !important;
+  }
+  .tag-link.active{
+    text-decoration: underline;
+    color:#F00;
+  }
+  
+  .tag-link:hover{
+    color:#000;
+    text-decoration: none;
+  }
+  .tag-link:hover{
+    color:#000;
+    text-decoration: none;
+  }
 </style>

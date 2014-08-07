@@ -325,3 +325,9 @@ es:
   open_a: Abre un
   profile: perfil
   photos: fotos
+  vim_market: "Market VIM"
+  visits_per_day_this_week: "Visitas por día de esta semana"
+  sorry_only_vim_can_see_stats: "¡Lo sientimos! Solo los Market VIM pueden ver las estadísticas"
+  tag_name: "Nombre de etiqueta"
+  messages: mensajes
+  admin_data: "Datos de admin"

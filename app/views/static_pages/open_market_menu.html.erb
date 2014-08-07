@@ -1,68 +1,72 @@
 <% if !user_signed_in? %>
-<div id="error" class="alert alert-danger flash"><%= t(:you_must_be_logged) %></div>
+  <div id="error" class="alert alert-danger flash">
+    <%= t(:you_must_be_logged) %>
+  </div>
 <% end %>
 
 <h1><%= t(:open_your_market) %></h1>
 
 <div class="terms-content col-md-8 col-md-offset-2">
-
-<div class="row">
-
-  <div class="center">
-
+  <div class="row">
+    <div class="center">
       <% if !user_signed_in? %>
-          <%= link_to '#', class:"dashboard-button btn btn-lg huge-icon empty" do %>  
+        <%= link_to '#', class:"dashboard-button btn btn-lg huge-icon empty" do %>  
           <i class="fa <%= Market.icon %> fa-5x new-market-icon "></i>
-          <br/>
-          <%= t(:open_a) %> Market
-          <% end %>
+          <br>
+          <%= t(:open_a) %> <%= t(:market).capitalize %>
+        <% end %>
       <% else %>
-          <%= link_to new_user_market_path(current_user), class:"dashboard-button btn btn-lg huge-icon" do %>  
+        <%= link_to new_user_market_path(current_user), class:"dashboard-button btn btn-lg huge-icon" do %>  
           <i class="fa <%= Market.icon %> fa-5x new-market-icon "></i>
-          <br/>
-          <%= t(:open_a) %> Market
-          <% end %>
+          <br>
+          <%= t(:open_a) %> <%= t(:market).capitalize %>
+        <% end %>
       <% end %>
 
-      
-       <% if !user_signed_in? %>
-          <%= link_to '#', class:"dashboard-button btn btn-lg huge-icon empty" do %>  
+      <% if !user_signed_in? %>
+        <%= link_to '#', class:"dashboard-button btn btn-lg huge-icon empty" do %>  
           <i class="fa fa-plus-square fa-5x new-vim-market-icon "></i>
-          <br/>
-          <%= t(:open_a) %> <br> VIM Market
-          <% end %>
+          <br>
+          <%= t(:open_a) %>
+          <br>
+          <%= t(:vim_market)%>
+        <% end %>
       <% else %>
-          <%= link_to market_make_pro_payment_path(Market.new.id), class:"dashboard-button btn btn-lg huge-icon" do %>  
+        <%= link_to market_make_pro_payment_path(Market.new.id), class:"dashboard-button btn btn-lg huge-icon" do %>  
           <i class="fa center fa-plus-square fa-5x new-vim-market-icon "></i>
-          <br/>
-          <%= t(:open_a) %> <br> VIM Market 
-          <% end %>
+          <br>
+          <%= t(:open_a) %>
+          <br>
+          <%= t(:vim_market)%>
+        <% end %>
       <% end %>
 
       <% if !user_signed_in? %>
-          <%= link_to '#', class:"dashboard-button btn btn-lg huge-icon empty" do %>  
+        <%= link_to '#', class:"dashboard-button btn btn-lg huge-icon empty" do %>  
           <i class="fa fa-star fa-5x go-pro-icon "></i>
-          <br/>
+          <br>
           <%= t(:go_PRO) %>
-          <% end %>
+        <% end %>
       <% else %>
-          <%= link_to user_subscription_plan_path(current_user), class:"dashboard-button btn btn-lg huge-icon" do %>  
+        <%= link_to user_subscription_plan_path(current_user), class:"dashboard-button btn btn-lg huge-icon" do %>  
           <i class="fa center fa-star fa-5x go-pro-icon "></i>
-          <br/>
+          <br>
           <%= t(:go_PRO) %>
-          <% end %>
+        <% end %>
       <% end %>
-  </div>
+    </div>
 
-  <div class="col-md-6 center col-md-offset-3 hidden new-market-text ">
-    <%= t(:menu_open_market) %>
-  </div>
-  <div class="col-md-6 center col-md-offset-3 hidden new-vim-market-text ">
-    <%= t(:menu_open_vim) %>
-  </div>
-  </div>
-  <div class="col-md-6 center col-md-offset-3 hidden go-pro-text">
-    <%= t(:menu_go_pro) %>
+    <div class="col-md-6 center col-md-offset-3 hidden new-market-text ">
+      <%= t(:menu_open_market) %>
+    </div>
+
+    <div class="col-md-6 center col-md-offset-3 hidden new-vim-market-text ">
+      <%= t(:menu_open_vim) %>
+    </div>
+
+    <div class="col-md-6 center col-md-offset-3 hidden go-pro-text">
+      <%= t(:menu_go_pro) %>
+    </div>
   </div>
 </div>
 
@@ -97,7 +101,7 @@
 </script>
 
 <style>
-.huge-icon{
-  margin:0px 50px 50px 50px;
-}
+  .huge-icon{
+    margin:0px 50px 50px 50px;
+  }
 </style>

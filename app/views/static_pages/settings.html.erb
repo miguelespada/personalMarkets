@@ -1,114 +1,108 @@
-<div class="terms-title" ><i class="fa fa-cogs fa-3x"></i><br> Data & Settings </div>
+<div class="terms-title">
+  <i class="fa fa-cogs fa-3x"></i>
+  <br>
+   Data & Settings 
+</div>
+
 <div class="terms-content col-md-8 col-md-offset-2">
-<div id="my_chart">
+  <div id="my_chart">
+  </div>
 
+  <div class="table-container">
+    <table class="table table-striped">
+      <tr>
+        <td>Number of Markets</td>
+        <td><%= Market.all.count %></td>
+      </tr>
+
+      <tr>
+        <td>Number of Published Markets</td>
+        <td><%= Market.published.count %></td>
+      </tr>
+
+      <tr>
+        <td>Number of VIM Markets </td>
+        <td><%= Market.vim.count %></td>
+      </tr>
+
+      <tr>
+        <td>Number of New Markets </td>
+        <td><%= Market.last_published.count %></td>
+      </tr>
+
+      <tr>
+        <td>Number of Draft Markets </td>
+        <td><%= Market.draft.count %></td>
+      </tr>
+
+      <tr>
+        <td>Number of Archived Markets </td>
+        <td><%= Market.archived.count %></td>
+      </tr>
+
+      <tr>
+        <td>Number of Users </td>
+        <td><%= User.all.count %></td>
+      </tr>
+
+      <tr>
+        <td>Number of Premium Users </td>
+        <td><%= User.all.count %></td>
+      </tr>
+
+      <tr>
+        <td>Number of Emmitted Coupons </td>
+        <td><%= Coupon.all.count %></td>
+      </tr>
+
+      <tr>
+        <td>Number of Coupon Transaction </td>
+        <td><%= CouponTransaction.all.count %></td>
+      </tr>
+
+      <tr>
+        <td>Number of Bargains </td>
+        <td><%= Bargain.all.count %></td>
+      </tr>
+
+      <tr>
+        <td>Number of Wishes </td>
+        <td><%= Wish.all.count %></td>
+      </tr>
+
+      <tr>
+        <td>Number of Wishes </td>
+        <td><%= Wish.all.count %></td>
+      </tr>
+  
+      <tr>
+        <td>Number of indexed markets</td>
+        <td><%= Market.elasticsearch_count %></td>
+      </tr>
+
+      <tr>
+        <td>Market elastic search reindex (advanced)</td>
+        <td><%= link_to "Reindex", market_reindex_path %></td>
+      </tr>
+
+      <tr>
+        <td>Market delete ES index (advanced)</td>
+        <td><%= link_to "Delete index", market_delete_index_path %></td>
+      </tr>
+    </table>
+  </div>
 </div>
-
-<div class="table-container">
-<table class="table table-striped">
-  <tr>
-    <td>Numer of Markets</td>
-    <td><%= Market.all.count %></td>
-  </tr>
-  <tr>
-    <td>Numer of Published Markets</td>
-    <td><%= Market.published.count %></td>
-  </tr>
-
-  <tr>
-    <td>Numer of VIM Markets </td>
-    <td><%= Market.vim.count %></td>
-  </tr>
-  <tr>
-    <td>Numer of New Markets </td>
-    <td><%= Market.last_published.count %></td>
-  </tr>
-
-  <tr>
-    <td>Numer of Draft Markets </td>
-    <td><%= Market.draft.count %></td>
-  </tr>
-
-
-  <tr>
-    <td>Numer of Archived Markets </td>
-    <td><%= Market.archived.count %></td>
-  </tr>
-
-  <tr>
-    <td>Numer of Users </td>
-    <td><%= User.all.count %></td>
-  </tr>
-
-  <tr>
-    <td>Numer of Premium Users </td>
-    <td><%= User.all.count %></td>
-  </tr>
-
-
-  <tr>
-    <td>Numer of Emmitted Coupons </td>
-    <td><%= Coupon.all.count %></td>
-  </tr>
-
-
-  <tr>
-    <td>Numer of Coupon Transaction </td>
-    <td><%= CouponTransaction.all.count %></td>
-  </tr>
-  
-
-  <tr>
-    <td>Numer of Bargains </td>
-    <td><%= Bargain.all.count %></td>
-  </tr>
-  
-
-  <tr>
-    <td>Numer of Whishes </td>
-    <td><%= Wish.all.count %></td>
-  </tr>
-
-
-  <tr>
-    <td>Numer of Whishes </td>
-    <td><%= Wish.all.count %></td>
-  </tr>
-
-
-  
-  <tr>
-    <td>Number of indexed markets</td>
-    <td><%= Market.elasticsearch_count %></td>
-  </tr>
-  
-  <tr>
-    <td>Market elastic search reindex (advanced)</td>
-    <td><%= link_to "Reindex", market_reindex_path %></td>
-  </tr>
-
-
-  <tr>
-    <td>Market delete ES index (advanced)</td>
-    <td><%= link_to "Delete index", market_delete_index_path %></td>
-  </tr>
-
-</table>
-</div>
-
 
 <script>
-
-Keen.onChartsReady(function() {
-   var series = new Keen.Series("sign_in", {
-     analysisType: "count",
-    timeframe: "this_week",
-    interval: "daily"
-  });
-
+  Keen.onChartsReady(function() {
+     var series = new Keen.Series("sign_in", {
+      analysisType: "count",
+      timeframe: "this_week",
+      interval: "daily"
+    });
+  
     series.draw(document.getElementById("my_chart"), {
-              label: "Signins per day this week"
-          });
-});
-
+      label: "Signins per day this week"
+    });
+  });
 </script>

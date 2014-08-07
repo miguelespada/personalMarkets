@@ -19,11 +19,11 @@
 
         <%= admin_link(Photo) %>
 
-        <%= external_link("https://mail.google.com", "Messages", "fa-envelope-o") %>
+        <%= external_link("https://mail.google.com", t(:messages).capitalize, "fa-envelope-o") %>
 
         <%= admin_link(User) %>
 
-        <%= current_user_dashboard_link("show_statistic_path", "Stats", "fa-tasks") %>
+        <%= current_user_dashboard_link("show_statistic_path", t(:stats).capitalize, "fa-tasks") %>
 
         <%= admin_link(SlideshowImage) %>
 
@@ -33,7 +33,7 @@
 
         <%= admin_link(Coupon) %>
 
-        <%= current_user_dashboard_link("settings_path", "Admin data", "fa-cogs") %>
+        <%= current_user_dashboard_link("settings_path", t(:admin_data).capitalize, "fa-cogs") %>
 
       </div>
     </div>

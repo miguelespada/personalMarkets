@@ -1,13 +1,12 @@
 <div class="main-container">
-
-  <section id="slideshow"  class="hidden-xs" >
+  <section id="slideshow" class="hidden-xs" >
     <div id="slides" >
       <%  SlideshowImage.all.each do |slideshow| %>
         <%=  cl_image_tag(slideshow.photography.photo.path, {quality: "50" } ) %>
       <% end %> 
     </div>
 
-    <div id="slideshow_titles" class="hidden-xs center " >
+    <div id="slideshow_titles" class="hidden-xs center" >
     </div>
   </section>
 
@@ -15,9 +14,10 @@
   </div>
 
   <div id="categories">
-    <div class="anim-container"><i class="fa fa-spinner fa-spin fa-3x"></i></div>  
+    <div class="anim-container">
+      <i class="fa fa-spinner fa-spin fa-3x"></i>
+    </div>  
   </div>
-  
 </div>
 
 <%= javascript_include_tag "jquery.slides" %>

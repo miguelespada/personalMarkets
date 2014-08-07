@@ -1,7 +1,7 @@
 <% if @market.pro? %>
   <%= render "market_statistic", :market => @market %>
 <% else %>
-  <%= page_title("Sorry! Only Very Important Markets con see stats", "fa-frown-o") %>
+  <%= page_title(t(:sorry_only_vim_can_see_stats), "fa-frown-o") %>
   <div class="center">
     <%= back_link %>
   </div>  
