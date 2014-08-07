@@ -82,7 +82,7 @@ module ApplicationHelper
       concat link_to "<i class='fa fa-dashboard fa-1x header-icon'></i>".html_safe, user_dashboard_path(current_user)
       concat link_to "<i class='fa fa-cog fa-1x header-icon'></i>".html_safe, admin_path if current_user.has_role?(:admin)
       user_scope 
-      concat model.model_name.human.pluralize
+      concat t(model.model_name.human.pluralize.downcase)
       if new_action.present?
         concat link_to content_tag(:i, " New", class: "fa fa-plus"), new_action, class: "new btn btn-info table-button table-button-new"
       end

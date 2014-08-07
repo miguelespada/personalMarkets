@@ -6,10 +6,10 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <%= render "coupons/views/description", coupon: @coupon %>
-          <strong> <%= t :Number_of_coupons %>: </strong>  
+          <strong> <%= t(:number_of_coupons) %>: </strong>  
           <span> <%= @coupon_payment.quantity %> </span> 
           <br>
-          <strong>  <%= t :Total %>: </strong>  
+          <strong>  <%= t(:total) %>: </strong>  
           <span> <%= @coupon_payment.coupon.price * @coupon_payment.quantity %> € </span> 
           <p class="payment-errors"></p>
         </div>

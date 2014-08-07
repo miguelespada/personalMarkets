@@ -1,6 +1,6 @@
-<%= page_title(t(:foto).capitalize, Photo.icon) %>
+<%= page_title(t(:photo).capitalize, Photo.icon) %>
 
-<div class="container main-container">
+<div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default panel-table-last center">
@@ -8,12 +8,12 @@
             <%= photo(@photo, 400) %>
             <%= render "photos/utils/actions", photo: @photo, photographic: true  %>
         </div>
-        <div>
+      </div>
+        <div class="center main-container">
           <%= before_form_link %>
           <%= all_photos_link %>
           <%= user_photos_link(current_user) %>
         </div>
-      </div>
     </div>
   </div>
 </div>

@@ -2,7 +2,7 @@
 
 <% required ||= false %>
 
-<div class="form-group">
+<div class="form-group photo-upload">
   <%= f.attachinary_file_field(:photo, 
     :cloudinary => { :transformation => {:width=>800, 
     :height =>800, :quality => 50, :crop=>:limit }}) %>
@@ -49,4 +49,15 @@
       }
     });
   </script>
-<% end %>  
+<% end %>
+
+<style>
+.photo-upload{
+  max-width:350px;
+  width: 100%;
+  float:left;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+}
+</style> 

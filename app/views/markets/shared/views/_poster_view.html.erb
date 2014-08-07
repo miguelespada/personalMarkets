@@ -6,7 +6,7 @@
       <div class="panel panel-default panel-table panel-table-last" id="market_<%= market.id %>">
     <%= render partial: 'markets/shared/utils/poster_title', locals: { market: market } %>
       <p class="center market-owner-detail print-hide">
-       <%= market.owner %> 
+       <%= t(:owner) %>: <%= market.owner %> 
       </p>
     <div class="market-poster-container row">
       <div class="market-list-section-title"> <%= t(:QR_Code) %></div>
