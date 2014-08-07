@@ -99,16 +99,16 @@
 
 <script>
 
- Keen.onChartsReady(function() {
-     var series = new Keen.Series("sign_in", {
-       analysisType: "count",
-      timeframe: "this_week",
-      interval: "daily"
-    });
-
-      series.draw(document.getElementById("my_chart"), {
-                label: "Signins per day this week"
-            });
+Keen.onChartsReady(function() {
+   var series = new Keen.Series("sign_in", {
+     analysisType: "count",
+    timeframe: "this_week",
+    interval: "daily"
   });
+
+    series.draw(document.getElementById("my_chart"), {
+              label: "Signins per day this week"
+          });
+});
 
 </script>

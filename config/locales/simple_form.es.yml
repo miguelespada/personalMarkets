@@ -304,3 +304,8 @@ es:
   invalid_card_holder_name: 'Invalid card holder name'
   invalid_expiry_date: 'Invalid expiry date'
   invalid_card_number: 'Invalid card number'
+  you_must_be_logged: "Tienes que registrate para poder crear Markets"
+  open_your_market: Abre tu Market
+  open_a: Abre un
+  profile: perfil
+  photos: fotos
