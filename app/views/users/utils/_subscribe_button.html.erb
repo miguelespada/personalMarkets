@@ -2,13 +2,13 @@
   <%= form_tag user_subscription_path(@user), method:"get" do %>
     <p>
       <input type="checkbox" required name="premium_accept_term" id="accept_terms" > 
-      I accept the <%= link_to "terms of use.", go_premium_terms_path %>
+      <%= t(:i_accept_the) %> <%= link_to t(:terms_of_use), go_premium_terms_path %>
     </p>
     
-    <%= submit_tag "Become premium", class: 'btn btn-info' %>
+    <%= submit_tag t(:go_PRO), class: 'btn btn-info' %>
   <% end %>
 <% end %>
 
 <% if current_user.has_role?(:premium) %>
-  <%= link_to "Unsubscribe", unsubscribe_path, { method: :post, class: 'btn btn-info unsubscribe-button' } %>
+  <%= link_to t(:unsubscribe).capitalize, unsubscribe_path, { method: :post, class: 'btn btn-info unsubscribe-button' } %>
 <% end %>

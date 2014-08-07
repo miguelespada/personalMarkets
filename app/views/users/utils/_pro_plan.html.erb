@@ -1,16 +1,12 @@
 <div class="plan col-md-4 col-md-offset-2">
   <div class="plan-name-premium">
     <h2>Pro Plan</h2>
-    <span>4.99€ / Month</span>
+    <span>4.99€ / <%= t(:month).capitalize %> </span>
   </div>
   <ul>
-    <li class="plan-feature"><span class="fa fa-check-circle"></span> 4 mercados al mes </li>
-    <li class="plan-feature"><span class="fa fa-check-circle"></span> Mercados que duran hasta 30 días </li>
-    <li class="plan-feature"><span class="fa fa-check-circle"></span> Todos tus mercados son VIM </li>
-    <li class="plan-feature"><span class="fa fa-check-circle"></span> Markets sin anuncios. </li>
-    <li class="plan-feature"><span class="fa fa-check-circle"></span> Estadisticas de tus mercados a tiempo real</li>
-    <li class="plan-feature"><span class="fa fa-check-circle"></span> Creación de cupones</li>
-    <li class="plan-feature"><span class="fa fa-check-circle"></span> Unsubscribirte en un solo click</li>  
+    <% t(:pro_features).each do |feature| %>
+      <li class="plan-feature"><span class="fa fa-check-circle"></span> <%= feature %> </li>
+    <% end %> 
   </ul>
   
   <%= render "users/utils/subscribe_button" %>

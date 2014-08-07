@@ -1,10 +1,11 @@
 <div class="plan col-md-4 col-md-offset-1">
   <div class="plan-name-basic">
     <h2>Regular Plan</h2>
-    <span>Free</span>
+    <span><%= t(:free).capitalize %> </span>
   </div>
   <ul>
-  <li class="plan-feature"><span class="fa fa-check-circle"></span> 1 mercado / mes </li>
-  <li class="plan-feature"><span class="fa fa-check-circle"></span> Mercados que duran 1 semana </li>
+    <% t(:regular_features).each do |feature| %>
+      <li class="plan-feature"><span class="fa fa-check-circle"></span> <%= feature %> </li>
+    <% end %> 
   </ul>
 </div>

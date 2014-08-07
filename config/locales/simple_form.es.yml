@@ -58,6 +58,7 @@ es:
   all_markets: "Todos los markets"
   all_wishes: "Todos los deseos"
   all_users: "Todos los usuarios"
+  users: "Usuarios"
   bargains: "Gangas"
   all_bargains: "Todas las gangas"
   all_locations: "Todos los lugares"
@@ -190,8 +191,8 @@ es:
   go_vim_to_offer_coupons: Go VIM para poder crear cupones
   market_has_no_coupons: Este Market no tiene cupones
   you_are_admin: "Eres administrador"
-  you_are_pro: "Eres un usuario pro"
-  you_are_regular: "Eres un usuario normal"
+  you_are_pro: "Eres un usuario PRO"
+  you_are_regular: "Eres un usuario REGULAR"
   contact_form: Formulario de contacto
   email: email
   subject: motivo
@@ -210,6 +211,7 @@ es:
   sold_coupons: Cupones vendidos
   payment_details: Detalles del pago
   pay: pagar
+  pro_payment: Pago PRO
   resend_confirmation_instructions: Enviar de nuevo las instrucciones de confirmación
   change_your_password: Cambiar la contraseña
   new_password: Contraseña nueva
@@ -260,10 +262,25 @@ es:
   - Estadisticas de tus markets a tiempo real
   - Creación de cupones
   - Sin anuncios
+  pro_features: 
+  - 4 markets al mes
+  - Markets que duran hasta 30 días
+  - Todos tus markets son VIM
+  - Markets sin anuncios
+  - Estadisticas de tus markets
+  - Creación de cupones
+  - Unsubscribirte en un solo click
+  regular_features: 
+  - 1 mercado al mes
+  - Markets duran 1 semana
   your: tus
+  free: gratis
   i_accept_the: "Acepto"
   by: de
   go_VIM: Go VIM
+  go_PRO: Go PRO
+  subscribe: subscribirse
+  unsubscribe: cancelar subscripción
   recommend_markets: "Haz los deseaos de la gente realidad."
   recommend_market: "Recomienda markets"
   recommended: "Markers recomendados"
@@ -277,6 +294,7 @@ es:
   your_description: Cuéntanos algo sobre ti
   your_logo: Tu foto o tu logo
   user: usuario
+  month: mes
   go_back: "volver"
   card_holder_name: "Titular de la tarjeta"
   card_number: "Número de tarjeta"
