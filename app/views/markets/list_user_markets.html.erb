@@ -6,7 +6,11 @@
     </div>
 
     <div id="gallery-items ">  
-      <%= render partial: "markets/shared/views/slugs", locals: {markets: @markets } %>
+      <% if @markets.count > 0 %>
+        <%= render partial: "markets/shared/views/slugs", locals: {markets: @markets } %>
+      <% else %>
+        <h2><%= t(:no_markets) %></h2> 
+      <% end %>
     </div>
     
   </div>

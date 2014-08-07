@@ -65,7 +65,7 @@ class MarketDecorator < Draper::Decorator
 
   def address_and_city
     if market.address.present? && market.city.present?
-      market.address + ", " + market.city 
+      market.address.capitalize + ", " + market.city 
     else
       t(:market_location_is_not_provided)
     end
