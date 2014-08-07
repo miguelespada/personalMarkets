@@ -1,4 +1,3 @@
-
 var centerTitles = function(){
   $( "#slideshow_titles" ).position({
     my: "center center",

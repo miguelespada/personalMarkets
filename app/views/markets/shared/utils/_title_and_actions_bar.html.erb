@@ -1,9 +1,10 @@
 <div class="panel-heading table-title">
   
-  <div class="market-title-container row">
+  <div class="row">
     <div class="market-title col-md-4">
       <%= market.link(market.formatted_market_name)%>  
     </div>
+    
     <div class="market-actions col-md-8">
       <%= market.social_links %>
       <%= market.like_link %>
@@ -11,7 +12,7 @@
   </div>
   
   <div class="row">
-    <div class="market-actions col-md-offset-4 col-md-8">
+    <div class="market-actions col-md-12">
       <%= market.poster_link %>
       <%= market.actions %>
     </div>
