@@ -1,4 +1,21 @@
 en:
+  add_new: "añadir"
+  hotspot: "vecindario"
+  tag: "tag"
+  slideshow_text: slideshow text
+  slideshow_image: slideshow image
+  form_sent_successfully: form sent successfully
+  coupon_bought_succesfully: The coupon is bought successfully
+  error_buying_coupon: An error happened when buying the coupon
+  you_have_become_PRO: Your operation has been done successfully
+  error_becoming_PRO: An error happened when your operation is processed
+  "special location": hotspot
+  "special locations": hotspots
+  "slideshow texts": slideshow texts
+  "slideshow images": slideshow images
+  normal: regular
+  admin: admin
+  premium: pro
   in: in
   new: "new"
   edit: "edit"
@@ -39,23 +56,23 @@ en:
   all_coupons: "All coupons"
   date_and_time: "Date and time"
   latest_markets: "Latest markets"
-  hot_spots: "Hotspots"
+  hot_spots: "hotspots"
   categories: "categories"
   category: "category"
   explore: "explore"
   tags: "tags"
   tag_list: "Back to tag list"
-  wish: "Wish"
-  wishlist: "Wishes"
-  schedule: "Schedule"
-  external_url: "Link"
+  wish: "dish"
+  wishlist: "wishes"
+  schedule: "schedule"
+  external_url: "link"
   social_link: "Social links"
   contact_us: "Contact us"
   see_more_markets: "See more markets..."
   see_more_categories: "See more categories..."
   see_more_hotspots: "See more hotspots..."
-  maps: "Maps"
-  map: "Map"
+  maps: "maps"
+  map: "map"
   all_markets: "All markets"
   all_wishes: "All wishes"
   all_users: "All users"
@@ -82,20 +99,20 @@ en:
   no_matches_by_tag: "There's no markets with this tag. :("
   to: "to"
   comments_and_share: Comments and share
-  owner: "Owner"
+  owner: "owner"
   prices: "Price range"
-  address: "Address"
-  description: "Description"
+  address: "address"
+  description: "description"
   slideshow: "Photo gallery"
-  gallery: "Gallery"
+  gallery: "gallery"
   QR_Code: "QR Code"
-  information: "Information"
+  information: "information"
   published_Markets: "Published markets"
-  explore: "Explore"  
-  search: "Search"
+  explore: "explore"  
+  search: "search"
   publish: "publish"
   unpublish: "unpublish"
-  your_singular: "Your"
+  your_singular: "your"
   was: "was"
   successfully: "successfully"
   fail: "cannot be"
@@ -141,7 +158,7 @@ en:
   coupon_required_fields: "You have to fill in all the requested fields for your coupon"
   this_market_offers_a_coupon: "This market has available coupons"
   you_have_to_wait_one_month: "As a normal user, you have to wait one month to create another market"
-  available: "Available"
+  available: "available"
   price: "price"
   photo: "photo"
   shopping_details: "Shopping details"

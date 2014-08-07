@@ -12,7 +12,7 @@ es:
   "special location": vecindario
   "special locations": vecindarios
   "slideshow texts": slideshow texts
-  "slideshow images": slideshow 
+  "slideshow images": slideshow images
   normal: regular
   admin: admin
   premium: pro
@@ -62,17 +62,17 @@ es:
   explore: "explora"
   tags: "etiquetas"
   tag_list: "Volver a la lista de tags"
-  wish: "Deseo"
-  wishlist: "Deseos"
-  schedule: "Horarios"
-  external_url: "Link"
+  wish: "deseo"
+  wishlist: "deseos"
+  schedule: "horarios"
+  external_url: "link"
   social_link: "Enlace a redes sociales"
   contact_us: "Contáctanos"
   see_more_markets: "Ver más markets..."
   see_more_categories: "Ver más categorias..."
   see_more_hotspots: "Ver más vecindarios..."
-  maps: "Mapas"
-  map: "Mapa"
+  maps: "mapas"
+  map: "mapa"
   all_markets: "Todos los markets"
   all_wishes: "Todos los deseos"
   all_users: "Todos los usuarios"
@@ -99,17 +99,17 @@ es:
   no_matches_by_tag: "No hay ningún market con ese tag :("
   to: "hasta"
   comments_and_share: Comentar y comartir
-  owner: "Dueño"
+  owner: "dueño"
   prices: "Rango de precios"
-  address: "Dirección"
-  description: "Descripción"
+  address: "dirección"
+  description: "descripción"
   slideshow: "Galería de imágenes"
-  gallery: "Galería"
+  gallery: "galería"
   QR_Code: "Código QR"
   information: "información"
   published_Markets: "Market publicados"
-  explore: "Explorar"  
-  search: "Buscar"
+  explore: "explorar"  
+  search: "buscar"
   publish: "publicar"
   unpublish: "retirar"
   simple_form:
@@ -131,7 +131,7 @@ es:
         tags: "Etiquetas"
     error_notification:
       default_message: "Por favor, revise los problemas abajo:"
-  your_singular: "Tu"
+  your_singular: "tu"
   was: "ha sido"
   successfully: "correctamente"
   fail: "no puede ser"
