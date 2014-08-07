@@ -1,4 +1,21 @@
 es:
+  add_new: "añadir"
+  hotspot: "vecindario"
+  tag: "tag"
+  slideshow_text: slideshow text
+  slideshow_image: slideshow image
+  form_sent_successfully: formulario enviado 
+  coupon_bought_succesfully: El cupón se ha comprado correctamente
+  error_buying_coupon: Se ha producido un error en la compra
+  you_have_become_PRO: La operación se ha realizado con éxito
+  error_becoming_PRO: Se ha producido un error en la operación
+  "special location": vecindario
+  "special locations": vecindarios
+  "slideshow texts": slideshow texts
+  "slideshow images": slideshow 
+  normal: regular
+  admin: admin
+  premium: pro
   in: en
   new: "nuevo"
   edit: "editar"

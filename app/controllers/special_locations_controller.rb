@@ -46,7 +46,7 @@ class SpecialLocationsController < ApplicationController
 
     respond_to do |format|
       if @special_location.save
-        format.html { redirect_to special_locations_path, notice: 'Special location was successfully created.' }
+        format.html { redirect_to special_locations_path, notice: ControllerNotice.success('created', 'hotspot') }
       else
         format.html { render action: 'new' }
       end
@@ -56,7 +56,7 @@ class SpecialLocationsController < ApplicationController
   def update
     respond_to do |format|
       if @special_location.update(special_location_params)
-        format.html { redirect_to special_locations_path, notice: 'Special location was successfully updated.' }
+        format.html { redirect_to special_locations_path, notice: ControllerNotice.success('updated', 'hotspot')}
       else
         format.html { render action: 'edit' }
       end
@@ -67,10 +67,10 @@ class SpecialLocationsController < ApplicationController
     respond_to do |format|
       if @special_location.destroy
         format.html { redirect_to special_locations_path, 
-                      notice: "Special location successfully deleted." }
+                      notice: ControllerNotice.success('deleted', 'hotspot') }
       else
         format.html { redirect_to special_locations_path, 
-                      flash: { error: "Cannot delete special location." }}
+                      flash: { error: ControllerNotice.fail('deleted', 'hotspot') } }
       end
     end
   end

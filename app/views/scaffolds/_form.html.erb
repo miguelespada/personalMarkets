@@ -9,10 +9,11 @@
             <div class="panel-body">
               <fieldset>
                 <%= render "form_fields", f: f %>
-                <div class="form-group center">
-                  <%= f.submit t(action_button).capitalize, class:"btn btn-info" %>
-                </div>
+                
               </fieldset>
+              <div class="form-group center">
+                <%= f.submit t(action_button).capitalize, class:"btn btn-info" %>
+              </div>
           </div>
         </div>
       </div>

@@ -28,10 +28,10 @@ class CouponsController < ApplicationController
     coupon_payment = CouponPayment.new @coupon, payment
 
     CouponDomain.buy current_user, coupon_payment
-    redirect_to bought_coupons_by_user_path(current_user), notice: 'You has successfully bought the coupon.'
+    redirect_to bought_coupons_by_user_path(current_user), notice: I18n.t(:coupon_bought_succesfully) 
     rescue CouponDomainException => e
       p e.message
-      render :status => :unauthorized, :text => "Error buying coupons #{e.message}." 
+      render :status => :unauthorized, :text => I18n.t(:error_buying_coupon) + " #{e.message}." 
   end
   
   def bought_coupons_by_user

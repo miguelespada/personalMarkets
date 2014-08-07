@@ -20,7 +20,7 @@ class SlideshowImagesController < ApplicationController
 
     respond_to do |format|
       if @slideshow_image.save
-        format.html { redirect_to slideshow_images_path, notice: 'Slideshow image was successfully created.' }
+        format.html { redirect_to slideshow_images_path, notice: ControllerNotice.success('created', 'slideshow_image') }
       else
         format.html { render action: 'new' }
       end
@@ -30,7 +30,7 @@ class SlideshowImagesController < ApplicationController
   def update
     respond_to do |format|
       if @slideshow_image.update(slideshow_image_params)
-        format.html { redirect_to slideshow_images_path, notice: 'Slideshow image was successfully updated.' }
+        format.html { redirect_to slideshow_images_path, notice: ControllerNotice.success('updated', 'slideshow_image') }
       else
         format.html { render action: 'edit' }
       end
@@ -41,10 +41,10 @@ class SlideshowImagesController < ApplicationController
     respond_to do |format|
       if @slideshow_image.destroy
         format.html { redirect_to slideshow_images_path, 
-                      notice: "Slideshow image successfully deleted." }
+                      notice: ControllerNotice.success('deleted', 'slideshow_image') }
       else
         format.html { redirect_to slideshow_images_path, 
-                      flash: { error: "Cannot delete slideshow image." }}
+              flash: { error: ControllerNotice.fail('deleted', 'slideshow_image') } }
       end
     end
   end

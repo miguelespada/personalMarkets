@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         format.html { redirect_to categories_path, 
-                      notice: 'Category was successfully created.' }
+                      notice: ControllerNotice.success('created', 'category') }
       else
         format.html { render action: 'new' }
       end 
@@ -49,7 +49,7 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to categories_path, notice: 'Category was successfully updated.' }
+        format.html { redirect_to categories_path, notice: ControllerNotice.success('updated', 'category') }
       else
         format.html { render action: 'edit' }
       end
@@ -61,10 +61,10 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.destroy
         format.html { redirect_to categories_path, 
-                      notice: "Category successfully deleted."}
+                      notice: ControllerNotice.success('deleted', 'category')}
       else  
         format.html { redirect_to categories_path, 
-                      flash: { error: "Cannot delete category." }}
+                    flash: { error: ControllerNotice.fail('deleted', 'category') } }
       end
     end
   end

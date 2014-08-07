@@ -45,7 +45,7 @@ class TagsController < ApplicationController
     respond_to do |format|
       if @tag.save
         format.html { redirect_to tags_path, 
-                      notice: 'Tag was successfully created.' }
+                      notice: ControllerNotice.success('created', 'tag')}
       else
         format.html { render action: 'new' }
       end 
@@ -55,7 +55,7 @@ class TagsController < ApplicationController
   def update
     respond_to do |format|
       if @tag.update(tag_params)
-        format.html { redirect_to tags_path, notice: 'Tag was successfully updated.' }
+        format.html { redirect_to tags_path, notice: ControllerNotice.success('updated', 'tag') }
       else
         format.html { render action: 'edit' }
       end
@@ -67,10 +67,10 @@ class TagsController < ApplicationController
     respond_to do |format|
       if @tag.destroy
         format.html { redirect_to tags_path, 
-                      notice: "Tag successfully deleted."}
+                       notice: ControllerNotice.success('deleted', 'tag') }
       else  
         format.html { redirect_to tags_path, 
-                      flash: { error: "Cannot delete tag." }}
+                      flash: { error: ControllerNotice.fail('deleted', 'tag') }}
       end
     end
   end

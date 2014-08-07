@@ -8,7 +8,7 @@ class ContactController < ApplicationController
 
   def create
     ContactDomain.send contact_params
-    redirect_to root_path, notice: "Contact form sent successfully."
+    redirect_to root_path, notice: I18n.t(:form_sent_successfully) 
   end
 
   private
