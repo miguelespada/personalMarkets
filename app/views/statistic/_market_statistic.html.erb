@@ -1,4 +1,5 @@
 <div class="panel panel-default market-statistic">
+  
   <div class="panel-heading statistic-title">
     <%= market.decorate.link(market.decorate.formatted_market_name)%> 
     <span class="badge pull-right statistic-visit-count">
@@ -9,37 +10,39 @@
       </div>
     </span>
   </div>
+
   <div class="panel-body">
     <div id="<%= market.public_id %>_visitsChart"></div>
   </div>
+  
 </div>
 
 <script type="text/javascript">
 
-  Keen.onChartsReady(function() {
-      var metric = new Keen.Metric("market_visit", {
-          analysisType: "count"
-      });
+Keen.onChartsReady(function() {
+    var metric = new Keen.Metric("market_visit", {
+        analysisType: "count"
+    });
 
-      metric.addFilter("market_id", "eq", "<%= market.public_id %>");
+    metric.addFilter("market_id", "eq", "<%= market.public_id %>");
 
-      metric.getResponse(function(response){
-        $("#<%= market.public_id %>_visitsCount").html(response.result);
-      });
-  });
+    metric.getResponse(function(response){
+      $("#<%= market.public_id %>_visitsCount").html(response.result);
+    });
+});
 
-  Keen.onChartsReady(function() {
-      var series = new Keen.Series("market_visit", {
-          analysisType: "count",
-          timeframe: "this_week",
-          interval: "daily"
-      });
+Keen.onChartsReady(function() {
+    var series = new Keen.Series("market_visit", {
+        analysisType: "count",
+        timeframe: "this_week",
+        interval: "daily"
+    });
 
-      series.addFilter("market_id", "eq", "<%= market.public_id %>");
+    series.addFilter("market_id", "eq", "<%= market.public_id %>");
 
-      series.draw(document.getElementById("<%= market.public_id %>_visitsChart"), {
-          label: "Visits per day this week"
-      });
-  });
+    series.draw(document.getElementById("<%= market.public_id %>_visitsChart"), {
+        label: "Visits per day this week"
+    });
+});
 
 </script>

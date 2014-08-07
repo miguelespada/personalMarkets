@@ -9,17 +9,17 @@
 
           <%= current_user_dashboard_link("user_likes_path", "Likes", "fa-heart-o") %>
 
-          <%= current_user_dashboard_link("user_bargains_path", "Bargains", Bargain.icon) %>
+          <%= current_user_dashboard_link("user_bargains_path", t(:bargains).capitalize, Bargain.icon) %>
 
-          <%= current_user_dashboard_link("user_wishes_path", "Wishes", Wish.icon) %>
+          <%= current_user_dashboard_link("user_wishes_path", t(:wishes).capitalize, Wish.icon) %>
 
-          <%= current_user_dashboard_link("bought_coupons_by_user_path", "Coupons", "fa-ticket") %>
+          <%= current_user_dashboard_link("bought_coupons_by_user_path", t(:coupons).capitalize, "fa-ticket") %>
 
-          <%= current_user_dashboard_link("user_path", "Profile", "fa-user") %>
+          <%= current_user_dashboard_link("user_path", t(:profile).capitalize, "fa-user") %>
 
-          <%= current_user_dashboard_link("user_photos_path", "Photos", "fa-camera") %>
+          <%= current_user_dashboard_link("user_photos_path", t(:photos).capitalize, "fa-camera") %>
 
-          <%= current_user_dashboard_link("show_user_statistic_path", "Stats", "fa-tasks") if current_user.can_see_markets_stats? %>
+          <%= current_user_dashboard_link("show_user_statistic_path", t(:stats).capitalize, "fa-tasks") if current_user.can_see_markets_stats? %>
 
         </div>
       </div>
