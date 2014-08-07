@@ -2,11 +2,12 @@ es:
   menu_open_market: "En dowemarket conectamos personas. Si tienes muebles que ya no te son útiles, una colección de cómics única en tu ciudad, o un talento culinario que te gustaría compartir con los demás, con dowemarket puedes abrir tu propio market, crear invitaciones para tus cenas privadas, o convertir tu casa en una tienda por un día. Es fácil. Abre un market."
   menu_go_pro: "Porque tu talento es tu profesión y estás abierto jornadas completas, entonces el market Pro es para ti. Links a tu página, imágenes, cupones para ofrecer experiencias diferentes y únicas, disponibles durante todo el mes. Sin límites."
   menu_open_vim: "Porque sabemos que tu talento es alto y pones mucho mimo a las cosas, abriendo un VIM puedes añadir tantos detalles como tu quieras, links a tu blog, tus imágenes favoritas, ofrecer un vino a quienes vayan a verte habilitando cupones para que la experiencia sea personal. Como esas cosas que tu tan bien haces."
-  beta:
+  beta_page:
     title: "¡Estamos trabajando!"
     content: "¡Estamos trabajando en la web para mejorar cada día la experiencia, si encuentras algún fallo comunicanoslo!"
   buy_coupon_terms:
     title: Soy cliente de un mercado y quiero comprar un cupón.
     terms:
       - Algunos mercados ofrecen cupones para dar servicios extra a sus clientes.
-      - Ejemplos de cupon:
+      - "Ejemplos de cupon:"
+      - "Ofrecer un cocktail de bienvenida. No hay mejor manera de difrutar de las compras con un cocktel."
