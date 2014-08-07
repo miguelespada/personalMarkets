@@ -1,4 +1,5 @@
 es:
+  no_markets: "No hay markets :("
   add_new: "añadir"
   hotspot: "vecindario"
   tag: "tag"
