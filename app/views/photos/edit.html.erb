@@ -1,14 +1,13 @@
 <%= javascript_include_tag "cropper" %>
-<%= stylesheet_link_tag"cropper" %>
+<%= stylesheet_link_tag "cropper" %>
 
-<%= page_title(t("Edit photo"), "fa-camera-retro") %>
+<%= page_title(t(:edit_photo), "fa-camera-retro") %>
 
 <div class="container main-container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default panel-table-last">
         <div class="panel-body">
-
           <%= cl_image_tag(@photo.photo.path, { quality: 50, :class => "cropper"}) %>
           <%= form_tag crop_photo_path(@photo), id: "crop_image_form" do %>
             <div class="hidden">
@@ -16,9 +15,9 @@
               <%= text_field_tag(:y) %>
               <%= text_field_tag(:w) %>
               <%= text_field_tag(:h) %>
-            </div>  
-            <div class="center form-group " id="crop-button">
-                <%= submit_tag "Save", class:"btn btn-success" %>
+            </div>
+            <div class="center form-group" id="crop-button">
+              <%= submit_tag t(:save).capitalize, class:"btn btn-success" %>
             </div>
           <% end %>
         </div>
@@ -64,8 +63,8 @@
 </script>
 
 <style>
-#crop-button{
-  margin-top: 80px;
-}
+  #crop-button{
+    margin-top: 80px;
+  }
 </style>
   

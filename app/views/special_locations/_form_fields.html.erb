@@ -1,13 +1,13 @@
 <div class="form-group">
-  <%= f.input :name, { placeholder: "Name" } %>
+  <%= f.input :name, { placeholder: t(:name).capitalize } %>
 </div>
 
 <div class="form-group">
-  <%= f.input :address, { placeholder: "Address" } %>
+  <%= f.input :address, { placeholder: t(:address).capitalize } %>
 </div>
 
 <div class="form-group">
-  <%= f.input :city, { placeholder: "City" } %>
+  <%= f.input :city, { placeholder: t(:city).capitalize } %>
 </div>
 
 <div class=" form-group">
@@ -19,10 +19,9 @@
 </div>
 
 <div class=" form-group">
-    Important: 
-    <%= f.input :important, as: :boolean,  inline_label: true  %>
+  <%= t(:important) %>
+  <%= f.input :important, as: :boolean,  inline_label: true  %>
 </div>
-
 
 <div class="form-group">
   <p> Featured photo: </p> 

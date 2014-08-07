@@ -1,15 +1,15 @@
 <div class="form-group">
-  <%= f.input :title, input_html: { placeholder: "Title", :required => true } %>
+  <%= f.input :title, input_html: { placeholder: t(:title).capitalize, :required => true } %>
 </div>
 
 <div class="form-group">
-  <%= f.input :subtitle, input_html: { placeholder: "Subtitle", :required => true } %>
+  <%= f.input :subtitle, input_html: { placeholder: t(:subtitle).capitalize, :required => true } %>
 </div>
 
 <div class="form-group">
-  <%= f.input :title_en, input_html: { placeholder: "Title in english...", :required => true } %>
+  <%= f.input :title_en, input_html: { placeholder: t(:title_in_english), :required => true } %>
 </div>
 
 <div class="form-group">
-  <%= f.input :subtitle_en, input_html: { placeholder: "Subtitle  in english...", :required => true } %>
+  <%= f.input :subtitle_en, input_html: { placeholder: t(:subtitle_in_english), :required => true } %>
 </div>

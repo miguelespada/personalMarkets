@@ -9,42 +9,42 @@
 </div>
 
 <script>
-$( document ).ready(function() {
-  $('.attachinary-input').attachinary();
-
-  $('.attachinary-input').fileupload({
-      progressall: function (e, data) {
-        $('#progress').removeAttr( 'style' );
-        var progress = parseInt(data.loaded / data.total * 100, 10);
-        try{
-          if(progress >= 100){
-            $("#progress").html("[Upload progress: DONE]");
-            setTimeout(function() {
-              $('#progress').fadeOut('slow');
-            }, 1000); 
+  $( document ).ready(function() {
+    $('.attachinary-input').attachinary();
+  
+    $('.attachinary-input').fileupload({
+        progressall: function (e, data) {
+          $('#progress').removeAttr( 'style' );
+          var progress = parseInt(data.loaded / data.total * 100, 10);
+          try{
+            if(progress >= 100){
+              $("#progress").html('<%=t(:upload_progress_done)%>');
+              setTimeout(function() {
+                $('#progress').fadeOut('slow');
+              }, 1000); 
+            }
+            else{
+              $("#progress").html('<%=t(:upload_progress)%>' + progress + ' %]');
+            }
+          }catch(ex){}
+        },
+        add: function(e, data) {
+          if(data.originalFiles[0]['size'] > 1000000) {
+              alert("<%= t(:filesize_is_too_big) %>");
           }
-          else{
-            $("#progress").html("[Upload progress: " + progress + " %]");
+          else {
+              data.submit();
           }
-        }catch(ex){}
-      },
-      add: function(e, data) {
-        if(data.originalFiles[0]['size'] > 1000000) {
-            alert("Filesize is too big. Maximun size is 1 MB");
-        }
-        else {
-            data.submit();
-        }
-    }
+      }
+    });
   });
-});
-
 </script>
+
 <% if required %>
   <script>
     $('.simple_form').submit(function(){
       if(!$('.attachinary_container input').val()){
-        alert("Image cannot be empty!");
+        alert("<%= t(:image_cannot_be_empty) %>");
         return false;
       }
     });

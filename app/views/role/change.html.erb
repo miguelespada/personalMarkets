@@ -1,4 +1,4 @@
-<%= page_title(t("Change user role"), "fa-refresh") %>
+<%= page_title(t(:change_user_role), "fa-refresh") %>
 
 <div class="container user-session">
   <div class="row">
@@ -7,7 +7,7 @@
         <div class="panel-body">
           <p><%= @user.email %><p>
           <% @user.available_roles.each do |role| %>
-            <%= link_to "Make " + role, user_role_path(@user, :new_role => role), 
+            <%= link_to t(:make) + role, user_role_path(@user, :new_role => role), 
             :method => :put, :class => "btn btn-info" %><br>
           <% end %>
         </div>

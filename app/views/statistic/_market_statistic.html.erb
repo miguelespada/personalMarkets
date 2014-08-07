@@ -2,14 +2,15 @@
   <div class="panel-heading statistic-title">
     <%= market.decorate.link(market.decorate.formatted_market_name)%> 
     <span class="badge pull-right statistic-visit-count">
-      <div class="visits-label">Visits
+      <div class="visits-label">
+        <%= t(:visits).capitalize %>
       </div>
       <div id="<%= market.public_id %>_visitsCount" class="visits-value">
       </div>
     </span>
   </div>
   <div class="panel-body">
-      <div id="<%= market.public_id %>_visitsChart"></div>
+    <div id="<%= market.public_id %>_visitsChart"></div>
   </div>
 </div>
 

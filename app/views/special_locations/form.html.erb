@@ -3,18 +3,17 @@
 <%= javascript_include_tag "special_locations" %>
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
 
-
 <script>
-$( document ).ready(function() {
-  initializeAutocomplete("special_location_city");
+  $( document ).ready(function() {
+    initializeAutocomplete("special_location_city");
+    
+    $('#special_location_address').blur(function() {updateLocationData();});
   
-  $('#special_location_address').blur(function () {updateLocationData();});
-
-  $(window).keydown(function(event){
+    $(window).keydown(function(event){
       if(event.keyCode == 13) {
         event.preventDefault();
         return false;
       }
+    });
   });
-});
 </script>

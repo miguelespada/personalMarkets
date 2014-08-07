@@ -304,3 +304,19 @@ es:
   invalid_card_holder_name: 'Invalid card holder name'
   invalid_expiry_date: 'Invalid expiry date'
   invalid_card_number: 'Invalid card number'
+  upload_progress: "[Progreso de carga: "
+  upload_progress_done: "[Progreso de carga: HECHO]"
+  filesize_is_too_big: "El tamaño de este archivo es demasiado grande. El imagen no puede superer 1MB"
+  image_cannot_be_empty: "¡El imagen no puede ser vacío!"
+  edit_photo: "Editar la foto"
+  save: guardar
+  change_user_role: "Cambiar el rol del usuario"
+  make: "Cambiar a"
+  fields: "campos"
+  actions: "acciones"
+  title: título
+  subtitle: subtítulo
+  title_in_english: "Título en inglés..."
+  subtitle_in_english: "Subtítulo en inglés..."
+  important: "Importante: "
+  visits: visitas
