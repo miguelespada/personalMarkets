@@ -24,8 +24,8 @@
 
     <div id="wizard" class="row">
 
-  <!-- ############################################################################################### -->
-  <!-- ############################################################################################### -->
+  <!-- ########################################################################## -->
+  <!-- ########################################################################## -->
 
       <ul class="col-md-3"> 
 
@@ -75,8 +75,8 @@
 
       </ul>
 
-  <!-- ############################################################################################### -->
-  <!-- ############################################################################################### -->
+  <!-- ########################################################################## -->
+  <!-- ########################################################################## -->
 
       <%= simple_form_for [user, market], :html => {"data-tags" => "#{raw_tags(market).downcase}",  novalidate: true, role: "form"}  do |f| %>
 
@@ -90,7 +90,7 @@
                   <i class="fa fa-pencil-square-o fa-5x"></i>
                 </div>
 
-                <div class="form-pane-text col-sm-10">
+                <div class="form-pane-text col-sm-10 hidden-xs">
                   <span class="form-section-title-small"><%= t(:general_information).capitalize %></span>
                   <br>
                   <i class="fa fa-arrow-circle-right"></i> <%= t("market_form.you_can_edit_your_market") %>
@@ -113,8 +113,9 @@
             </div>
           </div>
 
-  <!-- ############################################################################################### -->
-  <!-- ############################################################################################### -->
+
+  <!-- ########################################################################## -->
+  <!-- ########################################################################## -->
 
           <div class="tab-pane" id="form-market-photos">
             <div class="form-intro-pane">
@@ -124,7 +125,7 @@
                   <i class="fa fa-camera-retro fa-5x"></i>
                 </div>
                 
-                <div class="form-pane-text col-sm-10">
+                <div class="form-pane-text col-sm-10 hidden-xs">
                   <span class="form-section-title-small"><%= t(:photo_gallery_pro).capitalize %></span>
                   <br>
                   <i class="fa fa-arrow-circle-right"></i> <%= t("market_form.you_can_edit_your_photos") %>
@@ -142,8 +143,9 @@
             <% end %>
           </div>
 
-  <!-- ############################################################################################### -->
-  <!-- ############################################################################################### -->
+
+  <!-- ########################################################################## -->
+  <!-- ########################################################################## -->
 
           <div class="tab-pane" id="form-market-category-tag">
             <div class="form-intro-pane">
@@ -153,7 +155,7 @@
                   <i class="fa fa-tags fa-5x"></i>
                 </div>
 
-                <div class="form-pane-text col-sm-10">
+                <div class="form-pane-text col-sm-10 hidden-xs">
                   <span class="form-section-title-small"><%= t(:category_and_tags).capitalize %></span>
                   <br>
                   <i class="fa fa-arrow-circle-right"></i> <%= t("market_form.select_better_tags") %> 
@@ -172,8 +174,9 @@
             </div>
           </div>
 
-  <!-- ############################################################################################### -->
-  <!-- ############################################################################################### -->
+
+  <!-- ########################################################################## -->
+  <!-- ########################################################################## -->
 
           <div class="tab-pane" id="form-market-date">
             <div class="form-intro-pane">
@@ -183,7 +186,7 @@
                   <i class="fa fa-calendar fa-5x"></i>
                 </div>
 
-                <div class="form-pane-text col-sm-10">
+                <div class="form-pane-text col-sm-10 hidden-xs">
                   <span class="form-section-title-small"><%= t(:date_and_time).capitalize  %></span><br>
                   <%= t("market_form.you_can_select_many_schedules") %> 
                   <br><i class="fa fa-arrow-circle-right"></i>  
@@ -203,8 +206,9 @@
             </div>
           </div>
 
-  <!-- ############################################################################################### -->
-  <!-- ############################################################################################### -->
+
+  <!-- ########################################################################## -->
+  <!-- ########################################################################## -->
 
           <div class="tab-pane" id="form-market-prices">
             <div class="form-intro-pane">
@@ -213,7 +217,7 @@
                 <div class="form-pane-image col-sm-2">
                   <i class="fa fa-money fa-5x"></i>
                 </div>
-                <div class="form-pane-text col-sm-10">
+                <div class="form-pane-text col-sm-10 hidden-xs">
                   <span class="form-section-title-small"><%= t(:price_range).capitalize %></span>
                   <br>
                 </div>
@@ -231,8 +235,8 @@
             </div>
           </div>
 
-  <!-- ############################################################################################### -->
-  <!-- ############################################################################################### -->
+  <!-- ########################################################################## -->
+  <!-- ########################################################################## -->
 
           <div class="tab-pane" id="form-market-external-url">
             <div class="form-intro-pane">
@@ -242,7 +246,7 @@
                   <i class="fa fa-link fa-5x"></i>
                 </div>
 
-                <div class="form-pane-text col-sm-10">
+                <div class="form-pane-text col-sm-10 hidden-xs">
                   <span class="form-section-title-small"><%= t(:external_url_pro).capitalize %> (VIM)</span>
                   <br>
                   <%= t("market_form.add_external_links") %>
@@ -260,8 +264,8 @@
             </div>
           </div>
 
-  <!-- ############################################################################################### -->
-  <!-- ############################################################################################### -->
+  <!-- ########################################################################## -->
+  <!-- ########################################################################## -->
 
           <div class="tab-pane" id = "form-market-location" > 
             <div class="form-intro-pane">
@@ -269,7 +273,7 @@
                 <div class="form-pane-image col-sm-2">
                   <i class="fa fa-map-marker fa-5x"></i>
                 </div>
-                <div class="form-pane-text col-sm-10">
+                <div class="form-pane-text col-sm-10 hidden-xs">
                   <span class="form-section-title-small" class="form-section-title-small"><%= t(:location).capitalize %></span><br>
                 </div>
               </div>
@@ -295,26 +299,29 @@
                 <%= f.input :longitude %>
                 <%= f.input :latitude %>
               </div>
-            </div>
+            </div>  
           </div>
 
-  <!-- ############################################################################################### -->
-  <!-- ############################################################################################### -->
+          <div id="small-map-container">
+            <%= render "markets/shared/utils/mapsmall" %>
+          </div>
+
+  <!-- ########################################################################## -->
+  <!-- ########################################################################## -->
 
           <div class="tab-pane" id="form-market-coupon" > 
             <div class="form-intro-pane">
                 <div class="row">
-                    <div class="form-pane-image col-sm-2">
-                      <i class="fa fa-ticket fa-5x"></i>
-                    </div>
-                    <div class="form-pane-text col-sm-10">
-
-                      <span class="form-section-title-small"><%= t(:coupon_pro).capitalize %> (VIM)</span>
-                      <br>
-                      <%= t("market_form.you_can_emit_a_coupon") %>
-                      <br>
-                      <i class="fa fa-arrow-circle-right"></i> <%= link_to t(:how_it_works), sell_coupon_terms_path %>
-                    </div>
+                  <div class="form-pane-image col-sm-2">
+                    <i class="fa fa-ticket fa-5x"></i>
+                  </div>
+                  <div class="form-pane-text col-sm-10 hidden-xs">
+                    <span class="form-section-title-small"><%= t(:coupon_pro).capitalize %> (VIM)</span>
+                    <br>
+                    <%= t("market_form.you_can_emit_a_coupon") %>
+                    <br>
+                    <i class="fa fa-arrow-circle-right"></i> <%= link_to t(:how_it_works), sell_coupon_terms_path %>
+                  </div>
                 </div>
             </div>
             <%= f.simple_fields_for :coupon do |form_builder| %>
@@ -322,13 +329,8 @@
             <% end %>
           </div>
 
-  <!-- ############################################################################################### -->
-  <!-- ############################################################################################### -->
-
-          
-          <div id="small-map-container">
-            <%= render "markets/shared/utils/mapsmall" %>
-          </div>
+  <!-- ########################################################################## -->
+  <!-- ########################################################################## -->
 
       </div>
     </div>
@@ -336,14 +338,14 @@
 
   <%= f.button :submit, class: 'btn', id: 'market-save-button' %>
           
-  <% if params[:action] == "edit" %>
-    <%= save_and_publish_button(f, market) %>
-  <% else %>
-    <div class="center tip">
-      <%= t('market_form.remember_to_publish') %>
-    </div>
+    <% if params[:action] == "edit" %>
+      <%= save_and_publish_button(f, market) %>
+    <% else %>
+      <div class="center tip">
+        <%= t('market_form.remember_to_publish') %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
 </div>
 
 

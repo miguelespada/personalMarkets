@@ -1,4 +1,5 @@
 es:
+  in: en
   new: "nuevo"
   edit: "editar"
   delete: "borrar"
@@ -112,7 +113,7 @@ es:
         tags: "Etiquetas"
     error_notification:
       default_message: "Por favor, revise los problemas abajo:"
-  your: "Tu"
+  your_singular: "Tu"
   was: "ha sido"
   successfully: "correctamente"
   fail: "no puede ser"
@@ -281,7 +282,7 @@ es:
   go_PRO: Go PRO
   subscribe: subscribirse
   unsubscribe: cancelar subscripción
-  recommend_markets: "Haz los deseaos de la gente realidad."
+  recommend_markets: "Haz los deseos de la gente realidad."
   recommend_market: "Recomienda markets"
   recommended: "Markers recomendados"
   edit_profile: "Modificar perfil"

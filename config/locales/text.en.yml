@@ -1,0 +1,62 @@
+en:
+  menu_open_market: "En dowemarket conectamos personas. Si tienes muebles que ya no te son útiles, una colección de cómics única en tu ciudad, o un talento culinario que te gustaría compartir con los demás, con dowemarket puedes abrir tu propio market, crear invitaciones para tus cenas privadas, o convertir tu casa en una tienda por un día. Es fácil. Abre un market."
+  menu_go_pro: "Porque tu talento es tu profesión y estás abierto jornadas completas, entonces el market Pro es para ti. Links a tu página, imágenes, cupones para ofrecer experiencias diferentes y únicas, disponibles durante todo el mes. Sin límites."
+  menu_open_vim: "Porque sabemos que tu talento es alto y pones mucho mimo a las cosas, abriendo un VIM puedes añadir tantos detalles como tu quieras, links a tu blog, tus imágenes favoritas, ofrecer un vino a quienes vayan a verte habilitando cupones para que la experiencia sea personal. Como esas cosas que tu tan bien haces."
+  beta_page:
+    title: "¡Estamos trabajando!"
+    content: "¡Estamos trabajando en la web para mejorar cada día la experiencia, si encuentras algún fallo comunicanoslo!"
+  buy_coupon_terms:
+    title: "Soy cliente de un mercado y quiero comprar un cupón."
+    terms:
+      - "Algunos mercados ofrecen cupones para dar servicios extra a sus clientes."
+      - "Ejemplos de cupon:"
+      - "Ofrecer un cocktail de bienvenida. No hay mejor manera de difrutar de las compras con un cocktel."
+      - "Priority shopping. Invita a algunos compradores a llegar 1 hora antes a tu mercado y así se pueden aprovechar y encontrar las mejores gangas."
+      - "Regalo sorpresa. Asegúrate que tus compradores se lleven algo especial a casa para recordar tu mercado."
+      - "Para comprar un cupón solo tienes introducir los datos de tu tarjeta de crédito."
+      - "Nosotros gestionamos de manera segura todos los pagos, utilizando la de de pago paymill así que no tienes que preouparte por la segura de tus datos privados."
+      - "En todo momento podrás ver los cupones que has comprado."
+  go_premium_terms:
+    title: "I want to become Pro"
+    terms:
+      - "A pro account brings you lots of benefits:"
+      - "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      - "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      - "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  go_vim_terms:
+    title: "I want to have a VIM market"
+    terms:
+      - "A pro account brings you lots of benefits: "
+      - "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      - "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      - "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  privacy_terms:
+    title: "Privacy"
+    terms:
+      - "Terms of privacy of DOWEMARKET:"
+      - "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      - "What's more:"
+      - "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  sell_coupon_terms:
+    title: "I am a market owner and I want to sell coupons."
+    terms:
+      - "Para dar servicios extra a tus compradores te recomendamos crear un cupón asociado a tu market."
+      - "Ejemplos de coupon:"
+      - "Ofrecer un cocktail de bienvenida. No hay mejor manera de difrutar de las compras con un cocktel."
+      - "Priority shopping. Invita a algunos compradores a llegar 1 hora antes a tu mercado y así se pueden aprovechar y encontrar las mejores gangas."
+      - "Regalo sorpresa. Asegúrate que tus compradores se lleven algo especial a casa para recordar tu mercado."
+      - "Los compradores compran el cupón a través de nuestra página y nosostros nos encargamos de acerte llegar el dinero de tus ventas justo despué de que concluya el mercado."
+      - "Tu no tienes que hacer nada, nosotros gestionamos de manera segura todos los pagos"
+      - "Solo los mercados Premium pueden emitir cupones."
+      - "En todo momento podrás ver los cupones que has vendido."
+      - "Para que te ingresemos el dinero necesitatás una cuenta Paypal. Si no tienes, no te preocupes se hace en 5 minutos; nosotros te indicaremos cómo, cuando llegue el momento."
+      - "Para poder gestionar los pagos, cargamos una pequeña comisión tanto al comprador como al vendedor, así los gastos son compartidos."
+      - "Todo está gestionado, de manera segura, utilizando la pasarelas de pago paymill y paypal, así que no tienes que preouparte por la segura de tus datos privados."
+  terms_page:
+    title: "Terms of service"
+    terms:
+      - "Terms of service of DOWEMARKET:"
+      - "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      - "What's more:"
+      - "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  

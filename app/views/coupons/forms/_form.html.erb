@@ -1,28 +1,28 @@
 <%= f.input :description, :as => :text,  placeholder: t(:description).capitalize  %>
-  <div class = "row">
-    <div class="form-group">
-      <div class = "col-md-5">
-        <%= t :price %>: 
-        <%= f.input :price, collection: (5..25).step(5), :include_blank => false %>
-      </div>
-    </div>
-  </div>
-  <br>
-
-  <div class = "row">
-    <div class="form-group">
-      <div class = "col-md-5">
-        <%= t :available %>: 
-        <%= f.input :available, collection: (10..100).step(5), :include_blank => false %>
-      </div>
-    </div>
-  </div>
-  <br>
-
+  
+<div class = "row">
   <div class="form-group">
-    <%= t :photo %>:
-    <%= f.simple_fields_for :photography do |form_builder| %>
-      <%= render 'photos/form', f: form_builder %>
-    <% end %>
+    <div class = "col-md-5">
+      <%= t(:price).capitalize %> <%= t(:in) %> €: 
+      <%= f.input :price, collection: (5..25).step(5), :include_blank => false %>
+    </div>
   </div>
+</div>
+<br>
+
+<div class = "row">
+  <div class="form-group">
+    <div class = "col-md-5">
+      <%= t(:available).capitalize %>: 
+      <%= f.input :available, collection: (10..100).step(5), :include_blank => false %>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="form-group">
+  <%= t(:photo).capitalize %>:
+  <%= f.simple_fields_for :photography do |form_builder| %>
+    <%= render 'photos/form', f: form_builder %>
+  <% end %>
 </div>
