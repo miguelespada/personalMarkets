@@ -12,7 +12,9 @@ es:
   "special location": vecindario
   "special locations": vecindarios
   "slideshow texts": slideshow texts
-  "slideshow images": slideshow 
+  "slideshow images": slideshow images
+  "slideshow text": slideshow text
+  "slideshow image": slideshow image
   normal: regular
   admin: admin
   premium: pro
@@ -42,7 +44,7 @@ es:
   name: "nombre"
   market_date: "fecha"
   social: "Link a redes sociales" 
-  category_and_tags: "Categoría y etiquetas"
+  category_and_tags: "Categoría y tags"
   all_categories: "Todo"
   featured_photo: "Foto destacada"
   featured: "Foto destacada"
@@ -60,7 +62,7 @@ es:
   categories: "categorías"
   category: "categoría"
   explore: "explora"
-  tags: "etiquetas"
+  tags: "tags"
   tag_list: "Volver a la lista de tags"
   wish: "Deseo"
   wishlist: "Deseos"
@@ -84,7 +86,7 @@ es:
   wishes: "deseos"
   new_bargain: "Nueva ganga"
   all_tags: "Todas las tags"
-  whats_new: "Lo nuevo"
+  whats_new: "Nuevos markets"
   enable_browser: "Habilite la ubicación en su navegador"
   search_markets: "Buscar market"
   my_location: "Cerca mío"

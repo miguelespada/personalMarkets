@@ -72,7 +72,7 @@ module ApplicationHelper
   def user_scope 
       concat (t(:your).capitalize + " ") if params['user_id'].present? && params['user_id'] == current_user.id.to_s
       concat (User.find(params['user_id']).name + " ") if params['user_id'].present? && params['user_id'] != current_user.id.to_s
-      # concat (t(:all).capitalize ) if !params['user_id'].present?
+       # concat (t(:all).capitalize ) if !params['user_id'].present?
       ""
   end
 

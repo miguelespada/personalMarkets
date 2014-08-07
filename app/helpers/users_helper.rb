@@ -30,7 +30,7 @@ module UsersHelper
     link_to send("#{model.model_name.route_key}_path"), class:"dashboard-button btn btn-lg" do
       concat content_tag :i, "", class:"fa #{model.icon} fa-4x"
       concat "<br/>".html_safe
-      concat truncate(model.model_name.human.pluralize,  length: 12)
+      concat truncate(t(model.model_name.human.downcase).capitalize.pluralize,  length: 12)
     end 
   end
   
