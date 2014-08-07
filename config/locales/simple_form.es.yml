@@ -53,7 +53,7 @@ es:
   external_url_pro: "Link externo"
   url: "Link externo"
   coupon_pro: "Cupón"
-  coupon: "Cupón"
+  coupon: "cupón"
   coupons: "cupones"
   all_coupons: "Todos los cupones"
   date_and_time: "Fecha y horario"
@@ -64,21 +64,21 @@ es:
   explore: "explora"
   tags: "tags"
   tag_list: "Volver a la lista de tags"
-  wish: "Deseo"
-  wishlist: "Deseos"
-  schedule: "Horarios"
-  external_url: "Link"
+  wish: "deseo"
+  wishlist: "deseos"
+  schedule: "horarios"
+  external_url: "link"
   social_link: "Enlace a redes sociales"
   contact_us: "Contáctanos"
   see_more_markets: "Ver más markets..."
   see_more_categories: "Ver más categorias..."
   see_more_hotspots: "Ver más vecindarios..."
-  maps: "Mapas"
-  map: "Mapa"
+  maps: "mapas"
+  map: "mapa"
   all_markets: "Todos los markets"
   all_wishes: "Todos los deseos"
   all_users: "Todos los usuarios"
-  users: "Usuarios"
+  users: "usuarios"
   bargains: "gangas"
   all_bargains: "Todas las gangas"
   all_locations: "Todos los lugares"
@@ -101,17 +101,17 @@ es:
   no_matches_by_tag: "No hay ningún market con ese tag :("
   to: "hasta"
   comments_and_share: Comentar y comartir
-  owner: "Dueño"
+  owner: "dueño"
   prices: "Rango de precios"
-  address: "Dirección"
-  description: "Descripción"
+  address: "dirección"
+  description: "descripción"
   slideshow: "Galería de imágenes"
-  gallery: "Galería"
+  gallery: "galería"
   QR_Code: "Código QR"
   information: "información"
   published_Markets: "Market publicados"
-  explore: "Explorar"  
-  search: "Buscar"
+  explore: "explorar"  
+  search: "buscar"
   publish: "publicar"
   unpublish: "retirar"
   simple_form:
@@ -133,7 +133,7 @@ es:
         tags: "Etiquetas"
     error_notification:
       default_message: "Por favor, revise los problemas abajo:"
-  your_singular: "Tu"
+  your_singular: "tu"
   was: "ha sido"
   successfully: "correctamente"
   fail: "no puede ser"
@@ -304,7 +304,7 @@ es:
   unsubscribe: cancelar subscripción
   recommend_markets: "Haz los deseos de la gente realidad."
   recommend_market: "Recomienda markets"
-  recommended: "Markers recomendados"
+  recommended: "Markets recomendados"
   edit_profile: "Modificar perfil"
   edit_subscription_plan: "Modificar subscriptción"
   follow: follow
@@ -321,13 +321,13 @@ es:
   card_number: "Número de tarjeta"
   expiration_year: Año de expiración
   expiration_month: Mes de expiración
-  you_must_accept_terms_and_conditions: 'You must accept terms and conditions'
-  invalid_card_holder_name: 'Invalid card holder name'
-  invalid_expiry_date: 'Invalid expiry date'
-  invalid_card_number: 'Invalid card number'
+  you_must_accept_terms_and_conditions: 'Tienes que aceptar los condiciones de servicio'
+  invalid_card_holder_name: 'Titular de tarjeta no es válido'
+  invalid_expiry_date: 'Fecha de expiracion no es válida'
+  invalid_card_number: 'Número de tarjeta no es válida'
   upload_progress: "[Progreso de carga: "
   upload_progress_done: "[Progreso de carga: HECHO]"
-  filesize_is_too_big: "El tamaño de este archivo es demasiado grande. La imagen no puede superer 1MB"
+  filesize_is_too_big: "El tamaño de este archivo es demasiado grande. La imagen no puede superar 1MB"
   image_cannot_be_empty: "¡La imagen no puede ser vacía!"
   edit_photo: "Editar foto"
   save: guardar
