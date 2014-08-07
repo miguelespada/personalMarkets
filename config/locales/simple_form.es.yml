@@ -34,7 +34,7 @@ es:
   external_url_pro: "Link externo"
   url: "Link externo"
   coupon_pro: "Cupón"
-  coupon: "Cupón"
+  coupon: "cupón"
   coupons: "cupones"
   all_coupons: "Todos los cupones"
   date_and_time: "Fecha y horario"
@@ -285,7 +285,7 @@ es:
   unsubscribe: cancelar subscripción
   recommend_markets: "Haz los deseos de la gente realidad."
   recommend_market: "Recomienda markets"
-  recommended: "Markers recomendados"
+  recommended: "Markets recomendados"
   edit_profile: "Modificar perfil"
   edit_subscription_plan: "Modificar subscriptción"
   follow: follow
@@ -302,13 +302,13 @@ es:
   card_number: "Número de tarjeta"
   expiration_year: Año de expiración
   expiration_month: Mes de expiración
-  you_must_accept_terms_and_conditions: 'You must accept terms and conditions'
-  invalid_card_holder_name: 'Invalid card holder name'
-  invalid_expiry_date: 'Invalid expiry date'
-  invalid_card_number: 'Invalid card number'
+  you_must_accept_terms_and_conditions: 'Tienes que aceptar los condiciones de servicio'
+  invalid_card_holder_name: 'Titular de tarjeta no es válido'
+  invalid_expiry_date: 'Fecha de expiracion no es válida'
+  invalid_card_number: 'Número de tarjeta no es válida'
   upload_progress: "[Progreso de carga: "
   upload_progress_done: "[Progreso de carga: HECHO]"
-  filesize_is_too_big: "El tamaño de este archivo es demasiado grande. La imagen no puede superer 1MB"
+  filesize_is_too_big: "El tamaño de este archivo es demasiado grande. La imagen no puede superar 1MB"
   image_cannot_be_empty: "¡La imagen no puede ser vacía!"
   edit_photo: "Editar foto"
   save: guardar
