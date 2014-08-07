@@ -4,6 +4,7 @@
 
 <div id="gallery-items">
 </div>
+
 <div id="map">
 </div>
 
@@ -26,16 +27,14 @@
     }
   };
   
-  
   $(document).ready(function(){
-    $('.map-link').html('<%= link_to search_markets_path do %><i class="fa fa-search"></i><span   id="search-link-text" class="hidden-sm hidden-md">&nbsp;<%= t(:search).capitalize %>...<  /span><% end %>');
-    
-    $('#search_button').html('<i class="fa fa-globe"></i>');
-    
-    $('#search_market').change(jsonSearch).change();
-  
-    $('html, body').css({
-      'overflow': 'hidden'
-    });
+    $('#search_market').change(jsonSearch);
+    jsonSearch();
   });
 </script>
+
+<style>
+  html, body{
+    overflow: hidden;
+  }
+</style>

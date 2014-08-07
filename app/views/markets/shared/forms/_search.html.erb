@@ -67,7 +67,8 @@
 
   <script> 
     var on_map = <%= search_on_map? %>;
-
+    
+    var custom_location_option = "<option value='Custom location'><%= t(:custom_location) %></option>"
     function reset_search(){
       $("#range").val("All");
       $("#address-query").val("");
@@ -165,7 +166,7 @@
             
             $("#location_location_id option[value='My location']").remove();
             $("#location_location_id option[value='Custom location']").remove();
-            $('#location_location_id').append("<option value='Custom location'><%= t :Custom_location %></option>").val('Custom location');
+            $('#location_location_id').append("<option value='Custom location'><%= t(:custom_location) %></option>").val('Custom location');
               
             if(on_map) centerMap("Custom location");
           
@@ -214,7 +215,7 @@
       
       $(".btn-my-location-search").click(function(){
         removeLocationData();
-        $('#location_location_id').append("<option value='My location'><%= t :My_location %></option>").val("My location");
+        $('#location_location_id').append("<option value='My location'><%= t(:my_location) %></option>").val("My location");
         if(on_map) centerMap("My location");
         $("#search_market").change();
       });

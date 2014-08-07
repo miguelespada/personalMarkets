@@ -57,6 +57,7 @@ $default_weight: 200;
 
 .market_description_label > span{
   @include market_font(1, 2, 24px); 
+  padding-right: 5px;
 }
 
 .market-like-button{

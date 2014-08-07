@@ -29,9 +29,19 @@
        
       <ul class="nav navbar-nav navbar-right topbar-right">
         <li class="map-link">
-          <%= link_to map_path do %>
-            <i class="fa fa-globe"></i>
-            <span id="map-link-text" class="hidden-sm hidden-md">&nbsp;<%= t(:map).capitalize %> </span>
+          <% if search_on_map? %> 
+            <%= link_to search_markets_path do %>
+              <i class="fa fa-search">
+              </i><span id="search-link-text" class="hidden-sm hidden-md">
+              &nbsp;<%= t(:search).capitalize %>...</span>
+            <% end %>
+          <% else %>
+            <%= link_to map_path do %>
+              <i class="fa fa-globe"></i>
+              <span id="map-link-text" class="hidden-sm hidden-md">
+                &nbsp;<%= t(:map).capitalize %> 
+              </span>
+            <% end %>
           <% end %>
         </li>
          

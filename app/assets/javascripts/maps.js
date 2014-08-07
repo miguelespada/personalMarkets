@@ -34,7 +34,7 @@ PM.initializeMap = function(tile, viewLat, viewLng, dist) {
      $("#lon").val(PM.map.getCenter().lng);
      $("#location_location_id option[value='My location']").remove();
      $("#location_location_id option[value='Custom location']").remove();
-     $('#location_location_id').append("<option value='Custom location'>Custom location</option>").val('Custom location');
+     $('#location_location_id').append(custom_location_option).val('Custom location');
      $("#search_market").change();
   });
 };

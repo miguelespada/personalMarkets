@@ -1,138 +1,334 @@
 en:
-  new: "new"
-  edit: "edit"
-  city: "city"
-  near_me: "near me"
-  passed_dates: "passed_dates"
-  today: "today"
-  all_time: "any day"
-  this_week: "this week"
-  next_week: "next week"
-  this_month: "this month"
-  sign_up: "sign up"
-  general_information: "general information"
-  location: "location"
-  name: "name"
-  category_and_tags: "category and tags"
-  all_categories: "all categories"
-  featured_photo: "featured Photo"
-  price_range: "price Range"
-  photo_gallery_pro: "photo Gallery"
-  external_url_pro: "external url"
-  coupon_pro: "coupon"
-  date_and_time: "Date and Schedule"
-  latest_markets: "Latest Markets"
-  hot_spots: "Hot Spots"
-  social: "social link" 
-  categories: "Categories"
-  explore: "Explore"
-  tags: "Tags"
-  wishlist: "Wishlist"
-  tag_list: "Return to tag list"
-  maps: "Maps"
-  schedule: "Schedule"
-  all_markets: "All Markets"
-  all_wishes: "All Wishes"
-  bargains: "Bargains"
-  all_bargains: "All Bargains"
-  all_locations: "All hotspots"
-  new_wish: "New Wish"
-  new_bargain: "New Bargain"
-  whats_new: "What's new"
-  enable_browser: "Enable browser location for better experience"
-  search_markets: "Search markets"
-  search_in_map: "Search in map"
-  my_location: "Near my location"
-  see_more_markets: "Explore more markets..."
-  see_more_categories: "Explore more categories..."
-  see_more_hotspots: "Explore more hotspots..."
-  Any_location: "Any location"
-  search_by_address: "Address, city or location..."
-  no_matches: "Oops... There're no markets matching your query."
-  no_matches_by_tag: "There're no markets with this tag :("
-  custom_location: "Custom location"
-  to: "to"
-  comments_and_share: "Comments & Share"
-  map: "Map"
-  explore: "Explore"
-  search: "Search"
-  publish: "Publish"
-
+  new: "nuevo"
+  edit: "editar"
+  delete: "borrar"
+  print: "imprimir"
+  archive: "archivar"
+  create: "crear"
+  recommend: "recomendar"
+  buy_coupon: "comprar cupón"
+  slideshow: "slideshow"
+  register_to_buy_coupon: Debe registrarse para poder comprar cupones
+  city: "ciudad"
+  passed_dates: "fechas pasadas"
+  near_me: "cerca mío"
+  today: "hoy"
+  all_time: "cualquier día"
+  this_week: "esta semana"
+  next_week: "la próxima semana"
+  this_month: "este mes"
+  location: "dirección"
+  sign_up: "registrarse"
+  general_information: "información general"
+  name: "nombre"
+  market_date: "fecha"
+  social: "Link a redes sociales" 
+  category_and_tags: "Categoría y etiquetas"
+  all_categories: "Todo"
+  featured_photo: "Foto destacada"
+  featured: "Foto destacada"
+  price_range: "Rango de Precios"
+  photo_gallery_pro: "Galería de fotos"
+  external_url_pro: "Link externo"
+  url: "Link externo"
+  coupon_pro: "Cupón"
+  coupon: "Cupón"
+  coupons: "cupones"
+  all_coupons: "Todos los cupones"
+  date_and_time: "Fecha y horario"
+  latest_markets: "Últimos markets"
+  hot_spots: "vecindarios"
+  categories: "categorías"
+  category: "categoría"
+  explore: "explora"
+  tags: "etiquetas"
+  tag_list: "Volver a la lista de tags"
+  wish: "Deseo"
+  wishlist: "Deseos"
+  "My Wishlist": "Mis deseos"
+  schedule: "Horarios"
+  external_url: "Link"
+  social_link: "Enlace a redes sociales"
+  contact_us: "Contáctanos"
+  see_more_markets: "Ver más markets..."
+  see_more_categories: "Ver más categorias..."
+  see_more_hotspots: "Ver más vecindarios..."
+  maps: "Mapas"
+  map: "Mapa"
+  all_markets: "Todos los markets"
+  all_wishes: "Todos los deseos"
+  all_users: "Todos los usuarios"
+  users: "Usuarios"
+  bargains: "Gangas"
+  all_bargains: "Todas las gangas"
+  all_locations: "Todos los lugares"
+  new_wish: "Nuevo deseo"
+  wishes: "Deseos"
+  new_bargain: "Nueva ganga"
+  all_tags: "Todas las tags"
+  whats_new: "Lo nuevo"
+  enable_browser: "Habilite la ubicación en su navegador"
+  search_markets: "Buscar market"
+  my_location: "Cerca mío"
+  custom_location: "Direccion personalizada"
+  any_location: "Cualquier lugar"
+  select_location: "Selecciona lugar"
+  search_in_map: "Buscar en el mapa"
+  explore_more_markets: "Más markets..."
+  search_by_address: "Dirección, ciudad..."
+  no_matches: "No hay ningún market que satisfaga tus criterios de búsqueda. :("
+  no_matches_by_tag: "No hay ningún market con ese tag :("
+  to: "hasta"
+  comments_and_share: Comentar y comartir
+  owner: "Dueño"
+  prices: "Rango de precios"
+  address: "Dirección"
+  description: "Descripción"
+  slideshow: "Galería de imágenes"
+  gallery: "Galería"
+  QR_Code: "Código QR"
+  information: "información"
+  published_Markets: "Market publicados"
+  explore: "Explorar"  
+  search: "Buscar"
+  publish: "publicar"
+  unpublish: "retirar"
   simple_form:
-    "yes": 'Yes'
+    "yes": 'Si'
     "no": 'No'
     required:
-      text: 'required'
+      text: 'requerido'
       mark: '*'
-      # You can uncomment the line below if you need to overwrite the whole required html.
-      # When using html, text and mark won't be used.
-      # html: '<abbr title="required">*</abbr>'
     placeholders:
       user:
-        email: 'Email address'
-        password: 'Password'
-        password_confirmation: 'Password confirmation'
+        email: 'Dirección de correo'
+        password: 'Contraseña'
+        password_confirmation: 'Confirmación contraseña'
+        submit: "Enviar"
       market:
-        name: "Name"
-        description: "Description"
-        schedule: "Open hours (ex. from 9 to 17...)"
-        tags: "Tags"
+        name: "Nombre"
+        description: "Descripción"
+        schedule: ""
+        tags: "Etiquetas"
     error_notification:
-      default_message: "Please review the problems below:"
-  market_recommended: "Market recommended!"
-  your: "Your"
-  was: "was successfully"
-  successfully: ""
-  create: "created"
-  update: "updated"
-  delete: "deleted"
-  archive: "archived"
-  unpublish: "unpublished"
-  VIM: "upgraded to VIM"
-  fail: "cannot be"
-  wish: "wish"
-  bargain: "bargain"
-
-    # Labels and hints examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail to sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   defaults:
-    #     username: 'User name to sign in.'
-    #     password: 'No special characters, please.'
-  market_archive: "This market is archived (this accion is not reversible)."
-  market_private: "This market is not public. Publish it or edit it to add more content"
-  market_private_required: "This market is not public. To proceed you must provide the required fields"
-  market_old:  "This market is public but has passed."
-  market_public: "This market is public. Edit it to improve your market quality "
-  action_not_reversible: "This action is not reversible. Do you want to continue?"
-  market_name_cannot_be_empty: "Market name cannot be empty"
-  required_field: "This field is required"
-  market_location_is_not_provided: "Market location is not provided"  
-  market_quality: "Market status (this section is not visible by the rest of users)"
-  private_section: "This section is not visible by the rest of users"
-  awesome: "This is awesome!"
-  recommended: "You can add extra info to make your market better"
-  update_vim: "Update a VIM, to access to exclusive fields."
-  better_description: "Add more details to your market description to make it better!"
-  better_tags: "Add more tags to make it easier to find!"
-  better_slideshow: "Add more photos to your market to make it prettier!"
-  recommend_slideshow: "You can add a image gallery!"
-  coupon_recommended: "You can create a coupon to offer extra services on your market"
-  coupon_required_fields: "You need to fill all coupon fields"
-  shopping_details: "Your shopping details"
-  Number_of_coupons: "Number of coupons"
-  Total: "Total amount to be paid"
-  "External url": "External url"
-  "Social link": "Social link"
-  discard_changes: "Do you wish to discard changes?"
+      default_message: "Por favor, revise los problemas abajo:"
+  your: "Tu"
+  was: "ha sido"
+  successfully: "correctamente"
+  fail: "no puede ser"
+  updated: "modificado"
+  deleted: "borrado"
+  created: "creado"
+  archived: "archivado"
+  unpublished: "retirado"
+  market_recommended: "Market recomendado!"
+  wish: "deseo"
+  bargain: "ganga"
+  VIM: "convertido a VIM"
+  mongoid:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: "La dirección de correo no es válida"
+            password:
+              too_short: "La constraseña es demasiado corta"
+            password_confirmation:
+              confirmation: "Las contraseñas no coinciden"
+  market_archive: "Este market está archivado (está acción no es reversible)."
+  market_private: "Este market no es público. Lo puedes publicar o editar para añadir más información"
+  market_private_required: "Este market no es público. Para publicarlo debes rellenar los campos requeridos"
+  market_old:  "Este market es público, pero ha pasado."
+  market_public: "Este market es público, aunque todavía puedes editarlo para modificar la información."
+  action_not_reversible: "Esta action no se puede deshacer. Deseas continuar?"
+  market_location_is_not_provided: "La dirección no ha sido rellenada"
+  market_quality: "Estado del market" 
+  private_section: "Está sección no es visible por el resto de los usuarios"
+  awesome: "¡Está perfecto!"
+  recommended: "Puedes añadir está información para mejorar tu market"
+  required_field: "Debes añadir este campo"
+  update_vim: "Haz tu market VIM, para poder tener funcionalidades exclusivas."
+  better_description: "Añade más detalles a tu descripción, para hacerla más atractiva."
+  better_slideshow: "Añade más fotos para hacer tu market más bonito"
+  better_tags: "Añade más tags para hacer tu market más accesible"
+  recommend_slideshow: "Recuerda que puedes añadir una galería de fotos."
+  extra_photos: "Fotos extra"
+  coupon_recommended: "Puedes crear un cupón para ofrecer servicios extra en tu market"
+  coupon_required_fields: "Debes rellenar todos los datos del cupón"
+  this_market_offers_a_coupon: "Este market tiene cupones disponibles"
+  you_have_to_wait_one_month: "Como usuario normal, tienes que esperar 1 mes para crear más markets"
+  available: "Número disponible"
+  price: "precio"
+  photo: "foto"
+  shopping_details: "Detalles de tu compra"
+  number_of_coupons: "Numero de cupones"
+  total: "Precio total"
+  how_it_works: "¿Cómo funciona?"
+  days: "días"
+  uncategorized: sin categoría
+  stats: estadísticas
+  discard: descartar
+  who_liked: "¿A quién le gusta?"
+  market: "market"
+  market_form:
+    update_and_publish_market: "Actualizar y publicar"
+    discard_changes: "Si continuas perderás todos los cambios"
+    market_name_cannot_be_empty: "El nombre del Market es obligatorio"
+    remember_to_publish: 'Una vez guardado, deberas "Publicar" tu Market para que sea visible.'
+    you_can_emit_a_coupon: 'Para ofrecer servicos extras a tus clientes puedes emitir un cupón.'
+    you_can_edit_your_photos: "Puedes editar tus fotos una vez guardadas, en tu espacio personal."
+    you_can_add_more_photos: "Si quieres añadir más fotos convierte tu market en VIM (Very important market)."
+    you_can_edit_your_market: "Recuerda que, una vez guardado, puedes modificar tus datos en cualquier momento."
+    select_better_tags: "Elige buenas tags y seguro que apareces más a menudo en las búsquedas."
+    you_can_select_many_schedules: "Puedes elegir tantas franjas horarias como necesites."
+    become_pro_to_have_longer_markets: "Hazte una cuenta PRO para tener markets más largos."
+    your_market_cannot_be_longer_than: "Recuerda que tu market no puede durar más de"
+    update_map: "Actualiza el mapa"
+    check_map_is_correct: Comprueba que tu dirección aparece correctamente en el mapa
+    add_external_links: "Añade links a tu blog, web y a tu evento de facebook."
+  create_coupon_to_add_extra_services: Crea cupones para ofrecer servicios extra
+  go_vim_to_offer_coupons: Go VIM para poder crear cupones
+  market_has_no_coupons: Este Market no tiene cupones
+  you_are_admin: "Eres administrador"
+  you_are_pro: "Eres un usuario PRO"
+  you_are_regular: "Eres un usuario REGULAR"
+  contact_form: Formulario de contacto
+  email: email
+  subject: motivo
+  your_message: Tu mensaje
+  send: enviar
+  how_many_coupons_would_you_like_to_buy: ¿Cuántos cupones quieres comprar?
+  i_accept_the: Acepto las
+  terms_of_use: condiciones de servicio
+  this_coupon_is_sold_out: El cupón ya está agotado.
+  transaction_id: ID de transacción
+  buyer: comprador
+  seller: vendedor
+  locator: localizador
+  your_coupons: Tus cupones
+  for_the_service_offered_with_the_coupon: "Deberás darle este número al dueño del market a cambio del servicio ofrecido con el cupón, así en caso de incidencia podremos comprobar que la transacción se ha realizado correctamente."
+  sold_coupons: Cupones vendidos
+  payment_details: Detalles del pago
+  pay: pagar
+  pro_payment: Pago PRO
+  resend_confirmation_instructions: Enviar de nuevo las instrucciones de confirmación
+  change_your_password: Cambiar la contraseña
+  new_password: Contraseña nueva
+  confirm_your_new_password: Confirmar tu contraseña nueva
+  change_my_password: Cambiar mi contraseña
+  forgot_your_password: ¿Has olvidado tu contraseña?
+  password_recovery: Recuperación de contraseña
+  reset_my_password: Restablecer mi contraseña
+  or: o
+  currently_waiting_confirmation_for: "Esperando la confirmación para:"
+  leave_it_blank: Déjalo blanco si no quieres cambiarlo
+  we_need_your_current_password: Necesitamos tu contraseña actual para confirmar los cambios
+  update: actualizar
+  cancel_my_account: Cancelar mi cuenta
+  unhappy: ¿No estás contento?
+  are_you_sure: ¿Estás seguro?
+  back: volver
+  registration: Registro de usuario
+  sign_up_with_google: Registrarse con Google
+  sign_up_with_facebook: Registrarse con Facebook
+  sign_in: Identificarse
+  remember_me: Recordarme
+  sign_in_with_google: Identificarse con Google
+  sign_in_with_facebook: Identificarse con Facebook
+  did_not_receive_confirmation_instructions: "¿No has recibido las instrucciones de confirmación?"
+  did_not_receive_unlock_instructions: "¿No has recibido las instrucciones para desbloquear?"
+  resend_unlock_instructions: "Reenviar las instrucciones para desbloquear"
+  new_market: Abre un Market
+  admin_panel: Panel de admin
+  dashboard: dashboard
+  privacy: privacidad
+  more: "Más..."
+  header_content: "Plataforma de búsqueda de markets. Un nuevo concepto emergente de market alternativo, creativo, emprendedor, excepcional, chic, clandestino y sorprendente"
+  header_keywords: "pop up store, personal markets, shopping"
+  header_type: "Plataforma de compras"
+  beta: beta
+  markets: markets
+  likes: likes
+  sign_out: Cerrar la sesión
+  you_are_signed_in_as: Estás indentificado como
+  you_have_published: Haz publicado
+  during_last_month: durante el último mes
+  you_can_publish: Puedes publicar
+  market_s: "market(s)"
+  vim_features: 
+  - Imágenes extra
+  - Links a tu blog y a tu evento de facebook
+  - Estadisticas de tus markets a tiempo real
+  - Creación de cupones
+  - Sin anuncios
+  pro_features: 
+  - 4 markets al mes
+  - Markets que duran hasta 30 días
+  - Todos tus markets son VIM
+  - Markets sin anuncios
+  - Estadisticas de tus markets
+  - Creación de cupones
+  - Unsubscribirte en un solo click
+  regular_features: 
+  - 1 mercado al mes
+  - Markets duran 1 semana
+  your: tus
+  free: gratis
+  i_accept_the: "Acepto"
+  by: de
+  go_VIM: Go VIM
+  go_PRO: Go PRO
+  subscribe: subscribirse
+  unsubscribe: cancelar subscripción
+  recommend_markets: "Haz los deseaos de la gente realidad."
+  recommend_market: "Recomienda markets"
+  recommended: "Markers recomendados"
+  edit_profile: "Modificar perfil"
+  edit_subscription_plan: "Modificar subscriptción"
+  follow: follow
+  unfollow: unfollow
+  following: following
+  followers: followers
+  your_name: Tu nombre o nick
+  your_description: Cuéntanos algo sobre ti
+  your_logo: Tu foto o tu logo
+  user: usuario
+  month: mes
+  go_back: "volver"
+  card_holder_name: "Titular de la tarjeta"
+  card_number: "Número de tarjeta"
+  expiration_year: Año de expiración
+  expiration_month: Mes de expiración
   you_must_accept_terms_and_conditions: 'You must accept terms and conditions'
   invalid_card_holder_name: 'Invalid card holder name'
   invalid_expiry_date: 'Invalid expiry date'
   invalid_card_number: 'Invalid card number'
+  upload_progress: "[Progreso de carga: "
+  upload_progress_done: "[Progreso de carga: HECHO]"
+  filesize_is_too_big: "El tamaño de este archivo es demasiado grande. La imagen no puede superer 1MB"
+  image_cannot_be_empty: "¡La imagen no puede ser vacía!"
+  edit_photo: "Editar foto"
+  save: guardar
+  change_user_role: "Cambiar el rol del usuario"
+  make: "Cambiar a"
+  fields: "campos"
+  actions: "acciones"
+  title: título
+  subtitle: subtítulo
+  title_in_english: "Título en inglés..."
+  subtitle_in_english: "Subtítulo en inglés..."
+  important: "Importante: "
+  visits: visitas
+  you_must_be_logged: "Tienes que registrate para poder crear Markets"
+  open_your_market: Abre tu Market
+  open_a: Abre un
+  profile: perfil
+  photos: fotos
+  vim_market: "Market VIM"
+  visits_per_day_this_week: "Visitas por día de esta semana"
+  sorry_only_vim_can_see_stats: "¡Lo sientimos! Solo los Market VIM pueden ver las estadísticas"
+  tag_name: "Nombre de etiqueta"
+  messages: mensajes
+  admin_data: "Datos de admin"
+  custom_location: "Personalizada"

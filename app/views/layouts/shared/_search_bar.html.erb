@@ -7,8 +7,13 @@
     id: "search_bar_query" %>
     
     <span class="input-group-btn">
+
       <button class="btn btn-default" id="search_button" type="button">
-        <i class="fa fa-search"></i>
+         <% if search_on_map? %> 
+            <i class="fa fa-globe"></i>
+         <% else %>
+            <i class="fa fa-search"></i>
+        <% end %>
       </button>
     </span> 
   </div>
