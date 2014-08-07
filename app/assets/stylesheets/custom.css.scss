@@ -1,5 +1,18 @@
 @import "color";
 
+.add_market_button {
+  margin-left: 20px;
+  background-color: $colBrand;
+  border-color: darken($colBrand, 20%);
+  color: white;
+  &:hover{
+    background-color: lighten($colBrand, 20%);
+  }
+  &[disabled]{
+    color: black;
+  }
+}
+
 .back_link{
   margin: 10px;
 }
