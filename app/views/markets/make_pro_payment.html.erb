@@ -1,4 +1,4 @@
-<%= page_title(t("Go VIM"), "fa-plus-square") %>
+<%= page_title(t(:go_VIM), "fa-plus-square") %>
 
 <div class="container">
   <div class="row">
@@ -9,11 +9,9 @@
           <span>2.99€</span>
         </div>
         <ul>
-          <li class="plan-feature"><span class="fa fa-check-circle"></span> t(:vim_feature_1) </li>
-          <li class="plan-feature"><span class="fa fa-check-circle"></span> t(:vim_feature_2) </li>
-          <li class="plan-feature"><span class="fa fa-check-circle"></span> t(:vim_feature_3) </li>
-          <li class="plan-feature"><span class="fa fa-check-circle"></span> t(:vim_feature_4) </li>
-          <li class="plan-feature"><span class="fa fa-check-circle"></span> t(:vim_feature_5) </li>
+          <% t(:vim_features).each do |feature| %>
+            <li class="plan-feature"><span class="fa fa-check-circle"></span> <%= feature %> </li>
+          <% end %>
         </ul>
       </div>
     </div>

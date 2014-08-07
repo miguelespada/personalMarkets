@@ -23,7 +23,7 @@ $(document).ready(function ($) {
 
     var submitData = function (event) {
         if( $("#accept_terms").length && !$("#accept_terms").is(":checked")){
-          displayError('You must accept terms and conditions');
+          displayError(you_must_accept_terms_and_conditions);
           return false;
         }
 
@@ -31,19 +31,19 @@ $(document).ready(function ($) {
         $('.get-token').off('click');
 
         if (false == paymill.validateCardNumber($('#card_number').val())) {
-          displayError('Invalid card number');
+          displayError(invalid_card_number);
             $(".get-token").removeAttr("disabled");
             $('.get-token').on('click', submitData);
             return false;
         }
         if (false == paymill.validateExpiry($('#expiration_month').val(), $('#expiration_year').val())) {
-          displayError('Invalid expiry date');
+          displayError(invalid_expiry_date);
             $('.get-token').on('click', submitData);
             return false;
         }
 
         if ($('#name').val() == '') {
-            displayError('Invalid card holder name');
+            displayError(invalid_card_holder_name);
             $('.get-token').on('click', submitData);
             return false;
         }

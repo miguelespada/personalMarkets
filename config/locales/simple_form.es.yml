@@ -254,14 +254,16 @@ es:
   during_last_month: durante el último mes
   you_can_publish: Puedes publicar
   market_s: "market(s)"
-  vim_feature_1: Imágenes extra
-  vim_feature_2: Links a tu blog y a tu evento de facebook
-  vim_feature_3: Estadisticas de tus markets a tiempo real
-  vim_feature_4: Creación de cupones
-  vim_feature_5: Sin anuncios
+  vim_features: 
+  - Imágenes extra
+  - Links a tu blog y a tu evento de facebook
+  - Estadisticas de tus markets a tiempo real
+  - Creación de cupones
+  - Sin anuncios
   your: tus
   i_accept_the: "Acepto"
   by: de
+  go_VIM: Go VIM
   recommend_markets: "Haz los deseaos de la gente realidad."
   recommend_market: "Recomienda markets"
   recommended: "Markers recomendados"
@@ -276,3 +278,11 @@ es:
   your_logo: Tu foto o tu logo
   user: usuario
   go_back: "volver"
+  card_holder_name: "Titular de la tarjeta"
+  card_number: "Número de tarjeta"
+  expiration_year: Año de expiración
+  expiration_month: Mes de expiración
+  you_must_accept_terms_and_conditions: 'You must accept terms and conditions'
+  invalid_card_holder_name: 'Invalid card holder name'
+  invalid_expiry_date: 'Invalid expiry date'
+  invalid_card_number: 'Invalid card number'

@@ -132,3 +132,7 @@ en:
   "External url": "External url"
   "Social link": "Social link"
   discard_changes: "Do you wish to discard changes?"
+  you_must_accept_terms_and_conditions: 'You must accept terms and conditions'
+  invalid_card_holder_name: 'Invalid card holder name'
+  invalid_expiry_date: 'Invalid expiry date'
+  invalid_card_number: 'Invalid card number'
