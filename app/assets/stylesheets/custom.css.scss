@@ -2,11 +2,12 @@
 
 .add_market_button {
   margin-left: 20px;
-  background-color: $colBrand;
-  border-color: darken($colBrand, 20%);
+  background-color: darken(complement($colBrand), 10%);
+  border-color: darken(complement($colBrand), 10%);
   color: white;
   &:hover{
-    background-color: lighten($colBrand, 20%);
+    background-color: complement($colBrand);
+    border-color: complement($colBrand);
   }
   &[disabled]{
     color: black;
