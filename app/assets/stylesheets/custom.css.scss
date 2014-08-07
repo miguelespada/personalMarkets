@@ -374,6 +374,12 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   color: yellow;
 }
 
+.fa.fa-star.premium-star {
+  color: yellow;
+}
+.user .fa.fa-star.premium-star {
+  color: red;
+}
 //*############################ WISH CSS #############################*//
 .wish-photo-container{
   width:400px;
@@ -822,8 +828,7 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   margin-bottom: 100px;
 }
 .coupon-action-button{
-  width:120px;
-  text-align: center;
+  width:auto;
   margin:5px 0px;
 }
 

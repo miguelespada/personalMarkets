@@ -11,7 +11,7 @@
           <%= cl_image_tag(category.glyph_img.path, 
             :width => 50, :height => 50, :crop => :fill) if category.glyph_img.present? %>
           <div>
-            <%= intl_name(category) %>
+            <%= truncate(intl_name(category), length: 25) %>
           </div>
         </div>
       </div>

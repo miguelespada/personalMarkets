@@ -8,6 +8,7 @@ es:
   create: "crear"
   recommend: "recomendar"
   buy_coupon: "comprar cupón"
+  buy: "comprar"
   slideshow: "slideshow"
   register_to_buy_coupon: Debe registrarse para poder comprar cupones
   city: "ciudad"
@@ -60,11 +61,11 @@ es:
   all_wishes: "Todos los deseos"
   all_users: "Todos los usuarios"
   users: "Usuarios"
-  bargains: "Gangas"
+  bargains: "gangas"
   all_bargains: "Todas las gangas"
   all_locations: "Todos los lugares"
   new_wish: "Nuevo deseo"
-  wishes: "Deseos"
+  wishes: "deseos"
   new_bargain: "Nueva ganga"
   all_tags: "Todas las tags"
   whats_new: "Lo nuevo"
@@ -77,6 +78,7 @@ es:
   search_in_map: "Buscar en el mapa"
   explore_more_markets: "Más markets..."
   search_by_address: "Dirección, ciudad..."
+  search_users: "Buscar usuarios"
   no_matches: "No hay ningún market que satisfaga tus criterios de búsqueda. :("
   no_matches_by_tag: "No hay ningún market con ese tag :("
   to: "hasta"
@@ -253,7 +255,7 @@ es:
   likes: likes
   sign_out: Cerrar la sesión
   you_are_signed_in_as: Estás indentificado como
-  you_have_published: Haz publicado
+  you_have_published: Has publicado
   during_last_month: durante el último mes
   you_can_publish: Puedes publicar
   market_s: "market(s)"
@@ -272,7 +274,7 @@ es:
   - Creación de cupones
   - Unsubscribirte en un solo click
   regular_features: 
-  - 1 mercado al mes
+  - 1 market al mes
   - Markets duran 1 semana
   your: tus
   free: gratis
@@ -332,5 +334,5 @@ es:
   tag_name: "Nombre de etiqueta"
   messages: mensajes
   admin_data: "Datos de admin"
-  custom_location: "Personalizada"
+  custom_location: "Dirección personalizada"
   all: "todos"
