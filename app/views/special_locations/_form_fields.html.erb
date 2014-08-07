@@ -24,7 +24,7 @@
 </div>
 
 <div class="form-group">
-  <p> Featured photo: </p> 
+  <p> <%= t(:featured) %> </p> 
   <%= f.simple_fields_for :photography do |form_builder| %>
     <%= render 'photos/form', f: form_builder, required: true %>
   <% end %>

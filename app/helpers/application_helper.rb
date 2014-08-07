@@ -65,16 +65,15 @@ module ApplicationHelper
     content_tag :h1, "" do
       concat content_tag :i, "", class:"fa #{model.icon} fa-2x"
       concat "<br/>".html_safe
-      concat t(params['action']).titleize
-      concat " ".html_safe
       concat t(model.model_name.human.downcase).capitalize
     end
   end
 
   def user_scope 
       concat (t(:your).capitalize + " ") if params['user_id'].present? && params['user_id'] == current_user.id.to_s
-      concat User.find(params['user_id']).name + " " if params['user_id'].present? && params['user_id'] != current_user.id.to_s
-      concat (t(:all).capitalize + " ") if !params['user_id'].present?
+      concat (User.find(params['user_id']).name + " ") if params['user_id'].present? && params['user_id'] != current_user.id.to_s
+      # concat (t(:all).capitalize ) if !params['user_id'].present?
+      ""
   end
 
   def entity_table_header(model, new_action)
@@ -82,9 +81,9 @@ module ApplicationHelper
       concat link_to "<i class='fa fa-dashboard fa-1x header-icon'></i>".html_safe, user_dashboard_path(current_user)
       concat link_to "<i class='fa fa-cog fa-1x header-icon'></i>".html_safe, admin_path if current_user.has_role?(:admin)
       user_scope 
-      concat t(model.model_name.human.pluralize.downcase)
+      concat t(model.model_name.human.pluralize.downcase).capitalize
       if new_action.present?
-        concat link_to content_tag(:i, " New", class: "fa fa-plus"), new_action, class: "new btn btn-info table-button table-button-new"
+        concat link_to content_tag(:i, " " + t(:add_new).capitalize , class: "fa fa-plus"), new_action, class: "new btn btn-info table-button table-button-new"
       end
     end
   end 

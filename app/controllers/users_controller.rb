@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to user_path, notice: 'User was successfully updated.' }
+        format.html { redirect_to user_path, notice: ControllerNotice.success('updated', 'user')}
       else
         format.html { render action: 'edit' }
       end
@@ -74,9 +74,9 @@ class UsersController < ApplicationController
 
   def destroy
     if @user.destroy
-      redirect_to users_path, notice: "User successfully deleted."
+      redirect_to users_path, notice: ControllerNotice.success('deleted', 'user')
     else
-      redirect_to users_path, error: "Cannot delete user."
+      redirect_to users_path, flash: { error: ControllerNotice.fail('deleted', 'user') }
     end
   end
 

@@ -20,7 +20,7 @@ class SlideshowTextsController < ApplicationController
 
     respond_to do |format|
       if @slideshow_text.save
-        format.html { redirect_to slideshow_texts_path, notice: 'Slideshow text was successfully created.' }
+        format.html { redirect_to slideshow_texts_path, notice: ControllerNotice.success('created', 'slideshow_text') }
       else
         format.html { render action: 'new' }
       end
@@ -30,7 +30,7 @@ class SlideshowTextsController < ApplicationController
   def update
     respond_to do |format|
       if @slideshow_text.update(slideshow_text_params)
-        format.html { redirect_to slideshow_texts_path, notice: 'Slideshow text was successfully updated.' }
+        format.html { redirect_to slideshow_texts_path, notice: ControllerNotice.success('updated', 'slideshow_text') }
       else
         format.html { render action: 'edit' }
       end
@@ -41,10 +41,10 @@ class SlideshowTextsController < ApplicationController
     respond_to do |format|
       if @slideshow_text.destroy
         format.html { redirect_to slideshow_texts_path, 
-                      notice: "Slideshow text successfully deleted." }
+                      notice: ControllerNotice.success('deleted', 'slideshow_text') }
       else
         format.html { redirect_to slideshow_texts_path, 
-                      flash: { error: "Cannot delete slideshow text." }}
+                      flash: { error: ControllerNotice.fail('deleted', 'slideshow_text') } }
       end
     end
   end

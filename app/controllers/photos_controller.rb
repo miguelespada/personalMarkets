@@ -20,9 +20,10 @@ class PhotosController < ApplicationController
     @photo.crop = load_crop
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo sucessfully updated.' }
+        format.html { redirect_to @photo, notice: ControllerNotice.success('updated', 'foto') }
       else
-        format.html { render action: 'edit', notice: 'Error updating the photo' }
+        format.html { render action: 'edit', 
+              flash: { error: ControllerNotice.fail('updated', 'slideshow_image') } }
       end
     end
   end
@@ -34,10 +35,10 @@ class PhotosController < ApplicationController
     respond_to do |format|
       if @photo.destroy
         format.html { redirect_to @photo.photographic, 
-                      notice: "Photo successfully deleted." }
+                      notice: ControllerNotice.success('deleted', 'photo') }
       else
         format.html { redirect_to :back, 
-                      flash: { error: "Cannot delete special photo." }}
+                  flash: { error: ControllerNotice.fail('deleted', 'photo') } }
       end
     end
   end
