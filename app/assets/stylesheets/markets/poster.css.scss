@@ -17,13 +17,15 @@ body{
 .market-poster-picture{
 	left:10px;
 	top:10px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .market-poster-details{
 	position:absolute;
-	top:90px;
+	top:80px;
 	left:200px;
+  width:480px;
+  text-align: justify;
 }
 
 .schedule-list{
