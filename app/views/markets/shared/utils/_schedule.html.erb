@@ -1,14 +1,14 @@
 <%= stylesheet_link_tag "calendar", media: "all" %>
 
-<div class="col-md-6">
+<div class="col-md-6 schedule-calendar">
   <div class="center">
     <%= market_calendar(market) %>
   </div>
 </div>
 
-<div class="col-md-6">
+<div class="col-md-6 schedule-list">
   <div class="center"> 
-  <%= market_dates(market) %>
+    <%= market_dates(market) %>
   </div>
 </div>
 

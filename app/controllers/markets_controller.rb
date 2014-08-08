@@ -129,9 +129,13 @@ class MarketsController < ApplicationController
       format.html
       format.pdf do
         render :pdf => "poster.pdf", 
-               :template => 'markets/poster.html.erb',
+               :template => 'markets/poster_pdf.html.erb',
                :page_size => "A4",
-               :encoding => "utf8"
+               :encoding => "utf8",
+               :margin => {:top    => 0,
+                           :bottom => 5,
+                           :left   => 5,
+                           :right  => 5}
       end
     end
   end

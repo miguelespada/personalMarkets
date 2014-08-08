@@ -1,6 +1,34 @@
 /*
+ *= require application
  *= require fonts
  *= require calendar
  *= require custom
  *= require poster
 */
+
+body{
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.panel-heading{
+	text-align: center;
+}
+
+.market-poster-picture{
+	left:10px;
+	top:10px;
+}
+
+.market-poster-details{
+	position:absolute;
+	top:90px;
+	left:200px;
+}
+
+.schedule-list{
+	text-align: center;
+}
+
+.market-address-detail{
+	text-align: center;
+}

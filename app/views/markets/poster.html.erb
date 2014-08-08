@@ -1,1 +1,62 @@
-<%= render partial: 'markets/shared/views/poster_view', locals: { market:  @market.decorate } %>
+<% market = @market.decorate %>
+
+<div class="container main-container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default panel-table panel-table-last" id="market_<%= market.id %>">
+        <div class="panel-heading table-title">
+          <div class="market-title-container row">
+            <div class="market-title market-poster-title col-md-12">
+              <%= image_tag("/images/poster_title.png", class: "poster-title-icon", :width => "300", :height => "50") %>
+            </div>
+            <%= render partial: 'markets/shared/utils/poster_title', locals: { market: market } %>
+          </div>
+        </div>
+        
+        <p class="center market-owner-detail">
+         <%= t(:owner).capitalize %>: <%= market.owner %> 
+        </p>
+
+        <div class="market-poster-container row">
+          <div class="market-list-section-title">
+            <%= t(:QR_Code) %>
+          </div>
+
+          <div class="market-list-section-container short-view-coupon-section">
+            <div class="short-view-coupon-inner">
+              <%= render partial: 'markets/shared/utils/qr_code', locals: { market: market } %>
+            </div>
+          </div>
+
+          <div class="market-list-section-title">
+            <%= t(:schedule).capitalize %>
+          </div>
+
+          <div class="market-list-section-container short-view-coupon-section">
+            <div class="short-view-coupon-inner poster-info-inner">
+              <%= render partial: 'markets/shared/utils/schedule', locals: { market: market } %>
+            </div>
+          </div>
+
+          <div class="market-list-section-title">
+            <%= t(:location).capitalize %>
+          </div>
+
+          <div class="market-section-container row">
+            <div class="market-address-detail">
+              <%= market.address_and_city %>
+            </div>
+            <%= market.location %>
+          </div>
+
+          <div class="center">
+            <%= back_link %>
+          </div>
+          <div class="center">
+            <%= market.print_link %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

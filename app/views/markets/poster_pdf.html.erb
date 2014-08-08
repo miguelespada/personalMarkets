@@ -1,0 +1,49 @@
+<%= wicked_pdf_stylesheet_link_tag "markets/poster" %>
+<% market = @market.decorate %>
+
+<div class="container main-container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default panel-table" id="market_<%= market.id %>">
+        <div class="panel-heading table-title">
+          <%= wicked_pdf_image_tag("/images/poster_title.png", class: "poster-title-icon", :width => "300", :height => "50") %>
+        </div>
+
+        <%= render partial: 'markets/shared/utils/poster_title', locals: { market: market } %>
+
+        <div class="market-list-section-title">
+          <%= t(:schedule).capitalize %>
+        </div>
+        <div class="market-list-section-container short-view-coupon-section">
+          <div class="short-view-coupon-inner poster-info-inner">
+            <%= render partial: 'markets/shared/utils/schedule', locals: { market: market } %>
+          </div>
+        </div>
+
+        <div class="market-list-section-title">
+          <%= t(:location).capitalize %>
+        </div>
+        <div class="market-section-container row">
+          <div class="market-address-detail"> <%= market.address_and_city %> </div>
+        </div>
+        <div class="market-section-container row">
+          <div id="market-qr">
+          </div>   
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  $.get( "<%= market_url(market.to_param, format: :svg) %>", function( data ) {
+    var qr = data.childNodes[0];
+    console.log(qr);
+    qr.setAttribute( "width", "350");
+    qr.setAttribute( "height", "350");
+    qr.setAttribute( "viewBox", "0 0 420 420");
+    $( "#market-qr" ).html(qr);
+  });
+});
+</script>
