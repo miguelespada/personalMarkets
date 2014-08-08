@@ -125,6 +125,7 @@ class MarketsController < ApplicationController
 
   def poster
     @market = Market.find params[:market_id]
+    @qr = RQRCode::QRCode.new( market_url(@market.to_param), :level => :l, :unit => 10 )
     respond_to do |format|
       format.html
       format.pdf do
@@ -132,7 +133,7 @@ class MarketsController < ApplicationController
                :template => 'markets/poster_pdf.html.erb',
                :page_size => "A4",
                :encoding => "utf8",
-               :margin => {:top    => 0,
+               :margin => {:top    => 5,
                            :bottom => 5,
                            :left   => 5,
                            :right  => 5}

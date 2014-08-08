@@ -34,6 +34,7 @@
 
           <div class="market-list-section-container short-view-coupon-section">
             <div class="short-view-coupon-inner poster-info-inner">
+              <%= render partial: 'markets/shared/utils/calendar', locals: { market: market } %>
               <%= render partial: 'markets/shared/utils/schedule', locals: { market: market } %>
             </div>
           </div>

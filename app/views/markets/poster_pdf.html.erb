@@ -12,6 +12,24 @@
         <%= render partial: 'markets/shared/utils/poster_title', locals: { market: market } %>
 
         <div class="market-list-section-title">
+          <%= t(:location).capitalize %>
+        </div>
+        <div class="market-section-container row">
+          <div class="market-address-detail">
+            <%= market.address_and_city %>
+          </div>
+        </div>
+
+        <div class="market-list-section-title">
+          <%= t(:calendar).capitalize %>
+        </div>
+        <div class="market-list-section-container short-view-coupon-section">
+          <div class="short-view-coupon-inner poster-info-inner">
+            <%= render partial: 'markets/shared/utils/calendar', locals: { market: market } %>
+          </div>
+        </div>
+
+        <div class="market-list-section-title">
           <%= t(:schedule).capitalize %>
         </div>
         <div class="market-list-section-container short-view-coupon-section">
@@ -19,31 +37,18 @@
             <%= render partial: 'markets/shared/utils/schedule', locals: { market: market } %>
           </div>
         </div>
-
+        
         <div class="market-list-section-title">
-          <%= t(:location).capitalize %>
+          <%= t(:qr_code) %>
         </div>
-        <div class="market-section-container row">
-          <div class="market-address-detail"> <%= market.address_and_city %> </div>
-        </div>
-        <div class="market-section-container row">
-          <div id="market-qr">
-          </div>   
+
+        <div class="market-section-container poster-qr-container row">
+          <% (0..4).each do %>
+            <%= render partial: 'markets/shared/utils/small_qr', locals: { market: market } %>
+          <% end %> 
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<script>
-$(document).ready(function(){
-  $.get( "<%= market_url(market.to_param, format: :svg) %>", function( data ) {
-    var qr = data.childNodes[0];
-    console.log(qr);
-    qr.setAttribute( "width", "350");
-    qr.setAttribute( "height", "350");
-    qr.setAttribute( "viewBox", "0 0 420 420");
-    $( "#market-qr" ).html(qr);
-  });
-});
-</script>

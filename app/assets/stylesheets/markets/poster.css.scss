@@ -17,6 +17,7 @@ body{
 .market-poster-picture{
 	left:10px;
 	top:10px;
+  margin-bottom: 20px;
 }
 
 .market-poster-details{
@@ -27,8 +28,44 @@ body{
 
 .schedule-list{
 	text-align: center;
+  margin-bottom: 20px;
 }
 
 .market-address-detail{
 	text-align: center;
+  border-bottom: none;
 }
+
+.poster-qr-container{
+  text-align: center;
+}
+
+.qr-container{
+	display:inline-block;
+  padding: 8px;
+  border-right: 1px dashed black;
+  &:last-of-type{
+    border-right: none;
+  }
+}
+
+table {
+  border-width: 0;
+  border-style: none;
+  border-color: #0000ff;
+  border-collapse: collapse;
+}
+
+td {
+  border-width: 0; 
+  border-style: none;
+  border-color: #0000ff; 
+  border-collapse: collapse; 
+  padding: 0; 
+  margin: 0; 
+  width: 3px;
+  height: 3px; 
+}
+
+td.black { background-color: #000; }
+td.white { background-color: #fff; }

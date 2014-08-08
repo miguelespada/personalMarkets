@@ -33,6 +33,7 @@
       </div>
       
       <div class="market-section-container row">
+        <%= render partial: 'markets/shared/utils/calendar', locals: { market: market } %>
         <%= render partial: 'markets/shared/utils/schedule', locals: { market: market } %>
       </div>
     
