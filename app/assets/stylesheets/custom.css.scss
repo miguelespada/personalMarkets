@@ -1,7 +1,5 @@
 @import "color";
 
-
-
 .category-gallery{
   margin-left: percentage(1/12);
   margin-right: percentage(1/12);
@@ -11,6 +9,8 @@
     width: 19.5%;
     margin: 0 0 20px 0;
     display: inline-block;
+    font-weight: 200;
+    color:#777;
     @media(max-width: 768px){
       display: block;
       width: 100%;
