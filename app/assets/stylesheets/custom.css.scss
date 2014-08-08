@@ -1,5 +1,27 @@
 @import "color";
 
+
+
+.category-gallery{
+  margin-left: percentage(1/12);
+  margin-right: percentage(1/12);
+  text-align: center;
+  
+  .item{
+    width: 19.5%;
+    margin: 0 0 20px 0;
+    display: inline-block;
+    @media(max-width: 768px){
+      display: block;
+      width: 100%;
+    }
+    .photo{
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+  }
+}
+
 .add_market_button {
   margin-left: 20px;
   background-color: darken(complement($colBrand), 10%);

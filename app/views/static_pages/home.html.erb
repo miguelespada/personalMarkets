@@ -1,5 +1,5 @@
 <div class="main-container">
-  <section id="slideshow" class="hidden-xs" >
+  <section id="slideshow" >
     <div id="slides" >
       <%  SlideshowImage.all.each do |slideshow| %>
         <%=  cl_image_tag(slideshow.photography.photo.path, {quality: "50" } ) %>
@@ -37,3 +37,10 @@
   var titlesArray = "<%= SlideshowText.title_list(params['language']) %>".split(";") ;
   var subtitlesArray =  "<%= SlideshowText.subtitle_list(params['language']) %>".split(";");
 </script>
+<style>
+  @media (max-width: 480px){
+    #slideshow{
+      display:none;
+    }
+  }
+</style>
