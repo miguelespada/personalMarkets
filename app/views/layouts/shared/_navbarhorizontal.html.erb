@@ -1,10 +1,12 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
-    <div id="beta-badge-container">
-      <div class="beta-badge">
-        <span id="beta-badge-text"><%= link_to t(:beta).upcase, beta_path %></span>
+    <%= link_to beta_path do %>
+      <div id="beta-badge-container">
+        <div class="beta-badge">
+          <span class="badge-text"></span>
+        </div>
       </div>
-    </div>
+    <% end %>
 
     <div class="navbar-header pull-left">
       <button type="button" class="navbar-toggle pull-left navbar-collapse-button" data-toggle="collapse" data-target=".navbar-collapse">

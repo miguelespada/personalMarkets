@@ -47,20 +47,20 @@ class MarketDecorator < Draper::Decorator
 
   def badges
     if passed?
-      "passed ribbon-badge-passed"
+      "passed"
     elsif staff_pick?
-      "staff_pick ribbon-badge-staff_pick"
+      "staff_pick"
     elsif market.belongs_to_admin?
-      "sample ribbon-badge-sample"
+      "sample"
     elsif market.pro?
-      "pro ribbon-badge-pro"
+      "pro"
     elsif new_market?
-      "new_market ribbon-badge-new"
+      "new_market"
     else
-      "no_badge ribbon-badge-none"
+      "no_badge"
     end
   rescue
-    "no_badge ribbon-badge-none"
+    "no_badge"
   end
 
   def address_and_city
@@ -102,9 +102,9 @@ class MarketDecorator < Draper::Decorator
   def like_class
     if can? :like, market
       if !current_user.favorited?(market)
-        "like-badge-color"
+        "like"
       else  
-        "unlike-badge-color"
+        "unlike"
       end
     end
   rescue
