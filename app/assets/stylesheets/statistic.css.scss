@@ -1,42 +1,39 @@
-.statistic {
-  text-align: center;
+.statistic{
+  .title{
+    height:50px;
+    .container{
+      width:600px;
+      max-width: 100%;
+      margin: 0 auto;
+      a{
+        float:left;
+        font-weight: 100;
+        font-size: 24px;
+        position:relative;
+        color: black;
+        &:hover{
+          text-decoration: none;
+        }
+      }
+      .count{
+        margin-top: -1px;
+      }
+    }
+  }
+  .panel-body{
+    .chart{
+      width:100% !important;
+      text-align: center !important;
+      overflow: auto;
+      div {
+        margin: 0 auto;
+      }
+    }
+  }
 }
 
-.user-statistics {
-  margin: 20px;
+.user-statistics{
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-.market-statistic {
-  
-}
-
-.market-statistic .panel-heading {
-  color: #999999;
-  background-color: #FFFFCC;
-  background-image: none;
-  padding: 10px;
-  margin: 10px;
-  text-align: center;
-  font-size: 50px;
-}
-
-.market-statistic .badge {
-  background-color: #C0C0C0;
-}
-
-.market-statistic .badge .visits-value {
-  font-size: 35px;
-  padding: 0 10 0 10px;
-  color: #66CC66;
-}
-
-.market-statistic .badge .visits-label {
-  color: #F8F8F8;
-  font-weight: normal;
-  border-bottom: 1px solid #F8F8F8;
-  font-size: 15px;
-}
-
-.market-statistic .panel-body {
-  text-align: center;
-}

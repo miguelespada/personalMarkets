@@ -1,19 +1,19 @@
-<div class="panel panel-default market-statistic"> 
-  <div class="panel-heading statistic-title">
-    <div class="statistic-title-container">
+<div class="panel panel-default statistic"> 
+  <div class="panel-heading title">
+    <div class="container">
       <%= market.decorate.link(market.decorate.formatted_market_name)%> 
-      <span class="badge pull-right statistic-visit-count">
+      <span class="badge pull-right count">
         <div class="visits-label">
           <%= t(:visits).capitalize %>
         </div>
-        <div id="<%= market.public_id %>_visitsCount" class="visits-value">
+        <div id="<%= market.public_id %>_visitsCount" class="value">
         </div>
       </span>
     </div>
   </div>
 
   <div class="panel-body">
-    <div id="<%= market.public_id %>_visitsChart" class="visits-chart">
+    <div id="<%= market.public_id %>_visitsChart" class="chart">
     </div>
   </div>
 </div>
@@ -45,19 +45,3 @@
       });
   });
 </script>
-
-<style>
-  .visits-chart{
-    width:100% !important;
-    text-align: center !important;
-    overflow: auto;
-  }
-  .visits-chart>div{
-    margin: 0 auto;
-  }
-  .statistic-title-container{
-    width:600px;
-    max-width: 100%;
-    margin: 0 auto;
-  }
-</style>
