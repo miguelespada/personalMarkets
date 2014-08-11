@@ -10,7 +10,7 @@
             <%= t(:by) %>: <%= link_to bargain.user.name, bargain.user %>
           </h5>
         </div>
-        <div>
+        <div class="bargain">
           <div class="bargain-photo-container">
             <%= photo(bargain.photography, 400) %> 
             <%= render "bargains/utils/price_badge", bargain: bargain %>
