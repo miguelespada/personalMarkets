@@ -4,40 +4,41 @@
   position: relative;
   margin: 0 auto;
   padding: 30px 0px;
-}
 
-.bargain-photo-container > img{
-  border:10px solid #FFFFFF;
-  box-shadow: 3px 3px 10px #888888;
-  max-width: 100%;
-  height: auto;
-}
-
-.bargain-price-icon{
-  position: absolute;
-  top:63%;
-  left:65%;
-}
-
-.bargain-price-container{
-  width:140px;
-  height:auto;
-  position:relative;
-}
-
-.bargain-price-container > img{
-  width:100%;
-  height:auto;
+  > img{
+    border:10px solid #FFFFFF;
+    box-shadow: 3px 3px 10px #888888;
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .bargain-price{
   position: absolute;
-  top:0px;
-  left:0px;
-  width:140px;
-  text-align: center;
-  line-height: 140px;
-  font-size:30px;
-  font-weight: 100;
-  color:#68511E;
+  top:63%;
+  left:65%;
+
+  .bargain-price-icon{
+    width:140px;
+    height:auto;
+    position:relative;
+
+    img{
+      width:100%;
+      height:auto;
+    }
+
+    .bargain-price-text{
+      position: absolute;
+      top:0px;
+      left:0px;
+      width:140px;
+      text-align: center;
+      line-height: 140px;
+      font-size:30px;
+      font-weight: 100;
+      color:#68511E;
+    }
+  }
 }
+
