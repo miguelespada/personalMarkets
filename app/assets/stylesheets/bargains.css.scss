@@ -13,31 +13,33 @@
   }
 }
 
-.bargain-price{
-  position: absolute;
-  top:63%;
-  left:65%;
+.bargain{
+  .price{
+    position: absolute;
+    top:63%;
+    left:65%;
 
-  .bargain-price-icon{
-    width:140px;
-    height:auto;
-    position:relative;
-
-    img{
-      width:100%;
-      height:auto;
-    }
-
-    .bargain-price-text{
-      position: absolute;
-      top:0px;
-      left:0px;
+    .icon{
       width:140px;
-      text-align: center;
-      line-height: 140px;
-      font-size:30px;
-      font-weight: 100;
-      color:#68511E;
+      height:auto;
+      position:relative;
+
+      img{
+        width:100%;
+        height:auto;
+      }
+
+      .text{
+        position: absolute;
+        top:0px;
+        left:0px;
+        width:140px;
+        text-align: center;
+        line-height: 140px;
+        font-size:30px;
+        font-weight: 100;
+        color:#68511E;
+      }
     }
   }
 }
