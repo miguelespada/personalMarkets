@@ -4,7 +4,7 @@ class SubscriptionsController < ApplicationController
     subscription_payment = SubscriptionPayment.new Payment.for payment_params
 
     SubscriptionDomain.subscribe current_user, subscription_payment
-    redirect_to user_dashboard_path(current_user), notice: I18n.t(:you_have_become_premium) 
+    redirect_to user_dashboard_path(current_user), notice: I18n.t(:you_have_become_PRO) 
   rescue SubscriptionDomainException => e
     flash[:error] =  I18n.t(:error_buying_coupon) + " (#{e.message})."
     redirect_to user_subscription_path(current_user)

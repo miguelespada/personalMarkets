@@ -20,7 +20,8 @@ class PaymillWrapper
     subscription = Subscription.find_by email: email
     Paymill::Subscription.delete subscription.paymill_id
     client =  PaymillClient.find_by({email: email})
-    client.delete!
+    client.delete
+    subscription.delete
   end
 
 end
