@@ -4,14 +4,14 @@
   <% @special_locations.each do |special_location| %>
     <%= content_tag_for(:tr, special_location) do %>
       <div class = "market_item col-md-4">
-        <div class = "show gallery_market_featured_photo" data-name="<%= special_location.name %>">
-          <%=  photo(special_location.photography, 300) %>
-          <div class="market-gallery-extra">
-            <%= link_to map_path(location: special_location.name) do %>
+        <%= link_to map_path(location: special_location.name) do %>
+          <div class = "show gallery_market_featured_photo" data-name="<%= special_location.name %>">
+            <%=  photo(special_location.photography, 300) %>
+            <div class="market-gallery-extra">
               <%=  special_location.name %>
-            <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   <% end %>
