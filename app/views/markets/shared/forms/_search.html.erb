@@ -68,7 +68,23 @@
   <script> 
     var on_map = <%= search_on_map? %>;
     
-    var custom_location_option = "<option value='Custom location'><%= t(:custom_location) %></option>"
+    var custom_location_option = "<option value='Custom location'><%= t(:custom_location) %></option>";
+    var my_location_option = "<option value='My location'><%= t(:my_location).capitalize %></option>";
+
+    function remove_location_options(){
+      $("#location_location_id option[value='My location']").remove();
+      $("#location_location_id option[value='Custom location']").remove();
+    };
+
+    function set_my_location_option(){
+     remove_location_options();
+      $('#location_location_id').append(my_location_option).val('My location');
+    }; 
+    function set_custom_location_option(){
+     remove_location_options();
+      $('#location_location_id').append(custom_location_option).val('Custom location');
+    };
+
     function reset_search(){
       $("#range").val("All");
       $("#address-query").val("");
@@ -93,36 +109,30 @@
       initializeCategory(category);
 
       var location = '<%= session["location"] %>' || "";
-      
-      var lat = DEFAULT_LOCATION.defaultLatitude;
-      var lon = DEFAULT_LOCATION.defaultLongitude;
+      var lat = '<%= session["user_lat"] %>' || DEFAULT_LOCATION.defaultLatitude;
+      var lon = '<%= session["user_lon"] %>' || DEFAULT_LOCATION.defaultLongitude;
       var dist = 14;
       
       if(location == "My location"){
-        $('#location_location_id').append("<option value='My location'><%= t(:my_location).capitalize %></option>").val('My location');
-         lat = '<%= session["user_lat"] %>' || "";
-         lon = '<%= session["user_lon"] %>' || "";
+         set_my_location_option();
          dist = 16;
       }
       else if(location == "Custom location"){
-        $('#location_location_id').append("<option value='Custom location'><%= t(:custom_location) %></option>").val('Custom location');
-          lat = '<%= session["lat"] %>' || "";
-          lon = '<%= session["lon"] %>' || "";
+          set_custom_location_option();
           dist = 15;
       }
       else if(location != ""){
         $.get("<%= get_location_path(:format => :json) %>", { name: location}, function( data ) {
           lat = data.latitude;
           lon = data.longitude;
-          if(on_map)  PM.initializeMap(tiles, data.latitude, data.longitude, 15);
+          if(on_map) 
+            PM.initializeMap(tiles, data.latitude, data.longitude, 15);
         });
         return;
       }
 
-      lat = lat || DEFAULT_LOCATION.defaultLatitude;
-      lon = lon || DEFAULT_LOCATION.defaultLongitude;
-
-      if(on_map) PM.initializeMap(tiles, lat, lon, dist);
+      if(on_map) 
+        PM.initializeMap(tiles, lat, lon, dist);
     };
 
     function pos_success(pos){
@@ -163,12 +173,12 @@
 
             $("#lat").val(lat);
             $("#lon").val(lon);
-            
-            $("#location_location_id option[value='My location']").remove();
-            $("#location_location_id option[value='Custom location']").remove();
-            $('#location_location_id').append("<option value='Custom location'><%= t(:custom_location) %></option>").val('Custom location');
+
+            remove_location_options();
+            set_custom_location_option();
               
-            if(on_map) centerMap("Custom location");
+            if(on_map) 
+              centerMap("Custom location");
           
             $("#search_market").change();
           }
@@ -177,10 +187,9 @@
     };
 
     function removeLocationData(){
-          $("#address-query").val("");
-          $("#location_location_id option[value='My location']").remove();
-          $("#location_location_id option[value='Custom location']").remove();
-    }
+      $("#address-query").val("");
+      remove_location_options();
+    };
 
     $(document).ready(function(){
       initialize_session();
@@ -210,13 +219,14 @@
     
       $("#location_location_id").change(function(){
         removeLocationData();
-        if(on_map) centerMap($(this).val());
+        if(on_map) 
+          centerMap($(this).val());
       });
       
       $(".btn-my-location-search").click(function(){
-        removeLocationData();
-        $('#location_location_id').append("<option value='My location'><%= t(:my_location) %></option>").val("My location");
-        if(on_map) centerMap("My location");
+        set_my_location_option();
+        if(on_map) 
+          centerMap("My location");
         $("#search_market").change();
       });
     });

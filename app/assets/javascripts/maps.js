@@ -32,9 +32,7 @@ PM.initializeMap = function(tile, viewLat, viewLng, dist) {
   PM.map.on('dragend', function(){
      $("#lat").val(PM.map.getCenter().lat);
      $("#lon").val(PM.map.getCenter().lng);
-     $("#location_location_id option[value='My location']").remove();
-     $("#location_location_id option[value='Custom location']").remove();
-     $('#location_location_id').append(custom_location_option).val('Custom location');
+     set_custom_location_option();
      $("#search_market").change();
   });
 };
