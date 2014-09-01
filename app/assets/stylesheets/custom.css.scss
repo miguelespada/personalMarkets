@@ -566,20 +566,19 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   margin: 0px !important;
 }
 
-.search-nav-bar > form > li > select{
-  background-color: rgba(255, 255, 255, 0.7) !important; 
-  font-weight: 200;
-}
-
 .search-nav-bar > form > li {
   padding-top: 8px !important;
   padding-bottom: 8px !important;
+  select, input{
+    background-color: rgba(255, 255, 255, 0.7) !important; 
+    font-weight: 200;
+  }
 }
 
 .btn-reset-search, .btn-my-location-search{
   margin-top: 0px !important;
   background-image: none !important;
-  background-color: rgba(255, 255, 255, 0.7) !important; 
+  background-color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .search-form{
