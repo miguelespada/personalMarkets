@@ -1,5 +1,27 @@
 @import "color";
 
+//*############################ GENERAL #############################*//
+
+body {
+  padding-top: 50px
+}
+
+footer {
+  margin: 50px 0;
+}
+
+.back_link{
+  margin: 10px;
+}
+
+.spinner-container{
+  width:100%;
+  text-align: center;
+  .fa-spin{
+    color:#777777;
+  }
+}
+
 .category-gallery{
   margin-left: percentage(1/12);
   margin-right: percentage(1/12);
@@ -22,57 +44,6 @@
   }
 }
 
-.add_market_button {
-  margin-left: 20px;
-  background-color: darken(complement($colBrand), 10%);
-  border-color: darken(complement($colBrand), 10%);
-  color: white;
-  &:hover{
-    background-color: complement($colBrand);
-    border-color: complement($colBrand);
-  }
-  &[disabled]{
-    color: black;
-  }
-}
-
-.back_link{
-  margin: 10px;
-}
-
-.anim-container{
-  width:100%;
-  text-align: center;
-}
-
-.fa-spin{
-  color:#777777;
-}
-
-.badge{
-  margin-top: 15px;
-  margin-bottom: 15px;
-  background-color: #5bc0de;
-}
-
-#search_img{
- width:80%;   
-}
-
-.market-photos-slideshow-container{
-  width:600px !important;
-  max-width: 100% !important;
-  margin:0 auto !important;
-}
-
-#carousel-container-market-photo-gallery{
-  width:100% !important;
-}
-
-.photo-gallery-container{
-  text-align: center;
-}
-
 .title{
   font-weight: 100;
   text-align: center;
@@ -90,66 +61,30 @@
   display: none;
 }
 
-#search_bar{
-  padding-left:15px;
-  padding-right:15px;
-}
-
-.search-nav-bar li{
-  padding-top:10px;
-  padding-left:10px;
-}
-
 .nav .btn{
   margin-top:5px;
 }
-
-body {
-  padding-top: 50px
-}
-
-.caption {
-  height: 80px;
-}
-
-footer {
-  margin: 50px 0;
-}
-
-.gist {
-  font-size: 14px;
-}
-
 
 .main-container{
   margin-bottom: 60px;
 }
 
-.gallery_label{
-  position:absolute;
-  display:inline;
-  top:100%;
-  left:15%;
-  margin-top:-28px;
-  font-weight:100;
-  font-size:20px;
-  line-height: 24px;
-  color:#FFFFFF;
-  text-shadow: 2px 2px 5px #222222;
+.panel-default > .panel-heading {
+  background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 }
 
-//*############################ DASHBOARD CSS #############################*//
+//*############################ DASHBOARD #############################*//
 
 .dashboard-button{
-  text-align: center !important;
-  font-weight: 200 !important;
-  width:120px !important;
-  height:120px !important;
-  padding: 12px !important;
+  text-align: center;
+  font-weight: 200;
+  width:120px;
+  height:120px;
+  padding: 12px;
   color: darken($colBrand, 30%);
 }
 
-//*############################ TABLE CSS #############################*//
+//*############################ TABLE #############################*//
 
 .panel-table{
   margin-top: 10px;
@@ -177,14 +112,11 @@ footer {
   margin-bottom: 0px !important;
 }
 
-.table-title .fa{
-}
-
 .header-icon{
   margin-right: 5px;
 }
 
-//*############################ FORM CSS #############################*//
+//*############################ FORM #############################*//
 
 #wizard{
   margin: 30px;
@@ -224,19 +156,15 @@ footer {
   width:150px;
 }
 
-
-//*############################ MARKET FULL DESCRIPTION CSS #############################*//
-.panel-default > .panel-heading {
-background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
-}
+//*############################ MARKET VIEWS #############################*//
 
 .market-title-container{
   margin: 0px !important;
 }
+
 .btn-market-action-bar{
   width:auto;
 }
-
 
 .market-actions{
   text-align: right;
@@ -365,16 +293,6 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   text-align: center;
 }
 
-//*############################ EXPLORE MENU CSS #############################*//
-
-.map-button{
-  width:100%;
-}
-
-.explore-arrow{
-  float:right;
-}
-
 //*############################ PHOTOS CSS #############################*//
 
 .paginate{
@@ -413,9 +331,11 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 .fa.fa-star.premium-star {
   color: yellow;
 }
+
 .user .fa.fa-star.premium-star {
   color: red;
 }
+
 //*############################ WISH CSS #############################*//
 .wish-photo-container{
   width:400px;
@@ -600,7 +520,6 @@ background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
   min-width:130px;
   margin-left: 48px;
 }
-
 
 #search-location-item{
   left:20%;

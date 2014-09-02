@@ -4,8 +4,8 @@
   margin-top:30px;
 
   .market-name {
-      font-weight: 100;
-    }
+    font-weight: 100;
+  }
 
   .market-thumbnail{
 
@@ -148,4 +148,18 @@
 
 .market-tooltip{
   padding-top: 5px;
+}
+
+.photo-gallery-container{
+  text-align: center;
+
+  .slideshow{
+    width:600px;
+    max-width: 100%;
+    margin:0 auto;
+
+    .carousel{
+      width:100%;
+    }
+  }
 }

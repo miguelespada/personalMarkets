@@ -13,6 +13,20 @@
   }
 }
 
+.add_market_button {
+  margin-left: 20px;
+  background-color: darken(complement($colBrand), 10%);
+  border-color: darken(complement($colBrand), 10%);
+  color: white;
+  &:hover{
+    background-color: complement($colBrand);
+    border-color: complement($colBrand);
+  }
+  &[disabled]{
+    color: black;
+  }
+}
+
 .navbar-collapse.collapsing{
   width:100%;
 }
@@ -25,6 +39,11 @@
   margin-top: 0px !important;
 }
 
+#search_bar{
+  padding-left:15px;
+  padding-right:15px;
+}
+
 .add-market-button-container{
   padding-right: 15px !important;
 }
@@ -33,8 +52,17 @@
   margin-left: 15px !important;
 }
 
+//*############################ SEARCH #############################*//
+
 .snavbar-hidden{
   display:none;
+}
+
+.search-nav-bar{
+  li{
+    padding-top:10px;
+    padding-left:10px;
+  }
 }
 
 //*############################ EXPLORE MENU #############################*//
@@ -78,6 +106,7 @@
             }
             .explore-arrow{
               margin-top:3px;
+              float: right;
             }
           }
         }
