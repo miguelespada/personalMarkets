@@ -14,18 +14,19 @@
           <%= photo(wish.photography, 400) %> 
         </div>
 
-        <div class="market-list-section-title"><%= t(:recommend_market) %></div>
-          <div class="market-list-section-container">
-            <div id ="recommend" class = "market-list-section-container-inner row">
-            </div>
-            <%= hidden_field_tag 'recommend_page', params['recommend_page'] || 1 %>
+        <div class="market-list-section-title"><%= t(:recommend_market) %>
+        </div>
+
+        <div class="market-list-section-container">
+          <div id ="recommend" class = "row">
           </div>
+          <%= hidden_field_tag 'recommend_page', params['recommend_page'] || 1 %>
         </div>
 
         <div class="recomendations">
           <div class="market-list-section-title"><%= t(:recommended) %></div>
             <div class="market-list-section-container">
-              <div class = "market-list-section-container-inner row">
+              <div class = "row">
                 <% wish.recommended.each do |market| %>
                   <div class="wish-recommend-item col-md-4">
                     <%= link_to market do %>

@@ -22,6 +22,11 @@ footer {
   }
 }
 
+.paginate{
+  width:100%;
+  text-align: center;
+}
+
 .category-gallery{
   margin-left: percentage(1/12);
   margin-right: percentage(1/12);
@@ -135,26 +140,23 @@ footer {
   display:inline;
 }
 
-.market-section-title{
-  font-size: 18px;
-  line-height: 40px;
+@mixin market-section-title($fontSize, $lineHeight, $marginTop){
+  font-size: $fontSize;
+  line-height: $lineHeight;
   font-weight: 200;
   text-align: center;
-  margin: 15px 15px 0px 15px!important;
+  margin: $marginTop 15px 0px 15px!important;
   color:#777777;
   border-bottom: 1px solid #CCCCCC;
+}
+
+.market-section-title{
+  @include market-section-title(18px, 40px, 15px);
 }
 
 .market-list-section-title{
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 200;
-  text-align: center;
-  margin: 0px 15px 0px 15px!important;
-  color:#777777;
-  border-bottom: 1px solid #CCCCCC;
+  @include market-section-title(16px, 24px, 0px);
 }
-
 
 .market-section-container{
   margin: 0px 15px 15px 15px!important;
@@ -164,80 +166,46 @@ footer {
 
 .short-view-coupon-section{
   text-align: center;
-}
-
-.short-view-coupon-inner{
-  display:inline-block;
-  text-align: left;
+  .short-view-coupon-inner{
+    display:inline-block;
+    text-align: left;
+  }
 }
 
 .market-list-section-container{
   margin: 0px 15px 15px 15px!important;
   padding: 10px !important;
   background:#FFFFFF;
+  .row{
+    margin: 0px !important;
+  }
 }
 
 .market-photo{
   float: left;
   padding-left: 0px !important;
   padding-bottom: 10px;
+  img{
+    max-width: 100%;
+    height: auto;
+  }
 }
 
-.market-photo img{
-  max-width: 100%;
-  height: auto;
-}
-
-#carousel-container-market-photo-gallery{
-  float: left;
-  padding: 0px !important;
-}
-
-.market-description-detail{
-  font-size: 24px;
-  font-weight: 100;
-}
-
-.market-category-detail{
-  font-size: 18px;
-  font-weight: 100;
-  padding-bottom: 10px;
+@mixin market-detail{
+  font-size: 14px;
+  font-weight: 200;
   width: 100%;
-  border-bottom: 1px solid #CCCCCC;
+  padding-bottom: 10px;
   margin-bottom: 15px;
 }
 
 .market-address-detail{
-  font-size: 14px;
-  font-weight: 200;
-  width: 100%;
-  padding-bottom: 10px;
+  @include market-detail;
   border-bottom: 1px solid #CCCCCC;
-  margin-bottom: 15px;
 }
 
 .market-owner-detail{
-  font-size: 14px;
-  font-weight: 200;
-  width: 100%;
-  padding-bottom: 10px;
-  margin-bottom: 15px;
-}
-
-.social-container{
-  text-align: center;
-}
-
-#fb-root{
-  display: inline-block;
-}
-
-.market-list-section-container-inner{
-  margin: 0px !important;
-}
-
-.market-list-bottom{
-  padding-bottom: 80px !important;
+  @include market-detail;
 }
 
 .market-list-each-container{
@@ -253,25 +221,12 @@ footer {
   text-align: center;
 }
 
-//*############################ PHOTOS CSS #############################*//
-
-.paginate{
-  width:100%;
+.social-container{
   text-align: center;
 }
 
-.photo-show{
-  position: relative;
-  width:600px;
-  margin: 0 auto !important;
-}
-
-.photo-actions-links{
-  margin-top: 10px;
-}
-
-.photo-show-panel{
-  text-align: center;
+#fb-root{
+  display: inline-block;
 }
 
 //*############################ QUALITY #############################*//
