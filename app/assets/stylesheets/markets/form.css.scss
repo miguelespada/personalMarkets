@@ -1,0 +1,37 @@
+#wizard{
+  margin: 30px;
+}
+
+.tab-content>.tab-pane>.control-group{
+  margin-bottom: 10px;
+}
+
+#market-save-button{
+  width:200px;
+  margin:0 auto;
+}
+
+#save-and-publish-button{
+  width:200px;
+  margin:8px auto 80px auto;
+}
+
+.form-section-title-small{
+  font-size: 18px;
+  font-weight: 200;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.form-intro-pane{
+  padding-bottom: 15px;
+  text-align: justify;
+}
+
+.form-bottom-button-container{
+  height: 100px;
+}
+
+.form-bottom-button-container>.go-back-button-container>a{
+  width:150px;
+}
