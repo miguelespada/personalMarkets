@@ -27,6 +27,20 @@ footer {
   text-align: center;
 }
 
+.pagination {
+  width:100%;
+}
+
+.pagination > span > a{
+  padding:5px 9px 5px 10px;
+  border:1px solid #CCCCCC;
+  border-radius: 500px;
+}
+
+.pagination > span{
+  margin: 0px 4px;
+}
+
 .category-gallery{
   margin-left: percentage(1/12);
   margin-right: percentage(1/12);
@@ -76,6 +90,24 @@ footer {
 
 .panel-default > .panel-heading {
   background-image: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
+}
+
+.pro-indicator{
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  padding:2px !important;
+  border: 1px #5bc0de solid;
+  color:#FFFFFF;
+  line-height:15px;
+  background-color: #5bc0de;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#5bc0de), to(#28a4c9)); 
+  background-image: -webkit-linear-gradient(top, #5bc0de, #28a4c9); 
+  background-image:    -moz-linear-gradient(top, #5bc0de, #28a4c9); 
+  background-image:     -ms-linear-gradient(top, #5bc0de, #28a4c9); 
+  background-image:      -o-linear-gradient(top, #5bc0de, #28a4c9);
+  border-radius:5px;
+  vertical-align: middle;
+  text-shadow: none !important;
 }
 
 //*############################ DASHBOARD, ADMIN MENU #############################*//
@@ -274,7 +306,31 @@ footer {
   }
 }
 
-//*############################ SEARCH PAGE CSS #############################*//
+.wish-gallery{
+  margin-top: 0px !important;
+  .container{
+    .container-inner{
+      margin-top: 0px !important;
+    }
+  }
+}
+
+.wish_gallery_title{
+  margin-bottom:0px !important;
+  padding: 0px !important;
+}
+
+.wish-title-container{
+  width:100%;
+  text-align: center;
+}
+
+#recommend{
+  text-align: center;
+}
+
+//*############################ SEARCH PAGE #############################*//
+
 .search-section-title{
   font-size: 28px;
   font-weight: 100;
@@ -323,24 +379,22 @@ footer {
   border-radius:5px;
   max-height: 60%;
   overflow-y:auto;
-}
-
-#search-category-buttons > button{
-  font-weight: 200;
-  font-size: 14px;
-}
-
-#search-category-buttons > button > i{
-  float:left;
-  padding-left: 5px;
-  padding-top: 3px;
+  button{
+    font-weight: 200;
+    font-size: 14px;
+    i{
+      float:left;
+      padding-left: 5px;
+      padding-top: 3px;
+    }
+  }
 }
 
 #search_bar_query{
   font-weight: 200;
 }
 
-//*############################ NEW MARKET NOT ALLOWED CSS #############################*//
+//*############################ NEW MARKET NOT ALLOWED #############################*//
 .creation-not-allowed{
   font-size: 28px;
   font-weight: 100;
@@ -348,7 +402,7 @@ footer {
   padding: 20px;
 }
 
-//*############################ TERMS TITLE CSS #############################*//
+//*############################ TERMS #############################*//
 .terms-title{
   font-size: 28px;
   font-weight: 100;
@@ -359,156 +413,72 @@ footer {
 .terms-content{
   text-align: justify;
   margin-bottom: 60px;
+  .go-back-button-container{
+    margin-top: 30px;
+  }
 }
 
-.terms-content > .go-back-button-container{
-  margin-top: 30px;
-}
-
-//*############################ CHANGE ROLE CSS #############################*//
+//*############################ CHANGE ROLE #############################*//
 .change-role-panel{
   text-align: center;
+  div{
+    p{
+      font-size: 24px;
+      font-weight: 100; 
+    }
+  }
 }
 
-.change-role-panel > div > p{
-  font-size: 24px;
-  font-weight: 100; 
+//*############################ MARKET TITLE #############################*//
+.market-title{
+  .show{
+    text-decoration:none !important;
+    &:link, &:visited{
+      color:#000 !important;
+    }
+    &:hover, &:active{
+      color:saturate(lighten($colBrand, 5%), 20%) !important;
+      text-shadow: 1px 1px 3px #999999;
+    }
+  }
 }
 
-//*############################ WISH CSS #############################*//
-.wish-gallery{
-  margin-top: 0px !important;
-}
-
-.wish-gallery > .container > .container-inner{
-  margin-top: 0px !important;
-}
-
-.wish_gallery_title{
-  margin-bottom:0px !important;
-  padding: 0px !important;
-}
-
-.wish-title-container{
-  width:100%;
-  text-align: center;
-}
-
-#recommend{
-  text-align: center;
-}
-
-//*############################ PRO INDICATOR CSS #############################*//
-.pro-indicator{
-  font-size: 10px !important;
-  font-weight: 600 !important;
-  padding:2px !important;
-  border: 1px #5bc0de solid;
-  color:#FFFFFF;
-  line-height:15px;
-  background-color: #5bc0de;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#5bc0de), to(#28a4c9)); 
-  background-image: -webkit-linear-gradient(top, #5bc0de, #28a4c9); 
-  background-image:    -moz-linear-gradient(top, #5bc0de, #28a4c9); 
-  background-image:     -ms-linear-gradient(top, #5bc0de, #28a4c9); 
-  background-image:      -o-linear-gradient(top, #5bc0de, #28a4c9);
-  border-radius:5px;
-  vertical-align: middle;
-  text-shadow: none !important;
-}
-
-//*############################ MARKET TITLE CSS #############################*//
-.market-title > .show:link {
-  color:#000 !important;
-  text-decoration:none !important;
-}
-.market-title > .show:visited {
-  color:#000 !important;
-  text-decoration:none !important;
-}
-.market-title > .show:hover {
-  color:#1A89EB !important;
-  text-shadow: 1px 1px 3px #999999;
-  text-decoration:none !important;
-}
-.market-title > .show:active {
-  color:#1A89EB !important;
-  text-decoration:none !important;
-}
-
-//*############################ PAYMENT FORM CSS #############################*//
+//*############################ PAYMENT FORM #############################*//
 .payment-button-container{
   text-align: center;
   margin-bottom: 0px !important;
   margin-top: 20px;
+  button{
+    margin-bottom: 0px !important;
+  }
 }
 
-.payment-button-container > button{
-  margin-bottom: 0px !important;
-}
-
-
-//*############################ GO BACK LINK CSS #############################*//
-.go-back-button-container{
-  text-align: center;
-  margin-bottom: 0px !important;
-}
-
-.go-back-button-container > a{
-  width:120px;
-  margin-bottom: 0px !important;
-}
-
-//*############################ GO PREMIUM LINK CSS #############################*//
+//*############################ GO PREMIUM LINK #############################*//
 .go-premium-button-container{
   text-align: center;
   margin-top: 10px !important;
+  a{
+    width:120px;
+    margin-bottom: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
 }
 
-.go-premium-button-container > a{
-  width:120px;
-  margin-bottom: 0px !important;
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-}
-
-//*############################ COUPON CSS #############################*//
+//*############################ COUPON #############################*//
 
 .coupon-buy-button{
   width:100%;
   margin-top: 15px;
   margin-bottom: 10px;
 }
-.coupon-form-inner{
-  margin-top: 15px;
-  margin-left: 33.3% !important;
-  margin-bottom: 15px;
-}
-.coupon-table-container{
-  margin-bottom: 100px;
-}
+
 .coupon-action-button{
   width:auto;
   margin:5px 0px;
 }
 
-//*############################ PAGINATE CSS #############################*//
-
-.pagination {
-  width:100%;
-}
-
-.pagination > span > a{
-  padding:5px 9px 5px 10px;
-  border:1px solid #CCCCCC;
-  border-radius: 500px;
-}
-
-.pagination > span{
-  margin: 0px 4px;
-}
-
-//*############################ BANNER CSS #############################*//
+//*############################ ADSENSE #############################*//
 .adsense-banner{
   height:80px;
   width:100%;
@@ -517,103 +487,27 @@ footer {
   font-weight: 100;
   font-size: 30px;
   background: #D5CFFF;
+  span{
+    font-size: 20px;
+  }
 }
 
-.adsense-banner>span{
-  font-size: 20px;
-}
-
-//*############################ PREMIUM CSS #############################*//
-.admin-profile-container > .row{
-  text-align: center !important;
-}
-
+//*############################ UNSUBSCRIBE #############################*//
 .unsubscribe-button{
   margin-top: 15px;
 }
 
-
-
-//*############################ SPECIAL LOCATION GALLERY CSS #############################*//
-.special_location_label > span > a:link { 
-  color:#FFFFFF !important;
-  text-decoration: none;
-}
-
-.special_location_label > span > a:visited { 
-  color:#FFFFFF !important;
-  text-decoration: none;
-}
-
-.special_location_label > span > a:hover { 
-  color:#CCC !important;
-  text-decoration: none;
-}
-
-.special_location_label > span > a:active { 
-  color:#FFFFFF !important;
-  text-decoration: none;
-}
-
-
-//*############################ PASSWORD CSS #############################*//
+//*############################ PASSWORD #############################*//
 .change-password-inputs{
   padding: 10px 0px;
+  .control-group{
+    padding: 5px 0px;
+  }
 }
 
-.change-password-inputs > .control-group{
-  padding: 5px 0px;
-}
-
-.sign-in-social-group>.button_to{
-  padding:0px !important;
-  margin-top: 5px;
-}
-
-//*############################ COUPON GALLERY CSS #############################*//
-.coupon-gallery-extra{
-  width:300px;
-  text-align: center;
-  font-weight: 200;
-  margin: 0 auto;
-  padding: 5px;
-  color: #777;
-  border: 1px solid #ccc;
-}
-
-.coupon_name_label{
-  position:absolute;
-  display:inline;
-  top:100%;
-  left:12px;
-  margin-top:-68px;
-  font-weight:200;
-  font-size:24px;
-  line-height: 48px;
-  color:#FFFFFF;
-  text-shadow: 2px 2px 5px #222222;
-}
-
-.coupon_name_label > span{
-  max-width:240px;
-  float:left;
-  overflow:hidden;
-  white-space:nowrap;
-  text-overflow: ellipsis;
-}
-
-.gallery_coupon_photo{
-  position:relative;
-  width:300px;
-  margin:auto;
-}
-
-.coupon_item{
-  padding: 15px 0px 15px 0px;
-}
-
-.coupon_gallery_title{
-  margin-top: 30px !important;
-  margin-bottom:0px !important;
-  padding: 0px !important;
+.sign-in-social-group{
+  .button_to{
+    padding:0px !important;
+    margin-top: 5px;
+  }
 }
