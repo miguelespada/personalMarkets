@@ -19,14 +19,15 @@
     <div class="quality-section">
         <% market.market_quality do |field, quality| %>
 
-            <div class="col-md-4  col-sm-offset-1 quality-line quality-title-<%= quality["value"] %>">
+            <div class="col-md-4 quality-line quality-title-<%= quality["value"] %>">
               <span class="quality-item quality-item-<%= quality["value"] %>"></span>
               &nbsp;&nbsp;<%= t(field).capitalize %>
             </div>
             
-            <div class="col-md-6 quality-detail-line quality-line-<%= quality["value"] %>">
+            <div class="col-md-8 quality-detail-line quality-line-<%= quality["value"] %>">
               <span><%= quality["msg"] %></span>
             </div>
+
         <% end %>
       </div>
   </div>
