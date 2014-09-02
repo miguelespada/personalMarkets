@@ -229,42 +229,19 @@ footer {
   display: inline-block;
 }
 
-//*############################ QUALITY #############################*//
+//*############################ WISH #############################*//
 
-.fa.fa-star.bad {
-  color: red;
-}
-
-.fa.fa-star.good {
-  color: green;
-}
-
-.fa.fa-star.regular {
-  color: yellow;
-}
-
-.fa.fa-star.premium-star {
-  color: yellow;
-}
-
-.user .fa.fa-star.premium-star {
-  color: red;
-}
-
-//*############################ WISH CSS #############################*//
 .wish-photo-container{
   width:400px;
   max-width: 100%;
   position: relative;
   margin: 0 auto;
   padding: 30px 0px;
+  img{
+    max-width: 100%;
+    height:auto;
+  }
 }
-
-.wish-photo-container>img{
-  max-width: 100%;
-  height:auto;
-}
-
 
 .wish-recommend-section-item{
   padding-top: 15px;
@@ -275,105 +252,26 @@ footer {
 
 .wish-recommended-item{
   @extend .wish-recommend-section-item;
+  img{
+    max-width: 80%;
+    height:auto;
+  }
 }
 
 .wish-recommend-item{
   @extend .wish-recommend-section-item;
-}
-
-.wish-recommend-item > img{
-  max-width: 80%;
-  height:auto;
-}
-
-.wish-recommended-item > img{
-  max-width: 80%;
-  height:auto;
+  img{
+    max-width: 80%;
+    height:auto;
+  }
 }
 
 .recommend-control{
   margin-top: 20px;
   width:15px;
-}
-
-.recommend-control>a{
-  color:#CCCCCC !important;
-}
-
-
-//*############################ TAG LIST CSS #############################*//
-
-.tags-panel-container{
-  text-align: justify;
-}
-
-//*############################ MAP BUTTON CSS #############################*//
-
-.theme{
-  text-align: left;
-  text-shadow: none;
-}
-
-.theme-selected{
-  background-color:#DDDDDD !important; 
-}
-
-.btn-category{
-  height:32px;
-}
-
-.btn-category > i{
-  position: relative;
-  width:15px;
-  margin-top:-1px;
-}
-
-.btn-category > span{
-  position: absolute;
-  margin-left:15px;
-  margin-top:-2px;
-}
-
-.category-theme-button:hover{
-  text-shadow: 1px 1px 3px #999999;
-  background-color:#DDDDDD !important; 
-  border-top: none !important;
-}
-
-.btn-all-categories:hover{
-  text-shadow: 1px 1px 3px #999999;
-  background-color:#DDDDDD !important;
-}
-
-.category-theme-button{
-  border-top: 1px solid #DDDDDD;
-}
-
-#map_theme_buttons{
-  opacity:0.85;
-}
-
-#map_theme_buttons{
-  position:absolute;
-  top:0%;
-  left:100%;
-  margin-top: 110px;
-  margin-left: -120px;
-  width:110px;
-  border:1px solid #999999;
-  border-radius:5px;
-}
-
-#map_theme_buttons > button > i{
-  float:left;
-  padding-left: 5px;
-  padding-top: 3px;
-}
-
-#map_theme_buttons > button{
-  font-weight: 200 !important;
-  padding-left:0px !important;
-  padding-right: 0px !important;
+  a{
+    color:#CCCCCC !important;
+  }
 }
 
 //*############################ FILTER BAR CSS #############################*//

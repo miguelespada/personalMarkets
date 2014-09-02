@@ -1,0 +1,30 @@
+.theme{
+  text-align: left;
+  text-shadow: none;
+}
+
+.theme-selected{
+  background-color:#DDDDDD !important; 
+}
+
+.btn-category{
+  height:32px;
+  i{
+    position: relative;
+    width:15px;
+    margin-top:-1px;
+  }
+  span{
+    position: absolute;
+    margin-left:15px;
+    margin-top:-2px;
+  }
+}
+
+.category-theme-button{
+  border-top: 1px solid #DDDDDD;
+  &:hover{
+    text-shadow: 1px 1px 3px #999999;
+    background-color:#DDDDDD !important;
+  }
+}

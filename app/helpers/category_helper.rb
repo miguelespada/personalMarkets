@@ -23,7 +23,7 @@ module CategoryHelper
   
   def all_categories_button
       "<button type='button' 
-          class='theme btn btn-sm btn-all-categories btn-category' 
+          class='theme btn btn-sm btn-all-categories category-theme-button btn-category' 
           style='background-color:#FFFFFF' 
           tile='' 
           title='All categories'>
