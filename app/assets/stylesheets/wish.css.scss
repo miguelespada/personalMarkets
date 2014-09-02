@@ -1,0 +1,65 @@
+.wish-photo-container{
+  width:400px;
+  max-width: 100%;
+  position: relative;
+  margin: 0 auto;
+  padding: 30px 0px;
+  img{
+    max-width: 100%;
+    height:auto;
+  }
+}
+
+.wish-recommend-section-item{
+  padding-top: 15px;
+  text-align: center;
+  font-weight: 200;
+  font-size: 12px;
+}
+
+.wish-recommended-item{
+  @extend .wish-recommend-section-item;
+  img{
+    max-width: 80%;
+    height:auto;
+  }
+}
+
+.wish-recommend-item{
+  @extend .wish-recommend-section-item;
+  img{
+    max-width: 80%;
+    height:auto;
+  }
+}
+
+.recommend-control{
+  margin-top: 20px;
+  width:15px;
+  a{
+    color:#CCCCCC !important;
+  }
+}
+
+.wish-gallery{
+  margin-top: 0px !important;
+  .container{
+    .container-inner{
+      margin-top: 0px !important;
+    }
+  }
+}
+
+.wish_gallery_title{
+  margin-bottom:0px !important;
+  padding: 0px !important;
+}
+
+.wish-title-container{
+  width:100%;
+  text-align: center;
+}
+
+#recommend{
+  text-align: center;
+}

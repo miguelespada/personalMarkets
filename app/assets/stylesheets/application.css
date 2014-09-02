@@ -15,12 +15,20 @@
  *= require markets/gallery
  *= require fonts
  *= require pricing_table
- *= require custom
  *= require navbar
  *= require badges
  *= require poster
  *= require photo
  *= require typeahead
+ *= require general
+ *= require dashboard
+ *= require table
+ *= require market_views
+ *= require wish
+ *= require search
+ *= require terms
+ *= require coupon
+ *= require password
  */
 
 

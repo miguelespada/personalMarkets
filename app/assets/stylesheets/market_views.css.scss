@@ -1,0 +1,133 @@
+@import "color";
+
+.market-title-container{
+  margin: 0px !important;
+}
+
+.market-title{
+  .show{
+    text-decoration:none !important;
+    &:link, &:visited{
+      color:#000 !important;
+    }
+    &:hover, &:active{
+      color:saturate(lighten($colBrand, 5%), 20%) !important;
+      text-shadow: 1px 1px 3px #999999;
+    }
+  }
+}
+
+.btn-market-action-bar{
+  width:auto;
+}
+
+.market-actions{
+  text-align: right;
+  padding-bottom: 10px;
+}
+
+.market-actions-links{
+  display:inline;
+}
+
+@mixin market-section-title($fontSize, $lineHeight, $marginTop){
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  font-weight: 200;
+  text-align: center;
+  margin: $marginTop 15px 0px 15px!important;
+  color:#777777;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.market-section-title{
+  @include market-section-title(18px, 40px, 15px);
+}
+
+.market-list-section-title{
+  @include market-section-title(16px, 24px, 0px);
+}
+
+.market-section-container{
+  margin: 0px 15px 15px 15px!important;
+  padding: 10px !important;
+  background:#FFFFFF;
+}
+
+.short-view-coupon-section{
+  text-align: center;
+  .short-view-coupon-inner{
+    display:inline-block;
+    text-align: left;
+  }
+}
+
+.market-list-section-container{
+  margin: 0px 15px 15px 15px!important;
+  padding: 10px !important;
+  background:#FFFFFF;
+  .row{
+    margin: 0px !important;
+  }
+}
+
+.market-photo{
+  float: left;
+  padding-left: 0px !important;
+  padding-bottom: 10px;
+  img{
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@mixin market-detail{
+  font-size: 14px;
+  font-weight: 200;
+  width: 100%;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.market-address-detail{
+  @include market-detail;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.market-owner-detail{
+  @include market-detail;
+}
+
+.market-list-each-container{
+  position: relative;
+  margin-top: 20px;
+}
+
+.market-full-description-container{
+  position: relative;
+}
+
+.qr-container{
+  text-align: center;
+}
+
+.social-container{
+  text-align: center;
+}
+
+#fb-root{
+  display: inline-block;
+}
+
+.adsense-banner{
+  height:80px;
+  width:100%;
+  text-align: center;
+  line-height: 80px;
+  font-weight: 100;
+  font-size: 30px;
+  background: #D5CFFF;
+  span{
+    font-size: 20px;
+  }
+}

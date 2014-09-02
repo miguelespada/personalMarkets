@@ -1,0 +1,62 @@
+.search-section-title{
+  font-size: 28px;
+  font-weight: 100;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.search-gallery > .market_gallery{
+  margin-top: 60px;
+  width:100% !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  padding-right: 180px !important;
+}
+
+.no-matching-markets{
+  margin-top: 60px;
+  text-align: center;
+  padding: 20px 0px 50px 0px;
+}
+
+.explore-more-markets{
+  border-top: 1px solid #CCCCCC;
+  text-align: center;
+  padding: 20px 0px;
+}
+
+#pro_markets > .market_gallery{
+  margin-bottom: 60px;
+  width:100% !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  padding-right: 180px !important;
+}
+
+#search-category-buttons{
+  opacity:0.85;
+  position:fixed;
+  z-index:5;
+  top:0%;
+  left:100%;
+  margin-top: 110px;
+  margin-left: -265px;
+  width:250px;
+  border:1px solid #999999;
+  border-radius:5px;
+  max-height: 60%;
+  overflow-y:auto;
+  button{
+    font-weight: 200;
+    font-size: 14px;
+    i{
+      float:left;
+      padding-left: 5px;
+      padding-top: 3px;
+    }
+  }
+}
+
+#search_bar_query{
+  font-weight: 200;
+}

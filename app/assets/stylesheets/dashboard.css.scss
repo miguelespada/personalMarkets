@@ -1,0 +1,10 @@
+@import "color";
+
+.dashboard-button{
+  text-align: center;
+  font-weight: 200;
+  width:120px;
+  height:120px;
+  padding: 12px;
+  color: darken($colBrand, 30%);
+}
