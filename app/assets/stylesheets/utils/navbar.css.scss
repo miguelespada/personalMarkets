@@ -129,6 +129,13 @@
   }
   #my-location-item{
     @include search-item(60%, 5%);
+    #my_location{
+      i{
+        span{
+          font-weight: 200;
+        }
+      }
+    }
   }
   #spinner-item{
     left:71%;
