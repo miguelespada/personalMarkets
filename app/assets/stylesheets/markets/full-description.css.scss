@@ -158,8 +158,23 @@
     max-width: 100%;
     margin:0 auto;
 
-    .carousel{
-      width:100%;
+    .carousel-control{
+      i{
+        margin-top: 20px;
+      }
+      @media(min-width:992px){
+        background-image:none;
+        color:#777777;
+        &.left{
+          margin-left: -90px;
+        }
+        &.right{
+          margin-right: -90px;
+        }
+        i{
+          margin-top: 140px;
+        }
+      }
     }
   }
 }

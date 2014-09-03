@@ -5,39 +5,39 @@
   </div>
 
   <div class="market-section-container row photo-gallery-container">
-  	<div class="slideshow">
-  		<div id="carousel-market" class="carousel slide photo-gallery" data-ride="carousel">
-  				<div class="carousel-inner market-photo-gallery-carousel-inner">
-  					<% market.gallery.photographies.each do |photo| %>
-  						<% if !photo.empty? %>
-  							<div class="item ">
-  				  			<%= photo(photo, 600)  %>
-  				  		</div>
-  						<% end %>
-  					<% end %>
-  				</div>
-  				<a class="left carousel-control" href="#carousel-market" role="button" data-slide="prev">
-      			<i class="fa fa-arrow-circle-o-left fa-1x"></i>
-    			</a>
-    			<a class="right carousel-control" href="#carousel-market" role="button" data-slide="next">
-    				<i class="fa fa-arrow-circle-o-right fa-1x"></i>
-    			</a>
-  		</div>
-  	</div>
+    <div class="slideshow">
+      <div id="carousel-market" class="carousel slide photo-gallery" data-ride="carousel">
+        <div class="carousel-inner market-photo-gallery-carousel-inner">
+          <% market.gallery.photographies.each do |photo| %>
+            <% if !photo.empty? %>
+              <div class="item ">
+                <%= photo(photo, 600)  %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <a class="left carousel-control" href="#carousel-market" role="button" data-slide="prev">
+          <i class="fa fa-angle-left fa-3x"></i>
+        </a>
+        <a class="right carousel-control" href="#carousel-market" role="button" data-slide="next">
+          <i class="fa fa-angle-right fa-3x"></i>
+        </a>
+      </div>
+    </div>
   </div>
 
 
   <style>
   @media (max-width:992px){
-  	.market-photos{
-  	  padding: 0px !important;
-  	}
+    .market-photos{
+      padding: 0px !important;
+    }
   }
   </style>
 
   <script>
-  	$(".item:first").addClass("active");
-  	$(".market-photo-gallery-carousel-inner>.item:first").addClass("active");
+    $(".item:first").addClass("active");
+    $(".market-photo-gallery-carousel-inner>.item:first").addClass("active");
   </script>
 
 <% end %>
