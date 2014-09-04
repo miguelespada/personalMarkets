@@ -11,7 +11,7 @@
       color:#000 !important;
     }
     &:hover, &:active{
-      color:#f38286 !important;
+      color:saturate(lighten($colBrand, 5%), 20%) !important;
       text-shadow: 1px 1px 3px #999999;
     }
   }
