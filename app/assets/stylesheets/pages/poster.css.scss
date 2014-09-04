@@ -14,8 +14,9 @@
 }
 
 .poster-title-icon{
-  width:auto;
-  height:50px;
+  width:300px;
+  max-width: 100%;
+  height:auto;
 }
 
 .market-poster-name{
@@ -31,4 +32,10 @@
 .market-poster-tags{
   font-size: 16px;
   line-height:25px;
+}
+
+.poster-info-inner{
+  .col-md-6{
+    padding:0px;
+  }
 }

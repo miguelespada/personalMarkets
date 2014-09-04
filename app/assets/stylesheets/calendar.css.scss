@@ -1,8 +1,8 @@
 $day_size : 26px;
 
 div.month{
-  width: $day_size*7;
-  margin: 25px;
+  width: $day_size*7 + 20px;
+  padding: 5px;
   float:left;
 }
 

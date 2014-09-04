@@ -131,6 +131,16 @@
 
 #fb-root{
   display: inline-block;
+  @media(max-width: 768px){
+    display:none;
+  }
+}
+
+#market-qr{
+  svg{
+    max-width: 100%;
+    height:auto;
+  }
 }
 
 .adsense-banner{
