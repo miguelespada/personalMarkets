@@ -12,6 +12,13 @@ footer {
   margin: 10px;
 }
 
+@media(max-width:768px){
+  .panel-table{
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+  }
+}
+
 .fa{
   span{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
