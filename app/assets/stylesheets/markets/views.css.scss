@@ -5,6 +5,9 @@
 }
 
 .market-title{
+  @media(min-width:992px){
+    padding-left: 120px;
+  }
   .show{
     text-decoration:none !important;
     &:link, &:visited{
@@ -14,6 +17,17 @@
       color:saturate(lighten($colBrand, 5%), 20%) !important;
       text-shadow: 1px 1px 3px #999999;
     }
+  }
+}
+
+.title-icon{
+  position:absolute;
+  opacity:0.7;
+  img{
+    height:90px;
+  }
+  @media(max-width:991px){
+    display:none;
   }
 }
 
