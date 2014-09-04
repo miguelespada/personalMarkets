@@ -1,107 +1,57 @@
+<%= stylesheet_link_tag "open_market" %>
+
 <% if !user_signed_in? %>
   <div id="error" class="alert alert-danger flash">
     <%= t(:you_must_be_logged) %>
   </div>
 <% end %>
 
-<h1><%= t(:open_your_market) %></h1>
-
-<div class="terms-content col-md-8 col-md-offset-2">
-  <div class="row">
-    <div class="center">
-      <% if !user_signed_in? %>
-        <%= link_to '#', class:"dashboard-button btn btn-lg huge-icon empty" do %>  
+<% if !user_signed_in? %>
+  <h1><%= t(:you_must_be_logged) %></h1>
+<% else %>
+  <h1><%= t(:open_your_market) %></h1>
+  <div class="terms-content col-md-8 col-md-offset-2 open-market-container">
+    <div class="row">
+      <div class="col-md-4">
+        <%= link_to new_user_market_path(current_user), class:"dashboard-button btn btn-lg huge-icon center" do %>  
           <i class="fa <%= Market.icon %> fa-5x new-market-icon "></i>
           <br>
           <%= t(:open_a) %> <%= t(:market).capitalize %>
         <% end %>
-      <% else %>
-        <%= link_to new_user_market_path(current_user), class:"dashboard-button btn btn-lg huge-icon" do %>  
-          <i class="fa <%= Market.icon %> fa-5x new-market-icon "></i>
-          <br>
-          <%= t(:open_a) %> <%= t(:market).capitalize %>
-        <% end %>
-      <% end %>
+        <div class="new-market-text ">
+          <%= t(:menu_open_market) %>
+        </div>
+      </div>
 
-      <% if !user_signed_in? %>
-        <%= link_to '#', class:"dashboard-button btn btn-lg huge-icon empty" do %>  
-          <i class="fa fa-plus-square fa-5x new-vim-market-icon "></i>
-          <br>
-          <%= t(:open_a) %>
-          <br>
-          <%= t(:vim_market)%>
-        <% end %>
-      <% else %>
-        <%= link_to market_make_pro_payment_path(Market.new.id), class:"dashboard-button btn btn-lg huge-icon" do %>  
+      <div class="col-md-4">
+        <%= link_to market_make_pro_payment_path(Market.new.id), class:"dashboard-button btn btn-lg huge-icon center" do %>  
           <i class="fa center fa-flag fa-5x new-vim-market-icon "></i>
           <br>
           <%= t(:open_a) %>
           <br>
           <%= t(:vim_market)%>
         <% end %>
-      <% end %>
+        <div class="new-vim-market-text ">
+          <%= t(:menu_open_vim) %>
+        </div>
+      </div>
 
-      <% if !user_signed_in? %>
-        <%= link_to '#', class:"dashboard-button btn btn-lg huge-icon empty" do %>  
-          <i class="fa fa-star fa-5x go-pro-icon "></i>
-          <br>
-          <%= t(:go_PRO) %>
-        <% end %>
-      <% else %>
-        <%= link_to user_subscription_plan_path(current_user), class:"dashboard-button btn btn-lg huge-icon" do %>  
+      <div class="col-md-4">
+        <%= link_to user_subscription_plan_path(current_user), class:"dashboard-button btn btn-lg huge-icon center" do %>  
           <i class="fa center fa-star fa-5x go-pro-icon "></i>
           <br>
           <%= t(:go_PRO) %>
         <% end %>
-      <% end %>
-    </div>
-
-    <div class="col-md-6 center col-md-offset-3 hidden new-market-text ">
-      <%= t(:menu_open_market) %>
-    </div>
-
-    <div class="col-md-6 center col-md-offset-3 hidden new-vim-market-text ">
-      <%= t(:menu_open_vim) %>
-    </div>
-
-    <div class="col-md-6 center col-md-offset-3 hidden go-pro-text">
-      <%= t(:menu_go_pro) %>
+        <div class="go-pro-text">
+          <%= t(:menu_go_pro) %>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
 
-<script>
-  $(".new-market-icon").hover(function(){
-      $(".new-market-text").removeClass("hidden");
-    },
-    function(){
-      $(".new-market-text").addClass("hidden");
-    }
-  );
-  
-  $(".new-vim-market-icon").hover(function(){
-      $(".new-vim-market-text").removeClass("hidden");
-    },
-    function(){
-      $(".new-vim-market-text").addClass("hidden");
-    }
-  );
-
-  $(".go-pro-icon").hover(function(){
-      $(".go-pro-text").removeClass("hidden");
-    },
-    function(){
-      $(".go-pro-text").addClass("hidden");
-    }
-  );
-  
+<script>  
   $(".huge-icon.empty").click(function(){
     $("#error").slideDown(200);
   });
 </script>
-
-<style>
-  .huge-icon{
-    margin:0px 50px 50px 50px;
-  }
-</style>
