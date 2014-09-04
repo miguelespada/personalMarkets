@@ -2,7 +2,6 @@
 
 body {
   padding-top: 50px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 footer {
@@ -11,6 +10,12 @@ footer {
 
 .back_link{
   margin: 10px;
+}
+
+.fa{
+  span{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
 }
 
 .spinner-container{
