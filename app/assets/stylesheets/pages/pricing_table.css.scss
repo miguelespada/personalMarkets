@@ -1,39 +1,42 @@
-//*############################ PRICING TABLE CSS #############################*//
+@import "color";
 
 .pricing-table .plan {
   padding: 20px;
   border-radius: 0px;
   text-align: center;
-  background-color: #f3f3f3;
-  -moz-box-shadow: 0 0 6px 2px #b0b2ab;
-  -webkit-box-shadow: 0 0 6px 2px #b0b2ab;
-  box-shadow: 0 0 6px 2px #b0b2ab;
+  border-radius: 5px;
+  border: 1px solid #CCCCCC;
+  margin-bottom: 60px;
+  .btn-info{
+    @extend .get-token;
+  }
 }
- 
- .plan:hover {
-  background-color: #fff;
-  -moz-box-shadow: 0 0 12px 3px #b0b2ab;
-  -webkit-box-shadow: 0 0 12px 3px #b0b2ab;
-  box-shadow: 0 0 12px 3px #b0b2ab;
+
+.get-token{
+  background-color: #f38286;
+  border:1px solid lighten($colBrand, 20%);
+  &:hover{
+    background-color: saturate($colBrand, 20%);
+    border:1px solid $colBrand;
+  }
 }
- 
+
+@mixin plan-name($backgroundColor){
+  padding: 20px;
+  margin-bottom: 15px;
+  color: #fff;
+  background-color: $backgroundColor;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
   
 .plan-name-basic {
-  padding: 20px;
-  color: #fff;
-  background-color: #C0C0C0;
-  -moz-border-radius: 5px 5px 0 0;
-  -webkit-border-radius: 5px 5px 0 0;
-  border-radius: 5px 5px 0 0;
+  @include plan-name(#AAAAAA);
  }
   
 .plan-name-premium {
-  padding: 20px;
-  color: #fff;
-  background-color: #5bc0de;
-  -moz-border-radius: 5px 5px 0 0;
-  -webkit-border-radius: 5px 5px 0 0;
-  border-radius: 5px 5px 0 0;
+  @include plan-name(#f38286);
  }  
   
 .pricing-table .plan .plan-name span {
@@ -50,36 +53,8 @@
  
 .pricing-table .plan ul li.plan-feature {
   padding: 15px 10px;
-  border-top: 1px solid #c5c8c0;
+  border-top: 1px solid #CCCCCC;
   margin-right: 35px;
-}
- 
-.pricing-variable-height .plan {
-  float: none;
-  margin-left: 2%;
-  vertical-align: bottom;
-  display: inline-block;
-  zoom:1;
-  *display:inline;
-}
- 
-.plan-mouseover .plan-name {
-  background-color: #4e9a06 !important;
-}
- 
-.btn-plan-select {
-  padding: 8px 25px;
-  font-size: 18px;
-}
-
-.green-check {
-color: #5cb85c;
-border-color: #4cae4c;
-}
-
-.red-cross {
-color: #d9534f;
-border-color: #d43f3a;
 }
 
 .off { text-decoration: line-through; }
