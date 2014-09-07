@@ -135,7 +135,7 @@ module MarketStatus
     end
 
     def has_date?
-      self.date?
+      self.schedule?
     end
     
     def has_schedule?

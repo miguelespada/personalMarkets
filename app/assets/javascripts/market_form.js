@@ -91,15 +91,6 @@ var collectNewDates = function(){
   } ;
 };
 
-var serializeDates = function(dates){
-  var datesFormatted = new Array();
-  dates.forEach(function(val){
-    datesFormatted.push(moment(val[0]).format("DD/MM/YYYY"));
-  });
-  datesFormatted = $.unique(datesFormatted);
-  return datesFormatted.join(",");
-};
-
 var serializeSchedules = function(dates){
   var scheduleArray = new Array();
   dates.forEach(function(val){

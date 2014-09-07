@@ -20,7 +20,6 @@ class Market
   field :address, type: String
   field :longitude, type: Float
   field :latitude, type: Float
-  field :date, type: String
   field :state, type: String
   field :pro, type: Boolean
   field :publish_date, type: DateTime
@@ -104,6 +103,11 @@ class Market
         state: state,
         lat_lon: lat_lon
       }.to_json
+  end
+
+  def date
+    schedule.split(';').map{|d| d.split(',')[0]}.join(',') 
+    rescue
   end
 
   def category_name

@@ -201,7 +201,6 @@
 
                 <br>
 
-                <%= f.input :date, input_html: { class: 'market-date hidden' }  %>
                 <%= f.input :schedule,  input_html: { class: 'market-schedule hidden' }  %>
                 <%= render partial: "markets/shared/forms/form_date_table", :locals => {market: market} %>
             </div>
@@ -378,7 +377,6 @@ $(".simple_form").submit(function(){
 
 var collectDates = function(){
   var dates = collectNewDates();
-  $('#market_date').val(passedDates + serializeDates(dates));
   $('#market_schedule').val(passedSchedule + serializeSchedules(dates));
 };
 

@@ -6,37 +6,49 @@ describe Market do
   it { should have_field :description }
 
    describe "Market state" do
+     it "market has date" do
+      day = Time.now.strftime("%d/%m/%Y")
+      @market = create(:market,:schedule => day)
+      expect(@market.has_date?).to eq true
+    end
+
+     it "market hasnot date" do
+      @market = create(:market)
+      expect(@market.has_date?).to eq false
+    end
+
+
     it "today market has started" do
       day = Time.now.strftime("%d/%m/%Y")
-      @market = create(:market,:date => day)
+      @market = create(:market,:schedule => day)
       expect(@market.started?).to eq true
       expect(@market.is_today?).to eq true
     end
 
     it "today market has not passed" do
       day = Time.now.strftime("%d/%m/%Y")
-      @market = create(:market,:date => day)
+      @market = create(:market,:schedule => day)
       expect(@market.passed?).to eq false
     end
 
     it "yesterday market has started" do
       day = 1.day.ago.strftime("%d/%m/%Y")
-      @market = create(:market,:date => day)
+      @market = create(:market,:schedule => day)
       expect(@market.started?).to eq true
     end
 
     it "yesterday market has passed" do
       day = 1.day.ago.strftime("%d/%m/%Y")
-      @market = create(:market,:date => day)
+      @market = create(:market,:schedule => day)
       expect(@market.passed?).to eq true
     end
 
-    describe "several dates" do
+    describe "several schedules" do
       it " market has started and passed" do
         day1 = 1.day.ago.strftime("%d/%m/%Y")
         day2 = 2.days.from_now.strftime("%d/%m/%Y")
-        days = day1 + "," + day2
-        @market = create(:market,:date => days)
+        days = day1 + ";" + day2
+        @market = create(:market,:schedule => days)
         expect(@market.passed?).to eq false
         expect(@market.started?).to eq true
         expect(@market.is_this_week?).to eq true
@@ -46,7 +58,7 @@ describe Market do
         day1 = 2.days.from_now.strftime("%d/%m/%Y")
         day2 = 5.days.from_now.strftime("%d/%m/%Y")
         days = day1 + "," + day2
-        @market = create(:market,:date => days)
+        @market = create(:market,:schedule => days)
         expect(@market.passed?).to eq false
         expect(@market.started?).to eq false
       end
@@ -91,21 +103,21 @@ describe Market do
                          :latitude => 40.0001,
                          :longitude => -70.002,
                          :state => 'published',
-                         :date => "04/01/2014,06/01/2014,08/01/2014")
+                         :schedule => "04/01/2014;06/01/2014;08/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 1", 
                                   :city => 'Barcelona',
                                   :description => "The awesome ultraspefic",
                                   :state => 'published',
-                                  :date => "10/01/2014")
+                                  :schedule => "10/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 2", 
                                   :city => 'Madrid',
                                   :state => 'published',
-                                  :date => "15/01/2014")
+                                  :schedule => "15/01/2014")
       FactoryGirl.create(:market, :name => "Generic market 3",
                                   :state => 'published',
-                                  :date => "19/01/2014")
+                                  :schedule => "19/01/2014")
       FactoryGirl.create(:market, :name => "market unpublished",
-                                  :date => "19/01/2014")
+                                  :schedule => "19/01/2014")
       Market.refresh_index
     end   
 
@@ -192,15 +204,6 @@ describe Market do
         result = Market.search(params)[:markets]
         expect(result.count).to eq 1
       end
-      it "by city" do
-        params = {
-          :query => "market",
-          :city => "Madrid"
-        }
-        result = Market.search(params)[:markets]
-        expect(result.count).to eq 2
-      end
-
       it "filters by date range" do
         params = {
           :from => "11/01/2014",
@@ -317,13 +320,13 @@ describe Market do
       Market.delete_all
       FactoryGirl.create(:market,:name => "Market 3", 
                                   :state => 'published',
-                                  :date => "15/01/2014")
+                                  :schedule => "15/01/2014")
       FactoryGirl.create(:market, :name => "Market 1", 
                                   :state => 'published',
-                                  :date => "10/01/2014")
+                                  :schedule => "10/01/2014")
       FactoryGirl.create(:market, :name => "Market 2", 
                                   :state => 'published',
-                                  :date => "12/01/2014")
+                                  :schedule => "12/01/2014")
       Market.refresh_index
     end   
     
@@ -334,21 +337,7 @@ describe Market do
       expect(result.last.name).to eq "Market 3"
     end
   end
-  describe "#city list" do
-    before :each do
-      Market.reset_cities
-    end
-    it "empty city lust" do
-      expect(Market.cities).to eq [""]
-    end
-    it "after insert" do
-      create(:market, :city => "Madrid, Spain")
-      create(:market, :city => "Madrid, Spain")
-      expect(Market.cities).to eq ["", "Madrid"]
-      create(:market, :city => "Barcelona, Spain")
-      expect(Market.cities).to eq ["", "Madrid", "Barcelona"]
-    end
-  end
+  
   
   describe "#coupon available" do
 
@@ -380,5 +369,25 @@ describe Market do
       
     end
 
+  end
+
+  describe "schedule" do
+      it "returns the correct date" do
+        @market = create(:market,:schedule => "12/01/2014,00:00,10:00")
+        expect(@market.date).to eq "12/01/2014"
+      end
+      it "returns the correct date with several dates" do
+        @market = create(:market,:schedule => "16/07/2014,10:00,20:00;17/07/2014,10:00,20:00")
+        expect(@market.date).to eq "16/07/2014,17/07/2014"
+      end
+      
+      it "allows incomplete schedules" do
+        @market = create(:market,:schedule => "16/07/2014")
+        expect(@market.date).to eq "16/07/2014"
+      end
+      it "allows incomplete schedules with several dates" do
+        @market = create(:market,:schedule => "16/07/2014;17/07/2014")
+        expect(@market.date).to eq "16/07/2014,17/07/2014"
+      end
   end
 end
