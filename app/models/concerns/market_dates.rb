@@ -100,6 +100,24 @@ module MarketDates
       (DateTime.parse(dates[-1]) - DateTime.parse(dates[0])).to_i <= max_duration
     end
 
+    def serialize_schedule
+      dates = []
+      schedule.split(';').each do |day|
+        date = Date.strptime(day, "%d/%m/%Y,%H:%M")
+        dateTime = DateTime.strptime(day, "%d/%m/%Y,%H:%M")
+        dates << {"date" => date, 
+                  "passed" => dateTime < Time.now,
+                  "to_string" => day, 
+                  "day" => day.split(',')[0],
+                  "from" => day.split(',')[1], 
+                  "to" => day.split(',')[2]}
+      end
+      dates
+    rescue
+    []
+    end
+
+
   end
 
   def self.included(receiver)

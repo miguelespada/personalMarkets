@@ -1,3 +1,5 @@
+
+
 <script>
   var passedDates = "";
   var passedSchedule = "";
@@ -9,20 +11,11 @@
 
 <div class="table-container">
   <table class="table table-striped" id="date-schedule-table">
-    <tr>
+    <tr id="passed_dates" class="hidden">
       <th><%= t(:passed_dates).capitalize %></th>
       <th></th>
       <th></th>
     </tr>
-    <% market.human_readable_schedule.each do |day| %> 
-    <% if day["passed"] %>
-    <tr>
-      <td> <%= format_date(day) %> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <% end %>
-    <% end %>
     <tr>
       <th><%= t(:market_date).capitalize %> </th>
       <th><%= t(:schedule).capitalize %></th>
@@ -37,20 +30,29 @@
   </table>
 </div>
 
-<% market.human_readable_schedule.each do |day| %> 
+
+<% market.serialize_schedule.each do |day| %> 
   <% if day["passed"] %>
     <script>  
-    var day = "<%= day['day'] %>";
-    var string = "<%= day['to_string'] %>";
-    passedDates = passedDates + day + "," ;
-    passedSchedule = passedSchedule + string + ";";
+    $( document ).ready(function() {
+
+      var day = "<%= day['day'] %>";
+      var string = "<%= day['to_string'] %>";
+      passedSchedule = passedSchedule + string + ";";
+      $("#passed_dates")
+        .removeClass("hidden")
+        .after("<tr><td><%= format_date(day) %></td><td></td><td></td></tr>");
+    });
     </script>
   <% else %>
     <script>  
-    var day = "<%= day['day'] %>";
-    var init = "<%= day['from'] %>";
-    var end =  "<%= day['to'] %>";
-    addEditableDate(day, init, end);
+    $( document ).ready(function() {
+      var day = "<%= day['day'] %>";
+      var init = "<%= day['from'] %>";
+      var end =  "<%= day['to'] %>";
+      addEditableDate(day, init, end);
+    });
     </script>
   <% end %>
 <% end %>
+

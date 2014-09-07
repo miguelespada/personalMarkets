@@ -44,7 +44,7 @@ module MarketsHelper
   def market_dates(market)
     prevDate = nil
     s = ""
-    market.human_readable_schedule.each do |day|
+    market.serialize_schedule.each do |day|
       if prevDate && prevDate == day["date"]
         s += ", " + day["from"] + " - " + day["to"]
       else 

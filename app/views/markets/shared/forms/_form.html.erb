@@ -4,6 +4,8 @@
 <%= stylesheet_link_tag "jquery.ui.slider" %>
 <%= stylesheet_link_tag "tagmanager" %>
 <%= stylesheet_link_tag "markets/form" %>
+<%= javascript_include_tag "bootstrap-datepicker/core" %>
+<%= javascript_include_tag "bootstrap-datepicker/locales/bootstrap-datepicker.es" %>
 
 <script>
   var locale = "<%= params['language'] %>"; 
@@ -201,7 +203,7 @@
 
                 <br>
 
-                <%= f.input :raw_schedule,  input_html: { class: 'market-schedule hidden' }  %>
+                <%= f.input :schedule,  input_html: { class: 'market-schedule hidden' }  %>
                 <%= render partial: "markets/shared/forms/form_date_table", :locals => {market: market} %>
             </div>
           </div>
@@ -349,16 +351,14 @@
 </div>
 
 
-
 <%= javascript_include_tag "jquery.bootstrap.wizard" %>
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
-<%= javascript_include_tag "bootstrap-datepicker/core" %>
-<%= javascript_include_tag "bootstrap-datepicker/locales/bootstrap-datepicker.es" %>
 <%= javascript_include_tag "jquery.ui.slider" %>
 <%= javascript_include_tag "tagmanager" %>
 <%= javascript_include_tag "twitter/typeahead.min" %>
-
 <%= javascript_include_tag "market_form" %>
+
+
 
 <script> 
 
