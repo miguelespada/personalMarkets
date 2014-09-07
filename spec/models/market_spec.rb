@@ -25,6 +25,36 @@ describe Market do
       expect(@market.is_today?).to eq true
     end
 
+    it "market is running" do
+      day1 = 1.day.ago.strftime("%d/%m/%Y")
+      day2 = 2.days.ago.strftime("%d/%m/%Y")
+      day3 = 4.days.from_now.strftime("%d/%m/%Y")
+      days = day1 + ";" + day3 + ";" + day2
+      @market = create(:market,:schedule => days)
+      expect(@market.is_today?).to eq false
+      expect(@market.running?).to eq true
+    end
+
+    it "market is not running" do
+      day1 = 1.day.ago.strftime("%d/%m/%Y")
+      day2 = 2.days.ago.strftime("%d/%m/%Y")
+      days = day1 + ";" + day2
+      @market = create(:market,:schedule => days)
+      expect(@market.is_today?).to eq false
+      expect(@market.running?).to eq false
+      expect(@market.passed?).to eq true
+    end
+
+    it "market is running" do
+      day1 = 1.day.ago.strftime("%d/%m/%Y")
+      day2 = 2.days.ago.strftime("%d/%m/%Y")
+      day3 = 1.day.from_now.strftime("%d/%m/%Y")
+      days = day1 + ";" + day3 + ";" + day2
+      @market = create(:market,:schedule => days)
+      expect(@market.in_date?(Date.tomorrow)).to eq true
+      expect(@market.in_date?(Date.today)).to eq false
+    end
+
     it "today market has not passed" do
       day = Time.now.strftime("%d/%m/%Y")
       @market = create(:market,:schedule => day)

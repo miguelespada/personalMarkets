@@ -25,7 +25,7 @@ module MarketDates
       false
     end
     
-    def runnnig?
+    def running?
       started? && !passed?
     end
 
@@ -36,7 +36,6 @@ module MarketDates
     def last_date
       Date.strptime(self.date.split(',')[-1], "%d/%m/%Y")
     end
-
 
     def in_date?(d)
        date.split(',').each do |day|
@@ -67,7 +66,6 @@ module MarketDates
     def new_market?
       self.publish_date? && self.publish_date >= 1.day.ago 
     end
-
 
     def published_one_month_ago?
       self.publish_date? && self.publish_date >= 1.month.ago 
