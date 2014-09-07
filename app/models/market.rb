@@ -59,12 +59,14 @@ class Market
   scope :with_category, lambda {|category| where(category: category)}
 
   after_create :create_public_id
-  before_save :order_schedule
+  before_update :order_schedule, :if => :schedule_changed?
+  before_create :order_schedule
 
-   def self.icon
+
+  def self.icon
     "fa-shopping-cart"
   end
-  
+
   def create_coupon!(params)
       raise "Coupon already exists." if has_coupon?
       self.coupon = Coupon.new(params)
@@ -107,7 +109,6 @@ class Market
 
   def date
     schedule.split(';').map{|d| d.split(',')[0]}.join(',') 
-    rescue
   end
 
   def category_name

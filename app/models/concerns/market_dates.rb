@@ -24,6 +24,10 @@ module MarketDates
     rescue
       false
     end
+    
+    def runnnig?
+      started? && !passed?
+    end
 
     def first_date
       Date.strptime(self.date.split(',')[0], "%d/%m/%Y")
@@ -52,7 +56,6 @@ module MarketDates
 
     def is_this_week?
       return false if passed?
-      return false if is_today?
       date.split(',').each do |day|
         return true if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i < 7
       end
@@ -69,11 +72,17 @@ module MarketDates
     def published_one_month_ago?
       self.publish_date? && self.publish_date >= 1.month.ago 
     end
+    
+    def append_schedule_to_empty_dates
+      dates = self.schedule.split(';')
+      dates.map{|d| d.split(',').count == 1? d + ",00:00,23:59": d}
+      rescue
+        []
+    end
 
     def order_schedule
-      dates = self.schedule.split(';')
-      sorted = dates.sort! {|a, b| DateTime.strptime(a, "%d/%m/%Y,%H:%M") <=> DateTime.strptime(b, "%d/%m/%Y,%H:%M")}.join(';')
-    rescue
+      dates = append_schedule_to_empty_dates
+      self.schedule = dates.sort! {|a, b| DateTime.strptime(a, "%d/%m/%Y") <=> DateTime.strptime(b, "%d/%m/%Y")}.join(';')
     end
     
     def max_duration

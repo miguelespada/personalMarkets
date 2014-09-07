@@ -57,7 +57,7 @@ describe Market do
       it "not yet started" do
         day1 = 2.days.from_now.strftime("%d/%m/%Y")
         day2 = 5.days.from_now.strftime("%d/%m/%Y")
-        days = day1 + "," + day2
+        days = day1 + ";" + day2
         @market = create(:market,:schedule => days)
         expect(@market.passed?).to eq false
         expect(@market.started?).to eq false
@@ -72,7 +72,7 @@ describe Market do
       @market.unpublish
       expect(@market.has_been_published?).to eq true
     end
-  end 
+  end
 
   describe "Search with no index" do
     it "creates an new index" do
@@ -372,10 +372,12 @@ describe Market do
   end
 
   describe "schedule" do
+      
       it "returns the correct date" do
         @market = create(:market,:schedule => "12/01/2014,00:00,10:00")
         expect(@market.date).to eq "12/01/2014"
       end
+
       it "returns the correct date with several dates" do
         @market = create(:market,:schedule => "16/07/2014,10:00,20:00;17/07/2014,10:00,20:00")
         expect(@market.date).to eq "16/07/2014,17/07/2014"
@@ -390,4 +392,45 @@ describe Market do
         expect(@market.date).to eq "16/07/2014,17/07/2014"
       end
   end
+
+  describe "dates utils" do
+
+    it "sorts after save" do
+      schedule = "17/07/2014;18/07/2014;16/07/2014"
+      @market = create(:market,:schedule => schedule)
+      expect(@market.schedule).to eq "16/07/2014,00:00,23:59;17/07/2014,00:00,23:59;18/07/2014,00:00,23:59"
+    end
+
+     it "sorts after update" do
+      @market = create(:market)
+      schedule = "17/07/2014;18/07/2014;16/07/2014"
+      @market.update(:schedule => schedule)
+      expect(@market.schedule).to eq "16/07/2014,00:00,23:59;17/07/2014,00:00,23:59;18/07/2014,00:00,23:59"
+    end
+
+    it "sorts after save with empty schedule" do
+      @market = create(:market)
+      expect(@market.schedule).to eq ""
+    end
+
+    it "returns first date" do
+      day1 = 1.day.ago.strftime("%d/%m/%Y")
+      day2 = 2.days.ago.strftime("%d/%m/%Y")
+      day3 = 3.days.ago.strftime("%d/%m/%Y")
+      days = day1 + ";" + day3 + ";" + day2
+      @market = create(:market,:schedule => days)
+      expect(@market.first_date.day).to eq 3.days.ago.day
+    end
+
+    it "returns last date" do
+      day1 = 1.day.ago.strftime("%d/%m/%Y")
+      day2 = 2.days.ago.strftime("%d/%m/%Y")
+      day3 = 3.days.ago.strftime("%d/%m/%Y")
+      days = day1 + ";" + day3 + ";" + day2
+      @market = create(:market,:schedule => days)
+      expect(@market.last_date.day).to eq 1.day.ago.day
+    end
+
+  end
+
 end
