@@ -461,6 +461,99 @@ describe Market do
       expect(@market.last_date.day).to eq 1.day.ago.day
     end
 
+    it "can last 7 days for normal users" do
+      @market = create(:market)
+      expect(@market.max_duration).to eq 7
+    end
+
+    it "can last 30 days for premium users" do
+      premium = create(:user, :premium)
+      @market = create(:market, :user => premium)
+      expect(@market.max_duration).to eq 30
+    end
+
+    it "dates within market duration" do
+      day1 = 1.day.ago.strftime("%d/%m/%Y")
+      day2 = 2.days.ago.strftime("%d/%m/%Y")
+      day3 = 3.days.ago.strftime("%d/%m/%Y")
+      days = day1 + ";" + day3 + ";" + day2
+      @market = create(:market)
+      expect(@market.within_duration?(days)).to eq true
+    end
+
+    it "dates within market duration empty dates" do
+      @market = create(:market)
+      expect(@market.within_duration?(@market.date)).to eq true
+    end
+
+    it "dates not within market duration" do
+      day1 = 1.day.ago.strftime("%d/%m/%Y")
+      day2 = 2.days.ago.strftime("%d/%m/%Y")
+      day3 = 14.days.ago.strftime("%d/%m/%Y")
+      days = day1 + ";" + day3 + ";" + day2
+      @market = create(:market)
+      expect(@market.within_duration?(days)).to eq false
+    end
+
+  end
+
+  describe "date evaluator" do
+    it "allows validates good dates" do
+      day1 = 1.day.ago.strftime("%d/%m/%Y")
+      day2 = 2.days.ago.strftime("%d/%m/%Y")
+      day3 = 5.days.ago.strftime("%d/%m/%Y")
+      days = day1 + ";" + day3 + ";" + day2
+      market = create(:market)
+      expect(DateEvaluator.new(market).validate_dates!(days)).to eq true
+    end
+    it "allows validates wrong dates" do
+      day1 = 1.day.ago.strftime("%d/%m/%Y")
+      day2 = 2.days.ago.strftime("%d/%m/%Y")
+      day3 = 12.days.ago.strftime("%d/%m/%Y")
+      days = day1 + ";" + day3 + ";" + day2
+      market = create(:market)
+      expect{ DateEvaluator.new(market).validate_dates!(days) }.to raise_error( MarketDateException )
+    end
+
+    it "does not allow to modify passed dates" do
+      day1 = 1.day.ago.strftime("%d/%m/%Y")
+      day2 = 2.days.ago.strftime("%d/%m/%Y")
+      day3 = 5.days.ago.strftime("%d/%m/%Y")
+      day4 = 3.days.from_now.strftime("%d/%m/%Y")
+      days = day1 + ";" + day3 + ";" + day2
+      new_days = day1 + ";" + day2 + ";" + day4
+      market = create(:market,
+                      :schedule => days)
+      market.publish
+      market.unpublish
+      expect{ DateEvaluator.new(market).validate_dates!(new_days) }.to raise_error( MarketDateException )
+    end
+
+    it "it allows to modify not passed dates" do
+      day1 = 1.day.ago.strftime("%d/%m/%Y")
+      day2 = 2.days.ago.strftime("%d/%m/%Y")
+      day3 = 3.days.ago.strftime("%d/%m/%Y")
+      day4 = 1.day.from_now.strftime("%d/%m/%Y")
+      day5 = 2.days.from_now.strftime("%d/%m/%Y")
+      days = day1 + ";" + day3 + ";" + day2 + ";" + day4
+      new_days = day1 + ";" + day2 + ";" + day3 + ";" + day5
+      market = create(:market,
+                      :schedule => days)
+      market.publish
+      expect( DateEvaluator.new(market).validate_dates!(new_days) ).to eq true
+    end
+
+    it "it allows to modify dates if market not published" do
+      day1 = 1.day.ago.strftime("%d/%m/%Y")
+      day2 = 2.days.ago.strftime("%d/%m/%Y")
+      day3 = 3.days.ago.strftime("%d/%m/%Y")
+      day4 = 2.days.from_now.strftime("%d/%m/%Y")
+      days = day1 + ";" + day3 + ";" + day2 
+      new_days = day3 + ";" + day4
+      market = create(:market,
+                      :schedule => days)
+      expect( DateEvaluator.new(market).validate_dates!(new_days) ).to eq true
+    end
   end
 
 end

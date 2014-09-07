@@ -10,7 +10,7 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
   def create_market user_id, market_params, publish = false
     user = users_repo.find user_id
     market = user.add_market market_params
-    MarketEvaluator.new(market).check_new_date
+    DateEvaluator.new(market).validate_dates!(market_params[:schedule])
     market.save!
     listener.create_market_succeeded market, publish
   rescue MarketsDomainException
@@ -21,7 +21,8 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
 
   def update_market market_id, market_params, publish = false
     market = markets_repo.find market_id
-    MarketEvaluator.new(market).check_update_date(market_params[:date])
+    DateEvaluator.new(market).validate_dates!(market_params[:schedule])
+
     market.update! market_params
     ### This update should be automatic but it does not work
     market.coupon.update! market_params[:coupon_attributes] 

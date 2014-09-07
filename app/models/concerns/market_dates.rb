@@ -4,7 +4,6 @@ module MarketDates
 
   module InstanceMethods
    
-
     def passed?
       return false if !self.has_date? 
       self.date.split(',').each do |day|
@@ -78,9 +77,13 @@ module MarketDates
         []
     end
 
-    def order_schedule
+    def order_schedule 
       dates = append_schedule_to_empty_dates
-      self.schedule = dates.sort! {|a, b| DateTime.strptime(a, "%d/%m/%Y") <=> DateTime.strptime(b, "%d/%m/%Y")}.join(';')
+      self.schedule = order_dates(dates).join(';')
+    end
+
+    def order_dates(dates)
+      dates.sort! {|a, b| DateTime.strptime(a, "%d/%m/%Y") <=> DateTime.strptime(b, "%d/%m/%Y")}
     end
     
     def max_duration
@@ -89,6 +92,12 @@ module MarketDates
       else
         7
       end
+    end
+
+    def within_duration?(dates)
+      dates = order_dates(dates.split(';'))
+      return true if dates.count < 2
+      (DateTime.parse(dates[-1]) - DateTime.parse(dates[0])).to_i <= max_duration
     end
 
   end
