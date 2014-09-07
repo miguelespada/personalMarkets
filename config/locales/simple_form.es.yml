@@ -91,7 +91,7 @@ es:
   enable_browser: "Habilite la ubicación en su navegador"
   search_markets: "Buscar market"
   my_location: "Cerca mío"
-  custom_location: "Direccion personalizada"
+  custom_location: "Dirección personalizada"
   any_location: "Cualquier lugar"
   select_location: "Selecciona lugar"
   search_in_map: "Buscar en el mapa"

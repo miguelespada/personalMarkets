@@ -340,3 +340,23 @@ en:
   accept: accept
   yes: Yes
   cookies_policy: "This website uses cookies to store information on your computer. Some of these cookies are used for visitor analysis, others may be necessary for the website to function properly. You should configure your browser to only accept the cookies you wish to approve, or leave this website."
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+    error_notification:
+      default_message: "Please review the problems below:"
+    placeholders:
+      defaults:
+        password: 'Password'
+        password_confirmation: 'Confirm password'
+      user:
+        new:
+          email: 'E-mail to sign in.'
+        edit:
+          email: 'E-mail.'
+    hints:
+      defaults:
+        username: 'User name to sign in.'

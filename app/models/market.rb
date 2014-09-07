@@ -108,7 +108,7 @@ class Market
   end
 
   def date
-    schedule.split(';').map{|d| d.split(',')[0]}.join(',') 
+    schedule.split(';').map{|d| d.split(',')[0]}.uniq.join(',') 
   end
 
   def category_name

@@ -6,7 +6,7 @@
       <% end %> 
     </div>
 
-    <div id="slideshow_titles" class="hidden-xs center" >
+    <div id="slideshow_titles" class="center" >
     </div>
   </section>
 
@@ -36,11 +36,10 @@
 
   var titlesArray = "<%= SlideshowText.title_list(params['language']) %>".split(";") ;
   var subtitlesArray =  "<%= SlideshowText.subtitle_list(params['language']) %>".split(";");
-</script>
-<style>
-  @media (max-width: 480px){
-    #slideshow{
-      display:none;
-    }
+
+
+  if (window.innerWidth < 768) {
+      $('#slideshow').remove();
   }
-</style>
+
+</script>
