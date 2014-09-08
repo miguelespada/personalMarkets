@@ -1,5 +1,5 @@
 <div class="panel panel-default panel-table">
-  <% @tags = @tags.map{|tag| tag.capitalize} %>
+  <% @tags = @tags.split(',').map{|tag| tag.capitalize} %>
   <div class="panel-body tags-panel-container">
     -
     <% @suggested.each do |tag| %>
