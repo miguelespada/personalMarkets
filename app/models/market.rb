@@ -202,6 +202,6 @@ class Market
   end
 
   def self.tags
-    Market.all.map{|m| m.tags.split(',')}.flatten.uniq.join(',')
+    Market.all.map{|m| m.tags.split(',')}.flatten.uniq
   end
 end
