@@ -48,7 +48,8 @@ class SpecialLocationsController < ApplicationController
       if @special_location.save
         format.html { redirect_to special_locations_path, notice: ControllerNotice.success('created', 'hotspot') }
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to special_locations_path, 
+                      flash: { error: ControllerNotice.fail('created', 'hotspot') } }
       end
     end
   end
@@ -58,7 +59,8 @@ class SpecialLocationsController < ApplicationController
       if @special_location.update(special_location_params)
         format.html { redirect_to special_locations_path, notice: ControllerNotice.success('updated', 'hotspot')}
       else
-        format.html { render action: 'edit' }
+        format.html { redirect_to special_locations_path, 
+                      flash: { error: ControllerNotice.fail('updated', 'hotspot') } }
       end
     end
   end

@@ -87,7 +87,7 @@ describe SpecialLocationsController do
         it "re-renders the 'new' template" do
           SpecialLocation.any_instance.stub(:save).and_return(false)
           post :create, {:special_location => { "name" => "invalid value" }}, valid_session
-          response.should render_template("new")
+          response.should redirect_to(special_locations_path)
         end
       end
     end
@@ -125,7 +125,7 @@ describe SpecialLocationsController do
           special_location = SpecialLocation.create! valid_attributes
           SpecialLocation.any_instance.stub(:save).and_return(false)
           put :update, {:id => special_location.to_param, :special_location => { "name" => "invalid value" }}, valid_session
-          response.should render_template("edit")
+          response.should redirect_to(special_locations_path)
         end
       end
     end
