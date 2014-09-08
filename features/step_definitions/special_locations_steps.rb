@@ -4,7 +4,7 @@ When(/^I add a special_location$/) do
   fill_in "Name",  with: "Dummy Location"
   fill_in "Latitude", with: "10"
   fill_in "Longitud", with: "10"
-  click_on "Create Special location"
+  click_on "Create"
 end
 
 Then(/^I should see the special_location in the special_location list$/) do
@@ -29,9 +29,8 @@ When(/^I edit a special_location$/) do
   within(:css, "#special_location_#{@location.id}") do
     find('.edit').click  
   end
-
   fill_in "Name",  with: "New Dummy Location"
-  click_on "Update Special location"
+  click_on "Update"
 end
 
 Then(/^I should see the special_location with the new name in the special_location list$/) do

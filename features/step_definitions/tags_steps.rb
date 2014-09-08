@@ -2,7 +2,7 @@ When(/^I add a tag$/) do
   step "I go to Tag list"
   find('.new').click
   fill_in "Name",  with: "Dummy Tag"
-  click_on "Create Tag"
+  click_on "Create"
 end
 
 Then(/^I should see the tag in the tag list$/) do
@@ -29,9 +29,8 @@ When(/^I edit a tag$/) do
   within(:css, "#tag_#{@tag.id}") do
     find('.edit').click
   end
-
   fill_in "Name",  with: "New Dummy Tag"
-  click_on "Update Tag"
+  click_on "Update"
  end
 
 Then(/^I should see the tag with the new name in the tag list$/) do

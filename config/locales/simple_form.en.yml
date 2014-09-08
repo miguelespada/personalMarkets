@@ -1,7 +1,7 @@
 en:
   no_markets: "There are no markets :("
-  add_new: "añadir"
-  hotspot: "vecindario"
+  add_new: "add"
+  hotspot: "hotspot"
   tag: "tag"
   slideshow_text: slideshow text
   slideshow_image: slideshow image

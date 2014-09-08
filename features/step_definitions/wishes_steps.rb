@@ -3,7 +3,7 @@ When(/^I add a wish$/) do
   find('.new').click  
   fill_in "Description",  with: "Dummy Wish"
   fill_in "Tags", with: "tag1,tag2"
-  click_on "Create Wish"
+  click_on "Create"
 end
 
 When(/^I see the wish$/) do
@@ -37,7 +37,7 @@ When(/^I edit a wish$/) do
   find('.edit').click  
   fill_in "Description",  with: "New Dummy Wish"
   fill_in "Tags", with: "tag1,tag2,tag3"
-  click_on "Update Wish"
+  click_on "Update"
 end
 
 

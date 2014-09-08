@@ -1,11 +1,12 @@
 When(/^I create a market$/) do
   find(".add_market_button").click
+  click_on("Open a Market")
 
   within(:css, "#new_market") do
     fill_in "Name",  with: "Dummy Market"
     fill_in "City",  with: "Madrid"
-    click_on "Create Market"
   end
+  click_on "Create Market"
 end
 
 Then(/^I should see the market page$/) do

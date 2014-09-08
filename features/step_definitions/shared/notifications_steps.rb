@@ -58,40 +58,40 @@ Then(/^I should be notified that I the category has been updated$/) do
 end
 
 Then(/^I should be notified that the tag has been added$/) do
-  expect(page).to have_content "Tag was successfully created."
+  expect(page).to have_content "Your tag was created successfully"
 end
 
 Then(/^I should be notified that the tag has been deleted$/) do
-  expect(page).to have_content "Tag successfully deleted."
+  expect(page).to have_content "Your tag was deleted successfully"
 end
 
 Then(/^I should be notified that I the tag has been updated$/) do
-  expect(page).to have_content 'Tag was successfully updated.'
+  expect(page).to have_content 'Your tag was updated successfully'
 end
 
 Then(/^I should be notified that the special_location has been added$/) do
-  expect(page).to have_content "Special location was successfully created."
+  expect(page).to have_content "Your hotspot was created successfully"
 end
 
 
 Then(/^I should be notified that the special_location has been deleted$/) do
-  expect(page).to have_content "Special location successfully deleted."
+  expect(page).to have_content "Your hotspot was deleted successfully"
 end
 
 Then(/^I should be notified that the special_location has been updated$/) do
-  expect(page).to have_content "Special location was successfully updated."
+  expect(page).to have_content "Your hotspot was updated successfully"
 end
 
 Then(/^I should be notified that the wish has been added$/) do
-  expect(page).to have_content "Wish was successfully created."
+  expect(page).to have_content "Your wish was created successfully"
 end
 
 Then(/^I should be notified that the wish has been deleted$/) do
-  expect(page).to have_content "Wish successfully deleted."
+  expect(page).to have_content "Your wish was deleted successfully"
 end
 
 Then(/^I should be notified that the wish has been updated$/) do
-  expect(page).to have_content "Wish was successfully updated."
+  expect(page).to have_content "Your wish was updated successfully"
 end
 
 Then(/^I should be notified that the bargain has been added$/) do
