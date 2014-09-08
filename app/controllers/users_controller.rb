@@ -50,12 +50,14 @@ class UsersController < ApplicationController
 
   def like
     market = Market.find(params[:market_id])
+    raise CanCan::AccessDenied if cannot? :like, market
     current_user.like(market)
     redirect_to :back
   end
 
   def unlike
     market = Market.find(params[:market_id])
+    raise CanCan::AccessDenied if cannot? :unlike, market
     current_user.unlike(market)
     redirect_to :back
   end
