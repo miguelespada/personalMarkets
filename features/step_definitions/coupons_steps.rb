@@ -1,8 +1,9 @@
 When(/^I create a coupon$/) do
+  find_by_id('form-link-coupon').click
   within(:css, "#form-market-coupon") do
     fill_in "Description",  with: "My dummy coupon"
     select "10", :from => "Price"
-    fill_in "Available",  with: "20"
+    select "20", :from => "Available"
   end 
   click_on "Update Market"
 end
@@ -16,8 +17,9 @@ When(/^I should see the coupon in the market page$/) do
 end
 
 Given(/^I buy some coupons$/) do
-  visit buy_coupon_path @coupon
+  visit buy_coupon_form_path @coupon
   select "2"
+  find_by_id('premium_accept_term').click
   click_on "Buy"
   step "he needs to introduce his credit card data"
   click_on "Pay"
@@ -108,7 +110,7 @@ When(/^I edit a coupon$/) do
   within(:css, "#form-market-coupon") do
     fill_in "Description",  with: "My edited dummy coupon"
     select "20", :from => "Price"
-    fill_in "Available",  with: "50"
+    select "20", :from => "Available"
   end 
   click_on "Update Market"
 end

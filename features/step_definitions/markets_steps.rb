@@ -252,6 +252,7 @@ When(/^I visit a published market$/) do
     :description => "market 1 desc",
     :state => "published"
     )
+  market.publish
   visit market_path market
 end
 

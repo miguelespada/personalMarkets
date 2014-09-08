@@ -60,7 +60,7 @@ end
 
 When(/^I make it normal$/) do
   visit change_user_role_path @user
-  click_on "Make normal"
+  click_on "Make regular"
 end
 
 Then(/^It should have normal role$/) do

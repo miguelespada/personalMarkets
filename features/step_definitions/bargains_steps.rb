@@ -2,7 +2,7 @@ When(/^I add a bargain$/) do
   step "I go to my bargain list"
   find('.new').click  
   fill_in "Description",  with: "Dummy Bargain"
-  click_on "Create Bargain"
+  click_on "Create"
 end
 
 When(/^I see the bargain$/) do
@@ -35,7 +35,7 @@ When(/^I edit a bargain$/) do
   step "I go to my bargain list"
   find('.edit').click  
   fill_in "Description",  with: "New Dummy Bargain"
-  click_on "Update Bargain"
+  click_on "Update"
 end
 
 Then(/^I should see the bargain with the new description in the bargain list$/) do

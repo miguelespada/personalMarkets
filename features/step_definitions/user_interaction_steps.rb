@@ -18,6 +18,7 @@ end
 
 Given(/^I have a market$/) do
   @market = create(:market, :user => @user)
+  @market.publish
   @user.markets << @market
 end
 

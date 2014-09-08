@@ -5,7 +5,7 @@ When(/^I add a category$/) do
   fill_in "Style",  with: "map_style"
   fill_in "Glyph",  with: "category_glyph"
   fill_in "Color",  with: "#123456"
-  click_on "Create Category"
+  click_on "Create"
 end
 
 Then(/^I should see the category in the category list$/) do
@@ -32,7 +32,7 @@ When(/^I edit a category$/) do
   end
 
   fill_in "Name",  with: "New Dummy Category"
-  click_on "Update Category"
+  click_on "Update"
 end
 
 Then(/^I should see the category with the new name in the category list$/) do
@@ -54,7 +54,7 @@ end
 
 Then(/^I should see the correct style in the map$/) do
   visit map_path
-  expect(page).to have_content "Dummy Category"
+  expect(page).to have_css('#dummy-category')
   page.should have_css('.category_glyph')
   first(".theme-styled").click
 end

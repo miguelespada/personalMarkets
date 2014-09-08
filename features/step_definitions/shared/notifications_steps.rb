@@ -27,11 +27,11 @@ Then(/^I should be notified that the I signned out$/) do
 end
 
 Then(/^I should be notified that the category has been added$/) do
-  expect(page).to have_content "Category was successfully created."
+  expect(page).to have_content "Your category was created successfully"
 end
 
 Then(/^I should be notified that the category has been deleted$/) do
-  expect(page).to have_content "Category successfully deleted."
+  expect(page).to have_content "Your category was deleted successfully"
 end
 
 Then(/^I should be notified that the coupon has been created$/) do
@@ -50,11 +50,11 @@ end
 
 
 Then(/^I should be notified that I cannot delete the category$/) do
-  expect(page).to have_content "Cannot delete category."
+  expect(page).to have_content "Your category cannot be deleted"
 end
 
 Then(/^I should be notified that I the category has been updated$/) do
-  expect(page).to have_content 'Category was successfully updated.'
+  expect(page).to have_content 'Your category was updated successfully'
 end
 
 Then(/^I should be notified that the tag has been added$/) do
@@ -95,14 +95,14 @@ Then(/^I should be notified that the wish has been updated$/) do
 end
 
 Then(/^I should be notified that the bargain has been added$/) do
-  expect(page).to have_content "Bargain was successfully created."
+  expect(page).to have_content "Your bargain was created successfully"
 end
 
 Then(/^I should be notified that the bargain has been deleted$/) do
-  expect(page).to have_content "Bargain successfully deleted."
+  expect(page).to have_content "Your bargain was deleted successfully"
 end
 
 Then(/^I should be notified that the bargain has been updated$/) do
-  expect(page).to have_content "Bargain was successfully updated."
+  expect(page).to have_content "Your bargain was updated successfully"
 end
 
