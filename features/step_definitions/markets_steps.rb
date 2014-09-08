@@ -186,8 +186,7 @@ Then(/^I have a draft market$/) do
     :description => "market 1 desc",
     :latitude => 0.1,
     :longitude => 0.1,
-    :date => "13/08/2014",
-    :schedule => "de 5 a 7",
+    :schedule => "13/08/2014,00:00,23:59",
     :tags_array => ["un_tag"]
     )
   @user.markets << @market
@@ -202,8 +201,7 @@ Given(/^I have a draft pro market$/) do
     :pro => true,
     :latitude => 0.1,
     :longitude => 0.1,
-    :schedule => "13/08/2014",
-    :schedule => "de 5 a 7",
+    :schedule => "13/08/2014,00:00,23:59",
     :tags_array => ["un_tag"]
     )
   @user.markets << @market
@@ -214,9 +212,7 @@ When(/^I go the market page$/) do
 end
 
 Then(/^I can publish it$/) do
-  within(:css, '.market-actions') do
-    expect(page).to have_link "Publish"
-  end
+  expect(page).to have_link "Publish"
 end
 
 When(/^I publish the market$/) do
@@ -224,15 +220,13 @@ When(/^I publish the market$/) do
 end
 
 Then(/^I see a success publishing notification$/) do
-  expect(page).to have_content "Market successfully published."
+  expect(page).to have_content "Your market was publish successfully"
 end
 
 
 Then(/^I cannot publish it again$/) do
   visit market_path @market
-  within(:css, '.market-actions') do
-    expect(page).to_not have_link "Publish"
-  end
+  expect(page).to_not have_link "Publish"
 end
 
 When(/^I archive the market$/) do
@@ -287,8 +281,7 @@ Given(/^I have a draft market with a coupon$/) do
     :description => "market 1 desc",
     :latitude => 0.1,
     :longitude => 0.1,
-    :schedule => "13/08/2014",
-    :schedule => "de 5 a 7",
+    :schedule => "13/08/2014,00:00,23:59",
     :tags_array => ["un_tag"],
     :coupon => create(:coupon)
     )
@@ -307,7 +300,7 @@ When(/^I make it PRO$/) do
 end
 
 Then(/^I should see a warning about coupon visibility$/) do
-  expect(page).to have_content "In order to publish a market with a coupon you should make it PRO or become PREMIUM. Otherwise the coupon won't be available."
+  expect(page).to have_content "Make your market VIM for the exclusive functions."
 end
 
 Then(/^Its coupon is visible$/) do
@@ -377,7 +370,7 @@ end
 
 When(/^I crop the photo$$/) do
   visit photo_path(@photo)
-  within(:css, "#photo_#{@market.featured.id}") do  
+  within(:css, ".photo-actions") do  
     find(".edit").click
   end
   fill_in "x", with: 10
