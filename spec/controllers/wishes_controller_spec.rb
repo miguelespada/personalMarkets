@@ -133,7 +133,7 @@ describe WishesController do
         it "re-renders the 'new' template" do
           Wish.any_instance.stub(:save).and_return(false)
           post :create, wish_params, valid_session
-          response.should render_template("new")
+          response.should redirect_to user_wishes_path(user)
         end
       end
     end
@@ -144,7 +144,7 @@ describe WishesController do
           wish = Wish.create! valid_attributes
           market = create(:market)
           @request.env['HTTP_REFERER'] = '/'
-          post :recommend, {:id => wish.to_param, :market => {:market_id => market.id}}, valid_session
+          post :recommend, {:id => wish.to_param, :market_id => market.to_param}, valid_session
           assigns(:wish).recommended.should eq([market])
         end
       end
@@ -183,7 +183,7 @@ describe WishesController do
           wish = Wish.create! valid_attributes
           Wish.any_instance.stub(:save).and_return(false)
           put :update, {:id => wish.to_param, :wish => { "description" => "invalid value" }}, valid_session
-          response.should render_template("edit")
+          response.should redirect_to user_wishes_path(user)
         end
       end
     end

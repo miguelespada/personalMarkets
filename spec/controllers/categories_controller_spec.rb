@@ -7,15 +7,6 @@ describe CategoriesController do
   let(:valid_attributes) { {name: "dummy category" }}
   let(:user) { create(:user) } 
 
-  describe "GET 'index'" do
-
-    it "returns http success" do
-      category = Category.create! valid_attributes
-      get 'index'
-      response.should be_success
-      assigns(:categories).should eq([category])
-    end
-  end
 
   describe "GET 'gallery'" do
     it "returns http success" do
@@ -42,6 +33,16 @@ describe CategoriesController do
       @ability.can :manage, Category
       controller.stub(:current_user).and_return(user)
     end
+    
+    describe "GET 'index'" do
+      it "returns http success" do
+        category = Category.create! valid_attributes
+        get 'index'
+        response.should be_success
+        assigns(:categories).should eq([category])
+      end
+    end
+
 
     describe "GET new" do
       it "assigns a new category as @category" do
@@ -87,7 +88,7 @@ describe CategoriesController do
         it "re-renders the 'new' template" do
           Category.any_instance.stub(:save).and_return(false)
           post :create, {:category => { "name" => "invalid value" }}, valid_session
-          response.should render_template("new")
+        expect(response).to redirect_to categories_path
         end
       end
     end
@@ -143,7 +144,7 @@ describe CategoriesController do
           category = Category.create! valid_attributes
           Category.any_instance.stub(:save).and_return(false)
           put :update, {:id => category.to_param, :category => { "name" => "invalid value" }}, valid_session
-          response.should render_template("edit")
+          expect(response).to redirect_to categories_path
         end
       end
 
@@ -159,7 +160,7 @@ describe CategoriesController do
           category = Category.create! valid_attributes
           Category.any_instance.stub(:save).and_return(false)
           put :update, {:id => category.to_param, :category => { "description" => "invalid value" }}, valid_session
-          response.should render_template("edit")
+          expect(response).to redirect_to categories_path
         end
       end
     end

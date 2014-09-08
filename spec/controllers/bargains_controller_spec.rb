@@ -112,7 +112,7 @@ describe BargainsController do
         it "re-renders the 'new' template" do
           Bargain.any_instance.stub(:save).and_return(false)
           post :create, bargain_params, valid_session
-          response.should render_template("new")
+          response.should redirect_to user_bargains_path(user)
         end
       end
     end
@@ -150,7 +150,7 @@ describe BargainsController do
           bargain = Bargain.create! valid_attributes
           Bargain.any_instance.stub(:save).and_return(false)
           put :update, {:id => bargain.to_param, :bargain => { "description" => "invalid value" }}, valid_session
-          response.should render_template("edit")
+          response.should redirect_to user_bargains_path(user)
         end
       end
     end

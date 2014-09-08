@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   authorize_resource :except => [:suggested, :show, :gallery, :list]
   def index
     @tags = Tag.all
-    @user_tags = Market.tags.uniq
+    @user_tags = Market.tags
     respond_to do |format|
         format.html 
     end
@@ -23,7 +23,7 @@ class TagsController < ApplicationController
 
   def gallery
     @suggested = Tag.all
-    @tags = Market.tags.uniq
+    @tags = Market.tags
     render :layout => !request.xhr?
   end
 
@@ -47,7 +47,7 @@ class TagsController < ApplicationController
         format.html { redirect_to tags_path, 
                       notice: ControllerNotice.success('created', 'tag')}
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to tags_path, flash: { error:  ControllerNotice.fail('created', 'tag') }}
       end 
     end
   end
@@ -57,7 +57,7 @@ class TagsController < ApplicationController
       if @tag.update(tag_params)
         format.html { redirect_to tags_path, notice: ControllerNotice.success('updated', 'tag') }
       else
-        format.html { render action: 'edit' }
+        format.html {redirect_to tags_path, flash: { error:  ControllerNotice.fail('updated', 'tag')  }}
       end
     end
   end

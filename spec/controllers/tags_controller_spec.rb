@@ -7,22 +7,12 @@ describe TagsController do
   let(:valid_attributes) { {name: "dummy tag" }}
   let(:user) { create(:user) } 
 
-  describe "GET 'index'" do
-
-    it "returns http success assigns admin suggested tags" do
+  describe "GET 'suggested'" do
+    it "returns http success" do
       tag = Tag.create! valid_attributes
-      get 'index'
+      get 'suggested', {format: 'json'}
+      assigns(:suggested).should eq([tag.name])
       response.should be_success
-      assigns(:suggested).should eq([tag])
-      assigns(:tags).should eq([])
-    end
-
-    it "returns http success assigns market tags" do
-      create(:market, :tags => "dummy")      
-      get 'index'
-      response.should be_success
-      assigns(:tags).should eq(["dummy"])
-      assigns(:suggested).should eq([])
     end
   end
 
@@ -50,6 +40,25 @@ describe TagsController do
       controller.stub(:current_ability) { @ability }
       @ability.can :manage, Tag
       controller.stub(:current_user).and_return(user)
+    end
+    describe "GET 'index'" do
+
+      it "returns http success assigns admin suggested tags" do
+        tag = Tag.create! valid_attributes
+        get 'index'
+        assigns(:tags).should eq([tag])
+        assigns(:user_tags).should eq([])
+        response.should be_success
+      end
+
+      it "returns http success assigns market tags" do
+        create(:market, :tags => "dummy1,dummy2")
+        create(:market, :tags => "dummy2")
+        get 'index'
+        response.should be_success
+        assigns(:user_tags).should eq(["dummy1", "dummy2"])
+        assigns(:tags).should eq([])
+      end
     end
 
     describe "GET new" do
@@ -91,7 +100,7 @@ describe TagsController do
         it "re-renders the 'new' template" do
           Tag.any_instance.stub(:save).and_return(false)
           post :create, {:tag => { "name" => "invalid value" }}, valid_session
-          response.should render_template("new")
+          response.should redirect_to(tags_path)
         end
       end
     end
@@ -140,7 +149,7 @@ describe TagsController do
           tag = Tag.create! valid_attributes
           Tag.any_instance.stub(:save).and_return(false)
           put :update, {:id => tag.to_param, :tag => { "name" => "invalid value" }}, valid_session
-          response.should render_template("edit")
+          response.should redirect_to(tags_path)
         end
       end
 
@@ -156,7 +165,7 @@ describe TagsController do
           tag = Tag.create! valid_attributes
           Tag.any_instance.stub(:save).and_return(false)
           put :update, {:id => tag.to_param, :tag => { "description" => "invalid value" }}, valid_session
-          response.should render_template("edit")
+          response.should redirect_to(tags_path)
         end
       end
     end

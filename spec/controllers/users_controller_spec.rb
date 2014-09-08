@@ -42,6 +42,7 @@ describe UsersController do
       @ability.extend(CanCan::Ability)
       controller.stub(:current_ability) { @ability }
       @ability.can :like, Market
+      @ability.can :unlike, Market
       controller.stub(:current_user).and_return(user)
       
       @request.env['HTTP_REFERER'] = '/'
