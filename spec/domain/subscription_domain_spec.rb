@@ -1,5 +1,4 @@
 require 'subscription_domain'
-require 'subscription_offer'
 
 
 describe SubscriptionDomain do

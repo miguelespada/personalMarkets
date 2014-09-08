@@ -1,5 +1,4 @@
 require 'paymill_wrapper'
-require 'subscription_offer'
 
 describe PaymillWrapper do
 
