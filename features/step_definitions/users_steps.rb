@@ -94,6 +94,7 @@ Given(/^a user submits for subscription with valid data$/) do
 end
 
 Then(/^he is notified for a successful subscription$/) do
+  puts page.body
   expect(find('#notice')).to have_content "You have become premium successfully."
 end
 
