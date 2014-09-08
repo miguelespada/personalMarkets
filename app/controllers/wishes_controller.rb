@@ -51,7 +51,7 @@ class WishesController < ApplicationController
       if @wish.save
         format.html { redirect_to user_wishes_path(current_user), notice: ControllerNotice.success('created', 'wish') }
       else
-        format.html { render action: 'new', flash: { error:  ControllerNotice.fail('created', 'wish')  } }
+        format.html { redirect_to user_wishes_path(current_user), flash: { error:  ControllerNotice.fail('created', 'wish')  } }
       end
     end
   end
@@ -61,7 +61,7 @@ class WishesController < ApplicationController
       if @wish.update(wish_params)
         format.html { redirect_to user_wishes_path(current_user), notice: ControllerNotice.success('updated', 'wish') }
       else
-        format.html { render action: 'edit', flash: { error:  ControllerNotice.fail('updated', 'wish') } }
+        format.html { redirect_to user_wishes_path(current_user), flash: { error:  ControllerNotice.fail('updated', 'wish') } }
       end
     end
   end
