@@ -16,9 +16,7 @@ Then(/^I should see the market page$/) do
 end
 
 Then(/^I can edit the market$/) do
-  within(:css, ".market-actions") do
     find('.edit-icon').click
-  end
 end
 
 When(/^I edit the market$/) do
@@ -31,10 +29,7 @@ When(/^I edit my market$/) do
 end
 
 When(/^I change market info$/) do
-
-  within(:css, ".market-actions") do
-    find('.edit-icon').click
-  end
+  find('.edit-icon').click
   fill_in "Name",  with: "New dummy Market"
   within(:css, ".market_description") do
     fill_in "Description",  with: "New dummy description"
@@ -307,6 +302,7 @@ end
 When(/^I make it PRO$/) do
   visit market_make_pro_payment_path(@market)
   step "he needs to introduce his credit card data"
+  find_by_id("accept_terms").click
   click_on "Pay"
 end
 
