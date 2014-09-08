@@ -41,7 +41,8 @@ class CategoriesController < ApplicationController
         format.html { redirect_to categories_path, 
                       notice: ControllerNotice.success('created', 'category') }
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to categories_path, 
+                    flash: { error: ControllerNotice.fail('created', 'category') } }
       end 
     end
   end
@@ -51,7 +52,8 @@ class CategoriesController < ApplicationController
       if @category.update(category_params)
         format.html { redirect_to categories_path, notice: ControllerNotice.success('updated', 'category') }
       else
-        format.html { render action: 'edit' }
+        format.html { redirect_to categories_path, 
+                    flash: { error: ControllerNotice.fail('updated', 'category') } }
       end
     end
   end
