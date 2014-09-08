@@ -44,7 +44,7 @@ class BargainsController < ApplicationController
       if @bargain.save
         format.html { redirect_to user_bargains_path(current_user), notice: ControllerNotice.success('created', 'bargain')  }
       else
-        format.html { render action: 'new', flash: { error:  ControllerNotice.fail('created', 'bargain') }}
+        format.html { redirect_to user_bargains_path(current_user), flash: { error:  ControllerNotice.fail('created', 'bargain') }}
       end
     end
   end
@@ -54,7 +54,7 @@ class BargainsController < ApplicationController
       if @bargain.update(bargain_params)
         format.html { redirect_to user_bargains_path(current_user), notice: ControllerNotice.success('updated', 'bargain')  }
       else
-        format.html { render action: 'edit', flash: { error:  ControllerNotice.fail('updated', 'bargain') }}
+        format.html { redirect_to user_bargains_path(current_user), flash: { error:  ControllerNotice.fail('updated', 'bargain') }}
       end
     end
   end
