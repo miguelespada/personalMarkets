@@ -14,7 +14,11 @@
               <div class="center">
 
                 <h5> 
-                  <%= published_markets_status(current_user) %>
+                  <% if current_user.days_until_can_create_new_market > 0 %>
+                  <!-- TODO inform number of days to create markets -->
+                  <% else %> 
+                    <%= published_markets_status(current_user) %>
+                  <% end %> 
                 </h5>
 
                 <h6> 
