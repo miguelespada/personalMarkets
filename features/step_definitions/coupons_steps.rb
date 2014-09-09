@@ -10,6 +10,7 @@ end
 
 When(/^I should see the coupon in the market page$/) do
   step "I visit the market page"
+
   expect(page).to have_content @market.name
   expect(page).to have_content "My dummy coupon"
   expect(page).to have_content "10"
@@ -108,10 +109,11 @@ Given(/^a regular user's pro market with a coupon$/) do
 end
 
 When(/^I edit a coupon$/) do
+  find_by_id('form-link-coupon').click
   within(:css, "#form-market-coupon") do
     fill_in "Description",  with: "My edited dummy coupon"
     select "20", :from => "Price"
-    select "20", :from => "Available"
+    select "10", :from => "Available"
   end 
   click_on "Update Market"
 end
@@ -121,5 +123,5 @@ Then(/^I should see the edited coupon in the market page$/) do
   expect(page).to have_content @market.name
   expect(page).to have_content "My edited dummy coupon"
   expect(page).to have_content "20"
-  expect(page).to have_content "50"
+  expect(page).to have_content "10"
 end

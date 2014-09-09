@@ -1,4 +1,6 @@
-@coupons
+@coupons @javascript
+@create_coupon
+
 Feature: Market coupons
   In order to have sell extra services for my market
   As market owner
@@ -7,13 +9,12 @@ Feature: Market coupons
   Background:
     Given I am logged in
     And I have one pro market
-  @create_coupon
+
   Scenario: Create a coupon
     When I visit the edit market page
     And I create a coupon
     Then I should see the coupon in the market page
 
-  @edit_coupon
   Scenario: Edit a coupon
     When I visit the edit market page
     And I edit a coupon

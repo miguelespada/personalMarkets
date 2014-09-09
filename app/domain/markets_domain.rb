@@ -29,6 +29,7 @@ class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
     ### This update should be automatic but it does not work
     market.coupon.update! market_params[:coupon_attributes] 
     ####
+
     listener.update_suceeded market, publish
   rescue MarketsDomainException
     listener.update_failed market, ControllerNotice.fail('updated', 'market')
