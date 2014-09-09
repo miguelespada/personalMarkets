@@ -7,7 +7,7 @@ Then(/^I should not see that I am logged$/) do
 end
 
 Then(/^I should be notified that the market has been added$/) do
-  expect(page).to have_content "Market was successfully created."
+  expect(find('#notice')).to have_content "Your market was created successfully"
 end
 
 Then(/^I should be notified that the market has been succesfully deleted$/) do

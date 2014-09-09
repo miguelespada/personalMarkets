@@ -4,7 +4,6 @@ When(/^I create a market$/) do
 
   within(:css, "#new_market") do
     fill_in "Name",  with: "Dummy Market"
-    fill_in "City",  with: "Madrid"
   end
   click_on "Create Market"
 end
@@ -13,7 +12,6 @@ Then(/^I should see the market page$/) do
     expect(page).to have_content "Dummy Market"
     expect(page).to have_content @user.email
     expect(page).to have_content "Uncategorized"
-    expect(page).to have_content "Madrid"
 end
 
 Then(/^I can edit the market$/) do
@@ -70,7 +68,7 @@ Then(/^I should see it in my markets$/) do
 end
 
 Then(/^I am notified that the market has been succesfully updated$/) do
-  expect(page).to have_content "Market successfully updated."
+  expect(find('#notice')).to have_content "Your market was updated successfully"
 end
 
 Given(/^I have some markets$/) do

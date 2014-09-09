@@ -1,3 +1,4 @@
+@javascript
 Feature: Edit market
   As a registered user
   I want to modify my market
