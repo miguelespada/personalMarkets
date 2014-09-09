@@ -18,7 +18,6 @@ describe PaymillWrapper do
     let(:payment) { double(id: "payment_id") }
 
     before do
-      SubscriptionOffer.offer = "una_offer"
       stub_const("Paymill::Payment", payment_creator)
     end
 

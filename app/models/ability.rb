@@ -82,9 +82,6 @@ class Ability
       can [:update], Status
       can [:change, :update], Role
 
-      can [:list], Coupon
-      can :buy, Coupon
-
       can [:manage], Market
       can [:manage], Wish
       can [:manage], Bargain

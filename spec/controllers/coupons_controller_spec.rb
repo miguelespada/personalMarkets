@@ -89,23 +89,6 @@ describe CouponsController do
     let(:user_market) { create(:market, user: market_owner) } 
     let(:second_coupon) { create(:coupon, market: market) }
 
-    describe "Index" do
-      it "return the list of coupons" do
-        get :index, valid_session
-        assigns(:coupons).count eq 2
-      end
-    end
-
-    describe "Show 'coupon'" do
-      let(:market_owner) { create(:user) }  
-      let(:user_market) { create(:market, user: market_owner) } 
-
-      it "return success" do
-        get :index, {id: user_market.coupon.to_param}, valid_session        
-        expect(response.response_code).to eq 200
-      end
-    end
-
     describe "list of sold transactions" do
       before(:each) do
         create(:couponTransaction, user: user, coupon: user_market.coupon) 
@@ -177,5 +160,24 @@ describe CouponsController do
     end
   end 
 
+  context "admin user" do 
+    before(:each) do
+      @ability = Object.new
+      @ability.extend(CanCan::Ability)
+      controller.stub(:current_ability) { @ability }
+      @ability.can :manage, Coupon
+      controller.stub(:current_user).and_return(user)
+    end
 
+    let(:market_owner) { create(:user) }  
+    let(:user_market) { create(:market, user: market_owner) } 
+    let(:second_coupon) { create(:coupon, market: market) }
+
+    describe "index" do
+      it "return the list of coupons" do
+        get :index, valid_session
+        assigns(:coupons).count eq 2
+      end
+    end
+  end
 end
