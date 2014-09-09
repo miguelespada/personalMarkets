@@ -39,7 +39,12 @@ end
 Then(/^I should see the coupon transactions in the market transactions$/) do
   visit sold_coupons_by_market_path @market
   expect(page).to have_content "Dummy coupon"
-  expect(page).to have_content @user.email
+  within(:css, ".buyer") do
+    expect(page).to have_content @user.name
+  end
+  within(:css, ".seller") do
+    expect(page).to have_content "You"
+  end
 end
 
 When(/^All the coupons are sold$/) do

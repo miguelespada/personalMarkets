@@ -2,8 +2,8 @@
   <tr>
     <th class="col-md-2"><%= t(:transaction_id) %></th>
     <th class="col-md-2"><%= t(:market).capitalize %></th>
-    <th class="col-md-1"><%= t(:buyer).capitalize %></th>
     <th class="col-md-1"><%= t(:seller).capitalize %></th>
+    <th class="col-md-1"><%= t(:buyer).capitalize %></th>
     <th class="col-md-2"><%= t(:description).capitalize %></th>
     <th class="col-md-1"><%= t(:price).capitalize %></th>
     <th class="col-md-1"><%= t(:number_of_coupons) %></th>
@@ -14,20 +14,22 @@
   <% @transactions.each do |transaction| %>
       <%= content_tag_for(:tr, transaction) do %>
         <td> <%= transaction.id %> </td>
+
         <td> <%= link_to  transaction.coupon.market.name, transaction.coupon.market %> </td>
-        <td> 
+
+        <td class="seller"> 
           <% if current_user != transaction.coupon.market.user %>
             <%= link_to transaction.coupon.market.user.name, transaction.coupon.market.user %>
           <% else %> 
-            You 
+            <%= t(:you) %> 
           <% end %>
         </td>
 
-        <td> 
+        <td class="buyer"> 
           <% if current_user !=  transaction.user %>
             <%= link_to transaction.user.name, transaction.user %>
           <% else %> 
-            You 
+            <%= t(:you) %>
           <% end %>
         </td>
 
