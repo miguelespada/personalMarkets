@@ -45,7 +45,7 @@ Then(/^I should be notified that the coupons has been bought$/) do
     p "trying to find it hidden"
     whatever ||= find("#notice", :visible => false)
   end
-  expect(whatever).to have_content "You has successfully bought the coupon."
+  expect(whatever).to have_content "The coupon is bought successfully"
 end
 
 

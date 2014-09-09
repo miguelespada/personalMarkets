@@ -21,7 +21,7 @@ Given(/^I buy some coupons$/) do
   select "2"
   find_by_id('premium_accept_term').click
   click_on "Buy"
-  step "he needs to introduce his credit card data"
+  step "he needs to introduce his credit card data"  
   click_on "Pay"
 end
 
@@ -46,12 +46,13 @@ When(/^All the coupons are sold$/) do
   @market.coupon.save
 end
 
-When(/^I try to buy the coupon$/) do
-  step "I visit the market page"
-  click_on "Buy Coupon"
-end
+# When(/^I try to buy the coupon$/) do
+#   step "I visit the market page"
+#   click_on "Buy Coupon"
+# end
 
 When(/^I should see that the coupon sold out$/) do
+  step "I visit the market page"
   expect(page).to have_content "Sold out"
 end
 

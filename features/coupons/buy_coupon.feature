@@ -1,4 +1,4 @@
-@coupons @buy_coupon 
+@coupons 
 @javascript
 
 Feature: Buy market coupon
@@ -9,7 +9,7 @@ Feature: Buy market coupon
   Background:
     Given I am logged in
     And There is a market with available coupons
-  
+
   Scenario:
     When I buy some coupons
     Then I should be notified that the coupons has been bought
@@ -21,7 +21,7 @@ Feature: Buy market coupon
     Then I sign in as the market owner  
     Then I should see the coupon transactions in the market transactions
 
-Scenario: Buy no available a coupon
-    When All the coupons are sold
-    And I try to buy the coupon
-    Then I should see that the coupon sold out
+  @buy_coupon 
+  Scenario: Buy no available a coupon
+      When All the coupons are sold
+      Then I should see that the coupon sold out

@@ -6,9 +6,15 @@
 
   <div class="col-md-6 col-md-offset-1">
     <%= render "coupons/views/description", coupon: coupon %>
-    <strong> <%= t(:available).capitalize %>: </strong> 
-    <span> <%= coupon.available %> </span> <br>
 
+    <% if  coupon.available > 0  %>
+      <strong> <%= t(:available).capitalize %>: </strong> 
+      <span> <%= coupon.available %> </span> 
+    <% else %>
+      <span> Sold out </span>
+    <% end %>
+    <br>
+    
     <% if buy %>
       <%= render "coupons/forms/buy_coupon", coupon: @coupon %>
     <% else %>
