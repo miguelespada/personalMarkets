@@ -54,9 +54,7 @@ end
 
 
 When(/^I select a category filter$/) do
-  within(:css, "#search-category-buttons") do
-    click_on "Filter"
-  end
+    click_on @market_1.category.name.downcase
 end
 
 When(/^I type a query$/) do

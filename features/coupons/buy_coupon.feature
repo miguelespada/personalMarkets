@@ -15,7 +15,6 @@ Feature: Buy market coupon
     Then I should be notified that the coupons has been bought
     And I should see the coupon transactions in my coupon transactions
 
-  @on
   Scenario:
     When I buy some coupons
     Then I should be notified that the coupons has been bought
