@@ -296,6 +296,7 @@ When(/^I make it PRO$/) do
   step "he needs to introduce his credit card data"
   find_by_id("accept_terms").click
   click_on "Pay"
+  expect(find('#notice')).to have_content "Your market was changed to VIM successfully"
 end
 
 Then(/^I should see a warning about coupon visibility$/) do
@@ -385,7 +386,6 @@ end
 
 Then(/^I should see the badge of PRO$/) do
   visit market_path @market
-  save_and_open_page
   page.should have_css ".pro"
 end
 

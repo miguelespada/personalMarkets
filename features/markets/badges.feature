@@ -3,7 +3,7 @@ Feature: Market Badges
   I can see badges of each market
   So that I can know the type of a market
 
-  @badges @on
+  @badges @javascript
   Scenario: PRO market badge
     Given I am logged in
     And I have one market

@@ -255,7 +255,6 @@ class MarketsController < ApplicationController
        market = current_user.create_new_market
        market.save!
     end 
-
     payment = Payment.new ENV['PRO_PRICE'].to_f, 1
     @pro_payment = MarketProPayment.new market, payment
   end
@@ -263,7 +262,6 @@ class MarketsController < ApplicationController
   def make_pro
     payment = Payment.for payment_params
     pro_payment = MarketProPayment.new Market.find(params[:id]), payment
-
     market = domain.make_pro params[:id], pro_payment
     redirect_to market, notice: ControllerNotice.success('VIM', 'market')
   end
