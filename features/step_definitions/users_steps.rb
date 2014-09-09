@@ -119,7 +119,7 @@ Then(/^he is premium$/) do
 end
 
 When(/^I cancel my subscription$/) do
-  visit user_path @user
+  visit user_subscription_plan_path @user
   click_on "Unsubscribe"
 end
 

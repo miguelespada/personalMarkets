@@ -49,7 +49,8 @@ end
 
 After do |scenario|
   DatabaseCleaner.clean
-  Market.delete_index 
+  Market.delete_index
+  User.delete_index  
 end
 
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
@@ -77,9 +78,11 @@ Capybara.javascript_driver = :webkit
 DatabaseCleaner.clean
 DatabaseCleaner.start
 Market.delete_index 
+User.delete_index 
 
 at_exit do
   Market.delete_index 
+  User.delete_index 
   DatabaseCleaner.clean
 end
 
