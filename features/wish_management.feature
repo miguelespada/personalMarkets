@@ -26,7 +26,7 @@ Feature: Manage wishes
     Then I should be notified that the wish has been updated
     And I should see the wish with the new description in the wish list
 
-  @recommend_market
+  @javascript @recommend_market
   Scenario: Recommend market
     When There are some wishes
     And There are some published markets

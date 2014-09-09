@@ -53,7 +53,10 @@ When(/^I got to a wish page$/) do
 end
 
 Then(/^I can recommend a market to a wish$/) do
-  select @market_0.name, :from => "market_market_id"
+  within(:css, ".recommend-items") do
+    expect(page).to have_content  @market_0.name
+  end
+
   click_on "Recommend"
 
   within(:css, ".recomendations") do
