@@ -386,12 +386,11 @@ end
 Then(/^I should see the badge of PRO$/) do
   visit market_path @market
   save_and_open_page
-  page.should have_css ".ribbon-badge .pro"
+  page.should have_css ".pro"
 end
 
 Then(/^I should see the badge of sample$/) do
   visit market_path @market
-  save_and_open_page
   page.should have_css ".sample"
 end
 
