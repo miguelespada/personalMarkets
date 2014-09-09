@@ -159,7 +159,7 @@ class User
   end
 
   def create_new_market 
-    market = self.markets.new(:name => "New Market")
+    market = self.markets.new(:name => I18n.t(:new_vim_market))
     market.pro = self.is_premium?
     market
   end

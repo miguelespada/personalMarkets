@@ -360,3 +360,4 @@ en:
     hints:
       defaults:
         username: 'User name to sign in.'
+  new_vim_market: "New VIM market"
