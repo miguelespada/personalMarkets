@@ -404,3 +404,29 @@ Then(/^The market is PRO$/) do
   page.should have_css('.pro-indicator')
 end
 
+When(/^I create a VIM market$/) do
+  find(".add_market_button").click
+  click_on("Open a VIM Market")
+  step "he needs to introduce his credit card data"
+  find_by_id("accept_terms").click
+  click_on "Pay"
+end
+
+Then(/^I should see the new VIM market page$/) do
+  page.should have_content("New VIM market")
+end
+
+Then(/^I edit the VIM market$/) do
+  click_on "Edit"
+end
+
+Then(/^I should be able to add a coupon for the market$/) do
+  page.should have_css("#form-link-coupon")
+  page.should_not have_css("#form-link-coupon.disabled")
+end
+
+Then(/^I should see the coupon I added$/) do
+  expect(page).to have_content "My dummy coupon"
+  expect(page).to have_content "10"
+  expect(page).to have_content "20"
+end
