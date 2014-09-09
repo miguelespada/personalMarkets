@@ -1,3 +1,4 @@
+
 class DateEvaluator
 
   def initialize market

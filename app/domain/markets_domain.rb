@@ -1,5 +1,7 @@
 require 'markets_domain_exception'
 require 'market_required_field_exception'
+require 'market_date_exception'
+require 'date_evaluator'
 
 class MarketsDomain < Struct.new(:listener, :markets_repo, :users_repo)
 

@@ -34,8 +34,13 @@ class PhotosController < ApplicationController
   def destroy
     respond_to do |format|
       if @photo.destroy
-        format.html { redirect_to @photo.photographic, 
-                      notice: ControllerNotice.success('deleted', 'photo') }
+        if @photo.photographic.nil?
+          format.html { redirect_to :back, 
+                        notice: ControllerNotice.success('deleted', 'photo') }
+        else
+          format.html { redirect_to  @photo.photographic, 
+                        notice: ControllerNotice.success('deleted', 'photo') }
+        end
       else
         format.html { redirect_to :back, 
                   flash: { error: ControllerNotice.fail('deleted', 'photo') } }
