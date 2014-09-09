@@ -73,10 +73,12 @@ Given(/^a user is in its profile page$/) do
   step "I am a registered user"
   step "I sign in"
   visit user_path(@user)
+  click_on "Edit subscription plan"
 end
 
 When(/^he wants to become premium$/) do
-  click_on "Become premium"
+  find_by_id("accept_terms").click
+  click_on "Go PRO"
 end
 
 Then(/^he needs to introduce his credit card data$/) do
@@ -94,7 +96,7 @@ Given(/^a user submits for subscription with valid data$/) do
 end
 
 Then(/^he is notified for a successful subscription$/) do
-  expect(find('#notice')).to have_content "You have become premium successfully."
+  expect(find('#notice')).to have_content "Your operation has been done successfully"
 end
 
 Given(/^an inactive user$/) do
