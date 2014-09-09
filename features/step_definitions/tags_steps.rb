@@ -40,12 +40,7 @@ end
 
 When(/^I browse the tag$/) do
   step "I go to Tag list"
-  within(:css, "#tag_#{@tag.id}") do
-    click_on @tag.name
-  	within(:css, ".market-counter") do
-  		expect(page).to have_content "1"
-  	end 
-  end
+  click_on @tag.name
 end
 
 Then(/^I should see the markets tagged with the tag$/) do

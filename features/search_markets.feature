@@ -22,16 +22,15 @@ Feature: Browse markets
     And I select range all
     Then I see all markets
 
-  @javascript
+  @javascript @location_filter
   Scenario: Filter by location
     When I select a special location
     Then I see the markets matching my filters
 
-   @javascript @filter_location
+   @javascript @my_location_filter
   Scenario: Filter by my location
     When I allow geolocation
-    And I select search by my location
-    Then I see the markets matching my filters
+    And I can search by my location
 
   @javascript
   Scenario: Search with ajax

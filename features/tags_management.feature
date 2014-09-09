@@ -24,7 +24,8 @@ Feature: Manage tags
     Then I should be notified that I the tag has been updated
     And I should see the tag with the new name in the tag list
 
+  @javascript @browse_by_tag
   Scenario: Browse markets by tag
-    When There is a market with a specific tag
+    When There is a market with a suggsested tag
     And I browse the tag
-    Then I should see the markets tagged with the tag
+    Then I should see the market tagged with the tag
