@@ -26,9 +26,9 @@ When(/^I try to create another market$/) do
   visit new_user_market_path(@user)
 end
 
-Then(/^I can see an error message$/) do
-  expect(page).to_not have_css '#new_market'
-  expect(page).to have_content "You have to wait one month to create another market"
+Then(/^I should not be able to create another market this month$/) do
+  step "I try to create another market"
+  expect(page).to have_content "As a normal user, you have to wait one month to create another market"
 end
 
 Given(/^I have one month old market$/) do
@@ -37,12 +37,34 @@ Given(/^I have one month old market$/) do
   @user.markets << @market
 end
 
-Then(/^I can see the new market form$/) do
+Then(/^I can create a new market$/) do
+  step "I try to create another market"
   expect(page).to have_css '#new_market'
 end
 
 Then(/^I should not be able to delete the featured image$/) do
   within(:css, '.market-featured-photo') do
     expect(page).to_not have_link "Delete"
+  end
+end
+
+Given(/^I have an unpublished market$/) do
+  @market = create(:market, :user => @user)
+  @user.markets << @market
+end
+
+Then(/^I publish the draft$/) do
+  @user.markets.first.publish
+end
+
+Given(/^I have four unpublished markets$/) do
+  4.times do
+    step "I have an unpublished market"
+  end
+end
+
+Then(/^I publish all my drafts$/) do
+  @user.markets.each do |m|
+    m.publish
   end
 end
