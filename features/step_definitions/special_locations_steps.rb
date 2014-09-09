@@ -2,8 +2,9 @@ When(/^I add a special_location$/) do
   step "I go to SpecialLocations list"
   find('.new').click  
   fill_in "Name",  with: "Dummy Location"
+  fill_in "City", with: "Madrid"
   fill_in "Latitude", with: "10"
-  fill_in "Longitud", with: "10"
+  fill_in "Longitude", with: "10"
   click_on "Create"
 end
 

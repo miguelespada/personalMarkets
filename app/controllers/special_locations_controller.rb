@@ -43,7 +43,6 @@ class SpecialLocationsController < ApplicationController
 
   def create
     @special_location = SpecialLocation.new(special_location_params)
-
     respond_to do |format|
       if @special_location.save
         format.html { redirect_to special_locations_path, notice: ControllerNotice.success('created', 'hotspot') }

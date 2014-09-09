@@ -11,6 +11,11 @@ Feature: Manage special locations
     Then I should be notified that the special_location has been added
     And I should see the special_location in the special_location list
  
+ Scenario: Add important special_location
+    When I add a importnt special_location
+    Then I should be notified that the special_location has been added
+    And I should see the special_location in the navigation bar
+ 
   Scenario: Delete special_location
     When There are some special_locations
     And I delete a special_location
