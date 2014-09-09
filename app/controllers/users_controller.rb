@@ -57,7 +57,7 @@ class UsersController < ApplicationController
 
   def unlike
     market = Market.find(params[:market_id])
-    raise CanCan::AccessDenied if cannot? :unlike, market
+    raise CanCan::AccessDenied if cannot?(:like, market) || !current_user.favorites.include?(market)
     current_user.unlike(market)
     redirect_to :back
   end

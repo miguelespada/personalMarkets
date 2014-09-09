@@ -60,10 +60,6 @@ class Ability
           !@user.owns(market)
         end
 
-        can :unlike, Market, Market do |market|
-          !@user.favorites.include?(market)
-        end
-        
         cannot :index, Market
         cannot :index, Wish
         cannot :index, Bargain
