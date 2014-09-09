@@ -384,12 +384,15 @@ Then(/^I should see the cropped photo$/) do
 end
 
 Then(/^I should see the badge of PRO$/) do
-  page.should have_css ".ribbon-badge-pro"
+  visit market_path @market
+  save_and_open_page
+  page.should have_css ".ribbon-badge .pro"
 end
 
 Then(/^I should see the badge of sample$/) do
   visit market_path @market
-  page.should have_css ".ribbon-badge-sample"
+  save_and_open_page
+  page.should have_css ".sample"
 end
 
 When(/^I force it PRO$/) do
