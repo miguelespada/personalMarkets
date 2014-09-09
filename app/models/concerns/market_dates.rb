@@ -66,7 +66,7 @@ module MarketDates
       self.publish_date? && self.publish_date >= 1.day.ago 
     end
 
-    def published_one_month_ago?
+    def published_last_month?
       self.publish_date? && self.publish_date >= 1.month.ago 
     end
     

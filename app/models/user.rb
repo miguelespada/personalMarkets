@@ -158,7 +158,7 @@ class User
     market
   end
 
-  def create_new_market 
+  def create_new_vim_market 
     market = self.markets.new(:name => I18n.t(:new_vim_market))
     market.pro = self.is_premium?
     market
@@ -243,9 +243,17 @@ class User
   def number_of_last_month_markets
     n = 0
     markets.each do |market|
-      n = n+1 if market.published_one_month_ago? 
+      n = n + 1 if market.published_last_month? 
     end
     n
+  end
+
+  def days_until_can_create_new_market
+    23
+  end
+
+  def most_recent_market
+    markets.select{|m| m.has_been_published?}.sort_by{|m| m[:publish_date]}.last
   end
 
   def admin?

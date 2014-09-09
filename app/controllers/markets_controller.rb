@@ -252,7 +252,7 @@ class MarketsController < ApplicationController
     begin
       market = Market.find(params[:market_id])
     rescue => ex
-       market = current_user.create_new_market
+       market = current_user.create_new_vim_market
        market.save!
     end 
     payment = Payment.new ENV['PRO_PRICE'].to_f, 1

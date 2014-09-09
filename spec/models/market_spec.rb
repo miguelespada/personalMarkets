@@ -25,6 +25,15 @@ describe Market do
       expect(@market.is_today?).to eq true
     end
 
+    it "checks if it is published last month" do
+      @market = create(:market)
+      expect(@market.published_last_month?).to eq false
+      @market.publish
+      expect(@market.published_last_month?).to eq true
+      @market.publish_date = 2.months.ago
+      expect(@market.published_last_month?).to eq false
+    end
+
     it "market is running" do
       day1 = 1.day.ago.strftime("%d/%m/%Y")
       day2 = 2.days.ago.strftime("%d/%m/%Y")
