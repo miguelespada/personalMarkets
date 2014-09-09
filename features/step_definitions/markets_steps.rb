@@ -4,7 +4,6 @@ When(/^I create a market$/) do
 
   within(:css, "#new_market") do
     fill_in "Name",  with: "Dummy Market"
-    fill_in "City",  with: "Madrid"
   end
   click_on "Create Market"
 end
@@ -13,7 +12,6 @@ Then(/^I should see the market page$/) do
     expect(page).to have_content "Dummy Market"
     expect(page).to have_content @user.email
     expect(page).to have_content "Uncategorized"
-    expect(page).to have_content "Madrid"
 end
 
 Then(/^I can edit the market$/) do

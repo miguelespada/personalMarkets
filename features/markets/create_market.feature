@@ -1,4 +1,4 @@
-@create_market
+@javascript @create_market
 
 Feature: Create market
   As a registered user
