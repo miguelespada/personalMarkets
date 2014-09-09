@@ -8,7 +8,6 @@ describe SubscriptionDomain do
   let(:users_domain) { double }
   
   before do
-    SubscriptionOffer.offer = "una_offer"
     stub_const("PaymillWrapper", paymill_wrapper)
     stub_const("UsersDomain", users_domain)
   end
@@ -42,7 +41,13 @@ describe SubscriptionDomain do
   end
 
 
-  describe ".unsubscribe" do
+  describe ".unsubscribe paid subscription" do
+    let(:subscription_repo) { double(has_a_paid_subscription?: true) }
+
+    before(:each) do
+      stub_const("Subscription", subscription_repo)
+    end
+
 
     it "cancels the paymill subscription" do
       paymill_wrapper.should_receive(:cancel_subscription).with(email)
@@ -57,6 +62,17 @@ describe SubscriptionDomain do
       
       SubscriptionDomain.unsubscribe user
     end
+    
+  end
+  describe ".unsubscribe free subscription" do
+    let(:subscription_repo) { double(has_a_paid_subscription?: false) }
+
+    before(:each) do
+      stub_const("Subscription", subscription_repo)
+    end
+
+
+    xit "updates user role to normal" 
     
   end
 end

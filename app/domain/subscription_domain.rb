@@ -14,7 +14,7 @@ class SubscriptionDomain
 
   def self.unsubscribe user
     # Only cancel subscription if is a paid account
-    PaymillWrapper.cancel_subscription user.email if Subscription.where(email: user.email).exists? 
+    PaymillWrapper.cancel_subscription user.email if Subscription.has_a_paid_subscription? user
     UsersDomain.update_role user.id, "normal"
   rescue Paymill::PaymillError => e
     raise SubscriptionDomainException.new e.message
