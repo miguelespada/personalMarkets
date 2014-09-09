@@ -249,11 +249,13 @@ class User
   end
 
   def days_until_can_create_new_market
-    23
+    recent = most_recent_market(allowed_markets)
+    return 0 if recent == nil
+    30 - (Date.today - recent.publish_date).to_i
   end
 
-  def most_recent_market
-    markets.select{|m| m.has_been_published?}.sort_by{|m| m[:publish_date]}.last
+  def most_recent_market n
+    markets.select{|m| m.has_been_published?}.sort_by{|m| m[:publish_date]}[-n]
   end
 
   def admin?
