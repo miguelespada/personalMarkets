@@ -16,6 +16,4 @@ Feature: Unsubscribe
   @subscribe_after_unsubscribe
   Scenario: Subscribe after unsubscription
     When I cancel my subscription
-    Then a user is in its profile page
-    And a user submits for subscription with valid data
-    Then he is premium
+    Then I subscribe again

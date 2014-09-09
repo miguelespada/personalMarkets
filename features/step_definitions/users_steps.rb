@@ -76,6 +76,14 @@ Given(/^a user is in its profile page$/) do
   click_on "Edit subscription plan"
 end
 
+Then(/^I subscribe again$/) do
+  visit user_path(@user)
+  click_on "Edit subscription plan"
+  step "a user submits for subscription with valid data"
+  step "he is premium"
+end
+
+
 When(/^he wants to become premium$/) do
   find_by_id("accept_terms").click
   click_on "Go PRO"
