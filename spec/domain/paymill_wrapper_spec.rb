@@ -26,6 +26,7 @@ describe PaymillWrapper do
 
       subscription_creator = double
       stub_const("Paymill::Subscription", subscription_creator)
+      stub_const("PaymillWrapper::PAYMILL_SUBSCRIPTION_OFFER", "una_offer")
       subscription_creator.should_receive(:create).with(offer: "una_offer", client: "client_id", payment: payment.id)
       PaymillWrapper.create_subscription email, subscription_payment
     end
