@@ -131,3 +131,63 @@ Given(/^I can create a PRO market$/) do
   visit new_user_market_path(@user)
   page.should have_css("#form-link-coupon.enabled")
 end
+
+Given(/^there is another user$/) do
+  @other_user = create(:user, :email => "other_dummy@gmail.com", :nickname => "Other User")
+end
+
+Given(/^I go to the page of the other user$/) do
+  visit user_path(@other_user)
+end
+
+Then(/^I should be able to follow the other user$/) do
+  page.should have_css(".user-follow-icon")
+end
+
+Then(/^I follow the other user$/) do
+  click_on "Follow"
+end
+
+Then(/^I should see my name on the list of the followers$/) do
+  within(:css, ".followers") do
+    page.should have_content(@user.nickname)
+  end
+end
+
+Then(/^I go to my profile page$/) do
+  visit user_path(@user)
+end
+
+Then(/^I should see that I am following the other user$/) do
+  within(:css, ".following") do
+    page.should have_content(@other_user.nickname)
+  end
+end
+
+Given(/^I am following the other user$/) do
+  step "I follow the other user"
+end
+
+Then(/^I should be able to unfollow the other user$/) do
+  page.should have_css(".user-unfollow-icon")
+end
+
+Then(/^I unfollow the other user$/) do
+  click_on "Unfollow"
+end
+
+Then(/^I should not see my name on the list of the followers$/) do
+  within(:css, ".followers") do
+    page.should_not have_content(@user.nickname)
+  end
+end
+
+Then(/^I should not see that I am following the other user$/) do
+  within(:css, ".following") do
+    page.should_not have_content(@other_user.nickname)
+  end
+end
+
+Then(/^I should not be able to follow myself$/) do
+  page.should_not have_css(".user-follow-icon")
+end

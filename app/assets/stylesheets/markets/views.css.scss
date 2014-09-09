@@ -7,6 +7,9 @@
 .market-title{
   @media(min-width:992px){
     padding-left: 120px;
+    &.market-poster-title{
+      padding-left: 15px;
+    }
   }
   .show{
     text-decoration:none !important;

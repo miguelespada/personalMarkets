@@ -5,6 +5,7 @@
         <div class="panel-heading table-title">
           <div class="market-title-container row">
             <div class="market-title market-poster-title col-md-12">
+              <%= image_tag("/images/favicon.png", :width => "50", :height => "50") %>
               <%= @user.name %> 
             </div>
 
@@ -58,9 +59,9 @@
             <div class="center">
               <% if current_user &&  current_user != @user %>
                 <% if current_user.following?(@user) %>
-                  <%= user_dashboard_link("unfollow_user_path", @user, t(:unfollow).capitalize, "fa-thumbs-o-down") %>
+                  <%= user_dashboard_link("unfollow_user_path", @user, t(:unfollow).capitalize, "fa-thumbs-o-down user-unfollow-icon") %>
                 <% else %>
-                  <%= user_dashboard_link("follow_user_path", @user, t(:follow).capitalize, "fa-thumbs-o-up") %>
+                  <%= user_dashboard_link("follow_user_path", @user, t(:follow).capitalize, "fa-thumbs-o-up user-follow-icon") %>
                 <% end %>
               <% end %>
             </div>
@@ -72,13 +73,13 @@
                     <th class="col-md-2 center"><%= t(:following).capitalize %></th>
                     <th class="col-md-2 center"><%= t(:followers).capitalize %></th>
                   </tr>
-                  <td>
+                  <td class="following">
                     <% @user.following.each do |user| %>
                       <p> <%= link_to user.name, user_path(user) %> </p>
                     <% end %>
                   </td>
 
-                  <td>
+                  <td class="followers">
                     <% @user.followers.each do |user| %>
                       <p> <%= link_to user.name, user_path(user) %> </p>
                     <% end %>

@@ -14,7 +14,7 @@ Given(/^I sign up$/) do
 end
 
 Given(/^I am a registered user$/) do
-  @user = create(:user, :email => "dummy@gmail.com")
+  @user = create(:user, :email => "dummy@gmail.com", :nickname => "Dummy User")
 end
 
 Given(/^I sign in$/) do
