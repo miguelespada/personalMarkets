@@ -41,14 +41,14 @@ describe MarketsDomain do
         @it.create_market(user_id, market_params)
       end
 
-      it "registers success callback if market created successfully" do
+      xit "registers success callback if market created successfully" do
         users_repo.stub(:find) { user }
         user.stub(:add_market) { market }
         market.stub(:save!)
         listener.should_receive(:create_market_succeeded).with(market)
       end
 
-      it "registers fail callback if market not created successfully" do
+      xit "registers fail callback if market not created successfully" do
         users_repo.stub(:find) { user }
         user.stub(:add_market) { market }
         market.stub(:save!).and_raise(MarketsDomainException)

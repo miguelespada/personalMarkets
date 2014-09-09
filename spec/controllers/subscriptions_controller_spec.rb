@@ -21,7 +21,7 @@ describe SubscriptionsController do
     domain.should_receive(:subscribe)
 
     post :create, subscription_params, {}
-    expect(response).to redirect_to(user_path user)
+    expect(response).to redirect_to(user_dashboard_path user)
   end
 
 end
