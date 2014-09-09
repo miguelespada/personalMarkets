@@ -68,7 +68,7 @@ Then(/^I should see it in my markets$/) do
 end
 
 Then(/^I am notified that the market has been succesfully updated$/) do
-  expect(page).to have_content "Market successfully updated."
+  expect(find('#notice')).to have_content "Your market was updated successfully"
 end
 
 Given(/^I have some markets$/) do
