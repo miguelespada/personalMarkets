@@ -54,6 +54,7 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     Market.delete_index
+    User.delete_index 
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.orm = "mongoid"
   end
@@ -73,5 +74,6 @@ RSpec.configure do |config|
   config.after(:all) do
     DatabaseCleaner.clean
     Market.delete_index 
+    User.delete_index 
   end
 end

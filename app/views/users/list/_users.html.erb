@@ -1,12 +1,10 @@
 <section>
   <div class="panel panel-default panel-table">
-    <div class="panel-heading table-title">
-      <%= t(role.downcase).titleize %>
-    </div>
     <div class="table-container">
-      <table class="table table-striped <%= role %>">
+      <table class="table table-striped">
         <tr>
         <th>Email</th>
+        <th>Role</th>
         <th>Status</th>
         <th>Markets</th>
         <th>Likes</th>
@@ -21,3 +19,7 @@
     </div>
   </div>
 </section>
+
+<div class="paginate">
+  <%= paginate users%>
+</div>

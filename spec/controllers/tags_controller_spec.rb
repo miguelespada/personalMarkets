@@ -20,8 +20,8 @@ describe TagsController do
     it "returns http success" do
       tag = Tag.create! valid_attributes
       get 'gallery'
-      response.should be_success
       assigns(:suggested).should eq([tag])
+      response.should be_success
     end
   end
 
@@ -47,7 +47,6 @@ describe TagsController do
         tag = Tag.create! valid_attributes
         get 'index'
         assigns(:tags).should eq([tag])
-        assigns(:user_tags).should eq([])
         response.should be_success
       end
 
@@ -56,7 +55,6 @@ describe TagsController do
         create(:market, :tags => "dummy2")
         get 'index'
         response.should be_success
-        assigns(:user_tags).should eq(["dummy1", "dummy2"])
         assigns(:tags).should eq([])
       end
     end

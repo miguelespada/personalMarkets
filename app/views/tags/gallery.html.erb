@@ -1,14 +1,8 @@
 <div class="panel panel-default panel-table">
-  <% @tags = @tags.map{|tag| tag.capitalize} %>
   <div class="panel-body tags-panel-container">
     -
     <% @suggested.each do |tag| %>
       <%= link_to(tag.name.mb_chars.upcase, tag_markets_path(tag.name), class: "tag-link", :data => {tag: tag.name}) %> 
-      <% @tags.delete(tag.name.capitalize) %>
-      -
-    <% end %>
-    <% @tags.each do |name| %> 
-      <%= link_to( name.mb_chars.upcase, tag_markets_path(name), class: "tag-link", :data => {tag: name} ) %>
       -
     <% end %>
   </div>
@@ -54,7 +48,7 @@
   }
   .tag-link.active{
     text-decoration: underline;
-    color:#F00;
+    color:#e06363;
   }
   
   .tag-link:hover{

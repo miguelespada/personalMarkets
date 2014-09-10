@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   authorize_resource :only => [:index, :destroy, :edit, :update]  
  
   def index
-    @users = UsersPresenter.for User.all
+    @users = User.all.asc(:email).page(params[:page]).per(12)
   end
   
   def gallery
