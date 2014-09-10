@@ -1,5 +1,4 @@
 <div class="panel panel-default panel-table">
-  <% @tags = @tags.map{|tag| tag.capitalize} %>
   <div class="panel-body tags-panel-container">
     -
     <% @suggested.each do |tag| %>
@@ -49,7 +48,7 @@
   }
   .tag-link.active{
     text-decoration: underline;
-    color:#F00;
+    color:#e06363;
   }
   
   .tag-link:hover{
