@@ -85,4 +85,8 @@ $default_weight: 200;
   a {
     color: #777;
   }
+  &.hotspot-extra{
+    margin:0;
+    max-width: 100%;
+  }
 }

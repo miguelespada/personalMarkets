@@ -7,8 +7,8 @@
         <%= link_to map_path(location: special_location.name) do %>
           <div class = "show gallery_market_featured_photo" data-name="<%= special_location.name %>">
             <%=  photo(special_location.photography, 300) %>
-            <div class="market-gallery-extra">
-              <%=  special_location.name %>
+            <div class="market-gallery-extra hotspot-extra">
+              <%= special_location.name %>
             </div>
           </div>
         <% end %>
