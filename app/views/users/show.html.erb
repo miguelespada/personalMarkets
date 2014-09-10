@@ -15,7 +15,7 @@
 
                 <h5> 
                   <% if current_user.days_until_can_create_new_market > 0 %>
-                  <!-- TODO inform number of days to create markets -->
+                    <%= current_user.days_until_can_create_new_market %>
                   <% else %> 
                     <%= published_markets_status(current_user) %>
                   <% end %> 

@@ -200,8 +200,4 @@ class Market
     rescue
       range ||= ""
   end
-
-  def self.tags
-    Market.all.map{|m| m.tags.split(',')}.flatten.uniq
-  end
 end
