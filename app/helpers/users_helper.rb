@@ -16,6 +16,8 @@ module UsersHelper
       concat " "
       concat user.number_of_last_month_markets 
       concat " "
+      concat t(:market_s)
+      concat " "
       concat t(:during_last_month)
       concat "</br>".html_safe
       concat t(:you_can_publish)

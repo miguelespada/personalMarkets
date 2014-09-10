@@ -4,6 +4,6 @@ module TagsHelper
   end
 
   def market_counter(tag)
-  	Market.tagged_with(tag).count
+  	Market.tagged_with(tag.downcase).count
   end
 end
