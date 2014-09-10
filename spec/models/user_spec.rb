@@ -66,6 +66,14 @@ describe User do
       premium.markets << create(:market, :publish_date => 3.weeks.ago)
       expect(premium.days_until_can_create_new_market).to eq 10
     end
-
+    it "tracks the number of market drafts" do
+      user.markets << create(:market, :publish_date => 3.days.ago)
+      user.markets << create(:market)
+      user.markets << create(:market, :publish_date => 1.week.ago)
+      user.markets << create(:market)
+      user.markets << create(:market, :publish_date => 2.weeks.ago)
+      user.markets << create(:market, :publish_date => 3.weeks.ago)
+      expect(user.number_of_drafts).to eq 2
+    end
   end
 end

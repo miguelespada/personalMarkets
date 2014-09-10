@@ -16,6 +16,7 @@
  *= require_tree ./pages
  *= require markets/gallery
  *= require markets/views
+ *= require markets/new
  */
 
 

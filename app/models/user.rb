@@ -236,7 +236,7 @@ class User
 
   def allowed_market_creation?
     return true if self.has_role?("admin") 
-    return true if number_of_last_month_markets < allowed_markets
+    return true if number_of_last_month_markets < allowed_markets && self.number_of_drafts < 5
     false
   end
 
@@ -275,6 +275,20 @@ class User
     "fa-users"
   end
 
+  def number_of_drafts
+    return self.markets.count{|m| !m.has_been_published?}
+  end
+
+  def too_many_wishes?
+    return true if self.wishes.count >= 10
+    false
+  end
+
+  def too_many_bargains?
+    return true if self.bargains.count >= 10
+    false
+  end
+
   private
 
   def self.create_with email
@@ -289,7 +303,7 @@ class User
     add_role :normal if self.roles.blank?
   end
 
-   def allowed_markets
+  def allowed_markets
     return 4 if self.has_role?("premium")
     return 1000000 if self.has_role?("admin")
     1

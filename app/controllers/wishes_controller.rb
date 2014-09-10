@@ -27,7 +27,9 @@ class WishesController < ApplicationController
   end
 
   def new
-    @wish = Wish.new
+    if !current_user.too_many_wishes?
+      @wish = Wish.new 
+    end
     render "form"
   end
 

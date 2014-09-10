@@ -26,7 +26,9 @@ class BargainsController < ApplicationController
   end
 
   def new
-    @bargain = Bargain.new
+    if !current_user.too_many_bargains?
+      @bargain = Bargain.new
+    end
     render "form"
   end
 

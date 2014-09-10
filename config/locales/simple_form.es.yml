@@ -364,3 +364,7 @@ es:
   you_have_to_wait: "Tienes que esperar"
   day: "día"
   to_create_new_markets: "para crear un market nuevo"
+  currently_you_have: "Ahora tienes"
+  drafts: "borradores"
+  each_user_can_have: "Cada usuario puede tener"
+  only: "como máximo"

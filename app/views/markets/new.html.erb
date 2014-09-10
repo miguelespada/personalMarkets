@@ -5,6 +5,14 @@
   <%=  render partial: "markets/shared/forms/form", 
       locals: {user: @user, market: @market.decorate, action: "new" } %>
 
+<% elsif @user.number_of_drafts >= 5 %>
+
+  <div class="creation-not-allowed">
+    <%= too_many_drafts(@user) %>
+  </div>
+  <div class="center">
+    <%= back_link %>
+  </div>
 <% else %>
 
   <div class="creation-not-allowed">
