@@ -126,7 +126,7 @@ class Market
   end
 
   def format_date
-    if date.present?
+    if schedule.present?
       dates = date.split(/,/)
       dates.collect{|d| Date.strptime(d, "%d/%m/%Y").strftime("%Y%m%d")}
     end
