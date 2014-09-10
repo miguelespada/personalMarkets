@@ -9,9 +9,6 @@ Feature: Users management
     And there are some users
     And I go to Users
 
-  Scenario: See User List
-    Then I should see the list of users grouped by role
-
   Scenario: Delete User 
     When I delete one user
     Then I should not see the user

@@ -7,14 +7,6 @@ Then(/^I should see the list of users$/) do
   expect(page).to have_content @user_1.email
 end
 
-Then(/^I should see the list of users grouped by role$/) do
-  @users.each do |user|
-    within(".#{user.role}") do
-      page.should have_css(".user", text: user.email)
-    end
-  end
-end
-
 When(/^I delete one user$/) do
   within(:css, "#user_#{@user_1.id}") do
     find(".table-button-delete").click
@@ -49,8 +41,8 @@ When(/^I make it admin$/) do
 end
 
 Then(/^It should have admin role$/) do
-  within(:css, ".admin") do
-    expect(page).to have_content @user.email
+  within(:css, "#user_#{@user.id}") do
+    expect(page).to have_content "admin"
   end
 end
 
@@ -64,8 +56,8 @@ When(/^I make it normal$/) do
 end
 
 Then(/^It should have normal role$/) do
-  within(:css, ".normal") do
-    expect(page).to have_content @user.email
+  within(:css, "#user_#{@user.id}") do
+    expect(page).to have_content "normal"
   end
 end
 
