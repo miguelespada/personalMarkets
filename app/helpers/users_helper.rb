@@ -26,6 +26,18 @@ module UsersHelper
     end
   end
 
+  def days_to_wait(user)
+    content_tag :p, "" do
+      concat t(:you_have_to_wait)
+      concat " "
+      concat user.days_until_can_create_new_market
+      concat " "
+      concat t(:day).pluralize(current_user.days_until_can_create_new_market)
+      concat " "
+      concat t(:to_create_new_markets)
+    end
+  end
+
   def admin_link(model)
     link_to send("#{model.model_name.route_key}_path"), class:"dashboard-button btn btn-lg" do
       concat content_tag :i, "", class:"fa #{model.icon} fa-4x"

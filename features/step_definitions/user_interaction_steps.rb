@@ -28,7 +28,7 @@ end
 
 Then(/^I should not be able to create another market this month$/) do
   step "I try to create another market"
-  expect(page).to have_content "As a normal user, you have to wait one month to create another market"
+  expect(page).to have_content "You have to wait"
 end
 
 Given(/^I have one month old market$/) do

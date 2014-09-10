@@ -8,7 +8,7 @@
 <% else %>
 
   <div class="creation-not-allowed">
-  	<%= t(:you_have_to_wait_one_month) %>
+  	<%= days_to_wait(@user) %>
   </div>
     
   <div class="form-group col-md-4 col-md-offset-4 go-premium-button-container">
