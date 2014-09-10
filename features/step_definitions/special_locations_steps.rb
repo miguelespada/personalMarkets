@@ -50,3 +50,20 @@ Then(/^I should see the markets special_location near the speacial location$/) d
   expect(page).to have_content @market.name
   expect(page).to have_content @market.description
 end
+
+When(/^I add an important special_location$/) do
+  step "I go to SpecialLocations list"
+  find('.new').click  
+  fill_in "Name",  with: "Dummy Location"
+  fill_in "City", with: "Madrid"
+  fill_in "Latitude", with: "10"
+  fill_in "Longitude", with: "10"
+  find_by_id("special_location_important").click
+  find(:css, "#special_location_important").set(true)
+  click_on "Create"
+end
+
+Then(/^I should see the special_location in the navigation bar$/) do
+  visit special_locations_list_path
+  expect(page).to have_content "Dummy Location"
+end

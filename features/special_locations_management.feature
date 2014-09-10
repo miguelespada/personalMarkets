@@ -1,4 +1,4 @@
-@special_locations 
+@special_locations
 Feature: Manage special locations
   I order to have hotspots
   I want manage special locations
@@ -11,7 +11,7 @@ Feature: Manage special locations
     Then I should be notified that the special_location has been added
     And I should see the special_location in the special_location list
     
- @pending
+ @important_special_location
  Scenario: Add important special_location
     When I add an important special_location
     Then I should be notified that the special_location has been added
