@@ -362,3 +362,10 @@ en:
       defaults:
         username: 'User name to sign in.'
   new_vim_market: "New VIM market"
+  you_have_to_wait: "You have to wait"
+  day: "day"
+  to_create_new_markets: "to create new markets"
+  currently_you_have: "Currently you have"
+  drafts: "drafts"
+  each_user_can_have: "Each user can have"
+  only: "only"

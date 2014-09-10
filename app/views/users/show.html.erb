@@ -13,9 +13,9 @@
 
               <div class="center">
 
-                <h5> 
+                <h5>
                   <% if @user.days_until_can_create_new_market > 0 %>
-                    <%= @user.days_until_can_create_new_market %>
+                    <%= days_to_wait(@user) %>
                   <% else %> 
                     <%= published_markets_status(@user) %>
                   <% end %> 

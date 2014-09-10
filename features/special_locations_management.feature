@@ -10,9 +10,10 @@ Feature: Manage special locations
     When I add a special_location
     Then I should be notified that the special_location has been added
     And I should see the special_location in the special_location list
- 
+    
+ @pending
  Scenario: Add important special_location
-    When I add a importnt special_location
+    When I add an important special_location
     Then I should be notified that the special_location has been added
     And I should see the special_location in the navigation bar
  

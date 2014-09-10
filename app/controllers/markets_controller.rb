@@ -110,11 +110,13 @@ class MarketsController < ApplicationController
   end
 
   def new
-    @market = domain.initialize_market
-    @market.user = current_user
-    @market.pro = true if current_user.is_premium?
-    3.times {@market.gallery.photographies << Photo.new}
-    9.times {@market.gallery.photographies << Photo.new} if @market.pro?
+    if current_user.allowed_market_creation?
+      @market = domain.initialize_market
+      @market.user = current_user
+      @market.pro = true if current_user.is_premium?
+      3.times {@market.gallery.photographies << Photo.new}
+      9.times {@market.gallery.photographies << Photo.new} if @market.pro?
+    end
   end
 
   def show

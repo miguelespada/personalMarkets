@@ -26,6 +26,66 @@ module UsersHelper
     end
   end
 
+  def days_to_wait(user)
+    content_tag :p, "" do
+      concat t(:you_have_to_wait)
+      concat " "
+      concat user.days_until_can_create_new_market
+      concat " "
+      concat t(:day).pluralize(user.days_until_can_create_new_market)
+      concat " "
+      concat t(:to_create_new_markets)
+    end
+  end
+
+  def too_many_drafts(user)
+    content_tag :p, "" do
+      concat t(:currently_you_have)
+      concat " "
+      concat user.number_of_drafts
+      concat " "
+      concat t(:drafts)
+      concat ". "
+      concat t(:each_user_can_have)
+      concat " 5 "
+      concat t(:drafts)
+      concat " "
+      concat t(:only)
+    end
+  end
+
+  def too_many_wishes_message(user)
+    content_tag :p, "" do
+      concat t(:currently_you_have)
+      concat " "
+      concat user.wishes.count
+      concat " "
+      concat t(:wishes)
+      concat ". "
+      concat t(:each_user_can_have)
+      concat " 10 "
+      concat t(:wishes)
+      concat " "
+      concat t(:only)
+    end
+  end
+
+  def too_many_bargains_message(user)
+    content_tag :p, "" do
+      concat t(:currently_you_have)
+      concat " "
+      concat user.bargains.count
+      concat " "
+      concat t(:bargains)
+      concat ". "
+      concat t(:each_user_can_have)
+      concat " 10 "
+      concat t(:bargains)
+      concat " "
+      concat t(:only)
+    end
+  end
+
   def admin_link(model)
     link_to send("#{model.model_name.route_key}_path"), class:"dashboard-button btn btn-lg" do
       concat content_tag :i, "", class:"fa #{model.icon} fa-4x"

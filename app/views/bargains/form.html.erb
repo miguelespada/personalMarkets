@@ -1,1 +1,10 @@
-<%= form(@bargain) %>
+<% if !current_user.too_many_bargains? %>
+  <%= form(@bargain) %>
+<% else %>
+  <div class="creation-not-allowed">
+    <%= too_many_bargains_message(current_user) %>
+  </div>
+  <div class="center">
+    <%= back_link %>
+  </div>
+<% end %>
