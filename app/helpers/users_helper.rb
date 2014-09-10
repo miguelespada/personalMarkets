@@ -20,7 +20,7 @@ module UsersHelper
       concat "</br>".html_safe
       concat t(:you_can_publish)
       concat " "
-      concat current_user.remaining_markets
+      concat user.remaining_markets
       concat " "
       concat t(:market_s)
     end

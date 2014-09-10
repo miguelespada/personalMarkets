@@ -9,15 +9,15 @@
               <%= @user.name %> 
             </div>
 
-            <% if can? :manage, @user %>
+            <% if can? :manage, @user  %>
 
               <div class="center">
 
                 <h5> 
-                  <% if current_user.days_until_can_create_new_market > 0 %>
-                    <%= current_user.days_until_can_create_new_market %>
+                  <% if @user.days_until_can_create_new_market > 0 %>
+                    <%= @user.days_until_can_create_new_market %>
                   <% else %> 
-                    <%= published_markets_status(current_user) %>
+                    <%= published_markets_status(@user) %>
                   <% end %> 
                 </h5>
 
