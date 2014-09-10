@@ -9,15 +9,15 @@
               <%= @user.name %> 
             </div>
 
-            <% if can? :manage, @user %>
+            <% if can? :manage, @user  %>
 
               <div class="center">
 
                 <h5>
-                  <% if current_user.days_until_can_create_new_market > 0 %>
-                    <%= days_to_wait(current_user) %>
+                  <% if @user.days_until_can_create_new_market > 0 %>
+                    <%= days_to_wait(@user) %>
                   <% else %> 
-                    <%= published_markets_status(current_user) %>
+                    <%= published_markets_status(@user) %>
                   <% end %> 
                 </h5>
 
@@ -34,7 +34,7 @@
             <% end %>
 
             <div class="market-title market-poster-picture col-md-4">
-              <%= photo(@user.featured, 150) %>
+              <%= photo(@user.featured, 130) %>
             </div>
 
             <div class="col-md-8">
@@ -77,13 +77,13 @@
                     <th class="col-md-2 center"><%= t(:following).capitalize %></th>
                     <th class="col-md-2 center"><%= t(:followers).capitalize %></th>
                   </tr>
-                  <td class="following">
+                  <td class="following col-md-2 center">
                     <% @user.following.each do |user| %>
                       <p> <%= link_to user.name, user_path(user) %> </p>
                     <% end %>
                   </td>
 
-                  <td class="followers">
+                  <td class="followers col-md-2 center">
                     <% @user.followers.each do |user| %>
                       <p> <%= link_to user.name, user_path(user) %> </p>
                     <% end %>

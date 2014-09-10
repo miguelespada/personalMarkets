@@ -20,7 +20,7 @@ module UsersHelper
       concat "</br>".html_safe
       concat t(:you_can_publish)
       concat " "
-      concat current_user.remaining_markets
+      concat user.remaining_markets
       concat " "
       concat t(:market_s)
     end
@@ -32,7 +32,7 @@ module UsersHelper
       concat " "
       concat user.days_until_can_create_new_market
       concat " "
-      concat t(:day).pluralize(current_user.days_until_can_create_new_market)
+      concat t(:day).pluralize(user.days_until_can_create_new_market)
       concat " "
       concat t(:to_create_new_markets)
     end

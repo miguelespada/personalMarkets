@@ -95,7 +95,7 @@ class MarketDecorator < Draper::Decorator
 
   def market_date_highlight
     if is_today?
-      content_tag(:i, "", :class => "fa fa-calendar") + "  " + t(:hoy).capitalize
+      content_tag(:i, "", :class => "fa fa-calendar") + "  " + t(:today).capitalize
     elsif is_this_week?
       content_tag(:i, "", :class => "fa fa-calendar") + "  " + t(:this_week).capitalize
     elsif market.date.split(',').count > 2 
