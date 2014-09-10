@@ -1,5 +1,6 @@
 <%= content_tag_for(:tr, user) do %>
-  <td class="col-md-3"> <%= mail_to truncate(user.email, length: 15), user.email %> </td>
+  <td class="col-md-2"> <%= mail_to truncate(user.email, length: 15), user.email %> </td>
+  <td class="col-md-1"> <%=  user.role %> </td>
   <td class="col-md-2 <%= user.status %>"> 
     <div class="user-status-text"><%= user.status.titleize %></div>
   </td>
