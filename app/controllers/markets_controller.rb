@@ -49,7 +49,7 @@ class MarketsController < ApplicationController
   end
 
   def list_user_markets
-    @markets = Market.find_all(@user).order_by(:created_date.desc).page(params[:page]).per(3)
+    @markets = @user.markets.order('id DESC').page(params[:page]).per(3)
   end
 
   def list_recommend_markets
