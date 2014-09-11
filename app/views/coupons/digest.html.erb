@@ -1,7 +1,26 @@
-<h1>Sold coupons of closed week markets</h1>
+<div class="panel panel-default panel-table panel-table-last">
+  <div class="panel-heading table-title">
+    Sold coupons of closed week markets
+  </div>
 
-<% @coupons.each do |coupon| %>
-  <p id="coupon-<%= coupon.id %>" > <span><%= coupon.description %></span> <%= link_to coupon.market.name, coupon.market %> 
-
-    <span class="total">Total: <%= coupon.transactions_total %></span></p> 
-<% end %>
+  <table class="table table-striped">
+    <tr>
+      <th class="col-md-5">Description</th>
+      <th class="col-md-4"><%= t(:market).capitalize %></th>
+      <th class="col-md-3">Total</th>
+    </tr>
+    <% @coupons.each do |coupon| %>
+      <tr id="coupon-<%= coupon.id %>">
+        <td>
+          <span><%= coupon.description %></span>
+        </td>
+        <td> 
+          <%= link_to coupon.market.name, coupon.market %>
+        </td>
+        <td>
+          <span class="total"><%= coupon.transactions_total %></span>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

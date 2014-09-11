@@ -35,8 +35,7 @@
 
         <%= current_user_dashboard_link("settings_path", t(:admin_data).capitalize, "fa-cogs") %>
 
-
-        <%= link_to "digest", last_transactions_path %>
+        <%= current_user_dashboard_link("last_transactions_path", "Digest", "fa-database") %>
 
       </div>
     </div>
