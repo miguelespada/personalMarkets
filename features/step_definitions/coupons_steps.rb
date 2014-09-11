@@ -131,30 +131,10 @@ Then(/^I should see the edited coupon in the market page$/) do
   expect(page).to have_content "10"
 end
 
-Then(/^I go to my coupons page$/) do
-  visit bought_coupons_by_user_path(@user)
-end
-
-Then(/^I should see the transaction information$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
 Then(/^I should see the locator of the coupon$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I log out$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I login as the owner of the market$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I should see the transaction information is the same$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content "Locator"
 end
 
 Then(/^I should not see the locator of the coupon$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to_not have_content "Locator"
 end
