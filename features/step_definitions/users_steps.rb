@@ -193,3 +193,34 @@ end
 Then(/^I should not be able to follow myself$/) do
   page.should_not have_css(".user-follow-icon")
 end
+
+Given(/^I am a new user with profile photo$/) do
+  step "I am a registered user with empty profile"
+  step "I sign in"
+end
+
+Then(/^I should see the notification of uncomplete profile in dashboard$/) do
+  visit user_dashboard_path(@user)
+  expect(page).to have_content 'Your profile is not complete. Please update your profile'
+end
+
+Then(/^I click the link to add nickname and description$/) do
+  click_on "update your profile"
+  fill_in "Nickname",  with: "Dummy Nickname"
+  fill_in "Description",  with: "New Dummy Bargain"
+  click_on "Update"
+end
+
+Then(/^I should be notified that my profile has been updated$/) do
+  expect(page).to have_content 'Your user was updated successfully'
+end
+
+Then(/^I should not be notified that I have not completed my profile$/) do
+  visit user_dashboard_path(@user)
+  expect(page).to_not have_content 'Your profile is not complete. Please update your profile'
+end
+
+Given(/^I am a user without profile photo$/) do
+  step "I am a registered user without featured photo"
+  step "I sign in"
+end

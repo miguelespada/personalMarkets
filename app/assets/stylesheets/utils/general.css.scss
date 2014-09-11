@@ -129,3 +129,18 @@ footer {
 .premium-star{
   color:$colPremiumStar;
 }
+
+.alert-danger{
+  strong{
+    a{
+      color: #a94442;
+      &:hover, &:active{
+        text-decoration: underline;
+        color: darken($colBrand, 30%);
+      }
+      &:visited{
+        text-decoration: none;
+      }
+    }
+  }
+}

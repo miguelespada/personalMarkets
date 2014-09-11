@@ -4,6 +4,8 @@ FactoryGirl.define do
     password               "password"
     password_confirmation  "password"
 
+    association :featured, factory: :photo
+    
     trait :normal do
         after(:create) { |user| user.update_role(:normal)}
     end

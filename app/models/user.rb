@@ -289,6 +289,11 @@ class User
     false
   end
 
+  def profile_completed?
+    return true if !self.nickname.blank? && !self.featured.blank? && !self.description.blank?
+    false
+  end
+
   private
 
   def self.create_with email

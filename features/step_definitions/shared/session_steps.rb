@@ -17,6 +17,14 @@ Given(/^I am a registered user$/) do
   @user = create(:user, :email => "dummy@gmail.com", :nickname => "Dummy User")
 end
 
+Given(/^I am a registered user with empty profile$/) do
+  @user = create(:user, :email => "dummy@gmail.com")
+end
+
+Given(/^I am a registered user without featured photo$/) do
+  @user = create(:user, :email => "dummy@gmail.com", :featured => nil)
+end
+
 Given(/^I sign in$/) do
   log_in_as @user
 end
