@@ -52,6 +52,11 @@ When(/^I sign out$/) do
   click_on "Sign out"
 end
 
+When(/^the admin sign out$/) do
+  find_by_id("nav_user_name").click
+  click_on "Sign out"
+end
+
 Given(/^I log in as the first user$/) do
   log_in_as @user_0
 end

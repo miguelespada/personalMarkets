@@ -120,6 +120,15 @@ Then(/^he is premium$/) do
   expect(page).to have_css '.premium-star'
 end
 
+Given(/^an admin made me premium$/) do
+  step "I am logged in as an admin"
+  step "A normal user"
+  visit change_user_role_path @user
+  click_on "Make pro"
+  step "the admin sign out"
+  step "I sign in"
+end
+
 When(/^I cancel my subscription$/) do
   visit user_subscription_plan_path @user
   click_on "Unsubscribe"
