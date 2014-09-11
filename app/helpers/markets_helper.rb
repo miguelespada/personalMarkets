@@ -7,10 +7,6 @@ module MarketsHelper
     end
   end
 
-  def save_and_publish_button(form, market)
-    form.button :submit, I18n.t("market_form.update_and_publish_market"), class: 'btn btn-info', id: 'save-and-publish-button'
-  end
-
   def market_calendar(market)
     return if !market.has_date? 
 
