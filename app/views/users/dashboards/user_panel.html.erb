@@ -1,5 +1,16 @@
 <%= page_title(user_role(current_user), "fa-dashboard") %>
 
+<% if !current_user.profile_completed? %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 center alert alert-danger flash">
+      <%= t(:profile_not_complete) %>
+      <strong>
+        <%= link_to t(:complete_your_profile), edit_user_path(current_user) %>
+      </strong>
+    </div>
+  </div>
+<% end %>
+
 <div class="container main-container">
   <div class="panel-body">
     <div class="row">

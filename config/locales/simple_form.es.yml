@@ -369,3 +369,5 @@ es:
   drafts: "borradores"
   each_user_can_have: "Cada usuario puede tener"
   only: "como máximo"
+  profile_not_complete: "Tu perfil no está completo. Por favor,"
+  complete_your_profile: "actualizar tu perfil"

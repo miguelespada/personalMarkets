@@ -280,13 +280,15 @@ class User
   end
 
   def too_many_wishes?
-    return true if self.wishes.count >= 10
-    false
+    return self.wishes.count >= 10
   end
 
   def too_many_bargains?
-    return true if self.bargains.count >= 10
-    false
+    return self.bargains.count >= 10
+  end
+
+  def profile_completed?
+    return !self.nickname.blank? && !self.featured.blank? && !self.description.blank?
   end
 
   private

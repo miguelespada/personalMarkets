@@ -370,3 +370,5 @@ en:
   drafts: "drafts"
   each_user_can_have: "Each user can have"
   only: "only"
+  profile_not_complete: "Your profile is not complete. Please"
+  complete_your_profile: "update your profile"
