@@ -215,7 +215,7 @@ Then(/^I should be notified that my profile has been updated$/) do
   expect(page).to have_content 'Your user was updated successfully'
 end
 
-Then(/^I should not be notified that I have not completed my profile$/) do
+Then(/^I should not see the notification of uncomplete profile in dashboard$/) do
   visit user_dashboard_path(@user)
   expect(page).to_not have_content 'Your profile is not complete. Please update your profile'
 end

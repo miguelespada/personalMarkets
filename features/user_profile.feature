@@ -8,7 +8,7 @@ Feature: User profile
     Then I should see the notification of uncomplete profile in dashboard
     And I click the link to add nickname and description
     Then I should be notified that my profile has been updated
-    And I should not be notified that I have not completed my profile
+    And I should not see the notification of uncomplete profile in dashboard
 
   Scenario: User profile no photo dashboard notification
     Given I am a user without profile photo
