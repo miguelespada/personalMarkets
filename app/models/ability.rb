@@ -95,7 +95,7 @@ class Ability
       can :admin, Market
       can [:manage], SlideshowImage
       can [:manage], SlideshowText
-
+      can :digest, Coupon
       can :see_localizador, CouponTransaction
 
     end

@@ -24,7 +24,9 @@ class CouponsController < ApplicationController
   end
 
   def digest
+    authorize! :digest, Coupon
     @coupons = Coupon.all.collect{|coupon| coupon if coupon.market.passed? }.compact.uniq
+    @coupons = Kaminari.paginate_array(@coupons).page(params[:page]).per(6)
   end
   
   def buy
