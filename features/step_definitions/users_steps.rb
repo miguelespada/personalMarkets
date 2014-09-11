@@ -216,7 +216,7 @@ end
 Then(/^I click the link to add nickname and description$/) do
   click_on "update your profile"
   fill_in "Nickname",  with: "Dummy Nickname"
-  fill_in "Description",  with: "New Dummy Bargain"
+  fill_in "Description",  with: "Dummy Description"
   click_on "Update"
 end
 
@@ -232,4 +232,17 @@ end
 Given(/^I am a user without profile photo$/) do
   step "I am a registered user without featured photo"
   step "I sign in"
+end
+
+Then(/^I change my nickname and description$/) do
+  visit edit_user_path(@user)
+  fill_in "Nickname",  with: "New Dummy Nickname"
+  fill_in "Description",  with: "New Dummy Description"
+  click_on "Update"
+end
+
+Then(/^I should see my new profile data$/) do
+  visit user_path(@user)
+  expect(page).to have_content "New Dummy Nickname"
+  expect(page).to have_content "New Dummy Description"
 end

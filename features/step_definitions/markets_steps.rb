@@ -436,9 +436,29 @@ Then(/^I should see the coupon I added$/) do
   expect(page).to have_content "10"
   expect(page).to have_content "20"
 end
+
 Then(/^I make it VIM$/) do
   find(".pro-icon").click
   step "he needs to introduce his credit card data"
   find_by_id("accept_terms").click
   click_on "Pay"
+end
+
+Given(/^I have four drafts$/) do
+  4.times do
+    step "I have a draft market"
+  end
+end
+
+Given(/^I add a draft market$/) do
+  step "I create a market"
+end
+
+When(/^I try to add another market$/) do
+  find(".add_market_button").click
+  click_on("Open a Market")
+end
+
+Then(/^I should be notified that I can have five drafts only$/) do
+  expect(page).to have_content "Currently you have 5 drafts. Each user can have 5 drafts only"
 end
