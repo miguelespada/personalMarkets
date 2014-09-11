@@ -14,12 +14,14 @@ Feature: Buy market coupon
     When I buy some coupons
     Then I should be notified that the coupons has been bought
     And I should see the coupon transactions in my coupon transactions
+    And I should see the locator of the coupon
 
   Scenario:
     When I buy some coupons
     Then I should be notified that the coupons has been bought
     Then I sign in as the market owner  
     Then I should see the coupon transactions in the market transactions
+    And I should not see the locator of the coupon
 
   @buy_coupon 
   Scenario: Buy no available a coupon

@@ -2,8 +2,12 @@ When(/^I go to Markets$/) do
   visit published_markets_path
 end
 
-Given(/^I go to Tag list$/) do
-    visit tags_path
+Given(/^I go to tag gallery$/) do
+  visit tags_gallery_path
+end
+
+Given(/^I go to tag list$/) do
+  visit tags_path
 end
 
 Given(/^I go to Search$/) do

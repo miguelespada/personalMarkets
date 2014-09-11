@@ -26,6 +26,11 @@ Feature: Manage tags
 
   @javascript @browse_by_tag
   Scenario: Browse markets by tag
-    When There is a market with a suggsested tag
+    When There is a market with a suggested tag
     And I browse the tag
     Then I should see the market tagged with the tag
+
+  Scenario: Browse markets by other tag
+    When There is a market with a suggested tag
+    And I browse another tag
+    Then I should not see the market tagged with the tag

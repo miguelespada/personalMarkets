@@ -130,3 +130,11 @@ Then(/^I should see the edited coupon in the market page$/) do
   expect(page).to have_content "20"
   expect(page).to have_content "10"
 end
+
+Then(/^I should see the locator of the coupon$/) do
+  expect(page).to have_content "Locator"
+end
+
+Then(/^I should not see the locator of the coupon$/) do
+  expect(page).to_not have_content "Locator"
+end
