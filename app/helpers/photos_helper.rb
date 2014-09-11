@@ -29,14 +29,14 @@ module PhotosHelper
   end
 
   def photographic_link(photo)
-    if !photo.photographic.nil?
+    if !photo.photographic.nil? && (can? :edit, photo)
       link_to content_tag(:i, "", class: "fa fa-external-link-square"), photo.photographic, 
       class: "btn btn-warning table-button btn-xs photo-action"
     end
   end
 
   def delete_photo_link(photo)
-    if !photo.photographic.nil?
+    if !photo.photographic.nil? && (can? :edit, photo)
       link_to content_tag(:i, "", class: "fa fa-trash-o"), photo, :method => :delete, 
         class: "delete btn btn-danger btn-xs photo-action", data:{ confirm: 'Are you sure?'}
     end

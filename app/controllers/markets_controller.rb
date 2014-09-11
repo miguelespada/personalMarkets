@@ -114,8 +114,7 @@ class MarketsController < ApplicationController
       @market = domain.initialize_market
       @market.user = current_user
       @market.pro = true if current_user.is_premium?
-      3.times {@market.gallery.photographies << Photo.new}
-      9.times {@market.gallery.photographies << Photo.new} if @market.pro?
+      @market.intialize_photo_gallery
     end
   end
 
@@ -153,12 +152,8 @@ class MarketsController < ApplicationController
   
   def edit
     @market = domain.get_market params[:id]
-    if @market.pro? && @market.gallery.photographies.count == 3
-      9.times {@market.gallery.photographies << Photo.new}
-    end
-    if @market.pro? && @market.coupon == nil
-      @market.coupon = Coupon.new
-    end
+    @market.initialize_photo_gallery
+    @market.initialize_coupon
   end
 
   def user_markets_succeeded markets

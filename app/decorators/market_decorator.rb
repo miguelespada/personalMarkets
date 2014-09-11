@@ -157,7 +157,7 @@ class MarketDecorator < Draper::Decorator
   end
 
   def facebook_text
-    "https://www.facebook.com/sharer/sharer.php?s=100"
+    "https://www.facebook.com/sharer/sharer.php?url=#{short_url}"
   end
 
   ##### LINKS #####

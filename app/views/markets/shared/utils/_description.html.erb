@@ -20,7 +20,7 @@
 
 <% if market.has_prices? %>
   <strong> <%= t(:prices).capitalize %>:</strong>
-  <%= market.min_price %> € - <%= market.max_price %> € 
+  <%= market.min_price.to_i || 0 %> € - <%= market.max_price.to_i %> € 
   <%= market.direct_edit_link("form-market-prices") %>
   <br>
 <% end %>

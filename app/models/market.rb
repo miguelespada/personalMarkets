@@ -68,11 +68,25 @@ class Market
   end
 
   def create_coupon!(params)
-      raise "Coupon already exists." if has_coupon?
-      self.coupon = Coupon.new(params)
-      save!
+    raise "Coupon already exists." if has_coupon?
+    self.coupon = Coupon.new(params)
+    save!
   end
 
+  def initialize_photo_gallery
+    if gallery.photographies == nil || gallery.count == 0
+      3.times {gallery.photographies << Photo.new}
+    end 
+    if pro? && gallery.count == 3
+      9.times {gallery.photographies << Photo.new}
+    end
+  end
+
+  def initialize_coupon
+    if pro? && !has_coupon?
+      coupon = Coupon.new
+    end
+  end
 
   ####### MARKET FRIENDLY ID  ########
     def to_param
