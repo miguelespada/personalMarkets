@@ -51,4 +51,13 @@ class Coupon
   def filled?
     description != nil && description != "" && available != nil && price != nil && !photography.empty?
   end
+
+  def transactions_total
+    total = 0
+    transactions.each do |transaction|
+      total += (transaction.number * price)
+    end
+    total
+  end
+
 end

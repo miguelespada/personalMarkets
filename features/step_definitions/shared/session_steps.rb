@@ -48,6 +48,10 @@ Given(/^I log in as the first user$/) do
   log_in_as @user_0
 end
 
+Given(/^I log in as the second user$/) do
+  log_in_as @user_1
+end
+
 Given(/^I sign in as the other user$/) do
   log_in_as @user_1
 end

@@ -138,3 +138,40 @@ end
 Then(/^I should not see the locator of the coupon$/) do
   expect(page).to_not have_content "Locator"
 end
+
+
+Given(/^Some users buy coupons$/) do
+  step "I am logged in"
+  step "There is a market with available coupons"
+  step "I buy some coupons"
+  step "I should be notified that the coupons has been bought"
+  visit "/users/sign_out"
+
+  @user2 = create(:user, :admin, :email => "dummy2@gmail.com")
+  log_in_as @user2
+  step "I buy some coupons"
+  step "I should be notified that the coupons has been bought"
+  step "I should see the coupon transactions in my coupon transactions"
+  visit "/users/sign_out"
+
+end
+
+Then(/^The market finishes$/) do
+  @market.schedule = 1.day.ago.strftime("%d/%m/%Y")
+  @market.publish_date = 2.days.ago
+  @market.save!
+end
+
+Then(/^As admin I can see the transactions digest$/) do
+  @admin = create(:user, :admin, :email => "admin@gmail.com")
+  visit "/"
+  log_in_as @admin
+  visit last_transactions_path
+  expect(page).to have_content "Sold coupons of closed week markets"
+  within(:css, "#coupon-#{@market.coupon.id} .total") do
+    expect(page).to have_content 40
+  end
+end
+
+
+
