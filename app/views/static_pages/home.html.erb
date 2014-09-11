@@ -1,14 +1,16 @@
 <div class="main-container">
-  <section id="slideshow" >
-    <div id="slides" >
-      <%  SlideshowImage.all.each do |slideshow| %>
-        <%=  cl_image_tag(slideshow.photography.photo.path, {quality: "50" } ) %>
-      <% end %> 
-    </div>
+  <% if !mobile_device? %>
+    <section id="slideshow" >
+      <div id="slides" >
+        <%  SlideshowImage.all.each do |slideshow| %>
+          <%=  cl_image_tag(slideshow.photography.photo.path, {quality: "50" } ) %>
+        <% end %> 
+      </div>
 
-    <div id="slideshow_titles" class="center" >
-    </div>
-  </section>
+      <div id="slideshow_titles" class="center hidden-xs" >
+      </div>
+    </section>
+  <% end %>
 
   <div id="latest_markets" >
   </div>
@@ -36,10 +38,4 @@
 
   var titlesArray = "<%= SlideshowText.title_list(params['language']) %>".split(";") ;
   var subtitlesArray =  "<%= SlideshowText.subtitle_list(params['language']) %>".split(";");
-
-
-  if (window.innerWidth < 768) {
-      $('#slideshow').remove();
-  }
-
 </script>

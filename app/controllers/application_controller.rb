@@ -25,4 +25,16 @@ class ApplicationController < ActionController::Base
     # logger.debug "default_url_options is passed options: #{options.inspect}\n"
     { language: I18n.locale }
   end
+
+  private
+    def mobile_device?
+      if session[:mobile_param]
+        session[:mobile_param] == "1"
+      else
+        request.user_agent =~ /Mobile|webOS/
+      end
+    end
+    helper_method :mobile_device?
+
+ 
 end
