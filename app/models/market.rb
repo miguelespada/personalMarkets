@@ -73,6 +73,15 @@ class Market
       save!
   end
 
+  def initialize_photo_gallery
+    if gallery.photographies == nil || gallery.photographies.count == 0
+      3.times {gallery.photographies << Photo.new}
+    end 
+
+    if pro? && gallery.photographies.count == 3
+        9.times {gallery.photographies << Photo.new}
+    end
+  end
 
   ####### MARKET FRIENDLY ID  ########
     def to_param
