@@ -125,7 +125,7 @@ Given(/^an admin made me premium$/) do
   step "A normal user"
   visit change_user_role_path @user
   click_on "Make pro"
-  step "the admin sign out"
+  step "I sign out"
   step "I sign in"
 end
 

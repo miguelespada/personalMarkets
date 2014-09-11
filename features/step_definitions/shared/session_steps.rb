@@ -48,11 +48,6 @@ Given(/^I am a premium user$/) do
 end
 
 When(/^I sign out$/) do
-  click_on @user.email
-  click_on "Sign out"
-end
-
-When(/^the admin sign out$/) do
   find_by_id("nav_user_name").click
   click_on "Sign out"
 end
