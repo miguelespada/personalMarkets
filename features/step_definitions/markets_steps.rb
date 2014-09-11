@@ -436,3 +436,9 @@ Then(/^I should see the coupon I added$/) do
   expect(page).to have_content "10"
   expect(page).to have_content "20"
 end
+Then(/^I make it VIM$/) do
+  find(".pro-icon").click
+  step "he needs to introduce his credit card data"
+  find_by_id("accept_terms").click
+  click_on "Pay"
+end
