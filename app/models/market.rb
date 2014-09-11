@@ -84,7 +84,7 @@ class Market
 
   def initialize_coupon
     if pro? && !has_coupon?
-      coupon = Coupon.new
+      self.coupon = Coupon.new
     end
   end
 
