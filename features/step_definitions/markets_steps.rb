@@ -462,3 +462,13 @@ end
 Then(/^I should be notified that I can have five drafts only$/) do
   expect(page).to have_content "Currently you have 5 drafts. Each user can have 5 drafts only"
 end
+
+When(/^I visit the market$/) do
+  visit market_path @market
+end
+
+Then(/^I should be able to see the stats$/) do
+  click_on "Stats"
+  expect(page).to have_content "Visits"
+  expect(page).to_not have_content "Sorry! Only VIM markets have statistics."
+end
