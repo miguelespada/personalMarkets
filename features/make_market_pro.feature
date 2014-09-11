@@ -1,6 +1,6 @@
 @market_pro
 @javascript
-Feature: Make a market PRO
+Feature: Make a market VIM
   As a registered user
   I want to make a market PRO
   In order to be able to show its coupons

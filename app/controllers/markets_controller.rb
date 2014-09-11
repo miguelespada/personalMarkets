@@ -114,7 +114,7 @@ class MarketsController < ApplicationController
       @market = domain.initialize_market
       @market.user = current_user
       @market.pro = true if current_user.is_premium?
-      @market.intialize_photo_gallery
+      @market.initialize_photo_gallery
     end
   end
 

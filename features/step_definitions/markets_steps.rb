@@ -425,8 +425,20 @@ Then(/^I should be able to add a coupon for the market$/) do
   page.should_not have_css("#form-link-coupon.disabled")
 end
 
+Then(/^I should be able to create a vim gallery$/) do
+  find_by_id('form-link-gallery').click
+  page.should have_selector(".photo-upload", :count => 12)
+end
+
+
 Then(/^I should see the coupon I added$/) do
   expect(page).to have_content "My dummy coupon"
   expect(page).to have_content "10"
   expect(page).to have_content "20"
+end
+Then(/^I make it VIM$/) do
+  find(".pro-icon").click
+  step "he needs to introduce his credit card data"
+  find_by_id("accept_terms").click
+  click_on "Pay"
 end
