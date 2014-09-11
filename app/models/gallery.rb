@@ -17,4 +17,8 @@ class Gallery
     self.photographies.select{ |photo| photo.present? }.size
   end
 
+  def count
+    self.photographies.size
+  end
+
 end

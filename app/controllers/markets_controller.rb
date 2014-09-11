@@ -152,10 +152,8 @@ class MarketsController < ApplicationController
   
   def edit
     @market = domain.get_market params[:id]
-    @market.intialize_photo_gallery
-    if @market.pro? && @market.coupon == nil
-      @market.coupon = Coupon.new
-    end
+    @market.initialize_photo_gallery
+    @market.initialize_coupon
   end
 
   def user_markets_succeeded markets
