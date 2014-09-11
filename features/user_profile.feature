@@ -16,3 +16,10 @@ Feature: User profile
     And I click the link to add nickname and description
     Then I should be notified that my profile has been updated
     And I should see the notification of uncomplete profile in dashboard
+
+  @edit_profile
+  Scenario: Edit profile
+    Given I am logged in
+    Then I change my nickname and description
+    Then I should be notified that my profile has been updated
+    And I should see my new profile data
