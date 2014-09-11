@@ -22,6 +22,10 @@ class CouponsController < ApplicationController
   def show
     redirect_to market_path(@coupon.market, :anchor => "coupon")
   end
+
+  def digest
+    @coupons = Coupon.all.collect{|coupon| coupon if coupon.market.passed? }.compact.uniq
+  end
   
   def buy
     payment = Payment.for payment_params

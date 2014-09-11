@@ -1,5 +1,6 @@
 @coupons 
 @javascript
+@buy_coupon 
 
 Feature: Buy market coupon
   In order to get extra services from a market
@@ -23,7 +24,6 @@ Feature: Buy market coupon
     Then I should see the coupon transactions in the market transactions
     And I should not see the locator of the coupon
 
-  @buy_coupon 
   Scenario: Buy no available a coupon
       When All the coupons are sold
       Then I should see that the coupon sold out

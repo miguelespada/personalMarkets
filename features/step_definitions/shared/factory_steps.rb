@@ -67,6 +67,13 @@ Given(/^There is a market with available coupons$/) do
   @coupon.save
 end
 
+Given(/^There is another market with available coupons$/) do
+  @coupon = create(:coupon)
+  @another_market = create(:market, :coupon => @coupon)
+  @coupon.market = @another_market
+  @coupon.save
+end
+
 Given(/^There is someone else's market$/) do
   @market = create(:market, 
       :latitude => "40", 

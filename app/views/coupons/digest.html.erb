@@ -1,0 +1,7 @@
+<h1>Sold coupons of closed week markets</h1>
+
+<% @coupons.each do |coupon| %>
+  <p id="coupon-<%= coupon.id %>" > <span><%= coupon.description %></span> <%= link_to coupon.market.name, coupon.market %> 
+
+    <span class="total">Total: <%= coupon.transactions_total %></span></p> 
+<% end %>

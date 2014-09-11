@@ -84,6 +84,7 @@ PopUpStores::Application.routes.draw do
     get "coupons/buy_coupon_form/:id", to: "coupons#buy_coupon_form", as: "buy_coupon_form"
     get "/coupons/gallery", to: "coupons#gallery", as: "coupons_gallery"
     get "/coupons/localizador/:transaction_id", to: "coupons#localizador", as: "localizador"
+    get "coupons/digest", to:"coupons#digest", as: "last_transactions"
     resources :coupons, :only => [:show, :index] do
       post :coupon_payment, :on => :member
     end
