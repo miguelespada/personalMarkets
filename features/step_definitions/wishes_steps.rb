@@ -64,4 +64,17 @@ Then(/^I can recommend a market to a wish$/) do
   end
 end
 
+Given(/^I have nine wishes$/) do
+  9.times do
+    step "There are some wishes"
+  end
+end
 
+When(/^I try to add another wish$/) do
+  step "I go to my wishlist"
+  find('.new').click 
+end
+
+Then(/^I should be notified that I can have ten wishes only$/) do
+  expect(page).to have_content "Currently you have 10 wishes. Each user can have 10 wishes only"
+end

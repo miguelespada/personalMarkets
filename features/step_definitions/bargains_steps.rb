@@ -50,5 +50,19 @@ end
 Then(/^I should be able to comment the bargain$/) do
   page.has_css?('fb-comments')
   page.has_css?('fb-like')
+end
 
+Given(/^I have nine bargains$/) do
+  9.times do
+    step "There are some bargains"
+  end
+end
+
+When(/^I try to add another bargain$/) do
+  step "I go to my bargain list"
+  find('.new').click
+end
+
+Then(/^I should be notified that I can have ten bargains only$/) do
+  expect(page).to have_content "Currently you have 10 bargains. Each user can have 10 bargains only"
 end
