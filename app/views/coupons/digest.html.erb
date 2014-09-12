@@ -3,12 +3,20 @@
     Sold coupons of closed markets
   </div>
 
+<% page = params['page'] || 1 %>
+
+
+<div class="center">
+  <%= link_to "<", last_transactions_path(:page => page.to_i - 1) if !@first_page %>
+  <%= link_to ">",  last_transactions_path(:page => page.to_i + 1) if !@last_page %>
+</div>
+
   <table class="table table-striped">
     <tr>
-      <th class="col-md-2">Coupon Transactions</th>
-      <th class="col-md-2">Market last date</th>
+      <th class="col-md-1">Coupon Transactions</th>
+      <th class="col-md-3">Market dates</th>
       <th class="col-md-2"><%= t(:market).capitalize %></th>
-      <th class="col-md-2"><%= t(:user).capitalize %></th>
+      <th class="col-md-2"><%= t(:owner).capitalize %></th>
       <th class="col-md-2">Total</th>
     </tr>
     <% @coupons.each do |coupon| %>
@@ -17,7 +25,7 @@
           <%= link_to coupon.description, sold_coupons_by_market_path(coupon.market) %>
         </td>
         <td>
-          <%= coupon.market.last_date %>
+          <%= coupon.market.date %>
         </td>
         <td> 
           <%= link_to coupon.market.name, coupon.market %>
@@ -31,7 +39,4 @@
       </tr>
     <% end %>
   </table>
-</div>
-<div class="paginate">
-  <%= paginate @coupons %>
 </div>

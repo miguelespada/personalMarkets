@@ -119,6 +119,8 @@ class Market
         state: state,
         ongoing: ongoing?,
         with_coupon: has_coupon?,  
+        published: has_been_published?,
+        passed: passed?,  
         lat_lon: lat_lon
       }.to_json
   end
@@ -153,6 +155,7 @@ class Market
     return {:markets => [], :total => 0} if Market.count == 0 
 
     query = params[:query].blank? ? '*' : params[:query].gsub(/[\!]/, '')
+    date_order = params[:reverse].blank? ? 'asc' : 'desc'
     page ||= 1
     page = 1 if page < 1
     range = format_range_query(params[:from], params[:to])
@@ -175,7 +178,7 @@ class Market
             order: 'asc',   
             unit: 'km'} if !location.blank?
         by :date, {
-          order: 'asc'
+          order: date_order
         }
       end 
       filter :terms, category: [category] if !category.blank?
@@ -183,6 +186,8 @@ class Market
       filter :terms, state: ["published"]
       filter :terms, with_coupon: ["true"] if !params[:with_coupon].blank?
       filter :terms, ongoing: ["true"] if !params[:ongoing].blank?
+      filter :terms, passed: ["true"] if !params[:passed].blank?
+      filter :terms, published: ["true"] if !params[:published].blank?
       search_size = per_page
       from (page - 1) * search_size
       size search_size
