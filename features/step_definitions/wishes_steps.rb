@@ -64,6 +64,18 @@ Then(/^I can recommend a market to a wish$/) do
   end
 end
 
+Then(/^I can recommend the next market in the list to a wish$/) do
+  within(:css, ".recommend-items") do
+    find_by_id("next-markets").click
+  end
+
+  click_on "Recommend"
+
+  within(:css, ".recomendations") do
+    expect(page).to have_content @market_1.name
+  end
+end
+
 Given(/^I have nine wishes$/) do
   9.times do
     step "There are some wishes"

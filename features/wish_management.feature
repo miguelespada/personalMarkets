@@ -32,3 +32,10 @@ Feature: Manage wishes
     And There are some published markets
     When I got to a wish page
     Then I can recommend a market to a wish
+
+  @javascript @recommend_next_market
+  Scenario: Recommend next market
+    When There are some wishes
+    And There are some published markets
+    When I got to a wish page
+    Then I can recommend the next market in the list to a wish
