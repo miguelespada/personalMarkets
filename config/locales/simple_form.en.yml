@@ -177,7 +177,6 @@ en:
   who_liked: "Who liked?"
   market: "market"
   market_form:
-    update_and_publish_market: "Update and publish market"
     discard_changes: "If continued, you will lose all your unsaved changes"
     market_name_cannot_be_empty: "The name of the market cannot be empty"
     remember_to_publish: 'After saving, remember to publish your market to make it visible.'

@@ -338,15 +338,10 @@
     </div>
   </div>
 
-  <%= f.button :submit, class: 'btn', id: 'market-save-button' %>
-          
-    <% if params[:action] == "edit" %>
-      <%= save_and_publish_button(f, market) %>
-    <% else %>
-      <div class="center tip">
-        <%= t('market_form.remember_to_publish') %>
-      </div>
-    <% end %>
+  <%= f.button :submit, class: 'btn', id: 'market-save-button' %>  
+    <div class="center tip">
+      <%= t('market_form.remember_to_publish') %>
+    </div>
   <% end %>
 </div>
 

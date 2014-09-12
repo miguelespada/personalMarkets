@@ -196,7 +196,6 @@ es:
   who_liked: "¿A quién le gusta?"
   market: "market"
   market_form:
-    update_and_publish_market: "Actualizar y publicar"
     discard_changes: "Si continuas perderás todos los cambios"
     market_name_cannot_be_empty: "El nombre del Market es obligatorio"
     remember_to_publish: 'Una vez guardado, deberas "Publicar" tu Market para que sea visible.'
