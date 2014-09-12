@@ -1,24 +1,40 @@
 <div class="panel panel-default panel-table panel-table-last">
   <div class="panel-heading table-title">
-    Sold coupons of closed week markets
+    Sold coupons of closed markets
   </div>
+
+<% page = params['page'] || 1 %>
+
+
+<div class="center">
+  <%= link_to "<", last_transactions_path(:page => page.to_i - 1) if !@first_page %>
+  <%= link_to ">",  last_transactions_path(:page => page.to_i + 1) if !@last_page %>
+</div>
 
   <table class="table table-striped">
     <tr>
-      <th class="col-md-5">Description</th>
-      <th class="col-md-4"><%= t(:market).capitalize %></th>
-      <th class="col-md-3">Total</th>
+      <th class="col-md-1">Coupon Transactions</th>
+      <th class="col-md-3">Market dates</th>
+      <th class="col-md-2"><%= t(:market).capitalize %></th>
+      <th class="col-md-2"><%= t(:owner).capitalize %></th>
+      <th class="col-md-2">Total</th>
     </tr>
     <% @coupons.each do |coupon| %>
       <tr id="coupon-<%= coupon.id %>">
         <td>
-          <span><%= coupon.description %></span>
+          <%= link_to coupon.description, sold_coupons_by_market_path(coupon.market) %>
+        </td>
+        <td>
+          <%= coupon.market.date %>
         </td>
         <td> 
           <%= link_to coupon.market.name, coupon.market %>
         </td>
-        <td>
-          <span class="total"><%= coupon.transactions_total %></span>
+        <td> 
+          <%= link_to coupon.market.user.email, coupon.market.user %>
+        </td>
+        <td class="total">
+          <%= coupon.transactions_total %> €
         </td>
       </tr>
     <% end %>

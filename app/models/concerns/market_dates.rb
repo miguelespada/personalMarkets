@@ -7,12 +7,13 @@ module MarketDates
     def passed?
       return false if !self.has_date? 
       self.date.split(',').each do |day|
-        return false if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i >= 0
+        return false if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i > 0
       end
       return true
     rescue
       false
     end
+
 
     def started?
       return false if !self.has_date? 

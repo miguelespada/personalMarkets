@@ -116,6 +116,10 @@ module MarketStatus
       self.state == "published"
     end
 
+    def ongoing?
+      published? && running?
+    end
+
     def archived?
       self.state == "archived"
     end
