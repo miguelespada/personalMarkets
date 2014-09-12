@@ -48,7 +48,7 @@ class Market
 
   validates_presence_of :name, :user
 
-  scope :last_pro_published, lambda {where(state: "published").where(pro: :true).order_by(:published_date.desc).limit(6) }
+  scope :last_pro_published, lambda {where(state: "published").where(pro: :true).order_by(:publish_date.desc).limit(6) }
   scope :last_published, lambda { where(state: "published").order_by(:publish_date.desc).limit(6) }
   scope :published, lambda {where(state: "published").order_by(:publish_date.desc)}
   scope :vim, lambda {where(pro: :true).order_by(:publish_date.desc)}

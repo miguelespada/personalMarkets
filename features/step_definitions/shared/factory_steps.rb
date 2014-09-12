@@ -30,6 +30,7 @@ Given(/^There are some published markets$/) do
       :city => "barcelona",
       :category => @category,
       :schedule=> Time.now.next_month.strftime("%d/%m/%Y"),
+      :publish_date => 1.day.ago,
       :state => :published)
   @market_1 = create(:market, 
       :latitude => "43", 
@@ -38,6 +39,7 @@ Given(/^There are some published markets$/) do
       :city => "madrid",
       :category => @category_1,
       :schedule => Time.now.strftime("%d/%m/%Y"),
+      :publish_date => 2.days.ago,
       :state => :published)
   @market_2 = create(:market, 
       :latitude => "43", 
@@ -46,6 +48,7 @@ Given(/^There are some published markets$/) do
       :city => "madrid",
       :category => @category,
       :schedule => Time.now.strftime("%d/%m/%Y"),
+      :publish_date => 3.days.ago,
       :state => :published)
   Market.reindex
 end
