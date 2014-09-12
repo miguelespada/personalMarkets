@@ -66,3 +66,19 @@ Then(/^I should see the category with map and glyph in the category list$/) do
  # expect(page).to have_css('button[style*=background-color:#123456')
 end
 
+Given(/^There are some markets with the categories$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I click on a category on the home page$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should see all the available markets of this category$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should see that the filter button of this category is selected$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
