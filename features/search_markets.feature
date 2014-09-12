@@ -30,7 +30,6 @@ Feature: Browse markets
    @javascript @my_location_filter
   Scenario: Filter by my location
     When I allow geolocation
-    And I can search by my location
     Then I search by my location
     Then I should see that my location is selected
     And I should see the markets near to me ordered by distance

@@ -101,11 +101,7 @@ When(/^I allow geolocation$/) do
   page.execute_script('$("#location_location_id").append(\'<option value="My location">My location</option>\');')
 end
 
-When(/^I can search by my location$/) do
-  page.should have_content "Near to me"
-end
-
-Then(/^I search by my location$/) do
+When(/^I search by my location$/) do
   click_on "Near to me"
 end
 
