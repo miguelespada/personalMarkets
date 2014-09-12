@@ -472,3 +472,57 @@ Then(/^I should be able to see the stats$/) do
   expect(page).to have_content "Visits"
   expect(page).to_not have_content "Sorry! Only VIM markets have statistics."
 end
+
+Then(/^I should see that I have not created any markets during last month$/) do
+  visit user_path(@user)
+  expect(page).to have_content "You have published 0 market(s) during last month"
+end
+
+Then(/^I should see that I can still create one market$/) do
+  expect(page).to have_content "You can publish 1 market(s)"
+end
+
+Then(/^I create and publish a market$/) do
+  @market = create(:market, :user => @user, :name => "Dummy Market")
+  @user.markets << @market
+  @market.publish
+end
+
+Then(/^I should see that I have to wait a month to create another market$/) do
+  visit user_path(@user)
+  expect(page).to have_content "You have to wait 30 days to create new markets"
+end
+
+Given(/^I have created three markets within one month$/) do
+  @market_1 = create(:market, 
+    :user => @user, 
+    :name => "Dummy Market 1",
+    :state => :published,
+    :publish_date => 27.days.ago
+    )
+  @market_2 = create(:market, 
+    :user => @user, 
+    :name => "Dummy Market 1",
+    :state => :published,
+    :publish_date => 20.days.ago
+    )
+  @market_3 = create(:market, 
+    :user => @user, 
+    :name => "Dummy Market 1",
+    :state => :published,
+    :publish_date => 12.days.ago
+    )
+  @user.markets << @market_1
+  @user.markets << @market_2
+  @user.markets << @market_3
+end
+
+Then(/^I should see that I have three markets during last month$/) do
+  visit user_path(@user)
+  expect(page).to have_content "You have published 3 market(s) during last month"
+end
+
+Then(/^I should see that I have to wait until the first market passed to create market$/) do
+  visit user_path(@user)
+  expect(page).to have_content "You have to wait 4 days to create new markets"
+end
