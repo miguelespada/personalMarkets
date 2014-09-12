@@ -15,7 +15,7 @@
 .get-token{
   background-color: #f38286;
   border:1px solid lighten($colBrand, 20%);
-  &:hover{
+  &:hover, &:active{
     background-color: saturate($colBrand, 20%);
     border:1px solid $colBrand;
   }

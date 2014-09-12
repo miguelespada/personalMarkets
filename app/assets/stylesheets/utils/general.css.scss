@@ -144,3 +144,42 @@ footer {
     }
   }
 }
+
+#openglobal_privacy_widget{
+  display: inline; 
+  text-align: center; 
+  font-size: 14px; 
+  font-weight: 200; 
+  position: fixed; 
+  top: 0;
+  right: 0; 
+  margin: 65px 15px 0px auto; 
+  padding: 5px 5px 5px 8px; 
+  background: rgba(255, 255, 255, 0.9); 
+  z-index: 10000;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  a{
+    color: $colBrand;
+    &:hover, &:active{
+      text-decoration: underline;
+      color: darken($colBrand, 30%);
+    }
+    &:visited{
+      text-decoration: none;
+    }
+  }
+  button{
+    background-color: #f38286;
+    border:1px solid lighten($colBrand, 20%);
+    padding: 3px 5px;
+    margin-left: 5px;
+    border-radius: 3px;
+    color:white;
+    &:hover, &:active{
+      background-color: saturate($colBrand, 20%);
+      border:1px solid $colBrand;
+      color: darken($colBrand, 30%);
+    }
+  }
+}

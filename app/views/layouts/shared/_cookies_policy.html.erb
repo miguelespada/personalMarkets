@@ -1,9 +1,10 @@
-
 <!-- Copyright (c) OpenGlobal. GNU/GPL V3 licence. You may copy and modify this, providing the link to http://www.openglobal.co.uk remains intact. -->
-<div id="openglobal_privacy_widget" style="display: inline; text-align:right; font-size: 13px; line-height: 100%; position: fixed; top: 0; right: 0; margin: 0; padding: 0 0 0 3px; background: #dddddd; z-index: 100000; opacity:0.9; filter: alpha(opacity=90);">
-<%= t(:accept).capitalize %> <a title= "<%= t(:cookies_policy) %>" rel="privacy" href="">Cookies</a>?
-<button id="openglobal_privacy_accept" style="vertical-align: middle;" onclick="openglobal_privacy_accept();return false;"><%= t(:proceed) %></button>
+
+<div id="openglobal_privacy_widget">
+  <%= t(:accept).capitalize %> <%= link_to "cookies", privacy_path %>?
+  <button id="openglobal_privacy_accept" style="vertical-align: middle;" onclick="openglobal_privacy_accept();return false;"><%= t(:proceed) %></button>
 </div>
+
 <script type="text/javascript">
 //<![CDATA[
 var openglobal_privacy_timeout = 0;

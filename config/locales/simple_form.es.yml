@@ -265,7 +265,7 @@ es:
   new_market: Abre un Market
   admin_panel: Panel de admin
   dashboard: dashboard
-  privacy: privacidad
+  privacy: "privacidad y cookies"
   more: "Más..."
   header_content: "Plataforma de búsqueda de markets. Un nuevo concepto emergente de market alternativo, creativo, emprendedor, excepcional, chic, clandestino y sorprendente"
   header_keywords: "pop up store, personal markets, shopping"
@@ -370,3 +370,4 @@ es:
   only: "como máximo"
   profile_not_complete: "Tu perfil no está completo. Por favor,"
   complete_your_profile: "actualizar tu perfil"
+  about: "Acerca de"

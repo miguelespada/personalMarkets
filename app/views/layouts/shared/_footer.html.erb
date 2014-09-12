@@ -1,7 +1,11 @@
 <nav class="navbar navbar-default navbar-fixed-bottom hidden-xs" role="navigation">
   <div class="container">
     <p class="navbar-text"> <span class="hidden-md hidden-sm"> Copyright &copy; DOWEMARKET 2014 - </span> 
-      <%= link_to t(:terms_of_use).capitalize, terms_path %> - <%= link_to t(:privacy).capitalize, privacy_path %> 
+      <%= link_to t(:about), about_path %>
+       - 
+      <%= link_to t(:terms_of_use).capitalize, terms_path %>
+       - 
+      <%= link_to t(:privacy).capitalize, privacy_path %> 
     </p>
     <ul class="nav navbar-nav navbar-right footer-right">
       <%= render "layouts/shared/user_city" %>
