@@ -13,7 +13,7 @@ When(/^There are some special locations$/) do
                     :longitude=> "-3.73")
   @location_1 = create(:special_location,
                     :name => "hotspot_1",
-                    :latitude => "43.1", 
+                    :latitude => "43", 
                     :longitude=> "-4.69")
 end
 

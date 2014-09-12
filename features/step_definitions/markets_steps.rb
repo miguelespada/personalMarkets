@@ -413,6 +413,7 @@ When(/^I create a VIM market$/) do
 end
 
 Then(/^I should see the new VIM market page$/) do
+  sleep 1
   page.should have_content("New VIM market")
 end
 

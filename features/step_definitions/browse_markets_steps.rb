@@ -69,6 +69,7 @@ Then(/^I should not see the markets$/) do
 end
 
 Then(/^I see the markets matching my filters$/) do
+  sleep 1
   page.should have_content @market_1.name
   page.should have_content @market_1.description
   page.should_not have_content @market_0.name

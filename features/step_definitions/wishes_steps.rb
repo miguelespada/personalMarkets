@@ -53,6 +53,7 @@ When(/^I got to a wish page$/) do
 end
 
 Then(/^I can recommend a market to a wish$/) do
+  sleep 1
   within(:css, ".recommend-items") do
     expect(page).to have_content  @market_0.name
   end
