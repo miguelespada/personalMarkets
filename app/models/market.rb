@@ -156,6 +156,7 @@ class Market
 
     query = params[:query].blank? ? '*' : params[:query].gsub(/[\!]/, '')
     date_order = params[:reverse].blank? ? 'asc' : 'desc'
+    market_state = params[:state].blank? ? 'published' : params[:state]
     page ||= 1
     page = 1 if page < 1
     range = format_range_query(params[:from], params[:to])
@@ -183,7 +184,7 @@ class Market
       end 
       filter :terms, category: [category] if !category.blank?
       filter :geo_distance, lat_lon: location, distance: '3km' if !location.blank?
-      filter :terms, state: ["published"]
+      filter :terms, state: [market_state] if market_state != 'any'
       filter :terms, with_coupon: ["true"] if !params[:with_coupon].blank?
       filter :terms, ongoing: ["true"] if !params[:ongoing].blank?
       filter :terms, passed: ["true"] if !params[:passed].blank?
