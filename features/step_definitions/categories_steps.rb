@@ -82,6 +82,8 @@ Then(/^I should see all the available markets of this category$/) do
 end
 
 Then(/^I should see that the filter button of this category is selected$/) do
-  pending # express the regexp above with the code you wish you had
+  within(:css, ".theme-selected") do
+    expect(page).to have_content "Filter"
+  end
 end
 
