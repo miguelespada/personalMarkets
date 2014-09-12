@@ -183,3 +183,18 @@ footer {
     }
   }
 }
+
+.navbar-text{
+  span{
+    a{
+      padding-left: 15px;
+      float:right;
+      @media(max-width: 992px){
+        text-overflow: ellipsis;
+        max-width: 130px;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+  } 
+}
