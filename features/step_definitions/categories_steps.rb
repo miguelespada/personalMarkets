@@ -67,15 +67,18 @@ Then(/^I should see the category with map and glyph in the category list$/) do
 end
 
 Given(/^There are some markets with the categories$/) do
-  pending # express the regexp above with the code you wish you had
+
 end
 
 When(/^I click on a category on the home page$/) do
-  pending # express the regexp above with the code you wish you had
+  visit category_gallery_path
+  find_by_id("explore-link-text").click
+  click_link "Filter"
 end
 
 Then(/^I should see all the available markets of this category$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content @market_1.name
+  expect(page).to_not have_content @market_0.name
 end
 
 Then(/^I should see that the filter button of this category is selected$/) do

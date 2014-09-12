@@ -5,8 +5,7 @@ Feature: Category filter
   So that I can see all the markets of the category
 
   Background:
-    Given There are some categories
-    And There are some markets with the categories
+    Given There are some published markets
 
   Scenario: Click to filter category
   	When I click on a category on the home page

@@ -1,8 +1,8 @@
 Given(/^There are some categories$/) do
   @category = create(:category,
-              :name => "Dummy Category")
+              :name => "Dummy Category", :english => "Dummy Category")
   @category_1 = create(:category,
-              :name => "Filter")
+              :name => "Filter", :english => "Filter")
 end
 
 
