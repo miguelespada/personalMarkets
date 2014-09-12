@@ -1,8 +1,12 @@
 <%= page_title(t(:coupons).capitalize, Coupon.icon) %>
+<%=  page =  params['page'] || 1 %>
 
-<div class="paginate">
-  <%= paginate @coupons %>
+
+<div class="center">
+  <%= link_to "<", coupons_gallery_path(:page => page.to_i - 1) if !@first_page %>
+  <%= link_to ">", coupons_gallery_path(:page => page.to_i + 1) if !@last_page %>
 </div>
+
 
 <div class="container main-container">
   <% @coupons.each do |coupon| %> 

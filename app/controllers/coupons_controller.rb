@@ -7,8 +7,18 @@ class CouponsController < ApplicationController
   end
 
   def gallery
-    @coupons = Coupon.all.collect{|coupon| coupon if coupon.active?}.compact.uniq
-    @coupons = Kaminari.paginate_array(@coupons).page(params[:page]).per(6)
+    @per_page = params[:per_age].present? ? params[:per_page].to_i : 3  
+    @page = params[:page].present? ? params[:page].to_i : 1
+
+    search_params = {
+      :with_coupon => :true,
+      :ongoing => :true
+    }
+
+    @result = Market.search(search_params, @page, @per_page)
+    @coupons = @result[:markets].collect{|market| market.coupon}
+    @last_page = @result[:total]/@per_page.to_f <= @page 
+    @first_page = @page == 1
   end
 
   def coupon_payment

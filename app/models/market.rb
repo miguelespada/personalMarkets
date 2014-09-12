@@ -117,6 +117,8 @@ class Market
         tags: tags.split(/,/),
         date: format_date,
         state: state,
+        ongoing: ongoing?,
+        with_coupon: has_coupon?,  
         lat_lon: lat_lon
       }.to_json
   end
@@ -179,6 +181,8 @@ class Market
       filter :terms, category: [category] if !category.blank?
       filter :geo_distance, lat_lon: location, distance: '3km' if !location.blank?
       filter :terms, state: ["published"]
+      filter :terms, with_coupon: ["true"] if !params[:with_coupon].blank?
+      filter :terms, ongoing: ["true"] if !params[:ongoing].blank?
       search_size = per_page
       from (page - 1) * search_size
       size search_size
@@ -186,6 +190,7 @@ class Market
     results = search.results
     {:markets => results.collect{|result| find_by(id: result.to_hash[:id])}, :total => results.total}
   end
+
 
   def self.elasticsearch_count
     s = Tire.search 'markets', :search_type => 'count' do

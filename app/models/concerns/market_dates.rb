@@ -14,6 +14,12 @@ module MarketDates
       false
     end
 
+
+    def has_passed
+      true
+    end
+
+
     def started?
       return false if !self.has_date? 
       self.date.split(',').each do |day|
