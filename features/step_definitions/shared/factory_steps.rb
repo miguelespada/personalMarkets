@@ -39,6 +39,14 @@ Given(/^There are some published markets$/) do
       :category => @category_1,
       :schedule => Time.now.strftime("%d/%m/%Y"),
       :state => :published)
+  @market_2 = create(:market, 
+      :latitude => "43", 
+      :longitude=> "-4.705",
+      :tags => "tag_two",
+      :city => "madrid",
+      :category => @category,
+      :schedule => Time.now.strftime("%d/%m/%Y"),
+      :state => :published)
   Market.reindex
 end
 

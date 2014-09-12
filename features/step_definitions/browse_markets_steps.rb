@@ -97,11 +97,26 @@ end
 When(/^I allow geolocation$/) do
   page.execute_script('$("#user_lat").val("43");')
   page.execute_script('$("#user_lon").val("-4.71");')
-  page.execute_script("$('#location_location_id').append(\"<option value='My location'>My location</option>\");")
+  page.execute_script('$("#my-location-item").removeClass("hidden");')
+  page.execute_script('$("#location_location_id").append(\'<option value="My location">My location</option>\');')
 end
 
-When(/^I select search by my location$/) do
-  find("#location_location_id").select("My location")
-  page.execute_script("$('#query').trigger('change');")
+When(/^I can search by my location$/) do
+  page.should have_content "Near to me"
 end
 
+Then(/^I search by my location$/) do
+  click_on "Near to me"
+end
+
+Then(/^I should see that my location is selected$/) do
+  expect(page).to have_select('location[location_id]', selected: 'My location')
+end
+
+Then(/^I should see the markets near to me ordered by distance$/) do
+  expect(page).to_not have_content @market_0.name
+  within(:css, ".search-gallery>.market_gallery") do
+    first(".market_item").should have_content @market_2.name
+    expect(page).to have_content @market_1.name
+  end
+end

@@ -86,4 +86,3 @@ Then(/^I should see that the filter button of this category is selected$/) do
     expect(page).to have_content "Filter"
   end
 end
-
