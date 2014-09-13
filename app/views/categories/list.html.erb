@@ -1,7 +1,7 @@
 <% @categories.each do |category| %>
   <li class="registered-user-action">
     <a class="explore-link-categories" href="#" data-name="<%= category.slug %>">
-      <%= truncate(intl_name(category), length: 16) %>
+      <%= intl_name(category) %>
       <i class="fa fa-angle-right explore-arrow"></i>
     </a>
   </li>
