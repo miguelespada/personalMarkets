@@ -2,7 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
+# require 'rspec/autorun'
 
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -18,6 +18,9 @@ Capybara.javascript_driver = :webkit
 
 
 RSpec.configure do |config|
+  config.reset
+  config.output_stream = $stdout
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
