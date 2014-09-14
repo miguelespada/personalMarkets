@@ -12,8 +12,7 @@
   var suggested_tags_path = "<%= suggested_tags_path %>";
 </script>
 
-<div id="error" class="alert alert-danger flash hidden">
-</div>
+
 
 <div class="main-container">
 
@@ -337,6 +336,15 @@
       </div>
     </div>
   </div>
+  <div id="error" class="center alert alert-danger flash hidden">
+  </div>
+
+  <% if params[:action] == "new" %>
+    <p class="center">
+      <input type="checkbox" required name="premium_accept_term" id="accept_terms" > 
+      <%= t(:i_accept_the) %> <%= link_to t(:terms_of_use) + ".", terms_path %>
+    </p>
+  <% end %>
 
   <%= f.button :submit, class: 'btn', id: 'market-save-button' %>  
     <div class="center tip">
@@ -344,6 +352,7 @@
     </div>
   <% end %>
 </div>
+
 
 
 <%= javascript_include_tag "jquery.bootstrap.wizard" %>
@@ -358,6 +367,12 @@
 <script> 
 
 $(".simple_form").submit(function(){
+  if( $("#accept_terms").length && !$("#accept_terms").is(":checked")){
+      $("#error").removeClass("hidden");
+      $("#error").html("<%= t(:you_must_accept_terms_and_conditions) %>");
+      return false;
+    }
+
   if( $("#market_name").val().length == 0 ) {
     $("#error").removeClass("hidden");
     $("#error").html("<%= t('market_form.market_name_cannot_be_empty') %>");
