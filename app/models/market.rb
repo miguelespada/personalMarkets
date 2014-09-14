@@ -58,9 +58,10 @@ class Market
 
   scope :with_category, lambda {|category| where(category: category)}
 
+
   after_create :create_public_id
-  before_update :order_schedule, :if => :schedule_changed?
-  before_create :order_schedule
+
+  after_save :order_schedule, :if => :schedule_changed?
 
 
   def self.icon
@@ -127,6 +128,8 @@ class Market
 
   def date
     schedule.split(';').map{|d| d.split(',')[0]}.uniq.join(',') 
+  rescue
+    ""
   end
 
   def category_name
