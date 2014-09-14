@@ -15,7 +15,7 @@ class DateEvaluator
 
   def new_dates_modify_passed_dates?(new_dates)
     new_dates = new_dates.split(';')
-    old_dates = @market.date.split(',') 
+    old_dates = @market.schedule.split(';') 
     old_dates.each do |d|
       return true if !new_dates.include?(d) && passed(d)
     end
@@ -23,6 +23,7 @@ class DateEvaluator
   end
 
   def passed(d)
+    d = d.split(',')[0]
     (DateTime.parse(d) - Date.today).to_i <= 0
   end
 end
