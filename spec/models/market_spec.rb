@@ -61,7 +61,8 @@ describe Market do
       days = day1 + ";" + day3 + ";" + day2
       @market = create(:market,:schedule => days)
       expect(@market.in_date?(Date.tomorrow)).to eq true
-      expect(@market.in_date?(Date.today)).to eq true
+      expect(@market.in_date?(Date.today)).to eq false
+      expect(@market.in_date?(Date.today + 1.day)).to eq true
       expect(@market.in_date?(Date.today + 2.days)).to eq false
       expect(@market.in_date?(Date.today + 3.days)).to eq false
     end
@@ -554,10 +555,9 @@ describe Market do
       expect( DateEvaluator.new(market).validate_dates!(new_days) ).to eq true
     end
 
-    it "it does not allow to modify yesterday today" do
+    it "it does not allow to modify yesterday" do
       day1 = 1.day.ago.strftime("%d/%m/%Y")
       day2 = 3.days.from_now.strftime("%d/%m/%Y")
-      p day1
       days = day1
       new_days = day2
       market = create(:market,

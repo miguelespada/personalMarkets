@@ -73,7 +73,7 @@ describe SpecialLocationsController do
           post :create, all, valid_session
           assigns(:special_location).photography.should_not be_nil
           assigns(:special_location).photography.should be_persisted
-          Photo.all.count.should be 1
+          Photo.all.count.should be 2
         end 
       end
 
