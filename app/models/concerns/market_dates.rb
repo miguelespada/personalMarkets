@@ -7,7 +7,7 @@ module MarketDates
     def passed?
       return false if !self.has_date? 
       self.date.split(',').each do |day|
-        return false if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i > 0
+        return false if (Date.strptime(day, "%d/%m/%Y") - Date.today).to_i >= 0
       end
       return true
     rescue
@@ -78,7 +78,7 @@ module MarketDates
         []
     end
 
-    def order_schedule 
+    def order_schedule
       dates = append_schedule_to_empty_dates
       self.schedule = order_dates(dates).join(';')
     end

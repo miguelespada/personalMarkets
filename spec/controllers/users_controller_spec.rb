@@ -28,11 +28,6 @@ describe UsersController do
         get :index, valid_session
         expect(response).to render_template(:index)
       end
-
-      it "wraps users in a presenter" do
-        get :index, valid_session
-        expect(assigns(:users)).to be(presenter)
-      end
     end
   end
   

@@ -8,8 +8,7 @@ class PhotosController < ApplicationController
   end
 
   def list_user_photos
-    @photos = Photo.desc(:created_at).non_empty.collect{|photo| photo if photo.is_owner?(load_user)}.compact.uniq.reverse
-    @photos = Kaminari.paginate_array(@photos).page(params[:page]).per(6)
+    @photos = Photo.for_user(params[:user_id]).page(params[:page]).per(6)
     render "index"
   end
 

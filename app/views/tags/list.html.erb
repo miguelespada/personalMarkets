@@ -1,7 +1,7 @@
 <% @suggested.each do |tag| %>
   <li class="registered-user-action">
     <%= link_to tags_gallery_path(:tag_name => tag.name) do %>
-      <%= truncate(tag.name, length: 16) %>
+      <%= tag.name %>
       <i class="fa fa-angle-right explore-arrow"></i>
     <% end %>
   </li>

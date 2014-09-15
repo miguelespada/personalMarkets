@@ -149,6 +149,7 @@
 .mega-dropdown {
   position: static !important;
 
+
   .mega-dropdown-menu {
     padding-top: 10px;
     width: 100%;
@@ -171,12 +172,16 @@
           }
 
           a{
+
+            white-space:nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
             display: block;
             padding: 3px 20px;
             clear: both;
             font-weight: 200;
             color: #777;
-            white-space: normal;
 
             &:hover, &:focus{
               text-decoration: none;

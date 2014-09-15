@@ -39,11 +39,10 @@ describe PhotosController do
       it "does not show empty photos" do
         Photo.new
         get :index, {}, valid_session
-        assigns(:photos).count.should eq 0
+        assigns(:photos).count.should eq 1
       end
 
       it "list photos with attachment" do
-        create(:photo)
         get :index, {}, valid_session
         assigns(:photos).count.should eq 1
       end
@@ -56,9 +55,8 @@ describe PhotosController do
       end
 
       it "does not show empty photos" do
-        Photo.new
         get :list_user_photos, {user_id: user.to_param}, valid_session
-        assigns(:photos).count.should eq 0
+        assigns(:photos).count.should eq 1
       end
 
       it "list photos with attachment" do
@@ -70,11 +68,9 @@ describe PhotosController do
       end
 
       it "does not list other user photos" do
-        photo = create(:photo)
-        Photo.new
-        Photo.any_instance.stub(:is_owner?).and_return(false)
+        create(:market, :user => user)
         get :list_user_photos, {user_id: user.to_param}, valid_session
-        assigns(:photos).count.should eq 0
+        assigns(:photos).count.should eq 2
       end
     end
   end

@@ -23,6 +23,6 @@ class DateEvaluator
   end
 
   def passed(d)
-    (DateTime.parse(d) - Date.today).to_i <= 0
+    (DateTime.parse(d) - Date.today).to_i < 0
   end
 end

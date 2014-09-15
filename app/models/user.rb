@@ -7,6 +7,7 @@ class User
   include Tire::Model::Callbacks
   include UserElasticsearch
 
+
   after_create :set_default_role
 
   rolify
@@ -21,6 +22,7 @@ class User
 
   field :nickname, type: String
   field :description, type: String
+  field :photos, type: Array
 
   has_and_belongs_to_many :following, class_name: 'User', inverse_of: :followers, autosave: true
   has_and_belongs_to_many :followers, class_name: 'User', inverse_of: :following
@@ -291,6 +293,10 @@ class User
     return !self.nickname.blank? && !self.featured.blank? && !self.description.blank?
   end
 
+  def user
+    self
+  end
+  
   private
 
   def self.create_with email
@@ -310,5 +316,6 @@ class User
     return 1000000 if self.has_role?("admin")
     1
   end
+
 
 end
