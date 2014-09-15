@@ -1,11 +1,10 @@
 <%= page_title(t(:locator).capitalize, Coupon.icon) %>
-
 <div class="container">
   <div class="row">
     <div class="center">
       <div class="col-md-4 col-md-offset-4">
         <%= t(:for_the_service_offered_with_the_coupon) %>
-        <h3> <%= @transaction.client_token %> </h3>
+        <h3> #<%= @transaction.client_token %> </h3>
       </div>
     </div>
   </div>

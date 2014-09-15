@@ -16,7 +16,7 @@ class Photo
   scope :for_user, ->(id) { where(:owner_to_param => id, :photo.exists => true).desc(:created_at)}
 
   before_update do |d|
-    self.owner_to_param = photographic.user.to_param
+    self.owner_to_param = photographic.user.to_param if !photographic.nil?
   end
 
   def present?

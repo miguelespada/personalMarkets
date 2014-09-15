@@ -5,6 +5,7 @@ When(/^I create a market$/) do
   within(:css, "#new_market") do
     fill_in "Name",  with: "Dummy Market"
   end
+  find_by_id("accept_terms").click
   click_on "Create Market"
 end
 
