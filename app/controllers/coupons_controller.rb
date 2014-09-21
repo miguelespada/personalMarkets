@@ -51,6 +51,9 @@ class CouponsController < ApplicationController
     @coupons = @result[:markets].collect{|market| market.coupon}
     @last_page = @result[:total]/@per_page.to_f <= @page 
     @first_page = @page == 1
+    respond_to do |format|
+      format.html 
+    end
   end
   
   def buy

@@ -14,10 +14,10 @@
   <table class="table table-striped">
     <tr>
       <th class="col-md-1">Coupon Transactions</th>
-      <th class="col-md-1"># Transactions</th>
-      <th class="col-md-2">Market last date</th>
+      <th class="col-md-1"># Trans.</th>
+      <th class="col-md-2">Last date</th>
       <th class="col-md-2"><%= t(:market).capitalize %></th>
-      <th class="col-md-2"><%= t(:owner).capitalize %></th>
+      <th class="col-md-2"> Owner </th>
       <th class="col-md-1">Paid by customers</th>
       <th class="col-md-1">We receive</th>
       <th class="col-md-1">We pay</th>
@@ -42,15 +42,18 @@
         <td> 
           <%= link_to coupon.market.user.email, coupon.market.user %>
         </td>
+        
         <% total = coupon.transactions_total %>
         <% ingresado = coupon.transactions_after_paymill %>
         <% seller_income = total * 0.85 %>
         <% a_pagar = (((seller_income) + 0.35)/ 0.966).round(2) %>
+        <% beneficio = ingresado - a_pagar %>
+
         <td class="total">
           <%= (total * 1.1).round(2) %> €
         </td>
         <td>
-           <%= ingresado.round(2) %> €
+          <%= ingresado.round(2) %> €
         </td>
         <td>
           <%= a_pagar.round(2) %> €
@@ -59,11 +62,10 @@
           <%= (seller_income).round(2) %> €
         </td>
         <td>
-          <%= (ingresado - a_pagar).round(2) %> €
+          <%= (beneficio).round(2) %> €
         </td>
-
         <td>
-          <%= ((ingresado - a_pagar)/1.21).round(2) %> €
+          <%= ((beneficio)/1.21).round(2) %> €
         </td>
       </tr>
     <% end %>
