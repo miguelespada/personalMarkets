@@ -1,3 +1,4 @@
+
 es:
   proceed: Proceder
   you: "Tú"
@@ -373,3 +374,6 @@ es:
   about: "Acerca de"
   no_bargains: "No hay ninguna ganga"
   no_wishes: "No hay ningún deseo"
+  coupon_rules: "Por cada cupón descontamos un 15% con lo que pagamos los gastos de transacción, impuestos y nuestra comisión."
+  you_will_receive: "Por cada cupón recibirás"
+  max_income: "Si vendes todos los cupones ganarás"

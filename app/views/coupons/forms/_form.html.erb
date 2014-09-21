@@ -6,22 +6,42 @@
       <p>
         <%= t(:price).capitalize %> <%= t(:in) %> €: 
       </p>
-      <%= f.input :price, collection: (5..25).step(5), :include_blank => false %>
+      <%= f.input :price, collection: (5..25).step(1), :include_blank => false %>
     </div>
   </div>
 </div>
 <br>
-
 <div class = "row">
   <div class="form-group">
     <div class = "col-md-5">
       <p>
        <%= t(:available).capitalize %>: 
       </p>
-      <%= f.input :available, collection: (10..100).step(5), :include_blank => false %>
+      <%= f.input :available, collection: (10..30).step(1), :include_blank => false %>
+    </div>
+
+  </div>
+</div>
+<br>
+
+<div class = "row">
+  <div class="form-group">
+    <div class = "col-md-12">
+      <p> <%= t(:coupon_rules) %> </p>
+      <p>
+        <span><%= t(:you_will_receive) %>: </span>
+        <b><span id="per_coupon"></span> €</b>
+      </p>
+
+      <p>
+        <span><%= t(:max_income) %>: </span>
+        <b><span id = "total"></span> €</b>
+      </p>
     </div>
   </div>
 </div>
+
+
 <br>
 
 <div class="form-group">
@@ -32,3 +52,16 @@
     <%= render 'photos/form', f: form_builder %>
   <% end %>
 </div>
+<script>
+  var compute_price = function(){
+    $("#per_coupon").html($('#market_coupon_attributes_price').val() * 0.85);
+    $("#total").html($('#market_coupon_attributes_price').val() * 0.85 * $('#market_coupon_attributes_available').val());
+  };
+
+   $(document).ready(function(){
+    compute_price();
+   });
+
+  $('#market_coupon_attributes_price').change(compute_price);
+  $('#market_coupon_attributes_available').change(compute_price);
+</script>
