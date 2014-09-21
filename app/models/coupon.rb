@@ -60,4 +60,14 @@ class Coupon
     total
   end
 
+  def transactions_after_paymill
+    total = 0
+    transactions.each do |transaction|
+      paid = transaction.number * price * 1.1
+      after_paymill = (paid - 0.28) - (paid * 0.0295)
+      total += after_paymill
+    end
+    total
+  end
+
 end

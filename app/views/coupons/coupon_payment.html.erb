@@ -10,7 +10,8 @@
           <span> <%= @coupon_payment.quantity %> </span> 
           <br>
           <strong>  <%= t(:total) %>: </strong>  
-          <span> <%= @coupon_payment.coupon.price * @coupon_payment.quantity %> € </span> 
+          <span> <%= @coupon_payment.payment.total_prize %> € </span> 
+          <p> <%= t(:coupon_rules_buyer) %> </p>
           <p class="payment-errors"></p>
         </div>
 

@@ -375,5 +375,6 @@ es:
   no_bargains: "No hay ninguna ganga"
   no_wishes: "No hay ningún deseo"
   coupon_rules: "Por cada cupón descontamos un 15% con lo que pagamos los gastos de transacción, impuestos y nuestra comisión."
+  coupon_rules_buyer: "Por cada cupón cobramos un 10% con lo que pagamos los gastos de transacción y los impuestos."
   you_will_receive: "Por cada cupón recibirás"
   max_income: "Si vendes todos los cupones ganarás"

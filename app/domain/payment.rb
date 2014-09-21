@@ -1,7 +1,7 @@
 class Payment < Struct.new(:price, :quantity, :name, :token)
 
   def total_price
-    total_price = quantity * price * 100
+    total_price = quantity * price * 100 * 1.1
   end
 
   def self.for payment_params
