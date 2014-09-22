@@ -54,8 +54,8 @@
 </div>
 <script>
   var compute_price = function(){
-    $("#per_coupon").html($('#market_coupon_attributes_price').val() * 0.85);
-    $("#total").html($('#market_coupon_attributes_price').val() * 0.85 * $('#market_coupon_attributes_available').val());
+    $("#per_coupon").html(($('#market_coupon_attributes_price').val() * 0.85) - 0.25);
+    $("#total").html(($('#market_coupon_attributes_price').val() * 0.85 * $('#market_coupon_attributes_available').val()) - 0.25);
   };
 
    $(document).ready(function(){
