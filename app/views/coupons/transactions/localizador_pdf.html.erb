@@ -32,12 +32,21 @@
           </div>
           <div class="market-section-container row">
             <div class="market-detail">
-              <b>Market:</b> <%= @transaction.coupon.market.name %>
-              <br>
-              <b><%= t(:description).capitalize %>:</b> <%= @transaction.coupon.market.description %>
-              <br>
-              <b><%= t(:tags).capitalize %>:</b> <%= @transaction.coupon.market.tags %>
-              <br>
+              <div>
+                <b>Market:</b> <%= @transaction.coupon.market.name %>
+              </div>
+              <div>
+                <b><%= t(:description).capitalize %>:</b> <%= @transaction.coupon.market.description %>
+              </div>
+              <div>
+                <b><%= t(:tags).capitalize %>:</b> <%= @transaction.coupon.market.tags %>
+              </div>
+              <div>
+                <%= render partial: 'markets/shared/utils/schedule', locals: { market: @transaction.coupon.market } %>
+              </div>
+              <div>
+                <%= @transaction.coupon.market.address.capitalize + ", " + @transaction.coupon.market.city  %>
+              </div>
             </div>
           </div>
 
