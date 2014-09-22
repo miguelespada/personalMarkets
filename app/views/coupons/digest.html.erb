@@ -23,8 +23,7 @@
       <th class="col-md-1">We receive</th>
       <th class="col-md-1">We pay</th>
       <th class="col-md-1">Seller receives</th>
-      <th class="col-md-1">Our benefit</th>
-      <th class="col-md-1">After tax</th>
+      <th class="col-md-1">Our benefit (before tax)</th>
     </tr>
     <% @coupons.each do |coupon| %>
       <tr id="coupon-<%= coupon.id %>">
@@ -43,34 +42,7 @@
         <td> 
           <%= link_to coupon.market.user.email, coupon.market.user %>
         </td>
-        
-        <% total = coupon.transactions_total %>
-        <% ingresado = coupon.transactions_after_paymill %>
-        <% seller_income = (total * 0.85) - 0.25 %>
-        <% a_pagar = (((seller_income) + 0.35)/ 0.966).round(2)  %>
-        <% beneficio = ingresado - a_pagar %>
-
-        <td class="total">
-          <%= (total * 1.1 + coupon.transactions.count * 0.25).round(2) %> €
-        </td>
-         <td class="total">
-          <%= (total).round(2) %> €
-        </td>
-        <td>
-          <%= ingresado.round(2) %> €
-        </td>
-        <td>
-          <%= a_pagar.round(2) %> €
-        </td>
-        <td>
-          <%= (seller_income).round(2) %> €
-        </td>
-        <td>
-          <%= (beneficio).round(2) %> €
-        </td>
-        <td>
-          <%= ((beneficio)/1.21).round(2) %> €
-        </td>
+        <%= render partial: "coupons/transactions/digest", locals: { coupon: coupon }%>
       </tr>
     <% end %>
   </table>

@@ -16,4 +16,16 @@ class CouponTransaction
     end 
     transactions 
   end
+
+  def value
+    number * coupon.price
+  end
+
+  def paid
+    (self.value * 1.1) + 0.25
+  end
+
+  def after_paymill
+    (self.paid - 0.28) - (self.paid * 0.0295)
+  end
 end

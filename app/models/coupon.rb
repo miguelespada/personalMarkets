@@ -52,22 +52,40 @@ class Coupon
     description != nil && description != "" && available != nil && price != nil && !photography.empty?
   end
 
-  def transactions_total
+  def value
     total = 0
     transactions.each do |transaction|
-      total += (transaction.number * price)
+      total += transaction.value
     end
     total
   end
 
-  def transactions_after_paymill
+  def paid
     total = 0
     transactions.each do |transaction|
-      paid = (transaction.number * price * 1.1) + 0.25 
-      after_paymill = (paid - 0.28) - (paid * 0.0295)
-      total += after_paymill
+      total += transaction.paid
     end
     total
+  end
+
+  def after_paymill
+    total = 0
+    transactions.each do |transaction|
+      total += transaction.after_paymill
+    end
+    total
+  end
+
+  def market_income
+    self.value * 0.85 - 0.25 
+  end
+
+  def to_pay
+    (self.market_income + 0.35)/ 0.966
+  end
+
+  def benefit
+    after_paymill - to_pay
   end
 
 end

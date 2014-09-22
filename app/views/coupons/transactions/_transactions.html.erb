@@ -13,8 +13,10 @@
 
   <% @transactions.each do |transaction| %>
       <%= content_tag_for(:tr, transaction) do %>
-        <td class="transaction_id"> <%= transaction.id %> <br> <%= transaction.created_at %> </td>
+        <% if !transaction.coupon.nil? %>
 
+          <td class="transaction_id"> <%= transaction.id %> <br> <%= transaction.created_at %> </td>
+  
           <td> <%= link_to  transaction.coupon.market.name, transaction.coupon.market  %> </td>
 
           <td class="seller"> 
@@ -37,14 +39,43 @@
           <td> <%= transaction.coupon.price %>€ </td>
 
           <td> <%= transaction.number %> </td>
-          <td> <%= transaction.number * transaction.coupon.price %> €</td>
+          <td> <%= transaction.value %> €
+ 
+            <% if can? :admin, Market %>
+              <br>   
+              <%= transaction.paid.round(2) %> €
+              <br>
+              <%= transaction.after_paymill.round(2) %> € </b> 
+            <% end %>
+
+          </td>
           
           <td>
             <% if can? :see_localizador, transaction %>
               <%= link_to t(:locator).capitalize, localizador_path(transaction) %>
             <% end %>
           </td>
+
+        
       <% end %>
     <% end %>
   <% end %>
 </table>
+
+<% if can? :admin, Market %>
+  <h3> Accumulated </h3>
+  <table class="table table-striped">
+    <tr>
+      <th class="col-md-1">Paid by customers</th>
+      <th class="col-md-1">Coupon value</th>
+      <th class="col-md-1">We receive</th>
+      <th class="col-md-1">We pay</th>
+      <th class="col-md-1">Seller receives</th>
+      <th class="col-md-1">Our benefit (before tax)</th>
+    </tr>
+    <tr>
+    <%= render partial: "coupons/transactions/digest", locals: { coupon:  @transactions.first.coupon }%>
+    </tr>
+
+  </table>
+<% end %>
