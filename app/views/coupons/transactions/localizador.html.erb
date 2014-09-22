@@ -24,5 +24,6 @@
 <br>
 
 <div class = "center">
-  <%=  back_link %>
+  <%= back_link %>
+  <%= link_to(content_tag(:i, content_tag(:span, " " + t(:print).capitalize, :class => "hidden-xs"), :class => "fa fa-print"), localizador_path(:format => "pdf"), {method: :get, class: "btn btn-default poster poster-icon market-action btn-market-action-bar" }) %>
 </div>

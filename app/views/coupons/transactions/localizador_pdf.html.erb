@@ -1,0 +1,70 @@
+<%= wicked_pdf_stylesheet_link_tag "markets/poster" %>
+
+<div class="container main-container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default panel-table">
+        <div class="panel-heading table-title">
+          <%= wicked_pdf_image_tag("/images/poster_title.png", class: "poster-title-icon", :width => "300", :height => "50") %>
+        </div>
+        <h2><%= t(:locator).capitalize %></h2>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 col-md-offset-4 center">
+              <h3> #<%= @transaction.client_token %> </h3>
+              <br>
+              <%= t(:for_the_service_offered_with_the_coupon) %>
+            </div>
+          </div>
+          <br>
+
+          <div class="market-list-section-title">
+            <%= t(:transaction) %>
+          </div>
+          <div class="market-section-container row">
+            <div class="market-detail">
+              <%= @transaction.id %>
+            </div>
+          </div>
+
+          <div class="market-list-section-title">
+            Market
+          </div>
+          <div class="market-section-container row">
+            <div class="market-detail">
+              <div>
+                <b>Market:</b> <%= @transaction.coupon.market.name %>
+              </div>
+              <div>
+                <b><%= t(:description).capitalize %>:</b> <%= @transaction.coupon.market.description %>
+              </div>
+              <div>
+                <b><%= t(:tags).capitalize %>:</b> <%= @transaction.coupon.market.tags %>
+              </div>
+              <div>
+                <%= render partial: 'markets/shared/utils/schedule', locals: { market: @transaction.coupon.market } %>
+              </div>
+              <div>
+                <%= @transaction.coupon.market.address.capitalize + ", " + @transaction.coupon.market.city  %>
+              </div>
+            </div>
+          </div>
+
+          <div class="market-list-section-title">
+            <%= t(:coupons).capitalize %>
+          </div>
+          <div class="market-section-container row">
+            <div class="market-detail">
+              <b><%= t(:coupons).capitalize %>:</b> <%= @transaction.number %>
+              <br>
+              <b><%= t(:price).capitalize %>:</b> <%= @transaction.coupon.price %> €
+              <br>
+              <b><%= t(:total).capitalize %>:</b> <%= @transaction.coupon.price *  @transaction.number %> €
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
