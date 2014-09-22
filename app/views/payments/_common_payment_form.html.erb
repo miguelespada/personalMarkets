@@ -1,6 +1,7 @@
 <div class="form-group payment-form">
   <%= hidden_field_tag "paymill_card_token" %>
   <%= hidden_field_tag "total-price", "#{payment.total_price}" %>
+  <%= hidden_field_tag "price", "#{payment.price}" %>
   <%= hidden_field_tag "quantity", "#{payment.quantity}" %>
 
   <%= text_field_tag "name", nil, placeholder: t(:card_holder_name), size: 50, class: "form-control" %>
