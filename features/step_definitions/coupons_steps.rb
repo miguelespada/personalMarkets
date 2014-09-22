@@ -169,7 +169,7 @@ Then(/^As admin I can see the transactions digest$/) do
   visit last_transactions_path
   expect(page).to have_content "Sold coupons of closed markets"
   within(:css, "#coupon-#{@market.coupon.id} .total") do
-    expect(page).to have_content 40 * 1.1
+    expect(page).to have_content 44.5
   end
 end
 

@@ -41,7 +41,7 @@
           <td> <%= transaction.number %> </td>
           <td> <%= transaction.value %> €
  
-            <% if can? :admin, Market %>
+            <% if current_user.has_role? :admin %>
               <br>   
               <%= transaction.paid.round(2) %> €
               <br>
@@ -62,7 +62,7 @@
   <% end %>
 </table>
 
-<% if can? :admin, Market %>
+<% if current_user.has_role? :admin %>
   <h3> Accumulated </h3>
   <table class="table table-striped">
     <tr>

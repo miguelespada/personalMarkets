@@ -8,7 +8,9 @@ class Ability
 
     @user ||= User.new
 
-    admin_abilities
+    if @user.has_role? :admin
+      can :manage, :all
+    end
 
   end
 
@@ -18,36 +20,36 @@ class Ability
     if @user
         can :list_user_transactions, User, :id => @user.id
 
-        can [:list_market_transactions, :statistics], Market, Market do |market|
+        can [:list_market_transactions, :statistics], Market do |market|
             @user.owns(market)
         end
 
         # can :archive, Market, :user_id => @user.id
         # can :see_location, Market
 
-        can :publish, Market, Market do |market|
+        can :publish, Market do |market|
             @user.owns(market) && market.can_be_published
         end
 
-        can :unpublish, Market, Market do |market|
+        can :unpublish, Market do |market|
             @user.owns(market) && market.can_be_unpublished
         end
         
-        can :manage, Wish, Wish do |wish|
+        can :manage, Wish do |wish|
             @user.owns(wish)
         end
 
-        can :manage, Photo, Photo do |photo|
+        can :manage, Photo do |photo|
             @user.owns(photo)
         end
 
         can :manage, @user
 
-        can :manage, Bargain, Bargain do |bargain|
+        can :manage, Bargain do |bargain|
             @user.owns(bargain)
         end
 
-        can [:manage, :publish, :archive, :unpublish, :make_pro, :publish_anyway, :quality_section], Market, Market do |market|
+        can [:manage, :publish, :archive, :unpublish, :make_pro, :publish_anyway, :quality_section], Market do |market|
             @user.owns(market)
         end 
 
@@ -55,6 +57,7 @@ class Ability
         can :coupon_payment, Coupon
         
         can :show, User, :id => @user.id
+        can :statistics, User, :id => @user.id
  
         can :like, Market, Market do |market|
           !@user.owns(market)
@@ -64,41 +67,15 @@ class Ability
         cannot :index, Wish
         cannot :index, Bargain
         cannot :index, SpecialLocation
+        cannot :index, SpecialLocation
         cannot [:force_make_pro], Market
 
         can :see_localizador, CouponTransaction, CouponTransaction do |transaction|
           @user == transaction.user
         end
-
     end
   end
 
-  def admin_abilities
-    if @user.has_role? :admin
-      can [:update], Status
-      can [:change, :update], Role
 
-      can [:manage], Market
-      can [:manage], Wish
-      can [:manage], Bargain
-      can [:manage], SpecialLocation
-      can [:manage], Category
-      can [:manage], Tag
-      can [:manage], User
-      can [:manage], Coupon
-      can [:manage], Photo
-      can [:manage], Gallery
-      can [:manage], Users
-      can [:list_user_transactions], User
-      can [:list_market_transactions], Market
-      
-      can :admin, Market
-      can [:manage], SlideshowImage
-      can [:manage], SlideshowText
-      can :digest, Coupon
-      can :see_localizador, CouponTransaction
-
-    end
-  end
 
 end

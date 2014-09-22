@@ -81,7 +81,7 @@ class Coupon
   end
 
   def to_pay
-    (self.market_income + 0.35)/ 0.966
+    (self.market_income + 0.35) / (1 - 0.034)
   end
 
   def benefit

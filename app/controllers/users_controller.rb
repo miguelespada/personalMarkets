@@ -94,7 +94,7 @@ class UsersController < ApplicationController
   end
 
   def admin
-    authorize! :admin, Market
+    authorize! :manage, :all
     render "users/dashboards/admin_panel"
   end
 

@@ -15,7 +15,7 @@ class StaticPagesController < ApplicationController
   end
 
   def settings
-    authorize! :admin, Market
+    authorize! :manage, @user
   end
 
 end
