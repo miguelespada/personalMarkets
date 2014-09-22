@@ -42,10 +42,10 @@
                 <b><%= t(:tags).capitalize %>:</b> <%= @transaction.coupon.market.tags %>
               </div>
               <div>
-                <%= render partial: 'markets/shared/utils/schedule', locals: { market: @transaction.coupon.market } %>
+                <b><%= t(:location).capitalize %>:</b> <%= @transaction.coupon.market.address.capitalize + ", " + @transaction.coupon.market.city %>
               </div>
               <div>
-                <%= @transaction.coupon.market.address.capitalize + ", " + @transaction.coupon.market.city  %>
+                <%= render partial: 'markets/shared/utils/schedule', locals: { market: @transaction.coupon.market } %>
               </div>
             </div>
           </div>
