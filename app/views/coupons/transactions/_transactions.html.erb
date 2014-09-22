@@ -13,8 +13,7 @@
 
   <% @transactions.each do |transaction| %>
       <%= content_tag_for(:tr, transaction) do %>
-        <% if !transaction.coupon.nil? %>
-          <td class="transaction_id"> <%= transaction.id %> </td>
+        <td class="transaction_id"> <%= transaction.id %> <br> <%= transaction.created_at %> </td>
 
           <td> <%= link_to  transaction.coupon.market.name, transaction.coupon.market  %> </td>
 

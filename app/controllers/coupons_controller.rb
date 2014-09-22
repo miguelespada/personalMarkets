@@ -41,7 +41,6 @@ class CouponsController < ApplicationController
 
     search_params = {
       :published => :true,
-      :passed => :true,
       :with_coupon => :true,
       :reverse => :true,
       :state => 'any'

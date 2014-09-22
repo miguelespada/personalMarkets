@@ -10,7 +10,7 @@
           <span> <%= @coupon_payment.quantity %> </span> 
           <br>
           <strong>  <%= t(:total) %>: </strong>  
-          <span> <%= @coupon_payment.payment.total_price %> € </span> 
+          <span> <%= (@coupon_payment.payment.total_price/100).round(2) %> € </span> 
           <p> <%= t(:coupon_rules_buyer) %> </p>
           <p class="payment-errors"></p>
         </div>

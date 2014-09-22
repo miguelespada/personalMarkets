@@ -1,5 +1,6 @@
 class CouponTransaction
   include Mongoid::Document
+  include Mongoid::Timestamps::Created
   belongs_to :user, class_name: "User", inverse_of: :coupon_transactions
   belongs_to :coupon, class_name: "Coupon", inverse_of: :transactions
   field :number, type: Integer

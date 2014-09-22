@@ -15,10 +15,11 @@
     <tr>
       <th class="col-md-1">Coupon Transactions</th>
       <th class="col-md-1"># Trans.</th>
-      <th class="col-md-2">Last date</th>
-      <th class="col-md-2"><%= t(:market).capitalize %></th>
-      <th class="col-md-2"> Owner </th>
+      <th class="col-md-1">Last date</th>
+      <th class="col-md-1"><%= t(:market).capitalize %></th>
+      <th class="col-md-1"> Owner </th>
       <th class="col-md-1">Paid by customers</th>
+      <th class="col-md-1">Coupon value</th>
       <th class="col-md-1">We receive</th>
       <th class="col-md-1">We pay</th>
       <th class="col-md-1">Seller receives</th>
@@ -33,8 +34,8 @@
         <td>
           <%= coupon.transactions.count %>
         </td>
-        <td>
-          <%= coupon.market.last_date %>
+        <td class="passed-<%= coupon.market.passed? %>">
+          <%= coupon.market.last_date %> <%= ", passed" if  coupon.market.passed? %>
         </td>
         <td> 
           <%= link_to coupon.market.name, coupon.market %>
@@ -45,12 +46,15 @@
         
         <% total = coupon.transactions_total %>
         <% ingresado = coupon.transactions_after_paymill %>
-        <% seller_income = total * 0.85 %>
-        <% a_pagar = (((seller_income) + 0.35)/ 0.966).round(2) %>
+        <% seller_income = (total * 0.85) - 0.25 %>
+        <% a_pagar = (((seller_income) + 0.35)/ 0.966).round(2)  %>
         <% beneficio = ingresado - a_pagar %>
 
         <td class="total">
-          <%= (total * 1.1).round(2) %> €
+          <%= (total * 1.1 + coupon.transactions.count * 0.25).round(2) %> €
+        </td>
+         <td class="total">
+          <%= (total).round(2) %> €
         </td>
         <td>
           <%= ingresado.round(2) %> €
@@ -71,3 +75,11 @@
     <% end %>
   </table>
 </div>
+<style>
+.passed-false{
+  color: green;
+}
+.passed-true{
+  color: red;
+}
+</style>
