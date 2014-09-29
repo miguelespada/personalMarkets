@@ -127,3 +127,7 @@ gem 'momentjs-rails'
 # pdf
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+
+
+# error tracking
+gem "bugsnag"
