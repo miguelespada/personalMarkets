@@ -4,9 +4,6 @@
   <div id="error" class="alert alert-danger flash">
     <%= t(:you_must_be_logged) %>
   </div>
-<% end %>
-
-<% if !user_signed_in? %>
   <h1><%= t(:you_must_be_logged) %></h1>
 <% else %>
   <h1><%= t(:open_your_market) %></h1>
