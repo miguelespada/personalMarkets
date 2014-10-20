@@ -56,7 +56,7 @@ development:
     # use_activesupport_time_zone: true
 
     # Ensure all times are UTC in the app side. (default: false)
-    # use_utc: false
+    # use_utc: false_
 test:
   sessions:
     default:
