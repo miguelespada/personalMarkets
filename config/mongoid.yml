@@ -75,5 +75,12 @@ test:
 #       uri: <%= ENV['MONGOHQ_URL'] %> 
 production:
   sessions:
-    default:
-      uri: <%= ENV['MONGO_URL'] %>
+    default:    
+      hosts:
+        - 172.17.1.174:49154
+      # Define the default database name.
+      database: personalmarkets-production
+      # Since this database points at a session connected to MongoHQ, we must
+      # provide the authentication details.
+      username: personalmarkets
+      password: TitmM0dKeFJVN0JOc3R2cmVFMjN0aTF2NnpBOHIyOTh3YkpUUlVaTlZZVT0K
