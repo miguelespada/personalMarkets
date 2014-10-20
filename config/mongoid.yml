@@ -1,4 +1,22 @@
+<% if ENV['MONGOHQ_URL'] %>
+<% mongohq = URI.parse(ENV['MONGOHQ_URL']) %>
+mongohq:
+  host: <%= mongohq.host %>
+  port: <%= mongohq.port %>
+  database: <%= mongohq.path.sub '/', '' %>
+  username: <%= mongohq.user %>
+  password: <%= mongohq.password %>
+<% end %>
 
+<% if ENV['MONGO_URL'] %>
+<% mongohq = URI.parse(ENV['MONGO_URL']) %>
+mongohq:
+  host: <%= mongohq.host %>
+  port: <%= mongohq.port %>
+  database: <%= mongohq.path.sub '/', '' %>
+  username: <%= mongohq.user %>
+  password: <%= mongohq.password %>
+<% end %>
 
 development:
   # Configure available database sessions. (required)
@@ -56,7 +74,7 @@ development:
     # use_activesupport_time_zone: true
 
     # Ensure all times are UTC in the app side. (default: false)
-    # use_utc: false_
+    # use_utc: false
 test:
   sessions:
     default:
@@ -75,12 +93,5 @@ test:
 #       uri: <%= ENV['MONGOHQ_URL'] %> 
 production:
   sessions:
-    default:    
-      hosts:
-        - 172.17.1.174:27017
-      # Define the default database name.
-      database: personalmarkets-production
-      # Since this database points at a session connected to MongoHQ, we must
-      # provide the authentication details.
-      username: personalmarkets
-      password: TitmM0dKeFJVN0JOc3R2cmVFMjN0aTF2NnpBOHIyOTh3YkpUUlVaTlZZVT0K
+    default:
+      uri: <%= ENV['MONGO_URL'] %>
