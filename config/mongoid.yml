@@ -77,7 +77,7 @@ production:
   sessions:
     default:    
       hosts:
-        - 172.17.1.174:49154
+        - 172.17.1.174:27017
       # Define the default database name.
       database: personalmarkets-production
       # Since this database points at a session connected to MongoHQ, we must
