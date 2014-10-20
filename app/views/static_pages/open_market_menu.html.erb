@@ -7,45 +7,46 @@
   <h1><%= t(:you_must_be_logged) %></h1>
 <% else %>
   <h1><%= t(:open_your_market) %></h1>
-  <div class="terms-content col-md-8 col-md-offset-2 open-market-container">
-    <div class="row">
-      <div class="col-md-4">
-        <%= link_to new_user_market_path(current_user), class:"dashboard-button btn btn-lg huge-icon center" do %>  
-          <i class="fa <%= Market.icon %> fa-5x new-market-icon "></i>
-          <br>
-          <%= t(:open_a) %> <%= t(:market).capitalize %>
-        <% end %>
-        <div class="new-market-text ">
-          <%= t(:menu_open_market) %>
-        </div>
-      </div>
+<% end %>
 
-      <div class="col-md-4">
-        <%= link_to market_make_pro_payment_path(Market.new.id), class:"dashboard-button btn btn-lg huge-icon center" do %>  
-          <i class="fa center fa-flag fa-5x new-vim-market-icon "></i>
-          <br>
-          <%= t(:open_a) %>
-          <br>
-          <%= t(:vim_market)%>
-        <% end %>
-        <div class="new-vim-market-text ">
-          <%= t(:menu_open_vim) %>
-        </div>
+<div class="terms-content col-md-8 col-md-offset-2 open-market-container">
+  <div class="row">
+    <div class="col-md-4">
+      <%= link_to user_signed_in? ? new_user_market_path(current_user) : "", class: menu_button_class(user_signed_in?) do %>  
+        <i class="fa <%= Market.icon %> fa-5x new-market-icon "></i>
+        <br>
+        <%= t(:open_a) %> <%= t(:market).capitalize %>
+      <% end %>
+      <div class="new-market-text ">
+        <%= t(:menu_open_market) %>
       </div>
+    </div>
 
-      <div class="col-md-4">
-        <%= link_to user_subscription_plan_path(current_user), class:"dashboard-button btn btn-lg huge-icon center" do %>  
-          <i class="fa center fa-star fa-5x go-pro-icon "></i>
-          <br>
-          <%= t(:go_PRO) %>
-        <% end %>
-        <div class="go-pro-text">
-          <%= t(:menu_go_pro) %>
-        </div>
+    <div class="col-md-4">
+      <%= link_to user_signed_in? ? market_make_pro_payment_path(Market.new.id) : "", class: menu_button_class(user_signed_in?) do %>  
+        <i class="fa center fa-flag fa-5x new-vim-market-icon "></i>
+        <br>
+        <%= t(:open_a) %>
+        <br>
+        <%= t(:vim_market)%>
+      <% end %>
+      <div class="new-vim-market-text ">
+        <%= t(:menu_open_vim) %>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <%= link_to user_signed_in? ? user_subscription_plan_path(current_user) : "", class: menu_button_class(user_signed_in?) do %>  
+        <i class="fa center fa-star fa-5x go-pro-icon "></i>
+        <br>
+        <%= t(:go_PRO) %>
+      <% end %>
+      <div class="go-pro-text">
+        <%= t(:menu_go_pro) %>
       </div>
     </div>
   </div>
-<% end %>
+</div>
 
 <script>  
   $(".huge-icon.empty").click(function(){

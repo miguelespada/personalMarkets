@@ -96,6 +96,11 @@ module ApplicationHelper
     render 'scaffolds/table', entities: entities, model: entities.klass
   end
 
+  def menu_button_class(signed)
+    theClass = "dashboard-button btn btn-lg huge-icon center"
+    theClass += " disabled" if !signed
+    theClass
+  end
 end
 
 
