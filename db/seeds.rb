@@ -11,7 +11,7 @@ def create_some_users
     user = User.new(email: "user#{index}@pm.com", password: "12345678")
     user.save!
   end
-end
+end 
 
 def create_admin_user
   admin = User.new(email: "admin@pm.com", password: "12345678")
