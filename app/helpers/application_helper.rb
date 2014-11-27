@@ -70,7 +70,7 @@ module ApplicationHelper
   end
 
   def user_scope
-      return if current_user == nil
+      return "User" if current_user.nil?
       concat (t(:your).capitalize + " ") if params['user_id'].present? && params['user_id'] == current_user.id.to_s
       concat (User.find(params['user_id']).name + " ") if params['user_id'].present? && params['user_id'] != current_user.id.to_s
        # concat (t(:all).capitalize ) if !params['user_id'].present?
